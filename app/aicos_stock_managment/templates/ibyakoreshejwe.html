@@ -92,7 +92,11 @@
                                           <td>{{ ibyakoze.umusoroWakarere }}</td>
                                           <td>{{ ibyakoze.kwishyuraItsinda }}</td>
                                           <td>{{ ibyakoze.PandS }}</td>
-                                          <td></td>
+                                          <td>
+                                              <a href="#">
+                                                <span class="badge badge-info" style="font-size: 14px;"><li class="fa fa-eye"></li> Ibindi</span>
+                                              </a>
+                                          </td>
                                         </tr>
                                           
                                      {% endfor %}
@@ -708,7 +712,7 @@
                                             {% endif %}
                                         </td>
                                         <td>
-                                          <a href="#">
+                                          <a href="{{ url_for('aicos_stock_managment.injizaIbyakoreshejwe', id=member.id)}}">
                                             <span class="badge badge-success" style="font-size: 14px;"><li class="fa fa-plus"></li> Injiza</span>
                                           </a>
                                         </td>

@@ -219,7 +219,7 @@ class Department(db.Model):
 	category   = db.Column(db.String(200))
 	field   = db.Column(db.String(200))
 	# federation_id = db.Column(db.Integer, db.ForeignKey('federations.id'))
-	union_id	   = db.Column(db.String, db.ForeignKey('unions.email'))
+	# union_id	   = db.Column(db.String(200), db.ForeignKey('unions.email'))
 	# Professional information
 	started_data = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	starting_share = db.Column(db.String(200))
@@ -605,6 +605,8 @@ class Member(db.Model):
 	izina_ribanza = db.Column(db.String(200))
 	izina_rikurikira = db.Column(db.String(200))
 	Ayandi = db.Column(db.String(200))
+	zone = db.Column(db.String(200))
+	itsinda = db.Column(db.String(200))
 	Igitsina = db.Column(db.String(200))
 	Indangamuntu = db.Column(db.String(200))
 	tariki_yavukiye = db.Column(db.String(200))
@@ -632,14 +634,14 @@ class Member(db.Model):
 	ubuso_budakoreshwa			  = db.Column(db.String(200))
 	role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-	department_union = db.Column(db.String(200), db.ForeignKey('unions.email'))
+	#department_union = db.Column(db.String(200), db.ForeignKey('unions.email'))
 	users = db.relationship('Umusaruro', backref='members', lazy=True)
 
-	""" We will always use this __init__ function to upload excel file  
+	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
 		self.id = id
 		self.sno = sno
-	"""
+	
 
 	"""
 	Importing data using this views.
@@ -1294,8 +1296,10 @@ class Umusaruro(db.Model):
 		return '<Umusaruro: {}>'.format(self.amazina)
 
 
+
+"""
 class Inyongeramusaruro(db.Model):
-	"""docstring for Inyongeramusaruro"""
+	docstring for Inyongeramusaruro
 	
 	__tablename__ = "inyongeramusaruro"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -1319,12 +1323,13 @@ class Inyongeramusaruro(db.Model):
 
 	def __repr__(self):
 		return '<Inyongeramusaruro: {}>'.format(self.id)
-		
+	"""
 
 class Ibyakoreshejwe(db.Model):
 	"""docstring for Ibyakoreshejwe"""
 	__tablename__ = "ibyakoreshejwe"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	amazina = db.Column(db.String(200))
 	deamAndSup = db.Column(db.Integer)
 	ibihanoCoop = db.Column(db.Integer)
 	APKSAMAKIbihano = db.Column(db.Integer)
@@ -1355,3 +1360,197 @@ class CoopMemberBankAccounts(db.Model):
 
 	def __repr__(self):
 		return '<CoopMemberBankAccounts: {}>'.format(self.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# New models related to the stack of rice cooperatives.
+
+# We have already done with this table in the database, we just need to add the relevant information
+class Umusarurob(db.Model):
+	""" create umusaruro table """
+	__tablename__ = "umusarurob"
+	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	Quantity = db.Column(db.Float)
+	RiceType = db.Column(db.String(100))
+	RiceAmount = db.Column(db.Integer)
+	UwoAsigaranye = db.Column(db.Integer)
+	UwoKugurisha = db.Column(db.Integer) # Quantity - Umu asigaranye
+	GutonozaAmount = db.Column(db.Integer)
+	AmafarangaUmusaruro1 = db.Column(db.Integer) # (RiceAmount * Quantity) - Uwogutonoza
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
+	def __repr__(self):
+		return '<Umusarurob: {}>'.format(self.id)
+
+
+
+
+# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+class InyongeraMusaruro(db.Model):
+	#docstring for Inyongeramusaruro
+	__tablename__ = "inyongeramusaruro"
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	InyongeraMusaruroType = db.Column(db.String(200))
+	Quantity = db.Column(db.Float)
+	Amount = db.Column(db.Integer)
+	Cypemetrine = db.Column(db.Float)
+	Beam = db.Column(db.Integer)
+	ImbutoQuantity = db.Column(db.Float)
+	ImbutoAmount = db.Column(db.Integer)
+	Redevance = db.Column(db.Float)
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	umwakaWisarura = db.Column(db.String(50))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
+	def __repr__(self):
+		return '<InyongeraMusaruro: {}>'.format(self.id)
+
+
+
+# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+class Umusanzu(db.Model):
+	#docstring for Inyongeramusaruro
+	__tablename__ = "umusanzu"
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	UmusanzuType = db.Column(db.String(200))
+	Amount 		 = db.Column(db.Integer)
+	Comment = db.Column(db.String(200))
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Umusanzu: {}>'.format(self.id)
+
+
+
+
+
+
+# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+class Ibirarane(db.Model):
+	#docstring for Inyongeramusaruro
+	__tablename__ = "ibirarane"
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	IdeniTime = db.Column(db.String(200))
+	IdeniAmount = db.Column(db.String(200))
+	IdeniType = db.Column(db.String(200))
+	IdeniQuantity = db.Column(db.String(200))
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Ibirarane: {}>'.format(self.id)
+
+
+# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+class Ibihano(db.Model):
+	#docstring for Inyongeramusaruro
+	__tablename__ = "ibihano"
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	Igihano = db.Column(db.String(200))
+	IgihanoAmount = db.Column(db.Integer)
+	comment = db.Column(db.String(200))
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Ibihano: {}>'.format(self.id)
+
+
+# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+class Ibindi(db.Model):
+	#docstring for Inyongeramusaruro
+	__tablename__ = "ibindi"
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+	ImifukaQuantity = db.Column(db.Integer)
+	ImifukaAmount = db.Column(db.Integer)
+	MituelleAmount = db.Column(db.Integer)
+	UmuceriGrade   = db.Column(db.Integer)
+	UmuceriQuantity = db.Column(db.Integer)
+	UmuceriAmountGrade = db.Column(db.Integer)
+	Avence = db.Column(db.Integer)
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	
+	def __repr__(self):
+		return '<Ibindi: {}>'.format(self.id)
+
+
+
+
+
+

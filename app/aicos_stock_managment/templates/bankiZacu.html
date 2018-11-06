@@ -34,34 +34,37 @@
 					 	<table id="example" class="display" cellspacing="0" width="100%">
 					        <thead>
 					            <tr>
-					            	<th>Resi</th>
 					                <th>Amazina</th>
 					                <th>Izina rya Banki</th>
 					                <th>Numero Za Konte</th>
+					                <th>Ibindi</th>
 					            </tr>
 					        </thead>
 					        
 					        <tfoot>
 					            <tr>
-					            	<th>Resi</th>
 					                <th>Amazina</th>
 					                <th>Izina rya Banki</th>
 					                <th>Numero Za Konte</th>
+					                <th>Ibindi</th>
 					            </tr>
 					        </tfoot>
 					        <tbody>
 					        	{% if konte %}
 					        		{% for kont in konte %}
 					        		<tr>
-					        			<td>{{ kont.umusaruro_resi }}</td>
 					        			<td>{{ kont.memberName }}</td>
 					        			<td>{{ kont.bankName }}</td>
 					        			<td>{{ kont.bankAccountNumber }}</td>
+					        			<td>
+					        				<a href="#">
+	                                            <span class="badge badge-info" style="font-size: 14px;"><li class="fa fa-eye"></li> Ibindi</span>
+	                                        </a>
+					        			</td>
 					        		</tr>
 					        		{% endfor %}
 					        	{% else %}
 					        		<tr>
-					        			<td></td>
 					        			<td></td>
 					        			<td></td>
 					        			<td></td>

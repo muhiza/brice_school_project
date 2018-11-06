@@ -82,13 +82,13 @@
                                       {% for inyongeramusaruro in inyongera %}
 
                                         <tr>
-                                          <td>{{ inyongeramusaruro.umusaruro_resi }}</td>
-                                          <td>{{ inyongeramusaruro.BriqueteUnity *  inyongeramusaruro.BriquetePU}}</td>
-                                          <td>{{ inyongeramusaruro.DapAndNPKUnity *  inyongeramusaruro.DapAndNPKpu}}</td>
-                                          <td>{{ inyongeramusaruro.KCLpu *  inyongeramusaruro.KCLUnity}}</td>
-                                          <td>{{ inyongeramusaruro.ImbutoIngano *  inyongeramusaruro.ImbutoPU}}</td>
-                                          <td>{{ inyongeramusaruro.ImifukaAgaciro *  inyongeramusaruro.ImifukaYishyuwe}}</td>
-                                          <td>{{ inyongeramusaruro.RedevanceUbuso *  inyongeramusaruro.RedevancePU}}</td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
+                                          <td></td>
                                           <td>
                                             <a href="#">
                                               <span class="badge badge-info" style="font-size: 14px;"><li class="fa fa-eye"></li> Ibindi</span>
@@ -672,42 +672,10 @@
                                   {% for member in employees %}
                                       <tr>
                                         <td>{{ member.izina_ribanza + " " + member.izina_rikurikira }}</td>
-                                        <td>
-                                          {% if inyongera %}
-                                              {% for inyongeramusaruro in inyongera %}
-                                                  {% if inyongeramusaruro.member_id == member.id %}
-                                                      {{ inyongeramusaruro.BriqueteUnity * inyongeramusaruro.BriquetePU }}
-                                                  {% endif %}
-                                              {% endfor %}
-                                          {% endif %}
-                                        </td>
-                                        <td>
-                                          {% if inyongera %}
-                                              {% for inyongeramusaruro in inyongera %}
-                                                  {% if inyongeramusaruro.member_id == member.id %}
-                                                      {{ inyongeramusaruro.DapAndNPKUnity * inyongeramusaruro.DapAndNPKpu }}
-                                                  {% endif %}
-                                              {% endfor %}
-                                          {% endif %}
-                                        </td>
-                                        <td>
-                                          {% if inyongera %}
-                                              {% for inyongeramusaruro in inyongera %}
-                                                  {% if inyongeramusaruro.member_id == member.id %}
-                                                      {{ inyongeramusaruro.KCLUnity * inyongeramusaruro.KCLpu }}
-                                                  {% endif %}
-                                              {% endfor %}
-                                          {% endif %}
-                                        </td>
-                                        <td>
-                                          {% if inyongera %}
-                                              {% for inyongeramusaruro in inyongera %}
-                                                  {% if inyongeramusaruro.member_id == member.id %}
-                                                      {{ inyongeramusaruro.RedevanceUbuso * inyongeramusaruro.RedevancePU }}
-                                                  {% endif %}
-                                              {% endfor %}
-                                          {% endif %}
-                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
                                           <a href="{{ url_for('aicos_stock_managment.injizaInyongeramusaruro', id=member.id) }}">
                                             <span class="badge badge-success" style="font-size: 14px;"><li class="fa fa-plus"></li> Injiza</span>

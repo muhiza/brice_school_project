@@ -15,43 +15,22 @@
 		        </div>
                 <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
 	                <form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
-	                	<!--<div class="">
-	                		<label class="sr-only">Member id</label>
-	                    	<input type="hidden" class="form-control" disabled="disable" value="{{member_name.id}}">
-	                	</div>
-	                	<div class="input-form" style="margin-bottom: 10px;">
-	                    	<label class="sr-only">Member id</label>
-	                    	<input type="text" class="form-control" disabled="disable" value="{{ member_name.izina_ribanza + " " + member_name.izina_rikurikira }}">
-	                    </div>-->
-	                    <div class="">
-	                    	{{ wtf.form_field(form.umwakaWisarura) }}
+	                	<div class="input-form">
+	                    	{{ wtf.form_field(form.RiceType) }}
 	                    </div>
-	                    <!--<div class="input-form" style="margin-bottom: 10px;">
-	                    	<label class="">Amazina</label>
-	                    	<input type="text" class="form-control" disabled="disable" value="{{ member_name.izina_ribanza + " " + member_name.izina_rikurikira }}" name="amazina">
-	                    </div>-->
-	                	<div class="">
-	                    	{{ wtf.form_field(form.resi) }}
+	                    <div class="input-form">
+	                    	{{ wtf.form_field(form.Quantity) }}
 	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.zone) }}
+	                    <div class="input-form">
+	                    	{{ wtf.form_field(form.RiceAmount) }}
 	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.umusaruro) }}
+	                    <div class="input-form">
+	                    	{{ wtf.form_field(form.UwoAsigaranye) }}
 	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.umuceriWoKurya) }}
+	                    <div class="input-form">
+	                    	{{ wtf.form_field(form.Gutonoza) }}
 	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.igiciroCyaKimwe) }}
-	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.umusanzu) }}
-	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.amafrwYoGutonoza) }}
-	                    </div>
-	                    <div class="">
+	                    <div class="input-form">
 	                    	{{ form.submit(class="btn btn-primary") }}
 	                    </div>
 	                    {{ form.csrf_token }}
