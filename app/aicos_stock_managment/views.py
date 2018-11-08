@@ -184,7 +184,6 @@ def injizaInyongeramusaruro(id):
                                     ImbutoQuantity = form.ImbutoQuantity.data,
                                     ImbutoAmount = form.ImbutoAmount.data,
                                     Redevance = form.Redevance.data,
-                                    umwakaWisarura = form.umwakaWisarura.data,
                                     member_id = memberid.id,
                                     department_id = current_user.email
                                     )
@@ -382,13 +381,13 @@ def injizaIbindi(id):
 
     if form.validate_on_submit():
         ibindi = Ibindi(
-                    ImifukaQuantity = int(form.ImifukaQuantity.data),
-                    ImifukaAmount = int(form.ImifukaAmount.data),
-                    MituelleAmount = int(form.MituelleAmount.data),
-                    UmuceriGrade   = int(form.UmuceriGrade.data),
-                    UmuceriQuantity = int(form.UmuceriQuantity.data),
-                    UmuceriAmountGrade = int(form.UmuceriAmountGrade.data),
-                    Avence = int(form.Avence.data),
+                    ImifukaQuantity = form.ImifukaQuantity.data,
+                    ImifukaAmount = form.ImifukaAmount.data,
+                    MituelleAmount = form.MituelleAmount.data,
+                    UmuceriGrade   = form.UmuceriGrade.data,
+                    UmuceriQuantity = form.UmuceriQuantity.data,
+                    UmuceriAmountGrade = form.UmuceriAmountGrade.data,
+                    Avence = form.Avence.data,
                     member_id = memberid.id,
                     department_id = current_user.email
                     )

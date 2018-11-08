@@ -79,10 +79,8 @@
                                               <th>Akarere</th>
                                               <th>Umurenge</th>
                                               <th>Akagari</th>
-
-                                              <th>Umudugudu</th>
-
-                                              <th>Umugabane</th>
+                                              <th>Zone</th>
+                                              <th>Itsinda</th>
                                               <th>Ibindi</th>
                                           </tr>
                                       </thead>
@@ -93,10 +91,8 @@
                                               <th>Akarere</th>
                                               <th>Umurenge</th>
                                               <th>Akagari</th>
-
-                                              <th>Umudugudu</th>
-
-                                              <th>Umugabane</th>
+                                              <th>Zone</th>
+                                              <th>Itsinda</th>
                                               <th>Ibindi</th>
                                           </tr>
                                       </tfoot>
@@ -118,8 +114,8 @@
                                                     </td>
                                                     -->
                                                     <td>{{ employee.Akagari }}</td>
-                                                    <td> {{ employee.Umudugudu }} </td>
-                                                    <td> {{ employee.umugabane_ukwezi }} </td>
+                                                    <td> {{ employee.zone }} </td>
+                                                    <td> {{ employee.itsinda }} </td>
                                                     <td> 
                                                     <span class="badge badge-info">
                                                     <b>
@@ -251,7 +247,9 @@
                     {% if umusaruro %}
                         {% for umu in umusaruro %}
                             {% if umu.member_id == member.id %}
-                                {{ umu.RiceType }}
+                                {% if loop.last %}
+                                    {{ umu.RiceType }}
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -260,7 +258,21 @@
                     {% if umusaruro %}
                         {% for umu in umusaruro %}
                             {% if umu.member_id == member.id %}
-                                {{ umu.Quantity }}
+                                {% if loop.last %}
+                                    {{ umu.Quantity }}
+                                {% endif %}
+                            {% endif %}
+                            
+                        {% endfor %}
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if umusaruro %}
+                        {% for umu in umusaruro %}
+                            {% if umu.member_id == member.id %}
+                                {% if loop.last %}
+                                    {{ umu.UwoKugurisha }}
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -269,16 +281,9 @@
                     {% if umusaruro %}
                         {% for umu in umusaruro %}
                             {% if umu.member_id == member.id %}
-                                {{ umu.UwoKugurisha }}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                  </td>
-                  <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
-                            {% if umu.member_id == member.id %}
-                                {{ umu.AmafarangaUmusaruro1 }}
+                                {% if loop.last %}
+                                    {{ umu.AmafarangaUmusaruro1 }}
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
                     {% endif %}
@@ -351,7 +356,9 @@
               {% if inyongera %}
                   {% for inyongeramusaruro in inyongera %}
                       {% if inyongeramusaruro.member_id == member.id %}
-                          {{ inyongeramusaruro.InyongeraMusaruroType }}
+                          {% if loop.last %}
+                              {{ inyongeramusaruro.InyongeraMusaruroType }}
+                          {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
@@ -360,7 +367,9 @@
               {% if inyongera %}
                   {% for inyongeramusaruro in inyongera %}
                       {% if inyongeramusaruro.member_id == member.id %}
-                          {{ inyongeramusaruro.Amount }}
+                          {% if loop.last %}
+                              {{ inyongeramusaruro.Amount }}
+                          {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
@@ -369,7 +378,9 @@
               {% if inyongera %}
                   {% for inyongeramusaruro in inyongera %}
                       {% if inyongeramusaruro.member_id == member.id %}
-                          {{ inyongeramusaruro.ImbutoAmount }}
+                          {% if loop.last %}
+                              {{ inyongeramusaruro.ImbutoAmount }}
+                          {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
@@ -378,7 +389,9 @@
               {% if inyongera %}
                   {% for inyongeramusaruro in inyongera %}
                       {% if inyongeramusaruro.member_id == member.id %}
-                          {{ inyongeramusaruro.done_date }}
+                          {% if loop.last %}
+                              {{ inyongeramusaruro.done_date }}
+                          {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
@@ -469,7 +482,9 @@
                                             {% if imisanzu %}
                                                 {% for imi in imisanzu %}
                                                     {% if imi.member_id == employee.id %}
-                                                        {{ imi.UmusanzuType }}
+                                                        {% if loop.last %}
+                                                            {{ imi.UmusanzuType }}
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
@@ -478,7 +493,9 @@
                                             {% if imisanzu %}
                                                 {% for imi in imisanzu %}
                                                     {% if imi.member_id == employee.id %}
-                                                        {{ imi.Amount }}
+                                                        {% if loop.last %}
+                                                            {{ imi.Amount }}
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
@@ -488,7 +505,9 @@
                                             {% if imisanzu %}
                                                 {% for imi in imisanzu %}
                                                     {% if imi.member_id == employee.id %}
-                                                        {{ imi.Comment }}
+                                                        {% if loop.last %}
+                                                            {{ imi.Comment }}
+                                                        {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
@@ -573,7 +592,9 @@
                         {% if ibirarane %}
                             {% for ibi in ibirarane %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.IdeniType }}
+                                    {% if loop.last %}
+                                        {{ ibi.IdeniType }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -582,7 +603,9 @@
                         {% if ibirarane %}
                             {% for ibi in ibirarane %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.IdeniAmount }}
+                                    {% if loop.last %}
+                                        {{ ibi.IdeniAmount }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -591,7 +614,9 @@
                         {% if ibirarane %}
                             {% for ibi in ibirarane %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.IdeniTime }}
+                                    {% if loop.last %}
+                                        {{ ibi.IdeniTime }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -601,7 +626,9 @@
                         {% if ibirarane %}
                             {% for ibi in ibirarane %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.IdeniQuantity }}
+                                    {% if loop.last %}
+                                        {{ ibi.IdeniQuantity }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -758,7 +785,9 @@
                         {% if ibihano %}
                               {% for ibi in ibihano %}
                                   {% if ibi.member_id == employee.id %}
-                                      {{ ibi.Igihano }}
+                                      {% if loop.last %}
+                                          {{ ibi.Igihano }}
+                                      {% endif %}
                                   {% endif %}
                               {% endfor%}
                           {% endif %}
@@ -767,7 +796,9 @@
                         {% if ibihano %}
                               {% for ibi in ibihano %}
                                   {% if ibi.member_id == employee.id %}
-                                      {{ ibi.IgihanoAmount }}
+                                      {% if loop.last %}
+                                          {{ ibi.IgihanoAmount }}
+                                      {% endif %}
                                   {% endif %}
                               {% endfor%}
                           {% endif %}
@@ -776,7 +807,9 @@
                         {% if ibihano %}
                               {% for ibi in ibihano %}
                                   {% if ibi.member_id == employee.id %}
-                                      {{ ibi.comment }}
+                                      {% if loop.last %}
+                                          {{ ibi.comment }}
+                                      {% endif %}
                                   {% endif %}
                               {% endfor%}
                           {% endif %}
@@ -1360,7 +1393,9 @@
                           {% if ibindi %}
                               {% for ibi in ibindi %}
                                   {% if ibi.member_id == employee.id %}
-                                      {{ ibi.ImifukaQuantity }}
+                                      {% if loop.last %}
+                                          {{ ibi.ImifukaQuantity }}
+                                      {% endif %}
                                   {% endif %}
                               {% endfor%}
                           {% endif %}
@@ -1369,7 +1404,9 @@
                         {% if ibindi %}
                             {% for ibi in ibindi %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.MituelleAmount }}
+                                    {% if loop.last %}
+                                          {{ ibi.MituelleAmount }}
+                                      {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -1378,7 +1415,9 @@
                         {% if ibindi %}
                             {% for ibi in ibindi %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.UmuceriGrade }}
+                                    {% if loop.last %}
+                                          {{ ibi.UmuceriGrade }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
@@ -1388,7 +1427,9 @@
                         {% if ibindi %}
                             {% for ibi in ibindi %}
                                 {% if ibi.member_id == employee.id %}
-                                    {{ ibi.Avence }}
+                                    {% if loop.last %}
+                                          {{ ibi.Avence }}
+                                    {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
