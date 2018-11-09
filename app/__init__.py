@@ -2,7 +2,7 @@ import os
 # third-parties imports
 from flask import Flask, request, render_template
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager
+from flask_login import LoginManager, UserMixin, current_user
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -23,12 +23,15 @@ from json import dumps
 
 from flask_restless import APIManager
 
+from flask_admin import Admin, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
+
 app=Flask(__name__)
 flask_excel.init_excel(app)
 
 #<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/coop'
-
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 #=======
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/excel'
@@ -48,6 +51,8 @@ from config import app_config
 db = SQLAlchemy()
 login_manager = LoginManager()
 
+
+
 def create_app(config_name):
     if os.getenv('FLASK_CONFIG') == "production":
         app = Flask(__name__)
@@ -55,12 +60,39 @@ def create_app(config_name):
             SECRET_KEY=os.getenv('SECRET_KEY'),
             SQLALCHEMY_DATABASE_URI=os.getenv('SQLALCHEMY_DATABASE_URI')
         )
+        
     else:
         app = Flask(__name__, instance_relative_config=True)
         app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
+        
 
-    from .models import Role, Member
+
+
+    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role
+
+    class EmployeeView(ModelView):
+        form_columns = ['email', 'username', 'first_name', 'last_name', 'phone_number']
+
+    class MyModelView(ModelView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+        def inaccessible_callback(self, name, **kwags):
+            return redirect(url_for('auth.login'))
+
+    class MyAdminIndexView(AdminIndexView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+
+    admin = Admin(app, name='aicos_admin', template_mode='bootstrap3', index_view=MyAdminIndexView())
+
+    admin.add_view(MyModelView(Member, db.session))
+    admin.add_view(MyModelView(Department, db.session))
+    admin.add_view(MyModelView(Umusarurob, db.session))
+    admin.add_view(MyModelView(InyongeraMusaruro, db.session))
+    admin.add_view(MyModelView(Employee, db.session))
+    admin.add_view(MyModelView(Role, db.session))
+
 
     Bootstrap(app)
     db.init_app(app)
@@ -72,12 +104,14 @@ def create_app(config_name):
     flask_excel.init_excel(app)
     api.init_app(app)
 
+
+
     from app import models
     #from .overall import overall as overall_blueprint
     #app.register_blueprint(admin_blueprint, url_prefix="overall")
 
-    from .admin import admin as admin_blueprint
-    app.register_blueprint(admin_blueprint, url_prefix='/admin')
+    #from .admin import admin as admin_blueprint
+    #app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)

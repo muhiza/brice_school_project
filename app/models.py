@@ -152,7 +152,7 @@ class Federation(db.Model):
 	unions		= db.relationship('Union', backref="federation", lazy="dynamic")
 
 	def __repr__(self):
-		return '<Federation: {}>'.formt(self.name)
+		return '<Federation: {}>'.format(self.name)
 
 
 	""" We will always use this __init__ function to upload excel file  """
@@ -181,7 +181,7 @@ class Union(db.Model):
 	email = db.Column(db.String(200), primary_key=True)
 
 	def __repr__(self):
-		return '<Union: {}>'.formt(self.name)
+		return '<Union: {}>'.format(self.name)
 
 
 		""" We will always use this __init__ function to upload excel file  """
@@ -270,7 +270,7 @@ class Department(db.Model):
 
 
 	def __repr__(self):
-		return '<Department: {}>'.format(self.name)
+		return self.name
 
 """
 Dealing with excel staffs here.
@@ -326,7 +326,7 @@ class Role(db.Model):
 	"""
 
 	def __repr__(self):
-		return '<Role: {}>'.format(self.name)
+		return self.name
 
 
 
@@ -364,7 +364,7 @@ class Staff(db.Model):
 	"""
 
 	def __repr__(self):
-		return '<Staff: {}>'.format(self.first_name)
+		return self.first_name + " " + self.last_name
 
 
 
@@ -679,10 +679,10 @@ class Member(db.Model):
 		self.ownerPhone = ownerPhone
 		self.department_id = department_id
 
-
-	def __repr__(self):
-		return '<Member: {}>'.format(self.secondName)
 	"""
+	def __repr__(self):
+		return '<Member: {}>'.format(self.izina_rikurikira)
+	
 
 class Moto(db.Model):
 
