@@ -2,7 +2,7 @@ import os
 # third-parties imports
 from flask import Flask, request, render_template
 from flask_bootstrap import Bootstrap
-from flask_login import LoginManager
+from flask_login import LoginManager, UserMixin, current_user
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
@@ -23,7 +23,7 @@ from json import dumps
 
 from flask_restless import APIManager
 
-from flask_admin import Admin
+from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 
 app=Flask(__name__)
@@ -60,18 +60,39 @@ def create_app(config_name):
             SECRET_KEY=os.getenv('SECRET_KEY'),
             SQLALCHEMY_DATABASE_URI=os.getenv('SQLALCHEMY_DATABASE_URI')
         )
-        admin = Admin(app, name='aicos', template_mode='bootstrap3')
+        
     else:
         app = Flask(__name__, instance_relative_config=True)
         app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
-        admin = Admin(app, name='aicos_admin', template_mode='bootstrap3')
+        
 
 
 
-    from .models import Role, Member
+    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role
 
-    admin.add_view(ModelView(Member, db.session))
+    class EmployeeView(ModelView):
+        form_columns = ['email', 'username', 'first_name', 'last_name', 'phone_number']
+
+    class MyModelView(ModelView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+        def inaccessible_callback(self, name, **kwags):
+            return redirect(url_for('auth.login'))
+
+    class MyAdminIndexView(AdminIndexView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+
+    admin = Admin(app, name='aicos_admin', template_mode='bootstrap3', index_view=MyAdminIndexView())
+
+    admin.add_view(MyModelView(Member, db.session))
+    admin.add_view(MyModelView(Department, db.session))
+    admin.add_view(MyModelView(Umusarurob, db.session))
+    admin.add_view(MyModelView(InyongeraMusaruro, db.session))
+    admin.add_view(MyModelView(Employee, db.session))
+    admin.add_view(MyModelView(Role, db.session))
+
 
     Bootstrap(app)
     db.init_app(app)
