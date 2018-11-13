@@ -34,7 +34,7 @@ class InyongeramusaruroForm(FlaskForm):
 	resi = IntegerField("Resi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Resi y'uwahawe Inyongeramusaruro"})
 	briquetteKg = FloatField("Briquette", validators=[DataRequired()], render_kw={"placeholder":"Injiza briquette (kg)"})
 	briquettePU = SelectField("Briquette kuri kiro (Frw)", choices=[('390','390')], validators=[DataRequired()])
-	DAPandNPKkg = FloatField("DAP & NPK", validators=[DataRequired()], render_kw={"placeholder":"Injiza DAP and NPK (kg)"})
+	NPKkg = FloatField("DAP & NPK", validators=[DataRequired()], render_kw={"placeholder":"Injiza DAP and NPK (kg)"})
 	DAPandNPKpu = SelectField("Igiciro kuri DAP & NPK", choices=[('430','430')], validators=[DataRequired()])
 	KCLkg = FloatField("KCL", validators=[DataRequired()], render_kw={"placeholder":"Injiza KCL (kg)"})
 	KCLpu = SelectField("Igiciro kuri KCL", choices=[('395','395')], validators=[Optional()])
@@ -84,24 +84,33 @@ class UmusarurobForm(FlaskForm):
         'Ubwoko bw\'umusaruro',
         choices=[('Umusaruro short', 'Umusaruro short'), ('Umusaruro long', 'Umusaruro long')])
     Quantity =  IntegerField("Ingano y\'umusaruro", validators=[DataRequired()], render_kw={"placeholder": "Injiza ingano y'umusaruro"})
-    RiceAmount =  IntegerField("Igiciro", validators=[DataRequired()], render_kw={"placeholder": "Injiza Igiciro cy'umusaruro"})
-    UwoAsigaranye =  IntegerField("Uwo asigaranye", validators=[DataRequired()], render_kw={"placeholder": "Uwo asigaranye"})
-    Gutonoza      = IntegerField("Gutonoza", validators=[DataRequired()], render_kw={"placeholder": "Amafaranga yo gutonoza"})
+    RiceAmount = SelectField(
+        'Igiciro Cy\'umuceri',
+        choices=[('295', 295), ('305', 305)])
+    UwoAsigaranye =  IntegerField("Umuceri asigaranye", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umuceriri asigaranye"})
+    Gutonoza  = SelectField(
+        'Igiciro Cyo Gutonoza',
+        choices=[('45', 45), ('50', 50)])
     submit      =  SubmitField('Emeza')
 
 
 
 
 class InyongeraMusaruroForm(FlaskForm):
-    InyongeraMusaruroType = SelectField(
-        'Ubwoko bw\'inyongeramusaruro',
-        choices=[('DAP', 'DAP'), ('KCL', 'KCL'), ('NPK', 'NPK'), ('UREA', 'UREA')])
-    Quantity =  FloatField("Ingano y\'Inyongera musaruro", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'inyongera musaruro"})    
-    Amount =  IntegerField("Igiciro", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'inyongera musaruro"})
+    NPKkg = FloatField("NPK", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya NPK"})
+    NPKPerUnity = SelectField("Igiciro ku kiro cya NPK", choices=[('490',490)], validators=[Optional()])
+    UREA = FloatField("UREA", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya UREA"})
+    UREAPerUnity = SelectField("Igiciro ku kiro cya UREA", choices=[('340',340)], validators=[Optional()])
+    DAP = FloatField("DAP", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya DAP"})
+    DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", choices=[('430',430)], validators=[Optional()])
+    KCL = FloatField("KCL", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya KCL"})
+    KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
+    Briquette = FloatField("Briquette", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya Briquette"})
+    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('400',400)], validators=[Optional()])
     Cypemetrine =  IntegerField("Cypemetrine", validators=[Optional()], render_kw={"placeholder": "Cypemetrine"})
     Beam =  IntegerField("Beam", validators=[Optional()], render_kw={"placeholder": "Beam"})
     ImbutoQuantity =  IntegerField("Imbuto", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
-    ImbutoAmount =  IntegerField("Imbuto amount", validators=[Optional()], render_kw={"placeholder": "Injiza igiciro cy'imbuto"})
+    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
     Redevance      = IntegerField("Redevance", validators=[Optional()], render_kw={"placeholder": "Redevance"})
     umwakaWisarura = SelectField("Umwaka W'isarura", choices=[('2018A','2018A')], validators=[Optional()])
     submit      =  SubmitField('Emeza')

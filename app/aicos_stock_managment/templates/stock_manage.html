@@ -239,13 +239,13 @@
             </tr>
         </tfoot>
         <tbody>
-          {% if employees %}
-              {% for member in employees %}
+          {% if memberss %}
+              {% for member in memberss %}
                 <tr>
                   <td>{{ member.izina_ribanza }}  {{ member.izina_rikurikira }}</td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.RiceType }}
@@ -255,8 +255,8 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.Quantity }}
@@ -267,8 +267,8 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.UwoKugurisha }}
@@ -278,8 +278,8 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.AmafarangaUmusaruro1 }}

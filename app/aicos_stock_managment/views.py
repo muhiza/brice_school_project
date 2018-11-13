@@ -55,7 +55,7 @@ def stock():
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     all_member_idd = Umusaruro.member_id
-    
+    memberss = Member.query.all()
     umusaruro_resi = Umusaruro.query.filter_by(department_id=current_user.email).all()
     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
@@ -64,7 +64,8 @@ def stock():
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
     imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-    umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    umusaruro = Umusarurob.query.all()
+    inyongeramusaruro = InyongeraMusaruro.query.all()
 
     return render_template('stock_manage.html',ibihano=ibihano,
                                                imisanzu = imisanzu,
@@ -74,7 +75,9 @@ def stock():
                                                member_all=member_all, 
                                                employees=employees,
                                                umusaruro = umusaruro, 
-                                               inyongera=inyongera)
+                                               inyongera=inyongera,
+                                               memberss=memberss
+                                               )
 
 
 @aicos_stock_managment.route('/umusaruro', methods=['GET', 'POST'])
@@ -129,17 +132,19 @@ def injizaUmusaruro(id):
     
     if form.validate_on_submit():
         
+        if form.UwoAsigaranye.data is None:
+            form.UwoAsigaranye.data = 0
 
 
 
         umusaruro = Umusarurob(
                             Quantity = form.Quantity.data,
                             RiceType = form.RiceType.data,
-                            RiceAmount = form.RiceAmount.data,
+                            RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                             UwoAsigaranye = form.UwoAsigaranye.data,
-                            UwoKugurisha = int(form.Quantity.data) - int(form.UwoAsigaranye.data),
-                            GutonozaAmount = form.Gutonoza.data,
-                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * int(form.Quantity.data)) - int(form.Gutonoza.data),
+                            UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
+                            GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
+                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * int(form.Quantity.data)) - (int(form.Gutonoza.data) * int(form.UwoAsigaranye.data)),
                             member_id = memberid.id,
                             department_id = current_user.email
                          )
@@ -176,9 +181,16 @@ def injizaInyongeramusaruro(id):
         amazina = member_name.izina_ribanza + " " + member_name.izina_rikurikira
 
         inyongeramusaruro = InyongeraMusaruro(
-                                    InyongeraMusaruroType = form.InyongeraMusaruroType.data,
-                                    Quantity = form.Quantity.data,
-                                    Amount = form.Amount.data,
+                                    NPKkg = form.NPKkg.data,
+                                    NPKPerUnity = form.NPKPerUnity.data,
+                                    UREA = form.UREA.data,
+                                    UREAPerUnity = form.UREAPerUnity.data,
+                                    DAP = form.DAP.data,
+                                    DAPPerUnity = form.DAPPerUnity.data,
+                                    KCL = form.KCL.data,
+                                    KCLPerUnity = form.KCLPerUnity.data,
+                                    Briquette = form.Briquette.data,
+                                    BriquettePerUnity = form.BriquettePerUnity.data,
                                     Cypemetrine = form.Cypemetrine.data,
                                     Beam = form.Beam.data,
                                     ImbutoQuantity = form.ImbutoQuantity.data,

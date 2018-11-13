@@ -635,7 +635,9 @@ class Member(db.Model):
 	role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 	#department_union = db.Column(db.String(200), db.ForeignKey('unions.email'))
-	users = db.relationship('Umusaruro', backref='members', lazy=True)
+	users = db.relationship('Umusaruro', backref='member', lazy=True)
+	umusarurob = db.relationship('Umusarurob', backref='member', lazy='dynamic')
+	inyongeramusaruro = db.relationship('InyongeraMusaruro', backref='member', lazy='dynamic')
 
 	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
@@ -1437,7 +1439,6 @@ class Umusarurob(db.Model):
 	""" create umusaruro table """
 	__tablename__ = "umusarurob"
 	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-	Quantity = db.Column(db.Float)
 	RiceType = db.Column(db.String(100))
 	RiceAmount = db.Column(db.Integer)
 	UwoAsigaranye = db.Column(db.Integer)
@@ -1459,9 +1460,16 @@ class InyongeraMusaruro(db.Model):
 	#docstring for Inyongeramusaruro
 	__tablename__ = "inyongeramusaruro"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	InyongeraMusaruroType = db.Column(db.String(200))
-	Quantity = db.Column(db.Float)
-	Amount = db.Column(db.Integer)
+	NPKkg = db.Column(db.Integer)
+	NPKPerUnity = db.Column(db.Integer)
+	UREA = db.Column(db.Integer)
+	UREAPerUnity = db.Column(db.Integer)
+	DAP = db.Column(db.Integer)
+	DAPPerUnity = db.Column(db.Integer)
+	KCL = db.Column(db.Integer)
+	KCLPerUnity = db.Column(db.Integer)
+	Briquette = db.Column(db.Integer)
+	BriquettePerUnity = db.Column(db.Integer)
 	Cypemetrine = db.Column(db.Float)
 	Beam = db.Column(db.Integer)
 	ImbutoQuantity = db.Column(db.Float)
@@ -1469,7 +1477,7 @@ class InyongeraMusaruro(db.Model):
 	Redevance = db.Column(db.Float)
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-	umwakaWisarura = db.Column(db.String(50))
+	#umwakaWisarura = db.Column(db.String(50))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
 	def __repr__(self):
