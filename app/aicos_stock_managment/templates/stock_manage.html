@@ -469,9 +469,10 @@
                               <thead>
                                   <tr>
                                       <th>Amazina</th>
-                                      <th>Izina ry'musanzu</th>
-                                      <th>Amafaranga</th>
-                                      <th>Ubusobanuro</th>
+                                      <th>Umusoro w'akarere</th>
+                                      <th>Umusanzu wa koperative</th>
+                                      <th>Ikigega</th>
+                                      <th>Kuziba Icyuho</th>
                                       <th>Injiza</th>
                                       <th>Ibindi</th>
                                   </tr>
@@ -479,9 +480,10 @@
                               <tfoot>
                                   <tr>
                                       <th>Amazina</th>
-                                      <th>Izina ry'musanzu</th>
-                                      <th>Amafaranga</th>
-                                      <th>Ubusobanuro</th>
+                                      <th>Umusoro w'akarere</th>
+                                      <th>Umusanzu wa koperative</th>
+                                      <th>Ikigega</th>
+                                      <th>Kuziba Icyuho</th>
                                       <th>Injiza</th>
                                       <th>Ibindi</th>
                                   </tr>
@@ -496,7 +498,7 @@
                                                 {% for imi in member.imisanzu %}
                                                     {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.UmusanzuType }}
+                                                            {{ imi.UmusoroWakarere }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
@@ -507,19 +509,29 @@
                                                 {% for imi in member.imisanzu %}
                                                     {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.Amount }}
+                                                            {{ imi.UmusanzuCoop }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
                                             </td>
-
                                             <td>
                                             {% if member.imisanzu %}
                                                 {% for imi in member.imisanzu %}
                                                     {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.Comment }}
+                                                            {{ imi.Ikigega }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor%}
+                                            {% endif %}
+                                            </td>
+                                            <td>
+                                            {% if member.imisanzu %}
+                                                {% for imi in member.imisanzu %}
+                                                    {% if imi.member_id == member.id %}
+                                                        {% if loop.last %}
+                                                            {{ imi.KuzibaIcyuho }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}

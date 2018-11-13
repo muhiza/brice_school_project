@@ -1491,9 +1491,11 @@ class Umusanzu(db.Model):
 	#docstring for Inyongeramusaruro
 	__tablename__ = "umusanzu"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	UmusanzuType = db.Column(db.String(200))
-	Amount 		 = db.Column(db.Integer)
-	Comment = db.Column(db.String(200))
+	UmusoroWakarere = db.Column(db.Integer)
+	UmusanzuCoop = db.Column(db.Integer)
+	Umugabane = db.Column(db.Integer)
+	Ikigega = db.Column(db.Integer)
+	KuzibaIcyuho = db.Column(db.Integer)
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))

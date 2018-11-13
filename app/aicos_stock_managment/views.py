@@ -191,6 +191,14 @@ def injizaInyongeramusaruro(id):
             form.Briquette.data = 0
         if form.ImbutoQuantity.data is None:
             form.ImbutoQuantity.data = 0
+        if form.Cypemetrine.data is None:
+            form.Cypemetrine.data = 0
+        if form.Beam.data is None:
+            form.Beam.data = 0
+        if form.ImbutoQuantity.data is None:
+            form.ImbutoQuantity.data = 0
+        if form.Redevance.data is None:
+            form.Redevance.data = 0
 
         inyongeramusaruro = InyongeraMusaruro(
                                     NPKkg = form.NPKkg.data,
@@ -308,10 +316,24 @@ def injizaImisanzu(id):
     form = UmusanzuForm()
     
     if form.validate_on_submit():
+
+        if form.UmusoroWakarere.data is None:
+            form.UmusoroWakarere.data = 0
+        if form.UmusanzuCoop.data is None:
+            form.UmusanzuCoop.data = 0
+        if form.Umugabane.data is None:
+            form.Umugabane.data = 0
+        if form.Ikigega.data is None:
+            form.Ikigega.data = 0
+        if form.KuzibaIcyuho.data is None:
+            form.KuzibaIcyuho.data = 0
+
         imisanzu = Umusanzu(
-                            UmusanzuType = form.UmusanzuType.data,
-                            Amount = form.Amount.data,
-                            Comment = form.Comment.data,
+                            UmusoroWakarere = form.UmusoroWakarere.data,
+                            UmusanzuCoop = form.UmusanzuCoop.data,
+                            Umugabane = form.Umugabane.data,
+                            Ikigega = form.Ikigega.data,
+                            KuzibaIcyuho = form.KuzibaIcyuho.data,
                             member_id = memberid.id,
                             department_id = current_user.email
                     )

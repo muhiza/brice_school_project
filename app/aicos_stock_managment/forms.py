@@ -119,11 +119,11 @@ class InyongeraMusaruroForm(FlaskForm):
 
 
 class UmusanzuForm(FlaskForm):
-    UmusanzuType = SelectField(
-        'Ubwoko bw\'umusanzu',
-        choices=[('Umusanzu Wa Coop', 'Umusanzu Wa Coop'), ('Umusoro Akarere', 'Umusoro Akarere'), ('Umugabane', 'Umugabane'), ('Ikigega', 'Ikigega'), ('Kuziba Icyuho', 'Kuziba Icyuho')])
-    Amount =  IntegerField("Igiciro", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'inyongera musaruro"})
-    Comment =  StringField("Comment", validators=[Optional()], render_kw={"placeholder": "Comment"})
+    UmusanzuCoop = IntegerField("Umusanzu Wa koperative", validators=[Optional()], render_kw={"placeholder": "Injiza Umusanzu Wa koperative"})
+    UmusoroWakarere = IntegerField("Umusoro W'Akarere", validators=[Optional()], render_kw={"placeholder": "Injiza Umusoro W'akarere"})
+    Umugabane = IntegerField("Umugabane", validators=[Optional()], render_kw={"placeholder": "Injiza Umugabane Y'atanze"})
+    Ikigega = IntegerField("Ikigega", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga Y'ikigega"})
+    KuzibaIcyuho = IntegerField("Kuziba Icyuho", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga yo Kuziba Icyuho"})
     submit      =  SubmitField('Emeza')
 
 
