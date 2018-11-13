@@ -16,19 +16,37 @@
                 <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
 	                <form action="" method="post">
 	                    <div class="">
-	                    	{{ wtf.form_field(form.IbiraraneType) }}
+	                    	{{ wtf.form_field(form.NPKkg) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.IdeniTime) }}
+	                    	{{ wtf.form_field(form.NPKPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.UREA) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.UREAPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.DAP) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.DAPPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.KCL) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.KCLPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.ImbutoQuantity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.ImbutoAmount) }}
 	                    </div>
 	                    <div class="">
 	                    	{{ wtf.form_field(form.IdeniAmount) }}
-	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.IdeniQuantity) }}
-	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.Comment) }}
 	                    </div>
 	                    <div class="">
 	                    	{{ form.submit(class="btn btn-primary") }}

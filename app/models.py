@@ -639,6 +639,9 @@ class Member(db.Model):
 	umusarurob = db.relationship('Umusarurob', backref='member', lazy='dynamic')
 	inyongeramusaruro = db.relationship('InyongeraMusaruro', backref='member', lazy='dynamic')
 	imisanzu = db.relationship('Umusanzu', backref='member', lazy='dynamic')
+	ibirarane = db.relationship('Ibirarane', backref='member', lazy='dynamic')
+	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
+	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
 	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
@@ -1513,10 +1516,17 @@ class Ibirarane(db.Model):
 	#docstring for Inyongeramusaruro
 	__tablename__ = "ibirarane"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	IdeniTime = db.Column(db.String(200))
-	IdeniAmount = db.Column(db.String(200))
-	IdeniType = db.Column(db.String(200))
-	IdeniQuantity = db.Column(db.String(200))
+	NPKkg = db.Column(db.Integer)
+	NPKPerUnity = db.Column(db.Integer)
+	UREA = db.Column(db.Integer)
+	UREAPerUnity = db.Column(db.Integer)
+	DAP = db.Column(db.Integer)
+	DAPPerUnity = db.Column(db.Integer)
+	KCL = db.Column(db.Integer)
+	KCLPerUnity = db.Column(db.Integer)
+	ImbutoQuantity = db.Column(db.Float)
+	ImbutoAmount = db.Column(db.Integer)
+	IdeniAmount = db.Column(db.Integer)
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
@@ -1530,8 +1540,8 @@ class Ibihano(db.Model):
 	#docstring for Inyongeramusaruro
 	__tablename__ = "ibihano"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	Igihano = db.Column(db.String(200))
-	IgihanoAmount = db.Column(db.Integer)
+	AmandeC = db.Column(db.Integer)
+	AmandeApII = db.Column(db.Integer)
 	comment = db.Column(db.String(200))
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -1559,7 +1569,6 @@ class Ibindi(db.Model):
 	
 	def __repr__(self):
 		return '<Ibindi: {}>'.format(self.id)
-
 
 
 

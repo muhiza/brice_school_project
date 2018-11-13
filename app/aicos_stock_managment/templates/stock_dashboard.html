@@ -85,6 +85,7 @@
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
                             <th>Ibindi</th>
+                            <th>Amafarangwa Yose</th>
                         </tr>
                     </thead>
                     
@@ -96,17 +97,82 @@
                             <th>Imisanzu</th>
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
-                            <th>Ibindi</th> 
+                            <th>Ibindi</th>
+                            <th>Amafarangwa Yose</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                       {% if memberss %}
+                          {% for member in memberss %}
+                              <tr>
+                                <td>{{ member.izina_ribanza }} {{ member.izina_rikurikira }}</td>
+                                <td> 
+                                  {% if member.umusarurob %}
+                                      {% for umu in member.umusarurob %}
+                                          {% if loop.last %}
+                                              {{ umu.AmafarangaUmusaruro1 }}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if member.inyongeramusaruro %}
+                                      {% for inyongera in member.inyongeramusaruro %}
+                                          {% if loop.last %}
+                                              {{ (inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) }}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if member.imisanzu %}
+                                      {% for imi in member.imisanzu %}
+                                          {% if loop.last %}
+                                              {{ (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) }}
+                                          {% endif%}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if member.ibirarane %}
+                                      {% for ibi in member.ibirarane %}
+                                          {% if loop.last %}
+                                              {{ (ibi.NPKkg * ibi.NPKPerUnity) + (ibi.DAP * ibi.DAPPerUnity) + (ibi.UREA * ibi.UREAPerUnity) + (ibi.KCL * ibi.KCLPerUnity) + (ibi.ImbutoQuantity * ibi.ImbutoAmount) + (ibi.IdeniAmount) }}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif%}
+                                </td>
+                                <td>
+                                  {% if member.ibihano %}
+                                      {% for ibi in member.ibihano %}
+                                          {% if loop.last %}
+                                              {{ ibi.AmandeC + ibi.AmandeApII }}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if member.ibindi %}
+                                      {% for ibi in member.ibindi %}
+                                          {% if loop.last %}
+                                              {{ ibi.ImifukaQuantity + ibi.ImifukaAmount + ibi.MituelleAmount + ibi.UmuceriGrade + ibi.UmuceriQuantity + ibi.UmuceriAmountGrade + ibi.Avence }}
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  {% if member.umusaruro or member.inyongeramusaruro or member.imisanzu or member.ibirarane or member.ibihano or member.ibindi %}
+
+                                      {% for b in member.umusaruro, member.inyongeramusaruro, member.imisanzu, member.ibirarane, member.ibihano, member.ibindi %}
+                                          {% if loop.last %}
+                                              
+                                          {% endif %}
+                                      {% endfor %}
+                                  {% endif %}
+                                </td>
+                              </tr>
+                          {% endfor %}
+                       {% endif %}
                     </tbody>
                 </table>
                 <div id="charts"></div>

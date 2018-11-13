@@ -129,22 +129,25 @@ class UmusanzuForm(FlaskForm):
 
 
 class IbiraraneForm(FlaskForm):
-    IbiraraneType = SelectField(
-        'Ubwoko bw\'ibirarane',
-        choices=[('DAP', 'DAP'), ('KCL', 'KCL'), ('NPK', 'NPK'), ('UREA', 'UREA'), ('IMBUTO', 'IMBUTO')])
-    IdeniTime =  StringField("Igihe", validators=[Optional()], render_kw={"placeholder": "Injiza Igihe"})
-    IdeniAmount =  StringField("Amafaranga", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'ikirarane"})
-    IdeniQuantity =  StringField("Ingano", validators=[Optional()], render_kw={"placeholder": "Injiza Ingano y'ikirarane"})
-    
-    Comment =  StringField("Comment", validators=[Optional()], render_kw={"placeholder": "Comment"})
+    NPKPerUnity = SelectField("Igiciro ku kiro cya NPK", choices=[('490',490)], validators=[Optional()])
+    UREA = FloatField("UREA (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya UREA (ibiro)"})
+    UREAPerUnity = SelectField("Igiciro ku kiro cya UREA", choices=[('340',340)], validators=[Optional()])
+    DAP = FloatField("DAP (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya DAP (ibiro)"})
+    DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", choices=[('430',430)], validators=[Optional()])
+    KCL = FloatField("KCL (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya KCL (ibiro)"})
+    KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
+    ImbutoQuantity =  IntegerField("Imbuto (Ibirarane)", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
+    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
+    IdeniAmount =  IntegerField("Ideni ry'umwaka ushize", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'ikirarane"})
+    NPKkg = FloatField("NPK (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya NPK (ibiro)"})
     submit      =  SubmitField('Emeza')
 
 
 
 class IbihanoForm(FlaskForm):
-    Igihano =  StringField("Igihano", validators=[DataRequired()], render_kw={"placeholder": "Injiza izina ry'igihano"})
-    IgihanoAmount =  IntegerField("Afaranga", validators=[DataRequired()], render_kw={"placeholder": "Injiza Amafaranga"})
-    Comment =  TextAreaField("Comment", validators=[DataRequired()], render_kw={"placeholder": "Comment"})
+    AmandeC =  StringField("Amande C", validators=[Optional()], render_kw={"placeholder": "Injiza izina ry'igihano"})
+    AmandeApII =  IntegerField("Amande APII", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga"})
+    Comment =  TextAreaField("Comment", validators=[Optional()], render_kw={"placeholder": "Comment"})
     submit =  SubmitField('Emeza')
 
 
