@@ -638,6 +638,7 @@ class Member(db.Model):
 	users = db.relationship('Umusaruro', backref='member', lazy=True)
 	umusarurob = db.relationship('Umusarurob', backref='member', lazy='dynamic')
 	inyongeramusaruro = db.relationship('InyongeraMusaruro', backref='member', lazy='dynamic')
+	imisanzu = db.relationship('Umusanzu', backref='member', lazy='dynamic')
 
 	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):

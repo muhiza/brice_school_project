@@ -63,7 +63,7 @@ def stock():
     ibihano = Ibihano.query.filter_by(department_id=current_user.email).all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+    imisanzu = Umusanzu.query.all()
     umusaruro = Umusarurob.query.all()
     inyongeramusaruro = InyongeraMusaruro.query.all()
 
@@ -76,7 +76,8 @@ def stock():
                                                employees=employees,
                                                umusaruro = umusaruro, 
                                                inyongera=inyongera,
-                                               memberss=memberss
+                                               memberss=memberss,
+                                               employee=employee,
                                                )
 
 
@@ -178,7 +179,18 @@ def injizaInyongeramusaruro(id):
     
     if form.validate_on_submit():
 
-        amazina = member_name.izina_ribanza + " " + member_name.izina_rikurikira
+        if form.NPKkg.data is None:
+            form.NPKkg.data = 0
+        if form.UREA.data is None:
+            form.UREA.data = 0
+        if form.DAP.data is None:
+            form.DAP.data = 0
+        if form.KCL.data is None:
+            form.KCL.data = 0
+        if form.Briquette.data is None:
+            form.Briquette.data = 0
+        if form.ImbutoQuantity.data is None:
+            form.ImbutoQuantity.data = 0
 
         inyongeramusaruro = InyongeraMusaruro(
                                     NPKkg = form.NPKkg.data,
