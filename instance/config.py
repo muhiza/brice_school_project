@@ -7,7 +7,7 @@ TOP_LEVEL_DIR = os.path.abspath(os.curdir)
 
 
 SECRET_KEY = "thisisthesecretkeyhere"
-SQLALCHEMY_DATABASE_URI  = "mysql://root:regedit56mysql@localhost/coop"
+SQLALCHEMY_DATABASE_URI  = "mysql://root:annemuhiza@localhost/coop"
 
 
 

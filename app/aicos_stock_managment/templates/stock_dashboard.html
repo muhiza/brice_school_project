@@ -75,7 +75,7 @@
       <div class="row" style="margin-top: 20px;"> 
           <div class="col-md-12">
             <div class="table-responsive">
-              <table id="example" class="display" cellspacing="0" width="100%">
+              <table id="totalexample" class="display" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>Amazina</th>
@@ -161,11 +161,11 @@
                                   {% endif %}
                                 </td>
                                 <td>
-                                  {% if member.umusaruro or member.inyongeramusaruro or member.imisanzu or member.ibirarane or member.ibihano or member.ibindi %}
+                                  {% if member.umusarurob or member.inyongeramusaruro or member.imisanzu or member.ibirarane or member.ibihano or member.ibindi %}
 
-                                      {% for b in member.umusaruro, member.inyongeramusaruro, member.imisanzu, member.ibirarane, member.ibihano, member.ibindi %}
+                                      {% for b in member.umusarurob, member.inyongeramusaruro %}
                                           {% if loop.last %}
-                                              
+                                              {{ b.member_id }}
                                           {% endif %}
                                       {% endfor %}
                                   {% endif %}
