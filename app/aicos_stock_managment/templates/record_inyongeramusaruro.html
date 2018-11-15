@@ -21,16 +21,34 @@
                 <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
 	                <form action="{{ url_for('aicos_stock_managment.injizaInyongeramusaruro', id=memberid.id)}}" method="post">
 	                	<div class="">
-	                    	{{ wtf.form_field(form.umwakaWisarura) }}
-	                    </div>
-	                	<div class="">
-	                    	{{ wtf.form_field(form.InyongeraMusaruroType) }}
+	                    	{{ wtf.form_field(form.NPKkg) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.Quantity) }}
+	                    	{{ wtf.form_field(form.NPKPerUnity) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.Amount) }}
+	                    	{{ wtf.form_field(form.UREA) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.UREAPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.DAP) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.DAPPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.KCL) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.KCLPerUnity) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.Briquette) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.BriquettePerUnity) }}
 	                    </div>
 	                    <div class="">
 	                    	{{ wtf.form_field(form.Cypemetrine) }}

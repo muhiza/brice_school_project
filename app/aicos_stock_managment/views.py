@@ -37,13 +37,26 @@ def dashboard():
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     #all_member_idd = Umusaruro.member_id
-    
+    memberss = Member.query.all()
     umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
+    ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
+    imisanzu = Umusanzu.query.all()
+    umusaruro = Umusarurob.query.all()
+    inyongeramusaruro = InyongeraMusaruro.query.all()
 
-    return render_template('stock_dashboard.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees, inyongera=inyongera)
+    return render_template('stock_dashboard.html', 
+                                                ibirarane=ibirarane, 
+                                                imisanzu=imisanzu, 
+                                                umusaruro=umusaruro, 
+                                                inyongeramusaruro=inyongeramusaruro,
+                                                umusaruro_resi=umusaruro_resi, 
+                                                member_all=member_all, 
+                                                employees=employees, 
+                                                inyongera=inyongera,
+                                                memberss=memberss,)
 
 
 
@@ -55,16 +68,18 @@ def stock():
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     all_member_idd = Umusaruro.member_id
-    
+    memberss = Member.query.all()
     umusaruro_resi = Umusaruro.query.filter_by(department_id=current_user.email).all()
     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-    ibindi = Ibindi.query.filter_by(department_id=current_user.email).all()
-    ibihano = Ibihano.query.filter_by(department_id=current_user.email).all()
+    ibindi = Ibindi.query.all()
+    ibihano = Ibihano.query.all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-    umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    imisanzu = Umusanzu.query.all()
+    umusaruro = Umusarurob.query.all()
+    inyongeramusaruro = InyongeraMusaruro.query.all()
+
 
     return render_template('stock_manage.html',ibihano=ibihano,
                                                imisanzu = imisanzu,
@@ -74,7 +89,10 @@ def stock():
                                                member_all=member_all, 
                                                employees=employees,
                                                umusaruro = umusaruro, 
-                                               inyongera=inyongera)
+                                               inyongera=inyongera,
+                                               memberss=memberss,
+                                               employee=employee,
+                                               )
 
 
 @aicos_stock_managment.route('/umusaruro', methods=['GET', 'POST'])
@@ -129,17 +147,19 @@ def injizaUmusaruro(id):
     
     if form.validate_on_submit():
         
+        if form.UwoAsigaranye.data is None:
+            form.UwoAsigaranye.data = 0
 
 
 
         umusaruro = Umusarurob(
                             Quantity = form.Quantity.data,
                             RiceType = form.RiceType.data,
-                            RiceAmount = form.RiceAmount.data,
+                            RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                             UwoAsigaranye = form.UwoAsigaranye.data,
-                            UwoKugurisha = int(form.Quantity.data) - int(form.UwoAsigaranye.data),
-                            GutonozaAmount = form.Gutonoza.data,
-                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * int(form.Quantity.data)) - int(form.Gutonoza.data),
+                            UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
+                            GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
+                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * int(form.Quantity.data)) - (int(form.Gutonoza.data) * int(form.UwoAsigaranye.data)),
                             member_id = memberid.id,
                             department_id = current_user.email
                          )
@@ -173,12 +193,38 @@ def injizaInyongeramusaruro(id):
     
     if form.validate_on_submit():
 
-        amazina = member_name.izina_ribanza + " " + member_name.izina_rikurikira
+        if form.NPKkg.data is None:
+            form.NPKkg.data = 0
+        if form.UREA.data is None:
+            form.UREA.data = 0
+        if form.DAP.data is None:
+            form.DAP.data = 0
+        if form.KCL.data is None:
+            form.KCL.data = 0
+        if form.Briquette.data is None:
+            form.Briquette.data = 0
+        if form.ImbutoQuantity.data is None:
+            form.ImbutoQuantity.data = 0
+        if form.Cypemetrine.data is None:
+            form.Cypemetrine.data = 0
+        if form.Beam.data is None:
+            form.Beam.data = 0
+        if form.ImbutoQuantity.data is None:
+            form.ImbutoQuantity.data = 0
+        if form.Redevance.data is None:
+            form.Redevance.data = 0
 
         inyongeramusaruro = InyongeraMusaruro(
-                                    InyongeraMusaruroType = form.InyongeraMusaruroType.data,
-                                    Quantity = form.Quantity.data,
-                                    Amount = form.Amount.data,
+                                    NPKkg = form.NPKkg.data,
+                                    NPKPerUnity = form.NPKPerUnity.data,
+                                    UREA = form.UREA.data,
+                                    UREAPerUnity = form.UREAPerUnity.data,
+                                    DAP = form.DAP.data,
+                                    DAPPerUnity = form.DAPPerUnity.data,
+                                    KCL = form.KCL.data,
+                                    KCLPerUnity = form.KCLPerUnity.data,
+                                    Briquette = form.Briquette.data,
+                                    BriquettePerUnity = form.BriquettePerUnity.data,
                                     Cypemetrine = form.Cypemetrine.data,
                                     Beam = form.Beam.data,
                                     ImbutoQuantity = form.ImbutoQuantity.data,
@@ -284,10 +330,24 @@ def injizaImisanzu(id):
     form = UmusanzuForm()
     
     if form.validate_on_submit():
+
+        if form.UmusoroWakarere.data is None:
+            form.UmusoroWakarere.data = 0
+        if form.UmusanzuCoop.data is None:
+            form.UmusanzuCoop.data = 0
+        if form.Umugabane.data is None:
+            form.Umugabane.data = 0
+        if form.Ikigega.data is None:
+            form.Ikigega.data = 0
+        if form.KuzibaIcyuho.data is None:
+            form.KuzibaIcyuho.data = 0
+
         imisanzu = Umusanzu(
-                            UmusanzuType = form.UmusanzuType.data,
-                            Amount = form.Amount.data,
-                            Comment = form.Comment.data,
+                            UmusoroWakarere = form.UmusoroWakarere.data,
+                            UmusanzuCoop = form.UmusanzuCoop.data,
+                            Umugabane = form.Umugabane.data,
+                            Ikigega = form.Ikigega.data,
+                            KuzibaIcyuho = form.KuzibaIcyuho.data,
                             member_id = memberid.id,
                             department_id = current_user.email
                     )
@@ -317,11 +377,32 @@ def injizaIbirarane(id):
     
     if form.validate_on_submit():
 
+        if form.NPKkg.data is None:
+            form.NPKkg.data = 0
+        if form.UREA.data is None:
+            form.UREA.data = 0
+        if form.DAP.data is None:
+            form.DAP.data = 0
+        if form.KCL.data is None:
+            form.KCL.data = 0
+        if form.ImbutoQuantity.data is None:
+            form.ImbutoQuantity.data = 0
+        if form.IdeniAmount.data is None:
+            form.IdeniAmount.data = 0
+
+
         ibirarane = Ibirarane(
-                            IdeniTime = form.IdeniTime.data,
+                            NPKkg = form.NPKkg.data,
+                            NPKPerUnity = form.NPKPerUnity.data,
+                            UREA = form.UREA.data,
+                            UREAPerUnity = form.UREAPerUnity.data,
+                            DAP = form.DAP.data,
+                            DAPPerUnity = form.DAPPerUnity.data,
+                            KCL = form.KCL.data,
+                            KCLPerUnity = form.KCLPerUnity.data,
+                            ImbutoQuantity = form.ImbutoQuantity.data,
+                            ImbutoAmount = form.ImbutoAmount.data,
                             IdeniAmount = form.IdeniAmount.data,
-                            IdeniType = form.IbiraraneType.data,
-                            IdeniQuantity = form.IdeniQuantity.data,
                             member_id = memberid.id,
                             department_id = current_user.email
                         )
@@ -348,9 +429,15 @@ def injizaIbihano(id):
     form = IbihanoForm()
     
     if form.validate_on_submit():
+
+        if form.AmandeC.data is None:
+            form.AmandeC.data = 0
+        if form.AmandeApII.data is None:
+            form.AmandeApII.data = 0
+
         ibihano = Ibihano(
-                        Igihano = form.Igihano.data,
-                        IgihanoAmount = int(form.IgihanoAmount.data),
+                        AmandeC = form.AmandeC.data,
+                        AmandeApII = form.AmandeApII.data,
                         comment = form.Comment.data,
                         member_id = memberid.id,
                         department_id = current_user.email
@@ -380,6 +467,22 @@ def injizaIbindi(id):
     form = IbindiForm()
 
     if form.validate_on_submit():
+
+        if form.ImifukaQuantity.data is None:
+            form.ImifukaQuantity.data = 0
+        if form.ImifukaAmount.data is None:
+            form.ImifukaAmount.data = 0
+        if form.MituelleAmount.data is None:
+            form.MituelleAmount.data = 0
+        if form.UmuceriGrade.data is None:
+            form.UmuceriGrade.data = 0
+        if form.UmuceriQuantity.data is None:
+            form.UmuceriQuantity.data = 0
+        if form.UmuceriAmountGrade.data is None:
+            form.UmuceriAmountGrade.data = 0
+        if form.Avence.data is None:
+            form.Avence.data = 0
+
         ibindi = Ibindi(
                     ImifukaQuantity = form.ImifukaQuantity.data,
                     ImifukaAmount = form.ImifukaAmount.data,

@@ -239,13 +239,13 @@
             </tr>
         </tfoot>
         <tbody>
-          {% if employees %}
-              {% for member in employees %}
+          {% if memberss %}
+              {% for member in memberss %}
                 <tr>
                   <td>{{ member.izina_ribanza }}  {{ member.izina_rikurikira }}</td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.RiceType }}
@@ -255,8 +255,8 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.Quantity }}
@@ -267,8 +267,8 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
                             {% if umu.member_id == member.id %}
                                 {% if loop.last %}
                                     {{ umu.UwoKugurisha }}
@@ -278,13 +278,11 @@
                     {% endif %}
                   </td>
                   <td>
-                    {% if umusaruro %}
-                        {% for umu in umusaruro %}
-                            {% if umu.member_id == member.id %}
-                                {% if loop.last %}
-                                    {{ umu.AmafarangaUmusaruro1 }}
-                                {% endif %}
-                            {% endif %}
+                    {% if member.umusarurob %}
+                        {% for umu in member.umusarurob %}
+                              {% if loop.last %}
+                                  {{ umu.AmafarangaUmusaruro1 }}
+                              {% endif %}
                         {% endfor %}
                     {% endif %}
                   </td>
@@ -327,10 +325,11 @@
 <thead>
     <tr>
         <th>Amazina</th>
-        <th>Ubwoko By'inyongeramusaruro</th>
-        <th>Igiciro</th>
-        <th>Igiciro ku mbuto</th>
-        <th>Itariki</th>
+        <th>UREA</th>
+        <th>NPK</th>
+        <th>DAP</th>
+        <th>KCL</th>
+        <th>Briquette</th>
         <th>Injiza</th>
         <th>Ibindi</th>
     </tr>
@@ -339,58 +338,70 @@
 <tfoot>
     <tr>
         <th>Amazina</th>
-        <th>Ubwoko By'inyongeramusaruro</th>
-        <th>Igiciro</th>
-        <th>Igiciro ku mbuto</th>
-        <th>Itariki</th>
+        <th>UREA</th>
+        <th>NPK</th>
+        <th>DAP</th>
+        <th>KCL</th>
+        <th>Briquette</th>
         <th>Injiza</th>
         <th>Ibindi</th>
     </tr>
 </tfoot>
 <tbody>
-  {% if employees %}
-      {% for member in employees %}
+  {% if memberss %}
+      {% for member in memberss %}
           <tr>
             <td>{{ member.izina_ribanza }}  {{ member.izina_rikurikira }}</td>
             <td>
-              {% if inyongera %}
-                  {% for inyongeramusaruro in inyongera %}
+              {% if member.inyongeramusaruro %}
+                  {% for inyongeramusaruro in member.inyongeramusaruro %}
                       {% if inyongeramusaruro.member_id == member.id %}
                           {% if loop.last %}
-                              {{ inyongeramusaruro.InyongeraMusaruroType }}
+                              {{ inyongeramusaruro.UREA * inyongeramusaruro.UREAPerUnity }}
                           {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
             </td>
             <td>
-              {% if inyongera %}
-                  {% for inyongeramusaruro in inyongera %}
+              {% if member.inyongeramusaruro %}
+                  {% for inyongeramusaruro in member.inyongeramusaruro %}
                       {% if inyongeramusaruro.member_id == member.id %}
                           {% if loop.last %}
-                              {{ inyongeramusaruro.Amount }}
+                              {{ inyongeramusaruro.NPKkg * inyongeramusaruro.NPKPerUnity }}
                           {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
             </td>
             <td>
-              {% if inyongera %}
-                  {% for inyongeramusaruro in inyongera %}
+              {% if member.inyongeramusaruro %}
+                  {% for inyongeramusaruro in member.inyongeramusaruro %}
                       {% if inyongeramusaruro.member_id == member.id %}
                           {% if loop.last %}
-                              {{ inyongeramusaruro.ImbutoAmount }}
+                              {{ inyongeramusaruro.DAP * inyongeramusaruro.DAPPerUnity }}
                           {% endif %}
                       {% endif %}
                   {% endfor %}
               {% endif %}
             </td>
             <td>
-              {% if inyongera %}
-                  {% for inyongeramusaruro in inyongera %}
+              {% if member.inyongeramusaruro %}
+                  {% for inyongeramusaruro in member.inyongeramusaruro %}
                       {% if inyongeramusaruro.member_id == member.id %}
                           {% if loop.last %}
-                              {{ inyongeramusaruro.done_date }}
+                              {{ inyongeramusaruro.KCL * inyongeramusaruro.KCLPerUnity }}
+                          {% endif %}
+                      {% endif %}
+                  {% endfor %}
+              {% endif %}
+            </td>
+            <td>
+              {% if member.inyongeramusaruro %}
+                  {% for inyongeramusaruro in member.inyongeramusaruro %}
+                      {% if inyongeramusaruro.member_id == member.id %}
+                          {% if loop.last %}
+                              {{ inyongeramusaruro.Briquette * inyongeramusaruro.BriquettePerUnity }}
                           {% endif %}
                       {% endif %}
                   {% endfor %}
@@ -456,9 +467,10 @@
                               <thead>
                                   <tr>
                                       <th>Amazina</th>
-                                      <th>Izina ry'musanzu</th>
-                                      <th>Amafaranga</th>
-                                      <th>Ubusobanuro</th>
+                                      <th>Umusoro w'akarere</th>
+                                      <th>Umusanzu wa koperative</th>
+                                      <th>Ikigega</th>
+                                      <th>Kuziba Icyuho</th>
                                       <th>Injiza</th>
                                       <th>Ibindi</th>
                                   </tr>
@@ -466,47 +478,58 @@
                               <tfoot>
                                   <tr>
                                       <th>Amazina</th>
-                                      <th>Izina ry'musanzu</th>
-                                      <th>Amafaranga</th>
-                                      <th>Ubusobanuro</th>
+                                      <th>Umusoro w'akarere</th>
+                                      <th>Umusanzu wa koperative</th>
+                                      <th>Ikigega</th>
+                                      <th>Kuziba Icyuho</th>
                                       <th>Injiza</th>
                                       <th>Ibindi</th>
                                   </tr>
                               </tfoot>
                               <tbody>
-                              {% if employees %}
-                                    {% for employee in employees %}
+                              {% if memberss %}
+                                    {% for member in memberss %}
                                           <tr>
-                                            <td> {{ employee.izina_ribanza }} {{ employee.izina_rikurikira }} </td>
+                                            <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira }} </td>
                                             <td>
-                                            {% if imisanzu %}
-                                                {% for imi in imisanzu %}
-                                                    {% if imi.member_id == employee.id %}
+                                            {% if member.imisanzu %}
+                                                {% for imi in member.imisanzu %}
+                                                    {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.UmusanzuType }}
+                                                            {{ imi.UmusoroWakarere }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
                                             </td>
                                             <td>
-                                            {% if imisanzu %}
-                                                {% for imi in imisanzu %}
-                                                    {% if imi.member_id == employee.id %}
+                                            {% if member.imisanzu %}
+                                                {% for imi in member.imisanzu %}
+                                                    {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.Amount }}
+                                                            {{ imi.UmusanzuCoop }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
                                             {% endif %}
                                             </td>
-
                                             <td>
-                                            {% if imisanzu %}
-                                                {% for imi in imisanzu %}
-                                                    {% if imi.member_id == employee.id %}
+                                            {% if member.imisanzu %}
+                                                {% for imi in member.imisanzu %}
+                                                    {% if imi.member_id == member.id %}
                                                         {% if loop.last %}
-                                                            {{ imi.Comment }}
+                                                            {{ imi.Ikigega }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor%}
+                                            {% endif %}
+                                            </td>
+                                            <td>
+                                            {% if member.imisanzu %}
+                                                {% for imi in member.imisanzu %}
+                                                    {% if imi.member_id == member.id %}
+                                                        {% if loop.last %}
+                                                            {{ imi.KuzibaIcyuho }}
                                                         {% endif %}
                                                     {% endif %}
                                                 {% endfor%}
@@ -515,7 +538,7 @@
                                             <td>
                                             <span class="badge badge-success">
                                               <b>
-                                              <a href="{{ url_for('aicos_stock_managment.injizaImisanzu', id=employee.id) }}" style="color:white; font-size: 12px;">
+                                              <a href="{{ url_for('aicos_stock_managment.injizaImisanzu', id=member.id) }}" style="color:white; font-size: 12px;">
                                                 <i class="fa fa-plus"></i> Injiza
                                               </a>
                                               </b>
@@ -564,10 +587,10 @@
         <thead>
             <tr>
                 <th>Amazina</th>
-                <th>Izina ry'ideni</th>
-                <th>ayo adufitiye</th>
-                <th>Igihe cyiryo deni</th>
-                <th>Ideni quantity</th>
+                <th>Ideni (2018A)</th>
+                <th>DAP</th>
+                <th>KCL</th>
+                <th>NPK</th>
                 <th>Injiza</th>
                 <th>Ibindi</th>
             </tr>
@@ -575,34 +598,23 @@
         <tfoot>
             <tr>
                 <th>Amazina</th>               
-                <th>Izina ry'ideni</th>
-                <th>ayo adufitiye</th>
-                <th>Igihe cyiryo deni</th>
-                <th>Ideni quantity</th>
+                <th>Ideni (2018A)</th>
+                <th>DAP</th>
+                <th>KCL</th>
+                <th>NPK</th>
                 <th>Injiza</th>
                 <th>Ibindi</th>
             </tr>
         </tfoot>
         <tbody>
-        {% if employees %}
-              {% for employee in employees %}
+        {% if memberss %}
+              {% for member in memberss %}
                     <tr>
-                      <td> {{ employee.izina_ribanza }} {{ employee.izina_rikurikira}} </td>
+                      <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira}} </td>
                       <td>
-                        {% if ibirarane %}
-                            {% for ibi in ibirarane %}
-                                {% if ibi.member_id == employee.id %}
-                                    {% if loop.last %}
-                                        {{ ibi.IdeniType }}
-                                    {% endif %}
-                                {% endif %}
-                            {% endfor%}
-                        {% endif %}
-                      </td>
-                      <td>
-                        {% if ibirarane %}
-                            {% for ibi in ibirarane %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if member.ibirarane %}
+                            {% for ibi in member.ibirarane %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
                                         {{ ibi.IdeniAmount }}
                                     {% endif %}
@@ -611,23 +623,33 @@
                         {% endif %}
                       </td>
                       <td>
-                        {% if ibirarane %}
-                            {% for ibi in ibirarane %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if member.ibirarane %}
+                            {% for ibi in member.ibirarane %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
-                                        {{ ibi.IdeniTime }}
+                                        {{ ibi.DAP * ibi.DAPPerUnity}}
                                     {% endif %}
                                 {% endif %}
                             {% endfor%}
                         {% endif %}
                       </td>
-
                       <td>
-                        {% if ibirarane %}
-                            {% for ibi in ibirarane %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if member.ibirarane %}
+                            {% for ibi in member.ibirarane %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
-                                        {{ ibi.IdeniQuantity }}
+                                        {{ ibi.KCL * ibi.KCLPerUnity}}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor%}
+                        {% endif %}
+                      </td>
+                      <td>
+                        {% if member.ibirarane %}
+                            {% for ibi in member.ibirarane %}
+                                {% if ibi.member_id == member.id %}
+                                    {% if loop.last %}
+                                        {{ ibi.NPKkg * ibi.NPKPerUnity }}
                                     {% endif %}
                                 {% endif %}
                             {% endfor%}
@@ -636,7 +658,7 @@
                       <td>
                       <span class="badge badge-success">
                         <b>
-                        <a href="{{ url_for('aicos_stock_managment.injizaIbirarane', id=employee.id) }}" style="color:white; font-size: 12px;">
+                        <a href="{{ url_for('aicos_stock_managment.injizaIbirarane', id=member.id) }}" style="color:white; font-size: 12px;">
                           <i class="fa fa-plus"></i> Injiza
                         </a>
                         </b>
@@ -759,8 +781,8 @@
         <thead>
             <tr>
                 <th>Amazina</th>
-                <th>Igihano</th>
-                <th>Amafaranga</th>
+                <th>Amande C</th>
+                <th>Amande APII</th>
                 <th>Comment</th>
                 <th>Injiza</th>
                 <th>Ibindi</th>
@@ -769,44 +791,44 @@
         <tfoot>
             <tr>
                 <th>Amazina</th>
-                <th>Igihano</th>
-                <th>Amafaranga</th>
+                <th>Amande C</th>
+                <th>Amande APII</th>
                 <th>Comment</th>           
                 <th>Injiza</th>
                 <th>Ibindi</th>
             </tr>
         </tfoot>
         <tbody>
-        {% if employees %}
-              {% for employee in employees %}
+        {% if memberss %}
+              {% for member in memberss %}
                     <tr>
-                      <td> {{ employee.izina_ribanza }}  {{ employee.izina_rikurikira }} </td>
+                      <td> {{ member.izina_ribanza }}  {{ member.izina_rikurikira }} </td>
                       <td>
-                        {% if ibihano %}
-                              {% for ibi in ibihano %}
-                                  {% if ibi.member_id == employee.id %}
+                        {% if member.ibihano %}
+                            {% for ibi in member.ibihano %}
+                                {% if ibi.member_id == member.id %}
+                                  {% if loop.last %}
+                                    {{ ibi.AmandeC }}
+                                  {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                      </td>
+                      <td>
+                        {% if member.ibihano %}
+                              {% for ibi in member.ibihano %}
+                                  {% if ibi.member_id == member.id %}
                                       {% if loop.last %}
-                                          {{ ibi.Igihano }}
+                                          {{ ibi.AmandeApII}}
                                       {% endif %}
                                   {% endif %}
                               {% endfor%}
                           {% endif %}
                       </td>
                       <td>
-                        {% if ibihano %}
-                              {% for ibi in ibihano %}
-                                  {% if ibi.member_id == employee.id %}
-                                      {% if loop.last %}
-                                          {{ ibi.IgihanoAmount }}
-                                      {% endif %}
-                                  {% endif %}
-                              {% endfor%}
-                          {% endif %}
-                      </td>
-                      <td>
-                        {% if ibihano %}
-                              {% for ibi in ibihano %}
-                                  {% if ibi.member_id == employee.id %}
+                        {% if member.ibihano %}
+                              {% for ibi in member.ibihano %}
+                                  {% if ibi.member_id == member.id %}
                                       {% if loop.last %}
                                           {{ ibi.comment }}
                                       {% endif %}
@@ -817,7 +839,7 @@
                       <td>
                       <span class="badge badge-success">
                         <b>
-                        <a href="{{ url_for('aicos_stock_managment.injizaIbihano', id=employee.id) }}" style="color:white; font-size: 12px;">
+                        <a href="{{ url_for('aicos_stock_managment.injizaIbihano', id=member.id) }}" style="color:white; font-size: 12px;">
                           <i class="fa fa-plus"></i> Injiza
                         </a>
                         </b>
@@ -1385,14 +1407,14 @@
             </tr>
         </tfoot>
         <tbody>
-        {% if employees %}
-              {% for employee in employees %}
+        {% if memberss %}
+              {% for member in memberss %}
                     <tr>
-                      <td> {{ employee.izina_ribanza }} {{ employee.izina_rikurikira }} </td>
+                      <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira }} </td>
                       <td> 
-                          {% if ibindi %}
-                              {% for ibi in ibindi %}
-                                  {% if ibi.member_id == employee.id %}
+                          {% if member.ibindi %}
+                              {% for ibi in member.ibindi %}
+                                  {% if ibi.member_id == member.id %}
                                       {% if loop.last %}
                                           {{ ibi.ImifukaQuantity }}
                                       {% endif %}
@@ -1401,9 +1423,9 @@
                           {% endif %}
                       </td>
                       <td>
-                        {% if ibindi %}
-                            {% for ibi in ibindi %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if memberibindi %}
+                            {% for ibi in member.ibindi %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
                                           {{ ibi.MituelleAmount }}
                                       {% endif %}
@@ -1412,9 +1434,9 @@
                         {% endif %}
                       </td>
                       <td>
-                        {% if ibindi %}
-                            {% for ibi in ibindi %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if member.ibindi %}
+                            {% for ibi in member.ibindi %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
                                           {{ ibi.UmuceriGrade }}
                                     {% endif %}
@@ -1424,9 +1446,9 @@
                       </td>
 
                       <td>
-                        {% if ibindi %}
-                            {% for ibi in ibindi %}
-                                {% if ibi.member_id == employee.id %}
+                        {% if memberibindi %}
+                            {% for ibi in memberibindi %}
+                                {% if ibi.member_id == member.id %}
                                     {% if loop.last %}
                                           {{ ibi.Avence }}
                                     {% endif %}
@@ -1437,7 +1459,7 @@
                       <td>
                       <span class="badge badge-success">
                         <b>
-                        <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=employee.id) }}" style="color:white; font-size: 12px;">
+                        <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=member.id) }}" style="color:white; font-size: 12px;">
                           <i class="fa fa-plus"></i> Injiza
                         </a>
                         </b>

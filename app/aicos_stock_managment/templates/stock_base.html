@@ -317,6 +317,15 @@ $(document).ready(function() {
     } );
 } );
 
+var table = $('#totalexample').DataTable();
+var column = table.column(8);
+
+$(column.footer()).html(
+    column.data().reduce(function (a, b) {
+        return parseInt(a, 10) + parseInt(b, 10);
+    })
+);
+
 
 </script>
 

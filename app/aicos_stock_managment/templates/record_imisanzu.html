@@ -14,15 +14,21 @@
 		            </div>
 		        </div>
                 <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
-	                <form action="" method="post">
+	                <form action="{{ url_for('aicos_stock_managment.injizaImisanzu', id=memberid.id ) }}" method="post">
 	                    <div class="">
-	                    	{{ wtf.form_field(form.UmusanzuType) }}
+	                    	{{ wtf.form_field(form.UmusanzuCoop) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.Amount) }}
+	                    	{{ wtf.form_field(form.UmusoroWakarere) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.Comment) }}
+	                    	{{ wtf.form_field(form.Umugabane) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.Ikigega) }}
+	                    </div>
+	                    <div class="">
+	                    	{{ wtf.form_field(form.KuzibaIcyuho) }}
 	                    </div>
 	                    <div class="">
 	                    	{{ form.submit(class="btn btn-primary") }}
