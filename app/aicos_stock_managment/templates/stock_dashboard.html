@@ -5,7 +5,7 @@
       <div class="row" style="padding-top: 20px; background-color: #f2f2f2; border: 1px solid silver;">
           <div class="col-md-3">
               <div class="card p-4 bg-success">
-                <a href="{{ url_for('aicos_stock_managment.umusaruro') }}" style="color: white;">
+                <a href="#" style="color: white;">
                   <div class="card-body d-flex justify-content-between align-items-center">
                       <div>
                           <span class="h4 d-block font-weight-normal mb-2"><strong>00</strong></span>
@@ -20,7 +20,7 @@
           </div>
 
           <div class="col-md-3">
-              <a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}" style="color: white;">
+              <a href="#" style="color: white;">
                 <div class="card p-4 bg-info">
                   <div class="card-body d-flex justify-content-between align-items-center">
                       <div>
@@ -36,7 +36,7 @@
           </div>
 
           <div class="col-md-3">
-              <a href="{{ url_for('aicos_stock_managment.ibyakoreshejwe') }}" style="color: white;">
+              <a href="#" style="color: white;">
                 <div class="card p-4 bg-warning">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
@@ -52,7 +52,7 @@
           </div>
 
           <div class="col-md-3">
-              <a href="{{ url_for('aicos_stock_managment.konteZaBanki') }}" style="color: white;">
+              <a href="#" style="color: white;">
                 <div class="card p-4 bg-primary">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
@@ -161,13 +161,34 @@
                                   {% endif %}
                                 </td>
                                 <td>
-                                  {% if member.umusarurob or member.inyongeramusaruro or member.imisanzu or member.ibirarane or member.ibihano or member.ibindi %}
-
-                                      {% for b in member.umusarurob, member.inyongeramusaruro %}
+                                  {% if member.umusarurob and member.inyongeramusaruro and member.imisanzu and member.ibirarane and member.ibihano and member.ibindi %}
+                                      {% for umu in member.umusarurob %}
                                           {% if loop.last %}
-                                              {{ b.member_id }}
+                                              {% for inyongera in member.inyongeramusaruro %}
+                                                {% if loop.last %}
+                                                    {% for imi in member.imisanzu %}
+                                                        {% if loop.last %}
+                                                            {% for ibir in member.ibirarane %}
+                                                              {% if loop.last %}
+                                                                  {% for ibih in member.ibihano %}
+                                                                    {% if loop.last %}
+                                                                        {% for ibin in member.ibindi %}
+                                                                            {% if loop.last %}
+                                                                                {{ umu.AmafarangaUmusaruro1 - ((inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) + (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) + (ibir.NPKkg * ibir.NPKPerUnity) + (ibir.DAP * ibir.DAPPerUnity) + (ibir.UREA * ibir.UREAPerUnity) + (ibir.KCL * ibir.KCLPerUnity) + (ibir.ImbutoQuantity * ibir.ImbutoAmount) + (ibir.IdeniAmount) + (ibih.AmandeC + ibih.AmandeApII) + (ibin.ImifukaQuantity + ibin.ImifukaAmount + ibin.MituelleAmount + ibin.UmuceriGrade + ibin.UmuceriQuantity + ibin.UmuceriAmountGrade + ibin.Avence)) }}
+                                                                            {% endif %}
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                              {% endif %}
+                                                          {% endfor %}
+                                                        {% endif%}
+                                                    {% endfor %}
+                                                {% endif %}
+                                          {% endfor %}
                                           {% endif %}
                                       {% endfor %}
+                                  {% else %}
+                                      0
                                   {% endif %}
                                 </td>
                               </tr>
