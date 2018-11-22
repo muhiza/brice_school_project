@@ -153,7 +153,6 @@ def injizaUmusaruro(id):
 
 
         umusaruro = Umusarurob(
-                            Quantity = form.Quantity.data,
                             RiceType = form.RiceType.data,
                             RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                             UwoAsigaranye = form.UwoAsigaranye.data,
