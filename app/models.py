@@ -643,11 +643,11 @@ class Member(db.Model):
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
-	""" We will always use this __init__ function to upload excel file  """
+	""" We will always use this __init__ function to upload excel file  
 	def __init__(self, sno):
 		self.id = id
 		self.sno = sno
-	
+	"""
 
 	"""
 	Importing data using this views.
