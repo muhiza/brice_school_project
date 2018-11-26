@@ -136,6 +136,8 @@ class IbiraraneForm(FlaskForm):
     DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", choices=[('430',430)], validators=[Optional()])
     KCL = FloatField("KCL (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya KCL (ibiro)"})
     KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
+    Briquette = FloatField("Briquette", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya Briquette"})
+    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('400',400)], validators=[Optional()])
     ImbutoQuantity =  IntegerField("Imbuto (Ibirarane)", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
     ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
     IdeniAmount =  IntegerField("Ideni ry'umwaka ushize", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'ikirarane"})

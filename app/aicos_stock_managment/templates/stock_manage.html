@@ -1384,105 +1384,105 @@
                         <div class="tab-pane active" id="homeUbumuga" role="tabpanel">
                         <h4><b> Ibindi Byakoreshejwe </b></h4>
                          <table id="examplepay1" class="display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>Amazina</th>
-                <th>Imifuka</th>
-                <th>Mutuelle</th>
-                <th>Umuceri Gred</th>
-                <th>Avance</th>
-                <th>Injiza</th>
-                <th>Ibindi</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Amazina</th>
-                <th>Imifuka</th>
-                <th>Mutuelle</th>
-                <th>Umuceri Gred</th>
-                <th>Avance</th>
-                <th>Injiza</th>
-                <th>Ibindi</th>
-            </tr>
-        </tfoot>
-        <tbody>
-        {% if memberss %}
-              {% for member in memberss %}
-                    <tr>
-                      <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira }} </td>
-                      <td> 
-                          {% if member.ibindi %}
-                              {% for ibi in member.ibindi %}
-                                  {% if ibi.member_id == member.id %}
-                                      {% if loop.last %}
-                                          {{ ibi.ImifukaQuantity }}
-                                      {% endif %}
-                                  {% endif %}
-                              {% endfor%}
-                          {% endif %}
-                      </td>
-                      <td>
-                        {% if memberibindi %}
-                            {% for ibi in member.ibindi %}
-                                {% if ibi.member_id == member.id %}
-                                    {% if loop.last %}
-                                          {{ ibi.MituelleAmount }}
-                                      {% endif %}
-                                {% endif %}
-                            {% endfor%}
-                        {% endif %}
-                      </td>
-                      <td>
-                        {% if member.ibindi %}
-                            {% for ibi in member.ibindi %}
-                                {% if ibi.member_id == member.id %}
-                                    {% if loop.last %}
-                                          {{ ibi.UmuceriGrade }}
-                                    {% endif %}
-                                {% endif %}
-                            {% endfor%}
-                        {% endif %}
-                      </td>
+                          <thead>
+                              <tr>
+                                  <th>Amazina</th>
+                                  <th>Imifuka</th>
+                                  <th>Mutuelle</th>
+                                  <th>Umuceri Gred</th>
+                                  <th>Avance</th>
+                                  <th>Injiza</th>
+                                  <th>Ibindi</th>
+                              </tr>
+                          </thead>
+                          <tfoot>
+                              <tr>
+                                  <th>Amazina</th>
+                                  <th>Imifuka</th>
+                                  <th>Mutuelle</th>
+                                  <th>Umuceri Gred</th>
+                                  <th>Avance</th>
+                                  <th>Injiza</th>
+                                  <th>Ibindi</th>
+                              </tr>
+                          </tfoot>
+                                <tbody>
+                                {% if memberss %}
+                                      {% for member in memberss %}
+                                            <tr>
+                                              <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira }} </td>
+                                              <td> 
+                                                  {% if member.ibindi %}
+                                                      {% for ibi in member.ibindi %}
+                                                          {% if ibi.member_id == member.id %}
+                                                              {% if loop.last %}
+                                                                  {{ ibi.ImifukaQuantity }}
+                                                              {% endif %}
+                                                          {% endif %}
+                                                      {% endfor%}
+                                                  {% endif %}
+                                              </td>
+                                              <td>
+                                                {% if memberibindi %}
+                                                    {% for ibi in member.ibindi %}
+                                                        {% if ibi.member_id == member.id %}
+                                                            {% if loop.last %}
+                                                                  {{ ibi.MituelleAmount }}
+                                                              {% endif %}
+                                                        {% endif %}
+                                                    {% endfor%}
+                                                {% endif %}
+                                              </td>
+                                              <td>
+                                                {% if member.ibindi %}
+                                                    {% for ibi in member.ibindi %}
+                                                        {% if ibi.member_id == member.id %}
+                                                            {% if loop.last %}
+                                                                  {{ ibi.UmuceriGrade }}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor%}
+                                                {% endif %}
+                                              </td>
 
-                      <td>
-                        {% if memberibindi %}
-                            {% for ibi in memberibindi %}
-                                {% if ibi.member_id == member.id %}
-                                    {% if loop.last %}
-                                          {{ ibi.Avence }}
-                                    {% endif %}
+                                              <td>
+                                                {% if memberibindi %}
+                                                    {% for ibi in memberibindi %}
+                                                        {% if ibi.member_id == member.id %}
+                                                            {% if loop.last %}
+                                                                  {{ ibi.Avence }}
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endfor%}
+                                                {% endif %}
+                                              </td>
+                                              <td>
+                                              <span class="badge badge-success">
+                                                <b>
+                                                <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=member.id) }}" style="color:white; font-size: 12px;">
+                                                  <i class="fa fa-plus"></i> Injiza
+                                                </a>
+                                                </b>
+                                              </td>
+                                              <td> 
+                                              <span class="badge badge-info">
+                                              <b>
+                                              <a href="#" style="color:white; font-size: 12px;">
+                                              <i class="fa fa-eye"></i>
+                                                Ibindi
+                                              </a>
+                                              </b>
+                                              </span>
+                                              </td>
+                                            </tr>
+                                      {% endfor %}
+
+                                      {% else %}
+
+                                            <h3>Hello Friday</h3>
                                 {% endif %}
-                            {% endfor%}
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=member.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-plus"></i> Injiza
-                        </a>
-                        </b>
-                      </td>
-                      <td> 
-                      <span class="badge badge-info">
-                      <b>
-                      <a href="#" style="color:white; font-size: 12px;">
-                      <i class="fa fa-eye"></i>
-                        Ibindi
-                      </a>
-                      </b>
-                      </span>
-                      </td>
-                    </tr>
-              {% endfor %}
-
-              {% else %}
-
-                    <h3>Hello Friday</h3>
-        {% endif %}
-        </tbody>
-    </table>
+                                </tbody>
+                            </table>
 
 
 

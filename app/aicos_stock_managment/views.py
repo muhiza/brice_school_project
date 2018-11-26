@@ -76,7 +76,7 @@ def stock():
     ibihano = Ibihano.query.all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    imisanzu = Umusanzu.query.all()
+    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
     umusaruro = Umusarurob.query.all()
     inyongeramusaruro = InyongeraMusaruro.query.all()
 
@@ -102,9 +102,8 @@ def umusaruro():
     check_coop_admin()
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
-    all_member_idd = Umusaruro.member_id
-    
-    umusaruro_resi = Umusaruro.query.filter_by(department_id=current_user.email).all()
+    all_member_idd = Umusarurob.member_id
+    umusaruro_resi = Umusarurob.query.all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
 
     return render_template('umusaruro.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
@@ -130,6 +129,46 @@ def ibyakoreshejwe():
     employees = employee.members
     ibyakoreshejwe = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
     return render_template('ibyakoreshejwe.html', ibyakoreshejwe=ibyakoreshejwe, employees=employees)
+
+@aicos_stock_managment.route('/imisanzu')
+@login_required
+def imisanzu():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+    return render_template('imisanzu.html', employees=employees, imisanzu=imisanzu) 
+
+@aicos_stock_managment.route('/ibirarane')
+@login_required
+def ibirarane():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
+    return render_template('ibirarane.html', employees=employees, ibirarane=ibirarane)
+
+@aicos_stock_managment.route('/ibihano')
+@login_required
+def ibihano():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    ibihano = Ibihano.query.filter_by(department_id=current_user.email).all()
+    return render_template('ibihano.html', employees=employees, ibihano=ibihano)
+
+@aicos_stock_managment.route('/ibindi')
+@login_required
+def ibindi():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    ibindi = Ibindi.query.filter_by(department_id=current_user.email).all()
+    return render_template('ibindi.html', employees=employees, ibindi=ibindi)
 
 @aicos_stock_managment.route('/injiza/umusaruro/<int:id>', methods=["GET","POST"])
 @login_required
@@ -402,6 +441,8 @@ def injizaIbirarane(id):
                             ImbutoQuantity = form.ImbutoQuantity.data,
                             ImbutoAmount = form.ImbutoAmount.data,
                             IdeniAmount = form.IdeniAmount.data,
+                            Briquette = form.Briquette.data,
+                            BriquettePerUnity = form.BriquettePerUnity.data,
                             member_id = memberid.id,
                             department_id = current_user.email
                         )
@@ -484,9 +525,9 @@ def injizaIbindi(id):
 
         ibindi = Ibindi(
                     ImifukaQuantity = form.ImifukaQuantity.data,
-                    ImifukaAmount = form.ImifukaAmount.data,
+                    ImifukaAmount = form.ImifukaAmount.data * form.ImifukaQuantity.data,
                     MituelleAmount = form.MituelleAmount.data,
-                    UmuceriGrade   = form.UmuceriGrade.data,
+                    UmuceriGrade   = form.UmuceriGrade.data * form.UmuceriQuantity.data,
                     UmuceriQuantity = form.UmuceriQuantity.data,
                     UmuceriAmountGrade = form.UmuceriAmountGrade.data,
                     Avence = form.Avence.data,

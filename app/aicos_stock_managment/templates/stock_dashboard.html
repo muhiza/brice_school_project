@@ -155,7 +155,7 @@
                                   {% if member.ibindi %}
                                       {% for ibi in member.ibindi %}
                                           {% if loop.last %}
-                                              {{ ibi.ImifukaQuantity + ibi.ImifukaAmount + ibi.MituelleAmount + ibi.UmuceriGrade + ibi.UmuceriQuantity + ibi.UmuceriAmountGrade + ibi.Avence }}
+                                              {{ ibi.ImifukaAmount + ibi.MituelleAmount + ibi.UmuceriGrade + ibi.UmuceriQuantity + ibi.UmuceriAmountGrade + ibi.Avence }}
                                           {% endif %}
                                       {% endfor %}
                                   {% endif %}
@@ -174,7 +174,7 @@
                                                                     {% if loop.last %}
                                                                         {% for ibin in member.ibindi %}
                                                                             {% if loop.last %}
-                                                                                {{ umu.AmafarangaUmusaruro1 - ((inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) + (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) + (ibir.NPKkg * ibir.NPKPerUnity) + (ibir.DAP * ibir.DAPPerUnity) + (ibir.UREA * ibir.UREAPerUnity) + (ibir.KCL * ibir.KCLPerUnity) + (ibir.ImbutoQuantity * ibir.ImbutoAmount) + (ibir.IdeniAmount) + (ibih.AmandeC + ibih.AmandeApII) + (ibin.ImifukaQuantity + ibin.ImifukaAmount + ibin.MituelleAmount + ibin.UmuceriGrade + ibin.UmuceriQuantity + ibin.UmuceriAmountGrade + ibin.Avence)) }}
+                                                                                {{ umu.AmafarangaUmusaruro1 - ((inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) + (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) + (ibir.NPKkg * ibir.NPKPerUnity) + (ibir.DAP * ibir.DAPPerUnity) + (ibir.UREA * ibir.UREAPerUnity) + (ibir.KCL * ibir.KCLPerUnity) + (ibir.ImbutoQuantity * ibir.ImbutoAmount) + (ibir.IdeniAmount) + (ibih.AmandeC + ibih.AmandeApII) + (ibin.ImifukaAmount + ibin.MituelleAmount + ibin.UmuceriGrade + ibin.UmuceriQuantity + ibin.UmuceriAmountGrade + ibin.Avence)) }}
                                                                             {% endif %}
                                                                         {% endfor %}
                                                                     {% endif %}

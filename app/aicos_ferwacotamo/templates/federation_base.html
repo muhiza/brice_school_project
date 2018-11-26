@@ -19,7 +19,7 @@
         <div class="sidebar" style="background-color: #fff;">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <li class="nav-title">Navigation</li>
+                    <li class="nav-title">Federation</li>
                     <li class="nav-item">
                         <a href="{{ url_for('aicos_ferwacotamo.dashboard_overalls') }}" class="nav-link active" style="color: #222222;">
                             <b><i class="icon icon-speedometer" style="color: #4285f4;"></i> Dashboard</b>
@@ -37,31 +37,42 @@
                     </li>
                     <li class="nav-item nav-dropdown">
                         <a href="#" class="nav-link nav-dropdown-toggle" style="color: #222222;">
-                            <b><i class="icon icon-energy" style="color: #4285f4;"></i> Members <i class="fa fa-caret-left"></i> </b>
+                            <b><i class="icon icon-energy" style="color: #4285f4;"></i> Stock <i class="fa fa-caret-left"></i> </b>
                         </a>
                         <ul class="nav-dropdown-items">
                             <li class="nav-item">
-                                <a href="#" class="nav-link" style="color: #222222;">
-                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> View Members </b>
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_umusaruro') }}" class="nav-link" style="">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Umusaruro </b>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" style="color: #222222;">
-                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> View / Enter Schedule</b>
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_inyongeramusaruro') }}" class="nav-link" style="">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Inyongeramusaruro</b>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link" style="color: #222222;">
-                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> New Plan </b>
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_imisanzu') }}" class="nav-link" style="">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Imisanzu </b>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Rent Fees </b>
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_ibirarane') }}" class="nav-link" style="">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Ibirarane </b>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_ibihano') }}" class="nav-link">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Ibihano </b>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ url_for('aicos_ferwacotamo.federation_ibindi') }}" class="nav-link">
+                                    <b><i class="icon icon-energy" style="color: #4285f4;"></i> Ibindi </b>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    <!--
                     <li class="nav-item">
                         <a href="#" class="nav-link" style="color: #222222;">
                             <b><i class="icon icon-energy" style="color: #4285f4;"></i> Subscription Details</b>
@@ -115,7 +126,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </nav>
         </div>

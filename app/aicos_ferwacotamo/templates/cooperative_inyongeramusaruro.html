@@ -1,5 +1,5 @@
 {% import "bootstrap/utils.html" as utils %}
-{% extends "stock_base.html" %}
+{% extends "federation_base.html" %}
 {% block title %}Stock{% endblock %}
 {% block body %}
   <div class="container-fluid">
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-12">
           <div class="table-responsive">
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="ferwa4" class="display" cellspacing="0" width="100%">
                   <thead>
                       <tr>
                           <th>Amazina</th>
@@ -40,7 +40,6 @@
                           <th>DAP</th>
                           <th>KCL</th>
                           <th>Briquette</th>
-                          <th>Injiza</th>
                           <th>Ibindi</th>
                       </tr>
                   </thead>
@@ -53,7 +52,6 @@
                           <th>DAP</th>
                           <th>KCL</th>
                           <th>Briquette</th>
-                          <th>Injiza</th>
                           <th>Ibindi</th>
                       </tr>
                   </tfoot>
@@ -116,11 +114,6 @@
                                         {% endif %}
                                     {% endfor %}
                                 {% endif %}
-                              </td>
-                              <td>
-                                <a href="{{ url_for('aicos_stock_managment.injizaInyongeramusaruro', id=member.id) }}">
-                                  <span class="badge badge-success" style="font-size: 14px;"><li class="fa fa-plus"></li> Injiza</span>
-                                </a>
                               </td>
                               <td>
                                 <a href="#">
