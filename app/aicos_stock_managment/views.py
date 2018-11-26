@@ -441,6 +441,8 @@ def injizaIbirarane(id):
                             ImbutoQuantity = form.ImbutoQuantity.data,
                             ImbutoAmount = form.ImbutoAmount.data,
                             IdeniAmount = form.IdeniAmount.data,
+                            Briquette = form.Briquette.data,
+                            BriquettePerUnity = form.BriquettePerUnity.data,
                             member_id = memberid.id,
                             department_id = current_user.email
                         )

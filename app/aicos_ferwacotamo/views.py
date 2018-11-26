@@ -188,3 +188,91 @@ def memberDetails(id):
     if employee is not None:
         return render_template("overall_member_details.html", employee=employee)
     return redirect(url_for('aicos_members.aicos_members_home'))
+
+
+
+@aicos_ferwacotamo.route('/members/umusaruro/')
+@login_required
+def federation_umusaruro():
+    employee = Department.query.all()
+    return render_template("federation_umusaruro.html", employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/umusaruro/<string:email>')
+@login_required
+def coop_umusaruro(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    umusarurob = Umusarurob.query.filter_by(department_id=email).all()
+    return render_template('cooperative_umusaruro.html', departments=departments, umusarurob=umusarurob)
+
+
+@aicos_ferwacotamo.route('/members/inyongeramusaruro/')
+@login_required
+def federation_inyongeramusaruro():
+    employee = Department.query.all()
+    return render_template('federation_inyongeramusaruro.html', employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/inyongeramusaruro/<string:email>')
+@login_required
+def coop_inyongeramusaruro(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=email).all()
+    return render_template('cooperative_inyongeramusaruro.html', departments=departments, inyongeramusaruro=inyongeramusaruro)
+
+@aicos_ferwacotamo.route('/members/imisanzu/')
+@login_required
+def federation_imisanzu():
+    employee = Department.query.all()
+    return render_template('federation_imisanzu.html', employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/imisanzu/<string:email>')
+@login_required
+def coop_imisanzu(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    imisanzu = Umusanzu.query.filter_by(department_id=email).all()
+    return render_template('coop_imisanzu.html', departments=departments, imisanzu=imisanzu)
+
+@aicos_ferwacotamo.route('/members/ibirarane/')
+@login_required
+def federation_ibirarane():
+    employee = Department.query.all()
+    return render_template('federation_ibirarane.html', employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/ibirarane/<string:email>')
+@login_required
+def coop_ibirarane(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    ibirarane = Ibirarane.query.filter_by(department_id=email).all()
+    return render_template('coop_ibirarane.html', departments=departments, ibirarane=ibirarane)
+
+@aicos_ferwacotamo.route('/members/ibihano/')
+@login_required
+def federation_ibihano():
+    employee = Department.query.all()
+    return render_template('federation_ibihano.html', employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/ibihano/<string:email>')
+@login_required
+def coop_ibihano(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    ibihano = Ibihano.query.filter_by(department_id=email).all()
+    return render_template('coop_ibihano.html', departments=departments, ibihano=ibihano)
+
+
+@aicos_ferwacotamo.route('/members/ibindi/')
+@login_required
+def federation_ibindi():
+    employee = Department.query.all()
+    return render_template('federation_ibindi.html', employee=employee)
+
+@aicos_ferwacotamo.route('/cooperative/ibindi/<string:email>')
+@login_required
+def coop_ibindi(email):
+    departments = Department.query.get_or_404(email)
+    employees = departments.members
+    ibindi = Ibindi.query.filter_by(department_id=email).all()
+    return render_template('coop_ibindi.html', departments=departments, ibindi=ibindi)

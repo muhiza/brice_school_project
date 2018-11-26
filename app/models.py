@@ -1530,6 +1530,8 @@ class Ibirarane(db.Model):
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	Briquette = db.Column(db.Integer)
+	BriquettePerUnity = db.Column(db.Integer)
 
 	def __repr__(self):
 		return '<Ibirarane: {}>'.format(self.id)
