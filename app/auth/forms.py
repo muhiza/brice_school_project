@@ -11,8 +11,8 @@ class RegistrationForm(FlaskForm):
     """
     email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "Kode yo kwinjira (Email)"})
     username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina ukoresha"})
-    first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina ribanza"})
-    last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
+    first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Amazina yombi"})
+    #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
     phone_number = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Nomero ya telephone igendanwa"})
     password = PasswordField('', validators=[
                                         DataRequired(),

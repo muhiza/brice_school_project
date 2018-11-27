@@ -96,12 +96,12 @@
                 </div>
                 <div class="form-form" style="">
                     <form method="POST" action="{{ url_for('auth.register') }}">
-                        <div class="" style="margin-top: 5px;">
-                          {{ wtf.form_field(form.first_name) }}
-                        </div>
-                        <div class="" style="margin-top: -30px;">
-                          {{ wtf.form_field(form.last_name) }}
-                        </div>
+
+                        <div class="input-group" style="margin-top: -10px;">
+                          <span class="input-group-addon" style="background-color: #e6e6e6; height: 20%"><i class="glyphicon glyphicon-user"></i></span>
+                          {{ wtf.form_field(form.first_name) }} 
+                        </div><br>
+
                         <div class="input-group" style="margin-top: -10px;">
                           <span class="input-group-addon" style="background-color: #e6e6e6; height: 20%"><i class="glyphicon glyphicon-user"></i></span>
                           {{ wtf.form_field(form.username) }}

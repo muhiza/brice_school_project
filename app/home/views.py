@@ -337,6 +337,7 @@ def newApplication():
                         male_members         = form.maleMembers.data,
                         female_members         = form.femaleMembers.data,
                         is_active         = 1,
+                        Activity          = form.Activity.data,
                         #current_user.is_coop_admin     = 1,
                         email         = current_user.email
                         #current_user.is_admin = 1
