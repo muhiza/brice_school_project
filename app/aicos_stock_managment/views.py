@@ -47,6 +47,7 @@ def dashboard():
     umusaruro = Umusarurob.query.all()
     inyongeramusaruro = InyongeraMusaruro.query.all()
 
+
     return render_template('stock_dashboard.html', 
                                                 ibirarane=ibirarane, 
                                                 imisanzu=imisanzu, 
@@ -188,6 +189,14 @@ def injizaUmusaruro(id):
         
         if form.UwoAsigaranye.data is None:
             form.UwoAsigaranye.data = 0
+        if form.Gutonoza.data is None:
+            form.Gutonoza.data = 0
+        if form.UwoAsigaranye.data is None:
+            form.UwoAsigaranye.data = 0
+        if form.Quantity.data is None:
+            form.Quantity.data = 0
+        if form.RiceAmount.data is None:
+            form.RiceAmount.data = 0
 
 
 
@@ -197,7 +206,7 @@ def injizaUmusaruro(id):
                             UwoAsigaranye = form.UwoAsigaranye.data,
                             UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
                             GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
-                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * int(form.Quantity.data)) - (int(form.Gutonoza.data) * int(form.UwoAsigaranye.data)),
+                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * int(form.UwoAsigaranye.data))),
                             member_id = memberid.id,
                             department_id = current_user.email
                          )
@@ -253,24 +262,24 @@ def injizaInyongeramusaruro(id):
             form.Redevance.data = 0
 
         inyongeramusaruro = InyongeraMusaruro(
-                                    NPKkg = form.NPKkg.data,
-                                    NPKPerUnity = form.NPKPerUnity.data,
-                                    UREA = form.UREA.data,
-                                    UREAPerUnity = form.UREAPerUnity.data,
-                                    DAP = form.DAP.data,
-                                    DAPPerUnity = form.DAPPerUnity.data,
-                                    KCL = form.KCL.data,
-                                    KCLPerUnity = form.KCLPerUnity.data,
-                                    Briquette = form.Briquette.data,
-                                    BriquettePerUnity = form.BriquettePerUnity.data,
-                                    Cypemetrine = form.Cypemetrine.data,
-                                    Beam = form.Beam.data,
-                                    ImbutoQuantity = form.ImbutoQuantity.data,
-                                    ImbutoAmount = form.ImbutoAmount.data,
-                                    Redevance = form.Redevance.data,
-                                    member_id = memberid.id,
-                                    department_id = current_user.email
-                                    )
+                                NPKkg = form.NPKkg.data,
+                                NPKPerUnity = form.NPKPerUnity.data,
+                                UREA = form.UREA.data,
+                                UREAPerUnity = form.UREAPerUnity.data,
+                                DAP = form.DAP.data,
+                                DAPPerUnity = form.DAPPerUnity.data,
+                                KCL = form.KCL.data,
+                                KCLPerUnity = form.KCLPerUnity.data,
+                                Briquette = form.Briquette.data,
+                                BriquettePerUnity = form.BriquettePerUnity.data,
+                                Cypemetrine = form.Cypemetrine.data,
+                                Beam = form.Beam.data,
+                                ImbutoQuantity = form.ImbutoQuantity.data,
+                                ImbutoAmount = form.ImbutoAmount.data,
+                                Redevance = form.Redevance.data,
+                                member_id = memberid.id,
+                                department_id = current_user.email
+                                )
 
         try:
             db.session.add(inyongeramusaruro)
@@ -427,6 +436,9 @@ def injizaIbirarane(id):
             form.ImbutoQuantity.data = 0
         if form.IdeniAmount.data is None:
             form.IdeniAmount.data = 0
+        if form.Briquette.data is None:
+            form.Briquette.data = 0
+
 
 
         ibirarane = Ibirarane(
@@ -525,11 +537,11 @@ def injizaIbindi(id):
 
         ibindi = Ibindi(
                     ImifukaQuantity = form.ImifukaQuantity.data,
-                    ImifukaAmount = form.ImifukaAmount.data * form.ImifukaQuantity.data,
+                    ImifukaAmount = int(form.ImifukaAmount.data) * int(form.ImifukaQuantity.data),
                     MituelleAmount = form.MituelleAmount.data,
-                    UmuceriGrade   = form.UmuceriGrade.data * form.UmuceriQuantity.data,
+                    UmuceriGrade   = form.UmuceriGrade.data,
                     UmuceriQuantity = form.UmuceriQuantity.data,
-                    UmuceriAmountGrade = form.UmuceriAmountGrade.data,
+                    UmuceriAmountGrade = (int(form.UmuceriAmountGrade.data) * int(form.UmuceriQuantity.data)),
                     Avence = form.Avence.data,
                     member_id = memberid.id,
                     department_id = current_user.email

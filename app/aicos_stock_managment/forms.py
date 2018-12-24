@@ -137,7 +137,7 @@ class IbiraraneForm(FlaskForm):
     KCL = FloatField("KCL (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya KCL (ibiro)"})
     KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
     Briquette = FloatField("Briquette", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya Briquette"})
-    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('400',400)], validators=[Optional()])
+    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('390',390)], validators=[Optional()])
     ImbutoQuantity =  IntegerField("Imbuto (Ibirarane)", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
     ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
     IdeniAmount =  IntegerField("Ideni ry'umwaka ushize", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'ikirarane"})
@@ -157,10 +157,10 @@ class IbihanoForm(FlaskForm):
 
 class IbindiForm(FlaskForm):
     ImifukaQuantity =  IntegerField("Imifuka", validators=[Optional()], render_kw={"placeholder": "Injiza umubare w'imifuka"})
-    ImifukaAmount =  IntegerField("igiciro", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga"})
+    ImifukaAmount =  IntegerField("igiciro ku mufuka", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y'umufuka umwe"})
     MituelleAmount =  IntegerField("Mituelle", validators=[Optional()], render_kw={"placeholder": "Injiza amafaranga ya mituelle"})
-    UmuceriGrade =  IntegerField("Umuceri Grade", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga"})
-    UmuceriQuantity =  IntegerField("Ubwinshi", validators=[Optional()], render_kw={"placeholder": "Injiza Quantity ya Grade"})
-    UmuceriAmountGrade =  IntegerField("Amount", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y'umuceri wa Grade"})
+    UmuceriGrade =  SelectField("Hitamo Ubwoko Bwa Grade", choices=[('Grade II','Grade II'),('Grade III','Grade III'), ('Grade IV', 'Grade IV')])
+    UmuceriQuantity =  IntegerField("Ibiro Bya Grade", validators=[Optional()], render_kw={"placeholder": "Injiza Quantity ya Grade"})
+    UmuceriAmountGrade =  IntegerField("Injiza Amafaranga ku kiro", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y'umuceri wa Grade"})
     Avence =  IntegerField("Avance", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y avance"})
     submit      =  SubmitField('Emeza')
