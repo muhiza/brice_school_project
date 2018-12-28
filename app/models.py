@@ -214,7 +214,7 @@ class Department(db.Model):
 	district    = db.Column(db.String(200))
 	sector      = db.Column(db.String(200))
 	cell      = db.Column(db.String(200))
-	activity    = db.Column(db.String(200))
+	Activity    = db.Column(db.String(200))
 	coop_type   = db.Column(db.String(200))
 
 	category   = db.Column(db.String(200))
@@ -643,6 +643,7 @@ class Member(db.Model):
 	ibirarane = db.relationship('Ibirarane', backref='member', lazy='dynamic')
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
+
 
 	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
