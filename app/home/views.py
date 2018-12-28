@@ -51,8 +51,8 @@ def homepage():
     """
     Render the homepage template on the / route
     """
-    return redirect(url_for('auth.login'))
-    #return render_template('auth/landing_page.html', title="Welcome", pub_key=pub_key)
+    #return redirect(url_for('auth.login'))
+    return render_template('auth/landing_page.html', title="Welcome", pub_key=pub_key)
 
 
 
