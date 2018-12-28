@@ -217,4 +217,12 @@ class newDepartmentForm(FlaskForm):
     maleMembers = StringField(Markup('<b>Abanyamuryango b\'abagabo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
     femaleMembers = StringField(Markup('<b>Abanyamuryango b\'abagore</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
 
+
+
+    Activity = SelectField(
+        Markup('<b>Icyo Koperative Ikora</b>'),
+        choices=[('Tea', 'Tea'),('Coffee', 'Coffee'), 
+        ('Rice', 'Rice')])
+
+    
     submit = SubmitField('Injiza muri sisiteme')

@@ -26,6 +26,10 @@ subs = db.Table('subs',
 	db.Column('department_id', db.String(399), db.ForeignKey('departments.email'))
 	)
 """
+<<<<<<< HEAD
+=======
+
+>>>>>>> 52adea6330ad30596536fc4a4f28b0d40c27df1c
 
 
 class Employee(UserMixin, db.Model):
@@ -213,7 +217,7 @@ class Department(db.Model):
 	district    = db.Column(db.String(200))
 	sector      = db.Column(db.String(200))
 	cell      = db.Column(db.String(200))
-	activity    = db.Column(db.String(200))
+	Activity    = db.Column(db.String(200))
 	coop_type   = db.Column(db.String(200))
 
 	category   = db.Column(db.String(200))
@@ -643,11 +647,16 @@ class Member(db.Model):
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
+<<<<<<< HEAD
 	""" We will always use this __init__ function to upload excel file
+=======
+
+	""" We will always use this __init__ function to upload excel file  """
+>>>>>>> 52adea6330ad30596536fc4a4f28b0d40c27df1c
 	def __init__(self, sno):
 		self.id = id
 		self.sno = sno
-	"""
+	
 
 	"""
 	Importing data using this views.
@@ -1561,7 +1570,7 @@ class Ibindi(db.Model):
 	ImifukaQuantity = db.Column(db.Integer)
 	ImifukaAmount = db.Column(db.Integer)
 	MituelleAmount = db.Column(db.Integer)
-	UmuceriGrade   = db.Column(db.Integer)
+	UmuceriGrade   = db.Column(db.String(100))
 	UmuceriQuantity = db.Column(db.Integer)
 	UmuceriAmountGrade = db.Column(db.Integer)
 	Avence = db.Column(db.Integer)
