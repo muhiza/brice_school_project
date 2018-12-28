@@ -6,36 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>AICOS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <script src="main.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <style type="text/css">
+        #card {
+            border: 1px solid white; 
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #00a99d;
+            border-radius: 0;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <nav>
+    <div class="container-fluid">
+    <div>
+        <nav class="navbar" style="margin: 0;">
             <div class="logo">
-                <a href="#"><img src="{{ url_for('static', filename='images/LOGO.png') }}"></a>
+                <a href="{{ url_for('auth.login') }}"><img src="{{ url_for('static', filename='images/logos/aicos.png') }}"></a>
             </div>
             <div class="nav-wrapper">
-                <ul>
-                    <li><a href="#">How it works</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="{{ url_for('auth.login') }}"><button class="btn">Log in</button></a></li>
+                <ul style="margin-top: 20px;">
+                    <li><a href="#" style="margin-top: 8px;">How it works</a></li>
+                    <li><a href="#" style="margin-top: 8px;">Features</a></li>
+                    <li><a href="#" style="margin-top: 8px;">Pricing</a></li>
+                    <li><a href="#" style="margin-top: 8px;">Contacts</a></li>
+                    <li><a href="{{ url_for('auth.login') }}" class="btn btn-md">Log in</a></li>
                 </ul>
-
             </div>
         </nav>
+    </div>
         <div class="middle-container">
             <div class="banner">
                 <img src="{{ url_for('static', filename='images/Banner.png') }}">
             </div>
             <div class="call-to-action">
                 <p class="main">Your digital Cooperative<br>Management System</p>
-                <p class="sub">Vivamus in erat ut urna cursus vestibulum. Vestibulum<br>dapibus nunc ac augue.
-                    Praesent turpis. Vivamus<br>quis mi. Curabitur blandit mollis lacus.</p>
+                <p class="sub">AICOS is a platform that enables full tracked management<br /> of all the resources of cooperatives.</p>
                 <button class="call-btn"><a style="color: white; text-decoration: none;" href="{{ url_for('auth.login') }}">Try it for 30 days</a></button>
                 <div class="video">
                     <iframe width="320" height="200" src="https://www.youtube.com/embed/90FL_bBE4mw" frameborder="0"
@@ -44,11 +55,38 @@
             </div>
         </div>
         <div class="featured-section">
-            <img src="{{ url_for('static', filename='images/featured.png') }}">
+           
         </div>
         <div class="services">
-            <h1>Features</h1>
-            <img src="{{ url_for('static', filename='images/features.png') }}">
+            <div class="row">
+                <h1>Features</h1>
+            </div>
+            <div class="row" style="">
+                <div class="col-lg-4">
+                    <div id="card" style="">
+                        <div class="div-title"><h3>Membership Management</h3></div>
+                        <div>
+                            <img src="{{ url_for('static', filename='images/membership.png') }}" style="width: 80%; 40%;"/>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-lg-4">
+                    <div id="card">
+                        <div class="div-title"><h3>Financial Management</h3></div>
+                        <div>
+                            <img src="{{ url_for('static', filename='images/document-dollar.png') }}" style="width: 65%; height: 40%;margin-top: 20px;"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="card">
+                        <div class="div-title"><h3>Stock Management</h3></div>
+                        <div>
+                            <img class="responsive" src="{{ url_for('static', filename='images/stock.png') }}" style="width: 65%; height: 40%; margin-top: 20px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="bottom-banner">
             <div class="bottom-picture">
