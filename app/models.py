@@ -20,11 +20,12 @@ class Cooperative(UserMixin, db.Model):
 	def __repr__(self):
 		return '<Cooperative: {}>'.format(self.name)
 
-
+"""
 subs = db.Table('subs',
 	db.Column('employee_id', db.Integer, db.ForeignKey('employees.id')),
 	db.Column('department_id', db.String(399), db.ForeignKey('departments.email'))
 	)
+"""
 
 
 
@@ -643,7 +644,8 @@ class Member(db.Model):
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
-	""" We will always use this __init__ function to upload excel file   """
+
+	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
 		self.id = id
 		self.sno = sno
@@ -1561,7 +1563,7 @@ class Ibindi(db.Model):
 	ImifukaQuantity = db.Column(db.Integer)
 	ImifukaAmount = db.Column(db.Integer)
 	MituelleAmount = db.Column(db.Integer)
-	UmuceriGrade   = db.Column(db.Integer)
+	UmuceriGrade   = db.Column(db.String(100))
 	UmuceriQuantity = db.Column(db.Integer)
 	UmuceriAmountGrade = db.Column(db.Integer)
 	Avence = db.Column(db.Integer)
