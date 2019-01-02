@@ -1,230 +1,408 @@
-{% import "bootstrap/utils.html" as utils %}
-{% extends "members_base.html" %}
-{% block head %}
-{{ super() }}
-<style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-    body{       
-        background: #e6e6e6;
-        background: -webkit-linear-gradient(to right, #e6e6e6); 
-        background: linear-gradient(to right, #e6e6e6);
-        font-family: 'Quicksand', sans-serif;
-    }
+<!doctype html>
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AICOS</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-</style>
-{% endblock %}
-    {% block body %}
-      <div class="container-fluid">
-        <div class="all-content" style="background-color: #e6e6e6; padding-top: 2%; padding-right: 2%; padding-left: 2%; border: 1px solid #f2f2f2;">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card p-4">
-                    <a href="{{ url_for('aicos_members.aicos_members_home') }}">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    {{ employees_count }}
-                                </span>
-                                <span class="font-weight-light" id="links"><strong><b>Abanyamuryango</b></strong></span>
+
+    <link href="{{ url_for('static', filename='vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/themify-icons/css/themify-icons.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='vendors/selectFX/css/cs-skin-elastic.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='vendors/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet">
+
+    <link href="{{ url_for('static', filename='vendors/assets/css/style.css') }}" rel="stylesheet">
+
+
+
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header"> 
+                <a class="navbar-brand" href="#">
+                    <img src="{{ url_for('static', filename='images/aicos_logo.png') }}"></a>
+            </div><br>
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-item-has-children dropdown">
+                        <ul class="sub-menu children">
+                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Ahabanza</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Abantu</a></li>
+                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Kwandika</a></li>
+                            <li><i class="fa fa-share-square-o"></i><a href="ui-social-buttons.html">Committee</a></li>
+                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Abakozi</a></li>
+                            <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Ibikorwa</a></li>
+                            <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Umutungo</a></li>
+                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Ibyakozwe</a></li>
+                            <li><i class="fa fa-th"></i><a href="ui-grids.html">Sacoo</a></li>
+                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Inganda</a></li>
+                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Ibyakozwe</a></li>
+                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Certificate</a></li>
+                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Ibindi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{ url_for('static', filename='images/admin.jpg') }}" alt="User Avatar">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-us"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <div class="dropdown-item">
+                                <span class="flag-icon flag-icon-fr"></span>
                             </div>
-
-                            <div class="h2 text-muted">
-                                <h1><i class="fa fa-users" style="color: #449D44; font-size: 35px;" id="icon-dashboard"></i></h1>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-es"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-it"></i>
                             </div>
                         </div>
-                        <div class="mt-4">
-                            <div class="progress" style="margin-top: -30px;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ employees_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                      </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        
-                    <a href="{{ url_for('aicos_members.aicos_members_home') }}">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    {{ employees_male_count }}
-                                </span>
-
-
-
-                                <span class="font-weight-light"><strong><b>Igitsina gabo</b></strong></span>
-                            </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-male" style="color: #31B0D5; font-size: 35px;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ employees_male_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <a href="#">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                        {{ employees_female_count }}
-                                    </span>
-                                    <span class="font-weight-light" id="links"><strong><b>Igitsina gole</b></strong></span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-female" style="color: #EC971F; font-size: 35px;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4" >
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ employees_female_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <a href="#">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                        00
-                                    </span>
-                                    <span class="font-weight-light" id="links">
-                                        <strong><b>Urubyiruko</b></strong></span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-user" style="color: #286090;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
+        </header><!-- /header -->
+        <!-- Header-->
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number"><strong>
-                                    <b> 000 </b></strong></span>
-                                <span class="font-weight-light" id="links"> <strong><b>Raporo za SACCO</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links">
-                                    <strong><b>Raporo/Uruganda</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links"><strong><b>Ubutumwa</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links"><strong><b>Ibyakozwe</b></strong></span>
-                            </div>
-                        </div>
+
+
+
+
+
+
+
+
+    <div class="col-lg-3 col-md-6">
+        <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Membership</div>
+                        <div class="stat-digit">1,012</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><br />
-    <div class="container-fluid">
-        <div class="all-logs" style="background-color: #e6e6e6; padding-top: 2%; padding-bottom: 2%; padding-right: 2%; padding-left: 2%; border: 1px solid #f2f2f2;">
-          <h2 class="sub-header">Amakuru y'ibyakozwe</h2>
-          <div class="table-responsive">
-             <table id="memberLogs" class="display" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Igikorwa</th>
-                            <th>Uwagikoze</th>
-                            <th>Mudasobwa ye</th>
-                            <th>Itariki</th>
-                            <th>Igihe</th>
-                            <th>Ibindi</th>
-                            <th>Options</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Igikorwa</th>
-                            <th>Uwagikoze</th>
-                            <th>Mudasobwa ye</th>
-                            <th>Itariki</th>
-                            <th>Igihe</th>
-                            <th>Ibindi</th>
-                            <th>Options</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        {% if notes %}
-                            {% for notification in notes %}
-                                <tr>
-                                  <td> {{ notification.action | truncate(8) }} </td>
-                                  <td> {{ notification.done_by }} </td>
-                                  <td> {{ notification.done_from }} </td>
-                                  <td> {{ notification.done_date }} </td>
-                                  <td> {{ notification.done_time }} </td>
+        </a>
+    </div>
 
-                                  <td> 
-                                      <a href="#">
-                                      <i class="fa fa-eye"> </i>Details 
-                                      </a>
-                                  </td>
+    <div class="col-lg-3 col-md-6">
+        <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Stock</div>
+                        <div class="stat-digit">961</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
 
-                                  <td> 
-                                    <a href="#">
-                                    <i class="fa fa-book"></i>More 
-                                    </a>
-                                  </td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                    </tbody>
-                </table>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Expenses</div>
+                        <div class="stat-digit">770</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-{% endblock %}
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-link text-danger border-danger"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Loans</div>
+                        <div class="stat-digit">2,781</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-server text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Penalties</div>
+                            <div class="stat-text">765</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-user text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Communication</div>
+                            <div class="stat-text">Total: 24720</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-stats-up text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Stock</div>
+                            <div class="stat-text">58,714</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-pulse text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Reports</div>
+                            <div class="stat-text">Total: 4TB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+
+
+
+        <div class="content mt-3">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="card-title mb-0">Stock Changes</h4>
+                                <div class="small text-muted">October 2018</div>
+                            </div>
+                            <!--/.col-->
+                            <div class="col-sm-8 hidden-sm-down">
+                                <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
+                                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="options" id="option1"> Day
+                                        </label>
+                                        <label class="btn btn-outline-secondary active">
+                                            <input type="radio" name="options" id="option2" checked=""> Month
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="options" id="option3"> Year
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.col-->
+
+
+                        </div>
+                        <!--/.row-->
+                        <div class="chart-wrapper mt-4">
+                            <canvas id="trafficChart" style="height:200px;" height="200"></canvas>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <ul>
+                            <li>
+                                <div class="text-muted">Umuremure</div>
+                                <strong>29.703 (40%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Umugufi</div>
+                                <strong>24.093 (20%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-muted">Grade 1</div>
+                                <strong>78.706 (60%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Grade 2</div>
+                                <strong>22.123 (80%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Usigaye wose</div>
+                                <strong>40.15%</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Ibice bihingwa</h4>
+                    </div>
+                    <div class="Vector-map-js">
+                        <div id="vmap" class="vmap" style="height: 265px;"></div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    <script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendors/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendor/assets/js/main.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/chart.js/dist/Chart.bundle.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/assets/js/dashboard.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/assets/js/widgets.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/jqvmap/dist/jquery.vmap.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}" type="text/javascript"></script>
+
+
+
+
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>

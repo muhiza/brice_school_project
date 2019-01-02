@@ -26,10 +26,6 @@ subs = db.Table('subs',
 	db.Column('department_id', db.String(399), db.ForeignKey('departments.email'))
 	)
 """
-<<<<<<< HEAD
-=======
-
->>>>>>> 52adea6330ad30596536fc4a4f28b0d40c27df1c
 
 
 class Employee(UserMixin, db.Model):
@@ -647,12 +643,9 @@ class Member(db.Model):
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
-<<<<<<< HEAD
-	""" We will always use this __init__ function to upload excel file
-=======
+
 
 	""" We will always use this __init__ function to upload excel file  """
->>>>>>> 52adea6330ad30596536fc4a4f28b0d40c27df1c
 	def __init__(self, sno):
 		self.id = id
 		self.sno = sno
