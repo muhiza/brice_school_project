@@ -733,6 +733,52 @@ class Notification(db.Model):
 
 
 
+
+
+
+
+
+
+class Committee(db.Model):
+	"""
+	Create a Role table
+	"""
+
+	__tablename__ = 'committees'
+
+	id = db.Column(db.Integer, primary_key=True)
+	first_name = db.Column(db.String(60))
+	last_name = db.Column(db.String(60))
+	nid = db.Column(db.String(60))
+	district = db.Column(db.String(60))
+	sector = db.Column(db.String(60))
+	sex = db.Column(db.String(60))
+	yob = db.Column(db.String(60))
+	committee = db.Column(db.String(60))
+	position = db.Column(db.String(60))
+	education = db.Column(db.String(60))
+	telephone = db.Column(db.String(60))
+	email = db.Column(db.String(60))
+	monthly_net_salary = db.Column(db.String(60))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+
+	"""
+	#Dealing with excel staff here.
+	def __init__(self,name):
+		self.id = id
+		self.name = name
+		#self.description = description
+		#self.employees   = employees
+	"""
+
+	def __repr__(self):
+		return '<Committee: {}>'.format(self.first_name)
+
+
+
+
+
 # All the tables (models) for the coop admin's activities.
 # Table for the decisions
 

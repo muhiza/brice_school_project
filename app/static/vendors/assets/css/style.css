@@ -2340,6 +2340,18 @@ header .form-inline {
     margin-left: 15px; }
   .card-body {
     padding: 15px; }
+
+
+    .card-body:hover,
+	.card-body:hover {
+	  margin-top: -3px; }
+
+
+
+
+
+
+
   .badges button {
     margin: 2px 0; } }
 
