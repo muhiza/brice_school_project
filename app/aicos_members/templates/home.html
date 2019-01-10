@@ -2,6 +2,8 @@
 {% extends "members_base.html" %}
 
     {% block body %}
+    <div class="container">
+    <div class="row">
     <div class="col-lg-3 col-md-6">
         <a href="{{ url_for('aicos_members.aicos_members_home') }}">
         <div class="card">
@@ -35,6 +37,7 @@
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
@@ -46,9 +49,13 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
+
+
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
@@ -60,6 +67,8 @@
                 </div>
             </div>
         </div>
+    </a>
+    </div>
     </div>
 
 
@@ -101,8 +110,9 @@
 
 
 
-
+    <div class="row">
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -118,9 +128,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -136,9 +148,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -154,9 +168,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -172,7 +188,9 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
+</div>
 
 
 
@@ -204,9 +222,9 @@
 
 
 
-
-
+    <div class="row">
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -222,9 +240,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -240,9 +260,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -258,9 +280,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="{{ url_for('aicos_req.accountingBooks') }}">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -269,15 +293,16 @@
                     </div>
                     <div class="stat-content">
                         <div class="text-left dib">
-                            <div class="stat-heading">Impinduka</div>
+                            <div class="stat-heading">Accounting Books</div>
                             <div class="stat-text">Total: 4TB</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </a>
     </div>
-
+</div>
 
 
 
@@ -309,8 +334,9 @@
 
 
 
-
+<div class="row">
     <div class="col-lg-3 col-md-6">
+    <a href="{{ url_for('aicos_req.governanceBooks') }}">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -326,9 +352,11 @@
                 </div>
             </div>
         </div>
+        </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -344,9 +372,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -362,9 +392,11 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>  
 
     <div class="col-lg-3 col-md-6">
+    <a href="#">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-four">
@@ -380,42 +412,14 @@
                 </div>
             </div>
         </div>
+    </a>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <br><br>
-    <br><br>
-    <br><br>
+</div>
     <br><br>
 
 
 
-
+        <div class="row">
         <div class="content mt-3">
             <div class="col-xl-6">
                 <div class="card">
@@ -508,6 +512,8 @@
 
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
+    </div>
+    </div>
 
     <!-- Right Panel -->
     {% endblock %}

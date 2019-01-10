@@ -1,406 +1,275 @@
    {% extends "req_base.html" %}
     {% block body %}
-        <div class="container-fluide">
+        <div class="container">
         <h3> Accounting Book </h3>
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-file"></i> Imigabane </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Imigabane</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Igitabo cy’abanyamuryango ba Koperative n’imigabane.</p>
                             </div>
                         </div>
+                    </a>
+                    </div>
 
-                        <div class="card-body">
-                            Igitabo cy’abanyamuryango ba Koperative n’imigabane.
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.isandukuList') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Isanduku</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibitabo by’isanduka (Cash book). 
+                                <br><br></p>
+                            </div>
                         </div>
+                    </a>
+                    </div>
+
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Abishyuye</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibimenyetso bihamya abanyamuryango bishyuye imigabane.</p>
+                            </div>
+                        </div>
+                    </a>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-user"></i> Isanduku </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.isandukuList') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            Ibitabo by’isanduka (Cash book). 
-                        </div><br>
-                    </div>
-                </div> 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-tasks"></i> Abishyuye </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.abishyuye') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            Ibimenyetso bihamya abanyamuryango bishyuye imigabane.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
 
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-envelope"></i> Ibitabo bya Bank </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.bankIbitabo') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankIbitabo') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Ibitabo bya Bank</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Igitabo cy’abanyamuryango ba Koperative n’imigabane.</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Ibitabo bya banki (bank book).
-                        </div><br>
+                    </a>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-info"></i> Bank History </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.bankHistory') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankHistory') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Bank History</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Historiques z’amakonti yose (Bank history). 
+                                <br><br></p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Historiques z’amakonti yose (Bank history).
-                        </div><br>
+                    </a>
                     </div>
-                </div>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-pencil-alt"></i> Signatories </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.signatories') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Signatories</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urutonde rw’abasinyateri kuri konti (Signatories).</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Urutonde rw’abasinyateri kuri konti (Signatories).
-                        </div>
+                    </a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-share"></i> Cash outflow </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankIbitabo') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Cash outflow</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibimenyetso bihamya ikoreshwa ry’amafaranga (cash outflow evidences).</p>
                             </div>
                         </div>
-                        <div class="card-body">
-                            Ibimenyetso bihamya ikoreshwa ry’amafaranga (cash outflow evidences).
-                        </div>
+                    </a>
                     </div>
-                </div>
 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-book"></i> CashIn </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankHistory') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> CashIn</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibimenyetso bihamya iyinjiza ry’amafaranga (cash in evidences). 
+                                </p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Ibimenyetso bihamya iyinjiza ry’amafaranga (cash in evidences).
-                        </div>
+                    </a>
                     </div>
-                </div>
 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5> <i class="fa fa-info"></i> Imitungo Iramba. </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Imitungo Iramba.</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urutonde rw’imitungo iramba (List of immovables).</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Urutonde rw’imitungo iramba (List of immovables).
-                        </div>
+                    </a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-
 
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-share"></i> Imitungo Itaramba </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankIbitabo') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Imitungo Itaramba</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urutonde rw’imitungo itaramba (List of immovables).</p>
                             </div>
                         </div>
-                        <div class="card-body">
-                            Urutonde rw’imitungo itaramba (List of immovables).
-                        </div>
+                    </a>
                     </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-book"></i> Imnyenda </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankHistory') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Imyenda</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibitabo by’imyenda  (books of debts and credits). 
+                                </p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Ibitabo by’imyenda  (books of debts and credits).
-                        </div>
+                    </a>
                     </div>
-                </div>
 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5> <i class="fa fa-info"></i> Umutungo wa Coop. </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Umutungo wa Coop.</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ifoto y’umutungo wa Koperative buri(Balance sheet).</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Ifoto y’umutungo wa Koperative buri(Balance sheet).
-                        </div>
+                    </a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-
 
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-share"></i> Igenanyungu </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankIbitabo') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Igenanyungu</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ifishi y’igenanyungu (Income statement).   <br><br> </p>
                             </div>
                         </div>
-                        <div class="card-body">
-                            Ifishi y’igenanyungu (Income statement).
-                        </div><br>
+                    </a>
                     </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-book"></i> Icungamari </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankHistory') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Icungamari</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urupapuro rwinjiza muri stock (Stock entry note).
+                                </p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Itegura ry’amakonte y’icungamari (Ledger Book).
-                        </div>
+                    </a>
                     </div>
-                </div>
 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5> <i class="fa fa-info"></i> Ibibitswe. </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Ibibitswe.</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Igitabo/Amafishi y’ibibitswe ( stock statement).</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Igitabo/Amafishi y’ibibitswe ( stock statement).
-                        </div><br>
+                    </a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-share"></i> Gusohora </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankIbitabo') }}">
+                        <div class="card border border-primary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Gusohora</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urupapuro rusohora muri stock (Stock exit note). </p>
                             </div>
                         </div>
-                        <div class="card-body">
-                            Urupapuro rusohora muri stock (Stock exit note).
-                        </div>
+                    </a>
                     </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5><i class="fa fa-book"></i> Kwinjiza </h5>
-                            <div class="card-actions">
-                                <a href="#" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.bankHistory') }}">
+                        <div class="card border border-secondary">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Kwinjiza</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Urupapuro rwinjiza muri stock (Stock entry note).
+                                </p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Urupapuro rwinjiza muri stock (Stock entry note).
-                        </div>
+                    </a>
                     </div>
-                </div>
 
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5> <i class="fa fa-info"></i> Imisaruro. </h5>
-                            <div class="card-actions">
-                                <a href="{{ url_for('aicos_req.umusaruroList') }}" class="btn">
-                                    <div class="btn btn-outline-primary btn-sm"> Tunganya </div>
-                                </a>
+                    <div class="col-md-4">
+                    <a href="{{ url_for('aicos_req.abishyuye') }}">
+                        <div class="card border border-success">
+                            <div class="card-header">
+                                <strong class="card-title">
+                                <span class="ti-folder"></span> Imisaruro.</strong>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Ibitabo by’imisaruro (Book of crop  collection).</p>
                             </div>
                         </div>
-
-                        <div class="card-body">
-                            Ibitabo by’imisaruro (Book of crop  collection).
-                        </div><br>
+                    </a>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 {% endblock %}
