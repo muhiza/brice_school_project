@@ -4,7 +4,7 @@ from wtforms import StringField, TextAreaField, FileField, DateTimeField, Select
 from wtforms.fields.html5 import DateField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email
-
+from markupsafe import Markup
 
 #from ..models import Department, Role, Employee, Product
 from ..models import *
@@ -261,4 +261,29 @@ class GoalForm(FlaskForm):
 
 
 
+class ComForm(FlaskForm):
+    """
+    Form for admin to add or edit a role
+    """
+    firstName = StringField(Markup('<b>Izina ribanza</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umudugudu"} )
+    lastName = StringField(Markup('<b>Izina rikurikira</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injizamo Rikurikira"})
+    Nid = StringField(Markup('<b>No ndangamuntu</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza no y'indangamuntu"})
+    District = StringField(Markup('<b>Akarere</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Akagari"})
+    Sector = StringField(Markup('<b>Umurenge</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Umurenge"})
+    Sex = SelectField(
+        'Igitsina',
+        choices=[('Gole', 'Gole'), ('Gaba', 'Gabo'), ('Ibindi', 'Ibindi')])
+   
+    Yob = StringField(Markup('<b>Taliki yamavuko</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza itariki y'amavuko"})
+    Committee = SelectField(
+        Markup('<b>Committee</b>'),
+        choices=[('Nyabozi', 'Nyobozi'), ('Ngenzuzi', 'Ngenzuzi')])
+   
+    Position = StringField(Markup('<b>Umwanya</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza umwanya w'umukozi"})
+    Education = StringField(Markup('<b>Amashuri</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza amashuri y'umukozi"})
+    
+    Telephone = StringField(Markup('<b>No Telephone</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza nomero ya telephone"})
+    Email = StringField(Markup('<b>Email</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Email"})
+    monthlyNetSalary = StringField(Markup('<b>Umushahara ku kwezi</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza umushahara w'ukwezi"})
+    submit = SubmitField('Emeza')
 

@@ -4,6 +4,8 @@
 {% block body %}
   <div class="container-fluid">
     {{ utils.flashed_messages() }}
+
+      <!--
       <div class="row">
         <div class="col-md-12">
             <div class="tab-content">
@@ -16,6 +18,10 @@
                                     <h3><b>Ibirarane</b></h3>
                                 </div>
                                 <div class="col-md-8 text-right">
+
+
+
+
                                     <!--<a href="{{ url_for('aicos_stock_managment.injizaKonte') }}" class="btn btn-outline-primary">
                                       <i class="fa fa-user-plus"> Injiza Konte</i>
                                     </a>
@@ -24,6 +30,14 @@
                                       <i class="fa fa-upload"> Injiza list</i>
                                     </a>
                                     -->
+
+
+
+
+
+
+
+               <!--                     
                 </div>
                             </div>
                         </div>
@@ -136,5 +150,150 @@
     <div class="col-md-12">
       
     </div>
+    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h4 class="mb-3">Ibirarane mu myaka itandukanye </h4>
+                      <canvas id="team-chart"></canvas>
+                  </div>
+              </div>
+          </div><!-- /# column -->
+
+          <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="h3 card-title">
+                                <span class="ti-angle-double-right"></span> Ibirarane</strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                          <th>Amazina</th>
+                                          <th>Umusoro w'akarere</th>
+                                          <th>Umusanzu wa koperative</th>
+                                          <th>Ikigega</th>
+                                          <th>Kuziba Icyuho</th>
+                                          <th>Injiza</th>
+                                          <th>Ibindi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if employees %}
+                                            {% for member in employees %}
+                                                  <tr>
+                                                    <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira}} </td>
+                                                    <td>
+                                                      {% if member.ibirarane %}
+                                                          {% for ibi in member.ibirarane %}
+                                                              {% if ibi.member_id == member.id %}
+                                                                  {% if loop.last %}
+                                                                      {{ ibi.IdeniAmount }}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                          {% endfor %}
+                                                      {% endif %}
+                                                    </td>
+                                                    <td>
+                                                      {% if member.ibirarane %}
+                                                          {% for ibi in member.ibirarane %}
+                                                              {% if ibi.member_id == member.id %}
+                                                                  {% if loop.last %}
+                                                                      {{ ibi.DAP * ibi.DAPPerUnity}}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                          {% endfor%}
+                                                      {% endif %}
+                                                    </td>
+                                                    <td>
+                                                      {% if member.ibirarane %}
+                                                          {% for ibi in member.ibirarane %}
+                                                              {% if ibi.member_id == member.id %}
+                                                                  {% if loop.last %}
+                                                                      {{ ibi.KCL * ibi.KCLPerUnity}}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                          {% endfor%}
+                                                      {% endif %}
+                                                    </td>
+                                                    <td>
+                                                      {% if member.ibirarane %}
+                                                          {% for ibi in member.ibirarane %}
+                                                              {% if ibi.member_id == member.id %}
+                                                                  {% if loop.last %}
+                                                                      {{ ibi.NPKkg * ibi.NPKPerUnity }}
+                                                                  {% endif %}
+                                                              {% endif %}
+                                                          {% endfor%}
+                                                      {% endif %}
+                                                    </td>
+                                                    <td>
+                                                    <span class="badge badge-success">
+                                                      <b>
+                                                      <a href="{{ url_for('aicos_stock_managment.injizaIbirarane', id=member.id) }}" style="color:white; font-size: 12px;">
+                                                        <i class="fa fa-plus"></i> Injiza
+                                                      </a>
+                                                      </b>
+                                                    </td>
+                                                    <td> 
+                                                    <span class="badge badge-info">
+                                                    <b>
+                                                    <a href="#" style="color:white; font-size: 12px;">
+                                                    <i class="fa fa-eye"></i>
+                                                      ibindi
+                                                    </a>
+                                                    </b>
+                                                    </span>
+                                                    </td>
+                                                  </tr>
+                                            {% endfor %}
+                                      {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
     </div>
  {% endblock %}

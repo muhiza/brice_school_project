@@ -482,6 +482,77 @@ def add_staff(*args, **kwargs):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+# The view to list all staff Views
+@aicos_members.route('/committees')
+@login_required
+def list_committees():
+    check_admin()
+    """
+    List all roles
+    """
+    committees = Committee.query.filter_by(department_id=current_user.email)
+    return render_template('roles/committees.html',
+                           committees=committees, title='Committees')
+
+
+# Function for adding new role
+@aicos_members.route('/committee/add', methods=['GET', 'POST'])
+@login_required
+def add_committee(*args, **kwargs):
+    """
+    Add a role to the database
+    """
+    check_admin()
+    add_staff = True
+    form = ComForm()
+    if form.validate_on_submit():
+        committee = Committee(
+
+                      first_name=form.firstName.data,
+                      last_name=form.lastName.data,
+                      nid=form.Nid.data,
+                      district=form.District.data,
+                      sector=form.Sector.data,
+                      sex=form.Sex.data,
+                      yob=form.Yob.data,
+                      committee=form.Committee.data,
+                      position=form.Position.data,
+                      education=form.Education.data,
+                      telephone=form.Telephone.data,
+                      email=form.Email.data,
+                      monthly_net_salary=form.monthlyNetSalary.data,
+                      department_id = current_user.email
+                      )
+        try:
+            # add role to the database
+            db.session.add(committee)
+            db.session.commit()
+            flash('You have successfully added a new committe member.')
+        except:
+            # in case role name already exists
+            flash('Error: Staff name already exists.')
+        # redirect to the roles page
+        return redirect(url_for('aicos_members.list_committees'))
+    # load role template
+    return render_template('roles/committee.html', add_staff=add_staff,
+                           form=form, title='Add Role')
+
+
+    
+
+
 # The view to list all role Views
 @aicos_members.route('/activities')
 @login_required

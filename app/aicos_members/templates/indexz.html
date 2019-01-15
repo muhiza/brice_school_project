@@ -12,8 +12,6 @@
     } );
 
     </script>
-
-
       <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -51,39 +49,26 @@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#messages11" role="tab" aria-controls="messages"><i class="icon icon-energy"></i> Ubumuga </a>
                         </li>
-
-
-
                     </ul>
-
                     <div class="tab-content">
                         <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false">
-                    <div class="card">
+                    <div class="card"><br>
                         <div class="card-header bg-light">
                             {{ utils.flashed_messages(dismissible=True) }}
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h3><b>Abanyamuryango bose</b></h3>
+                                    <h3>Abanyamuryango bose</h3>
                                     </div>
                                     <div class="col-md-8 text-right">
                                     <button class="btn btn-outline-primary">
                                     <a href="{{ url_for('aicos_members.AddNewMember') }}">
-                                    <i class="fa fa-user-plus"> Injiza umunyamuryango</i></a></button>
-
+                                    <i class="fa fa-user-plus"> Injiza </i></a></button>
 
                                     <button class="btn btn-outline-secondary">
                                     <a href="{{ url_for('aicos_members.doimportmbs') }}">
                                     <i class="fa fa-upload"> Injiza list</i></a></button>
 
-
-
-                                    <button class="btn btn-outline-info">
-                                    <a href="{{ url_for('aicos_acc.newBill') }}">
-                                    <i class="fa fa-list"> List y'abanyamuryango</i></a></button>
-
-
-
-                                    <a href="{{ url_for('aicos_members.invite_members') }}" class="btn btn-success">
+                                    <a href="{{ url_for('aicos_members.invite_members') }}" class="btn btn-primary">
                                     <i class="fa fa-envelope"> </i>
                                     Invite
                                     </a>
@@ -94,75 +79,41 @@
                             </div>
 
 
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
 
-                              <table id="dt-tablex" class="table table-striped" cellspacing="0" width="100%">
-                                      <thead>
-                                          <tr>
-                                              <th>Izina Ribanza</th>
-                                              <th>Irikurikira</th>
-                                              <th>Akarere</th>
-                                              <th>Umurenge</th>
-                                              <th>Akagari</th>
-                                              <th>Zone</th>
-                                              <th>Itsinda</th>
-                                              <th>Ibindi</th>
-                                          </tr>
-                                      </thead>
-                                      <tfoot>
-                                          <tr>
-                                              <th>Izina Ribanza</th>
-                                              <th>Irikurikira</th>
-                                              <th>Akarere</th>
-                                              <th>Umurenge</th>
-                                              <th>Akagari</th>
-                                              <th>Zone</th>
-                                              <th>Itsinda</th>
-                                              <th>Ibindi</th>
-                                          </tr>
-                                      </tfoot>
-                                      <tbody>
-                                      {% if employees %}
-                                            {% for employee in employees %}
-                                                  <tr>
-                                                    <td> {{ employee.izina_ribanza }} </td>
-                                                    <td> {{ employee.izina_rikurikira }} </td>
-                                                    <td> {{ employee.Akarere }} </td>
-                                                    <td> {{ employee.Umurenge }} </td>
-                                                    <!--
-                                                    <td>
-                                                      {% if employee.role %}
-                                                      <span class="label label-info">{{ employee.role.name }}</span>
-                                                      {% else %}
-                                                        Umunyamuryango
-                                                      {% endif %}
-                                                    </td>
-                                                    -->
-                                                    <td>{{ employee.Akagari }}</td>
-                                                    <td> {{ employee.zone }} </td>
-                                                    <td> {{ employee.itsinda }} </td>
-                                                    <td> 
-                                                    <span class="badge badge-info">
-                                                    <b>
-                                                    <a href="{{ url_for('aicos_members.memberDetails', id=employee.id) }}" style="color:white; font-size: 12px;">
-                                                    <i class="fa fa-eye"></i>
-                                                      Ibindi
-                                                    </a>
-                                                    </b>
-                                                    </span>
-                                                    <!--
-                                                    Trying out to use modal here
-                                                    <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
-                                                    -->
-                                                    </td>
-                                                  </tr>
+                    <div class="col-md-12">
+
+
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Amazina</th>
+                                            <th>Zone</th>
+                                            <th>Itsinda</th>
+                                            <th>Ibindi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if employees %}
+                                            {% for emp in employees %}
+                                                <tr>
+                                                    <td>{{ emp.izina_ribanza }} {{ emp.izina_rikurikira }}</td>
+                                                    <td>{{ emp.zone }}</td>
+                                                    <td>{{ emp.itsinda }}</td>
+                                                    <td><a href="#" class="btn btn-sm btn-success">ibindi</a></td>
+                                                </tr>
                                             {% endfor %}
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                            {% else %}
 
-                                                  <h3>Hello Friday</h3>
-                                      {% endif %}
-                                      </tbody>
-                                  </table> 
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
                                   <br><br><br>
 
 
@@ -243,7 +194,7 @@
                                                 </div>
                                             </div>
                                         </div>
-<table id="example1" class="display" cellspacing="0" width="100%">
+<table id="example10" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -273,10 +224,10 @@
         {% if employees_male %}
               {% for employee in employees_male %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -347,7 +298,7 @@
                                                 </div>
                                             </div>
                                         </div>
-<table id="example2" class="display" cellspacing="0" width="100%">
+<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -377,10 +328,10 @@
         {% if employees_female %}
               {% for employee in employees_female %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -468,7 +419,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                         <table id="example3" class="display nowrap" cellspacing="0" width="100%">
+                         <table id="example3" class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -498,10 +449,10 @@
         {% if employees_female %}
               {% for employee in employees_female %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -544,9 +495,6 @@
                     </tr>
               {% endfor %}
 
-              {% else %}
-
-                    <h3>Hello Friday</h3>
         {% endif %}
         </tbody>
     </table>
@@ -580,7 +528,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                         <table id="example9" class="display nowrap" cellspacing="0" width="100%">
+                         <table id="example9" class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -610,10 +558,10 @@
         {% if applications %}
               {% for employee in applications %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -656,9 +604,16 @@
                     </tr>
               {% endfor %}
 
-              {% else %}
-
-                    <h3>Hello Friday</h3>
+        {% else %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>No data found</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
         {% endif %}
         </tbody>
     </table>
@@ -761,7 +716,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="homeEducation" role="tabpanel">
                         <h4><b> Abanyamuryango batageze mw'ishuri </b></h4>
-                         <table id="example10" class="display nowrap" cellspacing="0" width="100%">
+                         <table id="example10" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -791,10 +746,10 @@
         {% if employees_abatarize %}
               {% for employee in employees_abatarize %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -866,7 +821,7 @@
 
                         <div class="tab-pane" id="profileEducation" role="tabpanel">
                         <h4><b> Abanyamuryango barangije amashuri abanza </b></h4>
-            <table id="example11" class="display nowrap" cellspacing="0" width="100%">
+            <table id="example11" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -896,10 +851,10 @@
         {% if employees_abanza %}
               {% for employee in employees_abanza %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -953,7 +908,7 @@
 
     <div class="tab-pane" id="messagesEducation" role="tabpanel">
               <h4><b> Abanyamuryango barangije amashuri y'isumbuye </b></h4>
-                <table id="example12" class="display nowrap" cellspacing="0" width="100%">
+                <table id="example12" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -983,10 +938,10 @@
         {% if employees_ayisumbuye %}
               {% for employee in employees_ayisumbuye %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1031,8 +986,6 @@
               {% endfor %}
 
               {% else %}
-
-                    <h3>Hello Friday</h3>
         {% endif %}
         </tbody>
     </table>
@@ -1041,13 +994,10 @@
 
 
 
-
-
-
                         <div class="tab-pane" id="messages1Education" role="tabpanel">
 
                         <h4><b> Abanyamuryango barangije kaminuza </b></h4>
-                                                   <table id="example13" class="display nowrap" cellspacing="0" width="100%">
+                                                   <table id="example13" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1077,10 +1027,10 @@
         {% if employees_kaminuza %}
               {% for employee in employees_kaminuza %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1138,7 +1088,7 @@
 
                     <div class="tab-pane" id="messages2Education" role="tabpanel">
                         <h4><b> Abanyamuryango bize imyuga </b></h4>
-                                                   <table id="example14" class="display nowrap" cellspacing="0" width="100%">
+                                                   <table id="example14" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1168,10 +1118,10 @@
         {% if employees_imyuga %}
               {% for employee in employees_imyuga %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1363,7 +1313,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="homeUbumuga" role="tabpanel">
                         <h4><b> Abanyamuryango bafite ubumuga bw'Amaguru </b></h4>
-                         <table id="ubumuga1" class="display nowrap" cellspacing="0" width="100%">
+                         <table id="ubumuga1" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1393,10 +1343,10 @@
         {% if employees_amaguru %}
               {% for employee in employees_amaguru %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1441,7 +1391,6 @@
 
               {% else %}
 
-                    <h3>Hello Friday</h3>
         {% endif %}
         </tbody>
     </table>
@@ -1461,7 +1410,7 @@
 
                         <div class="tab-pane" id="profileUbumuga" role="tabpanel">
                         <h4><b> Abanyamuryango bafite ubumuga bw'Amaboko </b></h4>
-            <table id="ubumuga2" class="display nowrap" cellspacing="0" width="100%">
+            <table id="ubumuga2" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1491,10 +1440,10 @@
         {% if employees_amaboko %}
               {% for employee in employees_amaboko %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1547,7 +1496,7 @@
 
                         <div class="tab-pane" id="messagesUbumuga" role="tabpanel">
                         <h4><b> Abanyamuryango bafite ubumuga bwo kutabona </b></h4>
-                                                   <table id="ubumuga3" class="display nowrap" cellspacing="0" width="100%">
+         <table id="ubumuga3" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1577,10 +1526,10 @@
         {% if employees_kutabona %}
               {% for employee in employees_kutabona %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1625,7 +1574,6 @@
 
               {% else %}
 
-                    <h3>Hello Friday</h3>
         {% endif %}
         </tbody>
     </table>
@@ -1638,7 +1586,7 @@
                         <div class="tab-pane" id="messages1Ubumuga" role="tabpanel">
 
                         <h4><b>Abanyamuryango bafite ubumuga bwo kutumva </b></h4>
-                                                   <table id="ubumuga4" class="display nowrap" cellspacing="0" width="100%">
+        <table id="ubumuga4" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1668,10 +1616,10 @@
         {% if employees_kutumva %}
               {% for employee in employees_kutumva %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.Sector }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Umurenge }} </td>
+                      <td> {{ employee.Akagari }} </td>
 
                       <td>
                         {% if employee.role %}
@@ -1731,7 +1679,7 @@
 
                     <div class="tab-pane" id="messages2Ubumuga" role="tabpanel">
                         <h4><b> Abanyamuryango bafite ubumuga bwo mu mutwe </b></h4>
-                                                   <table id="ubumuga5" class="display nowrap" cellspacing="0" width="100%">
+         <table id="ubumuga5" class="display nowrap table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -1808,8 +1756,7 @@
               {% endfor %}
 
               {% else %}
-
-                    <h3>Hello Friday</h3>
+              
         {% endif %}
         </tbody>
     </table>

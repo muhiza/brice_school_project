@@ -28,7 +28,6 @@ subs = db.Table('subs',
 """
 
 
-
 class Employee(UserMixin, db.Model):
 	"""
 	Create an Employee table
@@ -249,7 +248,7 @@ class Department(db.Model):
 
 	files       = db.relationship('File', backref='department', lazy='dynamic')
 	BankAccounts        = db.relationship('BankAccount', backref='department', lazy='dynamic')
-	loans       = db.relationship('Loan', backref='department', lazy='dynamic')    
+	loans       = db.relationship('Loan', backref='department', lazy='dynamic')
 	notifications       = db.relationship('Notification', backref='department', lazy='dynamic')
 	intekoRusange       = db.relationship('intekoRusange', backref='department', lazy='dynamic')
 	inamaUbuyobozi       = db.relationship('inamaUbuyobozi', backref='department', lazy='dynamic')
@@ -259,12 +258,12 @@ class Department(db.Model):
 
 	#Dealing with excel staff here.
 
-	""" We will always use this __init__ function to upload excel file  
+	""" We will always use this __init__ function to upload excel file
 	def __init__(self, email):
 		self.id = id
 		self.email = email
 	"""
-	
+
 	""" That in btn """
 		#self.description = description
 		#self.employees   = employees
@@ -420,7 +419,7 @@ class Project(db.Model):
 	description = db.Column(db.String(200))
 	starting_date = db.Column(db.String(200))
 	ending_date = db.Column(db.String(200))
-	
+
 	description = db.Column(db.String(200))
 	duration    = db.Column(db.String(200))
 	employees   = db.relationship('Employee', backref='project', lazy='dynamic')
@@ -645,6 +644,7 @@ class Member(db.Model):
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
 
 
+
 	""" We will always use this __init__ function to upload excel file  """
 	def __init__(self, sno):
 		self.id = id
@@ -654,7 +654,7 @@ class Member(db.Model):
 	"""
 	Importing data using this views.
 	================================
-	
+
 	def __init__(self, firstName, secondName, others, District, Sector, Cell, nId, entryDate, share,
 						exitDate, umuzungura, umukono, gender, dob, phone, Amashuri, Ubumuga,
 						dl, plate, owner, ownerPhone,
@@ -690,7 +690,7 @@ class Member(db.Model):
 	"""
 	def __repr__(self):
 		return '<Member: {}>'.format(self.izina_rikurikira)
-	
+
 
 class Moto(db.Model):
 
@@ -728,7 +728,53 @@ class Notification(db.Model):
 
 	def __repr__(self):
 		return '<Notification: {}>'.format(self.name)
-	
+
+
+
+
+
+
+
+
+
+
+
+class Committee(db.Model):
+	"""
+	Create a Role table
+	"""
+
+	__tablename__ = 'committees'
+
+	id = db.Column(db.Integer, primary_key=True)
+	first_name = db.Column(db.String(60))
+	last_name = db.Column(db.String(60))
+	nid = db.Column(db.String(60))
+	district = db.Column(db.String(60))
+	sector = db.Column(db.String(60))
+	sex = db.Column(db.String(60))
+	yob = db.Column(db.String(60))
+	committee = db.Column(db.String(60))
+	position = db.Column(db.String(60))
+	education = db.Column(db.String(60))
+	telephone = db.Column(db.String(60))
+	email = db.Column(db.String(60))
+	monthly_net_salary = db.Column(db.String(60))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+
+	"""
+	#Dealing with excel staff here.
+	def __init__(self,name):
+		self.id = id
+		self.name = name
+		#self.description = description
+		#self.employees   = employees
+	"""
+
+	def __repr__(self):
+		return '<Committee: {}>'.format(self.first_name)
+
 
 
 
@@ -739,7 +785,7 @@ class Notification(db.Model):
 class Decision(db.Model):
 
 	__tablename__ = "decisions"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	status = db.Column(db.String(200))
 	decision = db.Column(db.String(200))
@@ -766,7 +812,7 @@ class Decision(db.Model):
 class Report(db.Model):
 
 	__tablename__ = "reports"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	status = db.Column(db.String(200))
 	project = db.Column(db.String(200))
@@ -793,7 +839,7 @@ class Report(db.Model):
 class Howto(db.Model):
 
 	__tablename__ = "howtos"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	name = db.Column(db.String(200))
 	labels = db.Column(db.String(200))
@@ -813,7 +859,7 @@ class Howto(db.Model):
 class Link(db.Model):
 
 	__tablename__ = "links"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	link = db.Column(db.String(200))
 	title = db.Column(db.String(200))
@@ -831,7 +877,7 @@ class Link(db.Model):
 class File(db.Model):
 
 	__tablename__ = "files"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 
 	name = db.Column(db.String(200))
@@ -854,7 +900,7 @@ class File(db.Model):
 class Communication(db.Model):
 
 	__tablename__ = "communications"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	message = db.Column(db.String(200))
 	ms_from = db.Column(db.String(200))
@@ -871,7 +917,7 @@ class Communication(db.Model):
 class Contribution(db.Model):
 
 	__tablename__ = "contributions"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	owner = db.Column(db.String(200))
 	contributionFor = db.Column(db.String(200))
@@ -895,7 +941,7 @@ class Contribution(db.Model):
 class BankAccount(db.Model):
 
 	__tablename__ = "bankaccounts"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	memberId = db.Column(db.String(200))
 	memberName = db.Column(db.String(200))
@@ -915,7 +961,7 @@ class BankAccount(db.Model):
 class Loan(db.Model):
 
 	__tablename__ = "loans"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	memberId = db.Column(db.String(200))
 	memberName = db.Column(db.String(200))
@@ -955,7 +1001,7 @@ class Loan(db.Model):
 class fixedDepositAccount(db.Model):
 
 	__tablename__ = "fixeddepositaccounts"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	memberId = db.Column(db.String(200))
 	memberName = db.Column(db.String(200))
@@ -982,7 +1028,7 @@ class fixedDepositAccount(db.Model):
 class Transaction(db.Model):
 
 	__tablename__ = "transactions"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	bankAccountNumber = db.Column(db.String(200))
 	memberName = db.Column(db.String(200))
@@ -1008,7 +1054,7 @@ class Transaction(db.Model):
 class Share(db.Model):
 
 	__tablename__ = "shares"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	memberId = db.Column(db.String(200))
 	shareAccNo = db.Column(db.String(200))
@@ -1032,7 +1078,7 @@ class Share(db.Model):
 class Installment(db.Model):
 
 	__tablename__ = "installments"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	memberId = db.Column(db.String(200))
 	loanId = db.Column(db.String(200))
@@ -1075,7 +1121,7 @@ class Payment(db.Model):
 class intekoRusange(db.Model):
 
 	__tablename__ = "intekorusange"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	status1 = db.Column(db.String(200))
 	decision1 = db.Column(db.String(200))
@@ -1098,7 +1144,7 @@ class intekoRusange(db.Model):
 class inamaUbuyobozi(db.Model):
 
 	__tablename__ = "inamaubuyobozi"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	status = db.Column(db.String(200))
 	decision = db.Column(db.String(200))
@@ -1119,7 +1165,7 @@ class inamaUbuyobozi(db.Model):
 class Ubugenzuzi(db.Model):
 
 	__tablename__ = "ubugenzuzi"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	status = db.Column(db.String(200))
 	decision = db.Column(db.String(200))
@@ -1142,7 +1188,7 @@ class Ubugenzuzi(db.Model):
 class Isanduku(db.Model):
 
 	__tablename__ = "isanduku"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	no = db.Column(db.String(200))
 	done_date = db.Column(db.String(200))
@@ -1167,7 +1213,7 @@ class Isanduku(db.Model):
 class Umusaruro(db.Model):
 
 	__tablename__ = "umusaruro"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	Amazina = db.Column(db.String(200))
 	Taliki = db.Column(db.String(200))
@@ -1192,7 +1238,7 @@ class Umusaruro(db.Model):
 class Goal(db.Model):
 
 	__tablename__ = "goals"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	name = db.Column(db.String(200))
 	Description = db.Column(db.String(200))
@@ -1212,7 +1258,7 @@ class Goal(db.Model):
 class ibitaboByaBank(db.Model):
 
 	__tablename__ = "ibitabobyabanks"
-	
+
 	id = db.Column(db.Integer, primary_key=True, unique=True)
 	no = db.Column(db.String(200))
 	date = db.Column(db.String(200))
@@ -1308,7 +1354,7 @@ class Umusaruro(db.Model):
 """
 class Inyongeramusaruro(db.Model):
 	docstring for Inyongeramusaruro
-	
+
 	__tablename__ = "inyongeramusaruro"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	amazina = db.Column(db.String(200))
@@ -1354,7 +1400,7 @@ class Ibyakoreshejwe(db.Model):
 
 	def __repr__(self):
 		return '<Ibyakoreshejwe: {}>'.format(self.id)
-		
+
 class CoopMemberBankAccounts(db.Model):
 	"""docstring for CoopMemberBankAccounts"""
 	__tablename__ = "coopMemberBankAccounts"
@@ -1570,7 +1616,7 @@ class Ibindi(db.Model):
 	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
 	done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-	
+
 	def __repr__(self):
 		return '<Ibindi: {}>'.format(self.id)
 

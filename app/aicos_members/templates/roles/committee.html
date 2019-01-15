@@ -1,0 +1,59 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "members_base.html" %}
+{% block title %}
+    {% if add_department %}
+        Add Role
+    {% else %}
+        Edit Role
+    {% endif %}
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card bg-light"><br>
+                <div class="row">
+                <div class="col-md-6">
+
+            {% if add_role %}
+                <div class="card-header bg-light">
+                <h3>Injiza ugize Committee ya Koperative</h3>
+                </div>
+            {% else %}
+                <div class="card-header bg-light">
+                <h3>Injiza ugize Committee ya Koperative</h3>
+                </div>
+            {% endif %}
+            </div>
+            </div>
+            </div>
+                <div class="card-body">
+                {{ wtf.quick_form(form, form_type='basic', button_map={'submit': 'info'}) }}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="col-md-4">
+      <div class="card">
+            <div class="card bg-info"><br>
+            <strong><h3 style="color: #fff;">&nbsp;  <i class="fa fa-info-circle"></i> Ibyerekeye Committee </h3> </strong>
+            </div>
+            <div class="card-body">
+            <p>
+                <i> Iyi pagi igufasha kubika amakuru yerekeye abakozi bashya n'abasanzwe ba <b> Koperative. </b> Umukozi ni umuntu uwo ariwe wese wishyurwa na <b> Koperative. </b><br><br> Usabwe gakoreshwa amakuru nyayo. </i></p>
+            <br>
+            </div>
+     </div>
+    </div>
+
+
+  </div>
+</div>
+{% endblock %}

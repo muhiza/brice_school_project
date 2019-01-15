@@ -1,230 +1,519 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "members_base.html" %}
-{% block head %}
-{{ super() }}
-<style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-    body{       
-        background: #e6e6e6;
-        background: -webkit-linear-gradient(to right, #e6e6e6); 
-        background: linear-gradient(to right, #e6e6e6);
-        font-family: 'Quicksand', sans-serif;
-    }
-
-</style>
-{% endblock %}
     {% block body %}
-      <div class="container-fluid">
-        <div class="all-content" style="background-color: #e6e6e6; padding-top: 2%; padding-right: 2%; padding-left: 2%; border: 1px solid #f2f2f2;">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card p-4">
-                    <a href="{{ url_for('aicos_members.aicos_members_home') }}">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    {{ employees_count }}
-                                </span>
-                                <span class="font-weight-light" id="links"><strong><b>Abanyamuryango</b></strong></span>
-                            </div>
-
-                            <div class="h2 text-muted">
-                                <h1><i class="fa fa-users" style="color: #449D44; font-size: 35px;" id="icon-dashboard"></i></h1>
-                            </div>
-                        </div>
-                        <div class="mt-4">
-                            <div class="progress" style="margin-top: -30px;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: {{ employees_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                      </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        
-                    <a href="{{ url_for('aicos_members.aicos_members_home') }}">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    {{ employees_male_count }}
-                                </span>
-
-
-
-                                <span class="font-weight-light"><strong><b>Igitsina gabo</b></strong></span>
-                            </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-male" style="color: #31B0D5; font-size: 35px;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ employees_male_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <a href="#">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                        {{ employees_female_count }}
-                                    </span>
-                                    <span class="font-weight-light" id="links"><strong><b>Igitsina gole</b></strong></span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-female" style="color: #EC971F; font-size: 35px;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4" >
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ employees_female_count }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <a href="#">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                        00
-                                    </span>
-                                    <span class="font-weight-light" id="links">
-                                        <strong><b>Urubyiruko</b></strong></span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <h1><i class="fa fa-user" style="color: #286090;" id="icon-dashboard"></i></h1>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <div class="progress" style="margin-top: -30px;">
-                                    <div class="progress-bar bg-dark" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number"><strong>
-                                    <b> 000 </b></strong></span>
-                                <span class="font-weight-light" id="links"> <strong><b>Raporo za SACCO</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links">
-                                    <strong><b>Raporo/Uruganda</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links"><strong><b>Ubutumwa</b></strong></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body p-5">
-                            <div class="text-center">
-                                <span class="h4 d-block font-weight-normal mb-2" id="card-number">
-                                    <strong><b>000</b></strong></span>
-                                <span class="font-weight-light" id="links"><strong><b>Ibyakozwe</b></strong></span>
-                            </div>
-                        </div>
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-3 col-md-6">
+        <a href="{{ url_for('aicos_members.aicos_members_home') }}">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-id-badge text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Abanyamuryango</div>
+                        <div class="stat-digit">Total: {% if employees_count %} {{ employees_count }} {% else %} 0 {% endif %}</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><br />
-    <div class="container-fluid">
-        <div class="all-logs" style="background-color: #e6e6e6; padding-top: 2%; padding-bottom: 2%; padding-right: 2%; padding-left: 2%; border: 1px solid #f2f2f2;">
-          <h2 class="sub-header">Amakuru y'ibyakozwe</h2>
-          <div class="table-responsive">
-             <table id="memberLogs" class="display" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>Igikorwa</th>
-                            <th>Uwagikoze</th>
-                            <th>Mudasobwa ye</th>
-                            <th>Itariki</th>
-                            <th>Igihe</th>
-                            <th>Ibindi</th>
-                            <th>Options</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Igikorwa</th>
-                            <th>Uwagikoze</th>
-                            <th>Mudasobwa ye</th>
-                            <th>Itariki</th>
-                            <th>Igihe</th>
-                            <th>Ibindi</th>
-                            <th>Options</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        {% if notes %}
-                            {% for notification in notes %}
-                                <tr>
-                                  <td> {{ notification.action | truncate(8) }} </td>
-                                  <td> {{ notification.done_by }} </td>
-                                  <td> {{ notification.done_from }} </td>
-                                  <td> {{ notification.done_date }} </td>
-                                  <td> {{ notification.done_time }} </td>
-
-                                  <td> 
-                                      <a href="#">
-                                      <i class="fa fa-eye"> </i>Details 
-                                      </a>
-                                  </td>
-
-                                  <td> 
-                                    <a href="#">
-                                    <i class="fa fa-book"></i>More 
-                                    </a>
-                                  </td>
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        </a>
     </div>
-{% endblock %}
+
+    <div class="col-lg-3 col-md-6">
+        <a href="{{ url_for('aicos_stock_managment.dashboard') }}">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-shopping-cart-full text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Stock</div>
+                        <div class="stat-digit">Total: 961</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-warning border-warning"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Ibyakoreshejwe</div>
+                        <div class="stat-digit">Total: 770</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-link text-danger border-danger"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Inguzanyo</div>
+                        <div class="stat-digit">Total: 2,781</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-server text-info"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Ibihano</div>
+                            <div class="stat-text">Total: 765</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-email text-warning"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Ubutumwa</div>
+                            <div class="stat-text">Total: 24720</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-stats-up text-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Stock</div>
+                            <div class="stat-text">Total: 58,714</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-files text-success"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Raporo</div>
+                            <div class="stat-text">Total: 4TB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-direction-alt text-secondary"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Zones</div>
+                            <div class="stat-text">Total: 765</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-layout-list-thumb-alt text-primary"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Amatsinda</div>
+                            <div class="stat-text">Total: 24720</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-wallet text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Ubwizigame</div>
+                            <div class="stat-text">Total: 58,714</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="{{ url_for('aicos_req.accountingBooks') }}">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-pulse text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Accounting Books</div>
+                            <div class="stat-text">Total: 4TB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+    <a href="{{ url_for('aicos_req.governanceBooks') }}">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-folder text-info border-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Governance Books</div>
+                            <div class="stat-text">Total: 765</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-book text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Legal Books</div>
+                            <div class="stat-text">Total: 24720</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-arrow-up text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Planning Books</div>
+                            <div class="stat-text">Total: 58,714</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>  
+
+    <div class="col-lg-3 col-md-6">
+    <a href="#">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-notepad text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Special Reports</div>
+                            <div class="stat-text">Total: 4TB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+    <br><br>
+
+
+
+        <div class="row">
+        <div class="content mt-3">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4 class="card-title mb-0">Stock Changes</h4>
+                                <div class="small text-muted">October 2018</div>
+                            </div>
+                            <!--/.col-->
+                            <div class="col-sm-8 hidden-sm-down">
+                                <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
+                                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="options" id="option1"> Day
+                                        </label>
+                                        <label class="btn btn-outline-secondary active">
+                                            <input type="radio" name="options" id="option2" checked=""> Month
+                                        </label>
+                                        <label class="btn btn-outline-secondary">
+                                            <input type="radio" name="options" id="option3"> Year
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.col-->
+
+
+                        </div>
+                        <!--/.row-->
+                        <div class="chart-wrapper mt-4">
+                            <canvas id="trafficChart" style="height:200px;" height="200"></canvas>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <ul>
+                            <li>
+                                <div class="text-muted">Umuremure</div>
+                                <strong>29.703 (40%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Umugufi</div>
+                                <strong>24.093 (20%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-muted">Grade 1</div>
+                                <strong>78.706 (60%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Grade 2</div>
+                                <strong>22.123 (80%)</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Usigaye wose</div>
+                                <strong>40.15%</strong>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Ibice bihingwa</h4>
+                    </div>
+                    <div class="Vector-map-js">
+                        <div id="vmap" class="vmap" style="height: 265px;"></div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+    </div>
+    </div>
+
+    <!-- Right Panel -->
+    {% endblock %}
