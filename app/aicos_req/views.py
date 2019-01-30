@@ -427,7 +427,7 @@ def abishyuye():
 # Views for the Wide Cooperative Market.
 @aicos_req.route('/cooperatives/ibitaboBank')
 def bankIbitabo():
-    bankIbitaboList = ibitaboBank.query.all()
+    bankIbitaboList = ibitaboByaBank.query.all()
     return render_template('accountingBooks/ibitaboBank/ibitaboBankList.html', bankIbitaboList=bankIbitaboList)
 
 

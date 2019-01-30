@@ -34,7 +34,7 @@
 
 
 
-<table id="example" class="display" cellspacing="0" width="100%">
+<table id="example3" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -70,14 +70,14 @@
               {% for employee in employees %}
                     {% if employee.department.starting_share > 50000 %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.entryDate }} </td>
-                      <td> {{ employee.share }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Akarere }} </td>
+                      <td> {{ employee.tariki_yinjiriye }} </td>
+                      <td> {{ employee.umugabane_ukwezi }} </td>
                       <td> {{ employee.exitDate }} </td>
                       <td> {{ employee.umuzungura }} </td>
-                      <td> {{ employee.umukono }} </td>
+                      <td> {{ employee.Umukono }} </td>
 
                       <td> 
                       <span class="badge badge-info">
@@ -107,11 +107,7 @@
               {% endfor %}
             {% endif %}
         </tbody>
-    </table>  
-
-
-                      
-      <span class="label label-info"> Sawa </span>
+    </table> 
     <br><br><br>
 
 
@@ -180,7 +176,7 @@
 
                 </div>
 
-                        <div class="tab-pane active" id="profile4" role="tabpanel" aria-expanded="true">    
+                        <div class="tab-pane" id="profile4" role="tabpanel" aria-expanded="true">    
                                       <div class="card">
                                         <div class="card-header bg-light">
                                             <div class="row">
@@ -231,14 +227,14 @@
               {% for employee in employees %}
                     {% if (employee.share) != (employee.department.starting_share) %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.District }} </td>
-                      <td> {{ employee.entryDate }} </td>
-                      <td> {{ employee.share }} / {{ employee.department.starting_share }}  </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Akarere }} </td>
+                      <td> {{ employee.tariki_yinjiriye }} </td>
+                      <td> {{ employee.umugabane_ukwezi }} </td>
                       <td> {{ employee.exitDate }} </td>
                       <td> {{ employee.umuzungura }} </td>
-                      <td> {{ employee.umukono }} </td>
+                      <td> {{ employee.Umukono }} </td>
 
                       <td> 
                       <span class="badge badge-info">
@@ -288,7 +284,7 @@
                                         </div>
 
 
-<table id="example2" class="display" cellspacing="0" width="100%">
+<table id="example5" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
@@ -324,13 +320,14 @@
               {% for employee in employees %}
                     {% if employee.department.starting_share == 0 %}
                     <tr>
-                      <td> {{ employee.firstName }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.owner }} </td>
-                      <td> {{ employee.phone }} </td>
-                      <td> {{ employee.secondName }} </td>
-                      <td> {{ employee.owner }} </td>
-                      <td> {{ employee.phone }} </td>
+                      <td> {{ employee.izina_ribanza }} </td>
+                      <td> {{ employee.izina_rikurikira }} </td>
+                      <td> {{ employee.Akarere }} </td>
+                      <td> {{ employee.tariki_yinjiriye }} </td>
+                      <td> {{ employee.umugabane_ukwezi }} </td>
+                      <td> {{ employee.exitDate }} </td>
+                      <td> {{ employee.umuzungura }} </td>
+                      <td> {{ employee.Umukono }} </td>
                       <td>
                         {% if employee.role %}
                         <span class="label label-info">{{ employee.role.name }}</span>

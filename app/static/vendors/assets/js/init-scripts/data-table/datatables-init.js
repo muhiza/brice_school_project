@@ -9,10 +9,26 @@
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
     });
 
+    $('#bootstrap-data-table-one').DataTable({
+        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+    });
+
+    $('#bootstrap-data-table-two').DataTable({
+        lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+    });
+
+
     $('#bootstrap-data-table-export').DataTable({
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
     });
+
+
+    $('#bootstrap-data-table-export-one').DataTable({
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+    });
+
 
 	$('#row-select').DataTable( {
         initComplete: function () {
