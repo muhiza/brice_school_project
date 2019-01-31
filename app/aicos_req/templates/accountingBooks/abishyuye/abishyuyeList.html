@@ -79,7 +79,7 @@
                       <td> {{ employee.secondName }} </td>
                       <td> {{ employee.District }} </td>
                       <td> {{ employee.entryDate }} </td>
-                      <td> {{ employee.share }} </td>
+                      <td> {{ employee.umugabane_ukwezi }} </td>
                       <td> {{ employee.exitDate }} </td>
                       <td> {{ employee.umuzungura }} </td>
                       <td> {{ employee.umukono }} </td>
@@ -225,7 +225,7 @@
         <tbody>
         {% if employees %}
               {% for employee in employees %}
-                    {% if employee.department.starting_share < employee.share %}
+                    {% if employee.department.starting_share < 50000 %}
                     <tr>
                       <td> {{ employee.firstName }} </td>
                       <td> {{ employee.secondName }} </td>

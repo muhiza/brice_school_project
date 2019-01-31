@@ -86,10 +86,11 @@
                     <div class="col-md-12">
 
 
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Amazina</th>
+                                            <th>Izina Ribanza</th>
+                                            <th>Izina Rikurikira</th>
                                             <th>Zone</th>
                                             <th>Itsinda</th>
                                             <th>Ibindi</th>
@@ -99,10 +100,11 @@
                                         {% if employees %}
                                             {% for emp in employees %}
                                                 <tr>
-                                                    <td>{{ emp.izina_ribanza }} {{ emp.izina_rikurikira }}</td>
+                                                    <td>{{ emp.izina_ribanza }} </td>
+                                                    <td>{{ emp.izina_rikurikira }}</td>
                                                     <td>{{ emp.zone }}</td>
                                                     <td>{{ emp.itsinda }}</td>
-                                                    <td><a href="#" class="btn btn-sm btn-success">ibindi</a></td>
+                                                    <td><a href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}" class="badge badge-success">ibindi</a></td>
                                                 </tr>
                                             {% endfor %}
                                         {% endif %}
@@ -194,17 +196,16 @@
                                                 </div>
                                             </div>
                                         </div>
-<table id="example10" class="table table-striped table-bordered">
+<table id="bootstrap-data-table-one" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -213,11 +214,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -229,21 +228,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_members.assign_employee', id=employee.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Shyiraho
-                        </a>
-                        </b>
-                      </td>
+                      <td>{{ employee.zone }}</td>
+                      <td>{{ employee.itsinda }}</td>
                       <td> 
                       <span class="badge badge-info">
                       <b>
@@ -257,15 +243,6 @@
                       Trying out to use modal here
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
-                      </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
                       </td>
                     </tr>
               {% endfor %}
@@ -298,17 +275,16 @@
                                                 </div>
                                             </div>
                                         </div>
-<table id="example2" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="bootstrap-data-table-two" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Entry Date</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -317,11 +293,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-
-                <th>Umwanya</th>
-                <th>Entry Date</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -333,14 +307,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td> {{ employee.entryDate }} </td>
+                      <td>{{ employee.zone }}</td>
+                      <td> {{ employee.itsinda }} </td>
                       <td> 
                       <span class="badge badge-info">
                       <b>
@@ -354,15 +322,6 @@
                       Trying out to use modal here
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
-                      </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
                       </td>
                     </tr>
               {% endfor %}
@@ -419,17 +378,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                         <table id="example3" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                         <table id="bootstrap-data-table-twox" class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Izina Ribanza</th>
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -438,11 +396,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -454,21 +410,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_members.assign_employee', id=employee.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Shyiraho
-                        </a>
-                        </b>
-                      </td>
+                      <td>{{ employee.zone }}</td>
+                      <td>{{ employee.itsinda }}</td>
                       <td> 
                       <span class="badge badge-info">
                       <b>
@@ -482,15 +425,6 @@
                       Trying out to use modal here
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
-                      </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
                       </td>
                     </tr>
               {% endfor %}
@@ -535,10 +469,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -547,11 +480,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -563,22 +494,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_members.assign_employee', id=employee.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Shyiraho
-                        </a>
-                        </b>
-                      </td>
-                      <td> 
+                      <td>{{ employee.zone }}</td>
+                      <td>{{ employee.itsinda }}<td> 
                       <span class="badge badge-info">
                       <b>
                       <a href="{{ url_for('aicos_members.memberDetails', id=employee.id) }}" style="color:white; font-size: 12px;">
@@ -591,15 +508,6 @@
                       Trying out to use modal here
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
-                      </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
                       </td>
                     </tr>
               {% endfor %}
@@ -723,10 +631,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -735,11 +642,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -751,21 +656,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_members.assign_employee', id=employee.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Shyiraho
-                        </a>
-                        </b>
-                      </td>
+                      <td>{{ employee.zone}}</td>
+                      <td>{{ employee.itsinda }}</td>
                       <td> 
                       <span class="badge badge-info">
                       <b>
@@ -779,15 +671,6 @@
                       Trying out to use modal here
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
-                      </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
                       </td>
                     </tr>
               {% endfor %}
@@ -828,10 +711,9 @@
                 <th>Irikurikira</th>
                 <th>Umurenge</th>
                 <th>Akagari</th>
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </thead>
         <tfoot>
@@ -841,10 +723,9 @@
                 <th>Umurenge</th>
                 <th>Akagari</th>
 
-                <th>Umwanya</th>
-                <th>Shyiraho</th>
+                <th>Zone</th>
+                <th>Itsinda</th>
                 <th>Ibindi</th>
-                <th>Siba</th>
             </tr>
         </tfoot>
         <tbody>
@@ -856,22 +737,8 @@
                       <td> {{ employee.Umurenge }} </td>
                       <td> {{ employee.Akagari }} </td>
 
-                      <td>
-                        {% if employee.role %}
-                        <span class="label label-info">{{ employee.role.name }}</span>
-                        {% else %}
-                          Umunyamuryango
-                        {% endif %}
-                      </td>
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="{{ url_for('aicos_members.assign_employee', id=employee.id) }}" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Shyiraho
-                        </a>
-                        </b>
-                      </span>
-                      </td>
+                      <td>{{ employee.zone }}</td>
+                      <td>{{ employee.itsinda }}</td>
                       <td> 
                       <span class="badge badge-info">
                       <b>
@@ -886,22 +753,12 @@
                       <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
                       -->
                       </td>
-                      <td>
-                      <span class="badge badge-danger">
-                      <b>
-                      <a href="{{ url_for('aicos_members.delete_member', id=employee.id) }}" style="color:white; font-size: 12px;">
-                      <i class="fa fa-trash"></i> Siba
-                      </a>
-                      </b>
-                      </span>
-                      </td>
                     </tr>
               {% endfor %}
 
               {% else %}
-
-                    <h3>Hello Friday</h3>
-        {% endif %}
+              
+              {% endif %}
         </tbody>
     </table>
                         </div>

@@ -1,0 +1,32 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "req_base.html" %}
+
+    {% block body %}
+    	<div class="container-fluid">
+	    	<div class="col-md-8">
+	    		<div class="tab-content">
+	    			<div class="row" style="background-color: #f2f2f2; margin: 0px;">
+			            <div class="col-md-12" style="margin-top: 25px; margin-left: 10px; margin-bottom: 15px;">
+			            </div>
+			        </div>
+	                <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
+		                <form action="" method="post">
+		                    <div class="">
+		                    	{{ wtf.form_field(form.name) }}
+		                    </div>
+		                    <div class="">
+		                    	{{ wtf.form_field(form.description) }}
+		                    </div>
+		                    <div class="">
+		                    	{{ wtf.form_field(form.purpose) }}
+		                    </div>
+		                    <div class="">
+		                    	{{ form.submit(class="btn btn-success") }}
+		                    </div>
+		                    {{ form.csrf_token }}
+		                </form>
+	                </div>
+	            </div>
+	        </div>
+    	</div>
+    {% endblock %}
