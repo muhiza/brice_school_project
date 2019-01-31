@@ -471,3 +471,12 @@ def bankHistory():
 @aicos_req.route('/cooperatives/accountingBook/signatories')
 def signatories():
     return render_template('accountingBooks/bankHistory/signatories.html')
+
+@aicos_req.route('/cooperatives/amatsinda')
+def amatsinda():
+    return render_template('amatsinda/amatsinda.html')
+
+
+@aicos_req.route('cooperatives/amatsinda/koraitsinda')
+def koraItsinda():
+    return render_template('/amatsinda/koraitsinda.html')

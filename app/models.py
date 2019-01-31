@@ -1620,38 +1620,15 @@ class Ibindi(db.Model):
 	def __repr__(self):
 		return '<Ibindi: {}>'.format(self.id)
 
+""" adding amatsinda model """
 
-""" Books and Docs Related to Planning """
-
-"""
-class PlanningBookOne(db.Model):
-	__tablename__ = "planningBookOne"
+class Itsinda(db.Model):
+	__tablename__ = "amatsinda"
 	id = db.Column(db.Integer, primary_key = True)
-	outcome = db.Column(db.String(200))
-	integoNyamukuru = db.Column(db.String(200))
-	integoRusange = db.Column(db.String(200))
-	outputs = db.Column(db.String(200))
-	indicators = db.Column(db.String(200))
-	targets = db.Column(db.String(200))
-	activities = db.Column(db.String(200))
-	budgetFunds = db.Column(db.String(200))
-	sourceFunds = db.Column(db.String(200))
-	stakeholders = db.Column(db.String(200))
-	responsibilities = db.Column(db.String(200))
-	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	itsinda_name = db.Column(db.String(200))
+	description = db.Column(db.String(200))
+	purpose = db.Column(db.String(200))
 
-	def __repr__(self):
-		return '<PlanningBookOne: {}'.format(self.id)
-
-
-class PlanningBookTwo(db.Model):
-	__tablename__ = "planningBookTwo"
-	id = db.Column(db.Integer, primary_key = True)
-	iteguraRyishoramari = db.Column(db.String(200))
-	iteganyaRyimishinga = db.Column(db.String(200))
-	iteganyaRyifotoYumutungo = db.Column(db.String(200))
-
-"""
 
 
 
