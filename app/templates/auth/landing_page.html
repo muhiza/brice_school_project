@@ -1,152 +1,280 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>AICOS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/main.css') }}" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
-    <style type="text/css">
-        #card {
-            border: 1px solid white; 
-            width: 100%;
-            margin-top: 20px;
-        }
 
-        .btn {
-            background-color: #00a99d;
-            border-radius: 0;
-        }
-    </style>
-</head>
+    <!-- Bootstrap core CSS -->
+   
 
-<body>
-    <div class="container-fluid">
-    <div>
-        <nav class="navbar" style="margin: 0;">
-            <div class="logo">
-                <a href="{{ url_for('auth.login') }}"><img src="{{ url_for('static', filename='images/logos/aicos.png') }}"></a>
-            </div>
-            <div class="nav-wrapper">
-                <ul style="margin-top: 20px;">
-                    <li><a href="#" style="margin-top: 8px;">How it works</a></li>
-                    <li><a href="#" style="margin-top: 8px;">Features</a></li>
-                    <li><a href="#" style="margin-top: 8px;">Pricing</a></li>
-                    <li><a href="#" style="margin-top: 8px;">Contacts</a></li>
-                    <li><a href="{{ url_for('auth.login') }}" class="btn btn-md">Log in</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-        <div class="middle-container">
-            <div class="banner">
-                <img src="{{ url_for('static', filename='images/Banner.png') }}">
-            </div>
-            <div class="call-to-action">
-                <p class="main">Your digital Cooperative<br>Management System</p>
-                <p class="sub">AICOS is a platform that enables full tracked management<br /> of all the resources of cooperatives.</p>
-                <button class="call-btn"><a style="color: white; text-decoration: none;" href="{{ url_for('auth.login') }}">Try it for 30 days</a></button>
-                <div class="video">
-                    <iframe width="320" height="200" src="https://www.youtube.com/embed/90FL_bBE4mw" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <!-- Custom fonts for this template -->
+    
+    <link rel="stylesheet" href="https://blackrockdigital.github.io/startbootstrap-landing-page/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://blackrockdigital.github.io/startbootstrap-landing-page/vendor/simple-line-icons/css/simple-line-icons.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/vendor/css/bootstrap.min.css') }}" />
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/landing-page.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/landing-page.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">AICOS</a>
+        <a class="btn btn-default" href="{{ url_for('auth.login') }}">Sign In</a>
+      </div>
+    </nav>
+
+    <!-- Masthead -->
+    <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">AICOS is a SaaS platform that enables full tracked management of all the resources of cooperatives.</h1>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form>
+              <div class="form-row">
+                               </div>
+                <div class="col-12 col-md-3">
+                  
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="featured-section">
-           
+      </div>
+    </header>
+
+    <!-- Icons Grid -->
+    <section class="features-icons bg-light text-center">
+      <div class="container">
+      <h2 class="mb-5">Features...</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-users m-auto text-primary"></i>
+              </div>
+              <h3>Membership Managment</h3>
+              <p class="lead mb-0">AICOS allows cooperative to register all members on the system where they access to their records online.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="icon-layers m-auto text-primary"></i>
+              </div>
+              <h3>Stock Management</h3>
+              <p class="lead mb-0">AICOS come with a set of tools for tracking inventory levels, orders, sales and deliveries in Cooperative.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-chart-bar m-auto text-primary"></i>
+              </div>
+              <h3>Automatic Reporting</h3>
+              <p class="lead mb-0">Using AICOS, the users only needs to enter data as they come and AICOS handles the reporting behalf of the users Automatically.</p>
+            </div>
+          </div>
         </div>
-        <div class="services">
-            <div class="row">
-                <h1>Features</h1>
+
+
+
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-wallet m-auto text-primary"></i>
+              </div>
+              <h3>Expense Management</h3>
+              <p class="lead mb-0">AICOS allows cooperatives to track expenses as they occur, be it for land purchases or payments for services.</p>
             </div>
-            <div class="row" style="">
-                <div class="col-lg-4">
-                    <div id="card" style="">
-                        <div class="div-title"><h3>Membership Management</h3></div>
-                        <div>
-                            <img src="{{ url_for('static', filename='images/membership.png') }}" style="width: 80%; 40%;"/>
-                        </div>
-                    </div> 
-                </div>
-                <div class="col-lg-4">
-                    <div id="card">
-                        <div class="div-title"><h3>Financial Management</h3></div>
-                        <div>
-                            <img src="{{ url_for('static', filename='images/document-dollar.png') }}" style="width: 65%; height: 40%;margin-top: 20px;"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="card">
-                        <div class="div-title"><h3>Stock Management</h3></div>
-                        <div>
-                            <img class="responsive" src="{{ url_for('static', filename='images/stock.png') }}" style="width: 65%; height: 40%; margin-top: 20px;" />
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-money-check-alt m-auto text-primary"></i>
+              </div>
+              <h3>Loan Management</h3>
+              <p class="lead mb-0">For cooperatives that do internal lending, AICOS provides a platform for recording these loans.</p>
             </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-balance-scale m-auto text-primary"></i>
+              </div>
+              <h3>Penalty Management</h3>
+              <p class="lead mb-0">Cooperative can penalize members for issues such a late coming and this will be reflected on the members' statement</p>
+            </div>
+          </div>
         </div>
-        <div class="bottom-banner">
-            <div class="bottom-picture">
-                <img src="{{ url_for('static', filename='images/bottom.jpeg') }}">
-            </div>
-            <div class="bottom-content">
-                <p class="txt3">your digital cooperative<br>management system</p>
-                <button class="bottom-btn">Get a Demo</button>
-            </div>
+      </div>
+    </section>
+
+    <!-- Image Showcases -->
+    <section class="showcase">
+      <div class="container-fluid p-0">
+        <div class="row no-gutters"> 
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(https://raw.githubusercontent.com/muhiza/music/master/rich_features_1.png) "></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Available online &amp; Fully responsive</h2>
+            <p class="lead mb-0">AICOS is available online, 24/7 with a support team to assist the Cooperatives' staff and groups in utilizing the software</p>
+          </div>
         </div>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-nav">
+        <div class="row no-gutters">
+          <div class="col-lg-6 text-white showcase-img" style="background-image: url(https://raw.githubusercontent.com/muhiza/music/master/rich_features_2.png);"></div>
+          <div class="col-lg-6 my-auto showcase-text">
+            <h2>Easy to Setup, Use &amp; Customize </h2>
+            <p class="lead mb-0">AICOS requires only five steps to set up the platform and start using the software; Sign up, Register Members, Add Bank Accounts, Setup Contribution and Back Date Group Finances</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url(https://raw.githubusercontent.com/muhiza/music/master/rich_features_3.png);"></div>
+          <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+            <h2>Available on Mobile</h2>
+            <p class="lead mb-0">AICOS is available on web(desktop) and on mobile hence one can access records on the g.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials text-center bg-light">
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-3">
+        </div>
+          <div class="col-lg-6">
+        <h2 class="mb-5">Why Choose AICOS</h2>
+        <p class="lead mb-0 mb-2">When it comes to managing your groups finances, 
+one needs to choose tools that ease the work load, are accurate and accessible.</p> <br><br>
+</div><br>
 
-                    <div class="footer-col">
-                        <h1>AICOS</h1>
-                    </div>
-                    <div class="footer-col">
-                        <span class="footer-top-level">Company</span>
-                        <div class="footer-sub-links">
-                            <ul id="menu-company">
-                                <li>About Us</li>
-                                <li>Our story</li>
-                                <li>Contact</li>
-                                <li>Blog</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <span class="footer-top-level">Product</span>
-                        <div class="footer-sub-links">
-                            <ul id="menu-product">
-                                <li>Pricing</li>
-                                <li>Mobile app</li>
-                                <li>Online payments</li>
-                                <li>Financial Reports</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <span class="footer-top-level">Who it's for</span>
-                        <div class="footer-sub-links">
-                            <ul id="menu-who-its-for">
-                                <li>Cooperatives</li>
-                                <li>SMEs</li>
-                                <li>SACCOs</li>
-                            </ul>
-                        </div>
-                    </div>
+<div class="col-lg-3">
+</div>
+</div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-user-lock m-auto text-primary" style="font-size:60px;"></i>
+              </div>
+              <h5>SECURE.</h5>
+              <p class="font-weight-light mb-0">All information stored on AICOS is done securely ensuring your information is only visible to authorized users.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-hands-helping m-auto text-primary" style="font-size:60px;"></i>
+              </div>
+              <h5>RELIABLE.</h5>
+              <p class="font-weight-light mb-0">AICOS is available 24/7 as long as you have a reliable Internet connection, available anywhere in the world.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="testimonial-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-chart-bar m-auto text-primary" style="font-size:60px;"></i>
+              </div>
+              <h5>REPORTS.</h5>
+              <p class="font-weight-light mb-0">Using AICOS, the users only needs to enter data as they come and AICOS handles the reporting behalf of the users Automatically.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="call-to-action text-white text-center">
+      <div class="overlay"></div>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h2 class="mb-4">EMPOWER YOUR COOPERATIVE NOW!</h2>
+                              <button type="submit" class="btn btn-lg btn-primary">
+                                  <a href="{{ url_for('auth.login') }}" style="color: #000;">Sign up your cooperative! </a></button>
+          </div>
+          <div class="col-md-8 col-lg-12 col-xl-7 mx-auto">
+              <div class="form-row">
+                <div class="col-6 col-md-6">
+
                 </div>
-            </div>
-            <div class="sub-footer">
-                <p>powered by eXtra Tech</p>
-            </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; EXTRA TECH 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-facebook fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fab fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static', filename='css/vendor/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/vendor/js/bootstrap.bundle.min.js') }}"></script>
 
-        </footer>
-    </div>
-</body>
+  </body>
 
 </html>
