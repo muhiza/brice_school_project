@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_login import login_required, current_user
-from wtforms import StringField, TextAreaField, FileField, DateTimeField, SelectField, SubmitField
+from wtforms import StringField, IntegerField, TextAreaField, FileField, DateTimeField, SelectField, SubmitField, FloatField, ValidationError
 from wtforms.fields.html5 import DateField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Email
+from wtforms.validators import DataRequired, Email, Length, NumberRange, Optional
 
 #from ..models import Department, Role, Employee, Product
 from ..models import *
@@ -157,12 +157,8 @@ class ibitaboBankForm(FlaskForm):
     submit      =  SubmitField('Emeza')
 
 
-
-    id = db.Column(db.Integer, primary_key=True, unique=True)
-    no = db.Column(db.String(300))
-    date = db.Column(db.String(300))
-    igikorwa = db.Column(db.String(300))
-    debit    = db.Column(db.String(300))
-    credit = db.Column(db.String(300))
-    solde = db.Column(db.String(300))
-    department_id = db.Column(db.String(300), db.ForeignKey('departments.email'))
+class amatsindaForm(FlaskForm):
+    name = StringField("Izina Ry\'itsinda", validators=[DataRequired()])
+    description = StringField("Ubusobanuro", validators=[DataRequired()])
+    purpose = StringField("Impamvu", validators=[DataRequired()])
+    submit = SubmitField('Emeza')

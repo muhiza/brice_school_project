@@ -474,9 +474,31 @@ def signatories():
 
 @aicos_req.route('/cooperatives/amatsinda')
 def amatsinda():
-    return render_template('amatsinda/amatsinda.html')
+    amatsinda = Itsinda.query.all()
+    return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda)
 
 
-@aicos_req.route('cooperatives/amatsinda/koraitsinda')
+@aicos_req.route('cooperatives/amatsinda/koraitsinda', methods=['GET', 'POST'])
 def koraItsinda():
-    return render_template('/amatsinda/koraitsinda.html')
+
+    form = amatsindaForm()
+
+    if form.validate_on_submit():
+
+        itsinda = Itsinda(
+                            itsinda_name = form.name.data,
+                            description = form.description.data,
+                            purpose = form.purpose.data,
+                            department_id = current_user.email
+                            )
+
+        try:
+            db.session.add(itsinda)
+            db.session.commit()
+            flash("Umaze kwandika neza itsinda")
+            return redirect(url_for('aicos_req.amatsinda'))
+        except:
+            flash("ntabwo itsinda ryanditse neza ongera ugerageze")
+            return redirect(url_for('aicos_req.koraItsinda'))
+
+    return render_template('/amatsinda/koraItsinda.html', form=form)

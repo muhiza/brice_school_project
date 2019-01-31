@@ -254,6 +254,7 @@ class Department(db.Model):
 	inamaUbuyobozi       = db.relationship('inamaUbuyobozi', backref='department', lazy='dynamic')
 	ubugenzuzi       = db.relationship('Ubugenzuzi', backref='department', lazy='dynamic')
 	isanduku       = db.relationship('Isanduku', backref='department', lazy='dynamic')
+	itsinda = db.relationship('Itsinda', backref='amatsinda', lazy='dynamic')
 	is_active 	   = db.Column(db.Boolean, default=False)
 
 	#Dealing with excel staff here.
@@ -1628,6 +1629,7 @@ class Itsinda(db.Model):
 	itsinda_name = db.Column(db.String(200))
 	description = db.Column(db.String(200))
 	purpose = db.Column(db.String(200))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 
 
