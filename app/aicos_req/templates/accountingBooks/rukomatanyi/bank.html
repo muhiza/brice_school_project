@@ -11,7 +11,7 @@
                             <strong class="card-title">Banki    </strong>
                         </div>
                         <div class="pull-right">
-                            <a href="#" class="btn btn-primary btn-md">Injiza ibishya</a>
+                            <a href="{{ url_for('aicos_req.injizaBank') }}" class="btn btn-primary btn-md">Injiza ibishya</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -25,20 +25,24 @@
 		                        </tr>
 					        </thead>
 					        <tbody>
-					            <tr>
-					                <td>Tiger t.nixon@datatables.net</td>
-					                <td>Nixon</td>
-					                <td>
-                                        <a href="#" class="badge badge-success">
-                                            Hindura
-                                        </a>  
-                                    </td>
-					                <td>
-                                        <a href="#" class="badge badge-danger">
-                                            Siba
-                                        </a>               
-                                    </td>
-					            </tr>
+					            {% if bank %}
+                                    {% for bank in bank %}
+                                        <tr>
+                                            <td>{{ bank.ayinjiye }}</td>
+                                            <td>{{ bank.ayasohotse }}</td>
+                                            <td>
+                                                <a href="#" class="badge badge-success">
+                                                    Hindura
+                                                </a>  
+                                            </td>
+                                            <td>
+                                                <a href="#" class="badge badge-danger">
+                                                    Siba
+                                                </a>               
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
 				           </tbody>
                         </table>
                     </div>

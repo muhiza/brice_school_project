@@ -25,21 +25,25 @@
 				                        </tr>
 							        </thead>
 							        <tbody>
-							            <tr>
-							                <td>Tiger t.nixon@datatables.net</td>
-							                <td>Nixon</td>
-							                <td>Tiger t.nixon@datatables.net</td>
-							                <td>
-		                                        <a href="#" class="badge badge-success">
-		                                            Hindura
-		                                        </a>  
-		                                    </td>
-							                <td>
-		                                        <a href="#" class="badge badge-danger">
-		                                            Siba
-		                                        </a>               
-		                                    </td>
-							            </tr>
+							            {% if isanduku %}
+							            	{% for one in isanduku %}
+							            		<tr>
+							            			<td>{{ one.ayinjiye }}</td>
+							            			<td>{{ one.ayasohotse }}</td>
+							            			<td>{{ one.ayinjiye - one.ayasohotse }}</td>
+							            			<td>
+				                                        <a href="#" class="badge badge-success">
+				                                            Hindura
+				                                        </a>  
+				                                    </td>
+				                                    <td>
+				                                        <a href="#" class="badge badge-danger">
+				                                            Siba
+				                                        </a>               
+				                                    </td>
+							            		</tr>
+							            	{% endfor %}
+							            {% endif %}
 						           </tbody>
                                 </table>
                             </div>

@@ -1649,7 +1649,152 @@ class ItsindaMember(db.Model):
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 	def __repr__(self):
-		return '<ItsindaMember: {}'.format(self.id)
+		return '<ItsindaMember: {}>'.format(self.id)
+
+
+class IsandukuNshya(db.Model):
+	__tablename__ = "isandukunshya"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<IsandukuNshya: {}>'.format(self.id)
+
+
+class BankModel(db.Model):
+	__tablename__ = "bank"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<BankModel: {}>'.format(self.id)
+
+
+class InguzanyoZatanzwe(db.Model):
+	"""docstring for InguzanyoZatanzwe"""
+	__tablename__ = "InguzanyoZatanzwe"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<InguzanyoZatanzwe: {}>'.format(self.id)
+
+class Ibiramba(db.Model):
+	__tablename__ = "ibiramba"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Ibiramba: {}>'.format(self.id)
+
+
+class Ububiko(db.Model):
+	"""docstring for Ububiko"""
+	__tablename__ = "ububiko"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Ububiko: {}>'.format(self.id)
+
+class UmugabaneShingiro(db.Model):
+	"""docstring for UmugabaneShingiro"""
+	__tablename__ = "umugabaneShingiro"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))	
+	
+	def __repr__(self):
+		return '<UmugabaneShingiro: {}'.format(self.id)
+
+class Inkunga(db.Model):
+	"""docstring for Inkunga"""
+	__tablename__ = "inkunga"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Inkunga: {}'.format(self.id)
+
+class InguzanyoZabandi(db.Model):
+	__tablename__ = "inguzanyozabandi"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<InguzanyoZabandi: {}'.format(self.id)
+
+
+class Ibicuruzwa(db.Model):
+	__tablename__ = "ibicuruzwa"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Ibicuruzwa: {}'.format(self.id)
+
+class IkoreshwaRyimari(db.Model):
+	__tablename__ = "ikoreshwaRyimari"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<IkoreshwaRyimari: {}'.format(self.id)
+		
+
+class IbindiRukomatanyi(db.Model):
+	__tablename__ = "ibindiRukomatanya"
+	id = db.Column(db.Integer, primary_key = True)
+	ayinjiye = db.Column(db.Integer)
+	ayasohotse = db.Column(db.Integer)
+	asigaye = db.Column(db.Integer)
+	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<IbindiRukomatanyi: {}'.format(self.id)
+				
+			
+		
 
 
 

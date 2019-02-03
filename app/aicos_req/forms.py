@@ -165,7 +165,63 @@ class amatsindaForm(FlaskForm):
 
 
 class IsandukuForm(FlaskForm):
-    ayinjiye = StringField("Ayo Binjije", validators=[DataRequired()])
-    ayasohotse = StringField("Ayo Basohoye", validators=[DataRequired()])
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     asigaye = StringField("Ayasigaye", validators=[Optional()])
     submit = SubmitField('Bika')
+
+class BankForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class InguzanyoZatanzweForm(FlaskForm):
+    """docstring for InguzanyoZatanzwe"""
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class IbirambaForm(FlaskForm):
+    """docstring for IbirambaForm"""
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class UbubikoForm(FlaskForm):
+    """docstring for UbubikoForm"""
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class UmugabaneShingiroForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class InkungaForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class InguzanyoZabandiForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class IbicuruzwaForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class IkoreshwaRyimariForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+
+class IbindiForm(FlaskForm):
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    submit = SubmitField('Bika')
+        
+        
+        
