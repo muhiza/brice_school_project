@@ -643,6 +643,7 @@ class Member(db.Model):
 	ibirarane = db.relationship('Ibirarane', backref='member', lazy='dynamic')
 	ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
 	ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
+	itsindamember = db.relationship('ItsindaMember', backref='member', lazy='dynamic')
 
 
 
@@ -1630,9 +1631,25 @@ class Itsinda(db.Model):
 	description = db.Column(db.String(200))
 	purpose = db.Column(db.String(200))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	itsindamember = db.relationship('ItsindaMember', backref='Itsinda', lazy='dynamic')
+
+	def __repr__(self):
+		return '<Itsinda: {}>'.format(self.id)
 
 
 
+class ItsindaMember(db.Model):
+	__tablename__ = "itsindamember"
+	id = db.Column(db.Integer, primary_key = True)
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	itsinda_id = db.Column(db.Integer, db.ForeignKey('amatsinda.id'))
+	member_firstname = db.Column(db.String(200))
+	member_secondname = db.Column(db.String(200))
+	itsinda_name = db.Column(db.String(200))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<ItsindaMember: {}'.format(self.id)
 
 
 

@@ -1,0 +1,884 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AICOS</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/themify-icons/css/themify-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/selectFX/css/cs-skin-elastic.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/jqvmap/dist/jqvmap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendors/assets/css/style.css') }}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header"> 
+                <a class="navbar-brand" href="{{ url_for('aicos_members.dashboard') }}">
+                    <img src="{{ url_for('static', filename='images/aicos_logo.png') }}"></a>
+            </div><br>
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-item-has-children dropdown">
+                        <ul class="sub-menu children">
+                            <li><i class="fa fa-puzzle-piece"></i><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
+                            <li><i class="fa fa-share-square-o"></i>
+                            <a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
+                            <li><i class="fa fa-id-card-o"></i>
+                            <a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
+                            <li><i class="fa fa-exclamation-triangle"></i><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
+                            <li><i class="fa fa-spinner"></i>
+                            <a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
+                            <li><i class="fa fa-book"></i><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
+                            <li><i class="fa fa-th"></i><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
+                            <li><i class="fa fa-file-word-o"></i><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
+                            <li><i class="fa fa-fire"></i><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="header-menu">
+                <div class="col-sm-7">
+                </div>
+
+                <div class="col-sm-5">
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{ url_for('static', filename='images/admin.jpg') }}" alt="User Avatar">
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+
+                    <div class="language-select dropdown" id="language-select">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
+                            <i class="flag-icon flag-icon-fr"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="language">
+                            <div class="dropdown-item">
+                                <span class="flag-icon flag-icon-fr"></span>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-es"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-us"></i>
+                            </div>
+                            <div class="dropdown-item">
+                                <i class="flag-icon flag-icon-it"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /header -->
+        <!-- Header-->
+
+
+
+
+
+
+
+
+
+
+        {% block body %}
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendor/assets/js/main.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/chart.js/dist/Chart.bundle.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/assets/js/dashboard.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/assets/js/widgets.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/jqvmap/dist/jquery.vmap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}" type="text/javascript"></script>
+
+
+
+
+
+
+    <script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='vendors/popper.js/dist/umd/popper.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/assets/js/main.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendors/jszip/dist/jszip.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/pdfmake/build/pdfmake.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/pdfmake/build/vfs_fonts.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.html5.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.print.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}" type="text/javascript"></script>
+
+
+    <script src="{{ url_for('static', filename='vendors/assets/js/init-scripts/data-table/datatables-init.js') }}" type="text/javascript"></script>
+
+
+
+
+
+
+
+    <!-- Things related to the datatables -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Things related to the datatables exports-->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+
+
+
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Ubumga bw\'amaguru', 4],
+  ['Ubumga bw\'amaboko', 1],
+  ['Ubumga bwo kutabona', 7],
+  ['Ubumga bwo kutumva', 5],
+  ['Ubumga bwo mu mutwe', 2]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Abanyamuryango ba Cooperative babana n\'ubumuga', 'width':950, 'height':700};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+
+
+
+
+
+
+
+$(document).ready(function() {
+    $('#example1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+
+
+
+  $(document).ready(function() {
+  $('table.displayz').each(function(i) {
+    $(this).data('graph-container', '#users-results-chart-' + i);
+    $(this).after( '<div class="users-results-chart"></div>')
+    
+      });
+      $('.users-results-chart').each(function(i) {
+        $(this).attr('id', 'users-results-chart-' + i);
+      });
+      var table = $('table.displayz').highchartTable();
+    });
+
+    $(document).ready(function() {
+        $('.dataTable').DataTable();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    $('#memberLogs').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+    $(function() {
+        $('.chart').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            }
+        });
+        var chart = window.chart = $('.chart').data('easyPieChart');
+        $('.js_update').on('click', function() {
+            chart.update(Math.random()*200-100);
+        });
+    });
+
+
+$(document).ready(function() {
+    $('#example2').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+$(document).ready(function() {
+    $('#example3').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#example4').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#example5').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#example6').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#example7').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#example8').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+$(document).ready(function() {
+    $('#example9').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#example10').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#example11').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#example12').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#example13').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#example14').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+
+
+$(document).ready(function() {
+    $('#examplepay1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#examplepay2').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#examplePayment1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#loan').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+$(document).ready(function() {
+    $('#goals').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#ubumuga1').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+$(document).ready(function() {
+    $('#ubumuga2').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+$(document).ready(function() {
+    $('#ubumuga3').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+$(document).ready(function() {
+    $('#ubumuga4').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+$(document).ready(function() {
+    $('#ubumuga5').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+
+
+
+
+
+
+let draw = true;
+init();
+
+/**
+ * FUNCTIONS
+ */
+
+function init() {
+  // initialize DataTables
+  const table = $("#dt-tablex").DataTable();
+  // get table data
+  const tableData = getTableData(table);
+  // create Highcharts
+  createHighcharts(tableData);
+  // table events
+  setTableEvents(table);
+}
+
+function getTableData(table) {
+  const dataArray = [],
+    countryArray = [],
+    populationArray = [],
+    densityArray = [];
+
+  // loop table rows
+  table.rows({ search: "applied" }).every(function() {
+    const data = this.data();
+    countryArray.push(data[6]);
+    populationArray.push(parseInt(data[1].replace(/\,/g, "")));
+    densityArray.push(parseInt(data[5].replace(/\,/g, "")));
+  });
+
+  // store all data in dataArray
+  dataArray.push(countryArray, populationArray, densityArray);
+
+  return dataArray;
+}
+
+function createHighcharts(data) {
+  Highcharts.setOptions({
+    lang: {
+      thousandsSep: ","
+    }
+  });
+
+  Highcharts.chart("chartzxc", {
+    title: {
+      text: "Abanyamuryango n'imigabane yabo"
+    },
+    subtitle: {
+      text: "Igishushanyo cy'Abanyamuryango n'imigabane yabo"
+    },
+    xAxis: [
+      {
+        categories: data[0],
+        labels: {
+          rotation: -45
+        }
+      }
+    ],
+    yAxis: [
+      {
+        // first yaxis
+        title: {
+          text: "Population (2017)"
+        }
+      },
+      {
+        // secondary yaxis
+        title: {
+          text: "Umugabane (Frw)"
+        },
+        min: 0,
+        opposite: true
+      }
+    ],
+    series: [
+      {
+        name: "Population (2017)",
+        color: "#0071A7",
+        type: "column",
+        data: data[1],
+        tooltip: {
+          valueSuffix: " M"
+        }
+      },
+      {
+        name: "Umugabane (Frw)",
+        color: "#FF404E",
+        type: "spline",
+        data: data[2],
+        yAxis: 1
+      }
+    ],
+    tooltip: {
+      shared: true
+    },
+    legend: {
+      backgroundColor: "#ececec",
+      shadow: true
+    },
+    credits: {
+      enabled: false
+    },
+    noData: {
+      style: {
+        fontSize: "16px"
+      }
+    }
+  });
+}
+
+function setTableEvents(table) {
+  // listen for page clicks
+  table.on("page", () => {
+    draw = true;
+  });
+
+  // listen for updates and adjust the chart accordingly
+  table.on("draw", () => {
+    if (draw) {
+      draw = false;
+    } else {
+      const tableData = getTableData(table);
+      createHighcharts(tableData);
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    $('#memberLogsxx').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+

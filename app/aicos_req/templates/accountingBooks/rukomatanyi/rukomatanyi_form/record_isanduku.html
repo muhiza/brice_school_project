@@ -1,0 +1,22 @@
+{% extends "rukomatanyi_main_base.html" %}
+{% block body %}
+
+<div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
+	<form action="#" method="post">
+		{{ form.csrf_token }}
+		<div class="">
+	    	{{ wtf.form_field(form.ayinjiye) }}
+	    </div>
+	    <div class="">
+	    	{{ wtf.form_field(form.ayasohotse) }}
+	    </div>
+	    <div class="">
+	    	{{ wtf.form_field(form.asigaye) }}
+	    </div>
+	    <div class="">
+	    	{{ form.submit(class="btn btn-primary") }}
+	    </div>
+	</form>
+</div>
+
+{% endblock %}

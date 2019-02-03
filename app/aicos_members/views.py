@@ -327,7 +327,7 @@ def goalDelete(id):
     goal = Goal.query.get_or_404(id)
     db.session.delete(goal)
     db.session.commit()
-    flash("Umuaze gusiba igikora neza")
+    flash("Umaze gusiba igikora neza")
     return redirect(url_for('aicos_members.memberPayments'))
 
 

@@ -162,3 +162,10 @@ class amatsindaForm(FlaskForm):
     description = StringField("Ubusobanuro", validators=[DataRequired()])
     purpose = StringField("Impamvu", validators=[DataRequired()])
     submit = SubmitField('Emeza')
+
+
+class IsandukuForm(FlaskForm):
+    ayinjiye = StringField("Ayo Binjije", validators=[DataRequired()])
+    ayasohotse = StringField("Ayo Basohoye", validators=[DataRequired()])
+    asigaye = StringField("Ayasigaye", validators=[Optional()])
+    submit = SubmitField('Bika')

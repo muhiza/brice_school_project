@@ -502,3 +502,89 @@ def koraItsinda():
             return redirect(url_for('aicos_req.koraItsinda'))
 
     return render_template('/amatsinda/koraItsinda.html', form=form)
+
+
+@aicos_req.route('/amatsinda/members/<int:id>', methods=['GET', 'POST'])
+def amatsindaMembers(id):
+    itsinda = Itsinda.query.get_or_404(id)
+    itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
+    members = Member.query.all()
+    itsindamember = ItsindaMember.query.all()
+    return render_template('/amatsinda/all_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+
+
+
+@aicos_req.route('/amatsinda/add/members/<int:id>', methods=['GET', 'POST'])
+def add_members(id):
+    itsinda = Itsinda.query.get_or_404(id)
+    itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
+    members = Member.query.all()
+    itsindamember = ItsindaMember.query.all()
+    return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+
+
+@aicos_req.route('/accountingBook/rukomatanyi')
+def rukomatanyi():
+    return render_template('/accountingBooks/rukomatanyi/index.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/isanduku')
+def isanduku():
+    return render_template('/accountingBooks/rukomatanyi/isanduku.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/bank')
+def bank():
+    return render_template('/accountingBooks/rukomatanyi/bank.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_zatanzwe')
+def inguzanyo_zatanzwe():
+    return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/ibiramba')
+def ibiramba():
+    return render_template('/accountingBooks/rukomatanyi/ibiramba.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/ububiko')
+def ububiko():
+    return render_template('/accountingBooks/rukomatanyi/ububiko.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/umugabane_shingiro')
+def umugabane_shingiro():
+    return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html')
+
+@aicos_req.route('/accountingBook/rukomatanyi/inkunga')
+def inkunga():
+    return render_template('/accountingBooks/rukomatanyi/inkunga.html')
+
+@aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_abandi')
+def inguzanyo_abandi():
+    return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/ibicuruzwa')
+def ibicuruzwa():
+    return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/ikoreshwa_ryimari')
+def ikoreshwa_ryimari():
+    return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html')
+
+@aicos_req.route('/accountingBook/rukomatanyi/ibindi_rukomatanyi')
+def ibindi_rukomatanyi():
+    return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html')
+
+
+@aicos_req.route('/accountingBook/rukomatanyi/injiza/isanduku', methods=["GET", "POST"])
+def injiza_isanduku():
+    form = IsandukuForm()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_isanduku.html', form=form)
+
+
+
+

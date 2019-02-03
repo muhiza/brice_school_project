@@ -27,19 +27,21 @@
     		{% for itsinda in amatsinda %}
     			<div class="col-lg-3 col-md-6">
 			        <div class="card">
-			            <div class="card-body">
-			                <div class="stat-widget-four">
-			                    <div class="stat-icon dib">
-			                        <i class="fa fa-users text-danger border-dange"></i>
-			                    </div>
-			                    <div class="stat-content">
-			                        <div class="text-left dib">
-			                            <div class="stat-heading">{{ itsinda.itsinda_name }}</div>
-			                            <div class="stat-text">{{ itsinda.description }}</div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
+			            <a href="{{ url_for('aicos_req.amatsindaMembers', id=itsinda.id) }}">
+                            <div class="card-body">
+                                <div class="stat-widget-four">
+                                    <div class="stat-icon dib">
+                                        <i class="fa fa-users text-danger border-dange"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-heading">{{ itsinda.itsinda_name }}</div>
+                                            <div class="stat-text">{{ itsinda.description }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>         
+                        </a>
 			        </div>
     			</div>
     		{% endfor %}
