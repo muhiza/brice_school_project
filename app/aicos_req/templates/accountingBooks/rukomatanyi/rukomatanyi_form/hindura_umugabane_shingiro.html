@@ -1,0 +1,36 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "rukomatanyi_main_base.html" %}
+{% block body %}
+ 	<div class="container-fluid">
+    	<div class="col-md-8">
+    		<div class="tab-content">
+    			<div class="row" style="background-color: silver; margin: 0px;">
+		            <div class="col-md-8" style="margin-top: 15px; margin-left: 10px;">
+		                <h3>Hindura Umugabane shingiro</h3>
+		            </div>
+		            <div class="col-md-4 text-right" style="margin-top: 15px;">
+		                <!--<button class="btn btn-outline-info">
+		                  <a href="{{ url_for('aicos_members.doimportmbs') }}">
+		                <i class="fa fa-upload"> Injiza byinshi</i></a></button>-->
+		            </div>
+		        </div>
+                <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px; background-color: white;">
+					<div class="col-md-12" style="background-color: white; padding-bottom: 20px; margin-top: 10px;">
+						<form action="#" method="post">
+							<div class="">
+					        	{{ wtf.form_field(form.ayinjiye) }}
+					        </div>
+					        <div class="">
+					        	{{ wtf.form_field(form.ayasohotse) }}
+					        </div>
+					        <div class="">
+			                	{{ form.submit(class="btn btn-success") }}
+			                </div>
+			                {{ form.csrf_token }}
+						</form>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

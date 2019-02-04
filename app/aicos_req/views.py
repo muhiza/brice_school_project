@@ -554,11 +554,47 @@ def isanduku():
     isanduku = IsandukuNshya.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/isanduku.html', isanduku=isanduku)
 
+@aicos_req.route('/accountingBook/rukomatanyi/isanduku/hindura/<int:id>', methods=["GET", "POST"])
+def hinduraIsanduku(id):
+    isanduku_id = IsandukuNshya.query.get_or_404(id)
+    ibihinduka = IsandukuNshya.query.filter_by(id=isanduku_id.id).first()
+    form = IsandukuForm()
+    if form.validate_on_submit():
+        ibihinduka.ayinjiye = form.ayinjiye.data
+        ibihinduka.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.isanduku'))
+        except:
+            return redirect(url_for('aicos_req.hinduraIsanduku'))
+    form.ayinjiye.default = ibihinduka.ayinjiye
+    form.ayasohotse.default = ibihinduka.ayasohotse
+    form.process()
+    return render_template('accountingBooks/rukomatanyi/rukomatanyi_form/hindura_isanduku.html', form=form)
+
 
 @aicos_req.route('/accountingBook/rukomatanyi/bank')
 def bank():
     bank = BankModel.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/bank.html', bank=bank)
+
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/bank/<int:id>', methods=["GET","POST"])
+def hinduraBank(id):
+    bankId = BankModel.query.get_or_404(id)
+    bank = BankModel.query.filter_by(id=bankId.id).first()
+    form = BankForm()
+    if form.validate_on_submit():
+        bank.ayinjiye = form.ayinjiye.data
+        bank.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.bank'))
+        except:
+            return redirect(url_for('aicos_req.hinduraBank', form=form))
+    form.ayinjiye.default = bank.ayinjiye
+    form.ayasohotse.default = bank.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_bank.html', form=form)
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_zatanzwe')
@@ -566,11 +602,47 @@ def inguzanyo_zatanzwe():
     inguzanyo_zatanzwe = InguzanyoZatanzwe.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html', inguzanyo_zatanzwe=inguzanyo_zatanzwe)
 
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/inguzanyo_zatanzwe/<int:id>', methods=["GET", "POST"])
+def hinduraInguzanyoZatanzwe(id):
+    inguzanyoId = InguzanyoZatanzwe.query.get_or_404(id)
+    inguzanyo = InguzanyoZatanzwe.query.filter_by(id=inguzanyoId.id).first()
+    form = InguzanyoZatanzweForm()
+    if form.validate_on_submit():
+        inguzanyo.ayinjiye = form.ayinjiye.data
+        inguzanyo.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.inguzanyo_zatanzwe'))
+        except:
+            return redirect(url_for('aicos_req.hinduraInguzanyoZatanzwe', form=form))
+    form.ayinjiye.default = inguzanyo.ayinjiye
+    form.ayasohotse.default = inguzanyo.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zatanzwe.html', form=form)
+
 
 @aicos_req.route('/accountingBook/rukomatanyi/ibiramba')
 def ibiramba():
     ibiramba = Ibiramba.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/ibiramba.html', ibiramba=ibiramba)
+
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/ibiramba/<int:id>', methods=["GET", "POST"])
+def hinduraIbiramba(id):
+    ibirambaId = Ibiramba.query.get_or_404(id)
+    ibiramba = Ibiramba.query.filter_by(id=ibirambaId.id).first()
+    form = IbirambaForm()
+    if form.validate_on_submit():
+        ibiramba.ayinjiye = form.ayinjiye.data
+        ibiramba.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.ibiramba'))
+        except:
+            return redirect(url_for('aicos_req.hinduraIbiramba'))
+    form.ayinjiye.default = ibiramba.ayinjiye
+    form.ayasohotse.default = ibiramba.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibaramba.html', form=form)
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/ububiko')
@@ -578,16 +650,69 @@ def ububiko():
     ububiko = Ububiko.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/ububiko.html', ububiko=ububiko)
 
+@aicos_req.route('accountingBook/rukomatanyi/hindura/ububiko/<int:id>', methods=["GET", "POST"])
+def hinduraUbubiko(id):
+    ububikoId = Ububiko.query.get_or_404(id)
+    ububiko = Ububiko.query.filter_by(id=ububikoId.id).first()
+    form = UbubikoForm()
+    if form.validate_on_submit():
+        ububiko.ayinjiye = form.ayinjiye.data
+        ububiko.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.ububiko'))
+        except:
+            return redirect(url_for('aicos_req.hinduraUbubiko', form=form))
+    form.ayinjiye.default = ububiko.ayinjiye
+    form.ayasohotse.default = ububiko.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ububiko.html', form=form)
 
 @aicos_req.route('/accountingBook/rukomatanyi/umugabane_shingiro')
 def umugabane_shingiro():
     umugabane_shingiro = UmugabaneShingiro.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html', umugabane_shingiro=umugabane_shingiro)
 
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/hinduraUmugabaneShingiro/<int:id>', methods=["GET", "POST"])
+def hinduraUmugabaneShingiro(id):
+    umugabaneId = UmugabaneShingiro.query.get_or_404(id)
+    umugabane = UmugabaneShingiro.query.filter_by(id=umugabaneId.id).first()
+    form = UmugabaneShingiroForm()
+    if form.validate_on_submit():
+        umugabane.ayinjiye = form.ayinjiye.data
+        umugabane.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.umugabane_shingiro'))
+        except:
+            return redirect(url_for('aicos_req.hinduraUmugabaneShingiro', form=form))
+    form.ayinjiye.default = umugabane.ayinjiye
+    form.ayasohotse.default = umugabane.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_umugabane_shingiro.html', form=form)
+
 @aicos_req.route('/accountingBook/rukomatanyi/inkunga')
 def inkunga():
     inkunga = Inkunga.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/inkunga.html', inkunga=inkunga)
+
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/inkunga/<int:id>', methods=["GET", "POST"])
+def hindura_inkunga(id):
+    inkungaId = Inkunga.query.get_or_404(id)
+    inkunga = Inkunga.query.filter_by(id=inkungaId.id).first()
+    form = InkungaForm()
+    if form.validate_on_submit():
+        inkunga.ayinjiye = form.ayinjiye.data
+        inkunga.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.inkunga'))
+        except:
+            return redirect(url_for('aicos_req.hindura_inkunga', form=form))
+    form.ayinjiye.default = inkunga.ayinjiye
+    form.ayasohotse.default = inkunga.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inkunga.html', form=form)
 
 @aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_abandi')
 def inguzanyo_abandi():
@@ -595,10 +720,49 @@ def inguzanyo_abandi():
     return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html', inguzanyo_abandi=inguzanyo_abandi)
 
 
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/hinduraInguzanyoZabandi<int:id>', methods=["GET", "POST"])
+def hinduraInguzanyoZabandi(id):
+    inguzanyoId = InguzanyoZabandi.query.get_or_404(id)
+    inguzanyo = InguzanyoZabandi.query.filter_by(id=inguzanyoId.id).first()
+    form = InguzanyoZabandiForm()
+    if form.validate_on_submit():
+        inguzanyo.ayinjiye = form.ayinjiye.data
+        inguzanyo.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.inguzanyo_abandi'))
+        except:
+            redirect(url_for('aicos_req.hinduraInguzanyoZabandi', form=form))
+    form.ayinjiye.default = inguzanyo.ayinjiye
+    form.ayasohotse.default = inguzanyo.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zabandi.html', form=form)
+
+
+
 @aicos_req.route('/accountingBook/rukomatanyi/ibicuruzwa')
 def ibicuruzwa():
     ibicuruzwa = Ibicuruzwa.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html', ibicuruzwa=ibicuruzwa)
+
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/ibicuruzwa/<int:id>', methods=["GET", "POST"])
+def hindura_ibicuruzwa(id):
+    ibicuruzwaId = Ibicuruzwa.query.get_or_404(id)
+    ibicuruzwa = Ibicuruzwa.query.filter_by(id=ibicuruzwaId.id).first()
+    form = IbicuruzwaForm()
+
+    if form.validate_on_submit():
+        ibicuruzwa.ayinjiye = form.ayinjiye.data
+        ibicuruzwa.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.ibicuruzwa'))
+        except:
+            return redirect(url_for('aicos_req.hindura_ibicuruzwa', form=form))
+    form.ayinjiye.default = ibicuruzwa.ayinjiye
+    form.ayasohotse.default = ibicuruzwa.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibicuruzwa.html', form=form)
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/ikoreshwa_ryimari')
@@ -606,10 +770,48 @@ def ikoreshwa_ryimari():
     ikoreshwa = IkoreshwaRyimari.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html', ikoreshwa=ikoreshwa)
 
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/ikoreshwa_ryimari/<int:id>', methods=["GET", "POST"])
+def hinduraIkoreshwaRyimari(id):
+    ikoreshwaId = IkoreshwaRyimari.query.get_or_404(id)
+    ikoreshwa = IkoreshwaRyimari.query.filter_by(id=ikoreshwaId.id).first()
+    form = IkoreshwaRyimariForm()
+
+    if form.validate_on_submit():
+        ikoreshwa.ayinjiye = form.ayinjiye.data
+        ikoreshwa.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.ikoreshwa_ryimari'))
+        except:
+            return redirect(url_for('aicos_req.hinduraIkoreshwaRyimari', form=form))
+    form.ayinjiye.default = ikoreshwa.ayinjiye
+    form.ayasohotse.default = ikoreshwa.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ikoreshwa_ryimari.html', form=form)
+
 @aicos_req.route('/accountingBook/rukomatanyi/ibindi_rukomatanyi')
 def ibindi_rukomatanyi():
     ibindi = IbindiRukomatanyi.query.filter_by(department_id=current_user.email).all()
     return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html', ibindi=ibindi)
+
+@aicos_req.route('/accountingBook/rukomatanyi/hindura/hindura_ibindi/<int:id>', methods=["GET", "POST"])
+def hindura_ibindi(id):
+    ibindiId= IbindiRukomatanyi.query.get_or_404(id)
+    ibindi = IbindiRukomatanyi.query.filter_by(id=ibindiId.id).first()
+    form = IbindiForm()
+
+    if form.validate_on_submit():
+        ibindi.ayinjiye = form.ayinjiye.data
+        ibindi.ayasohotse = form.ayasohotse.data
+        try:
+            db.session.commit()
+            return redirect(url_for('aicos_req.ibindi_rukomatanyi'))
+        except:
+            return redirect(url_for('aicos_req.hindura_ibindi', form=form))
+    form.ayinjiye.default = ibindi.ayinjiye
+    form.ayasohotse.default = ibindi.ayasohotse
+    form.process()
+    return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibindi.html', form=form)
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/injiza/isanduku', methods=["GET", "POST"])
