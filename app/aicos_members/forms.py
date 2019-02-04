@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from wtforms import StringField, TextAreaField, FileField, DateTimeField, SelectField, SubmitField, IntegerField
 from wtforms.fields.html5 import DateField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Email
+from wtforms.validators import DataRequired, Email, Optional
 from markupsafe import Markup
 
 #from ..models import Department, Role, Employee, Product
@@ -153,7 +153,7 @@ class MemberForm(FlaskForm):
     
     umudugudux =  StringField("Umudugudu", validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umudugudu", "id": "umudugudu"})
     tariki_yinjiriyex =  DateField("Taliki y'injiriye", format='%Y-%m-%d', validators=[DataRequired()])
-    umugabanex = StringField("Umugabane", validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umugabane w'umunyamuryango", "id": "umugabane"})
+    umugabanex = StringField("Umugabane Shingiro", validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umugabane w'umunyamuryango", "id": "umugabane"})
     umukonox     =  StringField("Umukono", validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umukono w'umunyamuryango", "id": "umukono"})  
     nomero_ya_telephonex = StringField("Nimero ya telephone", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo numero ya telephone", "id": "nomero_ya_telephone"})
     
@@ -162,13 +162,13 @@ class MemberForm(FlaskForm):
         choices=[('Amashuri', 'Amashuri'), ('Abatarize', 'Abatarize'), ('Abanza', 'Abanza'), ('Ayisumbuye', 'Ayisumbuye'), 
                  ('Kaminuza', 'Kaminuza'), ('Imyuga', 'Imyuga')])
     ubumugax = SelectField(
-    'Ubumuga',
-    choices=[('Ubumuga', 'Ubumuga'), ('Amaguru', 'Amaguru'), ('Amaboko', 'Amaboko'), ('Kutabona', 'Kutabona'), 
-             ('Kutumva', 'Kutumva'), ('Mu mutwe', 'Mu mutwe'), ('Ibindi', 'Ibindi')])
+    'Ubumuga/Uburwayi',
+    choices=[('Ntabwo', 'Ntabwo'),('Ubumuga', 'Ubumuga'), ('Amaguru', 'Amaguru'), ('Amaboko', 'Amaboko'), ('Kutabona', 'Kutabona'), 
+             ('Kutumva', 'Kutumva'), ('Mu mutwe', 'Mu mutwe'), ('HIV/AIDS', 'HIV/AIDS'), ('Ibindi', 'Ibindi')])
     arubatsex = SelectField(
     'Arubatse?',
     choices=[('Arubatse', 'Arubatse'), ('Yego', 'Yego'), ('Oya', 'Oya')])
-    umubare_wabanax = IntegerField("Umubare w'abana", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo Umubare w'abana"})
+    umubare_wabanax = IntegerField("Umubare w'abana", validators=[Optional()], render_kw={"placeholder": "Shyiramo Umubare w'abana niba ubafite"})
     icyiciro_cyubudehex = StringField("Icyiciro cy'ubudehe", validators=[DataRequired()], render_kw={"placeholder": "Icyiciro cy'ubudehe"})
     ubwishingizix = StringField("Ubwishingizi", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo ubwishingizi bw'umunyamuryango"})    
     akazi_akora_muri_koperativex = StringField("Akazi Akora Muri Koperative", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo akazi umunyamuryango akora muri Koperative"})
