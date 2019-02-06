@@ -109,6 +109,13 @@ def umusaruro():
 
     return render_template('umusaruro.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
     
+@aicos_stock_managment.route('/umusaruro/member/<int:id>')
+@login_required
+def ibindiUmusaruro(id):
+    memberId = Member.query.get_or_404(id)
+    umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
+    return render_template('ibindiUmusaruro.html', id=memberId.id, umusaruro=umusaruro)
+
 
 @aicos_stock_managment.route('/inyongeramusaruro')
 @login_required

@@ -1819,3 +1819,7 @@ def coop_details(email):
                              employees_mumutwe_count=employees_mumutwe_count,
                     title="Cooperative's details")
     return redirect(url_for('admin.list_employees'))
+
+@aicos_members.route('/imyishyurire')
+def imyishyurire():
+  return render_template('/imyishyurire/index.html')

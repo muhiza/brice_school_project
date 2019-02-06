@@ -1641,7 +1641,7 @@ class Itsinda(db.Model):
 class ItsindaMember(db.Model):
 	__tablename__ = "itsindamember"
 	id = db.Column(db.Integer, primary_key = True)
-	member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'), unique=True)
 	itsinda_id = db.Column(db.Integer, db.ForeignKey('amatsinda.id'))
 	member_firstname = db.Column(db.String(200))
 	member_secondname = db.Column(db.String(200))

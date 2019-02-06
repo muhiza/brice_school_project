@@ -1,6 +1,8 @@
+{% import "bootstrap/utils.html" as utils %}
 {% extends "req_base.html" %}
 {% block body %}
 <div class="">
+    {{ utils.flashed_messages() }}
 	<div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
@@ -34,7 +36,7 @@
                                         				{% endif %}
                                         			</td>
                                         			<td>
-                                        				<a href="#" class="badge badge-success">Ongeramo</a>
+                                        				<a href="{{ url_for('aicos_req.ongeramo_member', a=member.id, b=itsindaName.id) }}" class="badge badge-success">Ongeramo</a>
                                         			</td>
                                         		</tr>
                                         	{% endfor %}

@@ -509,7 +509,7 @@ def amatsindaMembers(id):
     itsinda = Itsinda.query.get_or_404(id)
     itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
     members = Member.query.all()
-    itsindamember = ItsindaMember.query.all()
+    itsindamember = ItsindaMember.query.filter_by(itsinda_id=itsinda.id).all()
     return render_template('/amatsinda/all_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
 
 
@@ -521,6 +521,37 @@ def add_members(id):
     members = Member.query.all()
     itsindamember = ItsindaMember.query.all()
     return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+
+@aicos_req.route('/amatsinda/member/adding/<int:a>/<int:b>', methods=["GET", "POST"])
+def ongeramo_member(a, b):
+    memberId = Member.query.get_or_404(a)
+    itsindaId = Itsinda.query.get_or_404(b)
+    itsindaName = Itsinda.query.filter_by(id=itsindaId.id).first()
+    member = Member.query.filter_by(id=memberId.id).first()
+    members = Member.query.all()
+    itsinda = Itsinda.query.filter_by(id=itsindaId.id).first()
+
+    itsindamember = ItsindaMember(
+                                member_id=member.id,
+                                itsinda_id=itsinda.id,
+                                member_firstname=member.izina_ribanza,
+                                member_secondname=member.izina_rikurikira,
+                                itsinda_name=itsinda.itsinda_name,
+                                department_id=current_user.email
+                                )
+    try:
+        db.session.add(itsindamember)
+        db.session.commit()
+        flash("Umunyamuryango yinjiye neza mwitsinda " + "\"" + itsindaName.itsinda_name + "\"")
+        return redirect(url_for('aicos_req.add_members', id=itsinda.id))
+    except:
+        db.session.rollback()
+        flash("Umunyamuryango asanzwe arimo")
+        return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
+    return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
+    
+
+
 
 
 @aicos_req.route('/accountingBook/rukomatanyi')

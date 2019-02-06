@@ -13,7 +13,7 @@
                                 	<span class="ti-angle-double-right"></span>{% if itsindaName %} {{ itsindaName.itsinda_name }} {% endif %}</strong>
                                 </div>
                                 <div class="pull-right">
-                            		<a href="{{ url_for('aicos_req.add_members', id=itsindaName.id) }}" class="btn btn-primary btn-large">add New Member</a>
+                            		<a href="{{ url_for('aicos_req.add_members', id=itsindaName.id) }}" class="btn btn-primary btn-large">Andika abashya</a>
                             	</div>
                             </div>
                             <div class="card-body">
@@ -27,26 +27,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% if members %}
-                                        	{% for member in members %}
+                                        {% if itsindamember %}
+                                        	{% for member in itsindamember %}
                                         		<tr>
-                                        			<td>{{ member.izina_ribanza }}</td>
-                                        			<td>{{ member.izina_rikurikira }}</td>
+                                        			<td>{{ member.member_firstname }}</td>
+                                        			<td>{{ member.member_secondname }}</td>
                                         			<td>
                                         				{% if itsindaName %}
                                         					{{ itsindaName.itsinda_name }}
                                         				{% endif %}
                                         			</td>
                                         			<td>
-                                        				{% if member.itsindamember %}
-                                        					{% for mem in member.itsindamember %}
-                                        						{% if loop.last %}
-                                        							<a href="#" class="badge badge-danger">Siba</a>
-                                        						{% endif %}
-                                        					{% endfor %}
-                                        				{% else %}
-                                        					<a href="#" class="badge badge-success">Add</a>
-                                        				{% endif %}
+                                        				<a href="#" class="badge badge-danger">Siba</a>
                                         			</td>
                                         		</tr>
                                         	{% endfor %}
