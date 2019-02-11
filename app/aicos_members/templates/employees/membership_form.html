@@ -31,9 +31,9 @@
       <div class="card-body">
       <div class="row">
           <div class="col-md-10">
-          {% if not upload_file %}
+          <!--{% if not upload_file %}-->
               <!--{{ wtf.quick_form(form, form_type='basic', button_map={'submit': 'info'}) }}-->
-              <form method="POST" action="">
+              <form method="POST" action="/AddNewMember">
               <div class="mydivs" id="divs">
                 <div class="cls1">
                   <div class="form-member" style="margin-top: -30px;">
@@ -84,12 +84,12 @@
                           {{ wtf.form_field(form.nomero_ya_telephonex) }}
                       </div>
                   </div>
-                  <div class="form-member" style="margin-top: -30px;">
+                  <!--<div class="form-member" style="margin-top: -30px;">
                       <div class="">
                           <label class="" for="izina"></label>
                           {{ wtf.form_field(form.codex) }}
                       </div>
-                  </div>
+                  </div>-->
                 </div>
                 <div class="cls2">
                   <div class="form-member" style="margin-top: -30px;">
@@ -216,6 +216,12 @@
                   </div>
                 </div>
               </div>
+              <div class="pull-right">
+                <div class="submit">
+                  {{ form.submit(class="btn btn-md btn-success", id="submit")}}
+                </div>
+                {{ form.csrf_token }}
+              </div>
               <div class="pull-left">
                   <div class="">
                         <button id="prev" name="prev" class="btn btn-md btn-info">Inyuma</button>
@@ -226,14 +232,9 @@
                     <button id="next" name="next"  class="btn btn-md btn-info">Ahakurikira</button>
                   </div>
               </div>
-              <div class="pull-right">
-                <div class="submit">
-                  {{ form.submit(class="btn btn-md btn-success", id="submit")}}
-                </div>
-              </div>
-              {{ form.csrf_token }}
+              
               </form>
-          {% endif %}<br>
+          <!--{% endif %}<br>-->
           </div>
       </div>   
       </div>
@@ -258,7 +259,7 @@
   </div>
 </div>
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <script type="text/javascript">
   $(document).ready(function() {
     var divs = $('.mydivs>div');

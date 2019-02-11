@@ -180,7 +180,7 @@ class MemberForm(FlaskForm):
     ubwoko_bwigihingwa_kindix = StringField("Ubwoko bw'ikindi gihingwa", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo Ubwoko bw'ikindi gihingwa ahinga"})
     ubuso_budakoreshwax  = StringField("Ubuso budakoreshwa", validators=[DataRequired()], render_kw={"placeholder": "Shyiramo Ubuso bundi budakoreshwa"})
     
-
+    submit      =  SubmitField('Injiza Umunyamuryango')
 
     """
     Current Comment
@@ -191,7 +191,7 @@ class MemberForm(FlaskForm):
     #owner    =  StringField("Owner", validators=[DataRequired()])
     """ 
     
-    submit      =  SubmitField('Injiza Umunyamuryango')
+    
 
 
 

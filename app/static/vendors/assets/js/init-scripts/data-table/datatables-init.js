@@ -7,6 +7,7 @@
 
     $('#bootstrap-data-table').DataTable({
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+        "scrollX": true,
     });
 
     $('#bootstrap-data-table-one').DataTable({
@@ -21,6 +22,7 @@
     $('#bootstrap-data-table-export').DataTable({
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        "scrollX": true,
     });
 
 

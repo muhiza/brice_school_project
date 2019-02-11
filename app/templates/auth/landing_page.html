@@ -32,9 +32,13 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">AICOS</a>
-        <a class="btn btn-default" href="{{ url_for('auth.login') }}">Sign In</a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url_for('home.homepage') }}"><img src="{{ url_for('static', filename='images/aicos_logo.png') }}" style="width: 20%;"></a>
+        </div>
+        <div class="">
+          <a class="btn btn-default" href="{{ url_for('auth.login') }}">Sign In</a>
+        </div>
       </div>
     </nav>
 
@@ -211,7 +215,7 @@ one needs to choose tools that ease the work load, are accurate and accessible.<
           <div class="col-xl-9 mx-auto">
             <h2 class="mb-4">EMPOWER YOUR COOPERATIVE NOW!</h2>
                               <button type="submit" class="btn btn-lg btn-primary">
-                                  <a href="{{ url_for('auth.login') }}" style="color: #000;">Sign up your cooperative! </a></button>
+                                  <a href="{{ url_for('auth.register') }}" style="color: #fff; text-decoration: none;">Sign up your cooperative! </a></button>
           </div>
           <div class="col-md-8 col-lg-12 col-xl-7 mx-auto">
               <div class="form-row">

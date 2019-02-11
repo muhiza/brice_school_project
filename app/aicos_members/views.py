@@ -1248,19 +1248,16 @@ def AddNewMember():
                           #Code          = form.code.data,
                           tariki_yavukiye = form.tariki_yavukiyex.data,
                           Intara = form.intarax.data,
-
                           Akarere = form.akarerex.data,
                           Umurenge     = form.umurengex.data,
                           Akagari     = form.akagarix.data,
                           Umudugudu     = form.umudugudux.data,
                           tariki_yinjiriye     = form.tariki_yinjiriyex.data,
                           umugabane_ukwezi = form.umugabanex.data,
-
                           Umukono    = form.umukonox.data,
                           nomero_telephone  = form.nomero_ya_telephonex.data,
                           Amashuri  = form.amashurix.data,
                           Ubumuga  = form.ubumugax.data,
-
                           Arubatse     = form.arubatsex.data,
                           umubare_abana     = form.umubare_wabanax.data,
                           icyiciro_ubudehe = form.icyiciro_cyubudehex.data,
@@ -1285,21 +1282,24 @@ def AddNewMember():
                             effect = "system upgraded",
                             department_id = current_user.email)
         try:
-            """
-            to_number = '+250786012383'
-            message = 'You have been added in the cooperative'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-            response_text = response['messages'][0]
-            """
-            db.session.add(NewMember)
-            db.session.add(notif)
-            db.session.commit()
-    
+          """
+          to_number = '+250786012383'
+          message = 'You have been added in the cooperative'
+          response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+          response_text = response['messages'][0]
+          """
+          db.session.add(NewMember)
+          db.session.add(notif)
+          db.session.commit()
+  
 
-            flash("Umaze kwindika umunyamuryango neza muri sisiteme")
+          flash("Umaze kwindika umunyamuryango neza muri sisiteme")
+          return redirect(url_for('aicos_members.aicos_members_home'))
+
         except:
-            flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
-        return redirect(url_for('aicos_members.aicos_members_home'))
+          flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
+          return redirect(url_for('aicos_members.AddNewMember', add_member=add_member, upload_file=upload_file, title="Add New Member"))
+            
     return render_template("employees/membership_form.html", form=form,
                             add_member=add_member,
                             upload_file=upload_file,

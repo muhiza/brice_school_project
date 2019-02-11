@@ -222,7 +222,7 @@ def injizaUmusaruro(id):
             db.session.add(umusaruro)
             db.session.commit()
             flash("Umaze kwandika umusaruro wa" + member_name.izina_ribanza + " " + member_name.izina_rikurikira)
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.umusaruro'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
             return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name))
@@ -292,7 +292,7 @@ def injizaInyongeramusaruro(id):
             db.session.add(inyongeramusaruro)
             db.session.commit()
             flash("Umaze kwinjiza neza inyongeramusaruro!")
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
         except:
             flash("Resi Winjije nta musaruro wayo wabonetse!")
             return redirect(url_for('aicos_stock_managment.injizaInyongeramusaruro', form=form, id=memberid.id, memberid=memberid.id, member_name=member_name))
@@ -409,7 +409,7 @@ def injizaImisanzu(id):
             db.session.add(imisanzu)
             db.session.commit()
             flash('Umaze kwinjiza neza Umusanzu')
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.imisanzu'))
         except Exception:
             flash('Kwinjiza Umusanzu ntibyakunze')
             return redirect(url_for('aicos_stock_managment.injizaImisanzu', id=memberid.id))
@@ -470,7 +470,7 @@ def injizaIbirarane(id):
             db.session.add(ibirarane)
             db.session.commit()
             flash('Umaze kwinjiza neza Ikirarane')
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.ibirarane'))
         except Exception:
             flash('Kwandika Ikirarane ntibyakunze')
             return redirect(url_for('aicos_stock_managment.injizaIbirarane', id=memberid.id))
@@ -506,7 +506,7 @@ def injizaIbihano(id):
             db.session.add(ibihano)
             db.session.commit()
             flash('Umaze kwandi igihano neza')
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.ibihano'))
         except Exception:
             flash('Kwandika igihano ntabwo byakunze')
             return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid.id))
@@ -558,7 +558,7 @@ def injizaIbindi(id):
             db.session.add(ibindi)
             db.session.commit()
             flash("Umaze kwinjiza Ibindi bisabwa neza")
-            return redirect(url_for('aicos_stock_managment.stock'))
+            return redirect(url_for('aicos_stock_managment.ibindi'))
         except Exception:
             flash("kwinjiza Ibindi bisabwa ntibyakunze")
             return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid))
