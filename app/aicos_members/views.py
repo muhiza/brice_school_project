@@ -1882,7 +1882,7 @@ def addZone():
       return redirect(url_for('aicos_members.addZone'))
   return render_template('/zones/add_zone.html', form=form)
 
-
+"""
 @aicos_members.route('/zone/add/member/<int:a>/<int:b>', methods=['GET', 'POST'])
 def addZoneMember(a, b):
   memberId = Member.query.get_or_404(a)
@@ -1900,3 +1900,5 @@ def addZoneMember(a, b):
     return redirect(url_for('aicos_members.addZoneMember'))
 
   return render_template('/zones/add_members.html', members = members, )
+
+"""
