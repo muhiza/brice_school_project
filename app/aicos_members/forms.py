@@ -260,11 +260,9 @@ class GoalForm(FlaskForm):
 
 
 
-
+"""
 class ComForm(FlaskForm):
-    """
-    Form for admin to add or edit a role
-    """
+    
     firstName = StringField(Markup('<b>Izina ribanza</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umudugudu"} )
     lastName = StringField(Markup('<b>Izina rikurikira</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injizamo Rikurikira"})
     Nid = StringField(Markup('<b>No ndangamuntu</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza no y'indangamuntu"})
@@ -284,6 +282,12 @@ class ComForm(FlaskForm):
     
     Telephone = StringField(Markup('<b>No Telephone</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza nomero ya telephone"})
     Email = StringField(Markup('<b>Email</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Email"})
-    monthlyNetSalary = StringField(Markup('<b>Umushahara ku kwezi</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza umushahara w'ukwezi"})
-    submit = SubmitField('Emeza')
+    monthlyNetSalary = StringField(Markup(
+"""
 
+class ZoneForm(FlaskForm):
+    izina = StringField("Izina Rya zone", validators=[DataRequired()])
+    description = StringField("Ubusobanuro", validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()])
+
+    submit = SubmitField('Injiza')

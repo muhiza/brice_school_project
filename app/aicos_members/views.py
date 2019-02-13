@@ -5,6 +5,7 @@ from ..models import *
 from .forms import *
 import flask_excel
 import flask_excel as excel
+from sqlalchemy import func
 
 import nexmo
 
@@ -215,14 +216,50 @@ def dashboard():
 
     apps = Department.query.filter_by(email=current_user.email).first()
     applications = apps.applications
-
+    umusaruro_kg = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(department_id=current_user.email).scalar()
+    npk_kg = db.session.query(func.sum(InyongeraMusaruro.NPKkg)).filter_by(department_id=current_user.email).scalar()
+    urea_kg = db.session.query(func.sum(InyongeraMusaruro.UREA)).filter_by(department_id=current_user.email).scalar()
+    dap_kg = db.session.query(func.sum(InyongeraMusaruro.DAP)).filter_by(department_id=current_user.email).scalar()
+    kcl_kg = db.session.query(func.sum(InyongeraMusaruro.KCL)).filter_by(department_id=current_user.email).scalar()
+    imbuto_kg = db.session.query(func.sum(InyongeraMusaruro.ImbutoQuantity)).filter_by(department_id=current_user.email).scalar()
+    briquette_kg = db.session.query(func.sum(InyongeraMusaruro.Briquette)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    amandec = db.session.query(func.sum(Ibihano.AmandeC)).filter_by(department_id=current_user.email).scalar()
+    amandeApi = db.session.query(func.sum(Ibihano.AmandeApII)).filter_by(department_id=current_user.email).scalar()
+    # check if inyongeramusaruro kg is not empty
+    if npk_kg is None:
+      npk_kg = 0
+    if urea_kg is None:
+      urea_kg = 0
+    if dap_kg is None:
+      dap_kg = 0
+    if kcl_kg is None:
+      kcl_kg = 0
+    if imbuto_kg is None:
+      imbuto_kg = 0
+    if briquette_kg is None:
+      briquette_kg = 0
+    if inguzanyo is None:
+      inguzanyo = 0
+    if amandec is None:
+      amandec = 0
+    if amandeApi is None:
+      amandeApi = 0
     return render_template('home.html',
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
                            notes = notes,
-
-
+                           umusaruro_kg = umusaruro_kg,
+                           npk_kg = npk_kg,
+                           urea_kg = urea_kg,
+                           dap_kg = dap_kg,
+                           kcl_kg = kcl_kg,
+                           imbuto_kg = imbuto_kg,
+                           briquette_kg = briquette_kg,
+                           inguzanyo = inguzanyo,
+                           amandec = amandec,
+                           amandeApi = amandeApi,
                            employees_male=employees_male,
                            employees_female=employees_female,
                            employees_male_count=employees_male_count,
@@ -1195,16 +1232,16 @@ def doimportmbs():
             #m.department_id = row['department_id']
             #c.id = row['id']
             return m
-        #try:
-        request.save_book_to_database(
-            field_name='file', session=db.session,
-            tables=[Member],
-            initializers=[mbs_init_func])
-          #return redirect(url_for('.handson_table'), code=302)
-          #flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
-        #except:
-         # flash("The list you are uploading is not well formated, please reformat it and try again or Download the sample sheet")
-        return redirect(url_for('aicos_members.aicos_members_home'), code=302)
+        try:
+          request.save_book_to_database(
+              field_name='file', session=db.session,
+              tables=[Member],
+              initializers=[mbs_init_func])
+          return redirect(url_for('aicos_members.aicos_members_home'), code=302)
+          flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
+        except:
+          flash("The list you are uploading is not well formated, please reformat it and try again or Download the sample sheet")
+          return redirect(url_for('aicos_members.aicos_members_home'), code=302)
     return render_template("employees/upload.html", 
                             add_member=add_member,
                             upload_file=upload_file,
@@ -1264,11 +1301,9 @@ def AddNewMember():
                           Ubwishingizi    = form.ubwishingizix.data,
                           akazi_akora_muri_koperative  = form.akazi_akora_muri_koperativex.data,
                           akazi_akora_ahandi  = form.akandi_kazi_akorax.data,
-
                           ubuso_ahingaho  = form.ubuso_ahingahox.data,
                           ubwoko_igihingwa  = form.ubwoko_bwigihingwax.data,
                           ubuso_ahingaho_ibindi = form.ubuso_ahingaho_ibindix.data,
-                          
                           ubwoko_igihingwa_kindi = form.ubwoko_bwigihingwa_kindix.data,
                           ubuso_budakoreshwa = form.ubuso_budakoreshwax.data,
                           department_id = current_user.email
@@ -1817,9 +1852,51 @@ def coop_details(email):
                              employees_kutumva_count=employees_kutumva_count,
                              employees_mumutwe=employees_mumutwe,
                              employees_mumutwe_count=employees_mumutwe_count,
-                    title="Cooperative's details")
+                             title="Cooperative's details")
     return redirect(url_for('admin.list_employees'))
 
 @aicos_members.route('/imyishyurire')
 def imyishyurire():
   return render_template('/imyishyurire/index.html')
+
+@aicos_members.route('/zone')
+def zone():
+  zones = Zone.query.filter_by(department_id=current_user.email).all()
+  return render_template('/zones/zones.html', zones=zones)
+
+@aicos_members.route('/zone/add/new', methods=['GET', 'POST'])
+def addZone():
+  form = ZoneForm()
+  if form.validate_on_submit():
+    zone = Zone(
+              izina = form.izina.data,
+              ubusobanuro = form.description.data,
+              impamvu = form.impamvu.data,
+              department_id = current_user.email
+              )
+    try:
+      db.session.add(zone)
+      db.session.commit()
+      return redirect(url_for('aicos_members.zone'))
+    except:
+      return redirect(url_for('aicos_members.addZone'))
+  return render_template('/zones/add_zone.html', form=form)
+
+
+@aicos_members.route('/zone/add/member/<int:a>/<int:b>', methods=['GET', 'POST'])
+def addZoneMember(a, b):
+  memberId = Member.query.get_or_404(a)
+  zoneId = Zone.query.get_or_404(b)
+  zone = Zone.query.filter_by(id=zoneId.id).first()
+  member = Member.query.get(zone.id)
+  member.zone = zone.izina
+  try:
+    db.session.commit()
+    flash("umunyamuryango yinjiye neza muri zone")
+    return redirect(url_for('aicos_members.addZoneMember'))
+  except:
+    db.session.rollback()
+    flash("Ntibyakunze neza kwinjira muri zone reba niba atari muri iyi zone")
+    return redirect(url_for('aicos_members.addZoneMember'))
+
+  return render_template('/zones/add_members.html', members = members, )

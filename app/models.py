@@ -1641,7 +1641,7 @@ class Itsinda(db.Model):
 class ItsindaMember(db.Model):
 	__tablename__ = "itsindamember"
 	id = db.Column(db.Integer, primary_key = True)
-	member_id = db.Column(db.Integer, db.ForeignKey('members.id'), unique=True)
+	member_id = db.Column(db.Integer, db.ForeignKey('members.id'), unique=False)
 	itsinda_id = db.Column(db.Integer, db.ForeignKey('amatsinda.id'))
 	member_firstname = db.Column(db.String(200))
 	member_secondname = db.Column(db.String(200))
@@ -1792,6 +1792,19 @@ class IbindiRukomatanyi(db.Model):
 
 	def __repr__(self):
 		return '<IbindiRukomatanyi: {}'.format(self.id)
+
+class Zone(db.Model):
+	"""docstring for Zone"""
+	__tablename__ = "zones"
+	id = db.Column(db.Integer, primary_key = True)
+	izina = db.Column(db.String(100))
+	ubusobanuro = db.Column(db.String(200))
+	impamvu = db.Column(db.String(200))
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+	def __repr__(self):
+		return '<Zone: {}'.format(self.id)
+		
 				
 			
 		

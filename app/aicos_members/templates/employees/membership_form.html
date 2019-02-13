@@ -31,9 +31,9 @@
       <div class="card-body">
       <div class="row">
           <div class="col-md-10">
-          <!--{% if not upload_file %}-->
+          {% if not upload_file %}
               <!--{{ wtf.quick_form(form, form_type='basic', button_map={'submit': 'info'}) }}-->
-              <form method="POST" action="/AddNewMember">
+              <form method="POST" action="{{ url_for('aicos_members.AddNewMember') }}">
               <div class="mydivs" id="divs">
                 <div class="cls1">
                   <div class="form-member" style="margin-top: -30px;">
@@ -234,7 +234,7 @@
               </div>
               
               </form>
-          <!--{% endif %}<br>-->
+          {% endif %}<br>
           </div>
       </div>   
       </div>
@@ -259,7 +259,7 @@
   </div>
 </div>
 <!-- jQuery -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     var divs = $('.mydivs>div');
