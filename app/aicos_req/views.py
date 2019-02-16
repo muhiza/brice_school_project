@@ -1,6 +1,7 @@
 from flask import render_template, abort, flash, redirect, url_for, request
 from . import aicos_req
 from flask_login import current_user, login_required
+from sqlalchemy import func
 from ..models import * 
 from .forms import *
 
@@ -566,10 +567,46 @@ def rukomatanyi():
     inguzanyo_abandi = InguzanyoZabandi.query.filter_by(department_id=current_user.email).all()
     ibicuruzwa = Ibicuruzwa.query.filter_by(department_id=current_user.email).all()
     ikoreshwa = IkoreshwaRyimari.query.filter_by(department_id=current_user.email).all()
+    isanduku_cr_sum = db.session.query(func.sum(IsandukuNshya.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    isanduku_db_sum = db.session.query(func.sum(IsandukuNshya.asigaye)).filter_by(department_id=current_user.email).scalar()
+    bank_cr_sum = db.session.query(func.sum(BankModel.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    bank_db_sum = db.session.query(func.sum(BankModel.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_db_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_cr_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibiramba_cr_sum = db.session.query(func.sum(Ibiramba.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibiramba_db_sum = db.session.query(func.sum(Ibiramba.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ububiko_cr_sum = db.session.query(func.sum(Ububiko.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ububiko_db_sum = db.session.query(func.sum(Ububiko.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    umugabane_cr_sum = db.session.query(func.sum(UmugabaneShingiro.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    umugabane_db_sum = db.session.query(func.sum(UmugabaneShingiro.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    inkunga_db_sum = db.session.query(func.sum(Inkunga.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    inkunga_cr_sum = db.session.query(func.sum(Inkunga.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_abandi_cr_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_abandi_db_sum = db.session.query(func.sum(InguzanyoZabandi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    ibindi_cr_sum = db.session.query(func.sum(IbindiRukomatanyi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibindi_db_sum = db.session.query(func.sum(IbindiRukomatanyi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
     return render_template('/accountingBooks/rukomatanyi/index.html', 
                                                                 isanduku=isanduku,
                                                                 bank=bank,
+                                                                isanduku_cr_sum=isanduku_cr_sum,
+                                                                isanduku_db_sum=isanduku_db_sum,
+                                                                bank_cr_sum = bank_cr_sum,
+                                                                bank_db_sum = bank_db_sum,
+                                                                inguzanyo_abandi_cr_sum = inguzanyo_abandi_cr_sum,
+                                                                inguzanyo_abandi_db_sum = inguzanyo_abandi_db_sum,
+                                                                inguzanyo_cr_sum = inguzanyo_cr_sum,
+                                                                inguzanyo_db_sum = inguzanyo_db_sum,
                                                                 inguzanyo_zatanzwe=inguzanyo_zatanzwe,
+                                                                ibiramba_cr_sum = ibiramba_cr_sum,
+                                                                ibiramba_db_sum = ibiramba_db_sum,
+                                                                ibindi_cr_sum = ibindi_cr_sum,
+                                                                ibindi_db_sum = ibindi_db_sum,
+                                                                ububiko_db_sum = ububiko_db_sum,
+                                                                ububiko_cr_sum = ububiko_cr_sum ,
+                                                                inkunga_cr_sum = inkunga_cr_sum,
+                                                                inkunga_db_sum = inkunga_db_sum,
+                                                                umugabane_cr_sum = umugabane_cr_sum,
+                                                                umugabane_db_sum = umugabane_db_sum,
                                                                 ibiramba=ibiramba,
                                                                 ububiko=ububiko,
                                                                 umugabane_shingiro=umugabane_shingiro,

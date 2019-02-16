@@ -7,7 +7,14 @@
                 <div class="clearfix">
                     <i class="fa fa-cogs bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Isanduku</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            ISANDUKU
+                        </div>
+                        <div class="">
+                            <small>Ibisigaye {% if isanduku_cr_sum and isanduku_db_sum %} {{ isanduku_cr_sum }} - {{ isanduku_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -24,7 +31,15 @@
                 <div class="clearfix">
                     <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Bank</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Bank
+                        </div>
+                        <div class="">
+                            <small>{% if bank_cr_sum and bank_db_sum %} Cr = {{ bank_cr_sum }} /Db =
+                            {{ bank_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -41,7 +56,14 @@
                 <div class="clearfix">
                     <i class="fa fa-moon-o bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Inguzanyo zatanzwe</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Inguzanyo zatanzwe
+                        </div>
+                        <div class="">
+                            <small>{% if inguzanyo_cr_sum and inguzanyo_db_sum %} Cr= {{ inguzanyo_cr_sum }} /Db= {{ inguzanyo_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -58,7 +80,14 @@
                 <div class="clearfix">
                     <i class="fa fa-bell bg-danger p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Ibiramba</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Ibiramba
+                        </div>
+                        <div class="">
+                            <small>{% if ibiramba_cr_sum and ibiramba_db_sum %} Cr= {{ ibiramba_cr_sum }} /Db= {{ ibiramba_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -74,7 +103,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-cogs bg-primary p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-primary mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ububiko</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ububiko
+                    </div>
+                    <div class="">
+                        <small>{% if ububiko_cr_sum and ububiko_db_sum %} Cr= {{ ububiko_cr_sum }} /Db= {{ ububiko_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -84,7 +120,14 @@
             <div class="card-body p-0 clearfix">
                 <i class="fa fa-laptop bg-info p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-info mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Umugabane Shingiro</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Umugabane Shingiro
+                    </div>
+                    <div class="">
+                        <small>{% if umugabane_cr_sum and umugabane_db_sum %} Cr= {{ umugabane_cr_sum }} /Db= {{ umugabane_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +137,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-moon-o bg-warning p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-warning mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Impano/Inkunga</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Impano/Inkunga
+                    </div>
+                    <div class="">
+                        <small>{% if inkunga_cr_sum and inkunga_db_sum %} Cr= {{ inkunga_cr_sum }} /Db= {{ inkunga_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -104,7 +154,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-bell bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-danger mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Inguzanyo / Abandi</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Inguzanyo / Abandi
+                    </div>
+                    <div class="">
+                        <small>{% if inguzanyo_abandi_cr_sum and inguzanyo_abandi_db_sum %} Cr= {{ inguzanyo_abandi_cr_sum }} /Db= {{ inguzanyo_abandi_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -114,7 +171,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-cogs bg-primary p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-primary mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ikoreshwa ry'imari</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ikoreshwa ry'imari
+                    </div>
+                    <div class="">
+                        <small>{% if inkunga_cr_sum and inkunga_db_sum %} Cr= {{ inkunga_cr_sum }} /Db= {{ inkunga_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -153,7 +217,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-bell bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-danger mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ibindi</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ibindi
+                    </div>
+                    <div class="">
+                        <small>{% if ibindi_cr_sum and ibindi_db_sum %} Cr= {{ ibindi_cr_sum }} /Db= {{ ibindi_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

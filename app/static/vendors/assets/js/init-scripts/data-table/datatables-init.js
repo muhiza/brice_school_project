@@ -7,6 +7,9 @@
 
     $('#bootstrap-data-table').DataTable({
         lengthMenu: [[10, 20, 50, -1], [10, 20, 50, "All"]],
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         "scrollX": true,
     });
 
@@ -21,7 +24,9 @@
 
     $('#bootstrap-data-table-export').DataTable({
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        buttons: [
+            'print'
+        ],
         "scrollX": true,
     });
 
@@ -30,7 +35,7 @@
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
     });
-
+    
 
 	$('#row-select').DataTable( {
         initComplete: function () {

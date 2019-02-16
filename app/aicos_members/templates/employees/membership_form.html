@@ -14,6 +14,9 @@
 {% block body %}
 <div class="container-fluid">
   <div class="row">
+    {{ util.flashed_messages() }}
+  </div>
+  <div class="row">
     <div class="col-md-8">
       <div class="card">
           <div class="card-header bg-light">
@@ -84,12 +87,6 @@
                           {{ wtf.form_field(form.nomero_ya_telephonex) }}
                       </div>
                   </div>
-                  <!--<div class="form-member" style="margin-top: -30px;">
-                      <div class="">
-                          <label class="" for="izina"></label>
-                          {{ wtf.form_field(form.codex) }}
-                      </div>
-                  </div>-->
                 </div>
                 <div class="cls2">
                   <div class="form-member" style="margin-top: -30px;">
@@ -259,7 +256,7 @@
   </div>
 </div>
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <script type="text/javascript">
   $(document).ready(function() {
     var divs = $('.mydivs>div');

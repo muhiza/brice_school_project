@@ -1282,14 +1282,13 @@ def AddNewMember():
                           Ayandi     = form.ayandix.data,
                           Igitsina  = form.igitsinax.data,
                           Indangamuntu  = form.indangamuntux.data,
-                          #Code          = form.code.data,
                           tariki_yavukiye = form.tariki_yavukiyex.data,
                           Intara = form.intarax.data,
                           Akarere = form.akarerex.data,
                           Umurenge     = form.umurengex.data,
                           Akagari     = form.akagarix.data,
                           Umudugudu     = form.umudugudux.data,
-                          tariki_yinjiriye     = form.tariki_yinjiriyex.data,
+                          tariki_yinjiriye = form.tariki_yinjiriyex.data,
                           umugabane_ukwezi = form.umugabanex.data,
                           Umukono    = form.umukonox.data,
                           nomero_telephone  = form.nomero_ya_telephonex.data,
@@ -1326,11 +1325,8 @@ def AddNewMember():
           db.session.add(NewMember)
           db.session.add(notif)
           db.session.commit()
-  
-
           flash("Umaze kwindika umunyamuryango neza muri sisiteme")
           return redirect(url_for('aicos_members.aicos_members_home'))
-
         except:
           flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
           return redirect(url_for('aicos_members.AddNewMember', add_member=add_member, upload_file=upload_file, title="Add New Member"))

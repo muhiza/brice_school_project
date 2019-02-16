@@ -11,8 +11,8 @@
                 <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="ti-id-badge text-success border-success"></i></div>
                     <div class="stat-content dib">
-                        <div class="stat-text">Abanyamuryango</div>
-                        <div class="stat-digit">Total: {% if employees_count %} {{ employees_count }} {% else %} 0 {% endif %}</div>
+                        <div class="stat-heading">Abanyamuryango</div>
+                        <div class="stat-text">Total: {% if employees_count %} {{ employees_count }} {% else %} 0 {% endif %}</div>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                 <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="ti-shopping-cart-full text-primary border-primary"></i></div>
                     <div class="stat-content dib">
-                        <div class="stat-text">Stock</div>
-                        <div class="stat-digit">Total: {% if umusaruro_kg %} {{ umusaruro_kg }} {% else %} 0  {% endif %} kg</div>
+                        <div class="stat-heading">Stock</div>
+                        <div class="stat-text">Total: {% if umusaruro_kg %} {{ umusaruro_kg }} {% else %} 0  {% endif %} kg</div>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                 <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="ti-money text-warning border-warning"></i></div>
                     <div class="stat-content dib">
-                        <div class="stat-text">Ibyakoreshejwe</div>
-                        <div class="stat-digit">Total: {% if npk_kg or urea_kg or dap_kg or kcl_kg or briquette_kg %} {{ npk_kg + urea_kg + dap_kg + kcl_kg + briquette_kg }} {% else %} 0  {% endif %} kg</div>
+                        <div class="stat-heading">Ibyakoreshejwe</div>
+                        <div class="stat-text">Total: {% if npk_kg or urea_kg or dap_kg or kcl_kg or briquette_kg %} {{ npk_kg + urea_kg + dap_kg + kcl_kg + briquette_kg }} {% else %} 0  {% endif %} kg</div>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,8 @@
                     <div class="stat-widget-one">
                         <div class="stat-icon dib"><i class="ti-link text-danger border-danger"></i></div>
                         <div class="stat-content dib">
-                            <div class="stat-text">Inguzanyo</div>
-                            <div class="stat-digit">Total: {% if inguzanyo %} {{ inguzanyo }} {% else %} 0  {% endif %} </div>
+                            <div class="stat-heading">Inguzanyo</div>
+                            <div class="stat-text">Total: {% if inguzanyo %} {{ inguzanyo }} {% else %} 0  {% endif %} </div>
                         </div>
                     </div>
                 </div>
@@ -112,23 +112,23 @@
 
     <div class="row">
     <div class="col-lg-3 col-md-6">
-    <a href="{{ url_for('aicos_stock_managment.ibihano') }}">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-four">
-                    <div class="stat-icon dib">
-                        <i class="ti-server text-info"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="text-left dib">
-                            <div class="stat-heading">Ibihano</div>
-                            <div class="stat-text">Total: {% if amandec or amandeApi %} {{ amandec + amandeApi }} {% else %} 0 {% endif %}</div>
+        <a href="{{ url_for('aicos_stock_managment.ibihano') }}">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-four">
+                        <div class="stat-icon dib">
+                            <i class="ti-server text-info"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="text-left dib">
+                                <div class="stat-heading">Ibihano</div>
+                                <div class="stat-text">Total: {% if amandec or amandeApi %} {{ amandec + amandeApi }} {% else %} 0 {% endif %}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
     </div>
 
     <div class="col-lg-3 col-md-6">
