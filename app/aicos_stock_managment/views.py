@@ -37,15 +37,15 @@ def dashboard():
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     #all_member_idd = Umusaruro.member_id
-    memberss = Member.query.all()
+    memberss = Member.query.filter_by(department_id=current_user.email).all()
     umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    imisanzu = Umusanzu.query.all()
-    umusaruro = Umusarurob.query.all()
-    inyongeramusaruro = InyongeraMusaruro.query.all()
+    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+    umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
 
 
     return render_template('stock_dashboard.html', 
@@ -225,7 +225,7 @@ def injizaUmusaruro(id):
             return redirect(url_for('aicos_stock_managment.umusaruro'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
-            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name))
+            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name, id=memberid.id))
     
     return render_template('record_umusaruro.html', form=form, memberid=memberid, member_name=member_name)
 
