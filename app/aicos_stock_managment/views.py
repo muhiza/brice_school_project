@@ -186,7 +186,14 @@ def injizaUmusaruro(id):
     member_name = Member.query.filter_by(id=memberid.id).first()
 
 
-    if memberid is None:
+    if member_name is None:
+        flash("Umunyamuryango usabye ntawuhari")
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
         return redirect(url_for('aicos_stock_managment.umusaruro'))
     
     form = UmusarurobForm()
@@ -240,7 +247,14 @@ def injizaInyongeramusaruro(id):
 
 
     if memberid is None:
-        return redirect(url_for('aicos_stock_managment.umusaruro'))
+        flash("Umunyamuryango usabye ntawuhari")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
 
     form = InyongeraMusaruroForm()
 
@@ -381,6 +395,16 @@ def injizaImisanzu(id):
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
 
+    if memberid is None:
+        flash("")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+
     form = UmusanzuForm()
     
     if form.validate_on_submit():
@@ -425,6 +449,16 @@ def injizaIbirarane(id):
     check_coop_admin()
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
+
+    if memberid is None:
+        flash("Umunyamuryango ntabwo abonetse")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
 
     form = IbiraraneForm()
 
@@ -485,6 +519,16 @@ def injizaIbihano(id):
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
 
+    if memberid is None:
+        flash("Ntabwo Umunyamuryango abonetse")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+
     form = IbihanoForm()
     
     if form.validate_on_submit():
@@ -522,6 +566,16 @@ def injizaIbindi(id):
     check_coop_admin()
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
+
+    if memberid is None:
+        flash("Ntabwo Umunyamuryango abonetse")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
 
     form = IbindiForm()
 
