@@ -17,6 +17,7 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
                             <thead>
 							     <tr>
+                                    <th>Tariki</th>
 		                            <th>Aho Bigiye</th>
 		                            <th>Aho Bivuye</th>
 		                            <th>Hindura</th>
@@ -24,7 +25,50 @@
 		                        </tr>
 					        </thead>
 					        <tbody>
-					            {% if umugabane_shingiro %}
+                                {% if rukomatanyo %}
+                                    {% for ru in rukomatanyo %}
+                                        <tr>
+                                            {% if ru.umugabaneShingiro %}
+                                                {% for b in ru.umugabaneShingiro %}
+                                                    <td>
+                                                        {% for b in ru.umugabaneShingiro %}
+                                                            {{ ru.tariki_byakozwe }}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                <a href="{{ url_for('aicos_req.hinduraUmugabaneShingiro', id=b.id) }}" class="badge badge-success">
+                                                                    Hindura
+                                                                </a>  
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="badge badge-danger">
+                                                            Siba
+                                                        </a>               
+                                                    </td>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+					            <!--{% if umugabane_shingiro %}
                                     {% for umugabane in umugabane_shingiro %}
                                         <tr>
                                             <td>{{ umugabane.ayinjiye }}</td>
@@ -41,7 +85,7 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                {% endif %}
+                                {% endif %}-->
 				           </tbody>
                         </table>
                     </div>

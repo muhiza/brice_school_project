@@ -1660,6 +1660,7 @@ class IsandukuNshya(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<IsandukuNshya: {}>'.format(self.id)
@@ -1673,6 +1674,8 @@ class BankModel(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
+
 
 	def __repr__(self):
 		return '<BankModel: {}>'.format(self.id)
@@ -1687,6 +1690,7 @@ class InguzanyoZatanzwe(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<InguzanyoZatanzwe: {}>'.format(self.id)
@@ -1699,6 +1703,7 @@ class Ibiramba(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<Ibiramba: {}>'.format(self.id)
@@ -1713,6 +1718,7 @@ class Ububiko(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<Ububiko: {}>'.format(self.id)
@@ -1726,6 +1732,7 @@ class UmugabaneShingiro(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))	
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 	
 	def __repr__(self):
 		return '<UmugabaneShingiro: {}'.format(self.id)
@@ -1739,6 +1746,7 @@ class Inkunga(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<Inkunga: {}'.format(self.id)
@@ -1751,6 +1759,7 @@ class InguzanyoZabandi(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<InguzanyoZabandi: {}'.format(self.id)
@@ -1764,6 +1773,7 @@ class Ibicuruzwa(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<Ibicuruzwa: {}'.format(self.id)
@@ -1776,6 +1786,7 @@ class IkoreshwaRyimari(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<IkoreshwaRyimari: {}'.format(self.id)
@@ -1789,6 +1800,7 @@ class IbindiRukomatanyi(db.Model):
 	asigaye = db.Column(db.Integer)
 	date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
 		return '<IbindiRukomatanyi: {}'.format(self.id)
@@ -1801,9 +1813,37 @@ class Zone(db.Model):
 	ubusobanuro = db.Column(db.String(200))
 	impamvu = db.Column(db.String(200))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+	rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
 	def __repr__(self):
-		return '<Zone: {}'.format(self.id)
+		return '<Zone: {}>'.format(self.id)
+
+
+class Rukomatanyo(db.Model):
+	"""docstring for Rukomatanyo"""
+	__tablename__ = "rukomatanyo"
+	id = db.Column(db.Integer, primary_key = True)
+	tariki_byakozwe = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+	description = db.Column(db.String(200))
+	piyesi = db.Column(db.String(200))
+	zone = db.relationship('Zone', backref='rukomatanyo', lazy='dynamic')
+	ibindiRukomatanya = db.relationship('IbindiRukomatanyi', backref='rukomatanyo', lazy='dynamic')
+	isanduku = db.relationship('IsandukuNshya', backref='rukomatanyo', lazy='dynamic')
+	ikoreshwaRyimari = db.relationship('IkoreshwaRyimari', backref='rukomatanyo', lazy='dynamic')
+	ibicuruzwa = db.relationship('Ibicuruzwa', backref='rukomatanyo', lazy='dynamic')
+	inguzanyozabandi = db.relationship('InguzanyoZabandi', backref='rukomatanyo', lazy='dynamic')
+	inkunga = db.relationship('Inkunga', backref='rukomatanyo', lazy='dynamic')
+	umugabaneShingiro = db.relationship('UmugabaneShingiro', backref='rukomatanyo', lazy='dynamic')
+	ibiramba = db.relationship('Ibiramba', backref='rukomatanyo', lazy='dynamic')
+	ububiko = db.relationship('Ububiko', backref='rukomatanyo', lazy='dynamic')
+	InguzanyoZatanzwe = db.relationship('InguzanyoZatanzwe', backref='rukomatanyo', lazy='dynamic')
+	bank = db.relationship('BankModel', backref='rukomatanyo', lazy='dynamic')
+	isanduku = db.relationship('IsandukuNshya', backref='rukomatanyo', lazy='dynamic')
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+
+
+
 		
 				
 			

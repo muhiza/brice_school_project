@@ -165,60 +165,93 @@ class amatsindaForm(FlaskForm):
 
 
 class IsandukuForm(FlaskForm):
-    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
-    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
-    asigaye = StringField("Ayasigaye", validators=[Optional()])
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
+    ayinjiye = IntegerField("Ayinjiye", validators=[DataRequired()], render_kw={"placeholder": "ayinjiye"})
+    ayasohotse = IntegerField("Ayasohotse", validators=[DataRequired()], render_kw={"placeholder": "ayasohotse"})
+    asigaye = StringField("Ayasigaye", validators=[Optional()], render_kw={"placeholder": "asigaye"})
     submit = SubmitField('Bika')
 
 class BankForm(FlaskForm):
-    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
-    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
+    ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()], render_kw={"placeholder": "Injiza ayinjiye"})
+    ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()], render_kw={"placeholder": "Injiza ayasohotse"})
     submit = SubmitField('Bika')
 
 class InguzanyoZatanzweForm(FlaskForm):
     """docstring for InguzanyoZatanzwe"""
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class IbirambaForm(FlaskForm):
     """docstring for IbirambaForm"""
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class UbubikoForm(FlaskForm):
     """docstring for UbubikoForm"""
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class UmugabaneShingiroForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class InkungaForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class InguzanyoZabandiForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class IbicuruzwaForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class IkoreshwaRyimariForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')
 
 class IbindiForm(FlaskForm):
+    itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
+    impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
+    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayo Binjije", validators=[DataRequired()])
     ayasohotse = IntegerField("Ayo Basohoye", validators=[DataRequired()])
     submit = SubmitField('Bika')

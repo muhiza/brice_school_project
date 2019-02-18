@@ -17,6 +17,7 @@
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
                             <thead>
 							     <tr>
+                                    <th>Tariki</th>
 		                            <th>Aho Bigiye</th>
 		                            <th>Aho Bivuye</th>
 		                            <th>Hindura</th>
@@ -24,7 +25,50 @@
 		                        </tr>
 					        </thead>
 					        <tbody>
-					            {% if inguzanyo_abandi %}
+                                {% if rukomatanyo %}
+                                    {% for ru in rukomatanyo %}
+                                        <tr>
+                                            {% if ru.inguzanyozabandi %}
+                                                {% for b in ru.inguzanyozabandi %}
+                                                    <td>
+                                                        {% for b in ru.inguzanyozabandi %}
+                                                            {{ ru.tariki_byakozwe }}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                <a href="{{ url_for('aicos_req.hinduraUmugabaneShingiro', id=b.id) }}" class="badge badge-success">
+                                                                    Hindura
+                                                                </a>  
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="badge badge-danger">
+                                                            Siba
+                                                        </a>               
+                                                    </td>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+					            <!--{% if inguzanyo_abandi %}
                                     {% for inguzanyo in inguzanyo_abandi %}
                                         <tr>
                                             <td>{{ inguzanyo.ayinjiye }}</td>
@@ -41,7 +85,7 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                {% endif %}
+                                {% endif %}-->
 				           </tbody>
                         </table>
                     </div>
