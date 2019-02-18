@@ -1823,7 +1823,7 @@ class Rukomatanyo(db.Model):
 	"""docstring for Rukomatanyo"""
 	__tablename__ = "rukomatanyo"
 	id = db.Column(db.Integer, primary_key = True)
-	tariki_byakozwe = db.Column(db.DateTime, default=datetime.datetime.utcnow())
+	tariki_byakozwe = db.Column(db.Date, default=datetime.datetime.utcnow())
 	description = db.Column(db.String(200))
 	piyesi = db.Column(db.String(200))
 	zone = db.relationship('Zone', backref='rukomatanyo', lazy='dynamic')
