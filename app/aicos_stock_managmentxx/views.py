@@ -232,7 +232,8 @@ def injizaKonte():
                                     memberName= form.izinaryaNyiriKonte.data,
                                     bankName= form.izanaRyaBank.data,
                                     bankAccountNumber= form.numeroYaKonte.data,
-                                    department_id=current_user.email)
+                                    department_id=current_user.email
+                                    )
 
         try:
             db.session.add(coopMemberBankAccounts)
