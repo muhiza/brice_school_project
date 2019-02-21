@@ -646,11 +646,6 @@ class Member(db.Model):
 	itsindamember = db.relationship('ItsindaMember', backref='member', lazy='dynamic')
 
 
-
-	""" We will always use this __init__ function to upload excel file  """
-	def __init__(self, sno):
-		self.id = id
-		self.sno = sno
 	
 
 	"""

@@ -1248,16 +1248,23 @@ def doimportmbs():
                             title="Upload a file")
 
 
+
+
+
+
+
+
+
 @aicos_members.route("/members_template", methods=['GET'])
 def templateDownload():
     query_sets = Member.query.filter_by(id=20).all()
-    column_names = ['id', 'firstName', 'secondName', 'others',
-                    'Province','District','Sector','Cell',
-                    'nId', 'entryDate', 'share', 'exitDate',
-                    'umuzungura', 'umukono', 'gender', 'dob', 'age', 'phone',
-                    'Amashuri', 'Ubumuga', 'marital_status', 'ubudehe', 'insurance', 'Language',
-                    'role_id', 'department_id', 'has_children', 'rular_or_urban', 'is_active',
-                    'member_source', 'job']
+    column_names = ['id', 'izina_ribanza', 'izina_rikurikira', 'Ayandi',
+                    'Igitsina','Indangamuntu','Intara',
+                    'Akarere', 'Umurenge', 'Akagari', 'Umudugudu', 'tariki_yinjiriye', 'umugabane_ukwezi',
+                    'Umukono', 'nomero_telephone', 'Amashuri', 'Ubumuga', 'Arubatse', 'umubare_abana',
+                    'icyiciro_ubudehe', 'Ubwishingizi', 'akazi_akora_muri_koperative', 'akazi_akora_ahandi',
+                    'ubuso_ahingaho', 'ubwoko_igihingwa', 'ubuso_ahingaho_ibindi', 'ubwoko_igihingwa_kindi',
+                    'ubuso_budakoreshwa']
     return excel.make_response_from_query_sets(query_sets, column_names, "xls")
 
 
@@ -1308,7 +1315,7 @@ def AddNewMember():
                           ubuso_budakoreshwa = form.ubuso_budakoreshwax.data,
                           department_id = current_user.email
                           )
-
+        """
         notif = Notification(action="Made decision",
                             done_by=current_user.username,
                             done_from=IP,
@@ -1316,6 +1323,7 @@ def AddNewMember():
                             done_to="tapayi",
                             effect = "system upgraded",
                             department_id = current_user.email)
+        """
         try:
           """
           to_number = '+250786012383'
@@ -1324,7 +1332,7 @@ def AddNewMember():
           response_text = response['messages'][0]
           """
           db.session.add(NewMember)
-          db.session.add(notif)
+          #db.session.add(notif)
           db.session.commit()
   
 
