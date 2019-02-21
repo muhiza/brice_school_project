@@ -24,7 +24,50 @@
 		                        </tr>
 					        </thead>
 					        <tbody>
-					            {% if ububiko %}
+                                {% if rukomatanyo %}
+                                    {% for ru in rukomatanyo %}
+                                        <tr>
+                                            {% if ru.InguzanyoZatanzwe %}
+                                                {% for b in ru.ububiko %}
+                                                    <td>
+                                                        {% for b in ru.ububiko %}
+                                                            {{ ru.tariki_byakozwe }}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                <a href="{{ url_for('aicos_req.hinduraUbubiko', id=b.id) }}" class="badge badge-success">
+                                                                    Hindura
+                                                                </a>  
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="badge badge-danger">
+                                                            Siba
+                                                        </a>               
+                                                    </td>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+					            <!--{% if ububiko %}
                                     {% for ubu in ububiko %}
                                         <tr>
                                             <td>{{ ubu.ayinjiye }}</td>
@@ -41,7 +84,7 @@
                                             </td>
                                         </tr>
                                     {% endfor %}
-                                {% endif %}
+                                {% endif %}-->
 				           </tbody>
                         </table>
                     </div>

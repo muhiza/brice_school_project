@@ -7,7 +7,14 @@
                 <div class="clearfix">
                     <i class="fa fa-cogs bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Isanduku</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            ISANDUKU
+                        </div>
+                        <div class="">
+                            <small>Ibisigaye {% if isanduku_cr_sum and isanduku_db_sum %} {{ isanduku_cr_sum }} - {{ isanduku_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -24,7 +31,15 @@
                 <div class="clearfix">
                     <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Bank</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Bank
+                        </div>
+                        <div class="">
+                            <small>{% if bank_cr_sum and bank_db_sum %} Cr = {{ bank_cr_sum }} /Db =
+                            {{ bank_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -41,7 +56,14 @@
                 <div class="clearfix">
                     <i class="fa fa-moon-o bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Inguzanyo zatanzwe</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Inguzanyo zatanzwe
+                        </div>
+                        <div class="">
+                            <small>{% if inguzanyo_cr_sum and inguzanyo_db_sum %} Cr= {{ inguzanyo_cr_sum }} /Db= {{ inguzanyo_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -58,7 +80,14 @@
                 <div class="clearfix">
                     <i class="fa fa-bell bg-danger p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1"><!--amount--></div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Ibiramba</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                        <div class="">
+                            Ibiramba
+                        </div>
+                        <div class="">
+                            <small>{% if ibiramba_cr_sum and ibiramba_db_sum %} Cr= {{ ibiramba_cr_sum }} /Db= {{ ibiramba_db_sum }} {% else %} 0 {% endif %}</small>
+                        </div>
+                    </div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -74,7 +103,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-cogs bg-primary p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-primary mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ububiko</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ububiko
+                    </div>
+                    <div class="">
+                        <small>{% if ububiko_cr_sum and ububiko_db_sum %} Cr= {{ ububiko_cr_sum }} /Db= {{ ububiko_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -84,7 +120,14 @@
             <div class="card-body p-0 clearfix">
                 <i class="fa fa-laptop bg-info p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-info mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Umugabane Shingiro</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Umugabane Shingiro
+                    </div>
+                    <div class="">
+                        <small>{% if umugabane_cr_sum and umugabane_db_sum %} Cr= {{ umugabane_cr_sum }} /Db= {{ umugabane_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +137,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-moon-o bg-warning p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-warning mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Impano/Inkunga</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Impano/Inkunga
+                    </div>
+                    <div class="">
+                        <small>{% if inkunga_cr_sum and inkunga_db_sum %} Cr= {{ inkunga_cr_sum }} /Db= {{ inkunga_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -104,7 +154,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-bell bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-danger mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Inguzanyo / Abandi</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Inguzanyo / Abandi
+                    </div>
+                    <div class="">
+                        <small>{% if inguzanyo_abandi_cr_sum and inguzanyo_abandi_db_sum %} Cr= {{ inguzanyo_abandi_cr_sum }} /Db= {{ inguzanyo_abandi_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -114,7 +171,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-cogs bg-primary p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-primary mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ikoreshwa ry'imari</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ikoreshwa ry'imari
+                    </div>
+                    <div class="">
+                        <small>{% if inkunga_cr_sum and inkunga_db_sum %} Cr= {{ inkunga_cr_sum }} /Db= {{ inkunga_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -153,7 +217,14 @@
             <div class="p-0 clearfix">
                 <i class="fa fa-bell bg-danger p-4 font-2xl mr-3 float-left text-light"></i>
                 <div class="h5 text-danger mb-0 pt-3"><!--amount--></div>
-                <div class="text-muted text-uppercase font-weight-bold font-xs small">Ibindi</div>
+                <div class="text-muted text-uppercase font-weight-bold font-xs small">
+                    <div class="">
+                        Ibindi
+                    </div>
+                    <div class="">
+                        <small>{% if ibindi_cr_sum and ibindi_db_sum %} Cr= {{ ibindi_cr_sum }} /Db= {{ ibindi_db_sum }} {% else %} 0 {% endif %}</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -166,7 +237,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Rukomatanyi</strong>
+                                <strong class="card-title"><h3>Rukomatanyi</h3></strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered table-sm" style="width: 100%;">
@@ -174,204 +245,336 @@
 
 
 
-
-
-
 			                        <tr class="bg-success" style="color: #fff;">
-			                            <th>Isanduku</th>
-			                            <th>Bank</th>
-			                            <th>Inguzanyo zatanzwe</th>
+                                        <th colspan="3"></th>
+                                        <th colspan="3">Isanduku</th>
+                                        <th colspan="3">Bank</th>
+                                        <th colspan="3">Inguzanyo&nbsp;zatanzwe</th>
+                                        <th colspan="3">Ibiramba</th>
+                                        <th colspan="3">Ububiko</th>
+                                        <th colspan="3">Umugabane&nbsp;shingiro</th>
+                                        <th colspan="3">Impano/Inkunga</th>
+                                        <th colspan="3">Inguzanyo&nbsp;dufitiye&nbsp;abandi</th>
+                                        <th colspan="3">Ibicuruzwa</th>
+                                        <th colspan="3">Ikoreshwa&nbsp;ry'imari</th>
+                                    </tr>
 
-			                            <th>Ibiramba</th>
-
-			                            <th>Ububiko</th>
-
-			                            <th>Umugabane shingiro</th>
-
-			                            <th>Impano/Inkunga</th>
-
-
-			                            <th>Inguzanyo dufitiye abandi</th>
-
-			                            
-			                            <th>Ibicuruzwa</th>
-
-
-			                            <th>Ikoreshwa ry'imari</th>
-			                        </tr>
+                                    <tr class="bg-info" style="color: #fff;">
+                                        <th style="width:10%">Tariki&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Ubusobanuro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Piyesi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Debit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <th>Asigaye&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                    </tr>
 						        </thead>
 						        <tbody style="width: 100% !important; overflow: scroll; ">
-						            <tr>
-					                	<td>
-					                		<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for isa in isanduku %}
-					                					<tr>
-					                						<td>{{ isa.ayinjiye }}</td>
-											                <td>{{ isa.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-					                	</td>
-					                	<td>
-					                		<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in bank %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-					                	</td>
-						                
-						                <td>
-						                	<table  class="table"style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in inguzanyo_zatanzwe %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in ibiramba %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in ububiko %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in umugabane_shingiro %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in inkunga %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in inguzanyo_abandi %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in ibicuruzwa %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						                <td>
-						                	<table class="table" style="">
-					                			<thead>
-					                				<th>Credit</th>
-									                <th>Debit</th>
-					                			</thead>
-					                			<tbody>
-					                				{% for bank in inguzanyo_abandi %}
-					                					<tr>
-					                						<td>{{ bank.ayinjiye }}</td>
-											                <td>{{ bank.ayasohotse }}</td>
-											            </tr>
-					                				{% endfor %}
-					                			</tbody>
-					                		</table>
-						                </td>
-
-						            </tr>
+						            {% if rukomatanyo %}
+                                        {% for ru in rukomatanyo %}
+                                            <tr>
+                                                <td>{{ ru.tariki_byakozwe }}</td>
+                                                <td>{{ ru.description }}</td>
+                                                <td>{{ ru.piyesi }}</td>
+                                                <td>
+                                                    {% if ru.isanduku %}
+                                                        {% for isa in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.isanduku %}
+                                                        {% for isa in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.isanduku %}
+                                                        {% for isa in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.bank %}
+                                                        {% for isa in ru.bank %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.bank %}
+                                                        {% for isa in ru.bank %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.bank %}
+                                                        {% for isa in ru.bank %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.InguzanyoZatanzwe %}
+                                                        {% for isa in ru.InguzanyoZatanzwe %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.InguzanyoZatanzwe %}
+                                                        {% for isa in ru.InguzanyoZatanzwe %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.InguzanyoZatanzwe %}
+                                                        {% for isa in ru.InguzanyoZatanzwe %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibiramba %}
+                                                        {% for isa in ru.ibiramba %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibiramba %}
+                                                        {% for isa in ru.ibiramba %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibiramba %}
+                                                        {% for isa in ru.ibiramba %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ububiko %}
+                                                        {% for isa in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ububiko %}
+                                                        {% for isa in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ububiko %}
+                                                        {% for isa in ru.ububiko %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.umugabaneShingiro %}
+                                                        {% for isa in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.umugabaneShingiro %}
+                                                        {% for isa in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.umugabaneShingiro %}
+                                                        {% for isa in ru.umugabaneShingiro %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inkunga %}
+                                                        {% for isa in ru.inkunga %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inkunga %}
+                                                        {% for isa in ru.inkunga %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inkunga %}
+                                                        {% for isa in ru.inkunga %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inguzanyozabandi %}
+                                                        {% for isa in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inguzanyozabandi %}
+                                                        {% for isa in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.inguzanyozabandi %}
+                                                        {% for isa in ru.inguzanyozabandi %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye -isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibicuruzwa %}
+                                                        {% for isa in ru.ibicuruzwa %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibicuruzwa %}
+                                                        {% for isa in ru.ibicuruzwa %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ibicuruzwa %}
+                                                        {% for isa in ru.ibicuruzwa %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ikoreshwaRyimari %}
+                                                        {% for isa in ru.ikoreshwaRyimari %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ikoreshwaRyimari %}
+                                                        {% for isa in ru.ikoreshwaRyimari %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if ru.ikoreshwaRyimari %}
+                                                        {% for isa in ru.ikoreshwaRyimari %}
+                                                            {% if loop.first %}
+                                                                {{ isa.ayinjiye - isa.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
                                 </tbody>
                             </table>
                         </div>
@@ -386,132 +589,182 @@
 
 </div><!-- /#right-panel -->
 
-    <!-- Right Panel -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-
-
-
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
-
-
+        <!-- Right Panel -->
     </div><!-- /#right-panel -->
 {% endblock %}
+
+<!--
+
+<tr>
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for isa in isanduku %}
+                                                        <tr>
+                                                            <td>{{ isa.ayinjiye }}</td>
+                                                            <td>{{ isa.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in bank %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        
+                                        <td>
+                                            <table  class="table"style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in inguzanyo_zatanzwe %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in ibiramba %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in ububiko %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in umugabane_shingiro %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in inkunga %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in inguzanyo_abandi %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in ibicuruzwa %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                        <td>
+                                            <table class="table" style="">
+                                                <thead>
+                                                    <th>Credit</th>
+                                                    <th>Debit</th>
+                                                </thead>
+                                                <tbody>
+                                                    {% for bank in inguzanyo_abandi %}
+                                                        <tr>
+                                                            <td>{{ bank.ayinjiye }}</td>
+                                                            <td>{{ bank.ayasohotse }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </td>
+
+                                    </tr>
+
+ -->

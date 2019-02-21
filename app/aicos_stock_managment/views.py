@@ -37,15 +37,15 @@ def dashboard():
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     #all_member_idd = Umusaruro.member_id
-    memberss = Member.query.all()
+    memberss = Member.query.filter_by(department_id=current_user.email).all()
     umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    imisanzu = Umusanzu.query.all()
-    umusaruro = Umusarurob.query.all()
-    inyongeramusaruro = InyongeraMusaruro.query.all()
+    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+    umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
 
 
     return render_template('stock_dashboard.html', 
@@ -186,7 +186,14 @@ def injizaUmusaruro(id):
     member_name = Member.query.filter_by(id=memberid.id).first()
 
 
-    if memberid is None:
+    if member_name is None:
+        flash("Umunyamuryango usabye ntawuhari")
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
         return redirect(url_for('aicos_stock_managment.umusaruro'))
     
     form = UmusarurobForm()
@@ -225,7 +232,7 @@ def injizaUmusaruro(id):
             return redirect(url_for('aicos_stock_managment.umusaruro'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
-            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name))
+            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name, id=memberid.id))
     
     return render_template('record_umusaruro.html', form=form, memberid=memberid, member_name=member_name)
 
@@ -240,7 +247,14 @@ def injizaInyongeramusaruro(id):
 
 
     if memberid is None:
-        return redirect(url_for('aicos_stock_managment.umusaruro'))
+        flash("Umunyamuryango usabye ntawuhari")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
 
     form = InyongeraMusaruroForm()
 
@@ -381,6 +395,16 @@ def injizaImisanzu(id):
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
 
+    if memberid is None:
+        flash("")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.imisanzu'))
+
     form = UmusanzuForm()
     
     if form.validate_on_submit():
@@ -425,6 +449,16 @@ def injizaIbirarane(id):
     check_coop_admin()
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
+
+    if memberid is None:
+        flash("Umunyamuryango ntabwo abonetse")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibirarane'))
 
     form = IbiraraneForm()
 
@@ -485,6 +519,16 @@ def injizaIbihano(id):
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
 
+    if memberid is None:
+        flash("Ntabwo Umunyamuryango abonetse")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibihano'))
+
     form = IbihanoForm()
     
     if form.validate_on_submit():
@@ -522,6 +566,16 @@ def injizaIbindi(id):
     check_coop_admin()
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
+
+    if memberid is None:
+        flash("Ntabwo Umunyamuryango abonetse")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
+    if member_name.izina_ribanza is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
+    if member_name.izina_rikurikira is None:
+        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
+        return redirect(url_for('aicos_stock_managment.ibindi'))
 
     form = IbindiForm()
 

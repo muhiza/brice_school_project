@@ -1,6 +1,7 @@
 from flask import render_template, abort, flash, redirect, url_for, request
 from . import aicos_req
 from flask_login import current_user, login_required
+from sqlalchemy import func
 from ..models import * 
 from .forms import *
 
@@ -284,7 +285,7 @@ def edit_umugabane(id):
 # Isanguku views are here.
 @aicos_req.route('/cooperative/isanduku')
 def isandukuList():
-    isanduku = Isanduku.query.all()
+    isanduku = Isanduku.query.filter_by().all()
     return render_template("accountingBooks/isanduku/isandukuList.html", isanduku=isanduku, title="List y'ibyemezo by'inteko rusange")
 
 
@@ -556,6 +557,7 @@ def ongeramo_member(a, b):
 
 @aicos_req.route('/accountingBook/rukomatanyi')
 def rukomatanyi():
+    rukomatanyo = Rukomatanyo.query.all()
     isanduku = IsandukuNshya.query.filter_by(department_id=current_user.email).all()
     bank = BankModel.query.filter_by(department_id=current_user.email).all()
     inguzanyo_zatanzwe = InguzanyoZatanzwe.query.filter_by(department_id=current_user.email).all()
@@ -566,24 +568,62 @@ def rukomatanyi():
     inguzanyo_abandi = InguzanyoZabandi.query.filter_by(department_id=current_user.email).all()
     ibicuruzwa = Ibicuruzwa.query.filter_by(department_id=current_user.email).all()
     ikoreshwa = IkoreshwaRyimari.query.filter_by(department_id=current_user.email).all()
+    isanduku_cr_sum = db.session.query(func.sum(IsandukuNshya.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    isanduku_db_sum = db.session.query(func.sum(IsandukuNshya.asigaye)).filter_by(department_id=current_user.email).scalar()
+    bank_cr_sum = db.session.query(func.sum(BankModel.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    bank_db_sum = db.session.query(func.sum(BankModel.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_db_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_cr_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibiramba_cr_sum = db.session.query(func.sum(Ibiramba.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibiramba_db_sum = db.session.query(func.sum(Ibiramba.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ububiko_cr_sum = db.session.query(func.sum(Ububiko.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ububiko_db_sum = db.session.query(func.sum(Ububiko.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    umugabane_cr_sum = db.session.query(func.sum(UmugabaneShingiro.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    umugabane_db_sum = db.session.query(func.sum(UmugabaneShingiro.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    inkunga_db_sum = db.session.query(func.sum(Inkunga.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    inkunga_cr_sum = db.session.query(func.sum(Inkunga.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_abandi_cr_sum = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    inguzanyo_abandi_db_sum = db.session.query(func.sum(InguzanyoZabandi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
+    ibindi_cr_sum = db.session.query(func.sum(IbindiRukomatanyi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
+    ibindi_db_sum = db.session.query(func.sum(IbindiRukomatanyi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
     return render_template('/accountingBooks/rukomatanyi/index.html', 
                                                                 isanduku=isanduku,
                                                                 bank=bank,
+                                                                isanduku_cr_sum=isanduku_cr_sum,
+                                                                isanduku_db_sum=isanduku_db_sum,
+                                                                bank_cr_sum = bank_cr_sum,
+                                                                bank_db_sum = bank_db_sum,
+                                                                inguzanyo_abandi_cr_sum = inguzanyo_abandi_cr_sum,
+                                                                inguzanyo_abandi_db_sum = inguzanyo_abandi_db_sum,
+                                                                inguzanyo_cr_sum = inguzanyo_cr_sum,
+                                                                inguzanyo_db_sum = inguzanyo_db_sum,
                                                                 inguzanyo_zatanzwe=inguzanyo_zatanzwe,
+                                                                ibiramba_cr_sum = ibiramba_cr_sum,
+                                                                ibiramba_db_sum = ibiramba_db_sum,
+                                                                ibindi_cr_sum = ibindi_cr_sum,
+                                                                ibindi_db_sum = ibindi_db_sum,
+                                                                ububiko_db_sum = ububiko_db_sum,
+                                                                ububiko_cr_sum = ububiko_cr_sum ,
+                                                                inkunga_cr_sum = inkunga_cr_sum,
+                                                                inkunga_db_sum = inkunga_db_sum,
+                                                                umugabane_cr_sum = umugabane_cr_sum,
+                                                                umugabane_db_sum = umugabane_db_sum,
                                                                 ibiramba=ibiramba,
                                                                 ububiko=ububiko,
                                                                 umugabane_shingiro=umugabane_shingiro,
                                                                 inkunga=inkunga,
                                                                 inguzanyo_abandi=inguzanyo_abandi,
                                                                 ibicuruzwa=ibicuruzwa,
-                                                                ikoreshwa=ikoreshwa 
+                                                                ikoreshwa=ikoreshwa,
+                                                                rukomatanyo = rukomatanyo
                                                                 )
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/isanduku')
 def isanduku():
     isanduku = IsandukuNshya.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/isanduku.html', isanduku=isanduku)
+    rukomatanyo = Rukomatanyo.query.all()
+    return render_template('/accountingBooks/rukomatanyi/isanduku.html', isanduku=isanduku, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/isanduku/hindura/<int:id>', methods=["GET", "POST"])
 def hinduraIsanduku(id):
@@ -607,7 +647,8 @@ def hinduraIsanduku(id):
 @aicos_req.route('/accountingBook/rukomatanyi/bank')
 def bank():
     bank = BankModel.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/bank.html', bank=bank)
+    rukomatanyo = Rukomatanyo.query.all()
+    return render_template('/accountingBooks/rukomatanyi/bank.html', bank=bank, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/bank/<int:id>', methods=["GET","POST"])
 def hinduraBank(id):
@@ -631,7 +672,8 @@ def hinduraBank(id):
 @aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_zatanzwe')
 def inguzanyo_zatanzwe():
     inguzanyo_zatanzwe = InguzanyoZatanzwe.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html', inguzanyo_zatanzwe=inguzanyo_zatanzwe)
+    rukomatanyo = Rukomatanyo.query.all()
+    return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html', inguzanyo_zatanzwe=inguzanyo_zatanzwe, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/inguzanyo_zatanzwe/<int:id>', methods=["GET", "POST"])
 def hinduraInguzanyoZatanzwe(id):
@@ -655,7 +697,8 @@ def hinduraInguzanyoZatanzwe(id):
 @aicos_req.route('/accountingBook/rukomatanyi/ibiramba')
 def ibiramba():
     ibiramba = Ibiramba.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/ibiramba.html', ibiramba=ibiramba)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/ibiramba.html', ibiramba=ibiramba, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/ibiramba/<int:id>', methods=["GET", "POST"])
 def hinduraIbiramba(id):
@@ -679,7 +722,8 @@ def hinduraIbiramba(id):
 @aicos_req.route('/accountingBook/rukomatanyi/ububiko')
 def ububiko():
     ububiko = Ububiko.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/ububiko.html', ububiko=ububiko)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/ububiko.html', ububiko=ububiko, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('accountingBook/rukomatanyi/hindura/ububiko/<int:id>', methods=["GET", "POST"])
 def hinduraUbubiko(id):
@@ -702,7 +746,8 @@ def hinduraUbubiko(id):
 @aicos_req.route('/accountingBook/rukomatanyi/umugabane_shingiro')
 def umugabane_shingiro():
     umugabane_shingiro = UmugabaneShingiro.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html', umugabane_shingiro=umugabane_shingiro)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html', umugabane_shingiro=umugabane_shingiro, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/hinduraUmugabaneShingiro/<int:id>', methods=["GET", "POST"])
 def hinduraUmugabaneShingiro(id):
@@ -725,7 +770,8 @@ def hinduraUmugabaneShingiro(id):
 @aicos_req.route('/accountingBook/rukomatanyi/inkunga')
 def inkunga():
     inkunga = Inkunga.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/inkunga.html', inkunga=inkunga)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/inkunga.html', inkunga=inkunga, rukomatanyo = rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/inkunga/<int:id>', methods=["GET", "POST"])
 def hindura_inkunga(id):
@@ -748,7 +794,8 @@ def hindura_inkunga(id):
 @aicos_req.route('/accountingBook/rukomatanyi/inguzanyo_abandi')
 def inguzanyo_abandi():
     inguzanyo_abandi = InguzanyoZabandi.query.filter_by(department_id=current_user.email).all()
-    return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html', inguzanyo_abandi=inguzanyo_abandi)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html', inguzanyo_abandi=inguzanyo_abandi, rukomatanyo=rukomatanyo)
 
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/hinduraInguzanyoZabandi<int:id>', methods=["GET", "POST"])
@@ -774,7 +821,8 @@ def hinduraInguzanyoZabandi(id):
 @aicos_req.route('/accountingBook/rukomatanyi/ibicuruzwa')
 def ibicuruzwa():
     ibicuruzwa = Ibicuruzwa.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html', ibicuruzwa=ibicuruzwa)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html', ibicuruzwa=ibicuruzwa, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/ibicuruzwa/<int:id>', methods=["GET", "POST"])
 def hindura_ibicuruzwa(id):
@@ -799,7 +847,8 @@ def hindura_ibicuruzwa(id):
 @aicos_req.route('/accountingBook/rukomatanyi/ikoreshwa_ryimari')
 def ikoreshwa_ryimari():
     ikoreshwa = IkoreshwaRyimari.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html', ikoreshwa=ikoreshwa)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
+    return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html', ikoreshwa=ikoreshwa, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/ikoreshwa_ryimari/<int:id>', methods=["GET", "POST"])
 def hinduraIkoreshwaRyimari(id):
@@ -823,7 +872,8 @@ def hinduraIkoreshwaRyimari(id):
 @aicos_req.route('/accountingBook/rukomatanyi/ibindi_rukomatanyi')
 def ibindi_rukomatanyi():
     ibindi = IbindiRukomatanyi.query.filter_by(department_id=current_user.email).all()
-    return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html', ibindi=ibindi)
+    rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()   
+    return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html', ibindi=ibindi, rukomatanyo=rukomatanyo)
 
 @aicos_req.route('/accountingBook/rukomatanyi/hindura/hindura_ibindi/<int:id>', methods=["GET", "POST"])
 def hindura_ibindi(id):
@@ -850,11 +900,30 @@ def injiza_isanduku():
     form = IsandukuForm()
 
     if form.validate_on_submit():
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.injiza_isanduku'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.injiza_isanduku'))
+
         isanduku = IsandukuNshya(
                             ayinjiye = form.ayinjiye.data,
                             ayasohotse = form.ayasohotse.data,
                             asigaye = form.asigaye.data,
-                            department_id = current_user.email)
+                            department_id = current_user.email,
+                            rukomatanyo_id = rukomatanyo_id.id
+                            )
 
         try:
             db.session.add(isanduku)
@@ -870,10 +939,28 @@ def injizaBank():
     form = BankForm()
 
     if form.validate_on_submit():
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.injizaBank'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.injizaBank'))
+
         bank = BankModel(
                         ayinjiye = form.ayinjiye.data,
                         ayasohotse = form.ayasohotse.data,
-                        department_id = current_user.email
+                        department_id = current_user.email,
+                        rukomatanyo_id=rukomatanyo_id.id
                         )
 
         try:
@@ -889,10 +976,30 @@ def InjizaIzatanzwe():
     form = InguzanyoZatanzweForm()
 
     if form.validate_on_submit():
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.InjizaIzatanzwe'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.InjizaIzatanzwe'))
+
         inguzanyo = InguzanyoZatanzwe(
                                     ayinjiye = form.ayinjiye.data,
                                     ayasohotse = form.ayasohotse.data,
-                                    department_id = current_user.email
+                                    department_id = current_user.email,
+                                    rukomatanyo_id = rukomatanyo_id.id
                                     )
         try:
             db.session.add(inguzanyo)
@@ -908,10 +1015,30 @@ def record_ibiramba():
     form = IbirambaForm()
 
     if form.validate_on_submit():
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_ibiramba'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_ibiramba'))
+
         iramba = Ibiramba(
                         ayinjiye = form.ayinjiye.data,
                         ayasohotse = form.ayasohotse.data,
-                        department_id = current_user.email
+                        department_id = current_user.email,
+                        rukomatanyo_id = rukomatanyo_id.id
                         )
         try:
             db.session.add(iramba)
@@ -928,10 +1055,30 @@ def record_ububiko():
     form = UbubikoForm()
 
     if form.validate_on_submit():
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_ububiko'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_ububiko'))
+
         ububiko = Ububiko(
                         ayinjiye = form.ayinjiye.data,
                         ayasohotse = form.ayasohotse.data,
-                        department_id = current_user.email
+                        department_id = current_user.email,
+                        rukomatanyo_id = rukomatanyo_id.id
                         )
 
         try:
@@ -949,10 +1096,30 @@ def record_umugabane_shingiro():
     form = UmugabaneShingiroForm()
 
     if form.validate_on_submit():
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_umugabane_shingiro'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_umugabane_shingiro'))
+
         umugabane = UmugabaneShingiro(
                                 ayinjiye = form.ayinjiye.data,
                                 ayasohotse = form.ayasohotse.data,
-                                department_id = current_user.email
+                                department_id = current_user.email,
+                                rukomatanyo_id = rukomatanyo_id.id
                                 )
         try:
             db.session.add(umugabane)
@@ -970,10 +1137,29 @@ def record_inkunga():
 
     if form.validate_on_submit():
 
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_inkunga'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_inkunga'))
+
         inkunga = Inkunga(
                         ayinjiye = form.ayinjiye.data,
                         ayasohotse = form.ayasohotse.data,
-                        department_id = current_user.email
+                        department_id = current_user.email,
+                        rukomatanyo_id = rukomatanyo_id.id
                         )
         try:
             db.session.add(inkunga)
@@ -990,10 +1176,30 @@ def record_inguzanyo_abandi():
     form = InguzanyoZabandiForm()
 
     if form.validate_on_submit():
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_inkunga'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_inkunga'))
+
         inguzanyo = InguzanyoZabandi(
                                 ayinjiye = form.ayinjiye.data,
                                 ayasohotse = form.ayasohotse.data,
-                                department_id = current_user.email
+                                department_id = current_user.email,
+                                rukomatanyo_id = rukomatanyo_id.id 
                                 )
         try:
             db.session.add(inguzanyo)
@@ -1010,10 +1216,31 @@ def record_ibicuruzwa():
 
     if form.validate_on_submit():
 
+
+        
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_ibicuruzwa'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_ibicuruzwa'))
+
         ibicuruzwa = Ibicuruzwa(
                                 ayinjiye = form.ayinjiye.data,
                                 ayasohotse = form.ayasohotse.data,
-                                department_id = current_user.email
+                                department_id = current_user.email,
+                                rukomatanyo_id = rukomatanyo_id.id
                                 )
         try:
             db.session.add(ibicuruzwa)
@@ -1030,10 +1257,31 @@ def record_ikoreshwa_ryimari():
     form = IkoreshwaRyimariForm()
 
     if form.validate_on_submit():
+
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
+
         ikoreshwa = IkoreshwaRyimari(
                                     ayinjiye = form.ayinjiye.data,
                                     ayasohotse = form.ayasohotse.data,
-                                    department_id = current_user.email 
+                                    department_id = current_user.email,
+                                    rukomatanyo_id = rukomatanyo_id.id 
                                     )
         try:
             db.session.add(ikoreshwa)
@@ -1051,10 +1299,31 @@ def record_ibindi():
     form = IbindiForm()
 
     if form.validate_on_submit():
+
+
+        rukomatanyo = Rukomatanyo(
+                            tariki_byakozwe = form.itariki.data,
+                            description = form.impamvu.data,
+                            piyesi = form.piyesi.data,
+                            department_id = current_user.email
+                            )
+        try:
+            db.session.add(rukomatanyo)
+            db.session.commit()
+        except:
+            flash("Ntabwo byakunze neza")
+            return redirect(url_for('aicos_req.record_ibindi'))
+
+        rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
+
+        if rukomatanyo_id is None:
+            return redirect(url_for('aicos_req.record_ibindi'))
+
         ibindi = IbindiRukomatanyi(
                                 ayinjiye = form.ayinjiye.data,
                                 ayasohotse = form.ayasohotse.data,
-                                department_id = current_user.email 
+                                department_id = current_user.email,
+                                rukomatanyo_id = rukomatanyo_id.id 
                                 )
         try:
             db.session.add(ibindi)

@@ -9,17 +9,23 @@
 		            <div class="col-md-4 text-right" style="margin-top: 15px;">
 		            </div>
 		        </div>
-				<div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px; background-color: white;">
-					<div class="col-md-12" style="background-color: white; padding-bottom: 20px;">
+				<div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px; background-color: white; ">
+					<div class="col-md-12" style="background-color: white; padding-bottom: 20px; padding-top: 20px;">
 						<form action="#" method="post">
+							<div class="">
+					        	{{ wtf.form_field(form.itariki) }}
+					        </div>
+					        <div class="">
+					        	{{ wtf.form_field(form.impamvu) }}
+					        </div>
+					        <div class="">
+					        	{{ wtf.form_field(form.piyesi) }}
+					        </div>
 							<div class="">
 					        	{{ wtf.form_field(form.ayinjiye) }}
 					        </div>
 					        <div class="">
 					        	{{ wtf.form_field(form.ayasohotse) }}
-					        </div>
-					        <div class="">
-					        	{{ wtf.form_field(form.asigaye) }}
 					        </div>
 					        <div class="">
 			                	{{ form.submit(class="btn btn-success") }}

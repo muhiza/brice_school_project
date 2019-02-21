@@ -17,6 +17,7 @@
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
                                     <thead>
 									     <tr>
+									     	<th>Tariki</th>
 				                            <th>Aho Bigiye</th>
 				                            <th>Aho Bivuye</th>
 				                            <th>Asigaye</th>
@@ -25,25 +26,57 @@
 				                        </tr>
 							        </thead>
 							        <tbody>
-							            {% if isanduku %}
-							            	{% for one in isanduku %}
-							            		<tr>
-							            			<td>{{ one.ayinjiye }}</td>
-							            			<td>{{ one.ayasohotse }}</td>
-							            			<td>{{ one.ayinjiye - one.ayasohotse }}</td>
-							            			<td>
-				                                        <a href="{{ url_for('aicos_req.hinduraIsanduku', id=one.id) }}" class="badge badge-success">
-				                                            Hindura
-				                                        </a>  
-				                                    </td>
-				                                    <td>
-				                                        <a href="#" class="badge badge-danger">
-				                                            Siba
-				                                        </a>               
-				                                    </td>
-							            		</tr>
-							            	{% endfor %}
-							            {% endif %}
+							        {% if rukomatanyo %}
+                                    	{% for ru in rukomatanyo %}
+                                        <tr>
+                                            {% if ru.isanduku %}
+                                                {% for b in ru.isanduku %}
+                                                    <td>
+                                                        {% for b in ru.isanduku %}
+                                                            {{ ru.tariki_byakozwe }}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayinjiye }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                    	{% for b in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                {{ b.ayinjiye - b.ayasohotse }}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        {% for b in ru.isanduku %}
+                                                            {% if loop.first %}
+                                                                <a href="{{ url_for('aicos_req.hinduraIbiramba', id=b.id)}}" class="badge badge-success">
+                                                                    Hindura
+                                                                </a>  
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="badge badge-danger">
+                                                            Siba
+                                                        </a>               
+                                                    </td>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+							        	
 						           </tbody>
                                 </table>
                             </div>
