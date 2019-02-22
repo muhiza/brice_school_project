@@ -7,6 +7,10 @@ from .forms import UmusaruroForm, InyongeraMusaruroForm, IbyakoreshejweForm, Kon
 import flask_excel
 import flask_excel as excel
 
+
+from sqlalchemy.orm import sessionmaker
+
+
 import nexmo
 
 import socket
@@ -27,6 +31,10 @@ def check_overall():
 def check_coop_admin():
     if not current_user.is_coop_admin:
         abort(403)
+
+
+
+session = sessionmaker()()
 
 
 @aicos_stock_managment.route('/')
@@ -602,7 +610,7 @@ def injizaIbindi(id):
                     MituelleAmount = form.MituelleAmount.data,
                     UmuceriGrade   = form.UmuceriGrade.data,
                     UmuceriQuantity = form.UmuceriQuantity.data,
-                    UmuceriAmountGrade = (int(form.UmuceriAmountGrade.data) * int(form.UmuceriQuantity.data)),
+                    UmuceriAmountGrade = (form.UmuceriAmountGrade.data) * (form.UmuceriQuantity.data),
                     Avence = form.Avence.data,
                     member_id = memberid.id,
                     department_id = current_user.email
@@ -615,7 +623,8 @@ def injizaIbindi(id):
             return redirect(url_for('aicos_stock_managment.ibindi'))
         except Exception:
             flash("kwinjiza Ibindi bisabwa ntibyakunze")
-            return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid))
+            return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid.id))
+            session.rollback()
 
     return render_template("/record_ibindi.html", form=form, memberid=memberid, member_name=member_name)
 
