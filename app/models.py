@@ -1842,7 +1842,25 @@ class Rukomatanyo(db.Model):
 
 
 
-				
+
+class Ubwisazure(db.Model):
+	"""docstring for Rukomatanyo"""
+	__tablename__ = "ubwisazure"
+	id = db.Column(db.Integer, primary_key = True)
+	AssetDescription = db.Column(db.Date, default=datetime.datetime.utcnow())
+	cost = db.Column(db.String(200))
+
+	YearOfPurchase = db.Column(db.Date, default=datetime.datetime.utcnow())
+	SalvageValue = db.Column(db.String(200))
+
+	UsefulLife = db.Column(db.Date, default=datetime.datetime.utcnow())
+	Method = db.Column(db.String(200))
+
+	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+
+
+
 			
 		
 

@@ -1333,3 +1333,44 @@ def record_ibindi():
             return redirect(url_for('aicos_req.record_ibindi'))
 
     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibindi.html', form=form)
+
+
+
+
+
+# ibitabo bya banks.
+@aicos_req.route('/accountingBooks/Ubwisazure', methods=['GET', 'POST'])
+def Ubwisazure():
+    form = UbwisazureForm()
+    if form.validate_on_submit():
+        ubwisazure = Ubwisazure(
+                                AssetDescription = form.AssetDescription.data,
+                                cost = form.cost.data,
+                                YearOfPurchase = form.YearOfPurchase.data,
+                                SalvageValue     = form.SalvageValue.data,
+                                UsefulLife   = form.UsefulLife.data,
+                                Method    = form.Method.data,
+                                department_id = current_user.email)
+        try:
+            db.session.add(ubwisazure)
+            db.session.commit()
+            flash("Umaze kwinjize umutungo neza!")
+            return redirect(url_for('aicos_req.UbwisanzureList'))
+        except:
+            flash("Ntago umutungo wabashije kwinjira neza!")
+    return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
+
+
+
+
+
+
+
+@aicos_req.route('/accountingBooks/UbwisazureList')
+def UbwisazureList():
+    ubwisazure = Department.query.filter_by(email=current_user.email).first()
+    return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
+                            ubwisazure=ubwisazure, title='Ubwisazure ku mutungo wa cooperative!!')
+
+
+

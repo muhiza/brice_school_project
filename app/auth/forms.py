@@ -40,7 +40,7 @@ class LoginForm(FlaskForm):
     Form for users to login
     """
     email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "Kode yo kwinjira (Email)"})
-    password = PasswordField('', validators=[DataRequired()], render_kw={"placeholder": "Ijambo ry'ibinga"})
+    password = PasswordField('', validators=[DataRequired()], render_kw={"placeholder": "Ijambo ry'ibanga"})
     #recaptcha = RecaptchaField()
     submit = SubmitField('KWINJIRA', render_kw={"onclick": "loading()"})
 
