@@ -1333,7 +1333,7 @@ class Umusaruro(db.Model):
 	group = db.Column(db.String(100))
 	umusaruro = db.Column(db.Integer)
 	umuceriYagurijwe = db.Column(db.Integer)
-	umuceriWoKurya = db.Column(db.Integer)
+	umuceriWoKurya = db.Column(db.Float)
 	umuceriWoKugurisha = db.Column(db.Integer)
 	igiciroCyaKimwe = db.Column(db.Integer)
 	umusanzu = db.Column(db.Integer)
@@ -1490,7 +1490,7 @@ class Umusarurob(db.Model):
 	id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	RiceType = db.Column(db.String(100))
 	RiceAmount = db.Column(db.Integer)
-	UwoAsigaranye = db.Column(db.Integer)
+	UwoAsigaranye = db.Column(db.Float)
 	UwoKugurisha = db.Column(db.Integer) # Quantity - Umu asigaranye
 	GutonozaAmount = db.Column(db.Integer)
 	AmafarangaUmusaruro1 = db.Column(db.Integer) # (RiceAmount * Quantity) - Uwogutonoza
@@ -1839,10 +1839,32 @@ class Rukomatanyo(db.Model):
 
 
 
-		
+
+
+
 				
 			
 		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
