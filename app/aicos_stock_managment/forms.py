@@ -16,7 +16,7 @@ class UmusaruroForm(FlaskForm):
 	resi = IntegerField("Resi", validators=[Optional()], render_kw={"placeholder":"Injiza numero ya resi y'umunyamuryango"})
 	zone = StringField("Zone", validators=[Optional()], render_kw={"placeholder":"Injiza Zone"})
 	umusaruro = IntegerField("Umusaruro", validators=[Optional()], render_kw={"placeholder":"Injiza Umusaruro Wabonetse wose"})
-	umuceriWoKurya = IntegerField("Umuceri Wo Kurya", validators=[Optional()], render_kw={"placeholder":"Injiza Umuceri wo kurya (kg)"})
+	umuceriWoKurya = FloatField("Umuceri Wo Kurya", validators=[Optional()], render_kw={"placeholder":"Injiza Umuceri wo kurya (kg)"})
 	igiciroCyaKimwe = SelectField("Igiciro Cya Kimwe(Frw/kg)", choices=[('290','290'),('280','280')], validators=[Optional()])
 	umusanzu = SelectField("Umusanzu Ku kiro (Frw/kg)", choices=[('15','15')], validators=[Optional()])
 	amafrwYoGutonoza = SelectField("Amafaranga yo gutonoza (Frw/kg)", choices=[('50','50')], validators=[Optional()])
@@ -87,7 +87,7 @@ class UmusarurobForm(FlaskForm):
     RiceAmount = SelectField(
         'Igiciro Cy\'umuceri',
         choices=[('295', 295), ('305', 305)])
-    UwoAsigaranye =  IntegerField("Umuceri asigaranye", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umuceriri asigaranye"})
+    UwoAsigaranye =  FloatField("Umuceri asigaranye", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umuceriri asigaranye"})
     Gutonoza  = SelectField(
         'Igiciro Cyo Gutonoza',
         choices=[('45', 45), ('50', 50)])
