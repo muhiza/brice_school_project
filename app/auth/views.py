@@ -94,6 +94,16 @@ def login():
                 return redirect(url_for('aicos_ferwacotamo.dashboard_overalls'))
             elif employee.is_admin and employee.is_coop_admin:
                 return redirect(url_for('aicos_members.dashboard'))
+
+
+            elif employee.is_admin and employee.is_accountant:
+                return redirect(url_for('aicos_req.accountingBooks'))
+
+
+            elif employee.is_admin and employee.is_production_manager:
+                return redirect(url_for('aicos_req.Production'))
+
+
             elif employee.is_union:
             	return redirect(url_for('aicos_union.indexUnion'))
             elif employee.is_ferwacotamo:

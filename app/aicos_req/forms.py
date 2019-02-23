@@ -274,19 +274,6 @@ class IbindiForm(FlaskForm):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class UbwisazureForm(FlaskForm):
     AssetDescription = StringField("Ubusobanuro bw'umutungo", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro bw'umutungo"})
     cost = IntegerField("Igiciro", validators=[DataRequired()], render_kw={"placeholder": "Igiciro"})

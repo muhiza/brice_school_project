@@ -72,7 +72,7 @@ def create_app(config_name):
     from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role
 
     class EmployeeView(ModelView):
-        form_columns = ['email', 'username', 'first_name', 'last_name', 'phone_number']
+        form_columns = ['email', 'username', 'first_name', 'last_name', 'department_id', 'phone_number']
 
     class MyModelView(ModelView):
         def is_accessible(self):

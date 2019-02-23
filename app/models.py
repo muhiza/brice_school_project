@@ -60,6 +60,15 @@ class Employee(UserMixin, db.Model):
 	is_ferwacotamo = db.Column(db.Boolean, default=False)
 	is_confederation = db.Column(db.Boolean, default=False)
 	is_rca = db.Column(db.Boolean, default=False)
+
+
+
+	is_manager = db.Column(db.Boolean, default=False)
+	is_accountant = db.Column(db.Boolean, default=False)
+	is_production_manager = db.Column(db.Boolean, default=False)
+
+
+
 	invited_by = db.Column(db.String(200))
 	district   = db.Column(db.String(200))
 
@@ -271,7 +280,7 @@ class Department(db.Model):
 
 
 	def __repr__(self):
-		return self.name
+		return self.email
 
 """
 Dealing with excel staffs here.
@@ -647,6 +656,11 @@ class Member(db.Model):
 
 
 	
+
+	""" We will always use this __init__ function to upload excel file  """
+	def __init__(self, sno):
+		self.id = id
+		self.sno = sno
 
 	"""
 	Importing data using this views.
@@ -1606,7 +1620,7 @@ class Ibindi(db.Model):
 	ImifukaQuantity = db.Column(db.Integer)
 	ImifukaAmount = db.Column(db.Integer)
 	MituelleAmount = db.Column(db.Integer)
-	UmuceriGrade   = db.Column(db.String(100))
+	UmuceriGrade   = db.Column(db.String(200))
 	UmuceriQuantity = db.Column(db.Integer)
 	UmuceriAmountGrade = db.Column(db.Integer)
 	Avence = db.Column(db.Integer)
@@ -1847,19 +1861,16 @@ class Ubwisazure(db.Model):
 	"""docstring for Rukomatanyo"""
 	__tablename__ = "ubwisazure"
 	id = db.Column(db.Integer, primary_key = True)
-	AssetDescription = db.Column(db.Date, default=datetime.datetime.utcnow())
+	AssetDescription = db.Column(db.String(200))
 	cost = db.Column(db.String(200))
-
-	YearOfPurchase = db.Column(db.Date, default=datetime.datetime.utcnow())
+	YearOfPurchase = db.Column(db.String(200))
 	SalvageValue = db.Column(db.String(200))
-
-	UsefulLife = db.Column(db.Date, default=datetime.datetime.utcnow())
+	UsefulLife = db.Column(db.String(200))
 	Method = db.Column(db.String(200))
-
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
-
+	def __repr__(self):
+		return '<Ubwisazure: {}'.format(self.id)
 
 			
 		

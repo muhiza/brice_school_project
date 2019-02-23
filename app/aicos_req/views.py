@@ -79,6 +79,11 @@ def specialReports():
     return render_template('specialReports/specialReport.html')
 
 
+@aicos_req.route('/Production')
+def Production():
+    return render_template('accountingBooks/production.html')
+
+
 
 
 
@@ -1338,21 +1343,36 @@ def record_ibindi():
 
 
 
+
+@aicos_req.route('/accountingBooks/UbwisazureList')
+def UbwisazureList():
+    ubwisazure = Department.query.filter_by(email=current_user.email).first()
+    return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
+                            ubwisazure=ubwisazure, title='Ubwisazure ku mutungo wa cooperative!!')
+
+
+
+
+
+
+
+
 # ibitabo bya banks.
 @aicos_req.route('/accountingBooks/Ubwisazure', methods=['GET', 'POST'])
 def Ubwisazure():
     form = UbwisazureForm()
     if form.validate_on_submit():
-        ubwisazure = Ubwisazure(
+        ubwisazurex = Ubwisazure(
                                 AssetDescription = form.AssetDescription.data,
                                 cost = form.cost.data,
                                 YearOfPurchase = form.YearOfPurchase.data,
                                 SalvageValue     = form.SalvageValue.data,
                                 UsefulLife   = form.UsefulLife.data,
                                 Method    = form.Method.data,
-                                department_id = current_user.email)
+                                department_id = current_user.email
+                                )
         try:
-            db.session.add(ubwisazure)
+            db.session.add(ubwisazurex)
             db.session.commit()
             flash("Umaze kwinjize umutungo neza!")
             return redirect(url_for('aicos_req.UbwisanzureList'))
@@ -1360,17 +1380,6 @@ def Ubwisazure():
             flash("Ntago umutungo wabashije kwinjira neza!")
     return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
 
-
-
-
-
-
-
-@aicos_req.route('/accountingBooks/UbwisazureList')
-def UbwisazureList():
-    ubwisazure = Department.query.filter_by(email=current_user.email).first()
-    return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
-                            ubwisazure=ubwisazure, title='Ubwisazure ku mutungo wa cooperative!!')
 
 
 

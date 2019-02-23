@@ -9,16 +9,16 @@ class RegistrationForm(FlaskForm):
     """
     Form for users to create new account
     """
-    email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "Kode yo kwinjira (Email)"})
-    username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina ukoresha"})
-    first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Amazina yombi"})
+    email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "KODE YO KWINJIRIRAHO (EMAIL)"})
+    username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "IZINA UKORESHA"})
+    first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
-    phone_number = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Nomero ya telephone igendanwa"})
+    phone_number = StringField('', validators=[DataRequired()], render_kw={"placeholder": "NOMERO YA TELEPHONE"})
     password = PasswordField('', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')
-                                        ], render_kw={"placeholder": "Ijambo ry\'Ibanga"})
-    confirm_password = PasswordField('', render_kw={"placeholder": "Ongera wandike ijambo ry\'Ibanga"})
+                                        ], render_kw={"placeholder": "IJAMBO RY\'IBANGA"})
+    confirm_password = PasswordField('', render_kw={"placeholder": "ONGERA WANDIKE IJAMBO RY\'IBANGA"})
 
 
     #recaptcha = RecaptchaField()
@@ -39,8 +39,8 @@ class LoginForm(FlaskForm):
     """
     Form for users to login
     """
-    email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "Kode yo kwinjira (Email)"})
-    password = PasswordField('', validators=[DataRequired()], render_kw={"placeholder": "Ijambo ry'ibanga"})
+    email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "KODE YO KWINJIRA (EMAIL)"})
+    password = PasswordField('', validators=[DataRequired()], render_kw={"placeholder": "IJAMBO RY'IBANGA"})
     #recaptcha = RecaptchaField()
     submit = SubmitField('KWINJIRA', render_kw={"onclick": "loading()"})
 
