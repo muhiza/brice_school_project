@@ -12,7 +12,13 @@
     $('#bootstrap-data-table-export').DataTable({
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         dom: 'Bfrtip',
-        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+        buttons: ['copy', 'csv',
+                                {
+                    extend: 'excel',
+                    messageTop: 'Cooperative des Riziculteurs dans le Marais de Kanyonyomba.'
+                    },
+
+                     'pdf', 'print'],
         "scrollX": true
     });
 

@@ -11,7 +11,7 @@
                             <strong class="card-title">Banki    </strong>
                         </div>
                         <div class="pull-right">
-                            <a href="{{ url_for('aicos_req.Ubwisazure') }}" class="btn btn-primary btn-md">Injiza ibishya</a>
+                            <a href="{{ url_for('aicos_req.UbwisazureBwose') }}" class="btn btn-primary btn-md">Injiza ibishya</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -28,24 +28,16 @@
 		                        </tr>
 					        </thead>
 					        <tbody>
-                                {% if rukomatanyo %}
-                                    {% for ru in rukomatanyo %}
+                                {% if ubwisazurexx %}
+                                    {% for ru in ubwisazurexx %}
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
-
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
-
-
-
-
-
-
+                                            <td> {{ ru.AssetDescription }} </td>
+                                            <td> {{ ru.cost }} </td>
+                                            <td> {{ ru.YearOfPurchase }} </td>
+                                            <td> {{ ru.SalvageValue }} </td>
+                                            <td> {{ ru.UsefulLife }} </td>
+                                            <td> {{ ru.Method }} </td>
+                                            <td>Ibindi</td>
                                         </tr>
                                     {% endfor %}
                                 {% endif %}

@@ -275,10 +275,27 @@ class IbindiForm(FlaskForm):
 
 
 class UbwisazureForm(FlaskForm):
-    AssetDescription = StringField("Ubusobanuro bw'umutungo", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro bw'umutungo"})
-    cost = IntegerField("Igiciro", validators=[DataRequired()], render_kw={"placeholder": "Igiciro"})
-    YearOfPurchase = DateField("Igihe umutungo waguriweho",format='%Y-%m-%d', validators=[DataRequired()])
-    SalvageValue = IntegerField("Ingano y'amafaranga avaho", validators=[DataRequired()], render_kw={"placeholder": "Ingano y'amafaranga avaho"})
-    UsefulLife = StringField("Igihe umutungo uzamara", validators=[DataRequired()], render_kw={"placeholder": "Igihe umutungo uzamara"})
-    Method = StringField("Uburyo bwo kugabanya", validators=[DataRequired()], render_kw={"placeholder": "Uburyo bwo kugabanya"})
+    AssetDescriptionx = StringField("Ubusobanuro bw'umutungo", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro bw'umutungo"})
+    costx = IntegerField("Igiciro", validators=[DataRequired()], render_kw={"placeholder": "Igiciro"})
+    YearOfPurchasex = DateField("Igihe umutungo waguriweho",format='%Y-%m-%d', validators=[DataRequired()])
+    SalvageValuex = IntegerField("Ingano y'amafaranga avaho", validators=[DataRequired()], render_kw={"placeholder": "Ingano y'amafaranga avaho"})
+    UsefulLifex = StringField("Igihe umutungo uzamara", validators=[DataRequired()], render_kw={"placeholder": "Igihe umutungo uzamara"})
+    Methodx = StringField("Uburyo bwo kugabanya", validators=[DataRequired()], render_kw={"placeholder": "Uburyo bwo kugabanya"})
     submit = SubmitField('Bika')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

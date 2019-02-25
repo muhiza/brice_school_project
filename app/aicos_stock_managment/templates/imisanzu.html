@@ -28,12 +28,12 @@
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-info" style="color: #fff;">
                                           <th>Amazina</th>
-                                          <th>Umusoro w'akarere</th>
-                                          <th>Umusanzu wa koperative</th>
+                                          <th>Umusoro&nbsp;w'akarere</th>
+                                          <th>Umusanzu&nbsp;wa&nbsp;koperative</th>
                                           <th>Ikigega</th>
-                                          <th>Kuziba Icyuho</th>
+                                          <th>Kuziba&nbsp;Icyuho</th>
                                           <th>Injiza</th>
                                           <th>Ibindi</th>
                                         </tr>
@@ -42,7 +42,7 @@
                                         {% if employees %}
                                             {% for member in employees %}
                                                   <tr>
-                                                    <td> {{ member.izina_ribanza }} {{ member.izina_rikurikira }} </td>
+                                                    <td> {{ member.izina_ribanza }}&nbsp;{{ member.izina_rikurikira }} </td>
                                                     <td>
                                                     {% if member.imisanzu %}
                                                         {% for imi in member.imisanzu %}

@@ -1346,11 +1346,9 @@ def record_ibindi():
 
 @aicos_req.route('/accountingBooks/UbwisazureList')
 def UbwisazureList():
-    ubwisazure = Department.query.filter_by(email=current_user.email).first()
+    ubwisazurexx = UbwisazureEnter.query.all()
     return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
-                            ubwisazure=ubwisazure, title='Ubwisazure ku mutungo wa cooperative!!')
-
-
+                            ubwisazurexx=ubwisazurexx, title='Ubwisazure ku mutungo wa cooperative!!')
 
 
 
@@ -1359,18 +1357,19 @@ def UbwisazureList():
 
 # ibitabo bya banks.
 @aicos_req.route('/accountingBooks/Ubwisazure', methods=['GET', 'POST'])
-def Ubwisazure():
+def UbwisazureBwose():
     form = UbwisazureForm()
     if form.validate_on_submit():
-        ubwisazurex = Ubwisazure(
-                                AssetDescription = form.AssetDescription.data,
-                                cost = form.cost.data,
-                                YearOfPurchase = form.YearOfPurchase.data,
-                                SalvageValue     = form.SalvageValue.data,
-                                UsefulLife   = form.UsefulLife.data,
-                                Method    = form.Method.data,
+        ubwisazurex = UbwisazureEnter(
+                                AssetDescription = form.AssetDescriptionx.data,
+                                cost = form.costx.data,
+                                YearOfPurchase = form.YearOfPurchasex.data,
+                                SalvageValue = form.SalvageValuex.data,
+                                UsefulLife = form.UsefulLifex.data,
+                                Method = form.Methodx.data,
                                 department_id = current_user.email
                                 )
+
         try:
             db.session.add(ubwisazurex)
             db.session.commit()

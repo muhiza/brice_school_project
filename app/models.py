@@ -264,6 +264,11 @@ class Department(db.Model):
 	ubugenzuzi       = db.relationship('Ubugenzuzi', backref='department', lazy='dynamic')
 	isanduku       = db.relationship('Isanduku', backref='department', lazy='dynamic')
 	itsinda = db.relationship('Itsinda', backref='amatsinda', lazy='dynamic')
+	ubwisazure = db.relationship('UbwisazureEnter', backref='ubwisazure', lazy='dynamic')
+
+
+
+
 	is_active 	   = db.Column(db.Boolean, default=False)
 
 	#Dealing with excel staff here.
@@ -1828,6 +1833,14 @@ class Zone(db.Model):
 		return '<Zone: {}>'.format(self.id)
 
 
+
+
+
+
+
+
+
+
 class Rukomatanyo(db.Model):
 	"""docstring for Rukomatanyo"""
 	__tablename__ = "rukomatanyo"
@@ -1857,44 +1870,51 @@ class Rukomatanyo(db.Model):
 
 
 
-class Ubwisazure(db.Model):
-	"""docstring for Rukomatanyo"""
-	__tablename__ = "ubwisazure"
-	id = db.Column(db.Integer, primary_key = True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class UbwisazureEnter(db.Model):
+
+	__tablename__ = "ubwisazures"
+	id = db.Column(db.Integer, primary_key = True, unique=True)
 	AssetDescription = db.Column(db.String(200))
-	cost = db.Column(db.String(200))
+
+	cost = db.Column(db.Integer)
 	YearOfPurchase = db.Column(db.String(200))
-	SalvageValue = db.Column(db.String(200))
+	SalvageValue = db.Column(db.Integer)
 	UsefulLife = db.Column(db.String(200))
 	Method = db.Column(db.String(200))
 	department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 	def __repr__(self):
-		return '<Ubwisazure: {}'.format(self.id)
-
-			
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		return '<Ubwisazure: {}>'.format(self.id)

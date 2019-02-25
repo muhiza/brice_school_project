@@ -694,3 +694,17 @@ def injizaIbindi(id):
 
 
 
+@aicos_stock_managment.route('/imyishyurire', methods=['GET', 'POST'])
+@login_required
+def Imyishyurire():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    all_member_idd = Umusarurob.member_id
+    umusaruro_resi = Umusarurob.query.all()
+    member_all = Employee.query.filter_by(department_id=current_user.email).all()
+
+    return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+
+

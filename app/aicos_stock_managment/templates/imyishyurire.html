@@ -30,7 +30,6 @@
                                     <thead>
                                         <tr class="bg-info" style="color:#fff;">
                                             <th>Amazina</th>
-                                            <th>Ubwoko&nbsp;bw'umuceri</th>
                                             <th>Uwo&nbsp;asigaranye</th>
                                             <th>Uwo&nbsp;kugurisha</th>
                                             <th>Amafaranga</th>
@@ -43,17 +42,6 @@
                                             {% for member in employees %}
                                               <tr>
                                                 <td>{{member.izina_ribanza}}&nbsp;{{member.izina_rikurikira}}</td>
-                                                <td>
-                                                  {% if member.umusarurob %}
-                                                      {% for umu in member.umusarurob %}
-                                                          {% if umu.member_id == member.id %}
-                                                              {% if loop.last %}
-                                                                  {{ umu.RiceType }}
-                                                              {% endif %}
-                                                          {% endif %}
-                                                      {% endfor %}
-                                                  {% endif %}
-                                                </td>
                                                 <td>
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}
