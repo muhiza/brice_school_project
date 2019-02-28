@@ -25,9 +25,12 @@ from flask_restless import APIManager
 
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
 flask_excel.init_excel(app)
+
+
 
 #<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/coop'
@@ -65,6 +68,8 @@ def create_app(config_name):
         app = Flask(__name__, instance_relative_config=True)
         app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
+
+
         
 
 
@@ -93,7 +98,8 @@ def create_app(config_name):
     admin.add_view(MyModelView(Employee, db.session))
     admin.add_view(MyModelView(Role, db.session))
 
-
+    toolbar = DebugToolbarExtension(app)
+    
     Bootstrap(app)
     db.init_app(app)
     login_manager.init_app(app)
@@ -103,6 +109,7 @@ def create_app(config_name):
     #manager.init_app(app)
     flask_excel.init_excel(app)
     api.init_app(app)
+    toolbar.init_app(app)
 
 
 
