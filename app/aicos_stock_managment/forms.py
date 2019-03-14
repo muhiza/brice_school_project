@@ -84,13 +84,9 @@ class UmusarurobForm(FlaskForm):
         'Ubwoko bw\'umusaruro',
         choices=[('Umusaruro short', 'Umusaruro short'), ('Umusaruro long', 'Umusaruro long')])
     Quantity =  IntegerField("Ingano y\'umusaruro", validators=[DataRequired()], render_kw={"placeholder": "Injiza ingano y'umusaruro"})
-    RiceAmount = SelectField(
-        'Igiciro Cy\'umuceri',
-        choices=[('295', 295), ('305', 305)])
+    RiceAmount = IntegerField('Igiciro Cy\'umuceri', validators=[DataRequired()], render_kw={"placeholder": "Injiza igiciro cy\'umuceri ku kiro"})
     UwoAsigaranye =  FloatField("Umuceri asigaranye", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umuceriri asigaranye"})
-    Gutonoza  = SelectField(
-        'Igiciro Cyo Gutonoza',
-        choices=[('45', 45), ('50', 50)])
+    Gutonoza  = IntegerField('Igiciro Cyo Gutonoza', validators=[Optional()], render_kw={"placeholder": "Injiza igiciro cyo gutonoza ku kiro"})
     submit      =  SubmitField('Emeza')
 
 
@@ -98,19 +94,19 @@ class UmusarurobForm(FlaskForm):
 
 class InyongeraMusaruroForm(FlaskForm):
     NPKkg = FloatField("NPK", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya NPK"})
-    NPKPerUnity = SelectField("Igiciro ku kiro cya NPK", choices=[('490',490)], validators=[Optional()])
+    NPKPerUnity = IntegerField("Igiciro ku kiro cya NPK", render_kw={"placeholder": "Injiza igiciro cya NPK ku kiro"}, validators=[DataRequired()])
     UREA = FloatField("UREA", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya UREA"})
-    UREAPerUnity = SelectField("Igiciro ku kiro cya UREA", choices=[('340',340)], validators=[Optional()])
+    UREAPerUnity = IntegerField("Igiciro ku kiro cya UREA", render_kw={"placeholder": "Injiza igiciro cya UREA ku kiro"}, validators=[DataRequired()])
     DAP = FloatField("DAP", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya DAP"})
-    DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", choices=[('430',430)], validators=[Optional()])
+    DAPPerUnity = IntegerField("Igiciro ku kiro cya DAP", render_kw={"placeholder": "Injiza igiciro cya DAP ku kiro"}, validators=[DataRequired()])
     KCL = FloatField("KCL", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya KCL"})
-    KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
+    KCLPerUnity = IntegerField("Igiciro ku kiro cya KCL", render_kw={"placeholder": "Injiza igiciro cya KCL ku kiro"}, validators=[DataRequired()])
     Briquette = FloatField("Briquette", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya Briquette"})
-    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('400',400)], validators=[Optional()])
+    BriquettePerUnity = IntegerField("Igiciro ku kiro cya Briquette", render_kw={"placeholder": "Injiza igiciro cya Briquette ku kiro"}, validators=[DataRequired()])
     Cypemetrine =  IntegerField("Cypemetrine", validators=[Optional()], render_kw={"placeholder": "Cypemetrine"})
     Beam =  IntegerField("Beam", validators=[Optional()], render_kw={"placeholder": "Beam"})
     ImbutoQuantity =  IntegerField("Imbuto", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
-    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
+    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", render_kw={"placeholder": "Injiza igiciro cy\'imbuto ku kiro"}, validators=[DataRequired()])
     Redevance      = IntegerField("Redevance", validators=[Optional()], render_kw={"placeholder": "Redevance"})
     umwakaWisarura = SelectField("Umwaka W'isarura", choices=[('2018A','2018A')], validators=[Optional()])
     submit      =  SubmitField('Emeza')
@@ -129,17 +125,18 @@ class UmusanzuForm(FlaskForm):
 
 
 class IbiraraneForm(FlaskForm):
+    NPKkg = FloatField("NPK", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya NPK"})
     NPKPerUnity = SelectField("Igiciro ku kiro cya NPK", choices=[('490',490)], validators=[Optional()])
     UREA = FloatField("UREA (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya UREA (ibiro)"})
-    UREAPerUnity = SelectField("Igiciro ku kiro cya UREA", choices=[('340',340)], validators=[Optional()])
+    UREAPerUnity = SelectField("Igiciro ku kiro cya UREA", render_kw={"placeholder": "Injiza igiciro cya NPK ku kiro"}, validators=[DataRequired()])
     DAP = FloatField("DAP (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya DAP (ibiro)"})
-    DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", choices=[('430',430)], validators=[Optional()])
+    DAPPerUnity = SelectField("Igiciro ku kiro cya DAP", render_kw={"placeholder": "Injiza igiciro cya DAP ku kiro"}, validators=[DataRequired()])
     KCL = FloatField("KCL (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya KCL (ibiro)"})
-    KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", choices=[('395',395)], validators=[Optional()])
+    KCLPerUnity = SelectField("Igiciro ku kiro cya KCL", render_kw={"placeholder": "Injiza igiciro cya KCL ku kiro"}, validators=[DataRequired()])
     Briquette = FloatField("Briquette", validators=[Optional()], render_kw={"placeholder":"Injiza ibiro bya Briquette"})
-    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", choices=[('390',390)], validators=[Optional()])
+    BriquettePerUnity = SelectField("Igiciro ku kiro cya Briquette", render_kw={"placeholder": "Injiza igiciro cya Briquette ku kiro"}, validators=[DataRequired()])
     ImbutoQuantity =  IntegerField("Imbuto (Ibirarane)", validators=[Optional()], render_kw={"placeholder": "Injiza ingano y'imbuto"})
-    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", choices=[('400',400)], validators=[Optional()])
+    ImbutoAmount = SelectField("Igiciro cy'imbuto ku kiro", render_kw={"placeholder": "Injiza igiciro cy\'imbuto ku kiro"}, validators=[DataRequired()])
     IdeniAmount =  IntegerField("Ideni ry'umwaka ushize", validators=[Optional()], render_kw={"placeholder": "Injiza Igiciro cy'ikirarane"})
     NPKkg = FloatField("NPK (Ibirarane)", validators=[Optional()], render_kw={"placeholder":"Injiza ibirarane bya NPK (ibiro)"})
     submit      =  SubmitField('Emeza')

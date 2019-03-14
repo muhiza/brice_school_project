@@ -72,13 +72,13 @@ def dashboard():
                                                     umusaruro=umusaruro, 
                                                     inyongeramusaruro=inyongeramusaruro,
                                                     umusaruro_resi=umusaruro_resi, 
-                                                    member_all=member_all, 
-                                                    employees=employees, 
+                                                    member_all=member_all,
                                                     inyongera=inyongera,
-                                                    memberss=memberss,)
+                                                    memberss=memberss
+                                                    )
     else:
         employee = Department.query.filter_by(email=current_user.department_id).first()
-        employees = employee.members
+        #employees = employee.members
         #all_member_idd = Umusaruro.member_id
         memberss = Member.query.filter_by(department_id=current_user.department_id).all()
         umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
@@ -96,10 +96,10 @@ def dashboard():
                                                     umusaruro=umusaruro, 
                                                     inyongeramusaruro=inyongeramusaruro,
                                                     umusaruro_resi=umusaruro_resi, 
-                                                    member_all=member_all, 
-                                                    employees=employees, 
+                                                    member_all=member_all,
                                                     inyongera=inyongera,
-                                                    memberss=memberss,)
+                                                    memberss=memberss
+                                                    )
 
 
 
