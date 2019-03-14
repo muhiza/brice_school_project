@@ -1865,44 +1865,6 @@ class Rukomatanyo(db.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class UbwisazureEnter(db.Model):
 
 	__tablename__ = "ubwisazures"
