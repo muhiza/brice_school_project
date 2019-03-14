@@ -258,22 +258,6 @@ class IbindiForm(FlaskForm):
         
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class UbwisazureForm(FlaskForm):
     AssetDescriptionx = StringField("Ubusobanuro bw'umutungo", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro bw'umutungo"})
     costx = IntegerField("Igiciro", validators=[DataRequired()], render_kw={"placeholder": "Igiciro"})
@@ -286,11 +270,48 @@ class UbwisazureForm(FlaskForm):
 
 
 
+"""
+Forms for the accounting models
+These models are for improving the
+Accounting activities in cooperatives
+In Rwanda.
+"""
 
+class IncomeCategoryForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Submit')
 
+class ExpenseCategoryForm(FlaskForm):
+    AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
+    submit = SubmitField('Submit')
 
+class ExpenseForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Submit')
 
+class BudgetForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter amount"})
+    submit = SubmitField('Submit')
 
+class AssetsForm(FlaskForm):
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Bika')
+
+class AccountForm(FlaskForm):
+    AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Bika')
 
 
 
