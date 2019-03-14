@@ -705,7 +705,7 @@ class Member(db.Model):
 
 	"""
 	def __repr__(self):
-		return '<Member: {}>'.format(self.izina_rikurikira)
+		return '<Member: {}>'.format(self.id)
 
 
 class Moto(db.Model):

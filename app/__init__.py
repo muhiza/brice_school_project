@@ -25,6 +25,7 @@ from flask_restless import APIManager
 
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
+from flask_admin import BaseView, expose
 from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
@@ -74,7 +75,7 @@ def create_app(config_name):
 
 
 
-    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role
+    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter
 
     class EmployeeView(ModelView):
         form_columns = ['email', 'username', 'first_name', 'last_name', 'department_id', 'phone_number']
@@ -89,14 +90,41 @@ def create_app(config_name):
         def is_accessible(self):
             return current_user.is_authenticated
 
-    admin = Admin(app, name='aicos_admin', template_mode='bootstrap3', index_view=MyAdminIndexView())
+        can_edit = True
+        edit_modal = True
+        create_modal = True    
+        can_export = True
+        can_view_details = True
+        details_modal = True
+
+
+    class CustomView(BaseView):
+        @expose('/')
+        def index(self):
+            return self.render('admin/custom_index.html')
+
+    admin = Admin(app, name='aicos_admin', base_template='my_master.html', template_mode='bootstrap3', index_view=MyAdminIndexView())
 
     admin.add_view(MyModelView(Member, db.session))
     admin.add_view(MyModelView(Department, db.session))
     admin.add_view(MyModelView(Umusarurob, db.session))
     admin.add_view(MyModelView(InyongeraMusaruro, db.session))
     admin.add_view(MyModelView(Employee, db.session))
+    admin.add_view(MyModelView(Rukomatanyo, db.session))
+    admin.add_view(MyModelView(BankModel, db.session))
+    admin.add_view(MyModelView(Ibirarane, db.session))
+    admin.add_view(MyModelView(Umusanzu, db.session))
+    admin.add_view(MyModelView(Ibihano, db.session))
+    admin.add_view(MyModelView(Ibindi, db.session))
+    admin.add_view(MyModelView(Itsinda, db.session))
+    admin.add_view(MyModelView(ItsindaMember, db.session))
+    admin.add_view(MyModelView(IsandukuNshya, db.session))
+    admin.add_view(MyModelView(InguzanyoZatanzwe, db.session))
+    admin.add_view(MyModelView(InguzanyoZabandi, db.session))
+    admin.add_view(MyModelView(Ibiramba, db.session))
+    admin.add_view(MyModelView(Ububiko, db.session))
     admin.add_view(MyModelView(Role, db.session))
+    admin.add_view(MyModelView(Notification, db.session))
 
     toolbar = DebugToolbarExtension(app)
     
