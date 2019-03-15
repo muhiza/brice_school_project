@@ -5,15 +5,43 @@
 		{% if umusaruro %}
 			{% for umu in umusaruro %}
 				<div class="col-md-4">
-					 <div class="card">
-					 	<div class="card-header">
-					 		Title
-					 	</div>
-					 	<div class="card-body">
-					 		Body
-					 	</div>
-					 </div>	
-				</div>
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h5 class="text-light display-6">Amazina: <b>Jim Doe</b></h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-dashboard"></i> Taliki <span class="badge badge-primary pull-right">10</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-tasks"></i> Ibiro <span class="badge badge-danger pull-right">15</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-file"></i> Igiciro <span class="badge badge-success pull-right">11</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-flag-o"></i> Zone  <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-flag"></i> Itsinda  <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-euro"></i> Yarishyuwe  <span class="badge badge-success pull-right r-activity">Yego</span></a>
+                                    </li>
+                                    <button type="button" class="btn btn-outline-primary btn-sm active"><b>
+                                    <span class="ti-wallet"></span>&nbsp;Ishyura</b></button>
+
+                                </ul>
+                            </section>
+                        </aside>
+                    </div>
 			{% endfor %}
 		{% else %}
 

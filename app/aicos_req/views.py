@@ -1380,5 +1380,8 @@ def UbwisazureBwose():
     return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
 
 
+@aicos_req.route('/accountingBooks/imyishyurire')
+def Imyishyurire():
+    return render_template('/accountingBooks/imyishyurire.html')
 
 
