@@ -69,7 +69,9 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: white;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <img src="{{ url_for('static', filename='images/logos/smaller.png') }}" style="height: 45px; width: 100px; margin-top: 2px; margin-bottom: 2px;" />
+        <a href="{{ url_for('auth.login') }}">
+             <img src="{{ url_for('static', filename='images/aicos_logo.png') }}" style="width: 120px;">
+        </a>
     </div> 
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdwon-nav dropdown"><a class="dropdwon-nav dropdown-toggle" data-toggle="dropdown" href="#"><small class="glyphicon glyphicon-user"></small> {{ current_user.first_name }} <small class="caret"></small></a>
@@ -81,7 +83,7 @@
     </ul>
   </div>
 </nav>
-
+<br><br><br>
 <div class="container-fluid">
 <div class="container" style="margin-top: 150px;">
   <div class="row">
@@ -92,7 +94,7 @@
           <h1 style="font-style: bold; font-size: 50px;">Ikaze, <strong>{{ current_user.first_name }}!</strong></h1>
         </div>
         <div class="">
-          <h3 style="font-style: italic;">Nta koperative ufite ubarizwamo, hitamo ibikurikira.</h3>
+          <h3 style="font-style: italic;">Konti yanyu ntago iremezwa.</h3>
         </div>
       </div>
     </div>
@@ -105,17 +107,16 @@
             <div class="col-sm-6 col-md-3 col-lg-4">
               <a href="{{ url_for('home.join_cooperative') }}" class="btn btn-lg btn-join" style="padding-right: 25%; padding-left: 15%;"><b>INJIRA MURI KOPERATIVE</b></a>
             </div>
-            -->
+-->
 
             <div class="col-sm-6 col-md-3 col-lg-4">
               <a href="{{ url_for('home.newApplication') }}" class="btn btn-lg btn-join" style="padding-right: 45%; padding-left: 30%;"><b>NEW COOPERATIVE</b></a>
             </div>
 
-
-
             <div class="col-sm-6 col-md-3 col-lg-6 pull-right">
               <a href="{{ url_for('home.search_coop', page_num=1) }}" class="btn btn-lg btn-search" style="padding-right: 5%; padding-left: 5%;""><b>INJIZA KOPERATIVE MURI SISITEME</b></a>
             </div>
+            
         </div> 
   </div>
 <div class="navbar navbar-default navbar-fixed-bottom">

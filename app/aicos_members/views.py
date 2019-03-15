@@ -53,8 +53,8 @@ def aicos_members_home():
     """
     List all employees
     """
-    check_admin()
-    check_accountant()
+    #check_admin()
+    #check_accountant()
     #check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
@@ -62,8 +62,7 @@ def aicos_members_home():
         # the password entered matches the password in the database
     #apps = Department.query.filter_by(email=current_user.email).first()
     #applications = apps.applications
-    employee = Department.query.filter_by(email=current_user.department_id).first()
-
+    employee = Department.query.filter_by(email=current_user.email).first()
 
 
     employees = employee.members
@@ -117,8 +116,8 @@ def aicos_members_home():
     #if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
 
-    apps = Department.query.filter_by(email=current_user.department_id).first()
-    applications = apps.applications
+    #apps = Department.query.filter_by(email=current_user.department_id).first()
+    #applications = apps.applications
 
     return render_template('indexz.html',
                            employees=employees,
@@ -164,8 +163,8 @@ def dashboard():
     """
     List all employees
     """
-    check_admin()
-    check_coop_admin()
+    #check_admin()
+    #check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
         # check whether employee exists in the database and whether
