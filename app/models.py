@@ -1905,50 +1905,6 @@ class UbwisazureEnter(db.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
 These are models related to accounting operations.
 We have already built Rukomatanyi, but in some ways the Rukomatanyi
@@ -2044,30 +2000,5 @@ class Account(db.Model):
 
     def __repr__(self):
         return '<Account: {}>'.format(self.id)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

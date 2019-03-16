@@ -1384,4 +1384,20 @@ def UbwisazureBwose():
 def Imyishyurire():
     return render_template('/accountingBooks/imyishyurire.html')
 
+@aicos_req.route('/accountingBooks/general')
+def general_accounting():
+    return render_template('accountingBooks/general/general_accounting.html')
+
+@aicos_req.route('/accountingBooks/general/budget')
+def budget():
+    return render_template('/accountingBooks/general/budget.html')
+
+@aicos_req.route('/accountingBooks/general/income')
+def income():
+    return render_template('/accountingBooks/general/income.html')
+
+@aicos_req.route('/accountingBooks/general/expense')
+def expense():
+    return render_template('/accountingBooks/general/expense.html')
+
 

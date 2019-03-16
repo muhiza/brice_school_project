@@ -256,6 +256,7 @@ def create_app(config_name):
 
 
 
+
     """
     from .product.views import product as product_blueprint
     app.register_blueprint(product_blueprint, url_prefix='/try')
