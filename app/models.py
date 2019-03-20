@@ -749,7 +749,7 @@ class Notification(db.Model):
 
 
     def __repr__(self):
-        return '<Notification: {}>'.format(self.name)
+        return '<Notification: {}>'.format(self.id)
 
 
 

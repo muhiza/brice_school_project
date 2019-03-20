@@ -150,7 +150,7 @@ def aicos_members_home():
                            employees_mumutwe=employees_mumutwe,
                            employees_mumutwe_count=employees_mumutwe_count,
                            #male_members_count=male_members_count,
-                           applications=applications,
+                           #applications=applications,
                            title='Employees')
 
 
@@ -1149,14 +1149,14 @@ def list_employees():
     # if form.validate_on_submit():
         # check whether employee exists in the database and whether
         # the password entered matches the password in the database
-    apps = Department.query.filter_by(email=current_user.email).first()
-    applications = apps.applications
+    #apps = Department.query.filter_by(email=current_user.email).first()
+    #applications = apps.applications
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     #if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
     return render_template('employees/employees.html',
-                           employees=employees, applications=applications, apps=apps,
+                           employees=employees, apps=apps,
                            employee=employee, title='Employees')
 
     # departments = Department.query.filter_by(name='IT').first()
