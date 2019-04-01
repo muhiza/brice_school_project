@@ -481,7 +481,8 @@ def signatories():
 @aicos_req.route('/cooperatives/amatsinda')
 def amatsinda():
     amatsinda = Itsinda.query.all()
-    return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda)
+    member = ItsindaMember.query.all()
+    return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda, member=member)
 
 
 @aicos_req.route('cooperatives/amatsinda/koraitsinda', methods=['GET', 'POST'])

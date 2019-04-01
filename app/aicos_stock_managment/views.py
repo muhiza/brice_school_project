@@ -156,17 +156,31 @@ def umusaruro():
 def ibindiUmusaruro(id):
     memberId = Member.query.get_or_404(id)
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-    return render_template('ibindiUmusaruro.html', id=memberId.id, umusaruro=umusaruro)
+    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro)
 
 
 
 
-@aicos_stock_managment.route('/umusaruro/member/ishyura')
+@aicos_stock_managment.route('/umusaruro/member/ishyura/<int:id>', methods=['GET'])
 @login_required
-def umusaruroIshyura():
-    #memberId = Member.query.get_or_404(id)
-    #umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-    return render_template('ishyura.html')
+def umusaruroIshyura(id):
+    umusaruroId = Umusarurob.query.get_or_404(id)
+    member = Member.query.filter_by(member_id=umusaruroId.member_id)
+    
+    ayishyurwa = Abishyuwe(
+                amount_payed = 50000,
+                member_id = member.id,
+                member_name = member.izina_ribanza + " " + member.izina_rikurikira,
+                ibiro = umusaruroId.UwoKugurisha,
+                umusaruro_id = umusaruroId.id,
+                department_id = current_user.email
+                )
+    try:
+        db.session.add(ayishyurwa)
+        db.session.commit()
+        return redirect(url_for('aicos_stock_managment.ibindiUmusaruro', id=umusaruroId.member_id))
+    except Exception as e:
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
 
 
 
@@ -690,5 +704,3 @@ def Imyishyurire():
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
 
     return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
-
-

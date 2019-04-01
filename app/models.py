@@ -273,6 +273,7 @@ class Department(db.Model):
     budget = db.relationship('Budget', backref='budget', lazy='dynamic')
     assetsAccounting = db.relationship('assetsAccounting', backref='assetsaccounting', lazy='dynamic')
     account = db.relationship('Account', backref='account', lazy='dynamic')
+    abishyuwe = db.relationship('Abishyuwe', backref='abishyuwe', lazy='dynamic')
 
 
     is_active      = db.Column(db.Boolean, default=False)
@@ -1522,6 +1523,7 @@ class Umusarurob(db.Model):
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
     done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    abishyuwe = db.relationship('Abishyuwe', backref='abishyuwee', lazy='dynamic')
 
     def __repr__(self):
         return '<Umusarurob: {}>'.format(self.id)
@@ -2001,4 +2003,21 @@ class Account(db.Model):
     def __repr__(self):
         return '<Account: {}>'.format(self.id)
 
+
+
+"""
+this is the history of umusaruro payments
+
+"""
+
+class Abishyuwe(db.Model):
+    __tablename__ = "abishyuwe"
+    id = db.Column(db.Integer, primary_key = True, unique=True)
+    amount_payed = db.Column(db.Integer)
+    member_id = db.Column(db.Integer)
+    member_name = db.Column(db.String(200))
+    ibiro = db.Column(db.Float)
+    done_date = db.Column(db.Date, default=datetime.datetime.utcnow())
+    umusaruro_id = db.Column(db.Integer, db.ForeignKey('umusarurob.id'))
+    department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
