@@ -25,25 +25,40 @@
 
     	{% if amatsinda %}
     		{% for itsinda in amatsinda %}
-    			<div class="col-lg-3 col-md-6">
-			        <div class="card">
-			            <a href="{{ url_for('aicos_req.amatsindaMembers', id=itsinda.id) }}">
-                            <div class="card-body">
-                                <div class="stat-widget-four">
-                                    <div class="stat-icon dib">
-                                        <i class="fa fa-users text-danger border-dange"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-heading">{{ itsinda.itsinda_name }}</div>
-                                            <div class="stat-text">{{ itsinda.description }}</div>
+    			<div class="col-md-4">
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <div class="media-body text-center">
+                                            <h2 class="text-light display-6">{{ itsinda.itsinda_name }}</h2>
+                                            <p>{{ itsinda.description }}</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>         
-                        </a>
-			        </div>
-    			</div>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="{{ url_for('aicos_req.amatsindaMembers', id=itsinda.id) }}"> <i class="fa fa-user-o"></i> Abanyamuryango <span class="badge badge-primary pull-right">
+                                            
+                                        </span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-tasks"></i> Ubuso <span class="badge badge-danger pull-right">15</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-file-o"></i> Umusaruro <span class="badge badge-success pull-right">11</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-usd"></i> Ubwizigame <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-list"></i> Stock <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                </ul>
+                            </section>
+                        </aside>
+                    </div>
     		{% endfor %}
     	{% else %}
 

@@ -5,15 +5,47 @@
 		{% if umusaruro %}
 			{% for umu in umusaruro %}
 				<div class="col-md-4">
-					 <div class="card">
-					 	<div class="card-header">
-					 		Title
-					 	</div>
-					 	<div class="card-body">
-					 		Body
-					 	</div>
-					 </div>	
-				</div>
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h5 class="text-light display-6">
+                                                {% if memberId %}
+                                                    Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
+                                                {% endif %}
+                                                </h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-dashboard"></i> Taliki <span class="badge badge-primary pull-right">{{ umu.done_date }}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-tasks"></i> Ibiro <span class="badge badge-danger pull-right">{{ umu.UwoKugurisha }}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-file"></i> Igiciro <span class="badge badge-success pull-right">{{ umu.RiceAmount }}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-flag-o"></i> Zone  <span class="badge badge-warning pull-right r-activity">{% if memberId %} {{ memberId.zone }} {% endif %}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-flag"></i> Itsinda  <span class="badge badge-warning pull-right r-activity">{% if memberId %} {{ memberId.itsinda }} {% endif %}</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-euro"></i> Yarishyuwe  <span class="badge badge-success pull-right r-activity">Yego</span></a>
+                                    </li>
+                                    <button type="button" class="btn btn-outline-primary btn-sm active"><b>
+                                    <span class="ti-wallet"></span>&nbsp;
+                                    <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button><!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
+                                </ul>
+                            </section>
+                        </aside>
+                    </div>
 			{% endfor %}
 		{% else %}
 

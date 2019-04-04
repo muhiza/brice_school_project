@@ -51,60 +51,33 @@ session = sessionmaker()()
 def dashboard():
     #check_admin()
     #check_coop_admin()
-    if current_user.is_manager:
-        employee = Department.query.filter_by(email=current_user.email).first()
-        employees = employee.members
-        #all_member_idd = Umusaruro.member_id
-        memberss = Member.query.filter_by(department_id=current_user.email).all()
-        umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-        #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-        member_all = Employee.query.filter_by(department_id=current_user.email).all()
-        ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-        imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-        umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
+    #if current_user.is_manager:
+
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+    #all_member_idd = Umusaruro.member_id
+    memberss = Member.query.filter_by(department_id=current_user.email).all()
+    umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
+    #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
+    member_all = Employee.query.filter_by(department_id=current_user.email).all()
+    ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
+    imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+    umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
+    inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
 
 
-        return render_template('stock_dashboard.html', 
-                                                    ibirarane=ibirarane, 
-                                                    imisanzu=imisanzu, 
-                                                    umusaruro=umusaruro, 
-                                                    inyongeramusaruro=inyongeramusaruro,
-                                                    umusaruro_resi=umusaruro_resi, 
-                                                    member_all=member_all,
-                                                    inyongera=inyongera,
-                                                    memberss=memberss
-                                                    )
-    else:
-        employee = Department.query.filter_by(email=current_user.department_id).first()
-        #employees = employee.members
-        #all_member_idd = Umusaruro.member_id
-        memberss = Member.query.filter_by(department_id=current_user.department_id).all()
-        umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-        #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-        member_all = Employee.query.filter_by(department_id=current_user.email).all()
-        ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-        imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-        umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-
-        return render_template('stock_dashboard.html', 
-                                                    ibirarane=ibirarane, 
-                                                    imisanzu=imisanzu, 
-                                                    umusaruro=umusaruro, 
-                                                    inyongeramusaruro=inyongeramusaruro,
-                                                    umusaruro_resi=umusaruro_resi, 
-                                                    member_all=member_all,
-                                                    inyongera=inyongera,
-                                                    memberss=memberss
-                                                    )
-
-
-
-
-
+    return render_template('stock_dashboard.html', 
+                                                ibirarane=ibirarane, 
+                                                imisanzu=imisanzu, 
+                                                umusaruro=umusaruro, 
+                                                inyongeramusaruro=inyongeramusaruro,
+                                                umusaruro_resi=umusaruro_resi, 
+                                                member_all=member_all,
+                                                inyongera=inyongera,
+                                                memberss=memberss
+     
+                                                )
 
 
 
@@ -183,7 +156,32 @@ def umusaruro():
 def ibindiUmusaruro(id):
     memberId = Member.query.get_or_404(id)
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-    return render_template('ibindiUmusaruro.html', id=memberId.id, umusaruro=umusaruro)
+    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro)
+
+
+
+
+@aicos_stock_managment.route('/umusaruro/member/ishyura/<int:id>', methods=['GET'])
+@login_required
+def umusaruroIshyura(id):
+    umusaruroId = Umusarurob.query.get_or_404(id)
+    member = Member.query.filter_by(member_id=umusaruroId.member_id)
+    
+    ayishyurwa = Abishyuwe(
+                amount_payed = 50000,
+                member_id = member.id,
+                member_name = member.izina_ribanza + " " + member.izina_rikurikira,
+                ibiro = umusaruroId.UwoKugurisha,
+                umusaruro_id = umusaruroId.id,
+                department_id = current_user.email
+                )
+    try:
+        db.session.add(ayishyurwa)
+        db.session.commit()
+        return redirect(url_for('aicos_stock_managment.ibindiUmusaruro', id=umusaruroId.member_id))
+    except Exception as e:
+        return redirect(url_for('aicos_stock_managment.umusaruro'))
+
 
 
 @aicos_stock_managment.route('/inyongeramusaruro')
@@ -706,5 +704,3 @@ def Imyishyurire():
     member_all = Employee.query.filter_by(department_id=current_user.email).all()
 
     return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
-
-

@@ -126,7 +126,7 @@ def create_app(config_name):
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Notification, db.session))
 
-    toolbar = DebugToolbarExtension(app)
+    #toolbar = DebugToolbarExtension(app)
     
     Bootstrap(app)
     db.init_app(app)
@@ -137,7 +137,7 @@ def create_app(config_name):
     #manager.init_app(app)
     flask_excel.init_excel(app)
     api.init_app(app)
-    toolbar.init_app(app)
+    #toolbar.init_app(app)
 
 
 
@@ -253,6 +253,7 @@ def create_app(config_name):
 
     from .aicos_stock_managment import aicos_stock_managment as aicos_stock_managment_blueprint
     app.register_blueprint(aicos_stock_managment_blueprint, url_prefix='/aicos_stock_managment')
+
 
 
 

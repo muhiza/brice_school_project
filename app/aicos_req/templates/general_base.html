@@ -55,7 +55,7 @@
 <body>
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default" >
+        <nav class="navbar navbar-expand-sm navbar-default" style="height: 580px;">
             <div class="navbar-header"> 
                 <a class="navbar-brand" href="{{ url_for('aicos_members.dashboard') }}">
                     <img src="{{ url_for('static', filename='images/aicos_logo.png') }}"></a>
@@ -65,21 +65,10 @@
                     <li class="menu-item-has-children dropdown">
                         <ul class="sub-menu children">
                             <li><i class="fa fa-puzzle-piece"></i><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
-                            <li><i class="fa fa-puzzle-piece"></i><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
-                            <li><i class="fa fa-id-badge"></i><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
-                            <li><i class="fa fa-bars"></i><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
-                            <li><i class="fa fa-share-square-o"></i>
-                            <a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
-                            <li><i class="fa fa-id-card-o"></i>
-                            <a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
-                            <li><i class="fa fa-exclamation-triangle"></i><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
-                            <li><i class="fa fa-spinner"></i>
-                            <a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
-                            <li><i class="fa fa-book"></i><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
-                            <li><i class="fa fa-th"></i><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
-                            <li><i class="fa fa-file-word-o"></i><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
-                            <li><i class="fa fa-fire"></i><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
-                        </ul>
+                            <li><i class="fa fa-puzzle-piece"></i><a href="{{ url_for('aicos_req.budget') }}">Budget</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="{{ url_for('aicos_req.expense') }}">Expense</a></li>
+                            <li><i class="fa fa-bars"></i><a href="{{ url_for('aicos_req.income') }}">Income</a></li>
+                             </ul>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

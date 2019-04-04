@@ -25,25 +25,40 @@
 
         {% if zones %}
             {% for zone in zones %}
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <a href="#">
-                            <div class="card-body">
-                                <div class="stat-widget-four">
-                                    <div class="stat-icon dib">
-                                        <i class="fa fa-users text-danger border-dange"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-heading">{{ zone.izina }}</div>
-                                            <div class="stat-text">{{ zone.ubusobanuro }}</div>
+                <div class="col-md-4">
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <div class="media-body text-center">
+                                            <h2 class="text-light display-6">{{ zone.izina }}</h2>
+                                            <p>{{ zone.impamvu }}</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>         
-                        </a>
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-user-o"></i> Abanyamuryango <span class="badge badge-primary pull-right">
+                                           45 
+                                        </span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-tasks"></i> Ubuso <span class="badge badge-danger pull-right">15</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-file-o"></i> Umusaruro <span class="badge badge-success pull-right">11</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-usd"></i> Ubwizigame <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="#"> <i class="fa fa-list"></i> Stock <span class="badge badge-warning pull-right r-activity">03</span></a>
+                                    </li>
+                                </ul>
+                            </section>
+                        </aside>
                     </div>
-                </div>
             {% endfor %}
         {% else %}
 
