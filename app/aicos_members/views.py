@@ -150,7 +150,7 @@ def aicos_members_home():
                            employees_mumutwe=employees_mumutwe,
                            employees_mumutwe_count=employees_mumutwe_count,
                            #male_members_count=male_members_count,
-                           applications=applications,
+                           #applications=applications,
                            title='Employees')
 
 
