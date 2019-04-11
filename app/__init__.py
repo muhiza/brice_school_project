@@ -5,12 +5,10 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager, UserMixin, current_user
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-
 from flask import Flask, request, jsonify, redirect, url_for
 import flask_excel
 import flask_excel as excel
 from flask_uploads import UploadSet, IMAGES, configure_uploads
-
 from flask_restful import reqparse
 from flask import Flask, request, jsonify, redirect, url_for
 import flask_excel
@@ -126,7 +124,7 @@ def create_app(config_name):
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Notification, db.session))
 
-    #toolbar = DebugToolbarExtension(app)
+    toolbar = DebugToolbarExtension(app)
     
     Bootstrap(app)
     db.init_app(app)
@@ -137,7 +135,7 @@ def create_app(config_name):
     #manager.init_app(app)
     flask_excel.init_excel(app)
     api.init_app(app)
-    #toolbar.init_app(app)
+    toolbar.init_app(app)
 
 
 
@@ -253,7 +251,6 @@ def create_app(config_name):
 
     from .aicos_stock_managment import aicos_stock_managment as aicos_stock_managment_blueprint
     app.register_blueprint(aicos_stock_managment_blueprint, url_prefix='/aicos_stock_managment')
-
 
 
 
