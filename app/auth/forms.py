@@ -10,8 +10,8 @@ class RegistrationForm(FlaskForm):
     Form for users to create new account
     """
     email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "KODE YO KWINJIRIRAHO (EMAIL)"})
-    username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "IZINA UKORESHA"})
-    first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
+    username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA UKORESHA"})
+    #first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
     phone_number = StringField('', validators=[DataRequired()], render_kw={"placeholder": "NOMERO YA TELEPHONE"})
     password = PasswordField('', validators=[

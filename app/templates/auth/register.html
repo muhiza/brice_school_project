@@ -3,10 +3,6 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/utils.html" as utils %}
 {% block head %}
-{{ super() }}
-
-
-
 
 <head>
     <meta charset="utf-8">
@@ -37,6 +33,7 @@
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
+                {{ utils.flashed_messages(dismissible=True) }} 
                 <div class="login-logo">
                     <a href="{{ url_for('auth.login') }}">
                          <img src="{{ url_for('static', filename='images/aicos_logo.png') }}" style="width: 230px;"></a>
@@ -45,9 +42,6 @@
                 <div class="login-form">
                     <form action="/register" method="POST">
 
-                                    <div class="form-group" style="margin-bottom: -20px;">
-                                        {{ wtf.form_field(form.first_name) }} 
-                                    </div>
 
                                     <div class="form-group" style="margin-bottom: -20px;">
                                         {{ wtf.form_field(form.username) }}

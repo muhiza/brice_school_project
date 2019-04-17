@@ -2,10 +2,6 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/utils.html" as utils %}
 {% block head %}
-{{ super() }}
-
-
-
 
 <head>
     <meta charset="utf-8">
@@ -13,8 +9,6 @@
     <title>AICOS</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-
 
     <link href="{{ url_for('static', filename='vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -29,13 +23,11 @@
 </head>
 
 
-
-
 <body class="bg-dark">
-{{ utils.flashed_messages(dismissible=True) }}
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
+                {{ utils.flashed_messages(dismissible=True) }} <br><br>
                 <div class="login-logo">
                     <a href="{{ url_for('auth.login') }}">
                          <img src="{{ url_for('static', filename='images/aicos_logo.png') }}" style="width: 230px;">
@@ -53,7 +45,7 @@
 
                                 <div class="checkbox">
                                     <label>
-                                <input type="checkbox"> Unyibuke 
+                                <input type="checkbox"> Unyibuke
                                 </label>
                                         <label class="pull-right">
                                     <a href="{{ url_for('auth.ForgotPassword') }}">Wibagiwe ijambo ry'ibanga?</a>
@@ -72,14 +64,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
