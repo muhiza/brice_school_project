@@ -127,6 +127,7 @@
                                 <strong class="card-title"><h3>Raporo y'isarura ryose</h3></strong>
                             </div>
                             <div class="card-body">
+                            <div class="table-responsive">
                                 <table id="bootstrap-data-table-export" class="table table-striped">
 
 
@@ -141,7 +142,7 @@
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
                             <th>Ibindi</th>
-                            <th>Amafarangwa Yose</th>
+                            <th>Amafarangwa&nbsp;Yose</th>
                         </tr>
                     </thead>
                     
@@ -154,14 +155,14 @@
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
                             <th>Ibindi</th>
-                            <th>Amafarangwa Yose</th>
+                            <th>Amafarangwa&nbsp;Yose</th>
                         </tr>
                     </tfoot>
                     <tbody>
                        {% if memberss %}
                           {% for member in memberss %}
                               <tr>
-                                <td>{{ member.izina_ribanza }} {{ member.izina_rikurikira }}</td>
+                                <td>{{ member.izina_ribanza }}&nbsp;{{ member.izina_rikurikira }}</td>
                                 <td> 
                                   {% if member.umusarurob %}
                                       {% for umu in member.umusarurob %}
@@ -252,6 +253,7 @@
                        {% endif %}
                     </tbody>
                 </table>
+                </div>
                 <div id="charts"></div>
                 <br><br>
             </div>
