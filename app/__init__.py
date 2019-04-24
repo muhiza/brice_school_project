@@ -24,7 +24,7 @@ from flask_restless import APIManager
 from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import BaseView, expose
-from flask_debugtoolbar import DebugToolbarExtension
+#from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
 flask_excel.init_excel(app)
@@ -124,7 +124,7 @@ def create_app(config_name):
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Notification, db.session))
 
-    toolbar = DebugToolbarExtension(app)
+    #toolbar = DebugToolbarExtension(app)
     
     Bootstrap(app)
     db.init_app(app)
@@ -135,7 +135,7 @@ def create_app(config_name):
     #manager.init_app(app)
     flask_excel.init_excel(app)
     api.init_app(app)
-    toolbar.init_app(app)
+    #toolbar.init_app(app)
 
 
 
