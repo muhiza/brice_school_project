@@ -2,7 +2,7 @@
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
 {% block body %}
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       {{ utils.flashed_messages(dismissible=True) }}
     </div>
@@ -37,7 +37,9 @@
                                             <th>Ubwoko&nbsp;bw'igihingwa</th>
                                             <th>Ibyo&nbsp;asigaranye</th>
                                             <th>Ibyo&nbsp;kugurisha</th>
+                                            <th>Grade</th>
                                             <th>Amafaranga</th>
+                                            <th>Deduct&nbsp;10%</th>
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
                                         </tr>
@@ -81,11 +83,34 @@
                                                       {% endfor %}
                                                   {% endif %}
                                                 </td>
+
+
+                                                <td>
+                                                  {% if member.umusarurob %}
+                                                      {% for umu in member.umusarurob %}
+                                                            {% if loop.last %}
+                                                                {{ umu.UmusaruroGrade }}
+                                                            {% endif %}
+                                                      {% endfor %}
+                                                  {% endif %}
+                                                </td>
+
+
                                                 <td>
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}
                                                             {% if loop.last %}
                                                                 {{ umu.AmafarangaUmusaruro1 }}
+                                                            {% endif %}
+                                                      {% endfor %}
+                                                  {% endif %}
+                                                </td>
+
+                                                <td>
+                                                  {% if member.umusarurob %}
+                                                      {% for umu in member.umusarurob %}
+                                                            {% if loop.last %}
+                                                                {{ umu.Asigaye }}
                                                             {% endif %}
                                                       {% endfor %}
                                                   {% endif %}
@@ -109,14 +134,23 @@
                                     </tbody>
                                 </table>
                                 </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+
+                              </div>
                             </div>
                         </div>
                     </div>
 
 
+
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
-
     </div>
  {% endblock %}

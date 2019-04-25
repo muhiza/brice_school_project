@@ -1521,6 +1521,7 @@ class Umusarurob(db.Model):
     UwoKugurisha = db.Column(db.Integer) # Quantity - Umu asigaranye
     GutonozaAmount = db.Column(db.Integer)
     AmafarangaUmusaruro1 = db.Column(db.Integer) # (RiceAmount * Quantity) - Uwogutonoza
+    Asigaye              = db.Column(db.Float)
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
     done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
