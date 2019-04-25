@@ -5,9 +5,11 @@ from ..models import *
 from .forms import UmusaruroForm, InyongeraMusaruroForm, IbyakoreshejweForm, KonteZaBankForm, UmusarurobForm, IbihanoForm, IbindiForm, UmusanzuForm, IbiraraneForm
 
 import flask_excel
+from flask import Markup
 import flask_excel as excel
 
 
+from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 
 
@@ -156,7 +158,28 @@ def umusaruro():
 def ibindiUmusaruro(id):
     memberId = Member.query.get_or_404(id)
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro)
+    umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
+    amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
+
+    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all)
+
+
+
+
+@aicos_stock_managment.route('/umusaruro/member/ishyura/<int:id>')
+@login_required
+def umunyamuryangoIshyura(id):
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = employee.members
+
+    memberId = Member.query.get_or_404(id)
+    umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
+    umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
+    amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
+
+    return render_template('ishyuraByose.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all, employees=employees)
+
+
 
 
 
@@ -278,24 +301,49 @@ def injizaUmusaruro(id):
             form.Quantity.data = 0
         if form.RiceAmount.data is None:
             form.RiceAmount.data = 0
+        if form.UmusaruroGrade.data is None:
+            form.UmusaruroGrade.data = 0
 
 
 
-        umusaruro = Umusarurob(
-                            RiceType = form.RiceType.data,
-                            RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
-                            UwoAsigaranye = form.UwoAsigaranye.data,
-                            UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
-                            GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
-                            AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * int(form.UwoAsigaranye.data))),
-                            member_id = memberid.id,
-                            department_id = current_user.email
-                         )
+        if form.UmusaruroGrade.data == 'good':
+            umusaruro = Umusarurob(
+                                RiceType = form.RiceType.data,
+                                RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
+                                UmusaruroGrade = form.UmusaruroGrade.data,
+                                UwoAsigaranye = form.UwoAsigaranye.data,
+                                UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
+                                GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
+                                AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
+                                                        int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
+                                                        int(form.UwoAsigaranye.data))) + 10 / (100 * (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
+                                                        int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
+                                                        int(form.UwoAsigaranye.data)))),
+                                member_id = memberid.id,
+                                department_id = current_user.email
+                             )
+
+        else:
+            umusaruro = Umusarurob(
+                                RiceType = form.RiceType.data,
+                                RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
+                                UmusaruroGrade = form.UmusaruroGrade.data,
+                                UwoAsigaranye = form.UwoAsigaranye.data,
+                                UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
+                                GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
+                                AmafarangaUmusaruro1 =  ((int(form.RiceAmount.data) * (int(form.Quantity.data) - \
+                                                        int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
+                                                        int(form.UwoAsigaranye.data))) + 0),
+                                member_id = memberid.id,
+                                department_id = current_user.email
+                             )
+
+
 
         try:
             db.session.add(umusaruro)
             db.session.commit()
-            flash("Umaze kwandika umusaruro wa" + member_name.izina_ribanza + " " + member_name.izina_rikurikira)
+            flash(Markup("Umaze kwandika umusaruro wa " + "<b>" + member_name.izina_ribanza + " " + member_name.izina_rikurikira + "</b>"))
             return redirect(url_for('aicos_stock_managment.umusaruro'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")

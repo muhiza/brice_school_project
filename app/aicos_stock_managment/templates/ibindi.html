@@ -4,7 +4,7 @@
 {% block body %}
   <div class="container-fluid">
     <div class="row">
-      {{ utils.flashed_messages() }}
+      {{ utils.flashed_messages(dismissible=True) }}
     </div>
     	  <!--	
           <div class="col-lg-12">
@@ -34,7 +34,7 @@
                                             <th>Amazina</th>
                                             <th>Imifuka</th>
                                             <th>Mutuelle</th>
-                                            <th>Igihingwa Gred</th>
+                                            <th>Umusaruro Grade</th>
                                             <th>Avance</th>
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
@@ -50,14 +50,14 @@
                                                           {% for ibi in member.ibindi %}
                                                               {% if ibi.member_id == member.id %}
                                                                   {% if loop.last %}
-                                                                      {{ ibi.ImifukaQuantity }}
+                                                                      {{ ibi.ImifukaQuantity }} = {{ ibi.ImifukaAmount }} Frw
                                                                   {% endif %}
                                                               {% endif %}
                                                           {% endfor%}
                                                       {% endif %}
                                                   </td>
                                                   <td>
-                                                    {% if memberibindi %}
+                                                    {% if member.ibindi %}
                                                         {% for ibi in member.ibindi %}
                                                             {% if ibi.member_id == member.id %}
                                                                 {% if loop.last %}
@@ -80,8 +80,8 @@
                                                   </td>
 
                                                   <td>
-                                                    {% if memberibindi %}
-                                                        {% for ibi in memberibindi %}
+                                                    {% if member.ibindi %}
+                                                        {% for ibi in member.ibindi %}
                                                             {% if ibi.member_id == member.id %}
                                                                 {% if loop.last %}
                                                                       {{ ibi.Avence }}

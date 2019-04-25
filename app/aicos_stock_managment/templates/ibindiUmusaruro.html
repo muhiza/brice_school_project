@@ -1,10 +1,49 @@
 {% extends "stock_base.html" %}
 {% block body %}
 <div class="container">
-	<div class="row" style="margin-top: 20px;">
 		{% if umusaruro %}
+
+		<div class="row">
+        <div class="breadcrumbs">
+            <div class="col-sm-5">
+                <div class="page-header float-left">
+                    <div class="page-title"><br>
+                        <strong><h3>Umusaruro: <b> {{ memberId.izina_ribanza }}</b></h3></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <div class="alert alert-success" role="alert">
+                                Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</a>
+                            </div>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"><br>
+                <button type="button" class="btn btn-outline-success btn-sm active"><b>
+                   	<span class="ti-wallet"></span>&nbsp;
+                		<a href="{{ url_for('aicos_stock_managment.umunyamuryangoIshyura', id=memberId.id) }}">
+                	<span style="color: #fff;">Ishyura byose</span></a></b>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4><b>
+        &nbsp;&nbsp; Inshuro zagemuwe</b></h4>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
 			{% for umu in umusaruro %}
-				<div class="col-md-4">
+				<div class="col-md-4"><br>
                         <aside class="profile-nav alt">
                             <section class="card">
                                 <div class="card-header user-header alt bg-dark">
@@ -18,6 +57,14 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
+
+
+
+
 
 
                                 <ul class="list-group list-group-flush">
@@ -37,7 +84,7 @@
                                         <a href="#"> <i class="fa fa-flag"></i> Itsinda  <span class="badge badge-warning pull-right r-activity">{% if memberId %} {{ memberId.itsinda }} {% endif %}</span></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-euro"></i> Yarishyuwe  <span class="badge badge-success pull-right r-activity">Yego</span></a>
+                                        <a href="#"> <i class="fa fa-euro"></i> Yarishyuwe  <span class="badge badge-success pull-right r-activity">Oya</span></a>
                                     </li>
                                     <button type="button" class="btn btn-outline-primary btn-sm active"><b>
                                     <span class="ti-wallet"></span>&nbsp;
@@ -49,7 +96,7 @@
 			{% endfor %}
 		{% else %}
 
-		{% endif %}
+		{% endif %}       
 	</div>
 </div>
 {% endblock %}

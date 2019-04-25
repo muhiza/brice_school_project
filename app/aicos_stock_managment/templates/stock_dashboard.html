@@ -11,12 +11,13 @@
                 <div class="clearfix"> 
                     <i class="fa fa-bar-chart-o bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h5 text-secondary mb-0 mt-1">UMUSARURO</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 765</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 7650 Frw</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.umusaruro') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.umusaruro') }}">
+                    Reba ibindi <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -30,11 +31,11 @@
                     <div class="h5 text-secondary mb-0 mt-1">INYONGERA MUSARURO</div>
                     <div class="text-muted text-uppercase font-weight-bold font-xs small">&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp; Total: 24720</div>
+                    &nbsp;&nbsp;&nbsp; Total: 4720 Frw</div>
                 </div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Reba ibindi <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -47,12 +48,13 @@
                     <i class="fa fa-minus-square-o bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
                     <div class="h6 text-secondary mb-0 mt-1">
                     IMISANZU</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 24720</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 720 Frw</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.imisanzu') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_stock_managment.imisanzu') }}">
+                    Reba ibindi <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -66,17 +68,18 @@
                     <div class="h5 text-secondary mb-0 mt-1">
                       KONTI / BANK
                     </div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 24720</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Total: 20</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a href="{{ url_for('aicos_stock_managment.konteZaBanki') }}" class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a href="{{ url_for('aicos_stock_managment.konteZaBanki') }}" class="font-weight-bold font-xs btn-block text-muted small" href="#">Reba ibindi <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
     </div>
     <!--/.col-->
+    </div>
     </div>
 
 
@@ -109,18 +112,10 @@
 
 
    <div class="container">
-
               <!-- <table id="totalexample" class="display" cellspacing="0" width="100%"> -->
-          
-
-
-
-
-
           <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -142,7 +137,7 @@
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
                             <th>Ibindi</th>
-                            <th>Amafarangwa&nbsp;Yose</th>
+                            <th class="bg-info" style="color: #fff;">Amafarangwa&nbsp;Yose</th>
                         </tr>
                     </thead>
                     
@@ -155,7 +150,7 @@
                             <th>Ibirarane</th>
                             <th>Ibihano</th>
                             <th>Ibindi</th>
-                            <th>Amafarangwa&nbsp;Yose</th>
+                            <th class="bg-info" style="color: #fff;">Amafarangwa&nbsp;Yose</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -203,7 +198,7 @@
                                   {% if member.ibihano %}
                                       {% for ibi in member.ibihano %}
                                           {% if loop.last %}
-                                              {{ ibi.AmandeC + ibi.AmandeApII }}
+                                              {{ ibi.AmandeApII }}
                                           {% endif %}
                                       {% endfor %}
                                   {% endif %}
@@ -217,7 +212,7 @@
                                       {% endfor %}
                                   {% endif %}
                                 </td>
-                                <td>
+                                <td class="bg-success" style="color: #fff;"><b>
                                   {% if member.umusarurob and member.inyongeramusaruro and member.imisanzu and member.ibirarane and member.ibihano and member.ibindi %}
                                       {% for umu in member.umusarurob %}
                                           {% if loop.last %}
@@ -231,7 +226,7 @@
                                                                     {% if loop.last %}
                                                                         {% for ibin in member.ibindi %}
                                                                             {% if loop.last %}
-                                                                                {{ umu.AmafarangaUmusaruro1 - ((inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) + (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) + (ibir.NPKkg * ibir.NPKPerUnity) + (ibir.DAP * ibir.DAPPerUnity) + (ibir.UREA * ibir.UREAPerUnity) + (ibir.KCL * ibir.KCLPerUnity) + (ibir.ImbutoQuantity * ibir.ImbutoAmount) + (ibir.IdeniAmount)+ (ibir.Briquette * ibir.BriquettePerUnity) + (ibih.AmandeC + ibih.AmandeApII) + (ibin.ImifukaAmount + ibin.MituelleAmount + ibin.UmuceriAmountGrade + ibin.Avence)) }}
+                                                                                {{ umu.AmafarangaUmusaruro1 - ((inyongera.NPKkg * inyongera.NPKPerUnity) + (inyongera.DAP * inyongera.DAPPerUnity) + (inyongera.UREA * inyongera.UREAPerUnity) + (inyongera.KCL * inyongera.KCLPerUnity) + (inyongera.Briquette * inyongera.BriquettePerUnity) + (inyongera.Cypemetrine) + (inyongera.Beam) + (inyongera.ImbutoQuantity * inyongera.ImbutoAmount) + (inyongera.Redevance) + (imi.UmusoroWakarere + imi.UmusanzuCoop + imi.Umugabane + imi.Ikigega + imi.KuzibaIcyuho) + (ibir.NPKkg * ibir.NPKPerUnity) + (ibir.DAP * ibir.DAPPerUnity) + (ibir.UREA * ibir.UREAPerUnity) + (ibir.KCL * ibir.KCLPerUnity) + (ibir.ImbutoQuantity * ibir.ImbutoAmount) + (ibir.IdeniAmount)+ (ibir.Briquette * ibir.BriquettePerUnity) + (ibih.AmandeApII) + (ibin.ImifukaAmount + ibin.MituelleAmount + ibin.UmuceriAmountGrade + ibin.Avence)) }}
                                                                             {% endif %}
                                                                         {% endfor %}
                                                                     {% endif %}
@@ -247,6 +242,7 @@
                                   {% else %}
                                       0
                                   {% endif %}
+                                  </b> - Frw
                                 </td>
                               </tr>
                           {% endfor %}
@@ -254,7 +250,6 @@
                     </tbody>
                 </table>
                 </div>
-                <div id="charts"></div>
                 <br><br>
             </div>
         </div>

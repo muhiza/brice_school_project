@@ -712,7 +712,7 @@ class Member(db.Model):
 
     """
     def __repr__(self):
-        return '<Member: {}>'.format(self.id)
+        return '<Member: {}>'.format(self.id) or u'None'
 
 
 class Moto(db.Model):
@@ -1515,6 +1515,7 @@ class Umusarurob(db.Model):
     __tablename__ = "umusarurob"
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     RiceType = db.Column(db.String(100))
+    UmusaruroGrade = db.Column(db.Integer)
     RiceAmount = db.Column(db.Integer)
     UwoAsigaranye = db.Column(db.Float)
     UwoKugurisha = db.Column(db.Integer) # Quantity - Umu asigaranye
@@ -1614,7 +1615,7 @@ class Ibihano(db.Model):
     #docstring for Inyongeramusaruro
     __tablename__ = "ibihano"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    AmandeC = db.Column(db.Integer)
+    AmandeC = db.Column(db.String(200))
     AmandeApII = db.Column(db.Integer)
     comment = db.Column(db.String(200))
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))

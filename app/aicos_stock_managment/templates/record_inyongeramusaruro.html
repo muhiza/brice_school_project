@@ -5,20 +5,15 @@
 {% block title %}Stock{% endblock %}
 {% block body %}
  	<div class="container-fluid">
-    {{ utils.flashed_messages() }}
-    	<div class="col-md-8">
-    		<div class="tab-content">
-    			<div class="row" style="background-color: silver; margin: 0px; text-align: center;">
-		            <div class="col-md-12" style="margin-top: 15px; margin-left: 10px;">
-		                <h3>Andika Inyongeramusaruro ya "{{ member_name.izina_ribanza }}"</h3>
-		            </div>
-		            <div class="col-md-4 text-right" style="margin-top: 15px;">
-		                <!--<button class="btn btn-outline-info">
-		                  <a href="{{ url_for('aicos_members.doimportmbs') }}">
-		                <i class="fa fa-upload"> Injiza byinshi</i></a></button>-->
-		            </div>
-		        </div>
-                <div class="tab-pane active" id="home4" role="tabpanel" aria-expanded="false" style="padding-bottom: 15px;">
+    {{ utils.flashed_messages(dismissible=True) }}
+
+    		<div class="row">
+            <div class="col-lg-8">
+	       <div class="card">
+	                <div class="card-header">
+	                   <h3>Andika Inyongeramusaruro ya <strong> {% if member_name %} {{   member_name.izina_ribanza  }} {% endif %}  </strong> </h3><br>
+	                </div>
+	                <div class="card-body card-block">
 	                <form action="{{ url_for('aicos_stock_managment.injizaInyongeramusaruro', id=memberid.id)}}" method="post">
 	                	<div class="">
 	                    	{{ wtf.form_field(form.NPKkg) }}
@@ -70,8 +65,9 @@
 	                    </div>
 	                    {{ form.csrf_token }}
 	                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+				    <br><br><br>
+			        </div>
+			        </div>
+			        </div>
+			    </div>
+			{% endblock %}
