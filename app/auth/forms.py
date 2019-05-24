@@ -9,7 +9,7 @@ class RegistrationForm(FlaskForm):
     """
     Form for users to create new account
     """
-    email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "KODE YO KWINJIRIRAHO (EMAIL)"})
+    email = StringField('', validators=[DataRequired()], render_kw={"placeholder": "KODE YO KWINJIRIRAHO (EMAIL)"})
     username = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA UKORESHA"})
     #first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
@@ -26,9 +26,11 @@ class RegistrationForm(FlaskForm):
 
     submit = SubmitField('OHEREZA')
 
+    """
     def validate_email(self, field):
         if Employee.query.filter_by(email=field.data).first():
             raise ValidationError('Email is already in use.')
+    """
 
     def validate_username(self, field):
         if Employee.query.filter_by(username=field.data).first():

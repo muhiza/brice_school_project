@@ -36,7 +36,7 @@ class Employee(UserMixin, db.Model):
     # as is the name of the model
     __tablename__ = 'employees'
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(60), index=True, unique=False)
+    email = db.Column(db.String(60), index=True)
     username = db.Column(db.String(60), index=True)
     first_name = db.Column(db.String(60), index=True)
     last_name = db.Column(db.String(60), index=True)

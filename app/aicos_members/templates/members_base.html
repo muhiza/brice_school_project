@@ -78,10 +78,24 @@
                 </div>
 
                 <div class="col-sm-5">
+
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{ url_for('static', filename='images/admin.jpg') }}" alt="User Avatar">
+                                    
+                        <span style="padding: 50px;">
+                            <button class="btn btn-warning btn-md float-right">
+                                <a href="{{ url_for('auth.logout') }}" style="color: #fff;">Logout</a> 
+                            </button> 
+                        </span>
+
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 50px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img class="user-avatar rounded-circle"
+                            style="margin-left: -20px;" src="{{ url_for('static', filename='images/admin.jpg') }}" alt="User Avatar">
                         </a>
+
+
+
+        
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
                             <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
@@ -95,6 +109,7 @@
   
                         </a>
                     </div>
+
                 </div>
             </div>
         </header><!-- /header -->
