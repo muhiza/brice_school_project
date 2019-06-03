@@ -1200,6 +1200,11 @@ def doimportmbs():
             m.izina_ribanza = row['izina_ribanza']
             m.izina_rikurikira = row['izina_rikurikira']
             m.Ayandi = row['Ayandi']
+
+            m.zone = row['zone']
+            m.itsinda = row['itsinda']
+
+
             m.Igitsina = row['Igitsina']
             m.Indangamuntu = row['Indangamuntu']
             m.tariki_yavukiye = row['tariki_yavukiye']

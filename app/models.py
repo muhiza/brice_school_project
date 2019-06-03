@@ -236,7 +236,17 @@ class Department(db.Model):
     male_members = db.Column(db.String(200))
     female_members = db.Column(db.String(200))
     #email       = db.Column(db.String(200))
+
+
+
+
+
     applications = db.relationship('Application', backref='department', lazy='dynamic')
+
+    
+
+
+
     employees = db.relationship('Employee', backref='department',lazy='dynamic')
     staffs = db.relationship('Staff', backref='department',lazy='dynamic')
     activities = db.relationship('Activity', backref='department',lazy='dynamic')
@@ -267,6 +277,13 @@ class Department(db.Model):
     ubwisazure = db.relationship('UbwisazureEnter', backref='ubwisazure', lazy='dynamic')
 
     incomecategory = db.relationship('IncomeCategory', backref='incomecategory', lazy='dynamic')
+
+
+
+
+
+
+
     expensecategory = db.relationship('ExpenseCategory', backref='expensecategory', lazy='dynamic')
     expense = db.relationship('Expense', backref='expense', lazy='dynamic')
     income = db.relationship('Expense', backref='income', lazy='dynamic')

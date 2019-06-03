@@ -105,7 +105,8 @@ def login():
 
 
             elif employee.is_union:
-            	return redirect(url_for('aicos_union.indexUnion'))
+            	return redirect(url_for('aicos_union.ferwacotamo_dashboard'))
+                
             elif employee.is_ferwacotamo:
                 return redirect(url_for('aicos_ferwacotamo.ferwacotamo_dashboard'))
             elif employee.is_confederation:
