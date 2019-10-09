@@ -51,6 +51,7 @@
                       <li><a href="{{ url_for('admin.sendemail') }}">Emails</a></li>
                       <li><a href="{{ url_for('admin.sendemail') }}">Reports</a></li>
                       <li><a href="{{ url_for('admin.subscriptions') }}">Subs</a></li>
+                      
                     {% else %}
                       <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
                     {% endif %}

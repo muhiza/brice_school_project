@@ -50,7 +50,7 @@ def register():
 
             """
             to_number = '+250786012383'
-            message = 'Umanze kwinjizwa muri sisiteme AICOS. Uzajya ubona amakuru ajyanye na Cooperative buri gihe.'
+            message = 'Umaze kwinjizwa muri sisiteme AICOS. Uzajya ubona amakuru ajyanye na Cooperative buri gihe.'
             response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
             response_text = response['messages'][0]
             """

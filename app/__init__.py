@@ -32,16 +32,16 @@ flask_excel.init_excel(app)
 
 
 #<<<<<<< HEAD
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/coop'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 #=======
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/excel'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:regedit56mysql@localhost/excel'
 #>>>>>>> 7ff76842510f5427a81f95e10f7ffe2ca09c3308
 app.config['RECAPTCHA_PUBLIC_KEY'] = '6LdYIDcUAAAAAEE3N3tNqcYu50MJSTlGA5lwu5Pl'
 app.config['RECAPTCHA_PRIVATE_KEY'] = '6LdYIDcUAAAAAD8ayN_2Mkhauh_-MdK12XxdTLEo'
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(app)  
 api = Api(app)
 #manager = APIManager(app, flask_sqlalchemy_db=db)
 
@@ -65,7 +65,7 @@ def create_app(config_name):
         
     else:
         app = Flask(__name__, instance_relative_config=True)
-        app.config.from_object(app_config[config_name])
+        # app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
 
 
@@ -252,6 +252,9 @@ def create_app(config_name):
     from .aicos_stock_managment import aicos_stock_managment as aicos_stock_managment_blueprint
     app.register_blueprint(aicos_stock_managment_blueprint, url_prefix='/aicos_stock_managment')
 
+    from .aicos_crm import aicos_crm as aicos_crm_blueprint
+    app.register_blueprint(aicos_crm_blueprint)
+
 
 
     """
@@ -268,7 +271,7 @@ def create_app(config_name):
     @app.route('/')
     @app.route('/home')
     def home():
-        return "Welcome to the Catalog Home. Muhiza Franl"
+        return "Welcome to the Catalog Home. Muhiza Frank"
      
      
     class MemberApi(Resource):

@@ -17,6 +17,9 @@ class Cooperative(UserMixin, db.Model):
     description = db.Column(db.String(200))
     employees = db.relationship('Employee', backref='cooperative', lazy='dynamic')
 
+
+    # CRMs = db.relationship('CRM', backref='cooperative', lazy='dynamic')
+
     def __repr__(self):
         return '<Cooperative: {}>'.format(self.name)
 
@@ -49,6 +52,9 @@ class Employee(UserMixin, db.Model):
     cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
     profile        = db.relationship('Profile', uselist=False, back_populates="employee")
 
+
+    CRMs           = db.relationship('CRM', backref='employee', lazy='dynamic')
+
     #user_id        = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     #activity_id   = db.relationship('Activity', backref='employee', lazy='dynamic')
     #membership = db.relationship('Department', secondary=subs, backref=db.backref('members', lazy='dynamic'))
@@ -72,6 +78,8 @@ class Employee(UserMixin, db.Model):
     invited_by = db.Column(db.String(200))
     district   = db.Column(db.String(200))
 
+    def __repr__(self):
+        return '{}'.format(self.username)
 
     @property
     def password(self):
@@ -93,8 +101,7 @@ class Employee(UserMixin, db.Model):
         """
         return check_password_hash(self.password_hash, password)
 
-    def __repr__(self):
-        return '<Employee: {}>'.format(self.username)
+    
 
 
 # Set up user_loader
@@ -2039,4 +2046,29 @@ class Abishyuwe(db.Model):
     done_date = db.Column(db.Date, default=datetime.datetime.utcnow())
     umusaruro_id = db.Column(db.Integer, db.ForeignKey('umusarurob.id'))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
+
+
+
+
+
+
+class CRM(db.Model):
+    """
+    Customer Relationship Management (CRM) table
+    """
+    __tablename__ = "CRMs"
+    id             = db.Column(db.Integer, primary_key = True, unique = True)
+    # cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
+    tag            = db.Column(db.String(100))
+    company_name   = db.Column(db.String(100))
+    email     = db.Column(db.String(100))
+    website   = db.Column(db.String(100))
+    address   = db.Column(db.String(200))
+    contact_type   = db.Column(db.String(200))
+    phone_number   = db.Column(db.String(100))
+    city           = db.Column(db.String(100))
+    country        = db.Column(db.String(100))
+    employee_id       = db.Column(db.Integer, db.ForeignKey('employees.id'))
+    description    = db.Column(db.String(255))
+    status         = db.Column(db.String(100))
 
