@@ -18,8 +18,6 @@ class Cooperative(UserMixin, db.Model):
     employees = db.relationship('Employee', backref='cooperative', lazy='dynamic')
 
 
-    # CRMs = db.relationship('CRM', backref='cooperative', lazy='dynamic')
-
     def __repr__(self):
         return '<Cooperative: {}>'.format(self.name)
 
@@ -38,17 +36,17 @@ class Employee(UserMixin, db.Model):
     # Ensures table will be named in plural and not in singular
     # as is the name of the model
     __tablename__ = 'employees'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(60), index=True)
-    username = db.Column(db.String(60), index=True)
-    first_name = db.Column(db.String(60), index=True)
-    last_name = db.Column(db.String(60), index=True)
-    phone_number = db.Column(db.String(200), index=True)
-    password_hash = db.Column(db.String(128))
-    department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
-    employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
+    id             = db.Column(db.Integer, primary_key=True)
+    email          = db.Column(db.String(60), index=True)
+    username       = db.Column(db.String(60), index=True)
+    first_name     = db.Column(db.String(60), index=True)
+    last_name      = db.Column(db.String(60), index=True)
+    phone_number   = db.Column(db.String(200), index=True)
+    password_hash  = db.Column(db.String(128))
+    department_id  = db.Column(db.String(200), db.ForeignKey('departments.email'))
+    role_id        = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    project_id     = db.Column(db.Integer, db.ForeignKey('projects.id'))
+    employee_id    = db.Column(db.Integer, db.ForeignKey('employees.id'))
     cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
     profile        = db.relationship('Profile', uselist=False, back_populates="employee")
 
@@ -219,7 +217,7 @@ class Department(db.Model):
     id = db.Column(db.Integer, autoincrement=True, nullable=True)
     # General information
     no = db.Column(db.Integer)
-    code = db.Column(db.String(200))
+    code  = db.Column(db.String(200))
     email = db.Column(db.String(200), primary_key=True, unique=True)
     name  = db.Column(db.String(200))
     regdate = db.Column(db.String(200))
@@ -228,20 +226,20 @@ class Department(db.Model):
     province    = db.Column(db.String(200))
     district    = db.Column(db.String(200))
     sector      = db.Column(db.String(200))
-    cell      = db.Column(db.String(200))
+    cell        = db.Column(db.String(200))
     Activity    = db.Column(db.String(200))
     coop_type   = db.Column(db.String(200))
 
     category   = db.Column(db.String(200))
-    field   = db.Column(db.String(200))
+    field      = db.Column(db.String(200))
     # federation_id = db.Column(db.Integer, db.ForeignKey('federations.id'))
     # union_id     = db.Column(db.String(200), db.ForeignKey('unions.email'))
     # Professional information
-    started_data = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    starting_share = db.Column(db.String(200))
+    started_data     = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    starting_share   = db.Column(db.String(200))
     share_per_person = db.Column(db.String(200))
-    male_members = db.Column(db.String(200))
-    female_members = db.Column(db.String(200))
+    male_members     = db.Column(db.String(200))
+    female_members   = db.Column(db.String(200))
     #email       = db.Column(db.String(200))
 
 
@@ -254,10 +252,10 @@ class Department(db.Model):
 
 
 
-    employees = db.relationship('Employee', backref='department',lazy='dynamic')
-    staffs = db.relationship('Staff', backref='department',lazy='dynamic')
+    employees  = db.relationship('Employee', backref='department',lazy='dynamic')
+    staffs     = db.relationship('Staff', backref='department',lazy='dynamic')
     activities = db.relationship('Activity', backref='department',lazy='dynamic')
-    roles = db.relationship('Role', backref='department',lazy='dynamic')
+    roles      = db.relationship('Role', backref='department',lazy='dynamic')
     products        = db.relationship('Product', backref='department', lazy='dynamic')
     orders          = db.relationship('Order', backref='department', lazy='dynamic')
     members         = db.relationship('Member', backref='department', lazy='dynamic')
@@ -266,21 +264,21 @@ class Department(db.Model):
     communications  = db.relationship('Communication', backref='department', lazy='dynamic')
 
     contributions  = db.relationship('Contribution', backref='department', lazy='dynamic')
-    reports         = db.relationship('Report', backref='department', lazy='dynamic')
+    reports        = db.relationship('Report', backref='department', lazy='dynamic')
     howtos      = db.relationship('Howto', backref='department', lazy='dynamic')
     links       = db.relationship('Link', backref='department', lazy='dynamic')
     trainings   = db.relationship('Training', backref='department', lazy='dynamic')
     applytrainings = db.relationship('applyTraining', backref='department', lazy='dynamic')
 
-    files       = db.relationship('File', backref='department', lazy='dynamic')
-    BankAccounts        = db.relationship('BankAccount', backref='department', lazy='dynamic')
-    loans       = db.relationship('Loan', backref='department', lazy='dynamic')
-    notifications       = db.relationship('Notification', backref='department', lazy='dynamic')
-    intekoRusange       = db.relationship('intekoRusange', backref='department', lazy='dynamic')
-    inamaUbuyobozi       = db.relationship('inamaUbuyobozi', backref='department', lazy='dynamic')
-    ubugenzuzi       = db.relationship('Ubugenzuzi', backref='department', lazy='dynamic')
+    files        = db.relationship('File', backref='department', lazy='dynamic')
+    BankAccounts = db.relationship('BankAccount', backref='department', lazy='dynamic')
+    loans        = db.relationship('Loan', backref='department', lazy='dynamic')
+    notifications  = db.relationship('Notification', backref='department', lazy='dynamic')
+    intekoRusange  = db.relationship('intekoRusange', backref='department', lazy='dynamic')
+    inamaUbuyobozi = db.relationship('inamaUbuyobozi', backref='department', lazy='dynamic')
+    ubugenzuzi     = db.relationship('Ubugenzuzi', backref='department', lazy='dynamic')
     isanduku       = db.relationship('Isanduku', backref='department', lazy='dynamic')
-    itsinda = db.relationship('Itsinda', backref='amatsinda', lazy='dynamic')
+    itsinda    = db.relationship('Itsinda', backref='amatsinda', lazy='dynamic')
     ubwisazure = db.relationship('UbwisazureEnter', backref='ubwisazure', lazy='dynamic')
 
     incomecategory = db.relationship('IncomeCategory', backref='incomecategory', lazy='dynamic')
@@ -301,6 +299,12 @@ class Department(db.Model):
 
 
     is_active      = db.Column(db.Boolean, default=False)
+
+
+
+
+    CRMs = db.relationship('CRM', backref='department', lazy='dynamic')
+
 
     #Dealing with excel staff here.
 
@@ -2052,13 +2056,23 @@ class Abishyuwe(db.Model):
 
 
 
+
+
+
+
+
+
+
+
+# New model related to Customer Relatonship Management.
+
 class CRM(db.Model):
     """
     Customer Relationship Management (CRM) table
     """
-    __tablename__ = "CRMs"
+    __tablename__ = 'CRMs'
     id             = db.Column(db.Integer, primary_key = True, unique = True)
-    # cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
+    department_id  = db.Column(db.String(200), db.ForeignKey('departments.email'))
     tag            = db.Column(db.String(100))
     company_name   = db.Column(db.String(100))
     email     = db.Column(db.String(100))
@@ -2068,7 +2082,20 @@ class CRM(db.Model):
     phone_number   = db.Column(db.String(100))
     city           = db.Column(db.String(100))
     country        = db.Column(db.String(100))
-    employee_id       = db.Column(db.Integer, db.ForeignKey('employees.id'))
+    employee_id    = db.Column(db.Integer, db.ForeignKey('employees.id'))
     description    = db.Column(db.String(255))
     status         = db.Column(db.String(100))
 
+    def __repr__(self):
+        return '<CRM: {}>'.format(self.company_name)
+
+    def add_new_item(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def edit_item(self):
+        db.session.commit()
+
+    def delete_item(self):
+        db.session.delete(self)
+        db.session.commit()

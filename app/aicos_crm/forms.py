@@ -24,27 +24,27 @@ class ItemForm(FlaskForm):
         'Choose the Tag Type',
         choices=[('-- Tag --', '-- Tag --'),('Follow Up', 'Follow Up'), 
         ('Hot', 'Hot'), ('Soon', 'Soon'),('Upsale', 'Upsale')])
-    company_name   = StringField('', validators=[DataRequired()], 
-        render_kw={"placeholder": "Company\'s Name"})
-    email     = StringField('', validators=[DataRequired(), Email()], 
-        render_kw={"placeholder": "Company\'s Email"})
-    website   = StringField('', validators=[DataRequired()], 
-        render_kw={"placeholder": "Company\'s Website"})
-    address   = StringField('', validators=[DataRequired()], 
-        render_kw={"placeholder": "Company\'s Address"})
+    company_name   = StringField('Name', validators=[DataRequired()], 
+        render_kw={"placeholder": "Client\'s Name"})
+    email     = StringField('Email', validators=[DataRequired(), Email()], 
+        render_kw={"placeholder": "Client\'s Email"})
+    website   = StringField('Website', validators=[DataRequired()], 
+        render_kw={"placeholder": "Client\'s Website"})
+    address   = StringField('Address', validators=[DataRequired()], 
+        render_kw={"placeholder": "Client\'s Address"})
     contact_type   = SelectField(
         'Choose the Company\'s Contact Type',
         choices=[('-- Contact Type --', '-- Contact Type --'), ('Potential Customer', 'Potential Customer'),
         ('All', 'All'), ('Current Customer', 'Current Customer'), ('Best Teammate', 'Best Teammate')])
-    phone_number   = StringField('', validators=[DataRequired()], 
+    phone_number   = StringField('Phone Number', validators=[DataRequired()], 
         render_kw={"placeholder": "Phone Number"})
-    city           = StringField('', validators=[DataRequired()], 
+    city           = StringField('City', validators=[DataRequired()], 
         render_kw={"placeholder": "City"})
     country        = StringField('', validators=[DataRequired()], 
         render_kw={"placeholder": "Country"})
     employee_id       = QuerySelectField('Assignee',
-        query_factory=choice_query, allow_blank=True, get_label= 'username')
-    description    = StringField('', validators=[DataRequired()], 
+        query_factory=choice_query, allow_blank=False, get_label= 'username')
+    description    = StringField('Description', validators=[DataRequired()], 
         render_kw={"placeholder": "Description"})
     status         = SelectField(
         'Choose the Activity Status',

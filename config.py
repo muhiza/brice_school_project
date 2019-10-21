@@ -15,6 +15,7 @@ class DevelopmentConfig(Config):
     """
 
     SQLALCHEMY_ECHO = True
+    DEBUG = True
 
 
 class ProductionConfig(Config):
@@ -29,11 +30,13 @@ class TestingConfig(Config):
     """
     Testing configurations
     """
-
+    # TEST = True
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/test'
 
 app_config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,
-    'testing': TestingConfig
+    'testing': TestingConfig,
+    # 'test': TestingConfig
 }

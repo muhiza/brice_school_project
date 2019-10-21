@@ -1,15 +1,28 @@
 {% import "bootstrap/wtf.html" as wtf %}
-
-<div class="content-section">
- <div class="outer">
-    <div class="middle">
-      <div class="inner">
-        <div class="center">
-                              <h1>CRM</h1>
-                          <br/>
-                          {{ wtf.quick_form(form) }}
+{% extends 'crm_base.html' %}
+{% block body %}
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header bg-light">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-6">
+            <h1 class="center">CRM</h1>
+          </div>
+          <br/>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            {{ wtf.quick_form(form) }}
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}

@@ -33,6 +33,7 @@ flask_excel.init_excel(app)
 
 #<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
+# app.config['SQLALCHEMY_BINDS'] = {'test':'mysql://juru:Password@123@localhost/test'}
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 #=======
@@ -65,7 +66,7 @@ def create_app(config_name):
         
     else:
         app = Flask(__name__, instance_relative_config=True)
-        # app.config.from_object(app_config[config_name])
+        app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
 
 
@@ -73,7 +74,7 @@ def create_app(config_name):
 
 
 
-    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter
+    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter, CRM
 
     class EmployeeView(ModelView):
         form_columns = ['email', 'username', 'first_name', 'last_name', 'department_id', 'phone_number']
@@ -123,6 +124,7 @@ def create_app(config_name):
     admin.add_view(MyModelView(Ububiko, db.session))
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Notification, db.session))
+    admin.add_view(MyModelView(CRM, db.session))
 
     #toolbar = DebugToolbarExtension(app)
     
@@ -253,7 +255,7 @@ def create_app(config_name):
     app.register_blueprint(aicos_stock_managment_blueprint, url_prefix='/aicos_stock_managment')
 
     from .aicos_crm import aicos_crm as aicos_crm_blueprint
-    app.register_blueprint(aicos_crm_blueprint)
+    app.register_blueprint(aicos_crm_blueprint, url_prefix='/aicos_crm')
 
 
 
@@ -307,8 +309,8 @@ def create_app(config_name):
 
     api.add_resource(
        MemberApi,
-       '/api/member',
-       '/api/member/<int:id>'
+    #    '/api/member',
+    #    '/api/member/<int:id>'
        )
 
 
