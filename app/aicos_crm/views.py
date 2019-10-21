@@ -18,7 +18,8 @@ client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
 @login_required
 def table():
     assignments = CRM.query.filter_by(department_id=current_user.email).all()
-    department = current_user
+    for assignment in assignments:
+        department = assignment.department.name
     # print(assignments)
     return render_template("table.html", assignments=assignments, department=department)
 
