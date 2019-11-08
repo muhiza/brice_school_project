@@ -1,3 +1,5 @@
+![alt text](http://178.128.19.71/static/new/images/final.png)
+
 # SMART COOPERATIVE PLATFORM - AICOS
 The complete code for smart cooperative platform, Build all functionalities with as a Web Platform With Python and Flask, which you can find on aicos.rw here.
 
