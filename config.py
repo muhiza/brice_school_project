@@ -33,7 +33,9 @@ class TestingConfig(Config):
     # TEST = True
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/test'
-
+    LOGIN_DISABLED = True
+    USE_SESSION_FOR_NEXT = True
+    
 app_config = {
     'development': DevelopmentConfig,
     'production': ProductionConfig,

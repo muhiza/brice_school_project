@@ -7,12 +7,14 @@
 <script>
     $(document).ready(function(){
         $("#example").DataTable({
-            "order":[[3,"desc"]]
+            "sDom": "<'row'<'col-lg-8'i><'col-lg-4'f>r>t<'row'<'col-lg-6'l><'col-lg-6'p>>",
+            "order":[[0,"desc"]]
         });
     });
 
     $(document).ready(function(){
         $('#example').DataTable({
+            "sDom": "<'row'<'col-lg-8'i><'col-lg-4'f>r>t<'row'<'col-lg-6'l><'col-lg-6'p>>",
             "pagingType":"full_numbers"
         });
     });
@@ -46,11 +48,14 @@
                                     <th>Options</th>
 		                        </tr>
                             </thead>
+                            
 					        <tbody>
+                                {{ utils.flashed_messages() }}
+                                <!-- You have {{no}} item(s) in your table. -->
                                 {% for assignment in assignments %}
                                 <tr>
                                     <td>
-                                        <!-- {{assignment.department.name}} -->
+                                        {{assignments.index(assignment) + 1}}.
                                         {{assignment.tag}}
                                     </td>
                                     <td>

@@ -98,7 +98,6 @@ class Employee(UserMixin, db.Model):
         Check if hashed password matches actual password
         """
         return check_password_hash(self.password_hash, password)
-
     
 
 
@@ -126,6 +125,7 @@ class Product(db.Model):
 
     def __repr__(self):
         return '<Product: {}>'.format(self.name)
+
 
 
 
@@ -209,7 +209,7 @@ class Union(db.Model):
 
 
 
-class Department(db.Model):
+class Department(UserMixin,db.Model):
     """
     Create a Department table
     """
@@ -321,6 +321,11 @@ class Department(db.Model):
 
     def __repr__(self):
         return self.email
+        
+@login_manager.user_loader
+def load_user(user_id):
+    return Department.query.get(int(user_id))
+
 
 """
 Dealing with excel staffs here.
@@ -603,7 +608,7 @@ class Profile(db.Model):
     university_school = db.Column(db.String(200))
     vocational_school = db.Column(db.String(200))
 
-    # Eperiances.
+    # Experiances.
     exp1  = db.Column(db.String(200))
     exp2  = db.Column(db.String(200))
     exp3  = db.Column(db.String(200))

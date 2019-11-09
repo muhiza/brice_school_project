@@ -212,10 +212,10 @@ class newDepartmentForm(FlaskForm):
         ('Rutsiro', 'Rutsiro')])
     Sector = StringField(Markup('<b>Injiza umurenge Koperative ibarizwamo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza umurenge Koperative ibarizwamo"})
     Cell = StringField(Markup('<b>Injiza akagari Koperative ibarizwamo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza akagari Koperative ibarizwamo"})
-    startingSharex = StringField(Markup('<b>Umugabane Shingiro</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
+    startingSharex = StringField(Markup('<b>Umugabane Shingiro</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wa Cooperative"})
     sharePerPerson = StringField(Markup('<b>Umugabane Kuri buri munyamuryango</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
-    maleMembers = StringField(Markup('<b>Abanyamuryango b\'abagabo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
-    femaleMembers = StringField(Markup('<b>Abanyamuryango b\'abagore</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
+    maleMembers = StringField(Markup('<b>Abanyamuryango b\'abagabo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umubare w\'Abanyamuryango b\'abagabo"})
+    femaleMembers = StringField(Markup('<b>Abanyamuryango b\'abagore</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umubare w\'Abanyamuryango b\'abagore"})
 
 
 

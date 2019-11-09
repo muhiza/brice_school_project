@@ -309,8 +309,8 @@ def create_app(config_name):
 
     api.add_resource(
        MemberApi,
-       '/api/member',
-       '/api/member/<int:id>'
+    #    '/api/member',
+    #    '/api/member/<int:id>'
        )
 
 
