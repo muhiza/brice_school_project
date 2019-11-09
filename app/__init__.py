@@ -305,12 +305,15 @@ def create_app(config_name):
             }
             return json.dumps(res)
 
-    api.add_resource(
-       MemberApi,
-       '/api/member',
-       '/api/member/<int:id>'
-       )
 
+
+            """
+                api.add_resource(
+                   MemberApi,
+                   '/api/member',
+                   '/api/member/<int:id>'
+                   )
+            """
 
 
 
