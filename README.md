@@ -3,15 +3,17 @@
 # SMART COOPERATIVE PLATFORM - AICOS
 The complete code for smart cooperative platform, Build all functionalities with as a Web Platform With Python and Flask, which you can find on aicos.rw [here](http://www.aicos.rw/).
 
-# Installation and Set Up
+## Installation and Set Up
 Prerequisites:
 
 * [Python 2](https://www.python.org/)
 * [virtualenv](https://virtualenv.pypa.io/en/latest/)
 
 Clone the repo from GitHub:
-
+```
 git clone https://github.com/muhiza/aicos_coop.git
+```
+
 Create a virtual environment for the project and activate it:
 
 virtualenv smart-coop
