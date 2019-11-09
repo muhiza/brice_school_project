@@ -17,68 +17,6 @@ class TestBase(TestCase):
         app = create_app(config_name)
         return app
 
-    def setUp(self):
-        """
-        Will be called before every test
-        """
-
-        db.create_all()
-
-        # create test admin user
-        admin = Employee(username="admin", password="admin2016", is_admin=True)
-
-        # create test non-admin user
-        employee = Employee(username="test_user", password="test2016")
-
-        # save users to database
-        db.session.add(admin)
-        db.session.add(employee)
-        db.session.commit()
-
-    def tearDown(self):
-        """
-        Will be called after every test
-        """
-
-        db.session.remove()
-        db.drop_all()
-
-
-class TestModels(TestBase):
-
-    def test_employee_model(self):
-        """
-        Test number of records in Employee table
-        """
-        self.assertEqual(Employee.query.count(), 2)
-
-    def test_department_model(self):
-        """
-        Test number of records in Department table
-        """
-
-        # create test department
-        department = Department(email='it@extra.com', name="IT", description="The IT Department")
-
-        # save department to database
-        db.session.add(department)
-        db.session.commit()
-
-        self.assertEqual(Department.query.count(), 1)
-
-    def test_role_model(self):
-        """
-        Test number of records in Role table
-        """
-
-        # create test role
-        role = Role(name="CEO", description="Run the whole company")
-
-        # save role to database
-        db.session.add(role)
-        db.session.commit()
-
-        self.assertEqual(Role.query.count(), 1)
 
 
 class TestViews(TestBase):
