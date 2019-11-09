@@ -1,4 +1,4 @@
-![alt text](https://techture.global/wp-content/uploads/2018/03/Process-Automation-2.png)
+![alt text](http://www.aicos.rw/static/new/images/final.png)
 
 # SMART COOPERATIVE PLATFORM - AICOS
 The complete code for smart cooperative platform, Build all functionalities with as a Web Platform With Python and Flask, which you can find on aicos.rw [here](http://www.aicos.rw/).
