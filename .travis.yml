@@ -10,3 +10,5 @@ script:
 services:
   - mysql
 
+before_install:
+  - mysql -u root --password="" < test/travis.sql
