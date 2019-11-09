@@ -12,12 +12,16 @@ class TestBase(TestCase):
 
     def create_app(self):
 
+
+
         # pass in test configuration
         config_name = 'testing'
         app = create_app(config_name)
+        """
         app.config.update(
             SQLALCHEMY_DATABASE_URI  = "mysql://muhiza:annemuhiza@localhost/coop"
         )
+        """
         return app
 
     def setUp(self):
