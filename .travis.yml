@@ -11,6 +11,6 @@ services:
   - mysql
 
 before_install:
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('annemuhiza') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('annemuhiza') where User='muhiza'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pannemuhiza
   - sudo service mysql restart
