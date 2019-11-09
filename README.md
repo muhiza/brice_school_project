@@ -15,9 +15,10 @@ git clone https://github.com/muhiza/aicos_coop.git
 ```
 
 Create a virtual environment for the project and activate it:
-
+```
 virtualenv smart-coop
 source smart-coop/bin/activate
+```
 Install the required packages:
 
 pip install -r requirements.txt
