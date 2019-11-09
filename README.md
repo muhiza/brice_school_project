@@ -36,8 +36,8 @@ mysql> GRANT ALL PRIVILEGES ON smartcoop_db . * TO 'sc_admin'@'localhost';
 ```
 Note that ```sc_admin``` is the database user and ```sc2019``` is the user password. After creating the database, run migrations as follows:
 
-```*flask db migrate ```
-```*flask db upgrade ```
+* flask db migrate
+* flask db upgrade
 instance/config.py file
 Create a directory, instance, and in it create a config.py file. This file should contain configuration variables that should not be publicly shared, such as passwords and secret keys. The app requires you to have the following configuration variables:
 
