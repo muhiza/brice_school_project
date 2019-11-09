@@ -20,11 +20,12 @@ virtualenv smart-coop
 source smart-coop/bin/activate
 ```
 Install the required packages:
-
+```
 pip install -r requirements.txt
-Database configuration
+```
+## Database configuration
 You will need to create a MySQL user your terminal, as well as a MySQL database. Then, grant all privileges on your database to your user, like so:
-
+```
 $ mysql -u root
 
 mysql> CREATE USER 'sc_admin'@'localhost' IDENTIFIED BY 'sc2019';
@@ -32,7 +33,8 @@ mysql> CREATE USER 'sc_admin'@'localhost' IDENTIFIED BY 'sc2019';
 mysql> CREATE DATABASE smartcoop_db;
 
 mysql> GRANT ALL PRIVILEGES ON smartcoop_db . * TO 'sc_admin'@'localhost';
-Note that sc_admin is the database user and sc2019 is the user password. After creating the database, run migrations as follows:
+```
+Note that ```sc_admin``` is the database user and sc2019 is the user password. After creating the database, run migrations as follows:
 
 flask db migrate
 flask db upgrade
