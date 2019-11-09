@@ -6,7 +6,7 @@ The complete code for smart cooperative platform, Build all functionalities with
 ## Installation and Set Up
 Prerequisites:
 
-* [Python 2](https://www.python.org/)
+* [Python 3](https://www.python.org/)
 * [virtualenv](https://virtualenv.pypa.io/en/latest/)
 
 Clone the repo from GitHub:
