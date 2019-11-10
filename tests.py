@@ -51,6 +51,8 @@ class TestViews(TestBase):
         Test that dashboard is inaccessible without login
         and redirects to login page then to dashboard
         """
+
+        # There's an error here (instead of home_muhiza_frank, it's home)
         target_url = url_for('home_muhiza_frank.dashboard')
         redirect_url = url_for('auth.login', next=target_url)
         response = self.client.get(target_url)

@@ -3,13 +3,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login_manager
 from datetime import datetime
 import datetime
-
 from sqlalchemy import DateTime
+
 
 class Cooperative(UserMixin, db.Model):
     """
     Creating the cooperative database here.
     """
+
     __tablename__ = "cooperatives"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -17,27 +18,27 @@ class Cooperative(UserMixin, db.Model):
     description = db.Column(db.String(200))
     employees = db.relationship('Employee', backref='cooperative', lazy='dynamic')
 
-
-    # CRMs = db.relationship('CRM', backref='cooperative', lazy='dynamic')
-
     def __repr__(self):
         return '<Cooperative: {}>'.format(self.name)
 
-"""
-subs = db.Table('subs',
-    db.Column('employee_id', db.Integer, db.ForeignKey('employees.id')),
-    db.Column('department_id', db.String(399), db.ForeignKey('departments.email'))
-    )
-"""
+    """
+    subs = db.Table('subs',
+        db.Column('employee_id', db.Integer, db.ForeignKey('employees.id')),
+        db.Column('department_id', db.String(399), db.ForeignKey('departments.email'))
+        )
+    """
 
-
+    
 class Employee(UserMixin, db.Model):
     """
     Create an Employee table
     """
+
     # Ensures table will be named in plural and not in singular
     # as is the name of the model
+
     __tablename__ = 'employees'
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(60), index=True)
     username = db.Column(db.String(60), index=True)
@@ -51,10 +52,7 @@ class Employee(UserMixin, db.Model):
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
     cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
     profile        = db.relationship('Profile', uselist=False, back_populates="employee")
-
-
     CRMs           = db.relationship('CRM', backref='employee', lazy='dynamic')
-
     #user_id        = db.Column(db.Integer, db.ForeignKey('user.user_id'))
     #activity_id   = db.relationship('Activity', backref='employee', lazy='dynamic')
     #membership = db.relationship('Department', secondary=subs, backref=db.backref('members', lazy='dynamic'))
@@ -66,15 +64,9 @@ class Employee(UserMixin, db.Model):
     is_ferwacotamo = db.Column(db.Boolean, default=False)
     is_confederation = db.Column(db.Boolean, default=False)
     is_rca = db.Column(db.Boolean, default=False)
-
-
-
     is_manager = db.Column(db.Boolean, default=False)
     is_accountant = db.Column(db.Boolean, default=False)
     is_production_manager = db.Column(db.Boolean, default=False)
-
-
-
     invited_by = db.Column(db.String(200))
     district   = db.Column(db.String(200))
 
@@ -101,22 +93,18 @@ class Employee(UserMixin, db.Model):
         """
         return check_password_hash(self.password_hash, password)
 
-    
-
-
 # Set up user_loader
 @login_manager.user_loader
 def load_user(user_id):
     return Employee.query.get(int(user_id))
 
 
-
-
-
-
-#Models for inventories.
 class Product(db.Model):
+    """
+        Creating a product table..
+    """
     __tablename__ = "products"
+    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
     description = db.Column(db.String(200))
@@ -125,17 +113,17 @@ class Product(db.Model):
     status  = db.Column(db.String(200))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     def __repr__(self):
         return '<Product: {}>'.format(self.name)
 
 
-
-
-
-#Models for inventories.
 class Order(db.Model):
+    """
+        Creating an orders table.
+    """
+
     __tablename__ = "ordes"
+    
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
     product = db.Column(db.String(200))
@@ -145,16 +133,17 @@ class Order(db.Model):
     status  = db.Column(db.String(200))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     def __repr__(self):
         return '<Order: {}>'.format(self.name)
 
 
-
-
-
 class Federation(db.Model):
+    """
+        Creating a federation table.
+    """
+
     __tablename__ = 'federations'
+    
     id = db.Column(db.Integer, primary_key=True)
     sno = db.Column(db.String(200))
     code = db.Column(db.String(200))
@@ -170,18 +159,21 @@ class Federation(db.Model):
     def __repr__(self):
         return '<Federation: {}>'.format(self.name)
 
-
-    """ We will always use this __init__ function to upload excel file  """
+    """ 
+        We will always use this __init__ function to upload excel file 
+    """
     def __init__(self, code):
         self.id = id
         self.code = code
 
 
-
-
-
 class Union(db.Model):
+    """
+        Creating an union table
+    """
+
     __tablename__ = 'unions'
+    
     id = db.Column(db.Integer, autoincrement=True, nullable=True)
     sno = db.Column(db.String(200))
     code = db.Column(db.String(200))
@@ -199,23 +191,20 @@ class Union(db.Model):
     def __repr__(self):
         return '<Union: {}>'.format(self.name)
 
-
-        """ We will always use this __init__ function to upload excel file  """
+        """ 
+            We will always use this __init__ function to upload excel file  
+        """
     def __init__(self, code):
         self.id = id
         self.code = code
 
 
-
-
-
-
-
 class Department(db.Model):
     """
-    Create a Department table
+        Create a Department table
     """
     __tablename__ = 'departments'
+
     id = db.Column(db.Integer, autoincrement=True, nullable=True)
     # General information
     no = db.Column(db.Integer)
@@ -231,7 +220,6 @@ class Department(db.Model):
     cell      = db.Column(db.String(200))
     Activity    = db.Column(db.String(200))
     coop_type   = db.Column(db.String(200))
-
     category   = db.Column(db.String(200))
     field   = db.Column(db.String(200))
     # federation_id = db.Column(db.Integer, db.ForeignKey('federations.id'))
@@ -243,17 +231,7 @@ class Department(db.Model):
     male_members = db.Column(db.String(200))
     female_members = db.Column(db.String(200))
     #email       = db.Column(db.String(200))
-
-
-
-
-
     applications = db.relationship('Application', backref='department', lazy='dynamic')
-
-    
-
-
-
     employees = db.relationship('Employee', backref='department',lazy='dynamic')
     staffs = db.relationship('Staff', backref='department',lazy='dynamic')
     activities = db.relationship('Activity', backref='department',lazy='dynamic')
@@ -264,14 +242,12 @@ class Department(db.Model):
     motos           = db.relationship('Moto', backref='motos', lazy='dynamic')
     decisions       = db.relationship('Decision', backref='department', lazy='dynamic')
     communications  = db.relationship('Communication', backref='department', lazy='dynamic')
-
     contributions  = db.relationship('Contribution', backref='department', lazy='dynamic')
     reports         = db.relationship('Report', backref='department', lazy='dynamic')
     howtos      = db.relationship('Howto', backref='department', lazy='dynamic')
     links       = db.relationship('Link', backref='department', lazy='dynamic')
     trainings   = db.relationship('Training', backref='department', lazy='dynamic')
     applytrainings = db.relationship('applyTraining', backref='department', lazy='dynamic')
-
     files       = db.relationship('File', backref='department', lazy='dynamic')
     BankAccounts        = db.relationship('BankAccount', backref='department', lazy='dynamic')
     loans       = db.relationship('Loan', backref='department', lazy='dynamic')
@@ -282,15 +258,7 @@ class Department(db.Model):
     isanduku       = db.relationship('Isanduku', backref='department', lazy='dynamic')
     itsinda = db.relationship('Itsinda', backref='amatsinda', lazy='dynamic')
     ubwisazure = db.relationship('UbwisazureEnter', backref='ubwisazure', lazy='dynamic')
-
     incomecategory = db.relationship('IncomeCategory', backref='incomecategory', lazy='dynamic')
-
-
-
-
-
-
-
     expensecategory = db.relationship('ExpenseCategory', backref='expensecategory', lazy='dynamic')
     expense = db.relationship('Expense', backref='expense', lazy='dynamic')
     income = db.relationship('Expense', backref='income', lazy='dynamic')
@@ -298,28 +266,23 @@ class Department(db.Model):
     assetsAccounting = db.relationship('assetsAccounting', backref='assetsaccounting', lazy='dynamic')
     account = db.relationship('Account', backref='account', lazy='dynamic')
     abishyuwe = db.relationship('Abishyuwe', backref='abishyuwe', lazy='dynamic')
-
-
     is_active      = db.Column(db.Boolean, default=False)
 
     #Dealing with excel staff here.
-
     """ We will always use this __init__ function to upload excel file
     def __init__(self, email):
         self.id = id
         self.email = email
     """
-
     """ That in btn """
         #self.description = description
         #self.employees   = employees
 
-
     def __repr__(self):
         return self.email
 
-"""
-Dealing with excel staffs here.
+    """
+    Dealing with excel staffs here.
 
     def __init__(self, no, code, name, certificate, regdate, province, district, sector, activity):
         self.no = no
@@ -335,19 +298,12 @@ Dealing with excel staffs here.
     def __repr__(self):
         return '<Role %r>' % self.name
 
-"""
-
-
-
-
-
-
-
+    """
 
 
 class Role(db.Model):
     """
-    Create a Role table
+        Create a Role table
     """
 
     __tablename__ = 'roles'
@@ -355,12 +311,9 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    employees = db.relationship('Employee', backref='role',
-                                lazy='dynamic')
-    members = db.relationship('Member', backref='role',
-                                lazy='dynamic')
+    employees = db.relationship('Employee', backref='role', lazy='dynamic')
+    members = db.relationship('Member', backref='role', lazy='dynamic')
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-
 
     """
     #Dealing with excel staff here.
@@ -370,16 +323,13 @@ class Role(db.Model):
         #self.description = description
         #self.employees   = employees
     """
-
     def __repr__(self):
         return self.name
 
 
-
-
 class Staff(db.Model):
     """
-    Create a Role table
+        Create a Staff table
     """
 
     __tablename__ = 'staffs'
@@ -399,7 +349,6 @@ class Staff(db.Model):
     monthly_net_salary = db.Column(db.String(60))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     """
     #Dealing with excel staff here.
     def __init__(self,name):
@@ -416,7 +365,7 @@ class Staff(db.Model):
 
 class Activity(db.Model):
     """
-    Create a Role table
+        Create an Activity table
     """
     __tablename__ = 'activities'
     id = db.Column(db.Integer, primary_key=True)
@@ -425,11 +374,9 @@ class Activity(db.Model):
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 
-
-
 class Asset(db.Model):
     """
-    Create a Role table
+    Create an Asset table
     """
     __tablename__ = 'Assets'
     id = db.Column(db.Integer, primary_key=True)
@@ -440,32 +387,19 @@ class Asset(db.Model):
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 
-
-
-
-
-
-
-
 # Table for the projects in the cooperative are here.
 class Project(db.Model):
-
     """
-    Renaming the table to prular form here.
+    Create a Project table.
     """
 
     __tablename__  = "projects"
-
-    """
-        All the fields that will be on the table are here.
-    """
 
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(200))
     description = db.Column(db.String(200))
     starting_date = db.Column(db.String(200))
     ending_date = db.Column(db.String(200))
-
     description = db.Column(db.String(200))
     duration    = db.Column(db.String(200))
     employees   = db.relationship('Employee', backref='project', lazy='dynamic')
@@ -473,9 +407,9 @@ class Project(db.Model):
     def __repr__(self):
         return '<Project: {}>'.format(self.name)
 
-"""
 
-# Table for all products we are having in our cooperative are here.
+"""
+#Table for all products we are having in our cooperative are here.
 class Product(db.Model):
         Renaming the table to be plural here
     __tablename__ = "products"
@@ -491,12 +425,9 @@ class Product(db.Model):
 """
 
 
-# Table for our clients internally in the cooperative comes here.
-
 class Client(db.Model):
-
     """
-    Rename the table from singular to prular form here.
+    Create a Client table.
     """
 
     __tablename__ = "clients"
@@ -511,18 +442,13 @@ class Client(db.Model):
         return '<Client: {}>'.format(self.name)
 
 
-"""
-
-
-"""
-
-# Database for storing the information about member's applications
-# To join cooperatives they want to join.
-
-
 class Application(db.Model):
+    """
+    Creating an Application table
+    """
 
     __tablename__ = "applications"
+    
     id = db.Column(db.Integer, primary_key=True, unique=True)
     emailaa = db.Column(db.String(200))
     firstNameaa = db.Column(db.String(200))
@@ -544,26 +470,26 @@ class Application(db.Model):
     Ubumugaaa = db.Column(db.String(200))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     def __repr__(self):
         return '<Application: {}>'.format(self.emailaa)
 
 
 class Post(db.Model):
+    """
+    Create a Post table
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
     body = db.Column(db.Text)
     pub_date = db.Column(db.DateTime)
-
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship('Category',
-                               backref=db.backref('posts',
-                                                  lazy='dynamic'))
+    category = db.relationship('Category', backref=db.backref('posts', lazy='dynamic'))
 
     def __repr__(self):
         return '<Post %r>' % self.title
 
-    def __init__(self, title, body, category, pub_date=None):
+    def __init__(self, title, body, category, pub_date=None): 
         self.title = title
         self.body = body
         if pub_date is None:
@@ -576,19 +502,23 @@ class Post(db.Model):
 
 
 class Category(db.Model):
+    """
+    Create a Category.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-
     def __repr__(self):
         return '<Category %r>' % self.name
-
     def __init__(self, name):
         self.name = name
 
 
 
-# Models for the profiles of the users, in the system.
 class Profile(db.Model):
+    """
+    Create a Profile table.
+    """
 
     __tablename__ = 'profiles'
 
@@ -598,54 +528,54 @@ class Profile(db.Model):
     secondary_school = db.Column(db.String(200))
     university_school = db.Column(db.String(200))
     vocational_school = db.Column(db.String(200))
-
     # Eperiances.
     exp1  = db.Column(db.String(200))
     exp2  = db.Column(db.String(200))
     exp3  = db.Column(db.String(200))
-
     # Strengths.
     strn1 = db.Column(db.String(200))
     strn2 = db.Column(db.String(200))
     strn3 = db.Column(db.String(200))
-
     # Careers.
     car1 = db.Column(db.String(200))
     car2 = db.Column(db.String(200))
     car3 = db.Column(db.String(200))
-
     # Interest.
     inter1 = db.Column(db.String(200))
     inter2 = db.Column(db.String(200))
     inter3 = db.Column(db.String(200))
-
     # Location
     district = db.Column(db.String(200))
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
     employee = db.relationship('Employee', back_populates="profile")
 
-
     def __repr__(self):
         return '<Profile: {}>'.format(self.id)
 
-#Class to create the table of members who located in all coperatives which found in ferwacotamo.
-"""
-Email
-Rejected or not? = 1 or 0
-Martuel status
-Province
-Insurance_type
-Ubudehe
-Children
-Language
-nationality (Discuss)
-rular_or_urban
-member_source
-job
-occupation
-"""
+    """
+        #Class to create the table of members who located in all coperatives which found in ferwacotamo.
+    Email
+    Rejected or not? = 1 or 0
+    Martuel status
+    Province
+    Insurance_type
+    Ubudehe
+    Children
+    Language
+    nationality (Discuss)
+    rular_or_urban
+    member_source
+    job
+    occupation
+    """
+
 class Member(db.Model):
+    """
+    Create a Member table/
+    """
+
     __tablename__ = "members"
+    
     id = db.Column(db.Integer, primary_key=True, unique=True)
     sno = db.Column(db.String(200))
     izina_ribanza = db.Column(db.String(200))
@@ -689,10 +619,6 @@ class Member(db.Model):
     ibihano = db.relationship('Ibihano', backref='member', lazy='dynamic')
     ibindi = db.relationship('Ibindi', backref='member', lazy='dynamic')
     itsindamember = db.relationship('ItsindaMember', backref='member', lazy='dynamic')
-
-
-    
-
     """ We will always use this __init__ function to upload excel file  """
     def __init__(self, sno):
         self.id = id
@@ -701,7 +627,6 @@ class Member(db.Model):
     """
     Importing data using this views.
     ================================
-
     def __init__(self, firstName, secondName, others, District, Sector, Cell, nId, entryDate, share,
                         exitDate, umuzungura, umukono, gender, dob, phone, Amashuri, Ubumuga,
                         dl, plate, owner, ownerPhone,
@@ -733,15 +658,18 @@ class Member(db.Model):
         self.owner = owner
         self.ownerPhone = ownerPhone
         self.department_id = department_id
-
     """
     def __repr__(self):
         return '<Member: {}>'.format(self.id) or u'None'
 
 
 class Moto(db.Model):
+    """
+    Create a Moto table.
+    """
 
     __tablename__ = 'motos'
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200))
     plate = db.Column(db.String(200))
@@ -754,10 +682,11 @@ class Moto(db.Model):
         return '<Moto: {}>'.format(self.name)
 
 
-
-
 # Class / Table for notifications to all changes in the database
 class Notification(db.Model):
+    """
+    Create a Notification table for storing all the logs in the system.
+    """
 
     __tablename__ = "notifications"
 
@@ -766,24 +695,13 @@ class Notification(db.Model):
     done_by = db.Column(db.String(200))
     done_from = db.Column(db.String(200))
     done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-
     done_time = db.Column(db.String(200))
     done_to   = db.Column(db.String(200))
     effect = db.Column(db.String(200))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     def __repr__(self):
         return '<Notification: {}>'.format(self.id)
-
-
-
-
-
-
-
-
-
 
 
 class Committee(db.Model):
@@ -809,7 +727,6 @@ class Committee(db.Model):
     monthly_net_salary = db.Column(db.String(60))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     """
     #Dealing with excel staff here.
     def __init__(self,name):
@@ -823,13 +740,10 @@ class Committee(db.Model):
         return '<Committee: {}>'.format(self.first_name)
 
 
-
-
-
-# All the tables (models) for the coop admin's activities.
-# Table for the decisions
-
 class Decision(db.Model):
+    """
+    Create a Decision table
+    """
 
     __tablename__ = "decisions"
 
@@ -845,19 +759,14 @@ class Decision(db.Model):
     def __repr__(self):
         return '<Decision: {}>'.format(self.status)
 
-
     def __repr__(self):
         return '<Decision: {}>'.format(self.owner)
 
 
-
-
-
-
-
-
 class Report(db.Model):
-
+    """
+    Create a Report table.
+    """
     __tablename__ = "reports"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -872,19 +781,10 @@ class Report(db.Model):
     def __repr__(self):
         return '<Report: {}>'.format(self.name)
 
-
-
-
-
-
-
-
-
-
-
-
 class Howto(db.Model):
-
+    """
+    Create a howto table
+    """
     __tablename__ = "howtos"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -900,10 +800,10 @@ class Howto(db.Model):
         return '<Howto: {}>'.format(self.name)
 
 
-
-
-
 class Link(db.Model):
+    """
+    Create a Link table.
+    """
 
     __tablename__ = "links"
 
@@ -920,13 +820,14 @@ class Link(db.Model):
         return '<Link: {}>'.format(self.title)
 
 
-
 class File(db.Model):
+    """
+        Create a File table.
+    """
 
     __tablename__ = "files"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-
     name = db.Column(db.String(200))
     description      = db.Column(db.String(200))
     #background      = db.Column(db.String(200))
@@ -938,13 +839,12 @@ class File(db.Model):
         return '<Link: {}>'.format(self.title)
 
 
-
-
-
 # All the tables (models) for the coop admin's activities.
 # Table for the decisions
-
 class Communication(db.Model):
+    """
+    Create communication table.
+    """
 
     __tablename__ = "communications"
 
@@ -960,8 +860,10 @@ class Communication(db.Model):
         return '<Communication: {}>'.format(self.message)
 
 
-
 class Contribution(db.Model):
+    """
+    Create a Contribution table.
+    """
 
     __tablename__ = "contributions"
 
@@ -972,20 +874,16 @@ class Contribution(db.Model):
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     comment     = db.Column(db.String(200))
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
-
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<Contribution: {}>'.format(self.owner)
 
 
-
-
-
-
-
-
 class BankAccount(db.Model):
+    """
+    Create a BankAccount table.
+    """
 
     __tablename__ = "bankaccounts"
 
@@ -1003,9 +901,10 @@ class BankAccount(db.Model):
         return '<BankAccount: {}>'.format(self.memberName)
 
 
-
-#Class to create the table of members who located in all coperatives which found in ferwacotamo.
 class Loan(db.Model):
+    """
+    Create a Loan table
+    """
 
     __tablename__ = "loans"
 
@@ -1016,37 +915,30 @@ class Loan(db.Model):
     introducer1Name = db.Column(db.String(200))
     introducer1BankAccountBalance = db.Column(db.String(200))
     introducer1Share = db.Column(db.String(200))
-
     introducer2Id = db.Column(db.String(200))
     introducer2Name = db.Column(db.String(200))
     introducer2BankAccountBalance = db.Column(db.String(200))
     introducer2Share = db.Column(db.String(200))
-
     loanAmount = db.Column(db.String(200))
     interestRate = db.Column(db.String(200))
     durationInDay = db.Column(db.String(200))
     remarksIfAny = db.Column(db.String(200))
-
     loanType = db.Column(db.String(200))
     totalLoanWithInterest = db.Column(db.String(200))
     activedBy = db.Column(db.String(200))
     loanIssueDate = db.Column(db.String(200))
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
-
     def __repr__(self):
         return '<Loan: {}>'.format(self.memberName)
 
 
 
-
-
-
-
-
-#Class to create the table of members who located in all coperatives which found in ferwacotamo.
 class fixedDepositAccount(db.Model):
-
+    """
+    Class to create the table of members who located in all 
+    coperatives which found in ferwacotamo.
+    """
     __tablename__ = "fixeddepositaccounts"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -1059,20 +951,17 @@ class fixedDepositAccount(db.Model):
     matureAmount = db.Column(db.String(200))
     createdBy = db.Column(db.String(200))
     date = db.Column(db.String(200))
-
-
     #department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<fixedDepositAccount: {}>'.format(self.memberName)
 
 
-
-
-
-
-#Class to create the table of members who located in all coperatives which found in ferwacotamo.
 class Transaction(db.Model):
+    """
+    Class to create the table of members who located in all 
+    coperatives which found in ferwacotamo.
+    """
 
     __tablename__ = "transactions"
 
@@ -1085,20 +974,15 @@ class Transaction(db.Model):
     amount = db.Column(db.String(200))
     balance = db.Column(db.String(200))
     date = db.Column(db.String(200))
-
-
     #department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-
     def __repr__(self):
         return '<Transaction: {}>'.format(self.memberName)
 
 
-
-
-
-
-# Model for Share Account Transaction
 class Share(db.Model):
+    """
+    Model of table for Share Account Transaction
+    """
 
     __tablename__ = "shares"
 
@@ -1110,19 +994,15 @@ class Share(db.Model):
     shareAmount = db.Column(db.String(200))
     balanceShare = db.Column(db.String(200))
     date = db.Column(db.String(200))
-
-
     #department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
-
-
     def __repr__(self):
         return '<Share: {}>'.format(self.memberName)
 
 
-
-
-# Model for Share Account Transaction
 class Installment(db.Model):
+    """
+    Model for table of Installememt payments transactions.
+    """
 
     __tablename__ = "installments"
 
@@ -1137,15 +1017,16 @@ class Installment(db.Model):
     balance = db.Column(db.String(200))
     date = db.Column(db.String(200))
     remarksIfAny = db.Column(db.String(200))
-
     #department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<Installment: {}>'.format(self.memberName)
 
 
-
 class Payment(db.Model):
+    """
+    Create a Payment table to store all the finished payments for members
+    """
 
     __tablename__ = 'payments'
 
@@ -1158,14 +1039,11 @@ class Payment(db.Model):
         return '<Payment: {}>'.format(self.reason)
 
 
-
-
-
-
-
-# Governance Book Models.
-
 class intekoRusange(db.Model):
+    """
+    Creating table for recording all general 
+    assembly meetings' resolutions.
+    """
 
     __tablename__ = "intekorusange"
 
@@ -1181,14 +1059,15 @@ class intekoRusange(db.Model):
     def __repr__(self):
         return '<intekoRusange: {}>'.format(self.status)
 
-
     def __repr__(self):
         return '<intekoRusange: {}>'.format(self.owner)
 
 
-
-
 class inamaUbuyobozi(db.Model):
+    """
+    Creating a table for recording all 
+    the committee's meeting resolutions.
+    """
 
     __tablename__ = "inamaubuyobozi"
 
@@ -1204,12 +1083,15 @@ class inamaUbuyobozi(db.Model):
     def __repr__(self):
         return '<inamaUbuyobozi: {}>'.format(self.status)
 
-
     def __repr__(self):
         return '<inamaUbuyobozi: {}>'.format(self.owner)
 
 
 class Ubugenzuzi(db.Model):
+    """
+    Creating a table for auditing 
+    committee meeting resolutions.
+    """
 
     __tablename__ = "ubugenzuzi"
 
@@ -1225,15 +1107,16 @@ class Ubugenzuzi(db.Model):
     def __repr__(self):
         return '<Ubugenzuzi: {}>'.format(self.status)
 
-
     def __repr__(self):
         return '<Ubugenzuzi: {}>'.format(self.owner)
 
 
-
-# Isanduku models.
+# Isanduku model.
 class Isanduku(db.Model):
-
+    """
+    Creating a table for cooperative internal 
+    box for petty cash.
+    """
     __tablename__ = "isanduku"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -1250,14 +1133,12 @@ class Isanduku(db.Model):
     def __repr__(self):
         return '<Isanduku: {}>'.format(self.action)
 
-
     def __repr__(self):
         return '<Isanduku: {}>'.format(self.action)
 
-
-# Umusaruro models.
 """
 class Umusaruro(db.Model):
+    # Creating table for recording the cooperative's harvest.
 
     __tablename__ = "umusaruro"
 
@@ -1276,13 +1157,13 @@ class Umusaruro(db.Model):
 
     def __repr__(self):
         return '<Umusaruro: {}>'.format(self.Amazina)
-
 """
 
 
-
-# Goals models.
 class Goal(db.Model):
+    """
+    Creating a table for goals/plans of cooperative in a given time
+    """
 
     __tablename__ = "goals"
 
@@ -1299,10 +1180,12 @@ class Goal(db.Model):
         return '<Goal: {}>'.format(self.name)
 
 
-
-
 # Umusaruro models.
 class ibitaboByaBank(db.Model):
+    """
+    Creating a table for all accounting books 
+    related to Bank within a cooperative.
+    """
 
     __tablename__ = "ibitabobyabanks"
 
@@ -1319,8 +1202,11 @@ class ibitaboByaBank(db.Model):
         return '<ibitaboBank: {}>'.format(self.igikorwa)
 
 
-
 class Training(db.Model):
+    """
+    Creating a table for recording all contents that is 
+    to provided as training to cooperative's staff or members.
+    """
 
     __tablename__ = "trainings"
 
@@ -1337,10 +1223,11 @@ class Training(db.Model):
         return '<Training: {}>'.format(self.name)
 
 
-
-
-
 class applyTraining(db.Model):
+    """
+    Creating a table that allow members or staff of the cooperative
+    to apply for the training about any topic they need.
+    """
 
     __tablename__ = "applytrainings"
 
@@ -1356,26 +1243,14 @@ class applyTraining(db.Model):
         return '<applyTraining: {}>'.format(self.name)
 
 
-
-
-class userInfo(db.Model):
-
-    __tablename__ = "userinfo"
-    id = db.Column(db.Integer, primary_key=True)
-    firstname = db.Column(db.String(200))
-    secondname = db.Column(db.String(200))
-
-    def __repr__(self):
-        return '<userInfo: {}>'.format(self.firstname)
-
-
-""" model added for stock management in system """
-
-
 class Umusaruro(db.Model):
-    """ create umusaruro table """
+    """ 
+    Createing a table to track and record all the harvest
+    of members within the cooperative on the daily basis.
+    """
 
     __tablename__ = "umusaruro"
+
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     amazina = db.Column(db.String(100))
     resi = db.Column(db.Integer)
@@ -1396,13 +1271,15 @@ class Umusaruro(db.Model):
     def __repr__(self):
         return '<Umusaruro: {}>'.format(self.amazina)
 
-
-
 """
 class Inyongeramusaruro(db.Model):
-    docstring for Inyongeramusaruro
+    # Creating a table to track and record all the
+    # Imputs that are being used by members within
+    # The cooperative, periodically.
 
+    docstring for Inyongeramusaruro
     __tablename__ = "inyongeramusaruro"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     amazina = db.Column(db.String(200))
     BriqueteUnity = db.Column(db.Float)
@@ -1424,11 +1301,17 @@ class Inyongeramusaruro(db.Model):
 
     def __repr__(self):
         return '<Inyongeramusaruro: {}>'.format(self.id)
-    """
+"""
 
 class Ibyakoreshejwe(db.Model):
-    """docstring for Ibyakoreshejwe"""
+    """
+    Creating a table for recording all the investments that were
+    made by the members to grow their products or to
+    generate any other income in a given timeframe.
+    """
+
     __tablename__ = "ibyakoreshejwe"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     amazina = db.Column(db.String(200))
     deamAndSup = db.Column(db.Integer)
@@ -1448,9 +1331,16 @@ class Ibyakoreshejwe(db.Model):
     def __repr__(self):
         return '<Ibyakoreshejwe: {}>'.format(self.id)
 
+
 class CoopMemberBankAccounts(db.Model):
-    """docstring for CoopMemberBankAccounts"""
+    """
+    Creating a teble of members of the cooperative to store
+    their bank account numbers so that they can be used in case
+    of any transaction that concern them.
+    """
+
     __tablename__ = "coopMemberBankAccounts"
+    
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     memberName = db.Column(db.String(100))
     bankName = db.Column(db.String(50), unique=True)
@@ -1463,80 +1353,16 @@ class CoopMemberBankAccounts(db.Model):
         return '<CoopMemberBankAccounts: {}>'.format(self.id)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # New models related to the stack of rice cooperatives.
-
 # We have already done with this table in the database, we just need to add the relevant information
 class Umusarurob(db.Model):
-    """ create umusaruro table """
+    """ 
+    Creating a table to track the hardvest that is sent
+    to the cooperative by members on the daily basis.
+    """
+
     __tablename__ = "umusarurob"
+
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     RiceType = db.Column(db.String(100))
     UmusaruroGrade = db.Column(db.Integer)
@@ -1555,12 +1381,14 @@ class Umusarurob(db.Model):
         return '<Umusarurob: {}>'.format(self.id)
 
 
-
-
-# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
+# 
 class InyongeraMusaruro(db.Model):
-    #docstring for Inyongeramusaruro
+    """
+    Creating the table which will record all the information 
+    related to the fertilizers used to grow the rice by the farmer
+    """
     __tablename__ = "inyongeramusaruro"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     NPKkg = db.Column(db.Integer)
     NPKPerUnity = db.Column(db.Integer)
@@ -1586,11 +1414,15 @@ class InyongeraMusaruro(db.Model):
         return '<InyongeraMusaruro: {}>'.format(self.id)
 
 
-
-# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
 class Umusanzu(db.Model):
-    #docstring for Inyongeramusaruro
+    """
+    Creating the table which will record all the information related 
+    to the contributions that membes give to their cooperative after
+    any given season.
+    """
+
     __tablename__ = "umusanzu"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     UmusoroWakarere = db.Column(db.Integer)
     UmusanzuCoop = db.Column(db.Integer)
@@ -1605,14 +1437,15 @@ class Umusanzu(db.Model):
         return '<Umusanzu: {}>'.format(self.id)
 
 
-
-
-
-
-# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
 class Ibirarane(db.Model):
-    #docstring for Inyongeramusaruro
+    """
+    Creating the table which will record all the information related 
+    to the loans that membes had took from their cooperative during
+    the growing season.
+    """
+
     __tablename__ = "ibirarane"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     NPKkg = db.Column(db.Integer)
     NPKPerUnity = db.Column(db.Integer)
@@ -1635,10 +1468,14 @@ class Ibirarane(db.Model):
         return '<Ibirarane: {}>'.format(self.id)
 
 
-# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
 class Ibihano(db.Model):
-    #docstring for Inyongeramusaruro
+    """
+    Creating the table which will record all the information related 
+    to the penalties that membes were given by their cooperative for
+    for different misconducts.
+    """
     __tablename__ = "ibihano"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     AmandeC = db.Column(db.String(200))
     AmandeApII = db.Column(db.Integer)
@@ -1651,10 +1488,14 @@ class Ibihano(db.Model):
         return '<Ibihano: {}>'.format(self.id)
 
 
-# This is the table which will record all the information related to the Expenses used to grow the rice by the farmer
 class Ibindi(db.Model):
-    #docstring for Inyongeramusaruro
+    """
+    Creating the table which will record all other different information about
+    the items that were used by members of coopeative during the season.
+    """
+
     __tablename__ = "ibindi"
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ImifukaQuantity = db.Column(db.Integer)
     ImifukaAmount = db.Column(db.Integer)
@@ -1670,10 +1511,16 @@ class Ibindi(db.Model):
     def __repr__(self):
         return '<Ibindi: {}>'.format(self.id)
 
-""" adding amatsinda model """
 
 class Itsinda(db.Model):
+    """
+    Creating the table which will allow the cooperative management
+    to create different groups and zones within the members of 
+    the cooperative and arrange them through those zone and groups.
+    """
+
     __tablename__ = "amatsinda"
+
     id = db.Column(db.Integer, primary_key = True)
     itsinda_name = db.Column(db.String(200))
     description = db.Column(db.String(200))
@@ -1685,9 +1532,14 @@ class Itsinda(db.Model):
         return '<Itsinda: {}>'.format(self.id)
 
 
-
 class ItsindaMember(db.Model):
+    """
+    Creating the table which will allow the cooperative management
+    to add members and manage them with their zones and groups, respectively.
+    """
+
     __tablename__ = "itsindamember"
+
     id = db.Column(db.Integer, primary_key = True)
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'), unique=False)
     itsinda_id = db.Column(db.Integer, db.ForeignKey('amatsinda.id'))
@@ -1701,7 +1553,13 @@ class ItsindaMember(db.Model):
 
 
 class IsandukuNshya(db.Model):
+    """
+    Creating the table which will allow the cooperative management
+    to create internal account for managing financials.
+    """
+
     __tablename__ = "isandukunshya"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1715,7 +1573,14 @@ class IsandukuNshya(db.Model):
 
 
 class BankModel(db.Model):
+    """
+    Creating the table which allow the cooperative management
+    to create bank account for managing financial transactions
+    with the cooperative.
+    """
+
     __tablename__ = "bank"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1724,14 +1589,19 @@ class BankModel(db.Model):
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
     rukomatanyo_id = db.Column(db.Integer, db.ForeignKey('rukomatanyo.id'))
 
-
     def __repr__(self):
         return '<BankModel: {}>'.format(self.id)
 
 
-class InguzanyoZatanzwe(db.Model):
-    """docstring for InguzanyoZatanzwe"""
+class InguzanyoZatanzwe(db.Model)
+    """
+    Creating the table which allow the cooperative management
+    to record and track all the loans that were given to the
+    members of the cooperative in any given time.
+    """
+
     __tablename__ = "InguzanyoZatanzwe"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1743,8 +1613,16 @@ class InguzanyoZatanzwe(db.Model):
     def __repr__(self):
         return '<InguzanyoZatanzwe: {}>'.format(self.id)
 
+
 class Ibiramba(db.Model):
+    """
+    Creating the table which allow the cooperative management
+    to record all the fixed assets of the cooperative and keep
+    them on track.
+    """
+
     __tablename__ = "ibiramba"
+    
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1758,8 +1636,14 @@ class Ibiramba(db.Model):
 
 
 class Ububiko(db.Model):
-    """docstring for Ububiko"""
+    """
+    Creating the table which allow the cooperative management
+    to create the internal stock of the cooperatives for managing
+    different transactions.
+    """
+
     __tablename__ = "ububiko"
+    
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1771,9 +1655,15 @@ class Ububiko(db.Model):
     def __repr__(self):
         return '<Ububiko: {}>'.format(self.id)
 
+
 class UmugabaneShingiro(db.Model):
-    """docstring for UmugabaneShingiro"""
+    """
+    Creating the table which will allow the cooperative
+    to collect and track the payment of the share capital from members.
+    """
+
     __tablename__ = "umugabaneShingiro"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1785,9 +1675,16 @@ class UmugabaneShingiro(db.Model):
     def __repr__(self):
         return '<UmugabaneShingiro: {}'.format(self.id)
 
+
 class Inkunga(db.Model):
-    """docstring for Inkunga"""
+    """
+    Creating the table which allow the cooperative to collect 
+    and track the grants or funds that are coming from different
+    stakeholders.
+    """
+
     __tablename__ = "inkunga"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1799,8 +1696,16 @@ class Inkunga(db.Model):
     def __repr__(self):
         return '<Inkunga: {}'.format(self.id)
 
+
 class InguzanyoZabandi(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record all the loans that it owe other people
+    or institutions like banks or factories / processors.
+    """
+
     __tablename__ = "inguzanyozabandi"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1814,7 +1719,14 @@ class InguzanyoZabandi(db.Model):
 
 
 class Ibicuruzwa(db.Model):
+    """
+    Creating the table which allow the cooperative to record
+    all information related to the products it has or it is
+    selling.
+    """
+
     __tablename__ = "ibicuruzwa"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1826,8 +1738,16 @@ class Ibicuruzwa(db.Model):
     def __repr__(self):
         return '<Ibicuruzwa: {}'.format(self.id)
 
+
 class IkoreshwaRyimari(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage how the fund is being used
+    with the cooperative periodically.
+    """
+
     __tablename__ = "ikoreshwaRyimari"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1838,10 +1758,17 @@ class IkoreshwaRyimari(db.Model):
 
     def __repr__(self):
         return '<IkoreshwaRyimari: {}'.format(self.id)
-        
+
 
 class IbindiRukomatanyi(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record all other different financial transactions
+    with the cooperative, unexpectedly.
+    """
+
     __tablename__ = "ibindiRukomatanya"
+
     id = db.Column(db.Integer, primary_key = True)
     ayinjiye = db.Column(db.Integer)
     ayasohotse = db.Column(db.Integer)
@@ -1853,9 +1780,15 @@ class IbindiRukomatanyi(db.Model):
     def __repr__(self):
         return '<IbindiRukomatanyi: {}'.format(self.id)
 
+
 class Zone(db.Model):
-    """docstring for Zone"""
+    """
+    Creating the table which allow the cooperative
+    to create and manage members within different zones.
+    """
+
     __tablename__ = "zones"
+
     id = db.Column(db.Integer, primary_key = True)
     izina = db.Column(db.String(100))
     ubusobanuro = db.Column(db.String(200))
@@ -1867,17 +1800,15 @@ class Zone(db.Model):
         return '<Zone: {}>'.format(self.id)
 
 
-
-
-
-
-
-
-
-
 class Rukomatanyo(db.Model):
-    """docstring for Rukomatanyo"""
+    """
+    Creating the table which combine all other tables
+    that record all the different accounts within the
+    cooperative and balance them in one table.
+    """
+
     __tablename__ = "rukomatanyo"
+    
     id = db.Column(db.Integer, primary_key = True)
     tariki_byakozwe = db.Column(db.Date, default=datetime.datetime.utcnow())
     description = db.Column(db.String(200))
@@ -1898,13 +1829,17 @@ class Rukomatanyo(db.Model):
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 
-
 class UbwisazureEnter(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage the depreciation of the cooperative's
+    properties.
+    """
 
     __tablename__ = "ubwisazures"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     AssetDescription = db.Column(db.String(200))
-
     cost = db.Column(db.Integer)
     YearOfPurchase = db.Column(db.String(200))
     SalvageValue = db.Column(db.Integer)
@@ -1916,31 +1851,21 @@ class UbwisazureEnter(db.Model):
         return '<Ubwisazure: {}>'.format(self.id)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 """
 These are models related to accounting operations.
 We have already built Rukomatanyi, but in some ways the Rukomatanyi
 Does not meet some accounting standards, so that's why
 We got to add some accounting prenciples in the system.
 """
+
+
 class IncomeCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their income.
+    """
     __tablename__ = "incomecategory"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     Category = db.Column(db.String(200))
     cooperative_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
@@ -1950,7 +1875,13 @@ class IncomeCategory(db.Model):
 
 
 class ExpenseCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their expenses.
+    """
+
     __tablename__ = "expensecategory"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     AccountName = db.Column(db.String(200))
     cooperative_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
@@ -1960,7 +1891,14 @@ class ExpenseCategory(db.Model):
 
 
 class Expense(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage expenses that occurs within the
+    cooperative, periodically.
+    """
+
     __tablename__ = "expense"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     Title = db.Column(db.String(200))
     Date = db.Column(db.String(200))
@@ -1972,12 +1910,17 @@ class Expense(db.Model):
 
     def __repr__(self):
         return '<Expense: {}>'.format(self.id)
-        
-
 
 
 class Income(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage income that occurs within the
+    cooperative, periodically.
+    """
+
     __tablename__ = "income"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     Title = db.Column(db.String(200))
     Date = db.Column(db.String(200))
@@ -1989,11 +1932,17 @@ class Income(db.Model):
 
     def __repr__(self):
         return '<Income: {}>'.format(self.id)
-        
 
 
 class Budget(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create and manage the budget that will be used
+    in a given time.
+    """
+
     __tablename__ = "budget"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     Category = db.Column(db.String(200))
     Date = db.Column(db.String(200))
@@ -2004,9 +1953,14 @@ class Budget(db.Model):
         return '<Budget: {}>'.format(self.id)
 
 
-
 class assetsAccounting(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage it's assets.
+    """
+
     __tablename__ = "assetsaccounting"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
@@ -2020,6 +1974,12 @@ class assetsAccounting(db.Model):
 
 
 class Account(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different accounts that can be used to
+    track all accounting transactions.
+    """
+
     __tablename__ = "account"
     id = db.Column(db.Integer, primary_key = True, unique=True)
     AccountName = db.Column(db.String(200))
@@ -2030,14 +1990,14 @@ class Account(db.Model):
         return '<Account: {}>'.format(self.id)
 
 
-
-"""
-this is the history of umusaruro payments
-
-"""
-
 class Abishyuwe(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage all payments of it's members.
+    """
+
     __tablename__ = "abishyuwe"
+
     id = db.Column(db.Integer, primary_key = True, unique=True)
     amount_payed = db.Column(db.Integer)
     member_id = db.Column(db.Integer)
@@ -2048,15 +2008,15 @@ class Abishyuwe(db.Model):
     department_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
 
-
-
-
-
 class CRM(db.Model):
     """
-    Customer Relationship Management (CRM) table
+    Creating the table which allow the cooperative
+    to record and manage all of it's customers, 
+    => Customer Relationship Management.
     """
+
     __tablename__ = "CRMs"
+
     id             = db.Column(db.Integer, primary_key = True, unique = True)
     # cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
     tag            = db.Column(db.String(100))
@@ -2071,4 +2031,3 @@ class CRM(db.Model):
     employee_id       = db.Column(db.Integer, db.ForeignKey('employees.id'))
     description    = db.Column(db.String(255))
     status         = db.Column(db.String(100))
-
