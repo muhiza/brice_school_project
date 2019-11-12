@@ -1,6 +1,6 @@
 ![alt text](https://raw.githubusercontent.com/muhiza/extrat/master/static/welcome%20image.png)
 
-# SMART COOPERATIVE PLATFORM - AICOS
+# Smart Cooperative Platform Technical Documentation - AICOS
 
 ## Overview
 This a cooperative management solution named “Automated and Integrated Cooperative System”, (AICOS). Through the system, cooperatives can greatly increase efficiency, transparency, traceability and trust.
