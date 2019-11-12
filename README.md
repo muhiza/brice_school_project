@@ -2,6 +2,15 @@
 
 # SMART COOPERATIVE PLATFORM - AICOS
 
+## Overview
+This a cooperative management solution named “Automated and Integrated Cooperative System”, (AICOS). Through the system, cooperatives can greatly increase efficiency, transparency, traceability and trust.
+
+With the platform, digitizing operations of cooperatives can help better planning, evaluation and monitoring by different stakeholders. It will help boost Rwanda’s economy by ensuring a more efficient cooperative ecosystem which counts 5 million Rwandans (55.3% of the adult population) as its members, across all areas of the economy. 
+
+Cooperatives can use the system in membership management - where they are able to record all details regarding their members - ; stock and asset management; making it possible to monitor, share, report and analyse all cooperative activities in real time, such as financial and accounting activities, administrative activities, and production activities. This can be done in different sectors of the economy such as services, agriculture, transport, trade, etc. 
+
+The AICOS, Smart Cooperative system can be used by all cooperatives sector organs such as Unions, Federations, cooperatives’ stakeholders as well as RCA, other government institutions and development partners to access different data for planning and budgeting purposes.
+
 ## Modular Approach in Smart Cooperative Platform Development
 
 Modular programming is the process of subdividing a computer program into separate sub-programs. A module is a separate software component. It can often be used in a variety of applications and functions with other components of the system.
