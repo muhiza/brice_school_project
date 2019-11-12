@@ -1,6 +1,22 @@
 ![alt text](https://raw.githubusercontent.com/muhiza/extrat/master/static/welcome%20image.png)
 
 # SMART COOPERATIVE PLATFORM - AICOS
+
+## Modular Approach in Smart Cooperative Platform Development
+
+Modular programming is the process of subdividing a computer program into separate sub-programs. A module is a separate software component. It can often be used in a variety of applications and functions with other components of the system.
+
+* Some programs might have thousands or millions of lines and to manage such programs it becomes quite difficult as there might be too many syntax errors or logical errors present in the program, so to manage such type of programs concept of modular programming approached.
+
+* Each sub-module contains something necessary to execute only one aspect of the desired functionality.
+Modular programming emphasis on breaking of large programs into small problems to increase the maintainability, readability of the code and to make the program handy to make any changes in the future or to correct the errors.
+
+## Points which should be taken care of prior to modular program development:
+
+* Limitations of each and every module should be decided.
+* In which way a program is to be partitioned into different modules.
+* Communication among different modules of the code for proper execution of the entire program.
+
 The complete code for smart cooperative platform, Build all functionalities with as a Web Platform With Python and Flask, which you can find on aicos.rw [here](http://www.aicos.rw/).
 
 ## Installation and Set Up
