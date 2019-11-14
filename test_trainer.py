@@ -119,7 +119,7 @@ class TestModels(TestBase):
         """
         self.assertEqual(CRM.query.count(), 1)
 
-class TestViews(TestBase):
+# class TestViews(TestBase):
 
     # def test_trainer_dashboard(self):
         # training = Training.query.all()

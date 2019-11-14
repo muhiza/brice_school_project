@@ -25,7 +25,7 @@ class TestBase(TestCase):
         app.config.update(
             SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/test'
         )
-        return app
+        # #return app
 
     def setUp(self):
         """
@@ -318,8 +318,8 @@ class TestViews(TestBase):
 
         self.assertIsNone(crm_item)
 
-    @aicos_req.route('/cooperative/ibyemezo_byinama', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/ibyemezo_byinama', methods=['GET', 'POST'])
+    # @login_required
     def intekoRusangeAdd():
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -352,13 +352,13 @@ class TestViews(TestBase):
         #         flash("Umaze kubika neza ibyemezo by'inama")
         #     except:
         #         flash("Habayeho ikibazo mu makuru watanze!")
-        #     return redirect(url_for('aicos_req.intekoRusangeList'))
-        # return render_template("governanceBooks/intekoRusange.html", form=form, title="Create")
+            #return redirect(url_for('aicos_req.intekoRusangeList'))
+        #return render_template("governanceBooks/intekoRusange.html", form=form, title="Create")
 
 
     # This is the views for adding new inama y'ubuyobozi meeting notes
-    @aicos_req.route('/cooperative/ibyemezoByinamaUbuyobozi', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/ibyemezoByinamaUbuyobozi', methods=['GET', 'POST'])
+    # @login_required
     def inamaUbuyoboziAdd():
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -396,16 +396,16 @@ class TestViews(TestBase):
         #         flash("Umaze kubika neza ibyemezo by'inama")
         #     except:
         #         flash("Habayeho ikibazo mu makuru watanze!")
-        #     return redirect(url_for('aicos_req.inamaUbuyoboziList'))
-        # return render_template("governanceBooks/inamaUbuyobozi.html", form=form, title="Create")
+            #return redirect(url_for('aicos_req.inamaUbuyoboziList'))
+        #return render_template("governanceBooks/inamaUbuyobozi.html", form=form, title="Create")
 
 
 
 
 
     # This is the views for adding new inama y'ubugenzuzi meeting notes
-    @aicos_req.route('/cooperative/ibyemezoByinamaUbugenzuzi', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/ibyemezoByinamaUbugenzuzi', methods=['GET', 'POST'])
+    # @login_required
     def ubugenzuziAdd(*args, **kwargs):
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -443,8 +443,8 @@ class TestViews(TestBase):
         #         flash("Umaze kubika neza ibyemezo by'inama")
         #     except:
         #         flash("Habayeho ikibazo mu makuru watanze!")
-        #     return redirect(url_for('aicos_req.ubugenzuziList'))
-        # return render_template("governanceBooks/ubugenzuzi.html", form=form, title="Create")
+            #return redirect(url_for('aicos_req.ubugenzuziList'))
+        #return render_template("governanceBooks/ubugenzuzi.html", form=form, title="Create")
 
 
 
@@ -469,7 +469,7 @@ class TestViews(TestBase):
     #     notes = Notification.query.filter_by(department_id=current_user.email)
     #     #if employees is not None:
     #     #employees = Employee.query.filter_by(email=form.email.data)
-    #     return render_template('accountingBooks/imigabane/abanyamuryangoImigabane.html',
+        #return render_template('accountingBooks/imigabane/abanyamuryangoImigabane.html',
     #                         employees=employees,
     #                         employee=employee,
     #                         employees_count=employees_count,
@@ -477,8 +477,8 @@ class TestViews(TestBase):
     #                         title='Employees')
 
 
-    @aicos_req.route('/abanyamuryangoImigabaneDetails/<int:id>', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/abanyamuryangoImigabaneDetails/<int:id>', methods=['GET', 'POST'])
+    # @login_required
     def abanyamuryangoDetails(id):
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -494,8 +494,8 @@ class TestViews(TestBase):
         # check_admin()
         # employee = Member.query.get_or_404(id)
         # if employee is not None:
-        #     return render_template("accountingBooks/imigabane/abanyamuryangoImigabaneDetails.html", employee=employee)
-        # return redirect(url_for('aicos_req.abanyamuryangoImigabane'))
+            #return render_template("accountingBooks/imigabane/abanyamuryangoImigabaneDetails.html", employee=employee)
+        #return redirect(url_for('aicos_req.abanyamuryangoImigabane'))
 
 
 
@@ -503,8 +503,8 @@ class TestViews(TestBase):
 
 
     # Kongera umugabane ku munyamuryango.
-    @aicos_req.route('/cooperative/umugabane/add/<int:id>', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/umugabane/add/<int:id>', methods=['GET', 'POST'])
+    # @login_required
     def edit_umugabane(id):
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -531,10 +531,10 @@ class TestViews(TestBase):
         #     db.session.commit()
         #     flash('Umaze kongera umugabane.')
         #     # redirect to the roles pagess
-        #     return redirect(url_for('aicos_req.abanyamuryangoImigabane'))
+            #return redirect(url_for('aicos_req.abanyamuryangoImigabane'))
         # form.firstName.data = member.firstName
         # form.nId.data = member.nId
-        # return render_template('accountingBooks/imigabane/addUmugabane.html', form=form, title="Edit Umugabane")
+        #return render_template('accountingBooks/imigabane/addUmugabane.html', form=form, title="Edit Umugabane")
 
 
 
@@ -546,12 +546,12 @@ class TestViews(TestBase):
     # Isanguku views are here.
     # def isandukuList():
     #     isanduku = Isanduku.query.filter_by().all()
-    #     return render_template("accountingBooks/isanduku/isandukuList.html", isanduku=isanduku, title="List y'ibyemezo by'inteko rusange")
+        #return render_template("accountingBooks/isanduku/isandukuList.html", isanduku=isanduku, title="List y'ibyemezo by'inteko rusange")
 
 
 
-    @aicos_req.route('/cooperative/add/Isanduku', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/add/Isanduku', methods=['GET', 'POST'])
+    # @login_required
     def isandukuAdd():
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -601,8 +601,8 @@ class TestViews(TestBase):
         #         flash("Wongereye amakuru mu isanduku neza")
         #     except:
         #         flash("Error! Invalid information")
-        #     return redirect(url_for('aicos_req.isandukuList'))
-        # return render_template("accountingBooks/isanduku/isanduku.html", form=form, title="Kongera mu Isanduku.")
+            #return redirect(url_for('aicos_req.isandukuList'))
+        #return render_template("accountingBooks/isanduku/isanduku.html", form=form, title="Kongera mu Isanduku.")
 
 
 
@@ -611,12 +611,12 @@ class TestViews(TestBase):
     # Umusaruro views are here.
     # def umusaruroList():
     #     umusaruro = Umusaruro.query.all()
-    #     return render_template("accountingBooks/umusaruro/umusaruroList.html", umusaruro=umusaruro, title="List y'umusaruro winjiye")
+        #return render_template("accountingBooks/umusaruro/umusaruroList.html", umusaruro=umusaruro, title="List y'umusaruro winjiye")
 
 
 
-    @aicos_req.route('/cooperative/add/Umusaruro', methods=['GET', 'POST'])
-    @login_required
+    # @aicos_req.route('/cooperative/add/Umusaruro', methods=['GET', 'POST'])
+    # @login_required
     def umusaruroAdd():
         """
         Test that new_crm_item_add page is inaccessible without login
@@ -668,8 +668,8 @@ class TestViews(TestBase):
         #         flash("Winjije neza umusaruro muri Cooperative")
         #     except:
         #         flash("Error! Invalid information")
-        #     return redirect(url_for('aicos_req.umusaruroList'))
-        # return render_template("accountingBooks/umusaruro/umusaruro.html", form=form, title="Kongera umusaruro muri Cooperative.")
+            #return redirect(url_for('aicos_req.umusaruroList'))
+        #return render_template("accountingBooks/umusaruro/umusaruro.html", form=form, title="Kongera umusaruro muri Cooperative.")
 
 
 
@@ -681,7 +681,7 @@ class TestViews(TestBase):
     # Views for the Wide Cooperative Market.
     # def wcmIndex():
     #     umusaruro = Umusaruro.query.all()
-    #     return render_template('accountingBooks/wcm/index.html', umusaruro=umusaruro)
+        #return render_template('accountingBooks/wcm/index.html', umusaruro=umusaruro)
 
     # def abishyuye():
 
@@ -690,7 +690,7 @@ class TestViews(TestBase):
     #     employees_count = employee.members.count()
 
 
-    #     return render_template('accountingBooks/abishyuye/abishyuyeList.html',
+        #return render_template('accountingBooks/abishyuye/abishyuyeList.html',
                                 # employees=employees, title='List yabanyamuryango bishyuye!')
 
 
@@ -704,7 +704,7 @@ class TestViews(TestBase):
     # Views for the Wide Cooperative Market.
     # def bankIbitabo():
     #     bankIbitaboList = ibitaboByaBank.query.all()
-    #     return render_template('accountingBooks/ibitaboBank/ibitaboBankList.html', bankIbitaboList=bankIbitaboList)
+        #return render_template('accountingBooks/ibitaboBank/ibitaboBankList.html', bankIbitaboList=bankIbitaboList)
 
 
 
@@ -727,23 +727,23 @@ class TestViews(TestBase):
     #             db.session.add(ibitabo)
     #             db.session.commit()
     #             flash("Umaze kwinjize igitabo cya bank neza!")
-    #             return redirect(url_for('aicos_req.ibitaboBankList'))
+                #return redirect(url_for('aicos_req.ibitaboBankList'))
     #         except:
     #             flash("Ntago igitabo cyabashije kwinjira neza!")
-    #     return render_template('accountingBooks/ibitaboBank/ibitaboBank.html', form=form, title="List y'ibitabo bya banks!")
+        #return render_template('accountingBooks/ibitaboBank/ibitaboBank.html', form=form, title="List y'ibitabo bya banks!")
 
 
     # def bankHistory():
-    #     return render_template('accountingBooks/bankHistory/bankHistory.html')
+        #return render_template('accountingBooks/bankHistory/bankHistory.html')
 
 
     # def signatories():
-    #     return render_template('accountingBooks/bankHistory/signatories.html')
+        #return render_template('accountingBooks/bankHistory/signatories.html')
 
     # def amatsinda():
     #     amatsinda = Itsinda.query.all()
     #     member = ItsindaMember.query.all()
-    #     return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda, member=member)
+        #return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda, member=member)
 
 
     # def koraItsinda():
@@ -763,12 +763,12 @@ class TestViews(TestBase):
     #             db.session.add(itsinda)
     #             db.session.commit()
     #             flash("Umaze kwandika neza itsinda")
-    #             return redirect(url_for('aicos_req.amatsinda'))
+                #return redirect(url_for('aicos_req.amatsinda'))
     #         except:
     #             flash("ntabwo itsinda ryanditse neza ongera ugerageze")
-    #             return redirect(url_for('aicos_req.koraItsinda'))
+                #return redirect(url_for('aicos_req.koraItsinda'))
 
-    #     return render_template('/amatsinda/koraItsinda.html', form=form)
+        #return render_template('/amatsinda/koraItsinda.html', form=form)
 
 
     # def amatsindaMembers(id):
@@ -776,7 +776,7 @@ class TestViews(TestBase):
     #     itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
     #     members = Member.query.all()
     #     itsindamember = ItsindaMember.query.filter_by(itsinda_id=itsinda.id).all()
-    #     return render_template('/amatsinda/all_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+        #return render_template('/amatsinda/all_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
 
 
 
@@ -785,7 +785,7 @@ class TestViews(TestBase):
     #     itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
     #     members = Member.query.all()
     #     itsindamember = ItsindaMember.query.all()
-    #     return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+        #return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
 
     # def ongeramo_member(a, b):
     #     memberId = Member.query.get_or_404(a)
@@ -807,12 +807,12 @@ class TestViews(TestBase):
     #         db.session.add(itsindamember)
     #         db.session.commit()
     #         flash("Umunyamuryango yinjiye neza mwitsinda " + "\"" + itsindaName.itsinda_name + "\"")
-    #         return redirect(url_for('aicos_req.add_members', id=itsinda.id))
+            #return redirect(url_for('aicos_req.add_members', id=itsinda.id))
     #     except:
     #         db.session.rollback()
     #         flash("Umunyamuryango asanzwe arimo")
-    #         return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
-    #     return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
+            #return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
+        #return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName)
         
 
 
@@ -846,7 +846,7 @@ class TestViews(TestBase):
     #     inguzanyo_abandi_db_sum = db.session.query(func.sum(InguzanyoZabandi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
     #     ibindi_cr_sum = db.session.query(func.sum(IbindiRukomatanyi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
     #     ibindi_db_sum = db.session.query(func.sum(IbindiRukomatanyi.ayinjiye)).filter_by(department_id=current_user.email).scalar()
-    #     return render_template('/accountingBooks/rukomatanyi/index.html', 
+        #return render_template('/accountingBooks/rukomatanyi/index.html', 
     #                                                                 isanduku=isanduku,
     #                                                                 bank=bank,
     #                                                                 isanduku_cr_sum=isanduku_cr_sum,
@@ -882,7 +882,7 @@ class TestViews(TestBase):
     # def isanduku():
     #     isanduku = IsandukuNshya.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.all()
-    #     return render_template('/accountingBooks/rukomatanyi/isanduku.html', isanduku=isanduku, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/isanduku.html', isanduku=isanduku, rukomatanyo=rukomatanyo)
 
     # def hinduraIsanduku(id):
     #     isanduku_id = IsandukuNshya.query.get_or_404(id)
@@ -893,19 +893,19 @@ class TestViews(TestBase):
     #         ibihinduka.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.isanduku'))
+                #return redirect(url_for('aicos_req.isanduku'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraIsanduku'))
+                #return redirect(url_for('aicos_req.hinduraIsanduku'))
     #     form.ayinjiye.default = ibihinduka.ayinjiye
     #     form.ayasohotse.default = ibihinduka.ayasohotse
     #     form.process()
-    #     return render_template('accountingBooks/rukomatanyi/rukomatanyi_form/hindura_isanduku.html', form=form)
+        #return render_template('accountingBooks/rukomatanyi/rukomatanyi_form/hindura_isanduku.html', form=form)
 
 
     # def bank():
     #     bank = BankModel.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.all()
-    #     return render_template('/accountingBooks/rukomatanyi/bank.html', bank=bank, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/bank.html', bank=bank, rukomatanyo=rukomatanyo)
 
     # def hinduraBank(id):
     #     bankId = BankModel.query.get_or_404(id)
@@ -916,19 +916,19 @@ class TestViews(TestBase):
     #         bank.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.bank'))
+                #return redirect(url_for('aicos_req.bank'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraBank', form=form))
+                # #return redirect(url_for('aicos_req.hinduraBank', form=form))
     #     form.ayinjiye.default = bank.ayinjiye
     #     form.ayasohotse.default = bank.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_bank.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_bank.html', form=form)
 
 
     # def inguzanyo_zatanzwe():
     #     inguzanyo_zatanzwe = InguzanyoZatanzwe.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.all()
-    #     return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html', inguzanyo_zatanzwe=inguzanyo_zatanzwe, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/inguzanyo_zatanzwe.html', inguzanyo_zatanzwe=inguzanyo_zatanzwe, rukomatanyo=rukomatanyo)
 
     # def hinduraInguzanyoZatanzwe(id):
     #     inguzanyoId = InguzanyoZatanzwe.query.get_or_404(id)
@@ -939,19 +939,19 @@ class TestViews(TestBase):
     #         inguzanyo.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inguzanyo_zatanzwe'))
+                # #return redirect(url_for('aicos_req.inguzanyo_zatanzwe'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraInguzanyoZatanzwe', form=form))
+                # #return redirect(url_for('aicos_req.hinduraInguzanyoZatanzwe', form=form))
     #     form.ayinjiye.default = inguzanyo.ayinjiye
     #     form.ayasohotse.default = inguzanyo.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zatanzwe.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zatanzwe.html', form=form)
 
 
     # def ibiramba():
     #     ibiramba = Ibiramba.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/ibiramba.html', ibiramba=ibiramba, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/ibiramba.html', ibiramba=ibiramba, rukomatanyo=rukomatanyo)
 
     # def hinduraIbiramba(id):
     #     ibirambaId = Ibiramba.query.get_or_404(id)
@@ -962,19 +962,19 @@ class TestViews(TestBase):
     #         ibiramba.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibiramba'))
+                # #return redirect(url_for('aicos_req.ibiramba'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraIbiramba'))
+                # #return redirect(url_for('aicos_req.hinduraIbiramba'))
     #     form.ayinjiye.default = ibiramba.ayinjiye
     #     form.ayasohotse.default = ibiramba.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibaramba.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibaramba.html', form=form)
 
 
     # def ububiko():
     #     ububiko = Ububiko.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/ububiko.html', ububiko=ububiko, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/ububiko.html', ububiko=ububiko, rukomatanyo=rukomatanyo)
 
     # def hinduraUbubiko(id):
     #     ububikoId = Ububiko.query.get_or_404(id)
@@ -985,18 +985,18 @@ class TestViews(TestBase):
     #         ububiko.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ububiko'))
+                # #return redirect(url_for('aicos_req.ububiko'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraUbubiko', form=form))
+                # #return redirect(url_for('aicos_req.hinduraUbubiko', form=form))
     #     form.ayinjiye.default = ububiko.ayinjiye
     #     form.ayasohotse.default = ububiko.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ububiko.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ububiko.html', form=form)
 
     # def umugabane_shingiro():
     #     umugabane_shingiro = UmugabaneShingiro.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html', umugabane_shingiro=umugabane_shingiro, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/umugabane_shingiro.html', umugabane_shingiro=umugabane_shingiro, rukomatanyo=rukomatanyo)
 
     # def hinduraUmugabaneShingiro(id):
     #     umugabaneId = UmugabaneShingiro.query.get_or_404(id)
@@ -1007,18 +1007,18 @@ class TestViews(TestBase):
     #         umugabane.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.umugabane_shingiro'))
+                # #return redirect(url_for('aicos_req.umugabane_shingiro'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraUmugabaneShingiro', form=form))
+                # #return redirect(url_for('aicos_req.hinduraUmugabaneShingiro', form=form))
     #     form.ayinjiye.default = umugabane.ayinjiye
     #     form.ayasohotse.default = umugabane.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_umugabane_shingiro.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_umugabane_shingiro.html', form=form)
 
     # def inkunga():
     #     inkunga = Inkunga.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/inkunga.html', inkunga=inkunga, rukomatanyo = rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/inkunga.html', inkunga=inkunga, rukomatanyo = rukomatanyo)
 
     # def hindura_inkunga(id):
     #     inkungaId = Inkunga.query.get_or_404(id)
@@ -1029,18 +1029,18 @@ class TestViews(TestBase):
     #         inkunga.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inkunga'))
+                # #return redirect(url_for('aicos_req.inkunga'))
     #         except:
-    #             return redirect(url_for('aicos_req.hindura_inkunga', form=form))
+                # #return redirect(url_for('aicos_req.hindura_inkunga', form=form))
     #     form.ayinjiye.default = inkunga.ayinjiye
     #     form.ayasohotse.default = inkunga.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inkunga.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inkunga.html', form=form)
 
     # def inguzanyo_abandi():
     #     inguzanyo_abandi = InguzanyoZabandi.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html', inguzanyo_abandi=inguzanyo_abandi, rukomatanyo=rukomatanyo)
+        #return render_template('accountingBooks/rukomatanyi/inguzanyo_abandi.html', inguzanyo_abandi=inguzanyo_abandi, rukomatanyo=rukomatanyo)
 
 
     # def hinduraInguzanyoZabandi(id):
@@ -1052,20 +1052,20 @@ class TestViews(TestBase):
     #         inguzanyo.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inguzanyo_abandi'))
+                # #return redirect(url_for('aicos_req.inguzanyo_abandi'))
     #         except:
-    #             redirect(url_for('aicos_req.hinduraInguzanyoZabandi', form=form))
+                # redirect(url_for('aicos_req.hinduraInguzanyoZabandi', form=form))
     #     form.ayinjiye.default = inguzanyo.ayinjiye
     #     form.ayasohotse.default = inguzanyo.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zabandi.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_inguzanyo_zabandi.html', form=form)
 
 
 
     # def ibicuruzwa():
     #     ibicuruzwa = Ibicuruzwa.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html', ibicuruzwa=ibicuruzwa, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/ibicuruzwa.html', ibicuruzwa=ibicuruzwa, rukomatanyo=rukomatanyo)
 
     # def hindura_ibicuruzwa(id):
     #     ibicuruzwaId = Ibicuruzwa.query.get_or_404(id)
@@ -1077,19 +1077,19 @@ class TestViews(TestBase):
     #         ibicuruzwa.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibicuruzwa'))
+                # #return redirect(url_for('aicos_req.ibicuruzwa'))
     #         except:
-    #             return redirect(url_for('aicos_req.hindura_ibicuruzwa', form=form))
+                # #return redirect(url_for('aicos_req.hindura_ibicuruzwa', form=form))
     #     form.ayinjiye.default = ibicuruzwa.ayinjiye
     #     form.ayasohotse.default = ibicuruzwa.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibicuruzwa.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibicuruzwa.html', form=form)
 
 
     # def ikoreshwa_ryimari():
     #     ikoreshwa = IkoreshwaRyimari.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()
-    #     return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html', ikoreshwa=ikoreshwa, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/ikoreshwa_ryimari.html', ikoreshwa=ikoreshwa, rukomatanyo=rukomatanyo)
 
     # def hinduraIkoreshwaRyimari(id):
     #     ikoreshwaId = IkoreshwaRyimari.query.get_or_404(id)
@@ -1101,18 +1101,18 @@ class TestViews(TestBase):
     #         ikoreshwa.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ikoreshwa_ryimari'))
+                # #return redirect(url_for('aicos_req.ikoreshwa_ryimari'))
     #         except:
-    #             return redirect(url_for('aicos_req.hinduraIkoreshwaRyimari', form=form))
+                # #return redirect(url_for('aicos_req.hinduraIkoreshwaRyimari', form=form))
     #     form.ayinjiye.default = ikoreshwa.ayinjiye
     #     form.ayasohotse.default = ikoreshwa.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ikoreshwa_ryimari.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ikoreshwa_ryimari.html', form=form)
 
     # def ibindi_rukomatanyi():
     #     ibindi = IbindiRukomatanyi.query.filter_by(department_id=current_user.email).all()
     #     rukomatanyo = Rukomatanyo.query.filter_by(department_id=current_user.email).all()   
-    #     return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html', ibindi=ibindi, rukomatanyo=rukomatanyo)
+        #return render_template('/accountingBooks/rukomatanyi/ibindi_rukomatanyi.html', ibindi=ibindi, rukomatanyo=rukomatanyo)
 
     # def hindura_ibindi(id):
     #     ibindiId= IbindiRukomatanyi.query.get_or_404(id)
@@ -1124,13 +1124,13 @@ class TestViews(TestBase):
     #         ibindi.ayasohotse = form.ayasohotse.data
     #         try:
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibindi_rukomatanyi'))
+                # #return redirect(url_for('aicos_req.ibindi_rukomatanyi'))
     #         except:
-    #             return redirect(url_for('aicos_req.hindura_ibindi', form=form))
+                # #return redirect(url_for('aicos_req.hindura_ibindi', form=form))
     #     form.ayinjiye.default = ibindi.ayinjiye
     #     form.ayasohotse.default = ibindi.ayasohotse
     #     form.process()
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibindi.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/hindura_ibindi.html', form=form)
 
 
     # def injiza_isanduku():
@@ -1147,12 +1147,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.injiza_isanduku'))
+                # #return redirect(url_for('aicos_req.injiza_isanduku'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.injiza_isanduku'))
+                # #return redirect(url_for('aicos_req.injiza_isanduku'))
 
     #         isanduku = IsandukuNshya(
     #                             ayinjiye = form.ayinjiye.data,
@@ -1165,10 +1165,10 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(isanduku)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.isanduku'))
+                # #return redirect(url_for('aicos_req.isanduku'))
     #         except:
-    #             return redirect(url_for('aicos_req.injiza_isanduku', form=form))
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_isanduku.html', form=form)
+                # #return redirect(url_for('aicos_req.injiza_isanduku', form=form))
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_isanduku.html', form=form)
 
 
     # def injizaBank():
@@ -1185,12 +1185,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.injizaBank'))
+                # #return redirect(url_for('aicos_req.injizaBank'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.injizaBank'))
+                # #return redirect(url_for('aicos_req.injizaBank'))
 
     #         bank = BankModel(
     #                         ayinjiye = form.ayinjiye.data,
@@ -1202,10 +1202,10 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(bank)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.bank'))
+                # #return redirect(url_for('aicos_req.bank'))
     #         except:
-    #             return redirect(url_for('aicos_req.injizaBank', form=form))
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_bank.html', form=form)
+                # #return redirect(url_for('aicos_req.injizaBank', form=form))
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_bank.html', form=form)
 
     # def InjizaIzatanzwe():
     #     form = InguzanyoZatanzweForm()
@@ -1223,12 +1223,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.InjizaIzatanzwe'))
+                # #return redirect(url_for('aicos_req.InjizaIzatanzwe'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.InjizaIzatanzwe'))
+                # #return redirect(url_for('aicos_req.InjizaIzatanzwe'))
 
     #         inguzanyo = InguzanyoZatanzwe(
     #                                     ayinjiye = form.ayinjiye.data,
@@ -1239,10 +1239,10 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(inguzanyo)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inguzanyo_zatanzwe'))
+                # #return redirect(url_for('aicos_req.inguzanyo_zatanzwe'))
     #         except:
-    #             return redirect(url_for('aicos_req.InjizaIzatanzwe', form=form))
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/InjizaIzatanzwe.html', form=form)
+                # #return redirect(url_for('aicos_req.InjizaIzatanzwe', form=form))
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/InjizaIzatanzwe.html', form=form)
 
 
     # def record_ibiramba():
@@ -1261,12 +1261,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_ibiramba'))
+                # #return redirect(url_for('aicos_req.record_ibiramba'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_ibiramba'))
+                # #return redirect(url_for('aicos_req.record_ibiramba'))
 
     #         iramba = Ibiramba(
     #                         ayinjiye = form.ayinjiye.data,
@@ -1277,11 +1277,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(iramba)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibiramba'))
+                # #return redirect(url_for('aicos_req.ibiramba'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_ibiramba', form=form))
+                # #return redirect(url_for('aicos_req.record_ibiramba', form=form))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibiramba.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibiramba.html', form=form)
 
     # def record_ububiko():
     #     form = UbubikoForm()
@@ -1299,12 +1299,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_ububiko'))
+                # #return redirect(url_for('aicos_req.record_ububiko'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_ububiko'))
+                # #return redirect(url_for('aicos_req.record_ububiko'))
 
     #         ububiko = Ububiko(
     #                         ayinjiye = form.ayinjiye.data,
@@ -1316,11 +1316,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(ububiko)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ububiko'))
+                # #return redirect(url_for('aicos_req.ububiko'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_ububiko', form=form))
+                # #return redirect(url_for('aicos_req.record_ububiko', form=form))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ububiko.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ububiko.html', form=form)
 
 
     # def record_umugabane_shingiro():
@@ -1339,12 +1339,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_umugabane_shingiro'))
+                # #return redirect(url_for('aicos_req.record_umugabane_shingiro'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_umugabane_shingiro'))
+                # #return redirect(url_for('aicos_req.record_umugabane_shingiro'))
 
     #         umugabane = UmugabaneShingiro(
     #                                 ayinjiye = form.ayinjiye.data,
@@ -1355,11 +1355,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(umugabane)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.umugabane_shingiro'))
+                # #return redirect(url_for('aicos_req.umugabane_shingiro'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_umugabane_shingiro', form=form))
+                # #return redirect(url_for('aicos_req.record_umugabane_shingiro', form=form))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_umugabane_shingiro.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_umugabane_shingiro.html', form=form)
 
 
     # def record_inkunga():
@@ -1378,12 +1378,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_inkunga'))
+                # #return redirect(url_for('aicos_req.record_inkunga'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_inkunga'))
+                # #return redirect(url_for('aicos_req.record_inkunga'))
 
     #         inkunga = Inkunga(
     #                         ayinjiye = form.ayinjiye.data,
@@ -1394,11 +1394,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(inkunga)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inkunga'))
+                # #return redirect(url_for('aicos_req.inkunga'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_inkunga'))
+                # #return redirect(url_for('aicos_req.record_inkunga'))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_inkunga.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_inkunga.html', form=form)
 
 
     # def record_inguzanyo_abandi():
@@ -1417,12 +1417,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_inkunga'))
+                # #return redirect(url_for('aicos_req.record_inkunga'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_inkunga'))
+                # #return redirect(url_for('aicos_req.record_inkunga'))
 
     #         inguzanyo = InguzanyoZabandi(
     #                                 ayinjiye = form.ayinjiye.data,
@@ -1433,11 +1433,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(inguzanyo)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.inguzanyo_abandi'))
+                # #return redirect(url_for('aicos_req.inguzanyo_abandi'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_inguzanyo_abandi'))
+                # #return redirect(url_for('aicos_req.record_inguzanyo_abandi'))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_inguzanyo_abandi.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_inguzanyo_abandi.html', form=form)
 
     # def record_ibicuruzwa():
     #     form = IbicuruzwaForm()
@@ -1457,12 +1457,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_ibicuruzwa'))
+                # #return redirect(url_for('aicos_req.record_ibicuruzwa'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_ibicuruzwa'))
+                # #return redirect(url_for('aicos_req.record_ibicuruzwa'))
 
     #         ibicuruzwa = Ibicuruzwa(
     #                                 ayinjiye = form.ayinjiye.data,
@@ -1473,11 +1473,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(ibicuruzwa)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibicuruzwa'))
+                # #return redirect(url_for('aicos_req.ibicuruzwa'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_ibicuruzwa', form=form))
+                # #return redirect(url_for('aicos_req.record_ibicuruzwa', form=form))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibicuruzwa.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibicuruzwa.html', form=form)
 
 
     # def record_ikoreshwa_ryimari():
@@ -1497,12 +1497,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
+                # #return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
+                # #return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
 
     #         ikoreshwa = IkoreshwaRyimari(
     #                                     ayinjiye = form.ayinjiye.data,
@@ -1513,11 +1513,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(ikoreshwa)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ikoreshwa_ryimari'))
+                # #return redirect(url_for('aicos_req.ikoreshwa_ryimari'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
+                # #return redirect(url_for('aicos_req.record_ikoreshwa_ryimari'))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ikoreshwa_ryimari.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ikoreshwa_ryimari.html', form=form)
             
 
 
@@ -1538,12 +1538,12 @@ class TestViews(TestBase):
     #             db.session.commit()
     #         except:
     #             flash("Ntabwo byakunze neza")
-    #             return redirect(url_for('aicos_req.record_ibindi'))
+                # #return redirect(url_for('aicos_req.record_ibindi'))
 
     #         rukomatanyo_id = Rukomatanyo.query.order_by('-id').first()
 
     #         if rukomatanyo_id is None:
-    #             return redirect(url_for('aicos_req.record_ibindi'))
+                # #return redirect(url_for('aicos_req.record_ibindi'))
 
     #         ibindi = IbindiRukomatanyi(
     #                                 ayinjiye = form.ayinjiye.data,
@@ -1554,11 +1554,11 @@ class TestViews(TestBase):
     #         try:
     #             db.session.add(ibindi)
     #             db.session.commit()
-    #             return redirect(url_for('aicos_req.ibindi_rukomatanyi'))
+                # #return redirect(url_for('aicos_req.ibindi_rukomatanyi'))
     #         except:
-    #             return redirect(url_for('aicos_req.record_ibindi'))
+                # #return redirect(url_for('aicos_req.record_ibindi'))
 
-    #     return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibindi.html', form=form)
+        #return render_template('/accountingBooks/rukomatanyi/rukomatanyi_form/record_ibindi.html', form=form)
 
 
 
@@ -1567,7 +1567,7 @@ class TestViews(TestBase):
 
     # def UbwisazureList():
     #     ubwisazurexx = UbwisazureEnter.query.all()
-    #     return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
+        #return render_template('accountingBooks/ubwisazure/ubwisazure_list.html',
     #                             ubwisazurexx=ubwisazurexx, title='Ubwisazure ku mutungo wa cooperative!!')
 
 
@@ -1593,10 +1593,10 @@ class TestViews(TestBase):
     #             db.session.add(ubwisazurex)
     #             db.session.commit()
     #             flash("Umaze kwinjize umutungo neza!")
-    #             return redirect(url_for('aicos_req.UbwisanzureList'))
+                # #return redirect(url_for('aicos_req.UbwisanzureList'))
     #         except:
     #             flash("Ntago umutungo wabashije kwinjira neza!")
-    #     return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
+        #return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
 
 
 

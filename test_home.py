@@ -34,39 +34,83 @@ class TestBase(TestCase):
 
         db.create_all()
 
+        # create test department
+        self.department = Department(email='dep3@gmail.com', name="Finance", description="The Finance Department")
+        
+        # create test role
+        # role = Role(name="COO3",description="Run the Overall Operations",department=self.department)
+
+        # create test coop_admin
+        self.coop_admin = Employee(username="admin", password="admin2016", is_coop_admin=True)
+
         # create test admin user
-        admin = Employee(username="admin", password="admin2016", is_admin=True)
+        self.admin = Employee(username="admin", password="admin2016", is_admin=True)
 
         # create test non-admin user
-        employee = Employee(username="test_user", password="test2016")
+        self.employee = Employee(username="test_user",email="test_user@gmail.com",password="test2016", is_overall=True)
 
-        crm_item = CRM(
-                    # department  = self.department,
+        # crm_item = CRM(
+        #             department  = self.department,
+        #             tag            = 'tag',
+        #             company_name   = 'company_name',
+        #             email     = 'company_email@gmail.com',
+        #             website   = 'www.company_name.com',
+        #             address   = 'company_address',
+        #             contact_type   = 'contact',
+        #             phone_number   = '+250788888888',
+        #             city           = 'city',
+        #             country        = 'country',
+        #             employee    = self.employee,
+        #             description    = 'description',
+        #             status         = 'status'
+        #             )
 
-                    tag            = 'tag',
-                    company_name   = 'company_name',
-                    email     = 'company_email@gmail.com',
-                    website   = 'www.company_name.com',
-                    address   = 'company_address',
-                    contact_type   = 'contact',
-                    phone_number   = '+250788888888',
-                    city           = 'city',
-                    country        = 'country',
+        self.profile = Profile(
+                        primary_school='primary_school',secondary_school='secondary_school',
+                        university_school='university_school',vocational_school='vocational_school',
+                        exp1='exp1',exp2='exp2',exp3='exp3',strn1='strn1',strn2='strn2',strn3='strn3',
+                        car1='car1',car2='car2',car3='car3',district='district',
+                        inter1='inter1',inter2='inter2',inter3='inter3'
+                        )
 
-                    employee    = employee,
+        self.applicant = Application(
+                        emailaa='Emaila',firstNameaa='firstNamea',secondNameaa='secondNamea',
+                        othersaa='othersa',Districtaa='Districta',Sectoraa='Sectora',
+                        Cellaa='Cella',nIdaa='nIda',entryDateaa='entryDatea',
+                        shareaa='sharea',exitDateaa='exitDatea',umuzunguraaa='umuzunguraa',
+                        umukonoaa='umukonoa',genderaa='gendera',dobaa='ormdoba',
+                        phoneaa='phonea',Amashuriaa='amashuria',
+                        Ubumugaaa='ubumugaa',department=self.department
+                        )
 
-                    description    = 'description',
-                    status         = 'status'
-                    )
-
-
-        # save crm_item and users to database
-        db.session.add(admin)
-        db.session.add(employee)
-        db.session.add(crm_item)
+        # save models to database
+        # db.session.add(self.department)
+        db.session.add(self.coop_admin)
+        db.session.add(self.admin)
+        db.session.add(self.employee)
+        # db.session.add(crm_item)
+        db.session.add(self.profile)
+     
         db.session.commit()
 
-        # print(employee.id)
+        # @login_manager.user_loader
+        # def load_user(user_id):
+        #     return Employee.query.get(int(user_id))
+
+        with self.client:
+            employee = self.employee
+
+            response = self.client.post(url_for('auth.login'),data=dict(email="joe@joes.com",password="test2016"))
+
+            self.assertEqual(response.status_code, 200)
+            # self.assertEqual(current_user.first_name, 'joe')
+
+            self.assertIn(b"joe",response.data)
+
+            self.assertTrue(employee.is_authenticated)  
+            self.assertTrue(employee.is_active)  
+            self.assertFalse(employee.is_anonymous)  
+            self.assertEqual(employee.id, int(employee.get_id()))
 
     def tearDown(self):
         """
@@ -83,269 +127,214 @@ class TestModels(TestBase):
         """
         Test number of records in Employee table
         """
-        self.assertEqual(Employee.query.count(), 2)
+        self.assertEqual(Employee.query.count(), 3)
 
     def test_department_model(self):
         """
         Test number of records in Department table
         """
-
-        # create test department
-        department = Department(email='department@gmail.com', name="IT", description="The IT Department")
-
-        # save department to database
-        db.session.add(department)
-        db.session.commit()
-
         self.assertEqual(Department.query.count(), 1)
 
-    def test_role_model(self):
-        """
-        Test number of records in Role table
-        """
+    # def test_role_model(self):
+    #     """
+    #     Test number of records in Role table
+    #     """
+    #     self.assertEqual(Role.query.count(), 1)
 
-        # create test role
-        role = Role(name="CEO", description="Run the whole company")
-
-        # save role to database
-        db.session.add(role)
-        db.session.commit()
-
-        self.assertEqual(Role.query.count(), 1)
-
-    def test_CRM_model(self):
-        """
-        Test number of records in CRMs table
-        """
-        self.assertEqual(CRM.query.count(), 1)
+    # def test_CRM_model(self):
+    #     """
+    #     Test number of records in CRMs table
+    #     """
+    #     self.assertEqual(CRM.query.count(), 1)
 
 class TestViews(TestBase):
+    def test_check_admin(self):
+        admin = Employee.query.filter_by(is_admin=True).first()
+        current_user = admin
+        self.assertTrue(current_user.is_admin)
 
-    def test_homepage_view(self):
+    def test_check_overall(self):
+        employee = Employee.query.filter_by(is_overall=True).first()
+        current_user = employee
+        self.assertTrue(current_user.is_overall)
+
+    def test_check_coop_admin(self):
+        coop_admin = Employee.query.filter_by(is_coop_admin=True).first()
+        current_user = coop_admin
+        self.assertTrue(current_user.is_coop_admin)
+
+    def test_homepage(self):
         """
         Test that homepage is accessible without login
         """
         response = self.client.get(url_for('home.homepage'))
         self.assertEqual(response.status_code, 200)
 
-    def test_login_view(self):
-        """
-        Test that login page is accessible without login
-        """
-        response = self.client.get(url_for('auth.login'))
-        self.assertEqual(response.status_code, 200)
-
-    def test_login_fn(self):
-        employee = Employee(first_name='Joe', email='joe@joes.com', password='12345')
-        with self.client:
-            response = self.client.post(url_for('auth.login',{'email': 'joe@joes.com', 'password': '12345'}))
-
-            self.assertTrue(employee.is_authenticated)
-            self.assertTrue(employee.is_active)
-            self.assertFalse(employee.is_anonymous)
-            self.assertEqual(employee.id, int(response.get_id()))
-
-    def test_logout_view_redirects(self):
-        """
-        Test that logout link is inaccessible without login
-        and redirects to login page then to logout
-        """
-        target_url = url_for('auth.logout')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
-
-    def test_logout_view(self):
-        """
-        Test that logout works as expected
-        """
-        Employee(first_name="Joe", email="joe@joes.com", password="12345")
-        with self.client:
-            target_url = url_for("auth.login",data={Employee:{"email": "joe@joes.com","password": "12345"}})
-            self.client.post(target_url)
-            self.assertTrue(current_user.first_name == 'Joe')
-            self.assertFalse(current_user.is_anonymous())
-
-            self.client.get(url_for("auth.logout"))
-            self.assertTrue(current_user.is_anonymous())
-
-    def test_dashboard_view(self):
-        """
-        Test that dashboard is inaccessible without login
-        and redirects to login page then to dashboard
-        """
-        target_url = url_for('home.dashboard')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
-
-    def test_admin_dashboard_view(self):
-        """
-        Test that dashboard is inaccessible without login
-        and redirects to login page then to dashboard
-        """
-        target_url = url_for('home.admin_dashboard')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
-
-    # def test_departments_view(self):
-    #     """
-    #     Test that departments page is inaccessible without login
-    #     and redirects to login page then to departments page
-    #     """
-    #     target_url = url_for('admin.list_departments')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response = self.client.get(target_url)
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertRedirects(response, redirect_url)
-
-    def test_roles_view(self):
-        """
-        Test that roles page is inaccessible without login
-        and redirects to login page then to roles page
-        """
-        target_url = url_for('aicos_members.list_roles')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
-
-    def test_employees_view(self):
-        """
-        Test that employees page is inaccessible without login
-        and redirects to login page then to employees page
-        """
-        target_url = url_for('aicos_members.list_employees')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
-
-
-
-
-
-    def test_CRM_items_table_view(self):
-        """
-        Test that crm_items_table page is inaccessible without login
-        and redirects to login page then to crm_items_table page
-        """        
-        target_url = url_for('aicos_crm.table')
-        redirect_url = url_for('auth.login', next=target_url)
+    def test_allSolutions(self):
+        target_url = 'home/allSolutions.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertTrue(response1.status_code,200)
 
-        response2 = self.client.get(target_url,follow_redirects=True)
-        self.assertEqual(response2.status_code, 200)
-
-    def test_add_CRM_item_view(self):
-        """
-        Test that new_crm_item_add page is inaccessible without login
-        and redirects to login page then to new_crm_item_add page
-        """        
-        target_url = url_for('aicos_crm.add_item')
-        redirect_url = url_for('auth.login', next=target_url)
+    def test_pay(self):
+        target_url = url_for('home.homepage')
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertTrue(response1.status_code,200)
 
-    def test_add_CRM_item_view_redirects(self):
-        """
-        Test that new_crm_item_add page redirects to table page
-        """ 
-        target_url = url_for('aicos_crm.add_item')
-        redirect_url2 = url_for('aicos_crm.table', next=target_url)
-        response2 = self.client.post(target_url,follow_redirects=True)
-        self.assertEqual(response2.status_code, 200)
-        # self.assertRedirects(response2, redirect_url2)
-        # self.assertIn(b'Thanks for registering!', response2.data)
-
-    def test_edit_CRM_item_view_redirects(self):
-        """
-        Test that crm_item_edit page is inaccessible without login
-        and redirects to login page then to crm_item_edit page
-        """
-        target_url = url_for('aicos_crm.edit_item', id=1, employee_id=2)
-        redirect_url = url_for('auth.login', next=target_url)
+    def test_dashboard(self):
+        target_url = 'home/dashboard.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertTrue(response1.status_code,200)
 
-    def test_edit_CRM_item_view(self):
-        """
-        Test that crm_item_edit view works as expected
-        """
-        crm_item = CRM.query.filter_by(id=1).first()
-        crm_item.tag = 'secondtag'
-
-        target_url = url_for('aicos_crm.edit_item', id=1, employee_id=2)
-        response2 = self.client.post(target_url)
-        self.assertEqual(response2.status_code, 200)
-
-        self.assertIs(crm_item.tag,'secondtag')
-        # self.assertRedirects(response2, redirect_url2)
-        # self.assertIn(b'Thanks for registering!', response2.data)
-
-    def test_remove_CRM_item_view_redirects(self):
-        """
-        Test that crm_item_remove page is inaccessible without login
-        and redirects to login page then to crm_item_remove page
-        """
-        # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_crm.remove_item', id=1)
-        redirect_url = url_for('auth.login', next=target_url)
+    def test_products(self):
+        target_url = 'home/products.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertTrue(response1.status_code,200)
 
-    def test_remove_CRM_item_view(self):
-        """
-        Test that crm_item_remove view works as expected
-        """
-        crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_crm.remove_item', id=1)
-        # redirect_url2 = url_for('aicos_crm.table', next=target_url)
-        # response2 = self.client.get('aicos_crm.add_item',follow_redirects=True)
-        response3 = self.client.get(target_url)
-        self.assertEqual(response3.status_code, 200)
-        # self.assertRedirects(response3, redirect_url2)
-        # self.assertIn(b'Thanks for registering!', response3.data)
+    def test_admin_dashboard(self):
+        target_url = 'home/admin_dashboard.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
 
-        self.assertIsNone(crm_item)
+    def test_admin_home_dashboard(self):
+        target_url = 'home/admin_home_dashboard.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
 
+    def test_join_cooperative(self):
+        target_url = 'home/all_cooperatives.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
 
+    def test_search_coop(self):
+        target_url = 'home/search_coop.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
 
-class TestErrorPages(TestBase):
+    def test_table_search(self):
+        target_url = 'home/table_search.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
 
-    def test_403_forbidden(self):
-        # create route to abort the request with the 403 Error
-        @self.app.route('/403')
-        def forbidden_error():
-            abort(403)
+    # def test_done(self):
+    #     target_url = 'done.html'
+    #     response1 = self.client.get(target_url)
+    #     self.assertTrue(response1.status_code,200)
 
-        response = self.client.get('/403')
-        self.assertEqual(response.status_code, 403)
-        # self.assertTrue("403 Error" in response.data)
+    def test_coopInfo(self):
+        department = Department(
+            email='dep3@gmail.com', name="Finance3", description="The Finance Department3")
+        
+        target_url = 'home/coop_info.html'
+        redirect_url = url_for('home.coopInfo',email=department.email)
 
-    def test_404_not_found(self):
-        response = self.client.get('/nothinghere')
-        self.assertEqual(response.status_code, 404)
-        # self.assertTrue("404 Error" in response.data)
+        response1 = self.client.post(target_url,data=dict(
+            email='dep4@gmail.com', name="Finance4", description="The Finance Department4"))
 
-    def test_500_internal_server_error(self):
-        # create route to abort the request with the 500 Error
-        @self.app.route('/500')
-        def internal_server_error():
-            abort(500)
+        self.assertEqual(response1.status_code,200)
+        self.assertRedirects(response1,redirect_url)
 
-        response = self.client.get('/500')
-        self.assertEqual(response.status_code, 500)
-        # self.assertTrue("500 Error" in response.data)
+    def test_newApplication(self):
+        target_url = 'home/new_coop.html'
+        redirect_url = url_for('home.done')
+
+        response1 = self.client.post(target_url,data=dict(
+            email='dep3@gmail.com', name='Finance', description='The Finance Department'))
+
+        self.assertEqual(response1.status_code,200)
+        self.assertRedirects(response1,redirect_url)
+
+    # def test_sendCode(self):
+    #     redirect_url = url_for('home.done')
+    #     response1 = self.client.get(redirect_url)
+    #     self.assertTrue(response1.status_code,200)
+
+    def test_thankyou(self):
+        target_url = 'home/thankyou.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
+
+    def test_cooperative_details(self):
+        target_url = 'home/cooperative_details.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
+
+    def test_coop_categories(self):
+        target_url = 'home/cooperatives_categories.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
+
+    # def test_user_profile(self):
+    #     target_url = 'home/user_profile.html'
+    #     response1 = self.client.get(target_url)
+    #     self.assertTrue(response1.status_code,200)
+
+    def test_accept(self):
+        target_url = 'home/user_profile.html'
+        response1 = self.client.get(target_url)
+        self.assertTrue(response1.status_code,200)
+
+    def test_application(self):
+        target_url = 'home/application.html'
+        redirect_url = url_for('home.thankyou')
+
+        response1 = self.client.post(target_url,
+                    data=dict(
+                        emailaa='Emaila',firstNameaa='firstNamea',secondNameaa='secondNamea',
+                        othersaa='othersa',Districtaa='Districta',Sectoraa='Sectora',
+                        Cellaa='Cella',nIdaa='nIda',entryDateaa='entryDatea',
+                        shareaa='sharea',exitDateaa='exitDatea',umuzunguraaa='umuzunguraa',
+                        umukonoaa='umukonoa',genderaa='gendera',dobaa='ormdoba',
+                        phoneaa='phonea',Amashuriaa='amashuria',
+                        Ubumugaaa='ubumugaa',department=self.department
+                    )
+                    )
+
+        self.assertEqual(response1.status_code,200)
+        self.assertRedirects(response1,redirect_url)
+
+    def test_user_profile_about(self):
+        target_url = 'home/user_profile_about.html'
+        redirect_url = url_for('home.user_profile',id=self.employee.id,username=self.employee.username)
+        
+        response1 = self.client.post(target_url,
+                    data=dict(
+                        primary_school='primary_school',secondary_school='secondary_school',
+                        university_school='university_school',vocational_school='vocational_school',
+                        exp1='exp1',exp2='exp2',exp3='exp3',strn1='strn1',strn2='strn2',strn3='strn3',
+                        car1='car1',car2='car2',car3='car3',district='district',
+                        inter1='inter1',inter2='inter2',inter3='inter3'
+                    )
+                    )
+        
+        self.assertEqual(response1.status_code,200)
+        self.assertRedirects(response1,redirect_url)
+
+# class TestErrorPages(TestBase):
+
+#     def test_403_forbidden(self):
+#         # create route to abort the request with the 403 Error
+#         @self.app.route('/403')
+#         def forbidden_error():
+#             abort(403)
+
+#         response = self.client.get('/403')
+#         self.assertEqual(response.status_code, 403)
+#         # self.assertTrue("403 Error" in response.data)
+
+#     def test_404_not_found(self):
+#         response = self.client.get('/nothinghere')
+#         self.assertEqual(response.status_code, 404)
+#         # self.assertTrue("404 Error" in response.data)
+
+#     def test_500_internal_server_error(self):
+#         # create route to abort the request with the 500 Error
+#         @self.app.route('/500')
+#         def internal_server_error():
+#             abort(500)
+
+#         response = self.client.get('/500')
+#         self.assertEqual(response.status_code, 500)
+#         # self.assertTrue("500 Error" in response.data)
 
 
 if __name__ == '__main__':

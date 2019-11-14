@@ -60,6 +60,74 @@ class TestBase(TestCase):
                     )
 
 
+        employee = Department.query.filter_by(email=current_user.email).first()
+        employees = employee.members
+        #all_member_idd = Umusaruro.member_id
+        memberss = Member.query.filter_by(department_id=current_user.email).all()
+        umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
+        inyongeramusaruro = InyongeraMusaruro(
+                                NPKkg = form.NPKkg.data,
+                                NPKPerUnity = form.NPKPerUnity.data,
+                                UREA = form.UREA.data,
+                                UREAPerUnity = form.UREAPerUnity.data,
+                                DAP = form.DAP.data,
+                                DAPPerUnity = form.DAPPerUnity.data,
+                                KCL = form.KCL.data,
+                                KCLPerUnity = form.KCLPerUnity.data,
+                                Briquette = form.Briquette.data,
+                                BriquettePerUnity = form.BriquettePerUnity.data,
+                                Cypemetrine = form.Cypemetrine.data,
+                                Beam = form.Beam.data,
+                                ImbutoQuantity = form.ImbutoQuantity.data,
+                                ImbutoAmount = form.ImbutoAmount.data,
+                                Redevance = form.Redevance.data,
+                                member_id = memberid.id,
+                                department_id = current_user.email
+                                )
+        #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
+        member_all = Employee.query.filter_by(department_id=current_user.email).all()
+        ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
+        imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+        umusaruro = Umusarurob(
+                                RiceType = form.RiceType.data,
+                                RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
+                                UmusaruroGrade = form.UmusaruroGrade.data,
+                                UwoAsigaranye = form.UwoAsigaranye.data,
+                                UwoKugurisha = (form.Quantity.data) - (form.UwoAsigaranye.data),
+                                GutonozaAmount = int(form.Gutonoza.data) * int(form.UwoAsigaranye.data),
+                                AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
+                                                        int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
+                                                        int(form.UwoAsigaranye.data))) - 10 * form.RiceAmount.data * form.Quantity.data / 100,
+                                Asigaye     = 10 * form.RiceAmount.data * form.Quantity.data / 100,
+                                member_id = memberid.id,
+                                department_id = current_user.email
+                             )
+
+        umusaruro_resi = Umusaruro.query.filter_by(department_id=current_user.email).all()
+        inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
+        #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
+        ibindi = Ibindi.query.all()
+        ibihano = Ibihano.query.all()
+        member_all = Employee.query.filter_by(department_id=current_user.email).all()
+        ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
+        imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+        umusaruro = Umusarurob.query.all()
+        inyongeramusaruro = InyongeraMusaruro.query.all()
+
+        ayishyurwa = Abishyuwe(
+                amount_payed = 50000,
+                member_id = member.id,
+                member_name = member.izina_ribanza + " " + member.izina_rikurikira,
+                ibiro = umusaruroId.UwoKugurisha,
+                umusaruro_id = umusaruroId.id,
+                department_id = current_user.email
+                )
+
+        ibyakoreshejwe = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
+        imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
+
+
+
         # save crm_item and users to database
         db.session.add(admin)
         db.session.add(employee)
@@ -127,41 +195,11 @@ class TestViews(TestBase):
         and redirects to login page then to dashboard page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.dashboard')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'stock_dashboard.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # #check_admin()
-        # #check_coop_admin()
-        # #if current_user.is_manager:
-
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # #all_member_idd = Umusaruro.member_id
-        # memberss = Member.query.filter_by(department_id=current_user.email).all()
-        # umusaruro_resi = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        # inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-        # #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-        # member_all = Employee.query.filter_by(department_id=current_user.email).all()
-        # ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-        # imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-        # umusaruro = Umusarurob.query.filter_by(department_id=current_user.email).all()
-        # inyongeramusaruro = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-
-
-        # return render_template('stock_dashboard.html', 
-        #                                             ibirarane=ibirarane, 
-        #                                             imisanzu=imisanzu, 
-        #                                             umusaruro=umusaruro, 
-        #                                             inyongeramusaruro=inyongeramusaruro,
-        #                                             umusaruro_resi=umusaruro_resi, 
-        #                                             member_all=member_all,
-        #                                             inyongera=inyongera,
-        #                                             memberss=memberss
-        
-        #                                             )
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_stock(self):
         """
@@ -169,29 +207,11 @@ class TestViews(TestBase):
         and redirects to login page then to stock page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.stock')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'stock_manage.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-    #     check_admin()
-    #     check_coop_admin()
-    #     employee = Department.query.filter_by(email=current_user.email).first()
-    #     employees = employee.members
-    #     all_member_idd = Umusaruro.member_id
-    #     memberss = Member.query.all()
-    #     umusaruro_resi = Umusaruro.query.filter_by(department_id=current_user.email).all()
-    #     inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-    #     #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-    #     ibindi = Ibindi.query.all()
-    #     ibihano = Ibihano.query.all()
-    #     member_all = Employee.query.filter_by(department_id=current_user.email).all()
-    #     ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-    #     imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-    #     umusaruro = Umusarurob.query.all()
-    #     inyongeramusaruro = InyongeraMusaruro.query.all()
-
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     #     return render_template('stock_manage.html',ibihano=ibihano,
     #                                             imisanzu = imisanzu,
@@ -207,18 +227,11 @@ class TestViews(TestBase):
     #                                             )
 
 
-    # @aicos_stock_managment.route('/umusaruro', methods=['GET', 'POST'])
-    # @login_required
-    # def umusaruro():
-    #     check_admin()
-    #     check_coop_admin()
-    #     employee = Department.query.filter_by(email=current_user.email).first()
-    #     employees = employee.members
-    #     all_member_idd = Umusarurob.member_id
-    #     umusaruro_resi = Umusarurob.query.all()
-    #     member_all = Employee.query.filter_by(department_id=current_user.email).all()
-
-    #     return render_template('umusaruro.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+    def test_umusaruro(self):
+        target_url = 'umusaruro.html'
+        # redirect_url = url_for('auth.login', next=target_url)
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_ibindiUmusaruro(self):
         """
@@ -226,19 +239,11 @@ class TestViews(TestBase):
         and redirects to login page then to ibindiUmusaruro page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibindiUmusaruro',id=1)
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ibindiUmusaruro.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # memberId = Member.query.get_or_404(id)
-        # umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-        # umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
-        # amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
-
-        # return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all)
-
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_umunyamuryangoIshyura(self):
         """
@@ -246,22 +251,11 @@ class TestViews(TestBase):
         and redirects to login page then to umunyamuryangoIshyura page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.umunyamuryangoIshyura',id=1)
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ishyuraByose.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-
-        # memberId = Member.query.get_or_404(id)
-        # umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
-        # umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
-        # amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
-
-        # return render_template('ishyuraByose.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all, employees=employees)
-
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_umusaruroIshyura(self):
         """
@@ -269,15 +263,12 @@ class TestViews(TestBase):
         and redirects to login page then to umusaruroIshyura page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.umusaruroIshyura',id=1)
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        # target_url = url_for('aicos_stock_managment.umusaruroIshyura',id=1)
+        redirect_url = url_for('aicos_stock_managment.ibindiUmusaruro',id=1, next=target_url)
+        response1 = self.client.get(redirect_url)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
-        # umusaruroId = Umusarurob.query.get_or_404(id)
-        # member = Member.query.filter_by(member_id=umusaruroId.member_id)
-        
         # ayishyurwa = Abishyuwe(
         #             amount_payed = 50000,
         #             member_id = member.id,
@@ -286,13 +277,6 @@ class TestViews(TestBase):
         #             umusaruro_id = umusaruroId.id,
         #             department_id = current_user.email
         #             )
-        # try:
-        #     db.session.add(ayishyurwa)
-        #     db.session.commit()
-        #     return redirect(url_for('aicos_stock_managment.ibindiUmusaruro', id=umusaruroId.member_id))
-        # except Exception as e:
-        #     return redirect(url_for('aicos_stock_managment.umusaruro'))
-
 
     def test_inyongeramusaruro(self):
         """
@@ -300,11 +284,11 @@ class TestViews(TestBase):
         and redirects to login page then to inyongeramusaruro page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.inyongeramusaruro')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'inyongeramusaruro.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
         # check_admin()
         # check_coop_admin()
@@ -320,18 +304,11 @@ class TestViews(TestBase):
         and redirects to login page then to ibyakoreshejwe page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibyakoreshejwe')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ibyakoreshejwe.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # ibyakoreshejwe = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-        # return render_template('ibyakoreshejwe.html', ibyakoreshejwe=ibyakoreshejwe, employees=employees)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_imisanzu(self):
         """
@@ -339,18 +316,11 @@ class TestViews(TestBase):
         and redirects to login page then to imisanzu page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.imisanzu')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'imisanzu.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # imisanzu = Umusanzu.query.filter_by(department_id=current_user.email).all()
-        # return render_template('imisanzu.html', employees=employees, imisanzu=imisanzu) 
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_ibirarane(self):
         """
@@ -358,18 +328,11 @@ class TestViews(TestBase):
         and redirects to login page then to ibirarane page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibirarane')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ibirarane.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # ibirarane = Ibirarane.query.filter_by(department_id=current_user.email).all()
-        # return render_template('ibirarane.html', employees=employees, ibirarane=ibirarane)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_ibihano(self):
         """
@@ -377,18 +340,11 @@ class TestViews(TestBase):
         and redirects to login page then to ibihano page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibihano')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ibihano.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # ibihano = Ibihano.query.filter_by(department_id=current_user.email).all()
-        # return render_template('ibihano.html', employees=employees, ibihano=ibihano)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def ibindi(self):
         """
@@ -396,18 +352,11 @@ class TestViews(TestBase):
         and redirects to login page then to ibindi page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibindi')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'ibindi.html'
+        # redirect_url = url_for('auth.login', next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # ibindi = Ibindi.query.filter_by(department_id=current_user.email).all()
-        # return render_template('ibindi.html', employees=employees, ibindi=ibindi)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
 
     def test_injizaUmusaruro(self):
         """
@@ -415,46 +364,11 @@ class TestViews(TestBase):
         and redirects to login page then to injizaUmusaruro page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.injizaUmusaruro',id=1)
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'record_umusaruro.html'
+        redirect_url = url_for('aicos_stock_managment.umusaruro',id=1, next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # memberid = Member.query.get_or_404(id)
-        # member_name = Member.query.filter_by(id=memberid.id).first()
-
-
-        # if member_name is None:
-        #     flash("Umunyamuryango usabye ntawuhari")
-        #     return redirect(url_for('aicos_stock_managment.umusaruro'))
-        # if member_name.izina_ribanza is None:
-        #     flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-        #     return redirect(url_for('aicos_stock_managment.umusaruro'))
-        # if member_name.izina_rikurikira is None:
-        #     flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-        #     return redirect(url_for('aicos_stock_managment.umusaruro'))
-        
-        # form = UmusarurobForm()
-
-        
-        # if form.validate_on_submit():
-            
-        #     if form.UwoAsigaranye.data is None:
-        #         form.UwoAsigaranye.data = 0
-        #     if form.Gutonoza.data is None:
-        #         form.Gutonoza.data = 0
-        #     if form.UwoAsigaranye.data is None:
-        #         form.UwoAsigaranye.data = 0
-        #     if form.Quantity.data is None:
-        #         form.Quantity.data = 0
-        #     if form.RiceAmount.data is None:
-        #         form.RiceAmount.data = 0
-        #     if form.UmusaruroGrade.data is None:
-        #         form.UmusaruroGrade.data = 0
-
-
 
         #     if form.UmusaruroGrade.data == 'good':
         #         umusaruro = Umusarurob(
@@ -526,53 +440,11 @@ class TestViews(TestBase):
         and redirects to login page then to injizaInyongeramusaruro page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.ibihano',id=1)
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = '/record_inyongeramusaruro.html'
+        redirect_url = url_for('aicos_stock_managment.inyongeramusaruro',id=1, next=target_url)
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # memberid = Member.query.get_or_404(id)
-        # member_name = Member.query.filter_by(id=memberid.id).first()
-        # inyongera = InyongeraMusaruro.query.filter_by(department_id=current_user.email).all()
-
-
-        # if memberid is None:
-        #     flash("Umunyamuryango usabye ntawuhari")
-        #     return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
-        # if member_name.izina_ribanza is None:
-        #     flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-        #     return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
-        # if member_name.izina_rikurikira is None:
-        #     flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-        #     return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
-
-        # form = InyongeraMusaruroForm()
-
-        
-        # if form.validate_on_submit():
-
-        #     if form.NPKkg.data is None:
-        #         form.NPKkg.data = 0
-        #     if form.UREA.data is None:
-        #         form.UREA.data = 0
-        #     if form.DAP.data is None:
-        #         form.DAP.data = 0
-        #     if form.KCL.data is None:
-        #         form.KCL.data = 0
-        #     if form.Briquette.data is None:
-        #         form.Briquette.data = 0
-        #     if form.ImbutoQuantity.data is None:
-        #         form.ImbutoQuantity.data = 0
-        #     if form.Cypemetrine.data is None:
-        #         form.Cypemetrine.data = 0
-        #     if form.Beam.data is None:
-        #         form.Beam.data = 0
-        #     if form.ImbutoQuantity.data is None:
-        #         form.ImbutoQuantity.data = 0
-        #     if form.Redevance.data is None:
-        #         form.Redevance.data = 0
 
         #     inyongeramusaruro = InyongeraMusaruro(
         #                             NPKkg = form.NPKkg.data,
@@ -594,32 +466,13 @@ class TestViews(TestBase):
         #                             department_id = current_user.email
         #                             )
 
-        #     try:
-        #         db.session.add(inyongeramusaruro)
-        #         db.session.commit()
-        #         flash("Umaze kwinjiza neza inyongeramusaruro!")
-        #         return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
-        #     except:
-        #         flash("Resi Winjije nta musaruro wayo wabonetse!")
-        #         return redirect(url_for('aicos_stock_managment.injizaInyongeramusaruro', form=form, id=memberid.id, memberid=memberid.id, member_name=member_name))
-            
-        # return render_template('/record_inyongeramusaruro.html', form=form, memberid=memberid, member_name=member_name)
-
-    # def injizaIbyakoreshejwe(id):
-        # check_admin()
-        # check_coop_admin()
-        # memberid = Member.query.get_or_404(id)
-        # member_name = Member.query.filter_by(id=memberid.id).first()
-
-
-        # form = IbyakoreshejweForm()
-
-
-
-        # if form.validate_on_submit():
-
-        #     amazina = member_name.izina_ribanza + " " + member_name.izina_rikurikira
-
+    def test_injizaIbyakoreshejwe(self):
+        target_url = '/record_ibyakoreshejwe.html'
+        redirect_url = url_for('aicos_stock_managment.ibyakoreshejwe')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
+        
         #     ibyakoreshejwe = Ibyakoreshejwe(
         #                             InyongeraMusaruroType = form.InyongeraMusaruroType.data,
         #                             Quantity = form.Quantity.data,
@@ -633,78 +486,33 @@ class TestViews(TestBase):
         #                             department_id = current_user.email
         #                             )
 
-        #     try:
-        #         db.session.add(ibyakoreshejwe)
-        #         db.session.commit()
+    def test_konteZaBanki(self):
+        target_url = '/bankiZacu.html'
+        # redirect_url = url_for('aicos_stock_managment.imisanzu')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        # self.assertRedirects(response, redirect_url)
 
-        #         flash("Winjije neza ibyakoreshejwe uyu mwaka!")
-        #         return redirect(url_for('aicos_stock_managment.ibyakoreshejwe'))
-        #     except Exception:
-        #         flash("Ibyo mumaze gukora Ntabwo byakunze neza Ongera ugerageze!")
-        #         return redirect(url_for('aicos_stock_managment.injizaIbyakoreshejwe', memberid=memberid, member_name=member_name))
-
-        # return render_template('/record_ibyakoreshejwe.html', form=form, memberid=memberid, member_name=member_name)
-
-    # def konteZaBanki():
-    #     check_admin
-    #     check_coop_admin()
-    #     konte = CoopMemberBankAccounts.query.filter_by(department_id=current_user.email).all()
-    #     return render_template("/bankiZacu.html", konte=konte)  
-
-    # def injizaKonte():
-    #     check_admin()
-    #     form = KonteZaBankForm()
-
-        
-    #     if form.validate_on_submit():
+    def test_injizaKonte(self):
+        target_url = '/record_bankAccount.html'
+        redirect_url = url_for('aicos_stock_managment.konteZaBanki')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
+                
     #         coopMemberBankAccounts = CoopMemberBankAccounts(
     #                                     memberName= form.izinaryaNyiriKonte.data,
     #                                     bankName= form.izanaRyaBank.data,
     #                                     bankAccountNumber= form.numeroYaKonte.data,
     #                                     department_id=current_user.email)
 
-    #         try:
-    #             db.session.add(coopMemberBankAccounts)
-    #             db.session.commit()
-    #             flash("Winjije neza nimero ya banki")
-    #             return redirect(url_for('aicos_stock_managment.konteZaBanki'))
-    #         except Exception:
-    #             flash("Ibyo wemeje ntabwo bimeze neza Ongera ugerageze!")
-    #             return redirect(url_for('aicos_stock_managment.injizaKonte'))
-
-    #     return render_template("/record_bankAccount.html", form=form)      
-
-    # def injizaImisanzu(id):
-    #     check_admin()
-    #     check_coop_admin()
-    #     memberid = Member.query.get_or_404(id)
-    #     member_name = Member.query.filter_by(id=memberid.id).first()
-
-    #     if memberid is None:
-    #         flash("")
-    #         return redirect(url_for('aicos_stock_managment.imisanzu'))
-    #     if member_name.izina_ribanza is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.imisanzu'))
-    #     if member_name.izina_rikurikira is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.imisanzu'))
-
-    #     form = UmusanzuForm()
+    def test_injizaImisanzu(self):
+        target_url = '/record_imisanzu.html'
+        redirect_url = url_for('aicos_stock_managment.imisanzu')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
         
-    #     if form.validate_on_submit():
-
-    #         if form.UmusoroWakarere.data is None:
-    #             form.UmusoroWakarere.data = 0
-    #         if form.UmusanzuCoop.data is None:
-    #             form.UmusanzuCoop.data = 0
-    #         if form.Umugabane.data is None:
-    #             form.Umugabane.data = 0
-    #         if form.Ikigega.data is None:
-    #             form.Ikigega.data = 0
-    #         if form.KuzibaIcyuho.data is None:
-    #             form.KuzibaIcyuho.data = 0
-
     #         imisanzu = Umusanzu(
     #                             UmusoroWakarere = form.UmusoroWakarere.data,
     #                             UmusanzuCoop = form.UmusanzuCoop.data,
@@ -714,57 +522,14 @@ class TestViews(TestBase):
     #                             member_id = memberid.id,
     #                             department_id = current_user.email
     #                     )
-    #         try:
-    #             db.session.add(imisanzu)
-    #             db.session.commit()
-    #             flash('Umaze kwinjiza neza Umusanzu')
-    #             return redirect(url_for('aicos_stock_managment.imisanzu'))
-    #         except Exception:
-    #             flash('Kwinjiza Umusanzu ntibyakunze')
-    #             return redirect(url_for('aicos_stock_managment.injizaImisanzu', id=memberid.id))
 
+    def test_injizaIbirarane(self):
+        target_url = '/record_ibirarane.html'
+        redirect_url = url_for('aicos_stock_managment.ibirarane')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
         
-
-    #     return render_template("/record_imisanzu.html", form=form, memberid=memberid, member_name=member_name)
-
-    # def injizaIbirarane(id):
-    #     check_admin()
-    #     check_coop_admin()
-    #     memberid = Member.query.get_or_404(id)
-    #     member_name = Member.query.filter_by(id=memberid.id).first()
-
-    #     if memberid is None:
-    #         flash("Umunyamuryango ntabwo abonetse")
-    #         return redirect(url_for('aicos_stock_managment.ibirarane'))
-    #     if member_name.izina_ribanza is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibirarane'))
-    #     if member_name.izina_rikurikira is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibirarane'))
-
-    #     form = IbiraraneForm()
-
-        
-    #     if form.validate_on_submit():
-
-    #         if form.NPKkg.data is None:
-    #             form.NPKkg.data = 0
-    #         if form.UREA.data is None:
-    #             form.UREA.data = 0
-    #         if form.DAP.data is None:
-    #             form.DAP.data = 0
-    #         if form.KCL.data is None:
-    #             form.KCL.data = 0
-    #         if form.ImbutoQuantity.data is None:
-    #             form.ImbutoQuantity.data = 0
-    #         if form.IdeniAmount.data is None:
-    #             form.IdeniAmount.data = 0
-    #         if form.Briquette.data is None:
-    #             form.Briquette.data = 0
-
-
-
     #         ibirarane = Ibirarane(
     #                             NPKkg = form.NPKkg.data,
     #                             NPKPerUnity = form.NPKPerUnity.data,
@@ -783,43 +548,13 @@ class TestViews(TestBase):
     #                             department_id = current_user.email
     #                         )
 
-    #         try:
-    #             db.session.add(ibirarane)
-    #             db.session.commit()
-    #             flash('Umaze kwinjiza neza Ikirarane')
-    #             return redirect(url_for('aicos_stock_managment.ibirarane'))
-    #         except Exception:
-    #             flash('Kwandika Ikirarane ntibyakunze')
-    #             return redirect(url_for('aicos_stock_managment.injizaIbirarane', id=memberid.id))
-
-    #     return render_template("/record_ibirarane.html", form=form, memberid=memberid, member_name=member_name)
-
-
-    # def injizaIbihano(id):
-    #     check_admin()
-    #     check_coop_admin()
-    #     memberid = Member.query.get_or_404(id)
-    #     member_name = Member.query.filter_by(id=memberid.id).first()
-
-    #     if memberid is None:
-    #         flash("Ntabwo Umunyamuryango abonetse")
-    #         return redirect(url_for('aicos_stock_managment.ibihano'))
-    #     if member_name.izina_ribanza is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibihano'))
-    #     if member_name.izina_rikurikira is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibihano'))
-
-    #     form = IbihanoForm()
+    def test_injizaIbihano(self):
+        target_url = '/record_ibihano.html'
+        redirect_url = url_for('aicos_stock_managment.ibihano')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
         
-    #     if form.validate_on_submit():
-
-    #         if form.AmandeC.data is None:
-    #             form.AmandeC.data = 0
-    #         if form.AmandeApII.data is None:
-    #             form.AmandeApII.data = 0
-
     #         ibihano = Ibihano(
     #                         AmandeC = form.AmandeC.data,
     #                         AmandeApII = form.AmandeApII.data,
@@ -828,52 +563,14 @@ class TestViews(TestBase):
     #                         department_id = current_user.email
     #                     )
 
-    #         try:
-    #             db.session.add(ibihano)
-    #             db.session.commit()
-    #             flash('Umaze kwandi igihano neza')
-    #             return redirect(url_for('aicos_stock_managment.ibihano'))
-    #         except Exception:
-    #             flash('Kwandika igihano ntabwo byakunze')
-    #             return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid.id))
 
-        
-    #     return render_template("/record_ibihano.html", form=form, memberid=memberid, member_name=member_name)
+    def test_injizaIbindi(self):
+        target_url = '/record_ibindi.html'
+        redirect_url = url_for('aicos_stock_managment.ibindi')
+        response = self.client.post(target_url)
+        self.assertEqual(200, response.status_code)
+        self.assertRedirects(response, redirect_url)
 
-    # def injizaIbindi(id):
-    #     check_admin()
-    #     check_coop_admin()
-    #     memberid = Member.query.get_or_404(id)
-    #     member_name = Member.query.filter_by(id=memberid.id).first()
-
-    #     if memberid is None:
-    #         flash("Ntabwo Umunyamuryango abonetse")
-    #         return redirect(url_for('aicos_stock_managment.ibindi'))
-    #     if member_name.izina_ribanza is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibindi'))
-    #     if member_name.izina_rikurikira is None:
-    #         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-    #         return redirect(url_for('aicos_stock_managment.ibindi'))
-
-    #     form = IbindiForm()
-
-    #     if form.validate_on_submit():
-
-    #         if form.ImifukaQuantity.data is None:
-    #             form.ImifukaQuantity.data = 0
-    #         if form.ImifukaAmount.data is None:
-    #             form.ImifukaAmount.data = 0
-    #         if form.MituelleAmount.data is None:
-    #             form.MituelleAmount.data = 0
-    #         if form.UmuceriGrade.data is None:
-    #             form.UmuceriGrade.data = 0
-    #         if form.UmuceriQuantity.data is None:
-    #             form.UmuceriQuantity.data = 0
-    #         if form.UmuceriAmountGrade.data is None:
-    #             form.UmuceriAmountGrade.data = 0
-    #         if form.Avence.data is None:
-    #             form.Avence.data = 0
 
     #         ibindi = Ibindi(
     #                     ImifukaQuantity = form.ImifukaQuantity.data,
@@ -887,40 +584,15 @@ class TestViews(TestBase):
     #                     department_id = current_user.email
     #                     )
 
-    #         try:
-    #             db.session.add(ibindi)
-    #             db.session.commit()
-    #             flash("Umaze kwinjiza Ibindi bisabwa neza")
-    #             return redirect(url_for('aicos_stock_managment.ibindi'))
-    #         except Exception:
-    #             flash("kwinjiza Ibindi bisabwa ntibyakunze")
-    #             return redirect(url_for('aicos_stock_managment.injizaIbindi', id=memberid.id))
-    #             session.rollback()
-
-    #     return render_template("/record_ibindi.html", form=form, memberid=memberid, member_name=member_name)
-
     def test_Imyishyurire(self):
         """
         Test that Imyishyurire page is inaccessible without login
         and redirects to login page then to Imyishyurire page
         """
         # crm_item = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_stock_managment.Imyishyurire')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'imyishyurire.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
-
-        # check_admin()
-        # check_coop_admin()
-        # employee = Department.query.filter_by(email=current_user.email).first()
-        # employees = employee.members
-        # all_member_idd = Umusarurob.member_id
-        # umusaruro_resi = Umusarurob.query.all()
-        # member_all = Employee.query.filter_by(department_id=current_user.email).all()
-
-        # return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
-
+        self.assertEqual(200, response1.status_code)
 
 
 

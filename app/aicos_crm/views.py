@@ -17,10 +17,11 @@ client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
 @aicos_crm.route('/items_table', methods=['GET', 'POST'])
 @login_required
 def table():
-    assignments = CRM.query.filter_by(department_id=current_user.email).all()
-    for assignment in assignments:
-        department = assignment.department.name
-        return render_template("table.html", assignments=assignments, department=department)
+    assignments = CRM.query.filter_by(department=current_user.department).all()
+    
+    # for assignment in assignments:
+    #     department = assignment.department.name
+    #     return render_template("table.html", assignments=assignments, department=department)
     return render_template("table.html", assignments=assignments)
 
 @aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
@@ -43,9 +44,9 @@ def add_item():
                         status = form.status.data
                         )
 
-        newCRM.department = current_user
+        newCRM.department = current_user.department
         employee = Employee.query.filter_by(username=str(form.employee_id.data)).first()
-        newCRM.employee_id = employee.id
+        newCRM.employee = employee
         
         newCRM.add_new_item()
         flash("Umaze kwandika ikindi gikorwa neza!")
@@ -70,7 +71,7 @@ def add_item():
 @aicos_crm.route('/items_table/delete/<id>', methods=['GET', 'POST'])
 @login_required
 def remove_item(id):
-    print(id)
+    # print(id)
     asgmt = CRM.query.filter_by(id=id).first()
     
     asgmt.delete_item()

@@ -321,11 +321,6 @@ class Department(UserMixin,db.Model):
 
     def __repr__(self):
         return self.email
-        
-@login_manager.user_loader
-def load_user(user_id):
-    return Department.query.get(int(user_id))
-
 
 """
 Dealing with excel staffs here.
@@ -703,8 +698,8 @@ class Member(db.Model):
     
 
     """ We will always use this __init__ function to upload excel file  """
-    def __init__(self, sno):
-        self.id = id
+    def __init__(self,sno):
+        # self.id = id
         self.sno = sno
 
     """

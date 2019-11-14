@@ -306,14 +306,6 @@ def coopInfo(email):
                            form=form, title="Edit Role")
 
 
-
-
-
-
-
-
-
-
 @home.route('/cooperativeInfo/newApplication', methods=['GET', 'POST'])
 @login_required
 def newApplication():
@@ -362,19 +354,8 @@ def newApplication():
         # redirect to the roles page
         return redirect(url_for('home.done'))
 
-
-
-
     return render_template('home/new_coop.html',
                            form=form, title="Edit Role")
-
-
-
-
-
-
-
-
 
 
 
@@ -382,62 +363,6 @@ def newApplication():
 def sendCode():
     flash("Code ya Cooperative yoherejwe kuri telephone yawe!")
     return redirect(url_for('home.done'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @home.route('/application/sent')
@@ -584,14 +509,3 @@ def user_profile_about(id):
             flash("The is an error in your form, please correct it and submit again")
         return redirect(url_for('home.user_profile', id=current_user.id, username=current_user.username))
     return render_template("home/user_profile_about.html", title="Tell us about you", form=form)
-
-
-
-
-
-
-
-
-
-
-

@@ -82,29 +82,6 @@ def dashboard():
                                                 )
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @aicos_stock_managment.route('/stock')
 @login_required
 def stock():

@@ -27,7 +27,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="">
-                            <strong class="card-title">{{department}}<br>Customer Relationship Management<br>Tool</strong><br>
+                            <strong class="card-title">
+                                {% if current_user.is_authenticated %}
+                                {{current_user.department.name}}<br>
+                                {%endif%}
+                                {{department}}
+                                {{current_user.department.name}}
+                                Customer Relationship Management<br>
+                                Tool<br>
+                            </strong>
                         </div>
                         <div class="pull-right">
                             <a href="{{ url_for('aicos_crm.add_item') }}" class="btn btn-primary btn-md">Add Item</a>

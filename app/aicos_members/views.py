@@ -731,13 +731,6 @@ def edit_role(id):
 
 
 
-
-
-
-
-
-
-
 @aicos_members.route('/roles/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_role(id):
@@ -752,43 +745,6 @@ def delete_role(id):
     # redirect to the roles page
     return redirect(url_for('aicos_members.list_roles'))
     return render_template(title="Delete Role")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -942,21 +898,6 @@ def add_payment(*args, **kwargs):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # This is the views for adding new decision
 @aicos_members.route('/cooperative/create/decision', methods=['GET', 'POST'])
 @login_required
@@ -1036,7 +977,7 @@ def create_how_to():
             flash("You have successfully created an article")
         except:
             flash("Error! Invalid information")
-        return redirect(url_for('aicos_admin.how_to_list'))
+        return redirect(url_for('aicos_members.how_to_list'))
     return render_template("tools/how_to/create_how_to.html", form=form, title="Create How to list")
 
 

@@ -12,6 +12,9 @@ from datetime import datetime
 import datetime
 from flask import Flask, abort, url_for
 
+from flask_login import current_user, LoginManager, login_user
+
+
 # from sqlalchemy import DateTime
 
 class TestBase(TestCase):
@@ -37,11 +40,11 @@ class TestBase(TestCase):
         admin = Employee(username="admin", password="admin2016", is_admin=True)
 
         # create test non-admin user
-        employee = Employee(username="test_user", password="test2016")
+        self.employee = Employee(username="test_user", password="test2016")
         
-        department = Department(email='department@gmail.com', name="IT", description="The IT Department")
+        department = Department(email='departoma123@gmail.com', name="IT", description="The IT Department")
         
-        goal = Goal(name='name',Description='description',Amount='amount',startingDate='startingDate',endingDate='endingDate')
+        goal = Goal(name='name123',Description='description',Amount='amount',startingDate='startingDate',endingDate='endingDate')
         staff = Staff(first_name='firstName',last_name='lastName',nid='Nid',district='District',sector='Sector',
                       sex='Sex',yob='Yob',position='Position',education='Education',telephone='Telephone',
                       email='Email',monthly_net_salary='monthlyNetSalary')
@@ -49,19 +52,19 @@ class TestBase(TestCase):
                       sector='Sector',sex='Sex',yob='Yob',committee='Committee',position='Position',
                       education='Education',telephone='Telephone',email='Email',
                       monthly_net_salary='monthlyNetSalary')
-        activity = Activity(name='name',description='description')
+        activity = Activity(name='name123',description='description2')
         asset = Asset(asset_type='assetType',asset_location='assetLocation',asset_value='assetValue',
                       description='description')
-        role = Role(name="CEO", description="Run the whole company")
-        payment = Payment(reason='name',amount='amount',date='date')
-        howto = Howto(name='name',labels='labels',description='description',steps='steps',file='file')
+        role = Role(name="CEO 123", description="Run the whole company")
+        payment = Payment(reason='name123',amount='amount',date='date')
+        howto = Howto(name='name123',labels='labels',description='description',steps='steps',file='file')
         link = Link(link='link',title='title',labels='labels',sharewith='sharewith',comment='comment')
         report = Report(status='status',description='description')
         dec = Decision(status='status',decision='decision',owner='owner',stakeholders='stakeholders',
                       due_date='due_date',background='background')
-        contr = Contribution()
+        # contr = Contribution()
         com = Communication(ms_from='ms_from',to='to',message='message',comment='comment')
-        notif = Notification(action="Communication",done_by=employee.username,done_from='IP',
+        notif = Notification(action="Communication",done_by=self.employee.username,done_from='IP',
                       done_time = "frank",done_to="tapayi",effect = "system upgraded")
         app = Application(emailaa='emailaa',firstNameaa='firstNameaa',secondNameaa='secondNameaa',
                       othersaa='othersaa',Districtaa='Districtaa',Sectoraa='Sectoraa',
@@ -69,7 +72,8 @@ class TestBase(TestCase):
                       exitDateaa='exitDateaa',umuzunguraaa='umuzunguraaa',umukonoaa='umukonoaa',genderaa='genderaa',
                       dobaa='dobaa',phoneaa='phoneaa',Amashuriaa='Amashuriaa',Ubumugaaa='Ubumugaaa')
                       
-        # member = Member(sno='sno',izina_ribanza='izina_ribanza',izina_rikurikira='izina_rikurikira',
+        member = Member(sno=1000
+        #,izina_ribanza='izina_ribanza',izina_rikurikira='izina_rikurikira'#,
         #               Ayandi ='Ayandi',zone ='zone',itsinda='itsinda',Igitsina='Igitsina',
         #               Indangamuntu='Indangamuntu',tariki_yavukiye='tariki_yavukiye',Intara='Intara',
         #               Akarere='Akarere',Umurenge='Umurenge',Akagari='Akagari',Umudugudu='Umudugudu',
@@ -80,7 +84,7 @@ class TestBase(TestCase):
         #               akazi_akora_ahandi='akazi_akora_ahandi',ubuso_ahingaho='ubuso_ahingaho',
         #               ubwoko_igihingwa='ubwoko_igihingwa',ubuso_ahingaho_ibindi='ubuso_ahingaho_ibindi',
         #               ubwoko_igihingwa_kindi='ubwoko_igihingwa_kindi',ubuso_budakoreshwa='ubuso_budakoreshwa'
-        #               )
+                      )
         # subs = Subscription(subscribe_for='subscribe_for',description='description',subscription_plan='subscription_plan',
         #               subscription_date='subscription_date',credit_card_no='credit_card_no')
         zone = Zone(izina='izina',ubusobanuro='description',impamvu='impamvu')
@@ -88,7 +92,7 @@ class TestBase(TestCase):
         # save models instances to database
 
         db.session.add(admin)
-        db.session.add(employee)
+        db.session.add(self.employee)
         db.session.add(department)
         db.session.add(goal)
         db.session.add(staff)
@@ -101,17 +105,23 @@ class TestBase(TestCase):
         db.session.add(link)
         db.session.add(report)
         db.session.add(dec)
-        db.session.add(contr)
+        # db.session.add(contr)
         db.session.add(com)
         db.session.add(notif)
         db.session.add(app)
-        # db.session.add(member)
+        db.session.add(member)
         # db.session.add(subs)
         db.session.add(zone)
 
         db.session.commit()
 
-        # print(employee.id)
+        with self.client:  
+            resp = login_user(admin, remember=False, duration=None, force=True, fresh=True)
+            self.assertTrue(resp)
+            self.assertTrue(admin.is_authenticated)  
+            # self.assertTrue(department.is_active)  
+            self.assertFalse(admin.is_anonymous)  
+            self.assertEqual(admin.id, int(admin.get_id()))
 
     def tearDown(self):
         """
@@ -123,16 +133,6 @@ class TestBase(TestCase):
 
 
 class TestModels(TestBase):
-
-    # def test_employee_model(self):
-    #     """
-    #     Test number of records in Employee table
-    #     """
-
-    # def test_department_model(self):
-    #     """
-    #     Test number of records in Department table
-    #     """
 
     def test_models(self):
         """
@@ -150,17 +150,28 @@ class TestModels(TestBase):
         self.assertEqual(Howto.query.count(), 1)
         self.assertEqual(Link.query.count(), 1)
         self.assertEqual(Report.query.count(), 1)
-        self.assertEqual(Employee.query.count(), 2)
         self.assertEqual(Decision.query.count(), 1)
         self.assertEqual(Communication.query.count(), 1)
         self.assertEqual(Notification.query.count(), 1)
         self.assertEqual(Application.query.count(), 1)
-        # self.assertEqual(Member.query.count(), 1)
+        self.assertEqual(Member.query.count(), 1)
         # self.assertEqual(Subscription.query.count(), 1)
         self.assertEqual(Zone.query.count(), 1)
 
 
 class TestViews(TestBase):
+    def aicos_members_home(self):
+        target_url = 'indexz.html'
+
+    def dashboard(self):
+        target_url = 'home.html'
+
+    def test_memberDetails(self):
+        target_url = 'member_details.html'
+        redirect_url = url_for('aicos_members.aicos_members_home',id=1, next=target_url)
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
 
     def test_cooper_det(self):
         """
@@ -168,71 +179,56 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.cooper_det')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'deta/coop_det.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        self.assertEqual(200, response1.status_code)
+
+    def test_memberPayments(self):
+        """
+        Test that report_remove page is inaccessible without login
+        and redirects to login page then to report_remove page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'payments/payment_list.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+
+    def test_goalPayments(self):
+        """
+        Test that report_remove page is inaccessible without login
+        and redirects to login page then to report_remove page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'payments/goals/newGoal.html'
+        redirect_url = url_for('aicos_members.memberPayments', next=target_url)
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
-    # def test_memberPayments(self):
-    #     """
-    #     Test that report_remove page is inaccessible without login
-    #     and redirects to login page then to report_remove page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.memberPayments')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
+    def test_goalDelete(self):
+        """
+        Test that report_remove page is inaccessible without login
+        and redirects to login page then to report_remove page
+        """
+        redirect_url = url_for('aicos_members.memberPayments')
+        response1 = self.client.get(redirect_url)
+        self.assertEqual(200, response1.status_code)
 
-    # def test_goalPayments(self):
-    #     """
-    #     Test that report_remove page is inaccessible without login
-    #     and redirects to login page then to report_remove page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.goalPayments')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
+    def test_joiningChart(self):
+        """
+        Test that report_remove page is inaccessible without login
+        and redirects to login page then to report_remove page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'employees/joining_chart.html'
 
-    # def test_goalDelete(self):
-    #     """
-    #     Test that report_remove page is inaccessible without login
-    #     and redirects to login page then to report_remove page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.goalDelete')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
-
-    # def test_joiningChart(self):
-    #     """
-    #     Test that report_remove page is inaccessible without login
-    #     and redirects to login page then to report_remove page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.joiningChart')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
-
-    # def test_memberCreate(self):
-    #     """
-    #     Test that report_remove page is inaccessible without login
-    #     and redirects to login page then to report_remove page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.memberCreate')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
+    def test_memberCreate(self):
+        """
+        Test that report_remove page is inaccessible without login
+        and redirects to login page then to report_remove page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'create/create.html'
 
     def test_list_roles(self):
         """
@@ -240,22 +236,19 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_roles')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'roles/roles.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_add_role(self):
         """
         Test that report_remove page is inaccessible without login
         and redirects to login page then to report_remove page
         """
-        # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_role')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'roles/role.html'
+        redirect_url = url_for('aicos_members.list_roles', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_list_staffs(self):
@@ -264,22 +257,19 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_staffs')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'roles/staffs.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_add_staff(self):
         """
         Test that report_remove page is inaccessible without login
         and redirects to login page then to report_remove page
         """
-        # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_staff')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'roles/staff.html'
+        redirect_url = url_for('aicos_members.list_staffs', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_list_committees(self):
@@ -288,22 +278,19 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_committees')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'roles/committees.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_add_committee(self):
         """
         Test that report_remove page is inaccessible without login
         and redirects to login page then to report_remove page
         """
-        # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_committee')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'roles/committee.html'
+        redirect_url = url_for('aicos_members.list_committees', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_list_activities(self):
@@ -312,22 +299,19 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_activities')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'roles/activities.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_add_activity(self):
         """
         Test that report_remove page is inaccessible without login
         and redirects to login page then to report_remove page
         """
-        # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_activity')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'roles/activity.html'
+        redirect_url = url_for('aicos_members.list_activities', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_list_assets(self):
@@ -336,78 +320,128 @@ class TestViews(TestBase):
         and redirects to login page then to report_remove page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_assets')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'roles/assets.html'
         response1 = self.client.get(target_url)
         self.assertEqual(302, response1.status_code)
-        self.assertRedirects(response1, redirect_url)
 
     def test_add_asset(self):
         """
         Test that report_remove page is inaccessible without login
         and redirects to login page then to report_remove page
         """
-        # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_asset')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'roles/asset.html'
+        redirect_url = url_for('aicos_members.list_assets', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_edit_role(self):
         """
         Test that edit_role view works as expected
         """
-        role = Role.query.filter_by(id=1).first()
-        role.name = 'RoleName'
+        target_url = 'roles/role.html'
+        redirect_url = url_for('aicos_members.edit_role', id=1, next=target_url)
+        response = self.client.post(target_url, data=dict(name='secondRoleName'),follow_redirects=True)
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertIs(report.name,'secondname')
+        self.assertRedirects(response, redirect_url)
 
-        target_url = url_for('aicos_members.edit_role', id=1)
-        response2 = self.client.post(target_url, report,follow_redirects=True)
-        self.assertEqual(response2.status_code, 200)
+    # def test_delete_role(self):
+    #     redirect_url = url_for('aicos_members.list_roles')
+    #     response = self.client.get(redirect_url)
+    #     self.assertEqual(200, response.status_code)
+    #     self.assertEqual(Role.query.count(),0)
 
-        self.assertIs(role.name,'RoleName')
-        # self.assertRedirects(response2, redirect_url2)
-        # self.assertIn(b'Thanks for registering!', response2.data)
-#     def test_delete_role():
-#     def test_list_reports():
-    # def test_add_report():
+    def test_list_reports(self):
+        target_url = 'tools/reports/reports.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+
+    def test_add_report(self):
+        target_url = 'tools/reports/report.html'
+        redirect_url = url_for('aicos_members.list_reports', id=1, next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
     def test_edit_report(self):
         """
         Test that edit_report view works as expected
         """
-        report = Report.query.filter_by(id=1).first()
-        report.name = 'secondname'
-
-        target_url = url_for('aicos_members.edit_report', id=1)
-        response2 = self.client.post(target_url, report,follow_redirects=True)
-        self.assertEqual(response2.status_code, 200)
-
+        target_url = 'tools/reports/report.html'
+        redirect_url = url_for('aicos_members.list_reports', id=1, next=target_url)
+        response = self.client.post(target_url, data=dict(name='secondname'),follow_redirects=True)
+        
+        self.assertEqual(response.status_code, 200)
         self.assertIs(report.name,'secondname')
-        # self.assertRedirects(response2, redirect_url2)
+        self.assertRedirects(response, redirect_url)
         # self.assertIn(b'Thanks for registering!', response2.data)
 
-#     def test_delete_report(self):
+    def test_delete_report(self):
+        redirect_url = url_for('aicos_members.list_reports')
+        response1 = self.client.get(redirect_url)
+        self.assertEqual(200, response1.status_code)
 
-    # def test_decisions_list(self):
-    #     """
-    #     Test that decisions_list page is inaccessible without login
-    #     and redirects to login page then to decisions_list page
-    #     """
-    #     # report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.decisions_list')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
+    def test_decisions_list(self):
+        """
+        Test that decisions_list page is inaccessible without login
+        and redirects to login page then to decisions_list page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'tools/decisions_list.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
 
-    # def test_add_payment(self):
-#     def test_create_decision(self):
-#     def test_how_to_list(self):
-#     def test_create_how_to(self):
-#     def test_links_list(self):
-#     def test_create_link(self):
-#     def test_create_file(self):
-#     def test_files_list(self):
+    def test_add_payment(self):
+        target_url = 'payments/new_payment.html'
+        redirect_url = url_for('aicos_members.list_roles', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
+    def test_create_decision(self):
+        target_url = 'tools/create_decision.html'
+        redirect_url = url_for('aicos_members.decisions_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
+    def test_how_to_list(self):
+        target_url = 'tools/how_to/how_to_list.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+
+    def test_create_how_to(self):
+        target_url = 'tools/how_to/create_how_to.html'
+        redirect_url = url_for('aicos_members.how_to_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
+    def test_links_list(self):
+        target_url = 'tools/links/links_list.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+
+    def test_create_link(self):
+        target_url = 'tools/links/create_link.html'
+        redirect_url = url_for('aicos_members.links_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
+    def test_create_file(self):
+        target_url = 'tools/file/shareFile.html'
+        redirect_url = url_for('aicos_members.links_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
+        self.assertRedirects(response1, redirect_url)
+
+    def test_files_list(self):
+        target_url = 'tools/file/filesList.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
 
     def test_list_employees(self):
         """
@@ -415,26 +449,30 @@ class TestViews(TestBase):
         and redirects to login page then to decisions_list page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.list_employees')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'employees/employees.html'
         response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        self.assertEqual(200, response1.status_code)
+
+    def test_member_details(self):
+        """
+        Test that member_details page is inaccessible without login
+        and redirects to login page then to member_details page
+        """
+        # report = CRM.query.filter_by(id=1).first()
+        target_url = 'member_details.html'
+        # redirect_url = url_for('aicos_members.list_employees', id=1, next=target_url)
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+        # self.assertRedirects(response1, redirect_url)
+
+    def test_doimportmbs(self):
+        target_url = 'employees/upload.html'
+        redirect_url = url_for('aicos_members.aicos_members_home')
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
-    # def test_member_details(self):
-    #     """
-    #     Test that member_details page is inaccessible without login
-    #     and redirects to login page then to member_details page
-    #     """
-    #     report = CRM.query.filter_by(id=1).first()
-    #     target_url = url_for('aicos_members.member_details')
-    #     redirect_url = url_for('auth.login', next=target_url)
-    #     response1 = self.client.get(target_url)
-    #     self.assertEqual(302, response1.status_code)
-    #     self.assertRedirects(response1, redirect_url)
-
-#     def test_doimportmbs(self):
-#     def test_templateDownload(self):
+# #     def test_templateDownload(self):
 
     def test_AddNewMember(self):
         """
@@ -442,13 +480,16 @@ class TestViews(TestBase):
         and redirects to login page then to AddNewMember page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.AddNewMember')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'employees/membership_form.html'
+        redirect_url = url_for('aicos_members.aicos_members_home', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
-#     def test_reports_list(self):
+    def test_reports_list(self):
+        target_url = 'tools/reports_list.html'
+        response = self.client.get(target_url)
+        self.assertEqual(response.status_code,200)
 
     def test_create_report(self):
         """
@@ -456,10 +497,10 @@ class TestViews(TestBase):
         and redirects to login page then to create_report page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.create_report')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'tools/create_report.html'
+        redirect_url = url_for('aicos_members.reports_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_create_meeting_notes(self):
@@ -468,27 +509,36 @@ class TestViews(TestBase):
         and redirects to login page then to create_meeting_notes page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.create_meeting_notes')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'tools/create_decision.html'
+        redirect_url = url_for('aicos_members.decisions_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
-#     def test_contributions_list(self):
+    def test_contributions_list(self):
+        target_url = 'tools/contributions_list.html'
+        response = self.client.get(target_url)
+        self.assertEqual(response.status_code,200)
+
     def test_add_contribution(self):
         """
         Test that add_contribution page is inaccessible without login
         and redirects to login page then to add_contribution page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_contribution')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'tools/add_contribution.html'
+        redirect_url = url_for('aicos_members.contributions_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
-#     def test_pdf_template(self):
-#     def test_communications_list(self):
+    # def test_pdf_template(self):
+
+    def test_communications_list(self):
+        target_url = 'tools/communications_list.html'
+        response1 = self.client.get(target_url)
+        self.assertEqual(200, response1.status_code)
+
 
     def test_add_communication(self):
         """
@@ -496,10 +546,10 @@ class TestViews(TestBase):
         and redirects to login page then to add_communication page
         """
         # report = CRM.query.filter_by(id=1).first()
-        target_url = url_for('aicos_members.add_communication')
-        redirect_url = url_for('auth.login', next=target_url)
-        response1 = self.client.get(target_url)
-        self.assertEqual(302, response1.status_code)
+        target_url = 'tools/add_communication.html'
+        redirect_url = url_for('aicos_members.communications_list', next=target_url)
+        response1 = self.client.post(target_url)
+        self.assertEqual(200, response1.status_code)
         self.assertRedirects(response1, redirect_url)
 
     def test_list_applications(self):
@@ -507,101 +557,133 @@ class TestViews(TestBase):
         Test that applications page is inaccessible without login
         and redirects to login page then to applications page
         """
-        target_url = url_for('aicos_members.list_applications')
-        redirect_url = url_for('auth.login', next=target_url)
+        target_url = 'employees/applied_members.html'
         response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+        self.assertEqual(response.status_code, 200)
+        # self.assertRedirects(response, redirect_url)
 
-    def test_applicant_details(self):
-        """
-        Test that applicatiapplicant_detailsons page is inaccessible without login
-        and redirects to login page then to applicant_details page
-        """
-        target_url = url_for('aicos_members.applicant_details')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_applicant_details(self):
+    #     """
+    #     Test that applicatiapplicant_detailsons page is inaccessible without login
+    #     and redirects to login page then to applicant_details page
+    #     """
+    #     target_url = 'employees/applicant_details.html'
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+    #     # self.assertRedirects(response, redirect_url)
 
-    def test_assign_employee(self):
-        """
-        Test that assign_employee page is inaccessible without login
-        and redirects to login page then to assign_employee page
-        """
-        target_url = url_for('aicos_members.assign_employee')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_assign_employee(self):
+    #     """
+    #     Test that assign_employee page is inaccessible without login
+    #     and redirects to login page then to assign_employee page
+    #     """
+    #     target_url = 'employees/employee.html'
+    #     redirect_url = url_for('aicos_members.assign_employee',id=self.employee.id, next=target_url)
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertRedirects(response, redirect_url)
 
     def test_delete_member(self):
         """
         Test that delete_member page is inaccessible without login
         and redirects to login page then to delete_member page
         """
-        target_url = url_for('aicos_members.delete_member')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+        redirect_url = url_for('aicos_members.aicos_members_home')
+        # response = self.client.get(redirect_url)
+        # self.assertEqual(200,response.status_code)
+        # self.assertEqual(Member.query.count(), 0)
 
-    def test_confirm_member(self):
-        """
-        Test that assign_employee page is inaccessible without login
-        and redirects to login page then to confirm_member page
-        """
-        target_url = url_for('aicos_members.confirm_member')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_confirm_member(self):
+    #     """
+    #     Test that assign_employee page is inaccessible without login
+    #     and redirects to login page then to confirm_member page
+    #     """
+    #     redirect_url = url_for('aicos_members.confirm_member',id=1)
+    #     response = self.client.post(target_url,data=dict(email='email',
+    #                   username='others',
+    #                   first_name='first_name',
+    #                   last_name='last_name',
+    #                   department_id=current_user.email))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertRedirects(response, redirect_url)
 
-#     def test_invite_members():
-    # def test_add_member():
-#     def test_invite():
-#     def test_sendsms():
-#     def test_sendemail():
+    # def test_invite_members(self):
+    #     target_url = 'home/invite_members.html'
 
-    def test_subscriptions(self):
-        """
-        Test that subscriptions page is inaccessible without login
-        and redirects to login page then to subscriptions page
-        """
-        target_url = url_for('aicos_members.subscriptions')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_add_member(self):
+    #     redirect_url = url_for('aicos_members.invite_members',id=self.employee.id)
+    #     response = self.client.post(redirect_url)
+    #     self.assertEqual(response.status_code,200)
 
-    def test_sendRemainder(self):
-        """
-        Test that sendRemainder page is inaccessible without login
-        and redirects to login page then to sendRemainder page
-        """
-        target_url = url_for('aicos_members.sendRemainder')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_invite(self):
+    #     redirect_url = url_for('aicos_members.invite_members',id=self.employee.id)
+    #     response = self.client.post(redirect_url)
+    #     self.assertEqual(response.status_code,200)
 
-#     def test_settings():
-#     def test_blank():
+    # def test_sendsms(self):
+    #     target_url = 'employees/sendsms.html'
 
-    def test_coop_details(self):
-        """
-        Test that coop_details page is inaccessible without login
-        and redirects to login page then to coop_details page
-        """
-        target_url = url_for('aicos_members.coop_details')
-        redirect_url = url_for('auth.login', next=target_url)
-        response = self.client.get(target_url)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, redirect_url)
+    # def test_sendemail(self):
+    #     target_url = 'employees/sendemail.html'
 
-#     def test_imyishyurire():
-#     def test_zone():
-#     def test_addZone():
+    # def test_subscriptions(self):
+    #     """
+    #     Test that subscriptions page is inaccessible without login
+    #     and redirects to login page then to subscriptions page
+    #     """
+    #     target_url = url_for('departments/subscriptions.html')
+    #     redirect_url = url_for('aicos_members.list_departments', next=target_url)
+    #     response = self.client.post(target_url, data=dict(subscribe_for=form.subscribe_for.data,
+    #                         description=form.description.data,
+    #                         subscription_plan=form.subscription_plan.data,
+    #                         subscription_date=form.subscription_date.data,
+    #                         credit_card_no   =form.credit_card_no.data))
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertRedirects(response, redirect_url)
+
+    # def test_sendRemainder(self):
+    #     """
+    #     Test that sendRemainder page is inaccessible without login
+    #     and redirects to login page then to sendRemainder page
+    #     """
+    #     target_url = 'employees/sendRemainder.html'
+    #     # redirect_url = url_for('auth.login', next=target_url)
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+    #     # self.assertRedirects(response, redirect_url)
+
+    # def test_settings(self):
+    #     target_url = 'settings.html'
+
+    # def test_blank(self):
+    #     target_url = 'tools/blank.html'
+
+    # def test_coop_details(self):
+    #     """
+    #     Test that coop_details page is inaccessible without login
+    #     and redirects to login page then to coop_details page
+    #     """
+    #     redirect_url = url_for('aicos_members.coop_details')
+    #     target_url = 'cooperative_detail.html'
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+    #     # self.assertRedirects(response, redirect_url)
+
+    # def test_imyishyurire(self):
+    #     target_url = '/imyishyurire/index.html'
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+
+    # def test_zone(self):
+    #     target_url = '/zones/zones.html'
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
+
+    # def test_addZone(self):
+    #     redirect_url = url_for('aicos_members.zone')
+    #     target_url = '/zones/add_zone.html'
+    #     response = self.client.get(target_url)
+    #     self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':

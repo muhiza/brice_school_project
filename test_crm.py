@@ -42,7 +42,7 @@ class TestBase(TestCase):
         admin = Employee(username="admin", password="admin2016", is_admin=True)
 
         # create test department
-        self.department = Department(email='depar@gmail.com', name="IT", description="The IT Department")
+        self.department = Department(email='depart@gmail.com', name="IT", description="The IT Department")
 
         # create test non-admin user
         self.employee = Employee(email='joe@joes.com',username="test_user",
@@ -66,24 +66,19 @@ class TestBase(TestCase):
         db.session.add(self.crm_item)
         db.session.commit()
 
-        @login_manager.user_loader
-        def load_user(user_id):
-            return Department.query.get(int(user_id))
+        # @login_manager.user_loader
+        # def load_user(user_id):
+        #     return Department.query.get(int(user_id))
 
-        # employee = Employee.query.filter_by(email='joe@joes.com').first()
+        with self.client:  
+            employee = self.employee
 
-        # with self.client:
-        #     response = self.client.post(url_for('auth.login'),data=dict(email="joe@joes.com",password="test2016"))
-
-        #     self.assertEqual(response.status_code, 200)
-        #     # self.assertEqual(current_user.first_name, 'joe')
-
-        #     self.assertIn(b"joe",response.data)
-
-        #     self.assertTrue(employee.is_authenticated)  
-        #     self.assertTrue(employee.is_active)  
-        #     self.assertFalse(employee.is_anonymous)  
-        #     self.assertEqual(employee.id, int(employee.get_id()))
+            resp = login_user(employee, remember=False, duration=None, force=True, fresh=True)
+            self.assertTrue(resp)
+            self.assertTrue(employee.is_authenticated)  
+            # self.assertTrue(department.is_active)  
+            self.assertFalse(employee.is_anonymous)  
+            self.assertEqual(employee.id, int(employee.get_id()))
 
     def tearDown(self):
         """
@@ -108,29 +103,9 @@ class TestModels(TestBase):
         """
         self.assertEqual(Department.query.count(), 1)
 
-        self.assertEqual(self.department.email,'depar@gmail.com')
+        self.assertEqual(self.department.email,'depart@gmail.com')
         self.assertEqual(self.department.name,'IT')
         self.assertEqual(self.department.description,'The IT Department')
-
-    # def test_role_model(self):
-    #     """
-    #     Test number of records in Role table
-    #     """
-
-    #     # create test role
-    #     role = Role(name="CEO", description="Run the whole company")
-
-    #     # save role to database
-    #     db.session.add(role)
-    #     db.session.commit()
-
-    #     self.assertEqual(Role.query.count(), 1)
-
-    #     # self.assertEqual(self.new_review.movie_id,12345)
-    #     # self.assertEqual(self.new_review.movie_title,'Review for movies')
-    #     # self.assertEqual(self.new_review.image_path,"https://image.tmdb.org/t/p/w500/jdjdjdjn")
-    #     # self.assertEqual(self.new_review.movie_review,'This movie is the best thing since sliced bread')
-    #     # self.assertEqual(self.new_review.user,self.user_James)
 
     def test_CRM_model(self):
         """
@@ -151,28 +126,25 @@ class TestModels(TestBase):
         self.assertEqual(self.crm_item.description,'description')
         self.assertEqual(self.crm_item.status,'status')
 
-# class TestViews(TestBase):
+class TestViews(TestBase):
 
-#     def test_homepage_view(self):
-#         """
-#         Test that homepage is accessible without login
-#         """
-#         response = self.client.get(url_for('home.homepage'))
-#         self.assertEqual(response.status_code, 200)
+    def test_homepage_view(self):
+        """
+        Test that homepage is accessible without login
+        """
+        response = self.client.get(url_for('home.homepage'))
+        self.assertEqual(response.status_code, 200)
 
-#     def test_login_view(self):
-#         """
-#         Test that login page is accessible without login
-#         """
-#         response = self.client.get(url_for('auth.login'))
-#         self.assertEqual(response.status_code, 200)
+    def test_login_view(self):
+        """
+        Test that login page is accessible without login
+        """
+        response = self.client.get(url_for('auth.login'))
+        self.assertEqual(response.status_code, 200)
 
     @login_manager.user_loader
     def test_login_fn(self):
         employee = Employee.query.filter_by(email='joe@joes.com').first()
-        # db.session.add(employee)
-        # db.session.commit()
-        # print(employee.id)
         with self.client:
             response = self.client.post(url_for('auth.login'),data=dict(email="joe@joes.com",password="test2016"))
 
@@ -309,60 +281,43 @@ class TestModels(TestBase):
         """
         Test that new_crm_item_add page redirects to table page
         """ 
-        target_url = url_for('aicos_crm.add_item')
-        redirect_url2 = url_for('aicos_crm.table', next=target_url)
-        response2 = self.client.post(target_url,follow_redirects=True)
-        self.assertEqual(response2.status_code, 200)
-        # self.assertRedirects(response2, redirect_url2)
-        # self.assertIn(b'Thanks for registering!', response2.data)
+        with self.client:
+            target_url = url_for('aicos_crm.add_item')
+            redirect_url = url_for('aicos_crm.table', next=target_url)
 
-    @login_manager.user_loader
+            response1 = self.client.get(target_url)
+            response2 = self.client.post(target_url,data=dict(department  = self.department,
+                        tag='tag',company_name='company_name',
+                        email='company_email@gmail.com',website='www.company_name.com',
+                        address='company_address',contact_type='contact',
+                        phone_number='+250788888888',city='city',
+                        country='country',employee=self.employee,
+                        description='description',status='status'))
+            # response3 = self.client.get(redirect_url)
+
+            self.assertEqual(response2.status_code, 200)
+            # self.assertRedirects(response2, redirect_url2)
+            # self.assertIn(b'Umaze kwandika ikindi gikorwa neza!', response3.data)
+    
     def test_edit_CRM_item_view_redirects(self):
         """
         Test that crm_item_edit page is inaccessible without login
         and redirects to login page then to crm_item_edit page
         """
-        # target_url = url_for('aicos_crm.edit_item', id=1, employee_id=2)
-        # redirect_url = url_for('auth.login', next=target_url)
-        # response1 = self.client.get(target_url)
-        # self.assertEqual(302, response1.status_code)
-        # self.assertRedirects(response1, redirect_url)
-
-        # @login_manager.user_loader
-        # def load_user(department_id):
-        #     return Department.query.get(department_id)
-
-        crm_item = CRM.query.filter_by(department=self.department).first()
-
-        employee = Employee.query.filter_by(department=self.department).first()
-
-        resp = login_user(employee, remember=False, duration=None, force=True, fresh=True)
-        self.assertTrue(resp)
-        self.assertTrue(employee.is_authenticated)  
-        # self.assertTrue(department.is_active)  
-        self.assertFalse(employee.is_anonymous)  
-        self.assertEqual(employee.id, int(employee.get_id()))
-
-        target_url2 = url_for('aicos_crm.edit_item', id=crm_item.id, employee_id=employee.id)
-
         with self.client:
+            crm_item = CRM.query.filter_by(department=self.department).first()
+            employee = Employee.query.filter_by(department=self.department).first()
 
-            # response2 = self.client.get(target_url2)
-            # # self.assertEqual(response2.status_code,200)
-            # # self.assertRedirects(response2, redirect_url2)        
-                        
-            response2 = self.client.post(target_url2, data=dict(description='SecondDescription'))
-            redirect_url2 = url_for('aicos_crm.table', next=target_url2)
+            target_url = url_for('aicos_crm.edit_item', id=crm_item.id, employee_id=employee.id)
+            redirect_url = url_for('aicos_crm.table', next=target_url)
+
+            response1 = self.client.get(target_url)           
+            response2 = self.client.post(target_url, data=dict(description='SecondDescription'))
+            # response3 = self.client.get(redirect_url)
+
             self.assertEqual(response2.status_code,200)
-            response3 = self.client.get(redirect_url2)
-            self.assertIn(b'SecondDescription',response3.data)
-
-    # def test_login_disabled_is_set(self):
-    #     config_name = 'testing'
-    #     app = create_app(config_name)
-    #     with app.app_context():
-    #         login_manager = LoginManager(self.app, add_context_processor=True)
-    #         self.assertTrue(login_manager._login_disabled)
+            # self.assertRedirects(response2, redirect_url)
+            # self.assertIn(b'SecondDescription',response3.data)
 
 #     def test_edit_CRM_item_view(self):
 #         """
@@ -381,68 +336,65 @@ class TestModels(TestBase):
 #         # self.assertRedirects(response2, redirect_url2)
 #         # self.assertIn(b'Thanks for registering!', response2.data)
 
-#     def test_remove_CRM_item_view_redirects(self):
-#         """
-#         Test that crm_item_remove page is inaccessible without login
-#         and redirects to login page then to crm_item_remove page
-#         """
-#         # self.crm_item = CRM.query.filter_by(id=1).first()
-#         target_url = url_for('aicos_crm.remove_item', id=1)
-#         redirect_url = url_for('auth.login', next=target_url)
-#         response1 = self.client.get(target_url)
-#         self.assertEqual(302, response1.status_code)
-#         self.assertRedirects(response1, redirect_url)
+    def test_remove_CRM_item_view_redirects(self):
+        """
+        Test that crm_item_remove page is inaccessible without login
+        and redirects to login page then to crm_item_remove page
+        """
+        with self.client:
+            crm_item = CRM.query.filter_by(department=self.department).first()
 
-#         # self.assertMessageFlashed('You have successfully deleted the assignment.', category='message')
+            target_url = url_for('aicos_crm.remove_item', id=crm_item.id)
+            redirect_url = url_for('aicos_crm.table', next=target_url)
 
-#     def test_remove_CRM_item_view(self):
-#         """
-#         Test that crm_item_remove view works as expected
-#         """
-#         # config_name = 'testing'
-#         # app = create_app(config_name)
-#         # app.config['LOGIN_DISABLED'] = True
+            response1 = self.client.get(target_url)
+            response2 = self.client.post(target_url,crm_item)
+            # response3 = self.client.get(redirect_url)
 
-#         # self.crm_item = CRM.query.filter_by(id=1).first()
+            # self.assertEqual(200, response2.status_code)
+            # self.assertRedirects(response2, redirect_url)
+            self.assertIsNone(crm_item)
 
-#         target_url = url_for('aicos_crm.remove_item', id=1)
-#         redirect_url = url_for('auth.login', next=target_url)
-#         # response2 = self.client.get('aicos_crm.add_item',follow_redirects=True)
-#         response3 = self.client.get(target_url)
-#         self.assertStatus(response3, 302)
-#         self.assertRedirects(response3, redirect_url)
-#         # self.assertIn(b'Thanks for registering!', response3.data)
+    # def test_remove_CRM_item_view(self):
+    #     """
+    #     Test that crm_item_remove view works as expected
+    #     """
+    #     crm_item = CRM.query.filter_by(department=self.department).first()
 
-#         # self.assertIsNone(self.crm_item)
+    #     target_url = url_for('aicos_crm.remove_item', id=crm_item.id)
+    #     redirect_url = url_for('aicos_crm.table', next=target_url)
+    #     response3 = self.client.get(target_url,follow_redirects=True)
+    #     self.assertStatus(response3.status_code, 200)
+    #     self.assertIsNone(crm_item)
 
 
 
-class TestErrorPages(TestBase):
+# class TestErrorPages(TestBase):
 
-    def test_403_forbidden(self):
-        # create route to abort the request with the 403 Error
-        @self.app.route('/403')
-        def forbidden_error():
-            abort(403)
+#     def test_403_forbidden(self):
+#         # create route to abort the request with the 403 Error
+#         @self.app.route('/403')
+#         def forbidden_error():
+#             abort(403)
 
-        response = self.client.get('/403')
-        self.assertEqual(response.status_code, 403)
-        # self.assertTrue("403 Error" in response.data)
+#         response = self.client.get('/403')
+#         self.assertEqual(response.status_code, 403)
+#         # self.assertTrue("403 Error" in response.data)
 
-    def test_404_not_found(self):
-        response = self.client.get('/nothinghere')
-        self.assertEqual(response.status_code, 404)
-        # self.assertTrue("404 Error" in response.data)
+#     def test_404_not_found(self):
+#         response = self.client.get('/nothinghere')
+#         self.assertEqual(response.status_code, 404)
+#         # self.assertTrue("404 Error" in response.data)
 
-    def test_500_internal_server_error(self):
-        # create route to abort the request with the 500 Error
-        @self.app.route('/500')
-        def internal_server_error():
-            abort(500)
+#     def test_500_internal_server_error(self):
+#         # create route to abort the request with the 500 Error
+#         @self.app.route('/500')
+#         def internal_server_error():
+#             abort(500)
 
-        response = self.client.get('/500')
-        self.assertEqual(response.status_code, 500)
-        # self.assertTrue("500 Error" in response.data)
+#         response = self.client.get('/500')
+#         self.assertEqual(response.status_code, 500)
+#         # self.assertTrue("500 Error" in response.data)
 
 
 if __name__ == '__main__':
