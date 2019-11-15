@@ -39,10 +39,7 @@ class ApplicationForm(FlaskForm):
     'Ubumuga',
     choices=[('Ubumuga', 'Ubumuga'), ('Amaguru', 'Amaguru'), ('Amaboko', 'Amaboko'), ('Kutabona', 'Kutabona'), 
              ('Kutumva', 'Kutumva'), ('Mu mutwe', 'Mu mutwe'), ('Ibindi', 'Ibindi')])
-
     submit      =  SubmitField('Ohereza')
-
-
 
 
 class ProfileForm(FlaskForm):
@@ -57,7 +54,6 @@ class ProfileForm(FlaskForm):
     exp2 = StringField("Experiance two")
     exp3  = StringField("Experiance three")
 
-
     # Strength.
     strn1 = StringField("Strength one")
     strn2 = StringField("Strength two")
@@ -65,11 +61,9 @@ class ProfileForm(FlaskForm):
 
 
     # Careeers.
-
     car1 = StringField("Career one")
     car2 = StringField("Career two")
     car3 = StringField("Career three")
-
 
     # Interests.
     inter1 = StringField("Interest one")
@@ -83,8 +77,6 @@ class ProfileForm(FlaskForm):
         choices=[('kyz', 'Kayonza'), ('kcr', 'Kicukiro'), ('gsb', 'Gasabo'), ('nyg', 'Nyarugenge')]
     )
     submit = SubmitField("Submit")
-
-
 
 
 class DepartmentForm(FlaskForm):
@@ -109,7 +101,6 @@ class DepartmentForm(FlaskForm):
         ('Ngoma', 'Ngoma'), ('Bugesera', 'Bugesera'),
         ('Nyagatare', 'Nyagatare'), ('Gatsibo', 'Gatsibo'),
 
-
         ('Kamonyi', 'Kamonyi'), ('Ruhango', 'Ruhango'),
         ('Muhanga', 'Muhanga'), ('Nyanza', 'Nyanza'),
         ('Huye', 'Huye'), ('Nyaruguru', 'Nyaruguru'),
@@ -117,7 +108,6 @@ class DepartmentForm(FlaskForm):
         ('Rulindo', 'Rulindo'), ('Burera', 'Burera'),
         ('Gakenke', 'Gakenke'), ('Gicumbi', 'Gicumbi'),
         ('Musanze', 'Musanze'),
-
 
         ('Karongi', 'Karongi'), ('Ngororero', 'Ngororero'),
         ('Nyabihu', 'Nyabihu'), ('Nyamasheke', 'Nyamasheke'),
@@ -138,8 +128,6 @@ class DepartmentForm(FlaskForm):
         ('Ubuhinzi bw\'Ibigori', 'Ubuhinzi bw\'Ibigori'), ('Uburobyi', 'Uburobyi'),
         ('Ubuhinzi bw\'Indabo', 'Ubuhinzi bw\'Indabo'), ('Kuboha', 'Kuboha')])
 
-
-
     Federation = SelectField(
         'Hitamo Federasiyo ya Koperative',
         choices=[('Federasiyo ya Koperative', 'Federasiyo ya Koperative'), 
@@ -151,29 +139,13 @@ class DepartmentForm(FlaskForm):
         ('NDFFR', 'NDFFR'), ('RFHC', 'RFHC'),
         ('FEFICOORWA', 'FEFICOORWA')])
 
-
     Union = SelectField(
         'Hitamo Union Koperative ibarizwamo',
         choices=[('Hitamo Union Koperative ibarizwamo', 'Hitamo Union Koperative ibarizwamo'),('UCTHEN', 'UCTHEN'), 
         ('UCTCCN', 'UCTCCN'), ('UCOTHENYU', 'UCOTHENYU'),
         ('UCOTHEI', 'UCOTHEI'), ('UCOTHESN', 'UCOTHESN')])
-
-
     Description = TextAreaField('Ubundi busobanuro bwa Koperative (Si ngombwa)', render_kw={"placeholder": "Ubundi busobanuro bwa Koperative (Si ngombwa)"})
-
     submit = SubmitField('Injiza muri sisiteme')
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 class newDepartmentForm(FlaskForm):
@@ -195,7 +167,6 @@ class newDepartmentForm(FlaskForm):
         ('Ngoma', 'Ngoma'), ('Bugesera', 'Bugesera'),
         ('Nyagatare', 'Nyagatare'), ('Gatsibo', 'Gatsibo'),
 
-
         ('Kamonyi', 'Kamonyi'), ('Ruhango', 'Ruhango'),
         ('Muhanga', 'Muhanga'), ('Nyanza', 'Nyanza'),
         ('Huye', 'Huye'), ('Nyaruguru', 'Nyaruguru'),
@@ -203,7 +174,6 @@ class newDepartmentForm(FlaskForm):
         ('Rulindo', 'Rulindo'), ('Burera', 'Burera'),
         ('Gakenke', 'Gakenke'), ('Gicumbi', 'Gicumbi'),
         ('Musanze', 'Musanze'),
-
 
         ('Karongi', 'Karongi'), ('Ngororero', 'Ngororero'),
         ('Nyabihu', 'Nyabihu'), ('Nyamasheke', 'Nyamasheke'),
@@ -216,8 +186,6 @@ class newDepartmentForm(FlaskForm):
     sharePerPerson = StringField(Markup('<b>Umugabane Kuri buri munyamuryango</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
     maleMembers = StringField(Markup('<b>Abanyamuryango b\'abagabo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
     femaleMembers = StringField(Markup('<b>Abanyamuryango b\'abagore</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
-
-
 
     Activity = SelectField(
         Markup('<b>Icyo Koperative Ikora</b>'),

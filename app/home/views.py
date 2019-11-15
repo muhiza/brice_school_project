@@ -1,3 +1,5 @@
+
+# External imports
 from flask import abort, render_template, request, redirect, flash, url_for
 from flask_login import current_user, login_required
 import stripe
@@ -6,25 +8,22 @@ from . import home
 from .forms import *
 from .forms import newDepartmentForm
 
-
+# Internal imports
 from .. import auth
 from .. auth .forms import LoginForm, RegistrationForm
 #from .. import db
 from ..models import Employee
 
 from markupsafe import Markup
-
 import nexmo
 
+# Initiating nexmo
 client = nexmo.Client(key='e88f8d53', secret='w7j2m7zksG7RPPVc')
 
-
+# Initiating stripe
 pub_key = "pk_test_l8INkseWioNZqSRgs78wq7AG"
 secret_key = "sk_test_OXZNLFLMjrg0Lc2mSnp5htQw"
 stripe.api_key = secret_key
-
-
-
 
 def check_admin():
     #form = LoginForm()
@@ -35,27 +34,23 @@ def check_admin():
         abort(403)
 
 def check_overall():
+    # prevent non-overalls from accessing the page
     if not current_user.is_overall:
         abort(403)
 
-
 def check_coop_admin():
+    # prevent non-coop-admins from accessing the page
     if not current_user.is_coop_admin:
         abort(403)
 
-
-
 @home.route('/')
 def homepage():
-
     """
     Render the homepage template on the / route
     """
     #return redirect(url_for('auth.login'))
     return render_template('auth/landing_page.html', title="Welcome", pub_key=pub_key)
-
-
-
+    
 """
 Processing the payment logics
 """

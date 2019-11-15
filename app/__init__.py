@@ -49,7 +49,7 @@ api = Api(app)
 images = UploadSet('images', IMAGES)
 
 # local imports
-from config import app_config
+#from config import app_config
 
 # Initiating the database instance.
 db = SQLAlchemy()
@@ -74,7 +74,8 @@ def create_app(config_name):
         app.config.from_pyfile('config.py')
 
     # Import all models
-    from .models import *
+    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter
+
 
     # A class to help in access the employees view flask admin extension.
     class EmployeeView(ModelView):
