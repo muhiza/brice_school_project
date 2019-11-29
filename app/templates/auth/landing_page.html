@@ -1,256 +1,475 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta name="google-site-verification" content="NFU5FqlX7ayDqezd1vCs9o6kG7uRYGa1Xft5CqVT7a8" />
-	<!-- <meta name="google-site-verification" content="t2r0lfycK6m4Sb8KRrBhnkWIutYK0fTpkHLMPo8h4uc" />
-	<meta name="google-site-verification" content="fWn9p3V0oankH4-Nqi38OjINSFpd1nL0-XwAek78Izg" /> -->
-
 	<meta charset="utf-8">
-	<!--[if IE]>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<![endif]-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 	<meta name="description" content="">
-	<meta name="author" content=""> -->
-	
-	<title> AICOS | Automate &amp; Integrate Cooperatives Activities. </title>
-	<meta name="description" content="Information management system for schools and parents to easily monitor student performance and enhance better and informed decisions">
-	<meta name="keywords" content="aicos.online, Rwanda, Student Login, Parent Login">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
 
-	<link rel="icon" href="packages/assets/img/favicon.ico">
-	
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	
+	<title>SaaS 1 — TheSaaS Sample Demo Landing Page</title>
 
-	<!-- BEGIN CSS FRAMEWORK 
-	<link rel="stylesheet" href="css/font-awesome.min.css"> -->
-	<link href="{{ url_for('static', filename='new/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!-- END CSS FRAMEWORK -->
-	
+	<!-- Styles -->
 
+	<link href="{{ url_for('static', filename='landing_page_assets/css/page.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='landing_page_assets/css/style.css') }}" rel="stylesheet">
 
-
-	<!-- BEGIN CSS PLUGIN -->
-	<link href="{{ url_for('static', filename='new/css/minimal.css') }}" rel="stylesheet">
-	<link href="{{ url_for('static', filename='new/css/popup.css') }}" rel="stylesheet">
-	<link href="{{ url_for('static', filename='new/css/bxslider.min.css') }}" rel="stylesheet">
-
-	<!-- END CSS PLUGIN -->
-	<!-- BEGIN CSS TEMPLATE -->
-	<link href="{{ url_for('static', filename='new/css/main_web.css') }}" rel="stylesheet">
-	<!-- END CSS TEMPLATE -->
-
-	<style type="text/css">
-		.btn-secondary{
-			background: linear-gradient(to bottom, rgba(109,110,113,1), rgba(0,0,0,1));
-			padding: 0 40px;
-			border: none;
-			min-height: 36px;
-			font-size: 18px;
-			border-radius: 6px;
-			color: #fff;
-			position: relative;
-		  outline: none;
-		}
-
-		.btn-secondary:hover{
-			background: #000;
-		  transition: all 1s;
-		}
-	</style>
+	<!-- Favicons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-
 <body>
-	<!-- Load Facebook SDK for JavaScript -->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 
-	<!-- Your customer chat code -->
-	<div class="fb-customerchat"
-	  attribution=setup_tool
-	  page_id="1642228259343800"
-	  theme_color="#3b5998">
-	</div>
-
-
-	<!-- BEGIN NAVIGATION -->
-	<section id="navbar-top"> 
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class=" col-md-3 navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							
-
-							<a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='new/images/final.png') }}" alt="AICOS"
-								style="height: 60px;"></a>
-							<br>
-						</div>
-						<div class=" col-md-7 text-left collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-right" style="height: 90px; text-align: center; padding-top: 20px; font-size: 15px;">
-								<li>
-									<a href="#home">Home</a>
-								</li>
-								<li>
-									<a href="#services">What we do</a>
-								</li>
-								<li>
-									<a href="#abVideo">Video</a>
-								</li>
-								<li>
-									<a href="#clients">Used By</a>
-								</li>
-								<li>
-									<a href="#awards">Awards</a>
-								</li>
-								<li>
-									<a href="#partners">Partner</a>
-								</li>
-								<li>
-									<a href="#contact">Contact us</a>
-								</li>
-								<li>
-									<a target="_blank" href="#">Blog</a>
-								</li>
-							</ul>
-							</div>
-							<ul class="nav navbar-nav navbar-right" style="height: 90px; text-align: center; padding-top: 20px; font-size: 15px;"> 
-						        <li>
-				        		<button class="btn btn-success navbar-btn">
-				        			<a href="{{ url_for('auth.login') }}" style="color: #fff;">
-				        				<span class="fa fa-user"></span> <b>Login </b>
-				        			</a>
-				        		</button>
-						        </li>
-      						</ul>
-						</div>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav>
-	</section>
-
-	
-	<!-- END NAVIGATION -->
-	
-	<!-- BEGIN HOME -->
-	<section id="home" class="page">
+	<!-- Navbar -->
+	<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="smart">
 		<div class="container">
-			<div class="content cover text-center">
-				<div class="row">
-					<div class="col-sm-12">
-						<h1><b>Automate &amp; Integrate your Cooperative's Activities.</b></h1><br><br>
-					</div>
+
+			<div class="navbar-left mr-4">
+				<button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
+				<a class="navbar-brand" href="#">
+					<img class="logo-light"
+						src="{{ url_for('static', filename='landing_page_assets/img/logo-light.png') }}" alt="logo">
+				</a>
+			</div>
+
+			<section class="navbar-mobile">
+				<nav class="nav nav-navbar">
+					<a class="nav-link active" href="#home">Home</a>
+					<a class="nav-link" href="#section-features">Features</a>
+					<a class="nav-link" href="#section-pricing">Pricing</a>
+					<a class="nav-link" href="#">Resources</a>
+					<a class="nav-link" href="#">Contact</a>
+				</nav>
+
+				<div class="d-none d-stick-block">
+					<a class="btn btn-sm btn-light ml-lg-5 mr-2" href="{{ url_for('auth.login') }}">Login</a>
+					<a class="btn btn-sm btn-success" href="{{ url_for('auth.login') }}">Sign up</a>
 				</div>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="col-md-12">
-							<center>
-								<div class="btn-group">
-							  		<div class="btn-group">
-									  	<a href="{{ url_for('auth.register') }}">
-											<button type="submit" class="btn btn-success btn-block" style="padding: 10px 28px; font-size: 30px; line-height: normal; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;">
-												<i class="fa fa-sign-in"></i>&nbsp;&nbsp; SIGN UP FOR FREE</button>
-										</a>
-							  		</div>
-							  	</div>
-							</center>
-						</div>
-					</div>
-					<center>
+			</section>
+
+		</div>
+	</nav><!-- /.navbar -->
+
+
+	<!-- Header -->
+	<header id="home" class="header text-white h-fullscreen text-center text-lg-left" style="background-color: #24292e">
+		<canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+		<div class="container">
+			<div class="row align-items-center h-100">
+
+				<div class="col-lg-6">
+					<h1>How developers work</h1>
+					<p class="lead mt-5 mb-8">Support your workflow with lightweight tools and features. Then work how
+						you work best—we'll follow your lead.</p>
+					<p class="gap-xy">
+						<a class="btn btn-round btn-outline-light mw-150" href="#">Learn more</a>
+						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.login') }}">Sign up</a>
+					</p>
 				</div>
+
+				<div class="col-lg-5 ml-auto">
+					<img class="mt-5"
+						src="{{ url_for('static', filename='landing_page_assets/img/preview/laptop-1.png') }}"
+						alt="img">
+				</div>
+
 			</div>
 		</div>
-	</section>
-	<!-- END HOME -->
-	
-	<div class="scroll-to-top"></div>
+	</header><!-- /.header -->
 
-	<!-- BEGIN JS FRAMEWORK -->
-	<script src="{{ url_for('static', filename='new/js/jquery-1.11.3.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/jquery-migrate-1.2.1.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/bootstrap.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/jquery.bxslider.min.js') }}"></script>
 
-	<!-- END JS FRAMEWORK -->
-	
-	<!-- BEGIN JS PLUGIN -->
-	<script src="{{ url_for('static', filename='new/js/pace.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/jquery.magnific-popup.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/jquery.nav.js') }}"></script>
-	<script src="{{ url_for('static', filename='new/js/isotope.pkgd.min.js') }}"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQJSYUutAV22h0e8tdaoBD1JybbD7TE4c&callback=initMap" type="text/javascript"></script>
+	<!-- Main Content -->
+	<main class="main-content">
 
-	<!-- END JS PLUGIN -->
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Welcome
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section class="section">
+			<div class="container">
+				<header class="section-header">
+					<small>Welcome</small>
+					<h2>Get a Better Understanding</h2>
+					<hr>
+					<p class="lead">Holisticly implement fully tested process improvements rather than dynamic internal.
+					</p>
+				</header>
 
-	<!-- BEGIN JS TEMPLATE -->
-	<script src="{{ url_for('static', filename='new/js/main_web.js') }}"></script>
-	<!-- END JS TEMPLATE -->
 
-	 <div id="fb-root"></div>
-	 
+
+				<div class="row gap-y">
+
+					<div class="col-md-8 mx-auto">
+
+						<img src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-9.gif') }}"
+							alt="..." data-aos="fade-up" data-aos-duration="2000">
+					</div>
+
+
+					<div class="w-100"></div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile"></i></div>
+							<div class="media-body">
+								<h5>Responsive</h5>
+								<p>Your website works on any device: desktop, tablet or mobile.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-primary mr-5"><i class="icon-gears"></i></div>
+							<div class="media-body">
+								<h5>Customizable</h5>
+								<p>You can easily read, edit, and write your own code, or change everything.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-tools"></i></div>
+							<div class="media-body">
+								<h5>UI Kit</h5>
+								<p>There is a bunch of useful and necessary elements for developing your website.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-layers"></i></div>
+							<div class="media-body">
+								<h5>Lego Base</h5>
+								<p>You can find our code well organized, commented and readable.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-recycle"></i></div>
+							<div class="media-body">
+								<h5>Clean Code</h5>
+								<p>As you can see in the source code, we provided a clean code.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-chat"></i></div>
+							<div class="media-body">
+								<h5>Support</h5>
+								<p>When you purchase this template, you'll freely receive future updates.</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section class="section py-7" style="background-color: #8ea6e6">
+			<div class="container">
+				<div class="row gap-y align-items-center">
+					<div class="col-md-9">
+						<h4 class="mb-0 text-white text-center text-md-left">Want a bite? You're in the right place!
+						</h4>
+					</div>
+
+					<div class="col-md-3 text-center text-md-right">
+						<a class="btn btn-lg btn-round btn-light" href="#">Take a test drive</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Features
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section id="section-features" class="section bg-gray">
+			<div class="container">
+				<header class="section-header">
+					<small>Feature</small>
+					<h2>More to Discover</h2>
+					<hr>
+					<p class="lead">We waited until we could do it right. Then we did! Instead of creating a carbon
+						copy.</p>
+				</header>
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 ml-auto">
+						<h4>Getting Started page</h4>
+						<p>As part of efforts to improve user onboarding, I shipped an experiment to a subset of new
+							users showing them a Getting Started page immediately after signup to help them get to what
+							we think are some of the most important actions for new users to take. We compared the
+							subset of users against a control group to see whether such an experience improved
+							engagement over a period of time.</p>
+					</div>
+
+					<div class="col-md-5 order-md-first">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-6.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+				<hr class="my-8">
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 mr-auto">
+						<h4>Outdated comments toggling</h4>
+						<p>Last week we shipped outdated comments...well, brought them back, actually. We used to show
+							collapsed comments on outdated diffs as a single line, but removed that when we shipped code
+							review recently. We brought that back last week with an improvement: you can now toggle open
+							threads on outdated diffs in a review individually.</p>
+					</div>
+
+					<div class="col-md-5">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-7.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+				<hr class="my-8">
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 ml-auto">
+						<h4>Code review illustrations</h4>
+						<p>Less an illustration, and more a literal proxy. These show up when the feature's introduced.
+							Monotonectally leverage existing standards compliant ideas with distributed data.
+							Efficiently simplify cross-unit systems whereas adaptive testing. Monotonectally leverage
+							existing standards compliant ideas with distributed data. Efficiently simplify cross-unit
+							systems whereas adaptive testing.</p>
+					</div>
+
+					<div class="col-md-5 order-md-first">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-8.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Pricing
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section id="section-pricing" class="section">
+			<div class="container">
+				<header class="section-header">
+					<small>Plans</small>
+					<h2>Pricing</h2>
+					<hr>
+					<p class="lead">Choose any of the following plans to get start with. You can start with the FREE
+						plan to see our web application at first. You can always change your plan from your account.</p>
+				</header>
+
+
+				<div class="text-center my-7">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-round btn-outline-secondary w-150 active">
+							<input type="radio" name="pricing" value="monthly" autocomplete="off" checked> Monthly
+						</label>
+						<label class="btn btn-round btn-outline-secondary w-150">
+							<input type="radio" name="pricing" value="yearly" autocomplete="off"> Yearly
+						</label>
+					</div>
+				</div>
+
+
+				<div class="row gap-y text-center">
+
+					<div class="col-md-4">
+						<div class="pricing-1">
+							<p class="plan-name">Free</p>
+							<br>
+							<h2 class="price">0</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>1 Repository</small><br>
+								<small>1 Private Project</small><br>
+								<small>100 MB Attachment</small><br>
+							</div>
+
+							<br>
+							<p class="text-center py-3">
+								<a class="btn btn-primary" href="#">Get started</a>
+							</p>
+						</div>
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="pricing-1 popular">
+							<p class="plan-name">Personal</p>
+							<br>
+							<h2 class="price text-success">
+								<span class="price-unit">$</span>
+								<span data-bind-radio="pricing" data-monthly="9" data-yearly="99">9</span>
+								<span class="plan-period" data-bind-radio="pricing" data-monthly="/mo"
+									data-yearly="/yr">/mo</span>
+							</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>1 Repository</small><br>
+								<small>10 Private Project</small><br>
+								<small>10 GB attachment</small><br>
+							</div>
+
+							<br>
+							<p class="text-center py-3">
+								<a class="btn btn-success" href="#" data-bind-href="pricing" data-monthly="#monthly"
+									data-yearly="#yearly">Get started</a>
+							</p>
+						</div>
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="pricing-1">
+							<p class="plan-name">Team</p>
+							<br>
+							<h2 class="price">
+								<span class="price-unit">$</span>
+								<span data-bind-radio="pricing" data-monthly="39" data-yearly="399">39</span>
+								<span class="plan-period" data-bind-radio="pricing" data-monthly="/mo"
+									data-yearly="/yr">/mo</span>
+							</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>5 Repository</small><br>
+								<small>25 Private Project</small><br>
+								<small>100 GB attachments</small><br>
+							</div>
+
+							<br>
+							<p class="text-center py-3">
+								<a class="btn btn-primary" href="#" data-bind-href="pricing" data-monthly="#monthly"
+									data-yearly="#yearly">Get started</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Signup
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section class="section bg-gray text-center">
+			<div class="container">
+
+				<header class="section-header">
+					<small>Try It Now</small>
+					<h2 class="lead-8"><strong>Get Started Free</strong></h2>
+					<hr>
+					<p class="lead">Sign up for free and become one of the millions of people around the world who have
+						fallen in love with TheSaaS.</p>
+				</header>
+
+
+				<div class="row">
+					<form class="col-md-4 col-xl-4 mx-auto input-border">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-lg" placeholder="Name">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control form-control-lg" placeholder="Email">
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control form-control-lg" placeholder="Password">
+						</div>
+
+						<button class="btn btn-block btn-xl btn-success">Sign up</button>
+						<p class="small mt-3 opacity-70">or use your <a href="#">Facebook account</a></p>
+					</form>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row gap-y align-items-center">
+
+				<div class="col-md-3 text-center text-md-left">
+
+					<a href="#"><img src="{{ url_for('static', filename='landing_page_assets/img/logo-dark.png') }}"
+							alt="logo"></a>
+				</div>
+
+				<div class="col-md-6">
+					<div class="nav nav-center">
+						<a class="nav-link" href="#">About</a>
+						<a class="nav-link" href="#">Blog</a>
+						<a class="nav-link" href="#">Policy</a>
+						<a class="nav-link" href="#">Contact</a>
+					</div>
+				</div>
+
+				<div class="col-md-3 text-center text-md-right">
+					<small>© 2019. All rights reserved.</small>
+				</div>
+
+			</div>
+		</div>
+	</footer><!-- /.footer -->
+
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='landing_page_assets/js/page.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script>
+
+
 </body>
-	
-	<!-- <script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script> -->
-
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-
-	<script type="text/javascript">
-
-		var contactUsLoading 	= $("#contactUsLoading");
-		var contactUsForm  	 	= $("#contactUsForm");
-		var messageSentResponse = $("#messageSentResponse");;
-
-		contactUsLoading.hide();
-		messageSentResponse.hide();
-
-		$('#contactUsForm').on('submit', function(e){
-			
-			contactUsForm.hide();
-			messageSentResponse.hide();
-			contactUsLoading.removeClass('hidden');
-			contactUsLoading.slideDown();
-	    });
-
-		$('.bxslider').bxSlider({
-			  auto: true ,
-			  autoControls: true ,
-			  ticker: true
-		});
-
-		$('.bxslider_partners').bxSlider();
-
-	</script>
-
-	
 
 </html>
-

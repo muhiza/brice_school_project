@@ -112,7 +112,7 @@ def aicos_members_home():
     #apps = Department.query.filter_by(email=current_user.department_id).first()
     #applications = apps.applications
 
-    return render_template('indexz.html',
+    return render_template('cooperative_admin_members.html',
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
@@ -255,7 +255,7 @@ def dashboard():
         amandec = 0
     if amandeApi is None:
         amandeApi = 0
-    return render_template('home.html',
+    return render_template('cooperative_admin.html',
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
@@ -307,7 +307,7 @@ def memberDetails(id):
 
     #motos = employee.motos
     if employee is not None:
-        return render_template("member_details.html", employee=employee)
+        return render_template("cooperative_member_profile.html", employee=employee)
     return redirect(url_for('aicos_members.aicos_members_home'))
 
 
@@ -1041,7 +1041,7 @@ def doimportmbs():
             m.Akagari = row['Akagari']
             m.Umudugudu = row['Umudugudu']
             m.tariki_yinjiriye = row['tariki_yinjiriye']
-            m.umugabane_ukwezi = row['umugabane_ukwezi']
+            m.umugabane = row['umugabane']
             m.Umukono = row['Umukono']
             m.nomero_telephone = row['nomero_telephone']
             m.Amashuri = row['Amashuri']
@@ -1070,12 +1070,14 @@ def doimportmbs():
                 field_name='file', session=db.session,
                 tables=[Member],
                 initializers=[mbs_init_func])
+                
+            flash(Markup('Lisiti y\'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!!.'), 'success')
             return redirect(url_for('aicos_members.aicos_members_home'), code=302)
-            flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
+            #flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
         except:
             flash("The list you are uploading is not well formated, please reformat it and try again or Download the sample sheet")
             return redirect(url_for('aicos_members.aicos_members_home'), code=302)
-    return render_template("employees/upload.html",
+    return render_template("employees/cooperative_upload_members.html",
                            add_member=add_member,
                            upload_file=upload_file,
                            title="Upload a file")
@@ -1086,7 +1088,7 @@ def templateDownload():
     query_sets = Member.query.filter_by(id=20).all()
     column_names = ['id', 'izina_ribanza', 'izina_rikurikira', 'Ayandi',
                     'Igitsina', 'Indangamuntu', 'Intara',
-                    'Akarere', 'Umurenge', 'Akagari', 'Umudugudu', 'tariki_yinjiriye', 'umugabane_ukwezi',
+                    'Akarere', 'Umurenge', 'Akagari', 'Umudugudu', 'tariki_yinjiriye', 'umugabane',
                     'Umukono', 'nomero_telephone', 'Amashuri', 'Ubumuga', 'Arubatse', 'umubare_abana',
                     'icyiciro_ubudehe', 'Ubwishingizi', 'akazi_akora_muri_koperative', 'akazi_akora_ahandi',
                     'ubuso_ahingaho', 'ubwoko_igihingwa', 'ubuso_ahingaho_ibindi', 'ubwoko_igihingwa_kindi',
@@ -1116,7 +1118,7 @@ def AddNewMember():
             Akagari=form.akagarix.data,
             Umudugudu=form.umudugudux.data,
             tariki_yinjiriye=form.tariki_yinjiriyex.data,
-            umugabane_ukwezi=form.umugabanex.data,
+            umugabane=form.umugabanex.data,
             Umukono=form.umukonox.data,
             nomero_telephone=form.nomero_ya_telephonex.data,
             Amashuri=form.amashurix.data,
@@ -1159,7 +1161,7 @@ def AddNewMember():
             flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
             return redirect(url_for('aicos_members.AddNewMember', add_member=add_member, upload_file=upload_file, title="Add New Member"))
 
-    return render_template("employees/membership_form.html", form=form,
+    return render_template("employees/cooperative_membership_form.html", form=form,
                            add_member=add_member,
                            upload_file=upload_file,
                            title="Add New Member")

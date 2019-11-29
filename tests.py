@@ -53,7 +53,7 @@ class TestViews(TestBase):
         """
 
         # There's an error here (instead of home_muhiza_frank, it's home)
-        target_url = url_for('home_muhiza_frank.dashboard')
+        target_url = url_for('home.dashboard')
         redirect_url = url_for('auth.login', next=target_url)
         response = self.client.get(target_url)
         self.assertEqual(response.status_code, 302)
@@ -61,7 +61,6 @@ class TestViews(TestBase):
 
 
 
-        """
     def test_admin_dashboard_view(self):
         """
         #Test that dashboard is inaccessible without login
@@ -77,19 +76,19 @@ class TestViews(TestBase):
         """
         #Test that departments page is inaccessible without login
         #and redirects to login page then to departments page
-        """
-        target_url = url_for('admin.list_departments')
+        
+        target_url = url_for('aicos_members.list_departments')
         redirect_url = url_for('auth.login', next=target_url)
         response = self.client.get(target_url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, redirect_url)
-
+        """
     def test_roles_view(self):
         """
         #Test that roles page is inaccessible without login
         #and redirects to login page then to roles page
         """
-        target_url = url_for('admin.list_roles')
+        target_url = url_for('aicos_members.list_roles')
         redirect_url = url_for('auth.login', next=target_url)
         response = self.client.get(target_url)
         self.assertEqual(response.status_code, 302)
@@ -100,13 +99,13 @@ class TestViews(TestBase):
         #Test that employees page is inaccessible without login
         #and redirects to login page then to employees page
         """
-        target_url = url_for('admin.list_employees')
+        target_url = url_for('aicos_members.list_employees')
         redirect_url = url_for('auth.login', next=target_url)
         response = self.client.get(target_url)
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, redirect_url)
-        """
-"""
+
+
 class TestErrorPages(TestBase):
 
     def test_403_forbidden(self):
@@ -133,7 +132,6 @@ class TestErrorPages(TestBase):
         response = self.client.get('/500')
         self.assertEqual(response.status_code, 500)
         b'self.assertTrue("500 Error" in response.data)'
-"""
 
 
 if __name__ == '__main__':

@@ -63,7 +63,7 @@ def register():
             flash("Kwiyandikisha ntabwo byakunze neza")
             redirect(url_for('auth.register'))
     #load registration template
-    return render_template('auth/register.html', form=form, title='Register')
+    return render_template('auth/cooperative_admin_register.html', form=form, title='Register')
 
 
 #The route for login page and processing the request.
@@ -111,7 +111,7 @@ def login():
         else:
             flash('Invalid email or password.')
     # load login template
-    return render_template('auth/login.html', form=form, title='Login')
+    return render_template('auth/cooperative_admin_login.html', form=form, title='Login')
 
 """
 @auth.route('/coopadmin')
