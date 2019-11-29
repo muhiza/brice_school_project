@@ -758,8 +758,6 @@ class Moto(db.Model):
         return '<Moto: {}>'.format(self.name)
 
 
-
-
 # Class / Table for notifications to all changes in the database
 class Notification(db.Model):
 
@@ -779,15 +777,6 @@ class Notification(db.Model):
 
     def __repr__(self):
         return '<Notification: {}>'.format(self.id)
-
-
-
-
-
-
-
-
-
 
 
 class Committee(db.Model):
@@ -825,9 +814,6 @@ class Committee(db.Model):
 
     def __repr__(self):
         return '<Committee: {}>'.format(self.first_name)
-
-
-
 
 
 # All the tables (models) for the coop admin's activities.
