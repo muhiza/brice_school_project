@@ -23,7 +23,7 @@ class TestBase(TestCase):
         config_name = 'testing'
         app = create_app(config_name)
         app.config.update(
-            SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/test'
+            SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
         )
         return app
 

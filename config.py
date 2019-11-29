@@ -31,11 +31,12 @@ class TestingConfig(Config):
     Testing configurations
     """
     # TEST = True
+    # DEBUG = True
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/test'
-    LOGIN_DISABLED = True
-    USE_SESSION_FOR_NEXT = True
-    SERVER_NAME = 'localhost'
+    SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
+    # LOGIN_DISABLED = True
+    # USE_SESSION_FOR_NEXT = True
+    # SERVER_NAME = 'http://127.0.0.1:5000'
     
 app_config = {
     'development': DevelopmentConfig,

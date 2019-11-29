@@ -171,7 +171,7 @@ class Federation(db.Model):
 
     """ We will always use this __init__ function to upload excel file  """
     def __init__(self, code):
-        self.id = id
+        # self.id = id
         self.code = code
 
 
@@ -209,7 +209,7 @@ class Union(db.Model):
 
 
 
-class Department(UserMixin,db.Model):
+class Department(db.Model):
     """
     Create a Department table
     """

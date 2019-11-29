@@ -296,7 +296,7 @@ def dashboard():
 
 
 
-@aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
+# @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
 @login_required
 def memberDetails(id):
     check_admin()
@@ -306,7 +306,8 @@ def memberDetails(id):
     if employee is not None:
         return render_template("member_details.html", employee=employee)
     return redirect(url_for('aicos_members.aicos_members_home'))
-
+# @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
+aicos_members.add_url_rule('/memberDetails/<int:id>', 'memberDetails', memberDetails, methods=['GET', 'POST'])
 
 
 
