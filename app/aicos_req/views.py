@@ -235,7 +235,7 @@ def abanyamuryangoImigabane():
     notes = Notification.query.filter_by(department_id=current_user.email)
     #if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
-    return render_template('accountingBooks/imigabane/abanyamuryangoImigabane.html',
+    return render_template('accountingBooks/imigabane/members_share_capital.html',
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
@@ -251,6 +251,13 @@ def abanyamuryangoDetails(id):
     if employee is not None:
         return render_template("accountingBooks/imigabane/abanyamuryangoImigabaneDetails.html", employee=employee)
     return redirect(url_for('aicos_req.abanyamuryangoImigabane'))
+
+
+
+
+
+
+
 
 
 
@@ -482,7 +489,7 @@ def signatories():
 def amatsinda():
     amatsinda = Itsinda.query.all()
     member = ItsindaMember.query.all()
-    return render_template('amatsinda/amatsinda.html', amatsinda=amatsinda, member=member)
+    return render_template('amatsinda/cooperative_groups.html', amatsinda=amatsinda, member=member)
 
 
 @aicos_req.route('cooperatives/amatsinda/koraitsinda', methods=['GET', 'POST'])
@@ -508,7 +515,7 @@ def koraItsinda():
             flash("ntabwo itsinda ryanditse neza ongera ugerageze")
             return redirect(url_for('aicos_req.koraItsinda'))
 
-    return render_template('/amatsinda/koraItsinda.html', form=form)
+    return render_template('/amatsinda/create_cooperative_group.html', form=form)
 
 
 @aicos_req.route('/amatsinda/members/<int:id>', methods=['GET', 'POST'])
@@ -517,7 +524,7 @@ def amatsindaMembers(id):
     itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
     members = Member.query.all()
     itsindamember = ItsindaMember.query.filter_by(itsinda_id=itsinda.id).all()
-    return render_template('/amatsinda/all_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+    return render_template('/amatsinda/group_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
 
 
 
@@ -527,7 +534,7 @@ def add_members(id):
     itsindaName = Itsinda.query.filter_by(id=itsinda.id).first()
     members = Member.query.all()
     itsindamember = ItsindaMember.query.all()
-    return render_template('/amatsinda/add_itsinda_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
+    return render_template('/amatsinda/add_group_members.html', members=members, itsindaName=itsindaName, itsindamember=itsindamember)
 
 @aicos_req.route('/amatsinda/member/adding/<int:a>/<int:b>', methods=["GET", "POST"])
 def ongeramo_member(a, b):
