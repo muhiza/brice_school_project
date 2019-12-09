@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 
-	<title>SaaS 1 — TheSaaS Sample Demo Landing Page</title>
+	<title>COPA</title>
 
 	<!-- Styles -->
 
@@ -27,7 +27,7 @@
 				<button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
 				<a class="navbar-brand" href="#">
 					<img class="logo-light"
-						src="{{ url_for('static', filename='landing_page_assets/img/logo-light.png') }}" alt="logo">
+						src="{{ url_for('static', filename='landing_page_assets/img/logo-dark.png') }}" alt="logo">
 				</a>
 			</div>
 
@@ -42,7 +42,7 @@
 
 				<div class="d-none d-stick-block">
 					<a class="btn btn-sm btn-light ml-lg-5 mr-2" href="{{ url_for('auth.login') }}">Login</a>
-					<a class="btn btn-sm btn-success" href="{{ url_for('auth.login') }}">Sign up</a>
+					<a class="btn btn-sm btn-success" href="{{ url_for('auth.register') }}">Sign up</a>
 				</div>
 			</section>
 
@@ -57,12 +57,15 @@
 			<div class="row align-items-center h-100">
 
 				<div class="col-lg-6">
-					<h1>How developers work</h1>
-					<p class="lead mt-5 mb-8">Support your workflow with lightweight tools and features. Then work how
-						you work best—we'll follow your lead.</p>
+					<h1>Digitizing Cooperatives.</h1>
+					<p class="lead mt-5 mb-8">
+							Automate & Integrate your cooperative's daily activities to improve 
+							member's socio-economic situations by encouraging the benefits of co-operative 
+							enterprises using technology.
+					</p>
 					<p class="gap-xy">
 						<a class="btn btn-round btn-outline-light mw-150" href="#">Learn more</a>
-						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.login') }}">Sign up</a>
+						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.register') }}">Sign up</a>
 					</p>
 				</div>
 
@@ -114,7 +117,7 @@
 							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile"></i></div>
 							<div class="media-body">
 								<h5>Responsive</h5>
-								<p>Your website works on any device: desktop, tablet or mobile.</p>
+								<p>COPA Platform works on any device: desktop, tablet or mobile.</p>
 							</div>
 						</div>
 					</div>
@@ -125,7 +128,7 @@
 							<div class="lead-6 line-height-1 text-primary mr-5"><i class="icon-gears"></i></div>
 							<div class="media-body">
 								<h5>Customizable</h5>
-								<p>You can easily read, edit, and write your own code, or change everything.</p>
+								<p>You can easily read, edit, and write your own layout of the COPA platform, or change everything.</p>
 							</div>
 						</div>
 					</div>
@@ -135,8 +138,8 @@
 						<div class="media">
 							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-tools"></i></div>
 							<div class="media-body">
-								<h5>UI Kit</h5>
-								<p>There is a bunch of useful and necessary elements for developing your website.</p>
+								<h5>Management Kit</h5>
+								<p>There is a bunch of useful and necessary tools for managing your cooperative's daily operations.</p>
 							</div>
 						</div>
 					</div>
@@ -146,8 +149,8 @@
 						<div class="media">
 							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-layers"></i></div>
 							<div class="media-body">
-								<h5>Lego Base</h5>
-								<p>You can find our code well organized, commented and readable.</p>
+								<h5>Shareable.</h5>
+								<p> With COPA, every single piece of content is designed to be shareable.</p>
 							</div>
 						</div>
 					</div>
@@ -157,8 +160,8 @@
 						<div class="media">
 							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-recycle"></i></div>
 							<div class="media-body">
-								<h5>Clean Code</h5>
-								<p>As you can see in the source code, we provided a clean code.</p>
+								<h5>Well documented processes</h5>
+								<p> With COPA, we arranged the collection and documentation of all processes. </p>
 							</div>
 						</div>
 					</div>
@@ -169,7 +172,7 @@
 							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-chat"></i></div>
 							<div class="media-body">
 								<h5>Support</h5>
-								<p>When you purchase this template, you'll freely receive future updates.</p>
+								<p>When you use COPA platform, you'll constantly receive future updates and 24/7 support.</p>
 							</div>
 						</div>
 					</div>
@@ -212,25 +215,23 @@
 					<small>Feature</small>
 					<h2>More to Discover</h2>
 					<hr>
-					<p class="lead">We waited until we could do it right. Then we did! Instead of creating a carbon
-						copy.</p>
+					<p class="lead">COPA is a SaaS platform that enables full tracked management of all the resources of cooperatives.</p>
 				</header>
 
 
 				<div class="row gap-y align-items-center">
 					<div class="col-md-6 ml-auto">
-						<h4>Getting Started page</h4>
-						<p>As part of efforts to improve user onboarding, I shipped an experiment to a subset of new
-							users showing them a Getting Started page immediately after signup to help them get to what
-							we think are some of the most important actions for new users to take. We compared the
-							subset of users against a control group to see whether such an experience improved
-							engagement over a period of time.</p>
+						<h4>Membership management.</h4>
+						<p> This is the membership management and communication tool that was designed to impacted hundreds 
+							of thousands of people from cooperatives socities. Better organize your members, improve your communication, 
+							and empower members to connect together, communicate online, and collaborate towards higher goals. 
+							COPA's membership management module today can be used by all cooperatives regardless their economic sectors.</p>
 					</div>
 
 					<div class="col-md-5 order-md-first">
 
 						<img class="rounded shadow-2"
-							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-6.png') }}"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/membership_management.png') }}"
 							alt="...">
 					</div>
 				</div>
@@ -241,17 +242,22 @@
 
 				<div class="row gap-y align-items-center">
 					<div class="col-md-6 mr-auto">
-						<h4>Outdated comments toggling</h4>
-						<p>Last week we shipped outdated comments...well, brought them back, actually. We used to show
-							collapsed comments on outdated diffs as a single line, but removed that when we shipped code
-							review recently. We brought that back last week with an improvement: you can now toggle open
-							threads on outdated diffs in a review individually.</p>
+						<h4>Stock management.</h4>
+						<p>
+							Stock management feature is suitable for cooperatives (small, medium to large) in retail, wholesale, manufacturing, 
+							food production sectors which have requirements to manage stock / inventory levels with members engagement. Module covers the entire business 
+							cycle in stock / inventory management. Communication, Payment and other functions are integrated in the module for more than just managing 
+							inventories. COPA's Inventory management provides features that give cooperatives and members information they need to manage costs and maximize 
+							profitability. </p>
+						
+						
+						</p>
 					</div>
 
 					<div class="col-md-5">
 
 						<img class="rounded shadow-2"
-							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-7.png') }}"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/stock_management.png') }}"
 							alt="...">
 					</div>
 				</div>
@@ -262,18 +268,22 @@
 
 				<div class="row gap-y align-items-center">
 					<div class="col-md-6 ml-auto">
-						<h4>Code review illustrations</h4>
-						<p>Less an illustration, and more a literal proxy. These show up when the feature's introduced.
-							Monotonectally leverage existing standards compliant ideas with distributed data.
-							Efficiently simplify cross-unit systems whereas adaptive testing. Monotonectally leverage
-							existing standards compliant ideas with distributed data. Efficiently simplify cross-unit
-							systems whereas adaptive testing.</p>
+						<h4>Reporting</h4>
+						<p>
+
+								Comprehensive and Automatic Reporting is a COPA platform's module that provides cooperative behavior analytics, making it easy for cooperatives and their stakeholders 
+								of all types to optimize business processes. We equip cooperatives, members and their stakeholders with the resources needed to have a bigger picture of what's going 
+								on in the organization, shifting management from reactive to proactive. By capturing unbiased data, COPA gives cooperative and their members the power to understand 
+								how work gets done, what affects productivity, and how to streamline processes to create an efficient business.
+						
+						
+						</p>
 					</div>
 
 					<div class="col-md-5 order-md-first">
 
 						<img class="rounded shadow-2"
-							src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-8.png') }}"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/reporting.png') }}"
 							alt="...">
 					</div>
 				</div>
@@ -394,6 +404,13 @@
 		</section>
 
 
+
+
+
+		
+
+
+
 		<!--
       |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
       | Signup
@@ -406,8 +423,7 @@
 					<small>Try It Now</small>
 					<h2 class="lead-8"><strong>Get Started Free</strong></h2>
 					<hr>
-					<p class="lead">Sign up for free and become one of the millions of people around the world who have
-						fallen in love with TheSaaS.</p>
+					<p class="lead">Sign up for free and become one of the millions of Rwandan people who have fallen in love with COPA.</p>
 				</header>
 
 
@@ -425,7 +441,7 @@
 							<input type="password" class="form-control form-control-lg" placeholder="Password">
 						</div>
 
-						<button class="btn btn-block btn-xl btn-success">Sign up</button>
+						<button class="btn btn-block btn-xl btn-success"><a href="{{ url_for('auth.register') }}">Sign up</a></button>
 						<p class="small mt-3 opacity-70">or use your <a href="#">Facebook account</a></p>
 					</form>
 				</div>
@@ -443,8 +459,8 @@
 
 				<div class="col-md-3 text-center text-md-left">
 
-					<a href="#"><img src="{{ url_for('static', filename='landing_page_assets/img/logo-dark.png') }}"
-							alt="logo"></a>
+					<a href="#">
+						<img src="{{ url_for('static', filename='landing_page_assets/img/logo-light.png') }}" alt="logo"></a>
 				</div>
 
 				<div class="col-md-6">
