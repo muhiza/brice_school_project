@@ -113,34 +113,6 @@ $(function() {
     });
     return false;
   }
-  
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-864788073');
-  
-  $('a[href*="https://themeforest.net"]').on('click', function() {
-    //gtag_report_conversion();
-    ga('send', 'event', {
-      eventCategory: 'TheSaaS - Buy',
-      eventAction: 'Click',
-      eventLabel: 'Buy',
-      transport: 'beacon'
-    });
-  });
-  
-  
-  $(document).on('click', '.fo-icon, .fo-popup', function() {
-    ga('send', 'event', {
-      eventCategory: 'Formito - TheSaaS',
-      eventAction: 'Click',
-      eventLabel: 'Badge',
-      transport: 'beacon'
-    });
-  });
-
-});
-
 
 
 (function ($, window, document) {
@@ -201,7 +173,5 @@ $(function() {
   }
 })(jQuery, window, document)
 
-
-!function(e,t,n,s,u,a){e.formito_key='fo_pk_vb';e.formito_form='11q';u=t.createElement(n),u.async=!0,u.src='//script.formito.com/v1/formito.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a)}(window,document,'script');
 
 

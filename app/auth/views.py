@@ -136,6 +136,9 @@ def logout():
         # redirect to the login page
         return redirect(url_for('auth.login'))
 
+
+
+
 # The route for forgot password page and processing.
 @auth.route('/ForgotPassword', methods=['POST', 'GET'])
 def ForgotPassword():
@@ -160,3 +163,43 @@ def ForgotPassword():
             and show go to confirm page for checking if he is real employee
             """
     return render_template('auth/forget_password.html', form=form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# The route for Kinyarwanda Landing page
+@auth.route('/rw/')
+def rwanda():
+    return render_template('auth/landing_page_rwanda.html')
+
+
+
+
+# The route for English Landing page
+@auth.route('/en/')
+def english():
+    return render_template('auth/landing_page.html')
