@@ -1,74 +1,78 @@
 {% extends "rukomatanyi_main_base.html" %}
-{% block body %}
+{% block content %}
 <div class="content mt-3">
     <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="">
-                            <strong class="card-title">Inguzanyo z'abandi </strong>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class=""><br><br>
+                                <h3> Inguzanyo z'abandi </h3>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{{ url_for('aicos_req.record_inguzanyo_abandi') }}"
+                                    class="btn btn-primary btn-md">Injiza ibishya</a>
+                            </div><br><br>
                         </div>
-                        <div class="pull-right">
-                            <a href="{{ url_for('aicos_req.record_inguzanyo_abandi') }}" class="btn btn-primary btn-md">Injiza ibishya</a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
-                            <thead>
-							     <tr>
-                                    <th>Tariki</th>
-		                            <th>Aho Bigiye</th>
-		                            <th>Aho Bivuye</th>
-		                            <th>Hindura</th>
-		                            <th>Siba</th>
-		                        </tr>
-					        </thead>
-					        <tbody>
-                                {% if rukomatanyo %}
+                        <div class="card-body">
+                            <table id="bootstrap-data-table-export" class="table table-striped table-bordered"
+                                style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Tariki</th>
+                                        <th>Aho Bigiye</th>
+                                        <th>Aho Bivuye</th>
+                                        <th>Hindura</th>
+                                        <th>Siba</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if rukomatanyo %}
                                     {% for ru in rukomatanyo %}
-                                        <tr>
-                                            {% if ru.inguzanyozabandi %}
-                                                {% for b in ru.inguzanyozabandi %}
-                                                    <td>
-                                                        {% for b in ru.inguzanyozabandi %}
-                                                            {{ ru.tariki_byakozwe }}
-                                                        {% endfor %}
-                                                    </td>
-                                                    <td>
-                                                        {% for b in ru.inguzanyozabandi %}
-                                                            {% if loop.first %}
-                                                                {{ b.ayinjiye }}
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </td>
-                                                    <td>
-                                                        {% for b in ru.inguzanyozabandi %}
-                                                            {% if loop.first %}
-                                                                {{ b.ayasohotse }}
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </td>
-                                                    <td>
-                                                        {% for b in ru.inguzanyozabandi %}
-                                                            {% if loop.first %}
-                                                                <a href="{{ url_for('aicos_req.hinduraUmugabaneShingiro', id=b.id) }}" class="badge badge-success">
-                                                                    Hindura
-                                                                </a>  
-                                                            {% endif %}
-                                                        {% endfor %}
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="badge badge-danger">
-                                                            Siba
-                                                        </a>               
-                                                    </td>
-                                                {% endfor %}
+                                    <tr>
+                                        {% if ru.inguzanyozabandi %}
+                                        {% for b in ru.inguzanyozabandi %}
+                                        <td>
+                                            {% for b in ru.inguzanyozabandi %}
+                                            {{ ru.tariki_byakozwe }}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for b in ru.inguzanyozabandi %}
+                                            {% if loop.first %}
+                                            {{ b.ayinjiye }}
                                             {% endif %}
-                                        </tr>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for b in ru.inguzanyozabandi %}
+                                            {% if loop.first %}
+                                            {{ b.ayasohotse }}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for b in ru.inguzanyozabandi %}
+                                            {% if loop.first %}
+                                            <a href="{{ url_for('aicos_req.hinduraUmugabaneShingiro', id=b.id) }}"
+                                                class="badge badge-success">
+                                                Hindura
+                                            </a>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            <a href="#" class="badge badge-danger">
+                                                Siba
+                                            </a>
+                                        </td>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </tr>
                                     {% endfor %}
-                                {% endif %}
-					            <!--{% if inguzanyo_abandi %}
+                                    {% endif %}
+                                    <!--{% if inguzanyo_abandi %}
                                     {% for inguzanyo in inguzanyo_abandi %}
                                         <tr>
                                             <td>{{ inguzanyo.ayinjiye }}</td>
@@ -86,13 +90,13 @@
                                         </tr>
                                     {% endfor %}
                                 {% endif %}-->
-				           </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-
         </div>
     </div><!-- .animated -->
 </div>

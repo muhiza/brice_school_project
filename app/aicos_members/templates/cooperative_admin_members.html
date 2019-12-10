@@ -62,59 +62,94 @@
             </a>
             <div class="page-sidebar-inner">
                 <div class="page-sidebar-menu">
-                    <ul class="accordion-menu">
-                        <li class="active-page">
-                            <a href="{{ url_for('aicos_members.dashboard') }}">
-                                <i class="menu-icon icon-home4"></i><span>Dashboard</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="menu-icon icon-users"></i><span>Membership</span><i
-                                    class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="ui-alerts.html">Member database.</a></li>
-                                <li><a href="ui-buttons.html">Member applications</a></li>
-                                <li><a href="ui-icons.html">Member subgroups</a></li>
-                                <li><a href="ui-typography.html">Member text messaging</a></li>
-                                <li><a href="ui-notifications.html">Dues management</a></li>
-                                <li><a href="ui-modals.html">Role management</a></li>
-                                <li><a href="ui-progress.html">Fundraising</a></li>
-                                <li><a href="ui-tabs-accordions.html">Payment processing</a></li>
+                        <ul class="accordion-menu">
+                                <li class="active-page">
+                                    <a href="{{ url_for('aicos_members.dashboard') }}">
+                                        <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <i class="menu-icon icon-users"></i><span>Membership</span><i
+                                            class="accordion-icon fa fa-angle-left"></i>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
+                                        <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
+                                        <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
+                                        <!--
+                                        <li><a href="#">Member database.</a></li>
+                                        <li><a href="#">Member applications</a></li>
+                                        <li><a href="#">Member subgroups</a></li>
+                                        <li><a href="#">Member text messaging</a></li>
+                                        <li><a href="#">Dues management</a></li>
+                                        <li><a href="#">Role management</a></li>
+                                        <li><a href="#">Fundraising</a></li>
+                                        <li><a href="#">Payment processing</a></li>
+                                        -->
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <i class="menu-icon icon-layers"></i><span>Stock</span><i
+                                            class="accordion-icon fa fa-angle-left"></i>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Imyishyurire</a></li>
+                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
+                                    </ul>
+                                </li>
+        
+        
+                                <li> 
+                                        <a href="javascript:void(0)">
+                                            <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
+                                                class="accordion-icon fa fa-angle-left"></i>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
+                                            <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
+                                            <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
+                                            <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
+                                            <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
+                                            <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
+                                            <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
+                                            <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
+                                            <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
+                                            <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
+                                            <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
+                                            <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
+                                            <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
+        
+                                        </ul>
+                                </li>
+        
+        
+        
+        
+                                <li class="menu-divider"></li>
+                                <!--
+                                <li>
+                                    <a href="index.html">
+                                        <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.html">
+                                        <i class="menu-icon icon-public"></i><span>Changelog</span><span
+                                            class="label label-danger">1.0</span>
+                                    </a>
+                                </li>
+                                -->
+        
+        
                             </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="menu-icon icon-layers"></i><span>Stock</span><i
-                                    class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="layout-blank.html">Blank Page</a></li>
-                                <li><a href="layout-boxed.html">Boxed Layout</a></li>
-                                <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>
-                                <li><a href="layout-fixed-header.html">Fixed Header</a></li>
-                                <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                                <li><a href="layout-fixed-sidebar-header.html">Fixed Sidebar &amp; Header</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="menu-divider"></li>
-
-                        <!--
-                        <li>
-                            <a href="index.html">
-                                <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.html">
-                                <i class="menu-icon icon-public"></i><span>Changelog</span><span
-                                    class="label label-danger">1.0</span>
-                            </a>
-                        </li>
-                        -->
-                    </ul>
                 </div>
             </div>
         </div><!-- /Page Sidebar -->
@@ -567,16 +602,20 @@
                                                                                 href="#tab261" role="tab"
                                                                                 data-toggle="tab">Uneducated</a></li>
                                                                         <li role="presentation"><a href="#tab262"
-                                                                                role="tab" data-toggle="tab">Primary education</a>
+                                                                                role="tab" data-toggle="tab">Primary
+                                                                                education</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab263"
-                                                                                role="tab" data-toggle="tab">Secondary education</a>
+                                                                                role="tab" data-toggle="tab">Secondary
+                                                                                education</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab264"
-                                                                                role="tab" data-toggle="tab">University education</a>
+                                                                                role="tab" data-toggle="tab">University
+                                                                                education</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab265"
-                                                                            role="tab" data-toggle="tab">Vocation education</a>
+                                                                                role="tab" data-toggle="tab">Vocation
+                                                                                education</a>
                                                                         </li>
                                                                     </ul>
                                                                     <!-- Tab panes -->
@@ -636,215 +675,215 @@
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab262">
                                                                             <div class="table-responsive">
-                                                                                    <table id="education1"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="education1"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab263">
                                                                             <div class="table-responsive">
-                                                                                    <table id="education2"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="education2"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab264">
                                                                             <div class="table-responsive">
-                                                                                    <table id="education3"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="education3"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
 
 
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab265">
                                                                             <div class="table-responsive">
-                                                                                    <table id="education4"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="education4"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
 
-                                                                    
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -875,18 +914,23 @@
                                                                         role="tablist">
                                                                         <li role="presentation" class="active"><a
                                                                                 href="#tab271" role="tab"
-                                                                                data-toggle="tab">Legs disabilities</a></li>
+                                                                                data-toggle="tab">Legs disabilities</a>
+                                                                        </li>
                                                                         <li role="presentation"><a href="#tab272"
-                                                                                role="tab" data-toggle="tab">Hands disabilities</a>
+                                                                                role="tab" data-toggle="tab">Hands
+                                                                                disabilities</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab273"
-                                                                                role="tab" data-toggle="tab">Blindness.</a>
+                                                                                role="tab"
+                                                                                data-toggle="tab">Blindness.</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab274"
-                                                                                role="tab" data-toggle="tab">Hearing impairments</a>
+                                                                                role="tab" data-toggle="tab">Hearing
+                                                                                impairments</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab275"
-                                                                            role="tab" data-toggle="tab">Mental Illness.</a>
+                                                                                role="tab" data-toggle="tab">Mental
+                                                                                Illness.</a>
                                                                         </li>
 
 
@@ -948,163 +992,163 @@
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab272">
                                                                             <div class="table-responsive">
-                                                                                    <table id="disabilities1"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="disabilities1"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab273">
                                                                             <div class="table-responsive">
-                                                                                    <table id="disabilities2"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="disabilities2"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
                                                                         <div role="tabpanel" class="tab-pane fade"
                                                                             id="tab274">
                                                                             <div class="table-responsive">
-                                                                                    <table id="disabilities3"
-                                                                                        class="display table"
-                                                                                        style="width: 100%; cellspacing: 0;">
-                                                                                        <thead>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tfoot>
-                                                                                            <tr>
-                                                                                                <th>First Name</th>
-                                                                                                <th>Second Name</th>
-                                                                                                <th>Zone</th>
-                                                                                                <th>Group</th>
-                                                                                                <th>Sector</th>
-                                                                                                <th>Details</th>
-                                                                                            </tr>
-                                                                                        </tfoot>
-                                                                                        <tbody>
-                                                                                            {% if employees_female %}
-                                                                                            {% for emp in employees_female %}
-                                                                                            <tr>
-                                                                                                <td>{{ emp.izina_ribanza }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.izina_rikurikira }}
-                                                                                                </td>
-                                                                                                <td>{{ emp.zone }}</td>
-                                                                                                <td>{{ emp.itsinda }}</td>
-                                                                                                <td>{{ emp.zone }} </td>
-                                                                                                <td><a
-                                                                                                        href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
-                                                                                                            type="button"
-                                                                                                            class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                            Details <i
-                                                                                                                class="fa fa-angle-double-right"
-                                                                                                                aria-hidden="true"></i></button>
-                                                                                                    </a></td>
-                                                                                            </tr>
-                                                                                            {% endfor %}
-                                                                                            {% endif %}
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
+                                                                                <table id="disabilities3"
+                                                                                    class="display table"
+                                                                                    style="width: 100%; cellspacing: 0;">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tfoot>
+                                                                                        <tr>
+                                                                                            <th>First Name</th>
+                                                                                            <th>Second Name</th>
+                                                                                            <th>Zone</th>
+                                                                                            <th>Group</th>
+                                                                                            <th>Sector</th>
+                                                                                            <th>Details</th>
+                                                                                        </tr>
+                                                                                    </tfoot>
+                                                                                    <tbody>
+                                                                                        {% if employees_female %}
+                                                                                        {% for emp in employees_female %}
+                                                                                        <tr>
+                                                                                            <td>{{ emp.izina_ribanza }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.izina_rikurikira }}
+                                                                                            </td>
+                                                                                            <td>{{ emp.zone }}</td>
+                                                                                            <td>{{ emp.itsinda }}</td>
+                                                                                            <td>{{ emp.zone }} </td>
+                                                                                            <td><a
+                                                                                                    href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
+                                                                                                        type="button"
+                                                                                                        class="btn btn-success btn-addon btn-xs btn-center">
+                                                                                                        Details <i
+                                                                                                            class="fa fa-angle-double-right"
+                                                                                                            aria-hidden="true"></i></button>
+                                                                                                </a></td>
+                                                                                        </tr>
+                                                                                        {% endfor %}
+                                                                                        {% endif %}
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
 
                                                                         <div role="tabpanel" class="tab-pane fade"
-                                                                        id="tab275">
-                                                                        <div class="table-responsive">
+                                                                            id="tab275">
+                                                                            <div class="table-responsive">
                                                                                 <table id="disabilities4"
                                                                                     class="display table"
                                                                                     style="width: 100%; cellspacing: 0;">

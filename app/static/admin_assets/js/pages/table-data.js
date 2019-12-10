@@ -34,8 +34,10 @@ $(document).ready(function() {
     $('#stock_ibihano').dataTable();
     $('#stock_ibindi').dataTable();
     $('#stock_imyishyurire').dataTable();
+    $('#rukomatanyi').dataTable();
 
 
+    
     
     
     

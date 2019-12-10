@@ -68,14 +68,14 @@
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="#">Member database.</a></li>
-                                <li><a href="#">Member applications</a></li>
-                                <li><a href="#">Member subgroups</a></li>
-                                <li><a href="#">Member text messaging</a></li>
-                                <li><a href="#">Dues management</a></li>
+                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
+                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
+                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
+                                <!--
                                 <li><a href="#">Role management</a></li>
                                 <li><a href="#">Fundraising</a></li>
                                 <li><a href="#">Payment processing</a></li>
+                                -->
                             </ul>
                         </li>
                         <li>
@@ -94,6 +94,33 @@
                                 <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
                             </ul>
                         </li>
+
+
+                        <li> 
+                                <a href="javascript:void(0)">
+                                    <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
+                                        class="accordion-icon fa fa-angle-left"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
+                                    <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
+                                    <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
+                                    <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
+
+                                </ul>
+                        </li>
+
+
+
 
                         <li class="menu-divider"></li>
                         <!--
@@ -488,6 +515,9 @@
 
     <script src="{{ url_for('static', filename='admin_assets/js/space.min.js') }}"></script>
     <script src="{{ url_for('static', filename='admin_assets/js/pages/dashboard.js') }}"></script>
+
+
+
 
 </body>
 
