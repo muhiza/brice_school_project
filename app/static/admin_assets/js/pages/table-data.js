@@ -3,8 +3,6 @@
 $(document).ready(function() {
     
     "use strict";
-    
-    
     // Datatables
     $('#all_members').dataTable();
     $('#male_members').dataTable();
@@ -27,8 +25,15 @@ $(document).ready(function() {
     $('#all_members_zero').dataTable();
 
     // Stock tables.
-    
+    $('#stock_home').dataTable();
+    $('#stock_umusaruro').dataTable();
+    $('#stock_inyongeramusaruro').dataTable();
+    $('#stock_imisanzu').dataTable();
+    $('#stock_bank').dataTable();
+    $('#stock_ibirarane').dataTable();
 
+    
+    
     
     var table = $('#example2').DataTable({
         "columnDefs": [

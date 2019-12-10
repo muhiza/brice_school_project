@@ -1,7 +1,7 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
-{% block body %}
+{% block content %}
   <div class="container">
     <div class="row">
       {{ utils.flashed_messages(dismissible=True) }}
@@ -24,15 +24,15 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card"><br><br><br>
                             <div class="card-header">
-                                <strong class="h3 card-title">Umusaruro wabonetse mu myaka itandukanye</strong><br><br>
+                                <strong class="h3 card-title">Umusaruro wabonetse mu myaka itandukanye</strong><br><br><br><br>
                             </div>
                             <div class="card-body">
                             <div class="table-responsive">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
+                                <table id="stock_umusaruro" class="table table-striped table-bordered">
                                     <thead>
-                                        <tr class="bg-info" style="color:#fff;">
+                                        <tr>
                                             <th>Amazina</th>
                                             <th>Ubwoko&nbsp;bw'igihingwa</th>
                                             <th>Ibyo&nbsp;asigaranye</th>
@@ -117,12 +117,20 @@
                                                 </td>
                                                 <td>
                                                   <a href="{{ url_for('aicos_stock_managment.injizaUmusaruro', id = member.id) }}"> 
-                                                    <span class="badge badge-success" style="font-size: 14px;"><li class="fa fa-plus"></li> Injiza</span>
+                                                      <button
+                                                      type="button"
+                                                      class="btn btn-success btn-addon btn-xs btn-center">
+                                                    <span><li class="fa fa-plus"></li> Injiza</span> </button>
                                                   </a>
                                                 </td>
                                                 <td>
                                                   <a href="{{ url_for('aicos_stock_managment.ibindiUmusaruro', id=member.id) }}">
-                                                    <span class="badge badge-info" style="font-size: 14px;"><li class="fa fa-eye"></li> Ibindi</span>
+                                                      <button
+                                                      type="button"
+                                                      class="btn btn-info btn-addon btn-xs btn-center">
+                                                      Details <i
+                                                          class="fa fa-angle-double-right"
+                                                          aria-hidden="true"></i></button>
                                                   </a>
                                                 </td>
                                               </tr>

@@ -1,7 +1,7 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
-{% block body %}
+{% block content %}
   <div class="container-fluid">
     <div class="row">
       {{ utils.flashed_messages(dismissible=True) }}
@@ -24,13 +24,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="h3 card-title">
-                                <span class="ti-angle-double-right"></span> Ibirarane mu myaka itandukanye </strong><br>
+                                <strong class="h3 card-title"><br><br><br>
+                                <span class="ti-angle-double-right"></span> Ibirarane mu myaka itandukanye </strong><br><br>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;" data-show-export="true">
+                                <table id="stock_ibirarane" class="table table-striped table-bordered" style="width: 100%;" data-show-export="true">
                                     <thead>
-                                        <tr class="bg-info" style="color: #fff;">
+                                        <tr>
                                           <th>Amazina</th>
                                           <th>Umusoro&nbsp;w'akarere</th>
                                           <th>Umusanzu&nbsp;wa&nbsp;koperative</th>
