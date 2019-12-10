@@ -26,7 +26,8 @@ $(document).ready(function() {
     $('#all_members_half').dataTable();
     $('#all_members_zero').dataTable();
 
-
+    // Stock tables.
+    
 
     
     var table = $('#example2').DataTable({

@@ -14,6 +14,10 @@
 	<link href="{{ url_for('static', filename='landing_page_assets/css/page.min.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='landing_page_assets/css/style.css') }}" rel="stylesheet">
 
+
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
 	<!-- Favicons -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -36,8 +40,8 @@
 					<a class="nav-link active" href="#home">Ahabanza</a>
 					<a class="nav-link" href="#section-features">Ibirimo</a>
 					<a class="nav-link" href="#section-pricing">Ibiciro</a>
-					<a class="nav-link" href="#">Imfashanyigisho</a>
-					<a class="nav-link" href="#">Twandikire</a>
+					<a class="nav-link" href="https://medium.com/aicos" target="_blank">Imfashanyigisho</a>
+					<a class="nav-link" href="https://twitter.com/AicosOfficial" target="_blank">Twandikire</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -81,7 +85,6 @@
                             gucuma abanyamuryango, icunga mutungo, itumanaho, ububiko, gutegura ama raporo, igena migambi n'ibindi bitandukanye.
 					</p>
 					<p class="gap-xy">
-						<a class="btn btn-round btn-outline-light mw-150" href="#">Menya ibindi</a>
 						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.register') }}">Iyandikishe</a>
 					</p>
 				</div>
@@ -132,7 +135,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile"></i></div>
+							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile-phone"></i></div>
 							<div class="media-body">
 								<h5>Gusubiza.</h5>
 								<p>COPA ishobora gukora neza ku bikoresho bitandukanye, yaba telephone cg mudasobwa.</p>
@@ -154,7 +157,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-tools"></i></div>
+							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-dashboard"></i></div>
 							<div class="media-body">
 								<h5>Ibikoresho</h5>
                                 <p>Hari ibikoresha bitandukanye byagenewe gukemura ibibazo byihariye, mu micungire ya buri munsi ya Koperative.</p>
@@ -166,7 +169,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-layers"></i></div>
+							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-share"></i></div>
 							<div class="media-body">
 								<h5> Gusangira amakuru.</h5>
 								<p> Porogaramu ya COPA, ifasha gusanginza amakuru abafatanyabikorwa bose ba Koperative mu buryo bwihuse.</p>
@@ -177,7 +180,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-recycle"></i></div>
+							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-book"></i></div>
 							<div class="media-body">
 								<h5>Imfashanyigisho</h5>
                                 <p> Porogaramu ya COPA, izana n'imfasha nyigisho ziteguye neza zifasha abayikoresha gusobanukirwa buri kimwe n'icyo 
@@ -191,7 +194,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-chat"></i></div>
+							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-thumbs-up"></i></div>
 							<div class="media-body">
 								<h5>Ubufasha</h5>
                                 <p>Mu gihe ukoresha COPA, ugezwaho ubufasha buhoraho (24/7) ndetse ugahabwa n'ibiba bigezweho.</p>
@@ -502,9 +505,7 @@
 
 	<!-- Scripts -->
 	<script src="{{ url_for('static', filename='landing_page_assets/js/page.min.js') }}"></script>
-	<!-- <script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script> -->
-
-
+	<script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script>
 </body>
 
 </html>

@@ -14,6 +14,10 @@
 	<link href="{{ url_for('static', filename='landing_page_assets/css/page.min.css') }}" rel="stylesheet">
 	<link href="{{ url_for('static', filename='landing_page_assets/css/style.css') }}" rel="stylesheet">
 
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+	
+
 	<!-- Favicons -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -36,8 +40,8 @@
 					<a class="nav-link active" href="#home">Home</a>
 					<a class="nav-link" href="#section-features">Features</a>
 					<a class="nav-link" href="#section-pricing">Pricing</a>
-					<a class="nav-link" href="#">Resources</a>
-					<a class="nav-link" href="#">Contact</a>
+					<a class="nav-link" href="https://medium.com/aicos" target="_blank">Resources</a>
+					<a class="nav-link" href="https://twitter.com/AicosOfficial" target="_blank">Contact</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -83,7 +87,6 @@
 							enterprises using technology.
 					</p>
 					<p class="gap-xy">
-						<a class="btn btn-round btn-outline-light mw-150" href="#">Learn more</a>
 						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.register') }}">Sign up</a>
 					</p>
 				</div>
@@ -133,7 +136,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile"></i></div>
+							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile-phone"></i></div>
 							<div class="media-body">
 								<h5>Responsive</h5>
 								<p>COPA Platform works on any device: desktop, tablet or mobile.</p>
@@ -155,7 +158,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-tools"></i></div>
+							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-dashboard"></i></div>
 							<div class="media-body">
 								<h5>Management Kit</h5>
 								<p>There is a bunch of useful and necessary tools for managing your cooperative's daily operations.</p>
@@ -166,7 +169,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-layers"></i></div>
+							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-share"></i></div>
 							<div class="media-body">
 								<h5>Shareable.</h5>
 								<p> With COPA, every single piece of content is designed to be shareable.</p>
@@ -177,7 +180,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-recycle"></i></div>
+							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-book"></i></div>
 							<div class="media-body">
 								<h5>Well documented processes</h5>
 								<p> With COPA, we arranged the collection and documentation of all processes. </p>
@@ -188,7 +191,7 @@
 
 					<div class="col-md-6 col-xl-4">
 						<div class="media">
-							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-chat"></i></div>
+							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-thumbs-up"></i></div>
 							<div class="media-body">
 								<h5>Support</h5>
 								<p>When you use COPA platform, you'll constantly receive future updates and 24/7 support.</p>
@@ -490,7 +493,7 @@
 
 	<!-- Scripts -->
 	<script src="{{ url_for('static', filename='landing_page_assets/js/page.min.js') }}"></script>
-	<!-- <script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script> -->
+	<script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script> 
 
 </body>
 
