@@ -1,7 +1,80 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
-{% block body %}
+{% block content %}
 <div class="container">
+
+
+
+
+        <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <a href="{{ url_for('aicos_members.aicos_members_home') }}">
+                    <div class="panel panel-white stats-widget">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <span class="stats-number">{% if employees_count %} {{ employees_count }}
+                                    {% else %} 0 {% endif %}</span>
+                                <p class="stats-info">Membership</p>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-address-book" style="font-size: 5rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="{{ url_for('aicos_req.amatsinda') }}">
+                    <div class="panel panel-white stats-widget">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <span class="stats-number">100</span>
+                                <p class="stats-info">Groups</p>
+                            </div>
+                            <div class="pull-right">
+
+                                <i class="fa fa-users" aria-hidden="true" style="font-size: 5rem;"></i>
+
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">
+                    <div class="panel panel-white stats-widget">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <span class="stats-number">356</span>
+                                <p class="stats-info">Dues Management</p>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-list-alt" aria-hidden="true" style="font-size: 5rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="{{ url_for('aicos_stock_managment.dashboard') }}">
+                    <div class="panel panel-white stats-widget">
+                        <div class="panel-body">
+                            <div class="pull-left">
+                                <span class="stats-number">5801 kg</span>
+                                <p class="stats-info">Stocks</p>
+                            </div>
+                            <div class="pull-right">
+                                <i class="fa fa-line-chart" aria-hidden="true" style="font-size: 5rem;"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+
+            </div>
+
+
+            
 
   <div class="row">
     <!--/.col-->
