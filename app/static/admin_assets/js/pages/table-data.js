@@ -31,6 +31,10 @@ $(document).ready(function() {
     $('#stock_imisanzu').dataTable();
     $('#stock_bank').dataTable();
     $('#stock_ibirarane').dataTable();
+    $('#stock_ibihano').dataTable();
+    $('#stock_ibindi').dataTable();
+    $('#stock_imyishyurire').dataTable();
+
 
     
     

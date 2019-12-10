@@ -1439,7 +1439,7 @@ class Umusarurob(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     RiceType = db.Column(db.String(100))
-    UmusaruroGrade = db.Column(db.Integer)
+    UmusaruroGrade = db.Column(db.String(200))
     RiceAmount = db.Column(db.Integer)
     UwoAsigaranye = db.Column(db.Float)
     UwoKugurisha = db.Column(db.Integer)  # Quantity - Umu asigaranye
