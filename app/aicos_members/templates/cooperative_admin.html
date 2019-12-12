@@ -28,7 +28,8 @@
                             <div class="panel panel-white stats-widget">
                                 <div class="panel-body">
                                     <div class="pull-left">
-                                        <span class="stats-number">100</span>
+                                        <span class="stats-number">{% if employees_count %} {{ employees_count }}
+                                                {% else %} 0 {% endif %}</span>
                                         <p class="stats-info">Groups</p>
                                     </div>
                                     <div class="pull-right">
@@ -45,7 +46,8 @@
                             <div class="panel panel-white stats-widget">
                                 <div class="panel-body">
                                     <div class="pull-left">
-                                        <span class="stats-number">356</span>
+                                        <span class="stats-number">{% if employees_count %} {{ employees_count }}
+                                                {% else %} 0 {% endif %}</span>
                                         <p class="stats-info">Dues Management</p>
                                     </div>
                                     <div class="pull-right">
@@ -60,7 +62,8 @@
                             <div class="panel panel-white stats-widget">
                                 <div class="panel-body">
                                     <div class="pull-left">
-                                        <span class="stats-number">5801 kg</span>
+                                        <span class="stats-number">{% if employees_count %} {{ employees_count }}
+                                                {% else %} 0 {% endif %}</span>
                                         <p class="stats-info">Stocks</p>
                                     </div>
                                     <div class="pull-right">

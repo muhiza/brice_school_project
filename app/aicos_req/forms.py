@@ -80,7 +80,7 @@ class ubugenzuziForm(FlaskForm):
 
 
 
-
+"""
 class isandukuForm(FlaskForm):
     
     no =  StringField("Nimero y'igikorwa", validators=[DataRequired()])
@@ -94,7 +94,7 @@ class isandukuForm(FlaskForm):
     #department_id  =  StringField("Department Id", validators=[DataRequired()])
     submit      =  SubmitField('Emeza')
 
-
+"""
 
 
 
@@ -167,10 +167,10 @@ class amatsindaForm(FlaskForm):
 class IsandukuForm(FlaskForm):
     itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
     impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
-    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
+    piyesi = IntegerField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayinjiye", validators=[DataRequired()], render_kw={"placeholder": "ayinjiye"})
     ayasohotse = IntegerField("Ayasohotse", validators=[DataRequired()], render_kw={"placeholder": "ayasohotse"})
-    asigaye = StringField("Ayasigaye", validators=[Optional()], render_kw={"placeholder": "asigaye"})
+    asigaye = IntegerField("Ayasigaye", validators=[Optional()], render_kw={"placeholder": "asigaye"})
     submit = SubmitField('Bika')
 
 class BankForm(FlaskForm):

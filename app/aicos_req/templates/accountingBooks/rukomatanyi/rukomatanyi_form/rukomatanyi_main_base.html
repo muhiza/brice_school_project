@@ -24,15 +24,7 @@
     <link href="{{ url_for('static', filename='admin_assets/plugins/switchery/switchery.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='admin_assets/plugins/nvd3/nv.d3.min.css') }}" rel="stylesheet">
 
-    <link
-        href="{{ url_for('static', filename='admin_assets/plugins/datatables/css/jquery.datatables_themeroller.css') }}"
-        rel="stylesheet">
-    <link href="{{ url_for('static', filename='admin_assets/plugins/bootstrap-datepicker/css/datepicker3.css') }}"
-        rel="stylesheet">
 
-    <link href="{{ url_for('static', filename='admin_assets/plugins/datatables/css/jquery.datatables.min.css') }}"
-        rel="stylesheet">
-    <link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" rel="stylesheet">
 
 
 
@@ -58,102 +50,102 @@
         <!-- Page Sidebar -->
         <div class="page-sidebar">
             <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}">
-                <span>COPA</span>
+                <span>COOP</span>
                 <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
                 <i class="icon-close" id="sidebar-toggle-button-close"></i>
             </a>
             <div class="page-sidebar-inner">
                 <div class="page-sidebar-menu">
-                        <ul class="accordion-menu">
-                                <li class="active-page">
-                                    <a href="{{ url_for('aicos_members.dashboard') }}">
-                                        <i class="menu-icon icon-home4"></i><span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="menu-icon icon-users"></i><span>Membership</span><i
-                                            class="accordion-icon fa fa-angle-left"></i>
-                                    </a>
-                                    <ul class="sub-menu">
+                    <ul class="accordion-menu">
+                        <li class="active-page">
+                            <a href="{{ url_for('aicos_members.dashboard') }}">
+                                <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon icon-users"></i><span>Membership</span><i
+                                    class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul class="sub-menu">
 
-                                        <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
-                                        <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
-                                        <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
-                                        
-                                        <!--
-                                        <li><a href="#">Member database.</a></li>
-                                        <li><a href="#">Member applications</a></li>
-                                        <li><a href="#">Member subgroups</a></li>
-                                        <li><a href="#">Member text messaging</a></li>
-                                        <li><a href="#">Dues management</a></li>
-                                        <li><a href="#">Role management</a></li>
-                                        <li><a href="#">Fundraising</a></li>
-                                        <li><a href="#">Payment processing</a></li>
-                                        -->
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="menu-icon icon-layers"></i><span>Stock</span><i
-                                            class="accordion-icon fa fa-angle-left"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Imyishyurire</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
-                                    </ul>
-                                </li>
-        
-        
-                                <li> 
-                                        <a href="javascript:void(0)">
-                                            <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
-                                                class="accordion-icon fa fa-angle-left"></i>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
-                                            <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
-                                            <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
-                                            <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
-                                            <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
-        
-                                        </ul>
-                                </li>
-        
-        
-        
-        
-                                <li class="menu-divider"></li>
+
+                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
+                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
+                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
                                 <!--
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-public"></i><span>Changelog</span><span
-                                            class="label label-danger">1.0</span>
-                                    </a>
-                                </li>
+                                <li><a href="#">Member database.</a></li>
+                                <li><a href="#">Member applications</a></li>
+                                <li><a href="#">Member subgroups</a></li>
+                                <li><a href="#">Member text messaging</a></li>
+                                <li><a href="#">Dues management</a></li>
+                                <li><a href="#">Role management</a></li>
+                                <li><a href="#">Fundraising</a></li>
+                                <li><a href="#">Payment processing</a></li>
                                 -->
-        
-        
                             </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon icon-layers"></i><span>Stock</span><i
+                                    class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Imyishyurire</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li> 
+                                <a href="javascript:void(0)">
+                                    <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
+                                        class="accordion-icon fa fa-angle-left"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
+                                    <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
+                                    <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
+                                    <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
+
+                                </ul>
+                        </li>
+
+
+
+
+                        <li class="menu-divider"></li>
+                        <!--
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-public"></i><span>Changelog</span><span
+                                    class="label label-danger">1.0</span>
+                            </a>
+                        </li>
+                        -->
+
+
+                    </ul>
                 </div>
             </div>
         </div><!-- /Page Sidebar -->
@@ -180,7 +172,7 @@
                         <div class="navbar-header">
                             <div class="logo-sm">
                                 <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-                                <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}"><span>COPA</span></a>
+                                <a class="logo-box" href="index.html"><span>Space</span></a>
                             </div>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -200,14 +192,12 @@
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                
-                                <!--
                                 <li><a href="javascript:void(0)" class="right-sidebar-toggle"
                                         data-sidebar-id="main-right-sidebar"><i class="fa fa-envelope"></i></a></li>
                                 <li class="dropdown">
                                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"
                                         role="button" aria-haspopup="true" aria-expanded="false"><i
-                                            class="fa fa-bell"></i></a> -->
+                                            class="fa fa-bell"></i></a>
                                     <ul class="dropdown-menu dropdown-lg dropdown-content">
                                         <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i
                                                     class="fa fa-angle-right"></i></a></li>
@@ -507,22 +497,31 @@
 
 
     <!-- Javascripts -->
-
     <script src="{{ url_for('static', filename='admin_assets/plugins/jquery/jquery-3.1.0.min.js') }}"></script>
-    <script
-        src="{{ url_for('static', filename='admin_assets/plugins/datatables/js/jquery.datatables.min.js') }}"></script>
-
     <script src="{{ url_for('static', filename='admin_assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+
     <script
         src="{{ url_for('static', filename='admin_assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script
         src="{{ url_for('static', filename='admin_assets/plugins/uniform/js/jquery.uniform.standalone.js') }}"></script>
-    <script src="{{ url_for('static', filename='admin_assets/plugins/switchery/switchery.min.js') }}"></script>
 
-    <script
-        src="{{ url_for('static', filename='admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/switchery/switchery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/d3/d3.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='admin_assets/plugins/nvd3/nv.d3.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.time.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.symbol.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.resize.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='admin_assets/plugins/flot/jquery.flot.pie.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/plugins/chartjs/chart.min.js') }}"></script>
+
     <script src="{{ url_for('static', filename='admin_assets/js/space.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='admin_assets/js/pages/table-data.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/js/pages/dashboard.js') }}"></script>
 
 </body>
 

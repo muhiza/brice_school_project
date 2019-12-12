@@ -1183,11 +1183,11 @@ class Isanduku(db.Model):
     __tablename__ = "isanduku"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    no = db.Column(db.String(200))
+    no = db.Column(db.Integer)
     done_date = db.Column(db.String(200))
     action = db.Column(db.String(200))
-    income = db.Column(db.String(200))
-    expense = db.Column(db.String(200))
+    income = db.Column(db.Integer)
+    expense = db.Column(db.Integer)
     remain = db.Column(db.String(200))
     done_by = db.Column(db.String(200))
     done_to = db.Column(db.String(200))

@@ -50,7 +50,7 @@
         <!-- Page Sidebar -->
         <div class="page-sidebar">
             <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}">
-                <span>COOP</span>
+                <span>COPA</span>
                 <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
                 <i class="icon-close" id="sidebar-toggle-button-close"></i>
             </a>
@@ -165,7 +165,7 @@
                         <div class="navbar-header">
                             <div class="logo-sm">
                                 <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-                                <a class="logo-box" href="index.html"><span>Space</span></a>
+                                <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}"><span>COPA</span></a>
                             </div>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -185,12 +185,14 @@
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="javascript:void(0)" class="right-sidebar-toggle"
+                                <!--<li>
+                                    <a href="javascript:void(0)" class="right-sidebar-toggle"
                                         data-sidebar-id="main-right-sidebar"><i class="fa fa-envelope"></i></a></li>
-                                <li class="dropdown">
+                                
+                                    <li class="dropdown">
                                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"
                                         role="button" aria-haspopup="true" aria-expanded="false"><i
-                                            class="fa fa-bell"></i></a>
+                                            class="fa fa-bell"></i></a> -->
                                     <ul class="dropdown-menu dropdown-lg dropdown-content">
                                         <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i
                                                     class="fa fa-angle-right"></i></a></li>
