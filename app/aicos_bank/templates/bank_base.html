@@ -13,10 +13,6 @@
     <!-- Title -->
     <title>COPA</title>
 
-    <!-- Styles -->
-
-
-
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -42,6 +38,8 @@
 
 
 
+
+
     <!-- Theme Styles -->
     <link href="{{ url_for('static', filename='admin_assets/css/space.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='admin_assets/css/custom.css') }}" rel="stylesheet">
@@ -63,102 +61,44 @@
         <!-- Page Sidebar -->
         <div class="page-sidebar">
             <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}">
-                <span>COOP</span>
+                <span>COPA</span>
                 <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
                 <i class="icon-close" id="sidebar-toggle-button-close"></i>
             </a>
             <div class="page-sidebar-inner">
                 <div class="page-sidebar-menu">
-                        <ul class="accordion-menu">
-                                <li class="active-page">
-                                    <a href="{{ url_for('aicos_members.dashboard') }}">
-                                        <i class="menu-icon icon-home4"></i><span>Dashboard</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="menu-icon icon-users"></i><span>Membership</span><i
-                                            class="accordion-icon fa fa-angle-left"></i>
-                                    </a>
-                                    <ul class="sub-menu">
+                    <ul class="accordion-menu">
+                        <li class="active-page">
+                            <a href="{{ url_for('aicos_members.dashboard') }}">
+                                <i class="menu-icon icon-home4"></i><span>Ahabanza</span>
+                            </a>
+                        </li>
 
-                                        <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
-                                        <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
-                                        <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
-                                        
-                                        <!--
-                                        <li><a href="#">Member database.</a></li>
-                                        <li><a href="#">Member applications</a></li>
-                                        <li><a href="#">Member subgroups</a></li>
-                                        <li><a href="#">Member text messaging</a></li>
-                                        <li><a href="#">Dues management</a></li>
-                                        <li><a href="#">Role management</a></li>
-                                        <li><a href="#">Fundraising</a></li>
-                                        <li><a href="#">Payment processing</a></li>
-                                        -->
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)">
-                                        <i class="menu-icon icon-layers"></i><span>Stock</span><i
-                                            class="accordion-icon fa fa-angle-left"></i>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Imyishyurire</a></li>
-                                        <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
-                                    </ul>
-                                </li>
-        
-        
-                                <li> 
-                                        <a href="javascript:void(0)">
-                                            <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
-                                                class="accordion-icon fa fa-angle-left"></i>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
-                                            <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
-                                            <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
-                                            <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
-                                            <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
-                                            <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
-                                            <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
-        
-                                        </ul>
-                                </li>
-        
-        
-        
-        
-                                <li class="menu-divider"></li>
-                                <!--
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-public"></i><span>Changelog</span><span
-                                            class="label label-danger">1.0</span>
-                                    </a>
-                                </li>
-                                -->
-        
-        
-                            </ul>
+                        <li>
+                            <a href="{{ url_for('aicos_members.dashboard') }}">
+                                <i class="menu-icon icon-users"></i><span>Cooperatives</span>
+                            </a>
+                        </li>
+
+
+
+                        <li class="menu-divider"></li>
+                        <!--
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-public"></i><span>Changelog</span><span
+                                    class="label label-danger">1.0</span>
+                            </a>
+                        </li>
+                        -->
+
+
+                    </ul>
                 </div>
             </div>
         </div><!-- /Page Sidebar -->
@@ -185,7 +125,7 @@
                         <div class="navbar-header">
                             <div class="logo-sm">
                                 <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
-                                <a class="logo-box" href="index.html"><span>Space</span></a>
+                                <a class="logo-box" href="{{ url_for('aicos_members.dashboard') }}"><span>COPA</span></a>
                             </div>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                 data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -205,12 +145,14 @@
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="javascript:void(0)" class="right-sidebar-toggle"
+                                <!--<li>
+                                    <a href="javascript:void(0)" class="right-sidebar-toggle"
                                         data-sidebar-id="main-right-sidebar"><i class="fa fa-envelope"></i></a></li>
-                                <li class="dropdown">
+                                
+                                    <li class="dropdown">
                                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"
                                         role="button" aria-haspopup="true" aria-expanded="false"><i
-                                            class="fa fa-bell"></i></a>
+                                            class="fa fa-bell"></i></a> -->
                                     <ul class="dropdown-menu dropdown-lg dropdown-content">
                                         <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i
                                                     class="fa fa-angle-right"></i></a></li>
@@ -507,8 +449,6 @@
 
 
     </div><!-- /Page Container -->
-
-
     <!-- Javascripts -->
     <script src="{{ url_for('static', filename='admin_assets/plugins/jquery/jquery-3.1.0.min.js') }}"></script>
     <script
@@ -529,399 +469,6 @@
 
 
 
-
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#example1').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#example2').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-
-$(document).ready(function() {
-    $('#example3').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#example4').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#example5').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#example6').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#example7').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#example8').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-
-$(document).ready(function() {
-    $('#example9').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#examplepay1').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#examplepay2').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#examplePayment').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#exampleUmusaruro').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-$(document).ready(function() {
-    $('#exampleClients').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-$(document).ready(function() {
-    $('#exampleProducts').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#loan').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-
-
-$(document).ready(function() {
-    $('#goals').DataTable( {
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    } );
-} );
-
-var table = $('#totalexample').DataTable();
-var column = table.column(8);
-
-$(column.footer()).html(
-    column.data().reduce(function (a, b) {
-        return parseInt(a, 10) + parseInt(b, 10);
-    })
-);
-
-
-</script>
-

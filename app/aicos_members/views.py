@@ -1057,6 +1057,7 @@ def doimportmbs():
             m.ubuso_ahingaho_ibindi = row['ubuso_ahingaho_ibindi']
             m.ubwoko_igihingwa_kindi = row['ubwoko_igihingwa_kindi']
             m.ubuso_budakoreshwa = row['ubuso_budakoreshwa']
+            m.bank = row['bank']
             m.department_id = current_user.email
 
             #m.name = row['names']
@@ -1092,7 +1093,7 @@ def templateDownload():
                     'Umukono', 'nomero_telephone', 'Amashuri', 'Ubumuga', 'Arubatse', 'umubare_abana',
                     'icyiciro_ubudehe', 'Ubwishingizi', 'akazi_akora_muri_koperative', 'akazi_akora_ahandi',
                     'ubuso_ahingaho', 'ubwoko_igihingwa', 'ubuso_ahingaho_ibindi', 'ubwoko_igihingwa_kindi',
-                    'ubuso_budakoreshwa']
+                    'ubuso_budakoreshwa', 'bank']
     return excel.make_response_from_query_sets(query_sets, column_names, "xls")
 
 

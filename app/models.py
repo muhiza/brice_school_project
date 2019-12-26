@@ -648,6 +648,8 @@ class Member(db.Model):
     ubuso_ahingaho_ibindi = db.Column(db.String(200))
     ubwoko_igihingwa_kindi = db.Column(db.String(200))
     ubuso_budakoreshwa = db.Column(db.String(200))
+    bank = db.Column(db.String(200))
+    
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))

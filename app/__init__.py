@@ -237,6 +237,11 @@ def create_app(config_name):
     from .aicos_crm import aicos_crm as aicos_crm_blueprint
     app.register_blueprint(aicos_crm_blueprint)
 
+
+    from .aicos_bank import aicos_bank as aicos_bank_blueprint
+    app.register_blueprint(aicos_bank_blueprint, url_prefix='/banks')
+
+    
     """
     from .product.views import product as product_blueprint
     app.register_blueprint(product_blueprint, url_prefix='/try')

@@ -40,6 +40,9 @@
                                             <th>Grade</th>
                                             <th>Amafaranga</th>
                                             <th>Deduct&nbsp;10%</th>
+
+                                            <th>Asigaye</th>
+
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
                                         </tr>
@@ -115,6 +118,22 @@
                                                       {% endfor %}
                                                   {% endif %}
                                                 </td>
+
+
+                                                <td>
+                                                    {% if member.umusarurob %}
+                                                        {% for umu in member.umusarurob %}
+                                                              {% if loop.last %}
+                                                                  {{ umu.UwoKugurisha - umu.Asigaye }}            
+                                                              {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                  </td>
+
+
+
+
+
                                                 <td>
                                                   <a href="{{ url_for('aicos_stock_managment.injizaUmusaruro', id = member.id) }}"> 
                                                       <button

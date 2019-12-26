@@ -1,0 +1,503 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>COPA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.homepage') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#prices">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact us</a>
+                        </li><br>
+
+                        <li class="nav-item"><br>
+                    			<a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.login') }}">SIGN IN</a>
+                    	</li>&nbsp;&nbsp;
+
+                        <li class="nav-item"><br>
+                    			<a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.register') }}">SIGN UP</a>
+                    	</li>
+
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                    	-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="container">
+            <div class="row justify-content-lg-between align-items-lg-center py-5">
+                <div class="col-lg-6" style="margin-left: -150px;">
+                    <h2> <b>COPA</b>, is for cooperative management. </h2>
+                    <p class="lead mb-4">Automate & Integrate your cooperative's daily activities to improve member's socio-economic situations by encouraging the benefits of co-operative enterprises using technology.</p>
+                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3" href="{{ url_for('home.more') }}" role="button">
+                        <span>Learn More</span>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-xl-7">
+                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}" class="d-none d-lg-block img-responsive" alt="" style="height: 750px; width: 950px;">
+                </div>
+            </div><br><br><br><br>
+        </section>
+
+        <div class="bg-skew bg-skew-light">
+
+            <!-- Icon blocks -->
+            <section class="container" id="features">
+                <div class="row align-items-center py-5">
+                    <div class="col-lg-4">
+                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}" style="height: 550px; width: 550px; margin-left: -130px;">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-users" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Membership management</h3>
+                                        <p>COPA allows one to register all members on the system where they access to their cooperative records online.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class='icon-inner fas fa-coins'></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Stock management</h3>
+                                        <p>Manage and track the daily movements and changes within the cooperative’s stock.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-money-bill-alt" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Financial <br> management</h3>
+                                        <p>COPA acts as an online treasurer. All one does is record financials and COPA reconciles the records.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class='icon-inner fas fa-chart-pie'></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Reporting</h3>
+                                        <p>COPA generates the following reports; Member Statements, Cashflow, Balance Sheet and Profit & Loss.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fab fa-gg-circle"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Blockchain-powered <br> e-wallet</h3>
+                                        <p>Enjoy the power of automatic reconciliations by transacting using Mobile money.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-route"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5">Traceability</h3>
+                                        <p>Supply chain traceability: in many supply chains, a blockchain can assist in providing an immutable record from the provenance to the retail store of a product.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials 
+            <section class="container">
+                <h2 class="h3 mt-5 mb-4 text-center">What people are saying…</h2>
+                <div class="row py-5">
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/leo-gill.jpg" alt="Leo Gill">
+                            <p class="text-secondary">Boost theme is awesome! We've seen amazing results already.</p>
+                            <cite class="small text-uppercase">Leo Gill</cite>
+                        </blockquote>
+                    </div>
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/renee-sims.jpg" alt="Renee Sims">
+                            <p class="text-secondary">It really saves me time and effort. Boost theme is exactly what our business has been lacking.</p>
+                            <cite class="small text-uppercase">Renee Sims</cite>
+                        </blockquote>
+                    </div>
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/dallas-kwok.jpg" alt="Dallas Kwok">
+                            <p class="text-secondary">Boost theme impressed me on multiple levels.</p>
+                            <cite class="small text-uppercase">Dallas Kwok</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+            -->
+
+        </div><!-- end bg-skew -->
+
+            <!-- Pricing cards -->
+            <div class="bg-skew bg-skew-light py-4">
+                <div class="container">
+                    <h2 class="text-center mb-5">Pick a plan that works for you</h2>
+    
+                                <!-- Pricing table -->
+                    <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">
+                                    <span class="d-block h4 mb-1">Basic</span>
+                                    <div class="d-flex">
+                                        <span class="h6 font-weight-normal mt-1">Frw</span><span class="display-4 font-weight-normal">0 &nbsp;</span>
+                                    </div>
+                                    <small class="d-block text-muted">per month</small>
+                                    <a class="btn btn-sm btn-pill btn-outline-primary mt-4" href="{{ url_for('auth.register') }}">Get&nbsp;started</a>
+                                </th>
+                                <th scope="col">
+                                    <span class="d-block h4 mb-1">Standard</span>
+                                    <div class="d-flex">
+                                        <span class="h6 mt-1">Frw</span><span class="display-4 font-weight-normal">50,000</span>
+                                    </div>
+                                    <small class="d-block text-muted">per month</small>
+                                    <a class="btn btn-sm btn-pill btn-primary mt-4" href="{{ url_for('auth.register') }}">Get started</a>
+                                </th>
+                                <th scope="col">
+                                    <span class="d-block h4 mb-1">Enterprise</span>
+                                    <div class="d-flex">
+                                        <span class="h6 font-weight-normal mt-1">Frw</span><span class="display-4 font-weight-normal">100,000</span>
+                                    </div>
+                                    <small class="d-block text-muted">per month</small>
+                                    <a class="btn btn-sm btn-pill btn-outline-primary mt-4" href="{{ url_for('auth.register') }}">Get started</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">SMSes Monthly</th>
+                                <td>10</td>
+                                <td>30</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Membership Management</th>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">E-Wallet</th>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Backup</th>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Loans Module</th>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Bank Loans Summary Report</th>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Member Loans Summary Report</th>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Cash Flow</th>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Profit and Loss Report</th>
+                                <td>-</td>
+                                <td>-</td>
+                                
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Transaction Statement</th>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Trial Balance</th>
+                                <td>-</td>
+                                <td>-</td>
+    
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                            <tr>
+                                <th scope="row">Balance Sheet</th>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>
+                                    <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                    <span class="sr-only">Yes</span>
+                                </td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+    </div>
+    </div>
+
+
+
+                <!-- Testimonials -->
+                <section class="container">
+                    <h2 class="h3 mt-5 mb-4 text-center">What people are saying…</h2>
+                    <div class="row py-5">
+                        <div class="col-md">
+                            <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                                <span class="icon icon-lg icon-success">
+                                    <i class="icon-inner fas fa-user"></i>
+                                </span>
+                                <p class="text-secondary">The system is really helping us do our job efficiently and it is helping us in collecting, updating the data of our cooperative.</p>
+                                <cite class="small text-uppercase">Olive Nirere.</cite>
+                            </blockquote>
+                        </div>
+                        <div class="col-md">
+                            <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">                                
+                                <span class="icon icon-lg icon-success">
+                                    <i class="icon-inner fas fa-user"></i>
+                                </span>
+                                <p class="text-secondary">We no longer spend a lot of time, money travelling and carrying hard copies of management <br>reports  to different <br> institutions.</p>
+                                <cite class="small text-uppercase">NKURIKIYINKA Vincent</cite>
+                            </blockquote>
+                        </div>
+                        <div class="col-md">
+                            <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                                <span class="icon icon-lg icon-success">
+                                    <i class="icon-inner fas fa-user"></i>
+                                </span>
+                                <p class="text-secondary">I encourage other Cooperatives to Join the system, it's built according the cooperatives' national umbrella and improve their management as well.</p>
+                                <cite class="small text-uppercase">Mukantore Marie Louise</cite>
+                            </blockquote>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+        <br><br><br>
+        <hr class="sep border-primary" role="presentation">
+        <!-- Call to action -->
+        <section class="container py-5" id="contact">
+            <div class="text-center">
+                <h2 class="mb-4">Have questions? Get in touch.
+                </h2>
+                <div class="mb-4">
+                    <a class="btn btn-pill btn-primary" href="{{ url_for('home.contact') }}" role="button">Contact us</a>
+                </div>
+            </div>
+        </section><br><br><br>
+
+    </main>
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Our mission is to Accelerate <br>World's transition to digital<br> economy.</p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-4 col-md-2 mb-4">
+                    <a href="{{ url_for('home.our_commitment') }}"><h3 class="h5 mb-3">Responsibility</h3></a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b> Sustainability</li>
+                        <li class="mb-1"><b>2:</b> Crisis Response</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Diversity&Inclusion</li>
+                        <li class="mb-1"><b>4:</b> Accessibility</li>
+                        <li class="mb-1"><b>5:</b> Transparency</li>
+                    </ol>
+                </div>
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Help</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+                    <!--
+                        <li class="list-inline-item">
+                        <a href="{{ url_for('auth.rwanda') }}">
+                            <img src="{{ url_for('static', filename='landing_page_assets/img/flag-of-Rwanda.png') }}" alt="logo" style="width: 30px;">
+                        </a>
+                        </li>
+                        <li class="list-inline-item">
+                        <a href="{{ url_for('auth.english') }}">
+                            <img src="{{ url_for('static', filename='landing_page_assets/img/flag-of-United-Kingdom.png') }}" alt="logo" style="width: 30px;">
+                        </a>
+                        </li>
+                    -->
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="#"><i class="icon-inner fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="#"><i class="icon-inner fab fa-facebook-f" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

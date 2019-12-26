@@ -11,6 +11,7 @@ import flask_excel as excel
 
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
+from decimal import Decimal
 
 
 import nexmo
@@ -78,12 +79,7 @@ def dashboard():
                                                 member_all=member_all,
                                                 inyongera=inyongera,
                                                 memberss=memberss
-     
                                                 )
-
-
-
-
 
 
 
@@ -160,8 +156,11 @@ def ibindiUmusaruro(id):
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
     umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
     amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
+    amafaranga_asigaye = Decimal(db.session.query(func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
 
-    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all)
+    amafaranga_asigaye = Decimal(db.session.query(func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
+
+    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
 
 
 
@@ -317,7 +316,7 @@ def injizaUmusaruro(id):
                                 AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
                                                         int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
                                                         int(form.UwoAsigaranye.data))) + 10 * form.RiceAmount.data * form.Quantity.data / 100,
-                                Asigaye     = 10 * form.RiceAmount.data * form.Quantity.data / 100,
+                                Asigaye     = 10 * form.Quantity.data / 100,
                                 member_id = memberid.id,
                                 department_id = current_user.email
                              )
@@ -334,7 +333,7 @@ def injizaUmusaruro(id):
                                 AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
                                                         int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
                                                         int(form.UwoAsigaranye.data))) + 0,
-                                Asigaye     = 0,
+                                Asigaye     = 10 * form.Quantity.data / 100,
                                 member_id = memberid.id,
                                 department_id = current_user.email
                              )
@@ -352,7 +351,7 @@ def injizaUmusaruro(id):
                                 AmafarangaUmusaruro1 =  (int(form.RiceAmount.data) * (int(form.Quantity.data) - \
                                                         int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) * \
                                                         int(form.UwoAsigaranye.data))) - 10 * form.RiceAmount.data * form.Quantity.data / 100,
-                                Asigaye     = 10 * form.RiceAmount.data * form.Quantity.data / 100,
+                                Asigaye     = 10 * form.Quantity.data / 100,
                                 member_id = memberid.id,
                                 department_id = current_user.email
                              )
@@ -363,7 +362,7 @@ def injizaUmusaruro(id):
             db.session.add(umusaruro)
             db.session.commit()
             flash(Markup("Umaze kwandika umusaruro wa " + "<b>" + member_name.izina_ribanza + " " + member_name.izina_rikurikira + "</b>"))
-            return redirect(url_for('aicos_stock_managment.umusaruro'))
+            return redirect(url_for('aicos_stock_managment.injizaUmusaruro'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
             return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name, id=memberid.id))

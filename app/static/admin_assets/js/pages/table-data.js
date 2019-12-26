@@ -36,6 +36,11 @@ $(document).ready(function() {
     $('#stock_imyishyurire').dataTable();
     $('#rukomatanyi').dataTable();
 
+    
+    // Bank data tables
+    $('#bank_kwishyura').dataTable();
+    $('#kwishyura_umusaruro').dataTable();
+    
 
     
     

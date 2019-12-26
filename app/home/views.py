@@ -49,11 +49,39 @@ def homepage():
     Render the homepage template on the / route
     """
     #return redirect(url_for('auth.login'))
-    return render_template('auth/landing_page.html', title="Welcome", pub_key=pub_key)
+    return render_template('auth/copa_landing_page.html', title="Welcome", pub_key=pub_key)
     
 """
 Processing the payment logics
 """
+
+@home.route('/contact')
+def contact():
+    return render_template('auth/contact.html')
+    
+
+
+@home.route('/contact/sent')
+def contact_sent():
+    flash("Thanks, we will get back to you as soon as possible.")
+    return render_template('auth/contact_sent.html')
+    
+
+
+@home.route('/faq')
+def copa_faq():
+    return render_template('auth/copa_faq.html')
+    
+
+@home.route('/our_commitment')
+def our_commitment():
+    return render_template('auth/our_commitments.html')
+    
+
+
+@home.route('/more')
+def more():
+    return render_template('auth/more.html')
 
 
 @home.route('/allSolutions')

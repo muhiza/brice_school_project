@@ -1,23 +1,27 @@
 {% extends "stock_base.html" %}
 {% block content %}
-<div class="container">
+<div class="container-fluid">
 		{% if umusaruro %}
 
 		<div class="row">
         <div class="breadcrumbs">
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <div class="page-header float-left">
                     <div class="page-title"><br>
-                        <strong><h3>Umusaruro: <b> {{ memberId.izina_ribanza }}</b></h3></strong>
+                        <strong><h3>Umusaruro wa: <b> {{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b></h3></strong>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <div class="alert alert-success" role="alert">
-                                Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</a>
+                                <h4>Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</a><br>
+                                Havuyemo 10% =  <a href="#" class="alert-link"> {{ amafaranga_asigaye }} </a><br>
+                                Ibiro bisigaye =  <a href="#" class="alert-link"> {{ umusaruro_all - amafaranga_asigaye }} </a><br>
+                                Amafaranga =  <a href="#" class="alert-link"> {{ (umusaruro_all - amafaranga_asigaye) * 130 }} </a><br>
+                                </h4>
                             </div>
                         </ol>
                     </div>
@@ -31,69 +35,107 @@
                 </button>
             </div>
         </div>
-        <div class="row">
-        <div class="col-md-12">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h4><b>
-        &nbsp;&nbsp; Inshuro zagemuwe</b></h4>
-        </div>
-        </div>
-        </div>
-        </div>
+        </div><br><br><br><br><br><br>
 
 
-			{% for umu in umusaruro %}
-				<div class="col-md-4"><br>
-                        <aside class="profile-nav alt">
-                            <section class="card">
-                                <div class="card-header user-header alt bg-dark">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h5 class="text-light display-6">
-                                                {% if memberId %}
-                                                    Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
-                                                {% endif %}
-                                                </h5>
+
+
+
+
+
+
+
+        <div class="panel-body">
+            <div role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Card view</a></li>
+                        <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Table view</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="tab1">
+                            {% for umu in umusaruro %}
+                            <div class="col-md-3">
+                                <div class="panel panel-white">
+                                    <div class="panel-heading clearfix">
+                                        <h3 class="panel-title">{% if memberId %}
+                                            Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
+                                        {% endif %}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="browser-stats">
+                                            <ul class="list-unstyled">
+                                                <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div></li>
+                                                <li>Ibiro: <div class="text-success pull-right">{{ umu.UwoKugurisha }}</div></li>
+                                                <li>Igiciro: <div class="text-success pull-right">{{ umu.RiceAmount }}</div></li>
+                                                <li>Zone: <div class="text-success pull-right">{% if memberId %} {{ memberId.zone }} {% endif %}</div></li>
+                                                <li>Itsinda: <div class="text-success pull-right">{% if memberId %} {{ memberId.itsinda }} {% endif %}</div></li>
+                                                <li>Yarishyuwe: <div class="text-success pull-right">Oya</div></li>
+                                                <button type="button" class="btn btn-outline-primary btn-sm active"><b>
+                                                        <span class="ti-wallet"></span>&nbsp;
+                                                        <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button><!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
+                                                        </div></li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
+        
+                        {% endfor %}
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="tab2"><br><br>
+                            <div class="container-fluid">
+                            <div class="table-responsive">
+                                <table id="kwishyura_umusaruro" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Taliki</th>
+                                            <th>Ibiro</th>
+                                            <th>Igiciro</th>
+                                            <th>Zone</th>
+
+                                            <th>Itsinda</th>
+                                            <th>Yarishyuwe</th>
+                                            <th>Bank</th>
+                                            <th>Ishyura</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            {% for umu in umusaruro %}
+                                              <tr>
+                                                <td>{{ umu.done_date }}</td>
+                                                <td> {{ umu.UwoKugurisha }} </td>
+                                                <td>  {{ umu.RiceAmount }}  </td>
+                                                <td> {% if memberId %} {{ memberId.zone }} {% endif %} </td>
 
 
+                                                <td>  {% if memberId %} {{ memberId.itsinda }} {% endif %}  </td>
 
 
+                                                <td>  Oya </td>
+                                                <td>  Bank </td>
 
+                                                <td>  Ishyura  </td>
 
+                                              </tr>
+                                           {% endfor %}
+                                    </tbody>
+                                </table>
+                                </div>
+                        </div>
 
-
-
-
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-dashboard"></i> Taliki <span class="badge badge-primary pull-right">{{ umu.done_date }}</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i> Ibiro <span class="badge badge-danger pull-right">{{ umu.UwoKugurisha }}</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-file"></i> Igiciro <span class="badge badge-success pull-right">{{ umu.RiceAmount }}</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-flag-o"></i> Zone  <span class="badge badge-warning pull-right r-activity">{% if memberId %} {{ memberId.zone }} {% endif %}</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-flag"></i> Itsinda  <span class="badge badge-warning pull-right r-activity">{% if memberId %} {{ memberId.itsinda }} {% endif %}</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-euro"></i> Yarishyuwe  <span class="badge badge-success pull-right r-activity">Oya</span></a>
-                                    </li>
-                                    <button type="button" class="btn btn-outline-primary btn-sm active"><b>
-                                    <span class="ti-wallet"></span>&nbsp;
-                                    <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button><!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
-                                </ul>
-                            </section>
-                        </aside>
                     </div>
-			{% endfor %}
+                    </div>
+            </div>
+        </div>
+
+
+
+
+
+
 		{% else %}
 
 		{% endif %}       
