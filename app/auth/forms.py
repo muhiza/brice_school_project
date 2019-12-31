@@ -5,7 +5,7 @@ for users registration, login and forgot password
 
 # Third-party imports
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError
+from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 # Internal imports
@@ -53,3 +53,14 @@ class ForgetPasswordForm(FlaskForm):
     """
     email = StringField('', validators=[DataRequired(), Email()], render_kw={"placeholder": "Kode yo kwinjira"})
     submit = SubmitField('Ohereza')
+
+
+
+class MemberLoginForm(FlaskForm):
+    """
+    Form for users to login
+    """
+    cooperative_code = IntegerField('Cooperative Code', validators=[DataRequired()])
+    member_id = IntegerField('Member ID', validators=[DataRequired()])
+    #recaptcha = RecaptchaField()
+    submit = SubmitField('MemberLogin', render_kw={"onclick": "loading()"})

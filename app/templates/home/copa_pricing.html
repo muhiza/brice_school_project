@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>COPA</title>
+</head>
+
+<body>
+    <main id="main">
+        <!-- Pricing cards -->
+        <div class="bg-skew bg-skew-light py-4">
+            <div class="container"><br><br><br><br>
+                <h2 class="text-center mb-5">Pick a plan that works for you</h2>
+                <!-- Pricing table -->
+                <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Basic</span>
+                                <div class="d-flex">
+                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">0 &nbsp;</span>
+                                </div>
+                                <small class="d-block text-muted">per month</small>
+                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                    href="{{ url_for('aicos_members.aicos_members_home') }}">Get&nbsp;started</a>
+                            </th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Standard</span>
+                                <div class="d-flex">
+                                    <span class="h6 mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">50,000</span>
+                                </div>
+                                <small class="d-block text-muted">per month</small>
+                                <a class="btn btn-sm btn-pill btn-primary mt-4"
+                                    href="{{ url_for('home.copa_plan_one') }}">Get started</a>
+                            </th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Enterprise</span>
+                                <div class="d-flex">
+                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">100,000</span>
+                                </div>
+                                <small class="d-block text-muted">per month</small>
+                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                    href="{{ url_for('home.copa_plan_two') }}">Get started</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">SMSes Monthly</th>
+                            <td>10</td>
+                            <td>30</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Membership Management</th>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">E-Wallet</th>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Backup</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Loans Module</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Bank Loans Summary Report</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Member Loans Summary Report</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Cash Flow</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Profit and Loss Report</th>
+                            <td>-</td>
+                            <td>-</td>
+
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Transaction Statement</th>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Trial Balance</th>
+                            <td>-</td>
+                            <td>-</td>
+
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Balance Sheet</th>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

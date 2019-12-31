@@ -1,8 +1,11 @@
+
+
+
 {% extends "stock_base.html" %}
 {% block content %}
 <div class="container">
-	<div class="row" style="margin-top: 20px;">
-		{% if umusaruro %}
+    <div class="row" style="margin-top: 20px;">
+        {% if umusaruro %}
 
 
 
@@ -12,130 +15,102 @@
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <aside class="profile-nav alt">
-                            <section class="card">
-                                <div class="card-header user-header alt bg-success">
-                                    <div class="media">
-                                        <a href="#">
-                                            <img src="{{ url_for('static', filename='images/admin.jpg') }}">&nbsp;&nbsp;&nbsp;
-                                        </a>
-                                        <div class="media-body">
-                                            <h2 class="text-light display-6">{{ memberId.izina_ribanza }} {{ memberId.izina_rikurikira }}</h2>
-                                            <p class="text-light display-6">{{ memberId.Akarere }}, {{ memberId.Umurenge }}</p>
+
+
+                        <div class="page-title">
+                            <h3 class="breadcrumb-header">PAYMENT DETAILS</h3>
+                        </div>
+                    <div id="main-wrapper">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-white">
+                                    <div class="panel-body">
+                                            <div class="col-md-4" style="padding-left:0;">
+                                                <h3 class="m-b-md m-t-xxs"><b>{{ memberId.izina_ribanza }} {{ memberId.izina_rikurikira }}</b></h3>
+                                                <address>
+                                                    Kigali, Rwanda<br>
+                                                    Email: extra.rwanda@gmail.com
+                                                    Phone number: +250 786 012 383
+                                                </address>
+                                            </div>
+                                            <div class="col-md-8 text-right" style="padding-right:0;">
+                                                <button type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
+                                            </div>
+                                            <div class="col-md-12" style="padding-left:0;padding-right:0;">
+  
+
+                                                          <ul class="list-group">
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Izina rya Bank
+                                                              <span class="badge badge-primary badge-pill">SACCO - GISAKURA</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Nimero ya Konti
+                                                              <span class="badge badge-primary badge-pill">119-9600-800</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Nimero ya telephone
+                                                              <span class="badge badge-primary badge-pill">(+250) 786 012 383</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Nimero y'Indangamuntu.
+                                                              <span class="badge badge-primary badge-pill">1198250786012383</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Amafaranga
+                                                              <span class="badge badge-primary badge-pill">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</span>
+                                                            </li>
+                                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                              Uwohereje 
+                                                              <span class="badge badge-primary badge-pill">COOPERATIVE COOPTHEVIGI</span>
+                                                            </li>
+
+
+                                                          </ul>
+
+
+
+
+
+                                            </div>
+                                            <div class="col-md-8" style="padding-left:0;">
+                                                <br><br>
+                                                <h4>Thank you!</h4>
+                                                <img src="http://via.placeholder.com/350x150?text=COOPERATIVE COOPTHEVIGI" height="150" class="m-t-lg" alt="">
+                                            </div>
+                                            <div class="col-md-4" style="padding-right:0;">
+                                                <div class="text-right">
+                                                    <h4 class="no-m m-t-sm">Subtotal</h4>
+                                                    <h2 class="no-m">{{ amafaranga_all }} Frw</h2>
+                                                    <hr>
+                                                    <h4 class="no-m m-t-md text-success">Total</h4>
+                                                    <h1 class="no-m text-success">{{ amafaranga_all }} Frw</h1>
+                                                    <hr>
+                                                    <form method="GET" class="havanao-form" name="havanaoForm" action="/">
+                                                        <script src="https://api.havanao.com/js/checkout.js" class="havanao-button"
+                                                        data-key="oKtiHoKGim2cIGRD1MKgsxo3Jyky2GmAJ2CDl8EL1X3LXz4N4WkL6ko9iy27"
+                                                        data-image="http://www.wpclipart.com/buildings/shop.png"
+                                                        data-name="Extra Rwanda"
+                                                        data-description="Amafaranga y'ifata buguzi yo gukoresha COPA."
+                                                        data-amount={{ amafaranga_all }}>
+                                                        </script>
+                                                    </form>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-bank"></i> Izina rya Bank 
-                                            <span class="badge badge-default pull-right">SACCO - GISAKURA</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-list"></i> Nimero ya Konti 
-                                        <span class="badge badge-default pull-right">119-9600-800</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-tasks"></i> Nimero ya telephone 
-                                        <span class="badge badge-default pull-right">(+250) 786 012 383</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-circle"></i> Nimero y'Indangamuntu 
-                                        <span class="badge badge-default pull-right">1198250786 012 383</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-file"></i> Amafaranga 
-                                            <span class="badge badge-default pull-right">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</span></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <a href="#"> <i class="fa fa-user-o"></i> Uwohereje  
-                                            <span class="badge badge-default pull-right r-activity">COOPTHEVIGI</span></a>
-                                        <br><hr>
-                                    </li>
-                                </ul>
+                            </div>
+                        </div><!-- Row -->
+                    </div><!-- Main Wrapper -->
 
-                                <button type="button" class="btn btn-outline-secondary btn-lg active"><b>
-                                <span class="ti-share"></span>&nbsp;Ohereza kuri Bank</b></button>
-
-                            </section>
-                        </aside>
-                        <br><br><br><br>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
                 {% else %}
-		    {% endif %}
-	</div>
+                --
+            {% endif %}
+            
+    </div>
 </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-            <br><br>
-
-
-
-
 {% endblock %}
-
-
-
-
-To do tasks.
-
-Work on reporting and documenting the app.
-Call corimak manager to arange the training and the meeting.
-Call coopthevigi manager.
-finish documenting the app and share it to get feedback.
-Start research to manipulate the app for TEA people
-

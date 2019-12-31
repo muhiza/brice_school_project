@@ -618,6 +618,7 @@ class Member(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     sno = db.Column(db.String(200))
+    email = db.Column(db.String(200))
     izina_ribanza = db.Column(db.String(200))
     izina_rikurikira = db.Column(db.String(200))
     Ayandi = db.Column(db.String(200))
@@ -632,7 +633,7 @@ class Member(db.Model):
     Akagari = db.Column(db.String(200))
     Umudugudu = db.Column(db.String(200))
     tariki_yinjiriye = db.Column(db.String(200))
-    umugabane = db.Column(db.String(200))
+    umugabane = db.Column(db.Integer)
     Umukono = db.Column(db.String(200))
     nomero_telephone = db.Column(db.String(200))
     Amashuri = db.Column(db.String(200))
@@ -670,6 +671,9 @@ class Member(db.Model):
     def __init__(self, sno):
         self.id = id
         self.sno = sno
+
+
+
 
     """
     Importing data using this views.
@@ -1442,6 +1446,7 @@ class Umusarurob(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     RiceType = db.Column(db.String(100))
     UmusaruroGrade = db.Column(db.String(200))
+    RicePrice      = db.Column(db.Float)
     RiceAmount = db.Column(db.Integer)
     UwoAsigaranye = db.Column(db.Float)
     UwoKugurisha = db.Column(db.Integer)  # Quantity - Umu asigaranye

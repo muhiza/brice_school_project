@@ -154,13 +154,18 @@ def umusaruro():
 def ibindiUmusaruro(id):
     memberId = Member.query.get_or_404(id)
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
+
+
+    
     umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
     amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
     amafaranga_asigaye = Decimal(db.session.query(func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
 
+    price = amafaranga_all / umusaruro_all
+
     amafaranga_asigaye = Decimal(db.session.query(func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
 
-    return render_template('ibindiUmusaruro.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
+    return render_template('ibindiUmusaruro.html', memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
 
 
 
@@ -308,6 +313,7 @@ def injizaUmusaruro(id):
         if form.UmusaruroGrade.data == 'good':
             umusaruro = Umusarurob(
                                 RiceType = form.RiceType.data,
+                                RicePrice = form.RiceAmount.data,
                                 RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                                 UmusaruroGrade = form.UmusaruroGrade.data,
                                 UwoAsigaranye = form.UwoAsigaranye.data,
@@ -325,6 +331,7 @@ def injizaUmusaruro(id):
         elif form.UmusaruroGrade.data == 'normal':
             umusaruro = Umusarurob(
                                 RiceType = form.RiceType.data,
+                                RicePrice = form.RiceAmount.data,
                                 RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                                 UmusaruroGrade = form.UmusaruroGrade.data,
                                 UwoAsigaranye = form.UwoAsigaranye.data,
@@ -343,6 +350,7 @@ def injizaUmusaruro(id):
         else:
             umusaruro = Umusarurob(
                                 RiceType = form.RiceType.data,
+                                RicePrice = form.RiceAmount.data,
                                 RiceAmount = int(form.RiceAmount.data) * form.Quantity.data,
                                 UmusaruroGrade = form.UmusaruroGrade.data,
                                 UwoAsigaranye = form.UwoAsigaranye.data,

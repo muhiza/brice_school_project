@@ -1,12 +1,12 @@
 {% import "bootstrap/utils.html" as utils %}
-{% extends "members_base.html" %}
+{% extends "cooperative_admin_members_base.html" %}
 {% block title %}Roles{% endblock %}
-{% block body %}
+{% block content %}
 
 <div class="container-fluid">
 
         <div class="col-md-12">
-        {{ utils.flashed_messages() }}
+        {{ utils.flashed_messages(dismissible=True) }} 
         <br/>
 
         <div class="card-header bg-light">
@@ -45,8 +45,9 @@
                 <th>Umurenge</th>
                 <th>Umwanya</th>
                 <th>Umushahara</th>
+                <!--
                 <th>Ibindi</th>
-                <th>Siba</th>
+                <th>Siba</th>-->
             </tr>
         </thead>
         <tfoot>
@@ -57,8 +58,9 @@
                 <th>Umurenge</th>
                 <th>Umwanya</th>
                 <th>Umushahara</th>
+                <!--
                 <th>Ibindi</th>
-                <th>Siba</th>
+                <th>Siba</th>-->
             </tr>
         </tfoot>
         <tbody>
@@ -70,29 +72,6 @@
                       <td> {{ employee.sector }} </td>
                       <td> {{ employee.position }} </td>
                       <td> {{ employee.monthly_net_salary }} </td>
-
-                      <td>
-                      <span class="badge badge-success">
-                        <b>
-                        <a href="#" style="color:white; font-size: 12px;">
-                          <i class="fa fa-user-plus"></i> Ibindi
-                        </a>
-                        </b>
-                      </td>
-                      <td> 
-                      <span class="badge badge-info">
-                      <b>
-                      <a href="#" style="color:white; font-size: 12px;">
-                      <i class="fa fa-eye"></i>
-                        Siba
-                      </a>
-                      </b>
-                      </span>
-                      <!--
-                      Trying out to use modal here
-                      <a href="#my_modal" data-toggle="modal" data-book-id="employee.id">Open</a>
-                      -->
-                      </td>
                     </tr>
               {% endfor %}
         </tbody>

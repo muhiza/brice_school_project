@@ -148,7 +148,9 @@
                 </div>
                 -->
                 <div class="col-4 col-md-2 mb-4">
-                    <a href="{{ url_for('home.our_commitment') }}"><h3 class="h5 mb-3">Responsibility</h3></a>
+                    <a href="{{ url_for('home.our_commitment') }}">
+                        <h3 class="h5 mb-3">Responsibility</h3>
+                    </a>
                     <ol class="nav flex-column">
                         <li class="mb-1"><b>1:</b> Sustainability</li>
                         <li class="mb-1"><b>2:</b> Crisis Response</li>
@@ -163,6 +165,10 @@
                         <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
                         <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
                         <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,24 +177,13 @@
                 <p class="small text-muted">&copy; Extra 2020</p>
                 <ul class="list-inline">
 
-                    <!--
-                        <li class="list-inline-item">
-                        <a href="{{ url_for('auth.rwanda') }}">
-                            <img src="{{ url_for('static', filename='landing_page_assets/img/flag-of-Rwanda.png') }}" alt="logo" style="width: 30px;">
-                        </a>
-                        </li>
-                        <li class="list-inline-item">
-                        <a href="{{ url_for('auth.english') }}">
-                            <img src="{{ url_for('static', filename='landing_page_assets/img/flag-of-United-Kingdom.png') }}" alt="logo" style="width: 30px;">
-                        </a>
-                        </li>
-                    -->
-
                     <li class="list-inline-item">
-                        <a class="icon icon-sm icon-secondary" href="#"><i class="icon-inner fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
                     </li>
                     <li class="list-inline-item">
-                        <a class="icon icon-sm icon-secondary" href="#"><i class="icon-inner fab fa-facebook-f" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
                     </li>
                 </ul>
             </div>

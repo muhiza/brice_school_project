@@ -25,7 +25,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
 
-                <a class="navbar-brand text-dark" href="{{ url_for('home.homepage') }}">
+                <a class="navbar-brand text-dark" href="{{ url_for('home.rwanda') }}">
                     <h2>COPA</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -35,24 +35,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#prices">Pricing</a>
+                            <a class="nav-link" href="#prices">Ibiciro</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#features">Features</a>
+                            <a class="nav-link" href="#features">Ibirimo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact us</a>
+                            <a class="nav-link" href="#contact">Twandikire</a>
                         </li><br>
 
                         <li class="nav-item"><br>
                             <a class="btn btn-pill btn-sm btn-outline-primary mb-3"
-                                href="{{ url_for('auth.login') }}">SIGN IN</a>
+                                href="{{ url_for('auth.rw_login') }}">INJIRA</a>
                         </li>&nbsp;&nbsp;
 
                         <li class="nav-item"><br>
-                            <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.register') }}">SIGN
-                                UP</a>
+                            <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.rw_register') }}">FUNGURA</a>
                         </li>
+
 
                         <!--
                         <li class="nav-item">
@@ -68,43 +68,48 @@
     <main id="main">
 
         <!-- Hero -->
-        <section class="container-fluid">
+        <section class="container">
             <div class="row justify-content-lg-between align-items-lg-center py-5">
-                <div class="col-lg-6 col-xl-5 mb-4 text-center text-lg-left">
-                    <h1 class="display-4 mb-4">COPA, is for cooperative management.</h1>
-                    <p class="lead mb-4">Automate & Integrate your cooperative's daily activities to improve member's socio-economic situations by encouraging the benefits of co-operative enterprises using technology.</p>
-                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3" href="{{ url_for('home.more') }}" role="button">
-                        <span>Learn more</span>
+                <div class="col-lg-6 col-xl-7" style="margin-left: -270px;">
+                    <h2> <b>COPA</b>, Uburyo bworoshye bwo gucunga ibikorwa bya Koperative. </h2>
+                    <p class="lead mb-4">Porogaramu yambere y’ikoranahanga yakorewe gucunga ibikorwa byose bya Koperative, 
+                        guhuza inzego zose zikorana n’ama Koperative mu buryo bwo gusangira amakuru ndetse no kongera uruhare 
+                        rw’abanyamuryango mu bikorwa bya Koperative bya buri munsi.</p>
+                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3"
+                        href="{{ url_for('home.rw_more') }}" role="button">
+                        <span>REBA IBINDI</span>
                     </a>
                 </div>
                 <div class="col-lg-6 col-xl-7">
-                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}" class="d-none d-lg-block img-fluid" alt="">
+                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}"
+                        class="d-none d-lg-block img-responsive" alt="" style="height: 750px; width: 1050px; margin-left: -110px;">
                 </div>
-            </div><br><br><br><br><br>
+            </div><br><br><br><br>
         </section>
-
-
-
 
         <div class="bg-skew bg-skew-light">
 
             <!-- Icon blocks -->
-            <section class="container" id="features">
+            <section class="container" id="features" >
                 <div class="row align-items-center py-5">
-                    <div class="col-lg-4">
-                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}" class="img-responsive img-fluid">
+                    <div class="col-lg-2" style="margin-left: -20px;">
+                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}"
+                            style="height: 780px; width: 780px; margin-left: -400px;">
                     </div>
-                    <div class="col-lg-8">
-                        <div class="row">
+                    <div class="col-lg-10">
+                        <div class="row"  style="margin-right: -220px;">
                             <div class="col-sm-6 mb-4">
                                 <div class="media">
                                     <span class="icon icon-primary mr-3">
                                         <i class="icon-inner fas fa-users" aria-hidden="true"></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5 mb-2">Membership management</h3>
-                                        <p>COPA allows one to register all members on the system where they access to
-                                            their cooperative records online.</p>
+                                        <h3 class="h5 mb-2">Gucunga abanyamuryango.</h3>
+                                        <p>Uburyo bwo kwandika imyirondoro y’abanyamuryango 
+                                            ndetse no kubimerera gukurikirana ibikorwa bya 
+                                            Koperative bya buri munsi hafashishijwe
+                                            Telephone zabo zigendanwa.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -114,9 +119,13 @@
                                         <i class='icon-inner fas fa-coins'></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5 mb-2">Stock management</h3>
-                                        <p>Manage and track the daily movements and changes within the cooperative’s
-                                            stock.</p>
+                                        <h3 class="h5 mb-2">Gucunga ububiko (Stock).</h3>
+                                        <p>Mu bikorwa bya buri munsi bya Koperative hari ibyo
+                                            Abanyamuryango baba bazana cg bavana mu
+                                            Bubiko bwa Koperative. COPA ikourikirana ibyo
+                                            Bikorwa ndetse ikanategura raporo za buri munsi
+                                            Zerekeye ububiko.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -126,9 +135,11 @@
                                         <i class="icon-inner fas fa-money-bill-alt" aria-hidden="true"></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5 mb-2">Financial <br> management</h3>
-                                        <p>COPA acts as an online treasurer. All one does is record financials and COPA
-                                            reconciles the records.</p>
+                                        <h3 class="h5 mb-2">Icunga mutungo.</h3>
+                                        <p>COPA, ni nk’umucunga mutungo wa Koperative uri kuri murandasi
+                                            Mu gihe amakuru yerekeye imari muri Koperative yatanzwe,
+                                           Porogaramu igufasha gutegura ama raporo yose y’icunga
+                                           Mutungo aba akenewe. </p>
                                     </div>
                                 </div>
                             </div>
@@ -138,9 +149,12 @@
                                         <i class='icon-inner fas fa-chart-pie'></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5 mb-2">Reporting</h3>
-                                        <p>COPA generates the following reports; Member Statements, Cashflow, Balance
-                                            Sheet and Profit & Loss.</p>
+                                        <h3 class="h5 mb-2">Gutegura ama raporo.</h3>
+                                        <p>Nk’uko ama Koperative aba afite abafatanya bikorwa benshi
+                                            Bose niko baba bashaka raporo z’imbitse zijyanye 
+                                            N’ibikorwa bya Koperative mu gihe runaka,
+                                            COPA ibyo ibikora neza.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -150,9 +164,12 @@
                                         <i class="icon-inner fab fa-gg-circle"></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5 mb-2">Blockchain-powered <br> e-wallet</h3>
-                                        <p>Enjoy the power of automatic reconciliations by transacting using Mobile
-                                            money.</p>
+                                        <h3 class="h5 mb-2">Mushyinguranyi.</h3>
+                                        <p>Ubu ni uburyo bucungiwe umutekano cyane, bwifashishwa mu
+                                            Kohererezanya amafaranga hagati y’abantu ndetse
+                                            No kubika amakuru mu buryo bwizewe kandi 
+                                            Abantu bayafiteho uburenganzira bungana.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -162,10 +179,13 @@
                                         <i class="icon-inner fas fa-route"></i>
                                     </span>
                                     <div class="media-body">
-                                        <h3 class="h5">Traceability</h3>
-                                        <p>Supply chain traceability: in many supply chains, a blockchain can assist in
-                                            providing an immutable record from the provenance to the retail store of a
-                                            product.</p>
+                                        <h3 class="h5">Gukurikirana uruhererekane.</h3>
+                                        <p>Gukurikirana uruhererekana cg  Supply chain traceability
+                                            Ni uburyo COPA ifasha mu gukurikirana inzira igihingwa
+                                            Cg igicuruzwa kinyuramo, kuva kiri mu murima
+                                            Kugeza kigeze kw’isoko, ibi bizana n’inyungu zitandukanye
+                                            Zirimo nko kwihutisha akazi no kubika amakuru y’ingenzi.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +228,7 @@
         <!-- Pricing cards -->
         <div class="bg-skew bg-skew-light py-4">
             <div class="container">
-                <h2 class="text-center mb-5">Pick a plan that works for you</h2>
+                <h2 class="text-center mb-5">Hitamo igiciro kijyanye n’ibyo ukeneye.</h2>
 
                 <!-- Pricing table -->
                 <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
@@ -216,46 +236,46 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">
-                                <span class="d-block h4 mb-1">Basic</span>
+                                <span class="d-block h4 mb-1">Ibyibanze</span>
                                 <div class="d-flex">
                                     <span class="h6 font-weight-normal mt-1">Frw</span><span
                                         class="display-4 font-weight-normal">0 &nbsp;</span>
                                 </div>
-                                <small class="d-block text-muted">per month</small>
+                                <small class="d-block text-muted">ku kwezi</small>
                                 <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
-                                    href="{{ url_for('home.copa_plan') }}">Get&nbsp;started</a>
+                                    href="{{ url_for('auth.register') }}">tangira</a>
                             </th>
                             <th scope="col">
-                                <span class="d-block h4 mb-1">Standard</span>
+                                <span class="d-block h4 mb-1">Ibiciriritse</span>
                                 <div class="d-flex">
                                     <span class="h6 mt-1">Frw</span><span
                                         class="display-4 font-weight-normal">50,000</span>
                                 </div>
-                                <small class="d-block text-muted">per month</small>
+                                <small class="d-block text-muted">ku kwezi</small>
                                 <a class="btn btn-sm btn-pill btn-primary mt-4"
-                                    href="{{ url_for('home.copa_plan_one') }}">Get started</a>
+                                    href="{{ url_for('auth.register') }}">tangira</a>
                             </th>
                             <th scope="col">
-                                <span class="d-block h4 mb-1">Enterprise</span>
+                                <span class="d-block h4 mb-1">Ibyuzuye</span>
                                 <div class="d-flex">
                                     <span class="h6 font-weight-normal mt-1">Frw</span><span
                                         class="display-4 font-weight-normal">100,000</span>
                                 </div>
-                                <small class="d-block text-muted">per month</small>
+                                <small class="d-block text-muted">ku kwezi</small>
                                 <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
-                                    href="{{ url_for('home.copa_plan_two') }}">Get started</a>
+                                    href="{{ url_for('auth.register') }}">tangira</a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">SMSes Monthly</th>
+                            <th scope="row">Ubutumwa ku kwezi.</th>
                             <td>10</td>
                             <td>30</td>
                             <td>100</td>
                         </tr>
                         <tr>
-                            <th scope="row">Membership Management</th>
+                            <th scope="row">Gucunga abanyamuryango.</th>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
                                 <span class="sr-only">Yes</span>
@@ -270,7 +290,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">E-Wallet</th>
+                            <th scope="row">Ububiko bwa mushyinguranyi.</th>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
                                 <span class="sr-only">Yes</span>
@@ -286,7 +306,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Backup</th>
+                            <th scope="row">Ubwishingizi bw’amakuru.</th>
                             <td>-</td>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -299,7 +319,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Loans Module</th>
+                            <th scope="row">Gusaba no gutanga inguzanyo.</th>
                             <td>-</td>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -312,7 +332,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Bank Loans Summary Report</th>
+                            <th scope="row">Gukurikirana inguzanyo.</th>
                             <td>-</td>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -325,7 +345,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Member Loans Summary Report</th>
+                            <th scope="row">Ikoreshwa ry’imari.</th>
                             <td>-</td>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -338,7 +358,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Cash Flow</th>
+                            <th scope="row">Raporo ku Nyungu/Igihombo.</th>
                             <td>-</td>
                             <td>
                                 <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
@@ -351,7 +371,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Profit and Loss Report</th>
+                            <th scope="row">Raporo k’ihererekanya ry’amafaranga.</th>
                             <td>-</td>
                             <td>-</td>
 
@@ -362,28 +382,7 @@
                         </tr>
 
                         <tr>
-                            <th scope="row">Transaction Statement</th>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Trial Balance</th>
-                            <td>-</td>
-                            <td>-</td>
-
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Balance Sheet</th>
+                            <th scope="row">Ishusho y’umutungo.</th>
                             <td>-</td>
                             <td>-</td>
                             <td>
@@ -401,15 +400,19 @@
 
         <!-- Testimonials -->
         <section class="container">
-            <h2 class="h3 mt-5 mb-4 text-center">What people are saying…</h2>
+            <h2 class="h3 mt-5 mb-4 text-center">Ibyo abantu bavuga…</h2>
             <div class="row py-5">
                 <div class="col-md">
                     <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
                         <span class="icon icon-lg icon-success">
                             <i class="icon-inner fas fa-user"></i>
                         </span>
-                        <p class="text-secondary">The system is really helping us do our job efficiently and it is
-                            helping us in collecting, updating the data of our cooperative.</p>
+                        <p class="text-secondary">COPA yadufashije cyane kwihutisha akazi
+                            Ndetse no gufasha abakozi gukora inshingano
+                            Zabo za buri munsi neza. Ubu dushobora gukusanya
+                            Amakuru neza ndetse tukanayabika mu buryo
+                            Bwizewe.
+                            </p>
                         <cite class="small text-uppercase">Olive Nirere.</cite>
                     </blockquote>
                 </div>
@@ -418,8 +421,11 @@
                         <span class="icon icon-lg icon-success">
                             <i class="icon-inner fas fa-user"></i>
                         </span>
-                        <p class="text-secondary">We no longer spend a lot of time, money travelling and carrying hard
-                            copies of management <br>reports to different <br> institutions.</p>
+                        <p class="text-secondary">Ubu ntago tugikoresha igihe kerekira ndetse n’amafaranga
+                            Mu ngendo za buri munsi dutwaye ama raporo mu ntoki
+                            No ku mpapuro ku bafatanya bikorwa bacu nka mbere.
+                            Ubu COPA niyo ibikora mu buryo bwihuse.
+                            </p>
                         <cite class="small text-uppercase">NKURIKIYINKA Vincent</cite>
                     </blockquote>
                 </div>
@@ -428,8 +434,11 @@
                         <span class="icon icon-lg icon-success">
                             <i class="icon-inner fas fa-user"></i>
                         </span>
-                        <p class="text-secondary">I encourage other Cooperatives to Join the system, it's built
-                            according the cooperatives' national umbrella and improve their management as well.</p>
+                        <p class="text-secondary">Nashishikariza n’izindi Koperative guhindura imikorera
+                            Zigatangira gukoresha ikoranabuhanga, niryo rigezweho
+                            Kandi twagize amahirwe yo kuba COPA yakorewe 
+                            Amakoperative mu buryo bw’umwihariko.
+                            </p>
                         <cite class="small text-uppercase">Mukantore Marie Louise</cite>
                     </blockquote>
                 </div>
@@ -445,14 +454,35 @@
         <!-- Call to action -->
         <section class="container py-5" id="contact">
             <div class="text-center">
-                <h2 class="mb-4">Have questions? Get in touch.
+                <h2 class="mb-4">Ufite ikibazo cg Igitekerezo? Twandikire.
                 </h2>
                 <div class="mb-4">
-                    <a class="btn btn-pill btn-primary" href="{{ url_for('home.contact') }}" role="button">Contact
-                        us</a>
+                    <a class="btn btn-pill btn-primary" href="{{ url_for('home.contact') }}" role="button">Twandikire</a>
                 </div>
             </div>
+
+
+
         </section><br><br><br>
+
+
+
+        <blockquote class="blockquote">
+
+
+            <form method="GET" class="havanao-form" name="havanaoForm" action="/">
+                <script src="https://api.havanao.com/js/checkout.js" class="havanao-button"
+                data-key="oKtiHoKGim2cIGRD1MKgsxo3Jyky2GmAJ2CDl8EL1X3LXz4N4WkL6ko9iy27"
+                data-image="http://www.wpclipart.com/buildings/shop.png"
+                data-name="Extra Rwanda"
+                data-description="Testing payment with havanao."
+                data-amount="500">
+                </script>
+          </form>
+
+
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
 
     </main>
 
@@ -461,7 +491,10 @@
             <div class="row justify-content-md-between">
                 <div class="col-sm-12 col-md-4 mb-4">
                     <h3 class="h5 mb-3">Extra</h3>
-                    <p>Our mission is to Accelerate <br>World's transition to digital<br> economy.</p>
+                    <p>Icyerekezo cyacu ni ugufata iyambere mu
+                        Gufasha Isi mu kwinjira mu bukungu
+                        Bushingiye kw’ikoranabuhanga.
+                        </p>
                 </div>
                 <!--
                 <div class="col-4 col-md-2 mb-4">
@@ -473,28 +506,36 @@
                     </ul>
                 </div>
                 -->
-                <div class="col-4 col-md-2 mb-4">
-                    <a href="{{ url_for('home.our_commitment') }}">
-                        <h3 class="h5 mb-3">Responsibility</h3>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="{{ url_for('home.rw_our_commitment') }}">
+                        <h3 class="h5 mb-3">Ibyo&nbsp;twiyemeje.</h3>
                     </a>
                     <ol class="nav flex-column">
-                        <li class="mb-1"><b>1:</b> Sustainability</li>
-                        <li class="mb-1"><b>2:</b> Crisis Response</li>
-                        <li class="mb-1"><b>3:</b>&nbsp;Diversity&Inclusion</li>
-                        <li class="mb-1"><b>4:</b> Accessibility</li>
-                        <li class="mb-1"><b>5:</b> Transparency</li>
+                        <li class="mb-1"><b>1:</b>&nbsp;Kubaka&nbsp;ibiramba.</li>
+                        <li class="mb-1"><b>2:</b>&nbsp;Gushakira&nbsp;ibibazo&nbsp;ibibazo.</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Kudaheza.</li>
+                        <li class="mb-1"><b>4:</b>&nbsp;Koroshya&nbsp;ikoreshwa&nbsp;rya&nbsp;serivisi.</li>
+                        <li class="mb-1"><b>5:</b>&nbsp;Umucyo&nbsp;muri byose.</li>
                     </ol>
                 </div>
-                <div class="col-4 col-md-2 mb-4">
-                    <h3 class="h5 mb-3">Help</h3>
+                <div class="col-2 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Ubufasha.</h3>
                     <ul class="nav flex-column">
-                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
-                        <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
-                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ibibazo n’ibisubizo.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_contact') }}">Twandikire.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Ubufasha.</a></li>
                         <br>
 
                         <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
                         <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+
+
+
+
+
+
+
+
                     </ul>
                 </div>
             </div>
@@ -502,7 +543,6 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
                 <p class="small text-muted">&copy; Extra 2020</p>
                 <ul class="list-inline">
-
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
                                 aria-hidden="true"></i><span class="sr-only">Twitter</span></a>

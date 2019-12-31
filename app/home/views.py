@@ -55,11 +55,31 @@ def homepage():
 Processing the payment logics
 """
 
+
+# The route for Kinyarwanda Landing page
+@home.route('/rw/')
+def rwanda():
+    return render_template('auth/rw_copa_landing_page.html')
+
+
+# The route for English Landing page
+@home.route('/en/')
+def english():
+    return render_template('auth/copa_landing_page.html')
+
+
+
+
+
+
 @home.route('/contact')
 def contact():
     return render_template('auth/contact.html')
     
 
+@home.route('/rw/contact')
+def rw_contact():
+    return render_template('auth/rw_contact.html')
 
 @home.route('/contact/sent')
 def contact_sent():
@@ -71,17 +91,31 @@ def contact_sent():
 @home.route('/faq')
 def copa_faq():
     return render_template('auth/copa_faq.html')
-    
+
+@home.route('/rw/faq')
+def rw_copa_faq():
+    return render_template('auth/rw_copa_faq.html')
+
 
 @home.route('/our_commitment')
 def our_commitment():
     return render_template('auth/our_commitments.html')
     
 
+@home.route('/rw/our_commitment')
+def rw_our_commitment():
+    return render_template('auth/rw_our_commitments.html')
+
+
 
 @home.route('/more')
 def more():
     return render_template('auth/more.html')
+
+@home.route('/rw/more')
+def rw_more():
+    return render_template('auth/rw_more.html')
+
 
 
 @home.route('/allSolutions')
@@ -89,18 +123,31 @@ def allSolutions():
     return render_template('home/allSolutions.html')
 
     
-@home.route('/pay', methods=['POST'])
-def pay():
-    customer = stripe.Customer.create(email=request.form['stripeEmail'], source=request.form['stripeToken'])
-    charge = stripe.Charge.create(
-        customer = customer.id,
-        amount   = 19900,
-        currency = 'usd',
-        description = 'The product'
-        )
-    
-    flash("You have ordered a product from our store")
-    return redirect(url_for('home.homepage'))
+@home.route('/copa_pricing/copa_plan')
+def copa_plan():
+    amount = 50,000
+    return render_template('home/copa_plan.html', amount=amount)
+
+
+@home.route('/copa_pricing/copa_plan_one')
+def copa_plan_one():
+    amount = 50,000
+    return render_template('home/copa_plan_one.html', amount=amount)
+
+
+@home.route('/copa_pricing/copa_plan_two')
+def copa_plan_two():
+    amount = 50,000
+    return render_template('home/copa_plan_two.html', amount=amount)
+
+
+
+
+
+@home.route('/copa_pricing')
+def copa_pricing():
+    amount = 50,000
+    return render_template('home/copa_pricing.html', amount=amount)
 
 
 

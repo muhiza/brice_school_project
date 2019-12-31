@@ -23,7 +23,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
 
-                <a class="navbar-brand text-dark" href="{{ url_for('home.homepage') }}">
+                <a class="navbar-brand text-dark" href="{{ url_for('home.rwanda') }}">
                     <h2>COPA</h2>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,12 +33,13 @@
                     <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
 
                         <li class="nav-item"><br>
-                                <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.login') }}">SIGN IN</a>
+                            <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.rw_login') }}">INJIRA</a>
                         </li>&nbsp;&nbsp;
 
                         <li class="nav-item"><br>
-                                <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.register') }}">SIGN UP</a>
+                                <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.rw_register') }}">FUNGURA</a>
                         </li>
+
 
                         <!--
                         <li class="nav-item">
@@ -58,7 +59,7 @@
 
         <!-- Accordion -->
         <section class="container pb-5">
-            <h2 class="my-5 text-center">The answers you seek.</h2>
+            <h2 class="my-5 text-center">Ibibazo n’ibisubizo...</h2>
             <div class="row justify-content-lg-center">
                 <div class="col-lg-9">
                     <div class="accordion" id="accordionQuestions">
@@ -67,13 +68,15 @@
                             <div class="card-header" id="headingOne">
                                 <h3 class="card-title">
                                     <a class="collapsed" role="button" href="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        What kind of cooperatives would use COPA platform? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                        Ni ayahe ma Koperative yakoresha porogaramu ya COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
                                     </a>
                                 </h3>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionQuestions">
                                 <div class="card-body">
-                                    <p>COPA solution was developed for all cooperatives from all economic sectors, but currently the software is fully developed for agricultural cooperatives in it's early days, while other sectors can also use the solution and improve their management style, the satisfaction is not guaranteed.</p>
+                                    <p>Porogaramu ya COPA yakorewe ama koperative ari mu bwoko bwose bw’ubukungu, ariko mu ntangiriro ikaba yaratangiye 
+                                        yibanda ku ma Koperative y’ubuhinzi, mu gihe n’izindi Koperative 
+                                        zishobora kuba zikoresha COPA ntakibazo, ntago zizejwe gusangamo ibyo zikeneye byose.</p>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +84,14 @@
                             <div class="card-header" id="headingTwo">
                                 <h3 class="card-title">
                                     <a class="collapsed" role="button" href="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Can unions, federations and confederations use COPA as well? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                        Ese amahuriro, impuzamahuriro ndetse n’urugaga bishobora nabyo gukoresha COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
                                     </a>
                                 </h3>
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionQuestions">
                                 <div class="card-body">
-                                    <p> Yes, the inspiration, design and implementation of COPA platform is based on Cooperatives' umbrella.  </p>
+                                    <p> Yego, imvano, isesengurwa ndetse n’ishyirwa mu bikorwa rya porogaramu ya COPA byose bishingiye ku mahame shingiro agenga ama Koperative ndetse 
+                                        n’igishushanyo cya’ama Koperative ku rwego rw’igihunga na mpuzamahanga.  </p>
                                 </div>
                             </div>
                         </div>
@@ -95,13 +99,17 @@
                             <div class="card-header" id="headingThree">
                                 <h3 class="card-title">
                                     <a class="collapsed" role="button" href="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        How members of the Cooperatives benefits from the platform?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                        Ni gute abanyamuryango b’ama Koperative bashobora kungukira mu gukoresha COPA?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
                                     </a>
                                 </h3>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionQuestions">
                                 <div class="card-body">
-                                    <p>As cooperatives are democratic owned and controlled, we take that into consideration in everything we do. Members of cooperatives can easily track the performance of their cooperative, on daily basis and participate in everything going on within the cooperative.  </p>
+                                    <p>  Nk’uko Koperative iba ari iyabanyamuryango, ni nabo dushyira imbere mubyo dukora. 
+                                        Abanyamuryango bashobora kubona amakuru ya buri munsi ari muri Koperative abareba, yaba ayerekeye imigabane yabo, 
+                                        umutungo wa Koperative, isoko, ibihingwa, ihembwa ndetse n’ama matangazo aba abareba igihe icyo aricyo cyose. 
+                                        Begerezwe serivisi z’imari zirimo nko gukoresha amakuru yabo bakaba babona inguzanyo mu bigo by’imari ndetse no 
+                                        kohererezanya amafara haba hagati yabo ubwobo cg Koperative.  </p>
                                 </div>
                             </div>
                         </div>
@@ -109,62 +117,19 @@
                             <div class="card-header" id="headingFour">
                                 <h3 class="card-title">
                                     <a class="collapsed" role="button" href="#collapseFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Where does Blockchain meet COPA?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                        Ikoranabuhanga rya mushyinguranyi na COPA bihuriye he?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
                                     </a>
                                 </h3>
                             </div>
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionQuestions">
                                 <div class="card-body">
-                                    <p>
-                                            Blockchain technology allows to record, share
-                                            and synchronize transactions in their respective electronic ledgers (instead of
-                                            keeping data centralized as in a traditional ledger). A blockchain powered
-                                            e-wallet will drastically improve trade finance, syndicated loans, and tracking
-                                            provenance of products and commodities, their subsequent sale or use as
-                                            financing collateral, improving the overall efficiency of Rwandan cooperatives.
+                                    <p>Ubu ni uburyo bucungiwe umutekano cyane, bwifashishwa mu kohererezanya amafaranga hagati y’abantu ndetse No kubika 
+                                        amakuru mu buryo bwizewe kandi abantu bayafiteho uburenganzira bungana.<br><br>
 
-
-                                            
-                                            <ul>
-                                                <li><b>Distributed ledgers:</b>​ Putting all financial transactions on a blockchain
-                                                    allows to digitise the loan administration and disbursement process of
-                                                    several financial institutions, from SACCOs to traditional banks, while at
-                                                    the same time improving governance of cooperatives through
-                                                    transparency of membership contributions, cooperative finances and
-                                                    much more.
-                                                </li>
-                                                <li><b>Digital tokens:</b>​ Using blockchain technology such as ethereum’s ERC20
-                                                    standard to create digital tokens representing real world assets, to
-                                                    prove ownership of any physical asset, from precious metals to cars to
-                                                    real estate, or equities and bonds. This will greatly improve efficiency of
-                                                    different value chains, increase liquidity of products and services, and
-                                                    open up different sectors for financing and investment.
-                                                </li>
-                                                <li><b>Smart contracts:</b>​ Delay in payments is one of the biggest problems in
-                                                    the Rwandan economy. Using smart contracts and innovative trade
-                                                    financing enables corporates to delay invoice payments while ensuring
-                                                    that small suppliers have access to capital while they wait by setting up
-                                                    payment when goods are delivered or services are performed. Smart
-                                                    contracts, combined with third party information or IoT can also
-                                                    revolutionise insurance, so that in case of a flood for example, a smart
-                                                    contract is executed automatically for payout for the concerned area.
-                                                </li>
-
-
-                                                <li><b>Traceability:</b>​ Supply chain traceability: in many supply chains, a blockchain can assist
-                                                    in providing an immutable record from the provenance to the retail store of a product.
-                                                    This can give consumers increased trust in the products that they buy and it is also an
-                                                    opportunity to reward the producers who employ good practices. This will eventually
-                                                    lead to sustainable production practices and responsible consumption. This ensures
-                                                    food safety and also helps in reducing food frauds and increasing brand reputation.
-                                                </li>
-
-
-                                            </ul>
-
-
-
-
+                                        COPA yifashisha ikoranabuhanga rya mushyinguranyi mu gukurikirana uruhererekana cg  Supply chain traceability, 
+                                        Ni uburyo COPA ifasha mu gukurikirana inzira igihingwa cg igicuruzwa kinyuramo, kuva kiri mu murima Kugeza kigeze kw’isoko, 
+                                        ibi bizana n’inyungu zitandukanye zirimo nko kwihutisha akazi, 
+                                        kubika amakuru y’ingenzi mu buryo bwizewe ndetse no kongera gukorera mu mucyo mu gucunga Koperative.
                                     </p>
                                 </div>
                             </div>
@@ -173,13 +138,14 @@
                             <div class="card-header" id="headingFive">
                                 <h3 class="card-title">
                                     <a class="collapsed" role="button" href="#collapseFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        How do you empower users with no ICT skills? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                        Ni gute abantu badafite ubumenyi bw’ibanze kubijyanye n’ikoranabuhanga bafashwa gukoresha COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
                                     </a>
                                 </h3>
                             </div>
                             <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionQuestions">
                                 <div class="card-body">
-                                    <p> We work with different institutions from government, private and non benefits organisations to provides capacity building services to all users of the platform. </p>
+                                    <p> Dutanga amahugurwa afasha abakoresha porogaramu ya COPA kugira ubumenyi bw’ibinze kw’ikoranabuhanga 
+                                        rikenerwa mu buzima bwa buri munsi kugirango abantu babona serivisi zitandukanye. </p>
                                 </div>
                             </div>
                         </div>
@@ -198,7 +164,10 @@
             <div class="row justify-content-md-between">
                 <div class="col-sm-12 col-md-4 mb-4">
                     <h3 class="h5 mb-3">Extra</h3>
-                    <p>Our mission is to Accelerate <br>World's transition to digital<br> economy.</p>
+                    <p>Icyerekezo cyacu ni ugufata iyambere mu
+                        Gufasha Isi mu kwinjira mu bukungu
+                        Bushingiye kw’ikoranabuhanga.
+                        </p>
                 </div>
                 <!--
                 <div class="col-4 col-md-2 mb-4">
@@ -210,24 +179,24 @@
                     </ul>
                 </div>
                 -->
-                <div class="col-4 col-md-2 mb-4">
-                    <a href="{{ url_for('home.our_commitment') }}">
-                        <h3 class="h5 mb-3">Responsibility</h3>
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="{{ url_for('home.rw_our_commitment') }}">
+                        <h3 class="h5 mb-3">Ibyo&nbsp;twiyemeje.</h3>
                     </a>
                     <ol class="nav flex-column">
-                        <li class="mb-1"><b>1:</b> Sustainability</li>
-                        <li class="mb-1"><b>2:</b> Crisis Response</li>
-                        <li class="mb-1"><b>3:</b>&nbsp;Diversity&Inclusion</li>
-                        <li class="mb-1"><b>4:</b> Accessibility</li>
-                        <li class="mb-1"><b>5:</b> Transparency</li>
+                        <li class="mb-1"><b>1:</b>&nbsp;Kubaka&nbsp;ibiramba.</li>
+                        <li class="mb-1"><b>2:</b>&nbsp;Gushakira&nbsp;ibibazo&nbsp;ibibazo.</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Kudaheza.</li>
+                        <li class="mb-1"><b>4:</b>&nbsp;Koroshya&nbsp;ikoreshwa&nbsp;rya&nbsp;serivisi.</li>
+                        <li class="mb-1"><b>5:</b>&nbsp;Umucyo&nbsp;muri byose.</li>
                     </ol>
                 </div>
-                <div class="col-4 col-md-2 mb-4">
-                    <h3 class="h5 mb-3">Help</h3>
+                <div class="col-2 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Ubufasha.</h3>
                     <ul class="nav flex-column">
-                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
-                        <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
-                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ibibazo n’ibisubizo.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_contact') }}">Twandikire.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ubufasha.</a></li>
                         <br>
 
                         <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
@@ -239,7 +208,6 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
                 <p class="small text-muted">&copy; Extra 2020</p>
                 <ul class="list-inline">
-
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
                                 aria-hidden="true"></i><span class="sr-only">Twitter</span></a>

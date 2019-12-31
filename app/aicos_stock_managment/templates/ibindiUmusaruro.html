@@ -20,7 +20,8 @@
                                 <h4>Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</a><br>
                                 Havuyemo 10% =  <a href="#" class="alert-link"> {{ amafaranga_asigaye }} </a><br>
                                 Ibiro bisigaye =  <a href="#" class="alert-link"> {{ umusaruro_all - amafaranga_asigaye }} </a><br>
-                                Amafaranga =  <a href="#" class="alert-link"> {{ (umusaruro_all - amafaranga_asigaye) * 130 }} </a><br>
+                                Igiciro ku kiro =  <a href="#" class="alert-link"> {{ price }} Frw </a><br>
+                                Amafaranga =  <a href="#" class="alert-link"> {{ (umusaruro_all - amafaranga_asigaye) * price }} Frw </a><br>
                                 </h4>
                             </div>
                         </ol>
@@ -28,10 +29,14 @@
                 </div>
             </div>
             <div class="col-sm-2"><br>
-                <button type="button" class="btn btn-outline-success btn-sm active"><b>
+                <button type="button" class="btn btn-primary"><b>
                    	<span class="ti-wallet"></span>&nbsp;
                 		<a href="{{ url_for('aicos_stock_managment.umunyamuryangoIshyura', id=memberId.id) }}">
-                	<span style="color: #fff;">Ishyura byose</span></a></b>
+                    <span style="color: #fff;">Ishyura byose</span></a></b>
+                    
+
+
+
                 </button>
             </div>
         </div>
@@ -67,15 +72,18 @@
                                         <div class="browser-stats">
                                             <ul class="list-unstyled">
                                                 <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div></li>
-                                                <li>Ibiro: <div class="text-success pull-right">{{ umu.UwoKugurisha }}</div></li>
-                                                <li>Igiciro: <div class="text-success pull-right">{{ umu.RiceAmount }}</div></li>
+                                                <li>Ibiro: <div class="text-success pull-right">{{ umusaruro_all - amafaranga_asigaye }}</div></li>
+                                                <li>Igiciro ku kiro: <div class="text-success pull-right">{{ price }} Frw</div></li>
+                                                
+                                                <li>Igiciro cyose: <div class="text-success pull-right">{{ (umusaruro_all - amafaranga_asigaye) * price }} Frw</div></li>
                                                 <li>Zone: <div class="text-success pull-right">{% if memberId %} {{ memberId.zone }} {% endif %}</div></li>
                                                 <li>Itsinda: <div class="text-success pull-right">{% if memberId %} {{ memberId.itsinda }} {% endif %}</div></li>
                                                 <li>Yarishyuwe: <div class="text-success pull-right">Oya</div></li>
-                                                <button type="button" class="btn btn-outline-primary btn-sm active"><b>
+                                                <button type="button" class="btn btn-primary"><b>
                                                         <span class="ti-wallet"></span>&nbsp;
                                                         <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button><!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
-                                                        </div></li>
+                                                        </div>
+                                                    </li>
                                             </ul>
                                         </div>
                                     </div>
