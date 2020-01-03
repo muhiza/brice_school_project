@@ -374,7 +374,7 @@ def injizaUmusaruro(id):
             flash(Markup("Umaze kwandika umusaruro wa " + "<b>" + member_name.izina_ribanza + " " + member_name.izina_rikurikira + "</b>"))
             return redirect(url_for('aicos_stock_managment.injizaUmusaruro'))
         except Exception:
-            flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
+            #flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
             return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name, id=memberid.id))
     
     return render_template('record_umusaruro.html', form=form, memberid=memberid, member_name=member_name)
