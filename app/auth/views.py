@@ -244,17 +244,6 @@ def member_login():
 
 
 
-
-
-
-@auth.route('/memberProfile')
-def member_profile():
-    member = Member.query.filter_by(id=current_user.id).first()
-
-    return render_template('auth/copa_faq.html', member=member)
-
-
-
 """
 @auth.route('/coopadmin')
 def coopadmin():
