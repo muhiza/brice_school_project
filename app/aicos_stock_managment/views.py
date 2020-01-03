@@ -180,8 +180,10 @@ def umunyamuryangoIshyura(id):
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
     umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).scalar()
     amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(member_id=memberId.id).scalar()
+    price = amafaranga_all / umusaruro_all
 
-    return render_template('ishyuraByose.html', memberId=memberId, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all, employees=employees)
+
+    return render_template('ishyuraByose.html', memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_all=amafaranga_all, employees=employees)
 
 
 
