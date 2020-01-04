@@ -66,37 +66,35 @@
     </header>
 
     <main id="main">
-
         <!-- Hero -->
-        <section class="container">
+        <section class="container-fluid">
             <div class="row justify-content-lg-between align-items-lg-center py-5">
-                <div class="col-lg-6 col-xl-7" style="margin-left: -270px;">
-                    <h2> <b>COPA</b>, Uburyo bworoshye bwo gucunga ibikorwa bya Koperative. </h2>
+                <div class="col-lg-6 col-xl-5 mb-4 text-center text-lg-left">
+                    <h1 class="display-4 mb-4">COPA, Uburyo bworoshye bwo gucunga ibikorwa bya Koperative.</h1>
                     <p class="lead mb-4">Porogaramu yambere y’ikoranahanga yakorewe gucunga ibikorwa byose bya Koperative, 
                         guhuza inzego zose zikorana n’ama Koperative mu buryo bwo gusangira amakuru ndetse no kongera uruhare 
                         rw’abanyamuryango mu bikorwa bya Koperative bya buri munsi.</p>
-                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3"
-                        href="{{ url_for('home.rw_more') }}" role="button">
+                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3" href="{{ url_for('home.more') }}" role="button">
                         <span>REBA IBINDI</span>
                     </a>
                 </div>
                 <div class="col-lg-6 col-xl-7">
-                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}"
-                        class="d-none d-lg-block img-responsive" alt="" style="height: 750px; width: 1050px; margin-left: -110px;">
+                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}" class="d-none d-lg-block img-fluid" alt="">
                 </div>
-            </div><br><br><br><br>
+            </div><br><br><br><br><br>
         </section>
+
+
 
         <div class="bg-skew bg-skew-light">
 
             <!-- Icon blocks -->
             <section class="container" id="features" >
                 <div class="row align-items-center py-5">
-                    <div class="col-lg-2" style="margin-left: -20px;">
-                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}"
-                            style="height: 780px; width: 780px; margin-left: -400px;">
+                    <div class="col-lg-4" style="margin-left: -20px;">
+                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}" class="img-responsive img-fluid">
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <div class="row"  style="margin-right: -220px;">
                             <div class="col-sm-6 mb-4">
                                 <div class="media">
@@ -464,26 +462,6 @@
 
 
         </section><br><br><br>
-
-
-
-        <blockquote class="blockquote">
-
-
-            <form method="GET" class="havanao-form" name="havanaoForm" action="/">
-                <script src="https://api.havanao.com/js/checkout.js" class="havanao-button"
-                data-key="oKtiHoKGim2cIGRD1MKgsxo3Jyky2GmAJ2CDl8EL1X3LXz4N4WkL6ko9iy27"
-                data-image="http://www.wpclipart.com/buildings/shop.png"
-                data-name="Extra Rwanda"
-                data-description="Testing payment with havanao."
-                data-amount="500">
-                </script>
-          </form>
-
-
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
-
     </main>
 
     <footer class="site-footer mt-5">

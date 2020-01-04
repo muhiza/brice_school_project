@@ -158,10 +158,10 @@ class ibitaboBankForm(FlaskForm):
 
 
 class amatsindaForm(FlaskForm):
-    name = StringField("Provide the name of the group", validators=[DataRequired()])
-    description = StringField("Proving the reason for group", validators=[DataRequired()])
-    purpose = StringField("Describe the group", validators=[DataRequired()])
-    submit = SubmitField('Create group')
+    name = StringField("Injiza izina ry'itsinda", validators=[DataRequired()])
+    description = StringField("Tanga ubusobanuro bw'itsinda", validators=[DataRequired()])
+    purpose = StringField("Impamvu")
+    submit = SubmitField('Kora itsinda')
 
 
 class IsandukuForm(FlaskForm):

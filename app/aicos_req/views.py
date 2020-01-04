@@ -487,7 +487,7 @@ def signatories():
 
 @aicos_req.route('/cooperatives/amatsinda')
 def amatsinda():
-    amatsinda = Itsinda.query.all()
+    amatsinda = Itsinda.query.filter_by(department_id=current_user.email)
     member = ItsindaMember.query.all()
     return render_template('amatsinda/cooperative_groups.html', amatsinda=amatsinda, member=member)
 

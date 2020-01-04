@@ -16,198 +16,179 @@
 </head>
 
 <body>
-    <main id="main">
-        <!-- Pricing cards -->
-        <div class="bg-skew bg-skew-light py-4">
-            <div class="container"><br><br><br><br>
-                <h2 class="text-center mb-5">Pick a plan that works for you</h2>
-                <!-- Pricing table -->
-                <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">
-                                <span class="d-block h4 mb-1">Basic</span>
-                                <div class="d-flex">
-                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
-                                        class="display-4 font-weight-normal">0 &nbsp;</span>
-                                </div>
-                                <small class="d-block text-muted">per month</small>
-                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
-                                    href="{{ url_for('home.newApplication') }}">Get&nbsp;started</a>
-                            </th>
-                            <th scope="col">
-                                <span class="d-block h4 mb-1">Standard</span>
-                                <div class="d-flex">
-                                    <span class="h6 mt-1">Frw</span><span
-                                        class="display-4 font-weight-normal">50,000</span>
-                                </div>
-                                <small class="d-block text-muted">per month</small>
-                                <a class="btn btn-sm btn-pill btn-primary mt-4"
-                                    href="{{ url_for('home.copa_plan_one') }}">Get started</a>
-                            </th>
-                            <th scope="col">
-                                <span class="d-block h4 mb-1">Enterprise</span>
-                                <div class="d-flex">
-                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
-                                        class="display-4 font-weight-normal">100,000</span>
-                                </div>
-                                <small class="d-block text-muted">per month</small>
-                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
-                                    href="{{ url_for('home.copa_plan_two') }}">Get started</a>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">SMSes Monthly</th>
-                            <td>10</td>
-                            <td>30</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Membership Management</th>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">E-Wallet</th>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
+    <main id="main"><br><br><br>
+                <!-- Pricing cards -->
+                <div class="bg-skew bg-skew-light py-4">
+                    <div class="container">
+                        <h2 class="text-center mb-5">Hitamo igiciro kijyanye n’ibyo ukeneye.</h2>
+        
+                        <!-- Pricing table -->
+                        <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">
+                                        <span class="d-block h4 mb-1">Ibyibanze</span>
+                                        <div class="d-flex">
+                                            <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                                class="display-4 font-weight-normal">0 &nbsp;</span>
+                                        </div>
+                                        <small class="d-block text-muted">ku kwezi</small>
+                                        <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                            href="{{ url_for('home.newApplication') }}">tangira</a>
+                                    </th>
+                                    <th scope="col">
+                                        <span class="d-block h4 mb-1">Ibiciriritse</span>
+                                        <div class="d-flex">
+                                            <span class="h6 mt-1">Frw</span><span
+                                                class="display-4 font-weight-normal">50,000</span>
+                                        </div>
+                                        <small class="d-block text-muted">ku kwezi</small>
+                                        <a class="btn btn-sm btn-pill btn-primary mt-4"
+                                            href="{{ url_for('home.copa_plan_one') }}">tangira</a>
+                                    </th>
+                                    <th scope="col">
+                                        <span class="d-block h4 mb-1">Ibyuzuye</span>
+                                        <div class="d-flex">
+                                            <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                                class="display-4 font-weight-normal">100,000</span>
+                                        </div>
+                                        <small class="d-block text-muted">ku kwezi</small>
+                                        <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                            href="{{ url_for('home.copa_plan_two') }}">tangira</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Ubutumwa ku kwezi.</th>
+                                    <td>10</td>
+                                    <td>30</td>
+                                    <td>100</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Gucunga abanyamuryango.</th>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Ububiko bwa mushyinguranyi.</th>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Ubwishingizi bw’amakuru.</th>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Gusaba no gutanga inguzanyo.</th>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Gukurikirana inguzanyo.</th>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Ikoreshwa ry’imari.</th>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Raporo ku Nyungu/Igihombo.</th>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Raporo k’ihererekanya ry’amafaranga.</th>
+                                    <td>-</td>
+                                    <td>-</td>
+        
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                                <tr>
+                                    <th scope="row">Ishusho y’umutungo.</th>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>
+                                        <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                        <span class="sr-only">Yes</span>
+                                    </td>
+                                </tr>
+        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
 
-                        <tr>
-                            <th scope="row">Backup</th>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Loans Module</th>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Bank Loans Summary Report</th>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Member Loans Summary Report</th>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Cash Flow</th>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Profit and Loss Report</th>
-                            <td>-</td>
-                            <td>-</td>
-
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Transaction Statement</th>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Trial Balance</th>
-                            <td>-</td>
-                            <td>-</td>
-
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Balance Sheet</th>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>
-                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
-                                <span class="sr-only">Yes</span>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
 
     <footer class="site-footer mt-5">
         <div class="container">

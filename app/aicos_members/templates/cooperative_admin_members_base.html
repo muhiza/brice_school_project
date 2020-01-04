@@ -59,21 +59,21 @@
                     <ul class="accordion-menu">
                         <li class="active-page">
                             <a href="{{ url_for('aicos_members.dashboard') }}">
-                                <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                                <i class="menu-icon icon-home4"></i><span>Ahabanza</span>
                             </a>
                         </li>
 
 
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="menu-icon icon-user"></i><span>Cooperative</span><i
+                                <i class="menu-icon icon-user"></i><span>Koperative</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_members.list_committees') }}">Committees.</a></li>
-                                <li><a href="{{ url_for('aicos_members.list_staffs') }}">Staff</a></li>
-                                <li><a href="{{ url_for('aicos_members.list_activities') }}">Activities</a></li>
-                                <li><a href="{{ url_for('aicos_members.list_assets') }}">Assets</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_committees') }}">Komite.</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_staffs') }}">Abakozi</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_activities') }}">Ibikorwa</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_assets') }}">Umutungo</a></li>
 
                                 <!--
                                 <li><a href="#">Role management</a></li>
@@ -86,13 +86,13 @@
 
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="menu-icon icon-users"></i><span>Membership</span><i
+                                <i class="menu-icon icon-users"></i><span>Abanyamuryango</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a></li>
-                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
-                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a></li>
+                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Abanyamuryango bose.</a></li>
+                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Amatsinda</a></li>
+                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Imigabane shingiro</a></li>
                                 <!--
                                 <li><a href="#">Role management</a></li>
                                 <li><a href="#">Fundraising</a></li>
@@ -102,11 +102,11 @@
                         </li>
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="menu-icon icon-layers"></i><span>Stock</span><i
+                                <i class="menu-icon icon-layers"></i><span>Ububiko</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ububiko</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
@@ -120,11 +120,11 @@
 
                         <li> 
                                 <a href="javascript:void(0)">
-                                    <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
+                                    <i class="menu-icon icon-show_chart"></i><span>Icunga mutungo</span><i
                                         class="accordion-icon fa fa-angle-left"></i>
                                 </a>
                                 <ul class="sub-menu">
-                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
+                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Ibitabo by'imari</a></li>
                                     <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
                                     <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
                                     <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
@@ -261,10 +261,10 @@
                                         aria-haspopup="true" aria-expanded="false"><img
                                             src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">My Details</a></li>
-                                        <li><a href="{{ url_for('aicos_members.cooper_det') }}">Cooerative's Account</a>
+                                        <li><a href="#">Konti yange</a></li>
+                                        <li><a href="{{ url_for('aicos_members.cooper_det') }}">Konti ya Koperative</a>
                                         </li>
-                                        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                                        <li><a href="{{ url_for('auth.logout') }}">Sohoka</a></li>
                                     </ul>
                                 </li>
                             </ul>

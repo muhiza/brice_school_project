@@ -5,19 +5,16 @@
 <!-- Page Inner -->
 <div class="page-inner">
     <div class="page-title">
-        <h3 class="breadcrumb-header">Cooperative members share capital payments.</h3>
+        <h3 class="breadcrumb-header">Abanyamuryango bishyuye n'abatarishyuye umugabane shingiro.</h3>
         {{ utils.flashed_messages(dismissible=True) }}
     </div>
     <div id="main-wrapper">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-white">
-                    <div class="panel-heading clearfix">
-                        <h4 class="panel-title">All Members</h4>
-                    </div>
                     <div class="panel-body">
                         <a href="{{ url_for('aicos_members.AddNewMember') }}">
-                            <button type="button" class="btn btn-success m-b-sm">Setup Due notifications</button></a>
+                            <button type="button" class="btn btn-success m-b-sm">Ibutsa abatarishyura</button></a>
 
 
 
@@ -29,14 +26,14 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs nav-justified" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab21" role="tab"
-                                                data-toggle="tab">All paid members <span
+                                                data-toggle="tab"> Abanyamuryango bishyuye umugabane shingiro <span
                                                     class="badge badge-success">{{ employees_count }}
                                                 </span></a></li>
-                                        <li role="presentation"><a href="#tab22" role="tab" data-toggle="tab">All half
-                                                paid members <span class="badge badge-success">{{ employees_count }}
+                                        <li role="presentation"><a href="#tab22" role="tab" data-toggle="tab">
+                                            Abishyuye igice <span class="badge badge-success">{{ employees_count }}
                                                 </span></a></li>
-                                        <li role="presentation"><a href="#tab23" role="tab" data-toggle="tab">Non paid
-                                                members <span class="badge badge-success">{{ employees_count }}
+                                        <li role="presentation"><a href="#tab23" role="tab" data-toggle="tab">
+                                            Abatarishyura na macye <span class="badge badge-success">{{ employees_count }}
                                                 </span> </a></li>
                                     </ul>
                                     <!-- Tab panes -->

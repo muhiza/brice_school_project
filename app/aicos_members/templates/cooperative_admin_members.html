@@ -65,43 +65,56 @@
                     <ul class="accordion-menu">
                         <li class="active-page">
                             <a href="{{ url_for('aicos_members.dashboard') }}">
-                                <i class="menu-icon icon-home4"></i><span>Dashboard</span>
+                                <i class="menu-icon icon-home4"></i><span>Ahabanza</span>
                             </a>
                         </li>
+
+
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="menu-icon icon-users"></i><span>Membership</span><i
+                                <i class="menu-icon icon-user"></i><span>Koperative</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Member database.</a>
-                                </li>
-                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Member subgroups</a></li>
-                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Dues management</a>
-                                </li>
+                                <li><a href="{{ url_for('aicos_members.list_committees') }}">Komite.</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_staffs') }}">Abakozi</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_activities') }}">Ibikorwa</a></li>
+                                <li><a href="{{ url_for('aicos_members.list_assets') }}">Umutungo</a></li>
+
                                 <!--
-                                        <li><a href="#">Member database.</a></li>
-                                        <li><a href="#">Member applications</a></li>
-                                        <li><a href="#">Member subgroups</a></li>
-                                        <li><a href="#">Member text messaging</a></li>
-                                        <li><a href="#">Dues management</a></li>
-                                        <li><a href="#">Role management</a></li>
-                                        <li><a href="#">Fundraising</a></li>
-                                        <li><a href="#">Payment processing</a></li>
-                                        -->
+                                <li><a href="#">Role management</a></li>
+                                <li><a href="#">Fundraising</a></li>
+                                <li><a href="#">Payment processing</a></li>
+                                -->
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <i class="menu-icon icon-users"></i><span>Abanyamuryango</span><i
+                                    class="accordion-icon fa fa-angle-left"></i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ url_for('aicos_members.aicos_members_home') }}">Abanyamuryango bose.</a></li>
+                                <li><a href="{{ url_for('aicos_req.amatsinda') }}">Amatsinda</a></li>
+                                <li><a href="{{ url_for('aicos_req.abanyamuryangoImigabane') }}">Imigabane shingiro</a></li>
+                                <!--
+                                <li><a href="#">Role management</a></li>
+                                <li><a href="#">Fundraising</a></li>
+                                <li><a href="#">Payment processing</a></li>
+                                -->
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0)">
-                                <i class="menu-icon icon-layers"></i><span>Stock</span><i
+                                <i class="menu-icon icon-layers"></i><span>Ububiko</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Stock</a></li>
+                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ububiko</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
-                                <li><a
-                                        href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a>
-                                </li>
+                                <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
@@ -111,27 +124,27 @@
                         </li>
 
 
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="menu-icon icon-show_chart"></i><span>Accounting</span><i
-                                    class="accordion-icon fa fa-angle-left"></i>
-                            </a>
-                            <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Accounting books</a></li>
-                                <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
-                                <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
-                                <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
-                                <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
-                                <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
-                                <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
-                                <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
-                                <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
-                                <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
-                                <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
-                                <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
-                                <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
+                        <li> 
+                                <a href="javascript:void(0)">
+                                    <i class="menu-icon icon-show_chart"></i><span>Icunga mutungo</span><i
+                                        class="accordion-icon fa fa-angle-left"></i>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Ibitabo by'imari</a></li>
+                                    <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
+                                    <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
+                                    <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
+                                    <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
+                                    <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
 
-                            </ul>
+                                </ul>
                         </li>
 
 
@@ -139,18 +152,18 @@
 
                         <li class="menu-divider"></li>
                         <!--
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="index.html">
-                                        <i class="menu-icon icon-public"></i><span>Changelog</span><span
-                                            class="label label-danger">1.0</span>
-                                    </a>
-                                </li>
-                                -->
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-help_outline"></i><span>Documentation</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html">
+                                <i class="menu-icon icon-public"></i><span>Changelog</span><span
+                                    class="label label-danger">1.0</span>
+                            </a>
+                        </li>
+                        -->
 
 
                     </ul>
@@ -253,10 +266,10 @@
                                         aria-haspopup="true" aria-expanded="false"><img
                                             src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
                                     <ul class="dropdown-menu">
-                                            <li><a href="#">My Details</a></li>
-                                            <li><a href="{{ url_for('aicos_members.cooper_det') }}">Cooerative's Account</a>
-                                            </li>
-                                            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                                        <li><a href="#">Konti yange</a></li>
+                                        <li><a href="{{ url_for('aicos_members.cooper_det') }}">Konti ya Koperative</a>
+                                        </li>
+                                        <li><a href="{{ url_for('auth.logout') }}">Sohoka</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -267,7 +280,7 @@
             <!-- Page Inner -->
             <div class="page-inner">
                 <div class="page-title">
-                    <h3 class="breadcrumb-header">Cooperative Members.</h3>
+                    <h3 class="breadcrumb-header">Abanyamuryango ba Koperative.</h3>
                     {{ utils.flashed_messages(dismissible=True) }}
                 </div>
                 <div id="main-wrapper">
@@ -275,13 +288,13 @@
                         <div class="col-md-12">
                             <div class="panel panel-white">
                                 <div class="panel-heading clearfix">
-                                    <h4 class="panel-title">All Members</h4>
+                                    <h4 class="panel-title">Abanyamuryango bose</h4>
                                 </div>
                                 <div class="panel-body">
                                     <a href="{{ url_for('aicos_members.AddNewMember') }}">
-                                        <button type="button" class="btn btn-success m-b-sm">Add new member</button></a>
+                                        <button type="button" class="btn btn-success m-b-sm">Andika umunyamuryango mushya</button></a>
                                     <a href="{{ url_for('aicos_members.doimportmbs') }}">
-                                        <button type="button" class="btn btn-primary m-b-sm">Upload members</button></a>
+                                    <button type="button" class="btn btn-primary m-b-sm">Injiza lisiti</button></a>
 
 
 
@@ -293,29 +306,29 @@
                                                 <!-- Nav tabs -->
                                                 <ul class="nav nav-tabs nav-justified" role="tablist">
                                                     <li role="presentation" class="active"><a href="#tab21" role="tab"
-                                                            data-toggle="tab">All members <span
+                                                            data-toggle="tab">Abanyamuryango bose <span
                                                                 class="badge badge-success">{{ employees_count }}
                                                             </span></a></li>
                                                     <li role="presentation"><a href="#tab22" role="tab"
-                                                            data-toggle="tab">Male members <span
+                                                            data-toggle="tab">Abagabo <span
                                                                 class="badge badge-success">{{ employees_male_count }}
                                                             </span></a></li>
                                                     <li role="presentation"><a href="#tab23" role="tab"
-                                                            data-toggle="tab">Female members <span
+                                                            data-toggle="tab">Abagore <span
                                                                 class="badge badge-success">{{ employees_female_count }}
                                                             </span> </a></li>
                                                     <li role="presentation"><a href="#tab24" role="tab"
-                                                            data-toggle="tab">Youth members </a></li>
+                                                            data-toggle="tab">Urubyiruko </a></li>
 
 
 
 
                                                     <li role="presentation"><a href="#tab25" role="tab"
-                                                            data-toggle="tab">Applicants</a></li>
+                                                            data-toggle="tab">Abasaba kwinjira</a></li>
                                                     <li role="presentation"><a href="#tab26" role="tab"
-                                                            data-toggle="tab">Education levels</a></li>
+                                                            data-toggle="tab">Inyigire</a></li>
                                                     <li role="presentation"><a href="#tab27" role="tab"
-                                                            data-toggle="tab">Disabilities</a></li>
+                                                            data-toggle="tab">Ababana n'ubumuga</a></li>
                                                 </ul>
                                                 <!-- Tab panes -->
                                                 <div class="tab-content">
@@ -325,22 +338,22 @@
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
                                                                 <tbody>
@@ -356,7 +369,7 @@
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
                                                                                     class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                    Details <i
+                                                                                    Ibindi <i
                                                                                         class="fa fa-angle-double-right"
                                                                                         aria-hidden="true"></i></button>
                                                                             </a></td>
@@ -377,22 +390,22 @@
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
                                                                 <tbody>
@@ -408,7 +421,7 @@
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
                                                                                     class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                    Details <i
+                                                                                    Ibindi <i
                                                                                         class="fa fa-angle-double-right"
                                                                                         aria-hidden="true"></i></button>
                                                                             </a></td>
@@ -425,22 +438,22 @@
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
                                                                 <tbody>
@@ -456,7 +469,7 @@
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
                                                                                     class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                    Details <i
+                                                                                    Ibindi <i
                                                                                         class="fa fa-angle-double-right"
                                                                                         aria-hidden="true"></i></button>
                                                                             </a></td>
@@ -475,22 +488,22 @@
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
                                                                 <tbody>
@@ -506,7 +519,7 @@
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
                                                                                     class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                    Details <i
+                                                                                    Ibindi <i
                                                                                         class="fa fa-angle-double-right"
                                                                                         aria-hidden="true"></i></button>
                                                                             </a></td>
@@ -523,22 +536,22 @@
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>First Name</th>
-                                                                        <th>Second Name</th>
+                                                                        <th>Izina ribanza</th>
+                                                                        <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Group</th>
-                                                                        <th>Sector</th>
-                                                                        <th>Details</th>
+                                                                        <th>Itsinda</th>
+                                                                        <th>Umurenge</th>
+                                                                        <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
                                                                 <tbody>
@@ -554,7 +567,7 @@
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
                                                                                     class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                    Details <i
+                                                                                    Ibindi <i
                                                                                         class="fa fa-angle-double-right"
                                                                                         aria-hidden="true"></i></button>
                                                                             </a></td>
@@ -593,7 +606,7 @@
                                                     <div role="tabpanel" class="tab-pane fade" id="tab26">
                                                         <div class="panel panel-white">
                                                             <div class="panel-heading clearfix">
-                                                                <h4 class="panel-title">Members education levels</h4>
+                                                                <h4 class="panel-title">Imyigire y'abanyamuryango</h4>
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div role="tabpanel">
@@ -602,22 +615,23 @@
                                                                         role="tablist">
                                                                         <li role="presentation" class="active"><a
                                                                                 href="#tab261" role="tab"
-                                                                                data-toggle="tab">Uneducated</a></li>
+                                                                                data-toggle="tab">Abatarize</a>
+                                                                        </li>
                                                                         <li role="presentation"><a href="#tab262"
-                                                                                role="tab" data-toggle="tab">Primary
-                                                                                education</a>
+                                                                                role="tab" data-toggle="tab">Abize amashuri 
+                                                                                abanza</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab263"
-                                                                                role="tab" data-toggle="tab">Secondary
-                                                                                education</a>
+                                                                                role="tab" data-toggle="tab">Abize amashuri 
+                                                                                yisumbuye</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab264"
-                                                                                role="tab" data-toggle="tab">University
-                                                                                education</a>
+                                                                                role="tab" data-toggle="tab">Abize 
+                                                                                kaminuza.</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab265"
-                                                                                role="tab" data-toggle="tab">Vocation
-                                                                                education</a>
+                                                                                role="tab" data-toggle="tab">Abize 
+                                                                                imyuga.</a>
                                                                         </li>
                                                                     </ul>
                                                                     <!-- Tab panes -->
@@ -630,22 +644,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -663,7 +677,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -682,22 +696,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -715,7 +729,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -734,22 +748,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -767,7 +781,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -786,22 +800,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -819,7 +833,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -840,22 +854,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -873,7 +887,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -907,7 +921,7 @@
                                                     <div role="tabpanel" class="tab-pane fade" id="tab27">
                                                         <div class="panel panel-white">
                                                             <div class="panel-heading clearfix">
-                                                                <h4 class="panel-title">Members with disabilities</h4>
+                                                                <h4 class="panel-title">Abanyamuryango babana n'ubumuga</h4>
                                                             </div>
                                                             <div class="panel-body">
                                                                 <div role="tabpanel">
@@ -916,23 +930,21 @@
                                                                         role="tablist">
                                                                         <li role="presentation" class="active"><a
                                                                                 href="#tab271" role="tab"
-                                                                                data-toggle="tab">Legs disabilities</a>
+                                                                                data-toggle="tab">Ubumuga bw'amaguru</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab272"
-                                                                                role="tab" data-toggle="tab">Hands
-                                                                                disabilities</a>
+                                                                                role="tab" data-toggle="tab">Ubumuga 
+                                                                                bw'amaboko</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab273"
                                                                                 role="tab"
-                                                                                data-toggle="tab">Blindness.</a>
+                                                                                data-toggle="tab">Kutabona.</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab274"
-                                                                                role="tab" data-toggle="tab">Hearing
-                                                                                impairments</a>
+                                                                                role="tab" data-toggle="tab">Kutumva</a>
                                                                         </li>
                                                                         <li role="presentation"><a href="#tab275"
-                                                                                role="tab" data-toggle="tab">Mental
-                                                                                Illness.</a>
+                                                                                role="tab" data-toggle="tab">Ubumuga bwo mu mutwe.</a>
                                                                         </li>
 
 
@@ -947,22 +959,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -980,7 +992,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -999,22 +1011,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -1032,7 +1044,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -1051,22 +1063,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -1084,7 +1096,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -1103,22 +1115,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -1136,7 +1148,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>
@@ -1156,22 +1168,22 @@
                                                                                     style="width: 100%; cellspacing: 0;">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tfoot>
                                                                                         <tr>
-                                                                                            <th>First Name</th>
-                                                                                            <th>Second Name</th>
+                                                                                            <th>Izina ribanza</th>
+                                                                                            <th>Izina rikurikira</th>
                                                                                             <th>Zone</th>
-                                                                                            <th>Group</th>
-                                                                                            <th>Sector</th>
-                                                                                            <th>Details</th>
+                                                                                            <th>Itsinda</th>
+                                                                                            <th>Umurenge</th>
+                                                                                            <th>Ibindi</th>
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
@@ -1189,7 +1201,7 @@
                                                                                                     href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                                         type="button"
                                                                                                         class="btn btn-success btn-addon btn-xs btn-center">
-                                                                                                        Details <i
+                                                                                                        Ibindi <i
                                                                                                             class="fa fa-angle-double-right"
                                                                                                             aria-hidden="true"></i></button>
                                                                                                 </a></td>

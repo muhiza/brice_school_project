@@ -5,11 +5,11 @@
     <div class="page-title">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="breadcrumb-header">Cooperative groups</h3>
+                <h3 class="breadcrumb-header">Amatsinda ya Koperative</h3>
             </div>
             <div class="col-md-6 text-right">
                 <a href="{{ url_for('aicos_req.koraItsinda') }}">
-                    <button type="button" class="btn btn-success btn-lg"> Create new group </button>
+                    <button type="button" class="btn btn-success btn-lg"> Kora itsinda rishya </button>
                 </a>
             </div>
         </div>
@@ -23,26 +23,26 @@
             <div class="col-md-4">
                 <div class="panel panel-white">
                     <div class="panel-heading clearfix">
-                        <h4 class="panel-title">{{ itsinda.itsinda_name }}</h4>
-                        <h4 class="panel-title">{{ itsinda.description }}</h4>
+                        <h4 class="panel-title"><b>Izina: </b>{{ itsinda.itsinda_name }}</h4>
+                        <h4 class="panel-title"><b>Ubusobanuro: </b>{{ itsinda.description }}</h4>
                     </div>
                     <div class="panel-body">
                         <div class="browser-stats">
                             <ul class="list-unstyled">
                                 <li><a href="{{ url_for('aicos_req.amatsindaMembers', id=itsinda.id) }}">
-                                        <i class="fa fa-tablet"></i>Group members <div class="text-success pull-right">
-                                            52 <i class="fa fa-level-up"></i></div></a></li>
-                                <li><i class="fa fa-tablet"></i>Group plot<div class="text-success pull-right">
-                                        rikurikira <i class="fa fa-level-up"></i></div>
+                                        <i class="fa fa-tablet"></i>Abanyamuryango <div class="text-success pull-right">
+                                            52 <i class="fa fa-users"></i></div></a></li>
+                                <li><i class="fa fa-tablet"></i>Ubuso bw'itsinda<div class="text-success pull-right">
+                                        15h <i class="fa fa-file"></i></div>
                                 </li>
-                                <li><i class="fa fa-tablet"></i>Group harvest<div class="text-success pull-right">
-                                        Ayandi <i class="fa fa-level-up"></i></div>
+                                <li><i class="fa fa-tablet"></i>Umusaruro w'itsinda<div class="text-success pull-right">
+                                        56 Kg <i class="fa fa-level-up"></i></div>
                                 </li>
-                                <li><i class="fa fa-tablet"></i>Group savings<div class="text-danger pull-right">
-                                        tariki_yavukiye <i class="fa fa-level-down"></i></div>
+                                <li><i class="fa fa-tablet"></i>Ubwizigame<div class="text-danger pull-right">
+                                        156,000 <i class="fa fa-usd"></i></div>
                                 </li>
-                                <li><i class="fa fa-tablet"></i>Group stock<div class="text-danger pull-right"> Igitsina
-                                        <i class="fa fa-level-down"></i></div>
+                                <li><i class="fa fa-tablet"></i>Ububiko bw'itsinda<div class="text-danger pull-right"> 9875 Kg
+                                    <i class="menu-icon icon-layers"></i></div>
                                 </li>
                             </ul>
                         </div>
