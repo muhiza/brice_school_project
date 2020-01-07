@@ -39,8 +39,8 @@
 
 
         <style>
-                .page-container{width:100%;height:100%;background:url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;background-size:cover;padding:0}
-            
+            .page-container{width:100%;height:100%;background:url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;background-size:cover;padding:0}
+            .login-box-register{height: fit-content;margin: 50px;}
     
         </style>
 
@@ -71,16 +71,35 @@
                                         {{ wtf.form_field(form.email) }}
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_union) }}
+                                    </div>
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_ferwacotamo) }}
+                                    </div>
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_confederation) }}
+                                    </div>
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_rca) }}
+                                    </div>
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_manager) }}
+                                    </div>
+                                    <div class="checkbox">
+                                        {{ wtf.form_field(form.is_coop_admin) }}
+                                    </div>
+
+                                    <div class="checkbox">
                                         {{ wtf.form_field(form.password) }}
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="checkbox">
                                         {{ wtf.form_field(form.confirm_password) }}
                                     </div>
                                     {{ form.submit(class="btn btn-primary") }}
                                     <a href="{{ url_for('auth.login') }}" class="btn btn-default">Login</a><br>
-                                    <a href="#" class="forgot-link">Forgot password?</a>
+                                    <!-- <a href="#" class="forgot-link">Forgot password?</a> -->
                                 {{ form.csrf_token }}
                     </form>
                             </div>

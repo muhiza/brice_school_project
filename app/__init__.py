@@ -71,21 +71,13 @@ def create_app(config_name):
         
     else:
         app = Flask(__name__, instance_relative_config=True)
-        app.config.from_object(app_config[config_name])
+        # app.config.from_object(app_config[config_name])
         app.config.from_pyfile('config.py')
 
-<<<<<<< HEAD
-
-        
-
-
-
-    from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter, CRM
-=======
     # Import all models
     from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
 
+    from .models import CRM
 
     # A class to help in access the employees view flask admin extension.
     class EmployeeView(ModelView):
@@ -294,18 +286,6 @@ def create_app(config_name):
                 'plate': product.plate,
             }
             return json.dumps(res)
-<<<<<<< HEAD
-
-    api.add_resource(
-       MemberApi,
-    #    '/api/member',
-    #    '/api/member/<int:id>'
-       )
-
-
-
-
-=======
             """
                 api.add_resource(
                    MemberApi,
@@ -317,7 +297,6 @@ def create_app(config_name):
     # during the interection between user and the platform.
 
     # Handline forbidden error.
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
     @app.errorhandler(403)
     def forbidden(error):
         return render_template('errors/403.html', title='Forbidden'), 403

@@ -10,9 +10,28 @@ from .forms import *
 import nexmo
 
 import socket
-hostname = socket.gethostname()
-IP = socket.gethostbyname(hostname)
-client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
+# hostname = socket.gethostname()
+# IP = socket.gethostbyname(hostname)
+# client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
+
+from flask import Flask, jsonify
+from twilio.rest import Client
+import os
+
+
+def send_sms(to_number,body):
+    account_sid = 'AC748e888b9c42a401f6f9a04021e16be2'
+    auth_token  = '489a7fe543032bdb42e4975d480a8784'
+    number = '+12055764624'
+    client = Client(account_sid, auth_token)  
+    message = client.messages \
+            .create(
+                    body=body,
+                    from_=number,
+                    to=to_number
+                )
+
+    return message
 
 @aicos_crm.route('/items_table', methods=['GET', 'POST'])
 @login_required
@@ -51,15 +70,8 @@ def add_item():
         newCRM.add_new_item()
         flash("Umaze kwandika ikindi gikorwa neza!")
 
-        try:   
-            to_number = newCRM.phone_number
-            message = current_user.email + 'New assignment has been given to '+newCRM.employee.username+'of the cooperative '+newCRM.department.name+'to work with you.'
-            client.send_message({
-                'from' : '+250786012383', 
-                'to' : to_number, 
-                'text' : message 
-            })
-            # response_text = response['messages'][0]
+        try: 
+            send_sms(to_number=newCRM.phone_number,body='New assignment.')
 
             flash("Ubutumwa bwagiye neza!")
         except Exception:
@@ -78,10 +90,7 @@ def remove_item(id):
     flash('You have successfully deleted the assignment.')
 
     try: 
-        to_number = asgmt.phone_number
-        message = current_user.email + 'The assignment which has been given to '+str(asgmt.employee_id)+'of the cooperative '+asgmt.department_id+'to work with you, has been deleted.'
-        response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-        response_text = response['messages'][0]
+        send_sms(to_number=asgmt.phone_number,body='Deleted assignment.')
 
         flash("Ubutumwa bwagiye neza!")
     except Exception:
@@ -102,7 +111,7 @@ def edit_item(id, employee_id):
     form = ItemForm(obj=crm)
     if form.validate_on_submit():
 
-        crm.department     = current_user
+        crm.department     = current_user.department
         crm.tag            = form.tag.data
         crm.company_name   = form.company_name.data
         crm.email          = form.email.data
@@ -119,6 +128,11 @@ def edit_item(id, employee_id):
         crm.edit_item()
         
         flash('You have successfully edited the assignment.')
+
+        send_sms(to_number=crm.phone_number,body='Edited assignment.')
+
+        flash("Ubutumwa bwagiye neza!")
+
         return redirect(url_for('aicos_crm.table'))
 
     # form.department_id.data = current_user.email
@@ -158,15 +172,3 @@ def assign():
     #     except Exception:
     #         flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
     return render_template("new_item.html",form=form)
-
-# @aicos_crm.route('/add_new_item/<id>', methods=['GET', 'POST'])
-# def send_sms(id):
-#     form = ItemForm()
-#     if form.validate_on_submit():
-#         asgmt = CRM.query.filter_by(id = id).first()
-#         to_number = asgmt.phone_number
-#         message = message
-#         response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-#         response_text = response['messages'][0]
-
-#     return render_template("new_item.html",form=form)

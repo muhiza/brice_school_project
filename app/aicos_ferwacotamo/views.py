@@ -279,3 +279,133 @@ def coop_ibindi(email):
     employees = departments.members
     ibindi = Ibindi.query.filter_by(department_id=email).all()
     return render_template('coop_ibindi.html', departments=departments, ibindi=ibindi)
+
+
+
+
+
+@aicos_ferwacotamo.route('/FederationInfo/edit/<string:email>', methods=['GET', 'POST'])
+@login_required
+def FederationInfo(email):
+    """
+    Edit a role
+    """
+    check_admin()
+    #add_role = False
+    Federation = Federation.query.get_or_404(email)
+    form = FederationForm(obj=Federation)
+    if form.validate_on_submit():
+        Federation.code = form.Code.data
+        Federation.name = form.Name.data
+        Federation.regdate = form.RegDate.data
+        Federation.Certificate = form.Certificate.data
+        Federation.Province   = form.Province.data
+        Federation.District   = form.District.data
+        Federation.Sector     = form.Sector.data
+        Federation.Cell       = form.Cell.data
+        Federation.startingShare = form.startingShare.data
+        Federation.Field         = form.Field.data
+        Federation.Description   = form.Description.data
+        Federation.email         = current_user.email
+        Federation.is_active         = 1
+        code               = form.Code.data
+        current_user.is_Federation = True
+        current_user.department_id = current_user.email
+        if form.Code.data == Federation.code:        
+            db.session.add(Federation)
+            db.session.commit()
+            #flash('Umaze kwinjiza Federation yawe neza.')
+            flash(Markup('Umaze kwinjiza Federation yawe neza., <b>Ongera winjire muri konti yawe!.</b>'), 'success')
+            return redirect(url_for('aicos_ferwacotamo.done'))
+        else:
+            #flash('Code urimo kwinjiza ntago ihuye na Federation, Reba muri telephone yawe!.')
+            #flash(Markup('Flashed message with <b>bold</b> statements'), 'success')
+            flash(Markup('Code urimo kwinjiza ntago ihuye na Federation, <b>Wemerewe kwinjiza Code inshuro imwe!.</b>'), 'danger')
+            to_number = '250780400612'
+            message = 'Code ya Federation ' + Federation.name + ' ku rubuga AICOS ni ' + Federation.code
+            response = client.send_message({'from' : '+250782061714', 'to' : to_number, 'text' : message })
+            response_text = response['messages'][0]
+
+        # redirect to the roles page
+        return redirect(url_for('aicos_ferwacotamo.FederationInfo', email=email))
+
+
+    form.Code.data = Federation.code
+    form.Name.data = Federation.name
+    form.RegDate.data = Federation.regdate
+    form.Certificate.data = Federation.certificate
+    form.Province.data = Federation.province
+    form.District.data = Federation.district
+    form.Sector.data = Federation.sector
+    form.Cell.data = Federation.cell
+    form.startingShare.data = Federation.starting_share
+    #form.Field.data = Federation.Field
+    form.Description.data = Federation.description
+    return render_template('reg/Federation_info.html',
+                           form=form, title="Edit Role")
+
+
+@aicos_ferwacotamo.route('/FederationInfo/newApplication', methods=['GET', 'POST'])
+@login_required
+def newApplication():
+    """
+    Edit a role
+    """
+    check_admin()
+    #add_role = False
+    form = newFederationForm()
+    # for Province in Provinces:
+    #     Province=form.Province.data
+    #     for district in Province:
+    #         for choice in form.District.choices:
+    #             choice = district
+        # form.Confederation.choices = [(confed.code,confed.name) 
+                # for confed in Confederation.query.filter_by(
+                        # district=form.District.data,activity=form.Activity.data).all()]
+    if form.validate_on_submit():
+        #Federation.Code = form.Code.data
+        newfederation = Federation(
+                        name = form.Name.data,
+                        province   = form.Province.data,
+                        district   = form.District.data,
+                        sector     = form.Sector.data,
+                        cell       = form.Cell.data,
+                        starting_share = form.startingSharex.data,
+                        share_per_person = form.sharePerPerson.data,
+                        male_members         = form.maleMembers.data,
+                        female_members         = form.femaleMembers.data,
+                        is_active         = 1,
+                        activity          = form.Activity.data,
+                        # confederation = Confederation.query.filter_by(code=form.Confederation.data).first(),
+                        #current_user.is_Federation_admin     = 1,
+                        email         = current_user.email
+                        #current_user.is_admin = 1
+                    )
+        # return '<p>Code:{},Name:{}</p>'.format(form.Province.data)
+
+        try:      
+            db.session.add(newfederation)
+            current_user.is_ferwacotamo = 1
+            db.session.commit()
+            #flash('Umaze kwinjiza Federation yawe neza.')
+            flash(Markup('Umaze kwinjiza Federation yawe neza., <b>Ongera winjire muri konti yawe!.</b>'), 'success')
+            return redirect(url_for('aicos_ferwacotamo.done'))
+        except:
+            #flash('Code urimo kwinjiza ntago ihuye na Federation, Reba muri telephone yawe!.')
+            #flash(Markup('Flashed message with <b>bold</b> statements'), 'success')
+            flash(Markup('Umwirondoro wa Koperative urimo gushyiramo ntago wuzuye, <b>Ongera ugerageze!.</b>'), 'danger')
+            to_number = '250780400612'
+            message = 'Code ya Federation ku rubuga AICOS ni '
+            response = client.send_message({'from' : '+250782061714', 'to' : to_number, 'text' : message })
+            response_text = response['messages'][0]
+
+        # redirect to the roles page
+        return redirect(url_for('aicos_federation.done'))
+
+    return render_template('reg/new_federation.html',form=form)
+
+@aicos_ferwacotamo.route('/district/<province>')
+def change_dist(province):
+    for i in Provinces:
+        if i==province:
+            return jsonify({'districts':Provinces[i]})

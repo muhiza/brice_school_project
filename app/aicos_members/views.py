@@ -169,46 +169,6 @@ def dashboard():
 
     notes = Notification.query.filter_by(department_id=current_user.email)
 
-<<<<<<< HEAD
-
-
-    employees_male             = employee.members.filter_by(Igitsina='male')
-    employees_male_count       = employee.members.filter_by(Igitsina='male').count()
-    employees_female           = employee.members.filter_by(Igitsina='female')
-    employees_female_count     = employee.members.filter_by(Igitsina='female').count()
-    employees_abatarize        = employee.members.filter_by(Amashuri='Abatarize')
-    employees_abatarize_count  = employee.members.filter_by(Amashuri='Abatarize').count()
-    employees_abanza           = employee.members.filter_by(Amashuri='Abanza')
-    employees_abanza_count     = employee.members.filter_by(Amashuri='Abanza').count()
-    employees_ayisumbuye       = employee.members.filter_by(Amashuri='Ayisumbuye')
-    employees_ayisumbuye_count = employee.members.filter_by(Amashuri='Ayisumbuye').count()
-    employees_kaminuza         = employee.members.filter_by(Amashuri='Kaminuza')
-    employees_kaminuza_count   = employee.members.filter_by(Amashuri='Kaminuza').count()
-    employees_imyuga           = employee.members.filter_by(Amashuri='Imyuga')
-    employees_imyuga_count     = employee.members.filter_by(Amashuri='Imyuga').count()
-
-
-    employees_amaguru          = employee.members.filter_by(Ubumuga='Amaguru')
-    employees_amaguru_count    = employee.members.filter_by(Ubumuga='Amaguru').count()
-
-    employees_amaboko          = employee.members.filter_by(Ubumuga='Amaboko')
-    employees_amaboko_count    = employee.members.filter_by(Ubumuga='Amaboko').count()
-
-
-    employees_kutabona         = employee.members.filter_by(Ubumuga='Kutabona')
-    employees_kutabona_count   = employee.members.filter_by(Ubumuga='Kutabona').count()
-
-    employees_kutumva          = employee.members.filter_by(Ubumuga='Kutumva')
-    employees_kutumva_count    = employee.members.filter_by(Ubumuga='Kutumva').count()
-
-
-    employees_mumutwe          = employee.members.filter_by(Ubumuga='Mu mutwe')
-    employees_mumutwe_count    = employee.members.filter_by(Ubumuga='Mu mutwe').count()
-
-
-    male_members               = employee.members.filter_by(Igitsina='Gole').first()
-    #if employees is not None:
-=======
     employees_male = employee.members.filter_by(Igitsina='male')
     employees_male_count = employee.members.filter_by(Igitsina='male').count()
     employees_female = employee.members.filter_by(Igitsina='female')
@@ -252,23 +212,10 @@ def dashboard():
 
     male_members = employee.members.filter_by(Igitsina='Gole').first()
     # if employees is not None:
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
     #employees = Employee.query.filter_by(email=form.email.data)
 
     apps = Department.query.filter_by(email=current_user.email).first()
     applications = apps.applications
-<<<<<<< HEAD
-    umusaruro_kg = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(department_id=current_user.email).scalar()
-    npk_kg       = db.session.query(func.sum(InyongeraMusaruro.NPKkg)).filter_by(department_id=current_user.email).scalar()
-    urea_kg      = db.session.query(func.sum(InyongeraMusaruro.UREA)).filter_by(department_id=current_user.email).scalar()
-    dap_kg       = db.session.query(func.sum(InyongeraMusaruro.DAP)).filter_by(department_id=current_user.email).scalar()
-    kcl_kg       = db.session.query(func.sum(InyongeraMusaruro.KCL)).filter_by(department_id=current_user.email).scalar()
-    imbuto_kg    = db.session.query(func.sum(InyongeraMusaruro.ImbutoQuantity)).filter_by(department_id=current_user.email).scalar()
-    briquette_kg = db.session.query(func.sum(InyongeraMusaruro.Briquette)).filter_by(department_id=current_user.email).scalar()
-    inguzanyo    = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
-    amandec      = db.session.query(func.sum(Ibihano.AmandeC)).filter_by(department_id=current_user.email).scalar()
-    amandeApi    = db.session.query(func.sum(Ibihano.AmandeApII)).filter_by(department_id=current_user.email).scalar()
-=======
     umusaruro_kg = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(
         department_id=current_user.email).scalar()
     npk_kg = db.session.query(func.sum(InyongeraMusaruro.NPKkg)).filter_by(
@@ -289,7 +236,6 @@ def dashboard():
         department_id=current_user.email).scalar()
     amandeApi = db.session.query(func.sum(Ibihano.AmandeApII)).filter_by(
         department_id=current_user.email).scalar()
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
     # check if inyongeramusaruro kg is not empty
     if npk_kg is None:
         npk_kg = 0
@@ -309,11 +255,7 @@ def dashboard():
         amandec = 0
     if amandeApi is None:
         amandeApi = 0
-<<<<<<< HEAD
-    return render_template('home.html',
-=======
     return render_template('cooperative_admin.html',
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
@@ -357,15 +299,7 @@ def dashboard():
                            title='Employees')
 
 
-<<<<<<< HEAD
-
-
-
-
-# @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
-=======
 @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
 @login_required
 def memberDetails(id):
     check_admin()
@@ -731,18 +665,6 @@ def edit_role(id):
                            form=form, title="Edit Role")
 
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
 @aicos_members.route('/roles/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_role(id):
@@ -759,13 +681,6 @@ def delete_role(id):
     return render_template(title="Delete Role")
 
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
 # The view to list all role Views
 @aicos_members.route('/reports')
 @login_required
@@ -893,14 +808,6 @@ def add_payment(*args, **kwargs):
                            form=form, title='Add Payment')
 
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
 # This is the views for adding new decision
 @aicos_members.route('/cooperative/create/decision', methods=['GET', 'POST'])
 @login_required
@@ -1108,7 +1015,7 @@ def member_details(id):
 
 # This is the view which is used to import all the members from excel sheets
 # This is the view used to import all the cooperatives from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @aicos_members.route("/importmbs", methods=['GET', 'POST'])
 def doimportmbs():
     add_member = False
@@ -1729,38 +1636,6 @@ def coop_details(email):
 
     male_members = departments.members.filter_by(gender='Gole').first()
     if departments is not None:
-<<<<<<< HEAD
-        return render_template("cooperative_detail.html", departments=departments, 
-                    employees=employees,
-                    employees_count=employees_count,
-                    male_members=male_members,
-                    employees_male=employees_male,
-                    employees_female=employees_female,
-                    employees_male_count=employees_male_count,
-                    employees_female_count=employees_female_count,
-                    employees_abatarize=employees_abatarize,
-                    employees_abatarize_count=employees_abatarize_count,
-                    employees_abanza=employees_abanza,
-                    employees_abanza_count=employees_abanza_count,
-                    employees_ayisumbuye=employees_ayisumbuye,
-                    employees_ayisumbuye_count=employees_ayisumbuye_count,
-                    employees_kaminuza=employees_kaminuza,
-                    employees_kaminuza_count=employees_kaminuza_count,
-                    employees_imyuga=employees_imyuga,
-                    employees_imyuga_count=employees_imyuga_count,
-                    
-                    employees_amaguru=employees_amaguru,
-                    employees_amaguru_count=employees_amaguru_count,
-                    employees_amaboko=employees_amaboko,
-                    employees_amaboko_count=employees_amaboko_count,
-                    employees_kutabona=employees_kutabona,
-                    employees_kutabona_count=employees_kutabona_count,
-                    employees_kutumva=employees_kutumva,
-                    employees_kutumva_count=employees_kutumva_count,
-                    employees_mumutwe=employees_mumutwe,
-                    employees_mumutwe_count=employees_mumutwe_count,
-                    title="Cooperative's details")
-=======
         return render_template("cooperative_detail.html", departments=departments,
                                employees=employees,
                                employees_count=employees_count,
@@ -1791,7 +1666,6 @@ def coop_details(email):
                                employees_mumutwe=employees_mumutwe,
                                employees_mumutwe_count=employees_mumutwe_count,
                                title="Cooperative's details")
->>>>>>> 8af27a770af8a0ec55584e6e047bf8786eb76dab
     return redirect(url_for('admin.list_employees'))
 
 

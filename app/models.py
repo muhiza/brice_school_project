@@ -650,7 +650,8 @@ class Member(db.Model):
     Ubumuga = db.Column(db.String(200))
     Arubatse = db.Column(db.String(200))
     umubare_abana = db.Column(db.String(200))
-    icyiciro_ubudehe = db.Column(db.String(200))
+    icyiciro_ubudehe = db.Column(db.String(
+        200))
     Ubwishingizi = db.Column(db.String(200))
     akazi_akora_muri_koperative = db.Column(db.String(200))
     akazi_akora_ahandi = db.Column(db.String(200))
@@ -677,7 +678,7 @@ class Member(db.Model):
     """ We will always use this __init__ function to upload excel file  """
 
     def __init__(self, sno):
-        self.id = id
+        # self.id = id
         self.sno = sno
 
     """

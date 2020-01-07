@@ -12,6 +12,8 @@ from app.aicos_members import views
 @pytest.fixture(scope='module')
 def test_client():
     app = create_app('testing')
+    app.config['SERVER_NAME'] = '127.0.0.1:5000'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/tests'
     # Flask provides a way to test your application by exposing the Werkzeug test Client
     # and handling the context locals for you.
     test_client = app.test_client()
@@ -44,6 +46,7 @@ def init_database(test_client):
 
 # create test non-admin user
     employee = Employee(username="test_user", password="test2016", is_admin=True)
+    rca = Employee(username='rca',email='rca@gmail',password='rca10',is_rca=True)
 
     department = Department(email='paritoma10001@gmail.com', name="IT", description="The IT Department")
 
@@ -96,6 +99,7 @@ def init_database(test_client):
 
     db.session.add(admin)
     db.session.add(employee)
+    db.session.add(rca)
     db.session.add(department)
     db.session.add(goal)
     db.session.add(staff)
@@ -131,6 +135,7 @@ def init_database(test_client):
     yield db  # this is where the testing happens!
     
     response = test_client.post(url_for('auth.login'),data=dict(email="admin@gmail.com",password="admin2016"))
+    test_client.post(url_for('auth.login'),data=dict(email="rca@gmail.com",password="rca10"))
 
     assert response.status_code == 200
 

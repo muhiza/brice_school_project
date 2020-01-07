@@ -5,7 +5,7 @@ for users registration, login and forgot password
 
 # Third-party imports
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError
+from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 # Internal imports
@@ -20,6 +20,12 @@ class RegistrationForm(FlaskForm):
     #first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
     phone_number = StringField('Phone number', validators=[DataRequired()])
+    is_union         = BooleanField('is_union')
+    is_ferwacotamo   = BooleanField('is_ferwacotamo')
+    is_confederation = BooleanField('is_confederation')
+    is_rca           = BooleanField('is_rca')
+    is_manager       = BooleanField('is_manager')
+    is_coop_admin    = BooleanField('is_coop_admin')
     password = PasswordField('Password', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')
