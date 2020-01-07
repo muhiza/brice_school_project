@@ -4,7 +4,6 @@
 
 .login-box{
 width: 450px;
-height: 45vh;
 background: #fff;
 padding: 35px;
 margin-top: 180px;
@@ -13,7 +12,6 @@ margin-top: 180px;
 
 .login-box-register{
     width: 450px;
-    height: 65vh;
     background: #fff;
     padding: 35px;
     margin-top: 180px;
