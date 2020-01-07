@@ -294,6 +294,18 @@ class ExpenseForm(FlaskForm):
     Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Submit')
 
+
+class IncomeForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Submit')
+
+
+
 class BudgetForm(FlaskForm):
     Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
@@ -312,11 +324,6 @@ class AccountForm(FlaskForm):
     AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
     Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Bika')
-
-
-
-
-
 
 
     
