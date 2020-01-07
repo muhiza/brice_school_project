@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/muhiza/extrat/master/static/copa_home_page.png)
+![alt text](https://raw.githubusercontent.com/muhiza/extrat/master/static/copa_new_home_page.png)
 
 ## Smart Cooperative Platform Technical Documentation - AICOS
 
