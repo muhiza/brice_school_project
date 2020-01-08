@@ -467,7 +467,7 @@ def ibitaboBank():
             flash("Umaze kwinjize igitabo cya bank neza!")
             return redirect(url_for('aicos_req.ibitaboBankList'))
         except:
-            flash("Ntago igitabo cyabashije kwinjira neza!")
+            flash("Ntabwo igitabo cyabashije kwinjira neza!")
     return render_template('accountingBooks/ibitaboBank/ibitaboBank.html', form=form, title="List y'ibitabo bya banks!")
 
 
@@ -487,7 +487,7 @@ def signatories():
 
 @aicos_req.route('/cooperatives/amatsinda')
 def amatsinda():
-    amatsinda = Itsinda.query.all()
+    amatsinda = Itsinda.query.filter_by(department_id=current_user.email)
     member = ItsindaMember.query.all()
     return render_template('amatsinda/cooperative_groups.html', amatsinda=amatsinda, member=member)
 
@@ -1384,7 +1384,7 @@ def UbwisazureBwose():
             flash("Umaze kwinjize umutungo neza!")
             return redirect(url_for('aicos_req.UbwisanzureList'))
         except:
-            flash("Ntago umutungo wabashije kwinjira neza!")
+            flash("Ntabwo umutungo wabashije kwinjira neza!")
     return render_template('accountingBooks/ubwisazure/ubwisazure_form.html', form=form, title="List y'ubwisazure bw'umutungo!")
 
 
@@ -1396,16 +1396,118 @@ def Imyishyurire():
 def general_accounting():
     return render_template('accountingBooks/general/general_accounting.html')
 
-@aicos_req.route('/accountingBooks/general/budget')
+
+
+
+@aicos_req.route('/accountingBooks/general/budget', methods=["GET", "POST"])
 def budget():
-    return render_template('/accountingBooks/general/budget.html')
+    budgets = Budget.query.all()
+    return render_template('/accountingBooks/general/budget.html',budgets=budgets)
 
-@aicos_req.route('/accountingBooks/general/income')
+@aicos_req.route('/accountingBooks/general/new_budget', methods=["GET", "POST"])
+def new_budget():
+    form = BudgetForm()
+    if form.validate_on_submit():
+        budget = Budget(
+            Category = form.Category.data,
+            Date = form.Date.data,
+            Amount = form.Amount.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(budget)
+            db.session.commit()
+            flash("Umaze kwinjize Budget neza!")
+            return redirect(url_for('aicos_req.budget'))
+        except:
+            flash("Ntabwo Budget yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/new_budget.html',form=form)
+
+@aicos_req.route('/accountingBooks/general/income', methods=["GET", "POST"])
 def income():
-    return render_template('/accountingBooks/general/income.html')
+    incomes = Income.query.all()
+    return render_template('/accountingBooks/general/income.html',incomes=incomes)
 
-@aicos_req.route('/accountingBooks/general/expense')
+@aicos_req.route('/accountingBooks/general/income_category', methods=["GET", "POST"])
+def income_category():
+    form = IncomeCategoryForm()
+    if form.validate_on_submit():
+        category = IncomeCategory(
+            Category = form.Category.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjize Income_Category neza!")
+            return redirect(url_for('aicos_req.income'))
+        except:
+            flash("Ntabwo Income_Category yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/income_category.html',form=form)
+
+@aicos_req.route('/accountingBooks/general/new_income', methods=["GET", "POST"])
+def new_income():
+    form = IncomeForm()
+    if form.validate_on_submit():
+        income = Income(
+            Title = form.Title.data,
+            Date = form.Date.data,
+            Category = form.Category.data,
+            Account = form.Account.data,
+            Amount = form.Amount.data,
+            Desciption = form.Desciption.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(income)
+            db.session.commit()
+            flash("Umaze kwinjize Income neza!")
+            return redirect(url_for('aicos_req.income'))
+        except:
+            flash("Ntabwo Income yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/new_income.html',form=form)
+
+@aicos_req.route('/accountingBooks/general/expense', methods=["GET", "POST"])
 def expense():
-    return render_template('/accountingBooks/general/expense.html')
+    expenses = Expense.query.all()
+    return render_template('/accountingBooks/general/expense.html',expenses=expenses)
 
+@aicos_req.route('/accountingBooks/general/expense_category', methods=["GET", "POST"])
+def expense_category():
+    form = ExpenseCategoryForm()
+    if form.validate_on_submit():
+        category = ExpenseCategory(
+            AccountName = form.AccountName.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjiza Expense_Category neza!")
+            return redirect(url_for('aicos_req.expense'))
+        except:
+            flash("Ntabwo Expense_Category yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/expense_category.html',form=form)
+
+@aicos_req.route('/accountingBooks/general/new_expense', methods=["GET", "POST"])
+def new_expense():
+    form = ExpenseForm()
+    if form.validate_on_submit():
+        expense = Expense(
+            Title = form.Title.data,
+            Date = form.Date.data,
+            Category = form.Category.data,
+            Account = form.Account.data,
+            Amount = form.Amount.data,
+            Desciption = form.Desciption.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(expense)
+            db.session.commit()
+            flash("Umaze kwinjiza Expense neza!")
+            return redirect(url_for('aicos_req.expense'))
+        except:
+            flash("Ntabwo Expense yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/new_expense.html',form=form)
 

@@ -260,7 +260,7 @@ class GoalForm(FlaskForm):
 
 
 
-"""
+
 class ComForm(FlaskForm):
     
     firstName = StringField(Markup('<b>Izina ribanza</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injizamo Umudugudu"} )
@@ -282,12 +282,5 @@ class ComForm(FlaskForm):
     
     Telephone = StringField(Markup('<b>No Telephone</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza nomero ya telephone"})
     Email = StringField(Markup('<b>Email</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Email"})
-    monthlyNetSalary = StringField(Markup(
-"""
-
-class ZoneForm(FlaskForm):
-    izina = StringField("Izina Rya zone", validators=[DataRequired()])
-    description = StringField("Ubusobanuro", validators=[DataRequired()])
-    impamvu = StringField("Impamvu", validators=[DataRequired()])
-
-    submit = SubmitField('Injiza')
+    monthlyNetSalary = StringField(Markup('<b>Umushahara</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza Umushahara"})
+    submit      =  SubmitField('Emeza')

@@ -1,0 +1,169 @@
+
+{% import "bootstrap/utils.html" as utils %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>COPA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.homepage') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+                        
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="#prices">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact us</a>
+                        </li><br>
+                        -->
+
+                        <li class="nav-item"><br>
+                                <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="#">SIGN IN</a>
+                        </li>&nbsp;&nbsp;
+
+                        <li class="nav-item"><br>
+                                <a class="btn btn-pill btn-sm btn-success mb-3" href="#">SIGN UP</a>
+                        </li>
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="container">
+            <h1 class="display-4 my-5 my-lg-6 pb-lg-4 text-center">Contact</h1>
+        </div>
+        <div class="bg-skew bg-skew-light">
+            <div class="container pt-3">
+                <div class="row justify-content-lg-center">
+                    {{ utils.flashed_messages(dismissible=True) }} 
+                    <div class="col-lg-9">
+                        <p>Please fill out the form below and we will get back to you as soon as possible.</p>
+                        <p>Fields marked with an <span class="text-primary">*</span> are required.</p>
+                        <form class="py-4">
+                            <div class="form-group">
+                                <label for="name" class="small text-uppercase">Name <span class="text-primary">*</span></label>
+                                <input type="text" id="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="small text-uppercase">Email <span class="text-primary">*</span></label>
+                                <input type="email" id="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="small text-uppercase">Message <span class="text-primary">*</span></label>
+                                <textarea id="message"  class="form-control rounded" rows="9"></textarea>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" id="terms" class="form-check-input">
+                                <label class="form-check-label small" for="terms">I agree with the <a href="#">terms and conditions</a></label>
+                            </div>
+                            <a class="btn btn-pill btn-primary" href="{{ url_for('home.contact') }}">Submit</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end bg-skew -->
+    </main>
+
+    
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Our mission is to Accelerate <br>World's transition to digital<br> economy.</p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-4 col-md-2 mb-4">
+                    <a href="{{ url_for('home.our_commitment') }}">
+                        <h3 class="h5 mb-3">Responsibility</h3>
+                    </a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b> Sustainability</li>
+                        <li class="mb-1"><b>2:</b> Crisis Response</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Diversity&Inclusion</li>
+                        <li class="mb-1"><b>4:</b> Accessibility</li>
+                        <li class="mb-1"><b>5:</b> Transparency</li>
+                    </ol>
+                </div>
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Help</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

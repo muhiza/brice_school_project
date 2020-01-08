@@ -1,7 +1,7 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
-{% block body %}
+{% block content %}
   <div class="container-fluid">
     <div class="row">
       {{ utils.flashed_messages() }}
@@ -22,21 +22,19 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card"><br><br><br>
                             <div class="card-header">
-                                <strong class="h3 card-title"> Umusaruro wabonetse mu myaka itandukanye </strong> <br>
+                                <strong class="h3 card-title"> Urutonde rwo kwishyurirwaho. </strong> <br><br>
                             </div>
                             <div class="card-body">
                             <div class="table-responsive">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
+                                <table id="stock_imyishyurire" class="table table-striped table-bordered" style="width: 100%;">
                                     <thead>
-                                        <tr class="bg-info" style="color:#fff;">
+                                        <tr>
                                             <th>Amazina</th>
                                             <th>Uwo&nbsp;asigaranye</th>
                                             <th>Uwo&nbsp;kugurisha</th>
                                             <th>Amafaranga</th>
-                                            <th>Injiza</th>
-                                            <th>Ibindi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,16 +73,6 @@
                                                             {% endif %}
                                                       {% endfor %}
                                                   {% endif %}
-                                                </td>
-                                                <td>
-                                                  <a href="{{ url_for('aicos_stock_managment.injizaUmusaruro', id = member.id) }}"> 
-                                                    <span class="badge badge-success" style="font-size: 14px;"><li class="fa fa-plus"></li> Injiza</span>
-                                                  </a>
-                                                </td>
-                                                <td>
-                                                  <a href="{{ url_for('aicos_stock_managment.ibindiUmusaruro', id=member.id) }}">
-                                                    <span class="badge badge-info" style="font-size: 14px;"><li class="fa fa-eye"></li> Ibindi</span>
-                                                  </a>
                                                 </td>
                                               </tr>
                                            {% endfor %}

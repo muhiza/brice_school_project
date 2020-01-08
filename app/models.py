@@ -629,6 +629,7 @@ class Member(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     sno = db.Column(db.String(200))
+    email = db.Column(db.String(200))
     izina_ribanza = db.Column(db.String(200))
     izina_rikurikira = db.Column(db.String(200))
     Ayandi = db.Column(db.String(200))
@@ -643,7 +644,7 @@ class Member(db.Model):
     Akagari = db.Column(db.String(200))
     Umudugudu = db.Column(db.String(200))
     tariki_yinjiriye = db.Column(db.String(200))
-    umugabane = db.Column(db.String(200))
+    umugabane = db.Column(db.Integer)
     Umukono = db.Column(db.String(200))
     nomero_telephone = db.Column(db.String(200))
     Amashuri = db.Column(db.String(200))
@@ -660,6 +661,8 @@ class Member(db.Model):
     ubuso_ahingaho_ibindi = db.Column(db.String(200))
     ubwoko_igihingwa_kindi = db.Column(db.String(200))
     ubuso_budakoreshwa = db.Column(db.String(200))
+    bank = db.Column(db.String(200))
+    
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
@@ -680,6 +683,9 @@ class Member(db.Model):
     def __init__(self, sno):
         # self.id = id
         self.sno = sno
+
+
+
 
     """
     Importing data using this views.
@@ -1195,11 +1201,11 @@ class Isanduku(db.Model):
     __tablename__ = "isanduku"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    no = db.Column(db.String(200))
+    no = db.Column(db.Integer)
     done_date = db.Column(db.String(200))
     action = db.Column(db.String(200))
-    income = db.Column(db.String(200))
-    expense = db.Column(db.String(200))
+    income = db.Column(db.Integer)
+    expense = db.Column(db.Integer)
     remain = db.Column(db.String(200))
     done_by = db.Column(db.String(200))
     done_to = db.Column(db.String(200))
@@ -1451,7 +1457,8 @@ class Umusarurob(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     RiceType = db.Column(db.String(100))
-    UmusaruroGrade = db.Column(db.Integer)
+    UmusaruroGrade = db.Column(db.String(200))
+    RicePrice      = db.Column(db.Float)
     RiceAmount = db.Column(db.Integer)
     UwoAsigaranye = db.Column(db.Float)
     UwoKugurisha = db.Column(db.Integer)  # Quantity - Umu asigaranye

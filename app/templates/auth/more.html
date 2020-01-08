@@ -1,0 +1,165 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>COPA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.homepage') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="#prices">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact us</a>
+                        </li><br>
+                        -->
+
+                        <li class="nav-item"><br>
+                                <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.login') }}">SIGN IN</a>
+                        </li>&nbsp;&nbsp;
+
+                        <li class="nav-item"><br>
+                                <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.register') }}">SIGN UP</a>
+                        </li>
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main"><br><br><br><br><br><br>
+        <!-- Accordion -->
+        <section class="container pb-5">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-9">
+                    <div class="accordion" id="accordionQuestions">
+                        <article class="pb-2">
+                            <h1 class="text-center">COPA system to digitise cooperatives.</h1><br>
+                            <p class="lead">With the traditional system, some cooperative authorities find it easy to embezzle money or property because there is no concrete way to supervise them, leaving a big question mark to their accountability. <br><br>
+
+                            With AICOS, cooperatives will be able to work with transparency and boost trust among their members especially giving guarantee to the security of cooperative members’ harvests.<br><br>
+
+                            We believes digitizing operations of business cooperatives will help better planning, evaluation of their day-to-day activities and efficiently monitor their financial situation.<br><br>
+                            Cooperatives can use the system, specifically in membership management where they are able to record all details regarding its members, stock management, product movement and giving updates the cooperative’s situation and accounting activities to keep track of financial reports.<br><br>
+
+                            The same system can also be used by Unions, Federations as well as the Rwanda Cooperative Agency to access different data for planning and budgeting purposes.
+                            </p>
+
+                        </article>
+
+
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <br><br><br>
+    
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Our mission is to Accelerate <br>World's transition to digital<br> economy.</p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-4 col-md-2 mb-4">
+                    <a href="{{ url_for('home.our_commitment') }}">
+                        <h3 class="h5 mb-3">Responsibility</h3>
+                    </a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b> Sustainability</li>
+                        <li class="mb-1"><b>2:</b> Crisis Response</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Diversity&Inclusion</li>
+                        <li class="mb-1"><b>4:</b> Accessibility</li>
+                        <li class="mb-1"><b>5:</b> Transparency</li>
+                    </ol>
+                </div>
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Help</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">FAQ</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.contact') }}">Contact</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Support</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
+ 
