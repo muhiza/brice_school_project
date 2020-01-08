@@ -1,5 +1,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
-{% extends "members_base.html" %}
+{% extends "cooperative_admin_members_base.html" %}
 {% block title %}
     {% if add_department %}
         Add Role
@@ -7,22 +7,22 @@
         Edit Role
     {% endif %}
 {% endblock %}
-{% block body %}
+{% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card bg-light"><br>
                 <div class="row">
-                <div class="col-md-6">
-
+                <div class="col-md-6"><br>
             {% if add_role %}
                 <div class="card-header bg-light">
-                <h3>Injiza ugize Committee ya Koperative</h3>
+                <h3>Injiza ugize Committee ya Koperative<br><br>
+                    </h3>
                 </div>
             {% else %}
                 <div class="card-header bg-light">
-                <h3>Injiza ugize Committee ya Koperative</h3>
+                <h3>&nbsp;&nbsp;Injiza ugize Committee ya Koperative</h3><br><br>
                 </div>
             {% endif %}
             </div>
@@ -30,6 +30,7 @@
             </div>
                 <div class="card-body">
                 {{ wtf.quick_form(form, form_type='basic', button_map={'submit': 'info'}) }}
+                <br><br><br><br>
             </div>
         </div>
     </div>
@@ -43,12 +44,12 @@
     <div class="col-md-4">
       <div class="card">
             <div class="card bg-info"><br>
-            <strong><h3 style="color: #fff;">&nbsp;  <i class="fa fa-info-circle"></i> Ibyerekeye Committee </h3> </strong>
+            <strong><h3 style="color: #fff;">&nbsp;  <i class="fa fa-info-circle"></i> Ibyerekeye Committee </h3><br></strong>
             </div>
             <div class="card-body">
-            <p>
+            <p><br>
                 <i> Iyi pagi igufasha kubika amakuru yerekeye abakozi bashya n'abasanzwe ba <b> Koperative. </b> Umukozi ni umuntu uwo ari we wese wishyurwa na <b> Koperative. </b><br><br> Usabwe gukoresha amakuru nyayo. </i></p>
-            <br>
+            <br><br>
             </div>
      </div>
     </div>

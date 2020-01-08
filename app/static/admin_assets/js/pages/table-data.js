@@ -3,8 +3,6 @@
 $(document).ready(function() {
     
     "use strict";
-    
-    
     // Datatables
     $('#all_members').dataTable();
     $('#male_members').dataTable();
@@ -26,8 +24,27 @@ $(document).ready(function() {
     $('#all_members_half').dataTable();
     $('#all_members_zero').dataTable();
 
+    // Stock tables.
+    $('#stock_home').dataTable();
+    $('#stock_umusaruro').dataTable();
+    $('#stock_inyongeramusaruro').dataTable();
+    $('#stock_imisanzu').dataTable();
+    $('#stock_bank').dataTable();
+    $('#stock_ibirarane').dataTable();
+    $('#stock_ibihano').dataTable();
+    $('#stock_ibindi').dataTable();
+    $('#stock_imyishyurire').dataTable();
+    $('#rukomatanyi').dataTable();
 
+    
+    // Bank data tables
+    $('#bank_kwishyura').dataTable();
+    $('#kwishyura_umusaruro').dataTable();
+    
 
+    
+    
+    
     
     var table = $('#example2').DataTable({
         "columnDefs": [

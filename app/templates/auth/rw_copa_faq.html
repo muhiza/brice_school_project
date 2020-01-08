@@ -1,0 +1,229 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>COPA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.rwanda') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+
+                        <li class="nav-item"><br>
+                            <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.rw_login') }}">INJIRA</a>
+                        </li>&nbsp;&nbsp;
+
+                        <li class="nav-item"><br>
+                                <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.rw_register') }}">FUNGURA</a>
+                        </li>
+
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+
+
+        <hr class="sep border-primary my-5" role="presentation">
+
+        <!-- Accordion -->
+        <section class="container pb-5">
+            <h2 class="my-5 text-center">Ibibazo n’ibisubizo...</h2>
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-9">
+                    <div class="accordion" id="accordionQuestions">
+
+                        <div class="card mb-2 shadow">
+                            <div class="card-header" id="headingOne">
+                                <h3 class="card-title">
+                                    <a class="collapsed" role="button" href="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Ni ayahe ma Koperative yakoresha porogaramu ya COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordionQuestions">
+                                <div class="card-body">
+                                    <p>Porogaramu ya COPA yakorewe ama koperative ari mu bwoko bwose bw’ubukungu, ariko mu ntangiriro ikaba yaratangiye 
+                                        yibanda ku ma Koperative y’ubuhinzi, mu gihe n’izindi Koperative 
+                                        zishobora kuba zikoresha COPA ntakibazo, ntago zizejwe gusangamo ibyo zikeneye byose.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-2 shadow">
+                            <div class="card-header" id="headingTwo">
+                                <h3 class="card-title">
+                                    <a class="collapsed" role="button" href="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Ese amahuriro, impuzamahuriro ndetse n’urugaga bishobora nabyo gukoresha COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionQuestions">
+                                <div class="card-body">
+                                    <p> Yego, imvano, isesengurwa ndetse n’ishyirwa mu bikorwa rya porogaramu ya COPA byose bishingiye ku mahame shingiro agenga ama Koperative ndetse 
+                                        n’igishushanyo cya’ama Koperative ku rwego rw’igihunga na mpuzamahanga.  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-2 shadow">
+                            <div class="card-header" id="headingThree">
+                                <h3 class="card-title">
+                                    <a class="collapsed" role="button" href="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Ni gute abanyamuryango b’ama Koperative bashobora kungukira mu gukoresha COPA?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionQuestions">
+                                <div class="card-body">
+                                    <p>  Nk’uko Koperative iba ari iyabanyamuryango, ni nabo dushyira imbere mubyo dukora. 
+                                        Abanyamuryango bashobora kubona amakuru ya buri munsi ari muri Koperative abareba, yaba ayerekeye imigabane yabo, 
+                                        umutungo wa Koperative, isoko, ibihingwa, ihembwa ndetse n’ama matangazo aba abareba igihe icyo aricyo cyose. 
+                                        Begerezwe serivisi z’imari zirimo nko gukoresha amakuru yabo bakaba babona inguzanyo mu bigo by’imari ndetse no 
+                                        kohererezanya amafara haba hagati yabo ubwobo cg Koperative.  </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-2 shadow">
+                            <div class="card-header" id="headingFour">
+                                <h3 class="card-title">
+                                    <a class="collapsed" role="button" href="#collapseFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        Ikoranabuhanga rya mushyinguranyi na COPA bihuriye he?<i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionQuestions">
+                                <div class="card-body">
+                                    <p>Ubu ni uburyo bucungiwe umutekano cyane, bwifashishwa mu kohererezanya amafaranga hagati y’abantu ndetse No kubika 
+                                        amakuru mu buryo bwizewe kandi abantu bayafiteho uburenganzira bungana.<br><br>
+
+                                        COPA yifashisha ikoranabuhanga rya mushyinguranyi mu gukurikirana uruhererekana cg  Supply chain traceability, 
+                                        Ni uburyo COPA ifasha mu gukurikirana inzira igihingwa cg igicuruzwa kinyuramo, kuva kiri mu murima Kugeza kigeze kw’isoko, 
+                                        ibi bizana n’inyungu zitandukanye zirimo nko kwihutisha akazi, 
+                                        kubika amakuru y’ingenzi mu buryo bwizewe ndetse no kongera gukorera mu mucyo mu gucunga Koperative.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-2 shadow">
+                            <div class="card-header" id="headingFive">
+                                <h3 class="card-title">
+                                    <a class="collapsed" role="button" href="#collapseFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        Ni gute abantu badafite ubumenyi bw’ibanze kubijyanye n’ikoranabuhanga bafashwa gukoresha COPA? <i class="fas fa-angle-down float-right rotate-icon" aria-hidden="true"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionQuestions">
+                                <div class="card-body">
+                                    <p> Dutanga amahugurwa afasha abakoresha porogaramu ya COPA kugira ubumenyi bw’ibinze kw’ikoranabuhanga 
+                                        rikenerwa mu buzima bwa buri munsi kugirango abantu babona serivisi zitandukanye. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <br><br><br>
+    
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Icyerekezo cyacu ni ugufata iyambere mu
+                        Gufasha Isi mu kwinjira mu bukungu
+                        Bushingiye kw’ikoranabuhanga.
+                        </p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="{{ url_for('home.rw_our_commitment') }}">
+                        <h3 class="h5 mb-3">Ibyo&nbsp;twiyemeje.</h3>
+                    </a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b>&nbsp;Kubaka&nbsp;ibiramba.</li>
+                        <li class="mb-1"><b>2:</b>&nbsp;Gushakira&nbsp;ibibazo&nbsp;ibibazo.</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Kudaheza.</li>
+                        <li class="mb-1"><b>4:</b>&nbsp;Koroshya&nbsp;ikoreshwa&nbsp;rya&nbsp;serivisi.</li>
+                        <li class="mb-1"><b>5:</b>&nbsp;Umucyo&nbsp;muri byose.</li>
+                    </ol>
+                </div>
+                <div class="col-2 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Ubufasha.</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ibibazo n’ibisubizo.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_contact') }}">Twandikire.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ubufasha.</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

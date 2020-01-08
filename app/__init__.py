@@ -240,8 +240,18 @@ def create_app(config_name):
     from .aicos_crm import aicos_crm as aicos_crm_blueprint
     app.register_blueprint(aicos_crm_blueprint, url_prefix='/aicos_crm')
 
+
+    from .aicos_bank import aicos_bank as aicos_bank_blueprint
+    app.register_blueprint(aicos_bank_blueprint, url_prefix='/banks')
+
+
+    from .copa_member_profile import member_profile as member_profile_blueprint
+    app.register_blueprint(member_profile_blueprint, url_prefix='/member_profile')
+
+
+    
     """
-    from .product.views import product as product_blueprint
+    from .product.views import product as product_blueprintmember_profile
     app.register_blueprint(product_blueprint, url_prefix='/try')
     """
 
@@ -312,6 +322,12 @@ def create_app(config_name):
         return render_template('errors/500.html', title='Server Error'), 500
 
     return app
+
+
+
+
+
+
 
 
 

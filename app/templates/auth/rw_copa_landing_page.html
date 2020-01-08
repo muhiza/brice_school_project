@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <title>COPA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.rwanda') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#prices">Ibiciro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Ibirimo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Twandikire</a>
+                        </li><br>
+
+                        <li class="nav-item"><br>
+                            <a class="btn btn-pill btn-sm btn-outline-primary mb-3"
+                                href="{{ url_for('auth.rw_login') }}">INJIRA</a>
+                        </li>&nbsp;&nbsp;
+
+                        <li class="nav-item"><br>
+                            <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.rw_register') }}">FUNGURA</a>
+                        </li>
+
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                    	-->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
+        <section class="container-fluid">
+            <div class="row justify-content-lg-between align-items-lg-center py-5">
+                <div class="col-lg-6 col-xl-5 mb-4 text-center text-lg-left">
+                    <h1 class="display-4 mb-4">COPA, Uburyo bworoshye bwo gucunga ibikorwa bya Koperative.</h1>
+                    <p class="lead mb-4">Porogaramu yambere y’ikoranahanga yakorewe gucunga ibikorwa byose bya Koperative, 
+                        guhuza inzego zose zikorana n’ama Koperative mu buryo bwo gusangira amakuru ndetse no kongera uruhare 
+                        rw’abanyamuryango mu bikorwa bya Koperative bya buri munsi.</p>
+                    <a class="btn btn-pill btn-primary btn-block d-md-inline-block w-auto mx-1 ml-sm-0 my-3" href="{{ url_for('home.more') }}" role="button">
+                        <span>REBA IBINDI</span>
+                    </a>
+                </div>
+                <div class="col-lg-6 col-xl-7">
+                    <img src="{{ url_for('static', filename='landing_page_assets/img/copa_screenshot.jpg') }}" class="d-none d-lg-block img-fluid" alt="">
+                </div>
+            </div><br><br><br><br><br>
+        </section>
+
+
+
+        <div class="bg-skew bg-skew-light">
+
+            <!-- Icon blocks -->
+            <section class="container" id="features" >
+                <div class="row align-items-center py-5">
+                    <div class="col-lg-4" style="margin-left: -20px;">
+                        <img src="{{ url_for('static', filename='landing_page_assets/img/phone_screenshot.png') }}" class="img-responsive img-fluid">
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row"  style="margin-right: -220px;">
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-users" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Gucunga abanyamuryango.</h3>
+                                        <p>Uburyo bwo kwandika imyirondoro y’abanyamuryango 
+                                            ndetse no kubimerera gukurikirana ibikorwa bya 
+                                            Koperative bya buri munsi hafashishijwe
+                                            Telephone zabo zigendanwa.
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class='icon-inner fas fa-coins'></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Gucunga ububiko (Stock).</h3>
+                                        <p>Mu bikorwa bya buri munsi bya Koperative hari ibyo
+                                            Abanyamuryango baba bazana cg bavana mu
+                                            Bubiko bwa Koperative. COPA ikourikirana ibyo
+                                            Bikorwa ndetse ikanategura raporo za buri munsi
+                                            Zerekeye ububiko.
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-money-bill-alt" aria-hidden="true"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Icunga mutungo.</h3>
+                                        <p>COPA, ni nk’umucunga mutungo wa Koperative uri kuri murandasi
+                                            Mu gihe amakuru yerekeye imari muri Koperative yatanzwe,
+                                           Porogaramu igufasha gutegura ama raporo yose y’icunga
+                                           Mutungo aba akenewe. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class='icon-inner fas fa-chart-pie'></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Gutegura ama raporo.</h3>
+                                        <p>Nk’uko ama Koperative aba afite abafatanya bikorwa benshi
+                                            Bose niko baba bashaka raporo z’imbitse zijyanye 
+                                            N’ibikorwa bya Koperative mu gihe runaka,
+                                            COPA ibyo ibikora neza.
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fab fa-gg-circle"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5 mb-2">Mushyinguranyi.</h3>
+                                        <p>Ubu ni uburyo bucungiwe umutekano cyane, bwifashishwa mu
+                                            Kohererezanya amafaranga hagati y’abantu ndetse
+                                            No kubika amakuru mu buryo bwizewe kandi 
+                                            Abantu bayafiteho uburenganzira bungana.
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="media">
+                                    <span class="icon icon-primary mr-3">
+                                        <i class="icon-inner fas fa-route"></i>
+                                    </span>
+                                    <div class="media-body">
+                                        <h3 class="h5">Gukurikirana uruhererekane.</h3>
+                                        <p>Gukurikirana uruhererekana cg  Supply chain traceability
+                                            Ni uburyo COPA ifasha mu gukurikirana inzira igihingwa
+                                            Cg igicuruzwa kinyuramo, kuva kiri mu murima
+                                            Kugeza kigeze kw’isoko, ibi bizana n’inyungu zitandukanye
+                                            Zirimo nko kwihutisha akazi no kubika amakuru y’ingenzi.
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials 
+            <section class="container">
+                <h2 class="h3 mt-5 mb-4 text-center">What people are saying…</h2>
+                <div class="row py-5">
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/leo-gill.jpg" alt="Leo Gill">
+                            <p class="text-secondary">Boost theme is awesome! We've seen amazing results already.</p>
+                            <cite class="small text-uppercase">Leo Gill</cite>
+                        </blockquote>
+                    </div>
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/renee-sims.jpg" alt="Renee Sims">
+                            <p class="text-secondary">It really saves me time and effort. Boost theme is exactly what our business has been lacking.</p>
+                            <cite class="small text-uppercase">Renee Sims</cite>
+                        </blockquote>
+                    </div>
+                    <div class="col-md">
+                        <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                            <img class="avatar avatar-md mb-4" src="img/dallas-kwok.jpg" alt="Dallas Kwok">
+                            <p class="text-secondary">Boost theme impressed me on multiple levels.</p>
+                            <cite class="small text-uppercase">Dallas Kwok</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+            -->
+
+        </div><!-- end bg-skew -->
+
+        <!-- Pricing cards -->
+        <div class="bg-skew bg-skew-light py-4">
+            <div class="container">
+                <h2 class="text-center mb-5">Hitamo igiciro kijyanye n’ibyo ukeneye.</h2>
+
+                <!-- Pricing table -->
+                <table class="table bg-white shadow pricing-table table-responsive-md mb-5">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Ibyibanze</span>
+                                <div class="d-flex">
+                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">0 &nbsp;</span>
+                                </div>
+                                <small class="d-block text-muted">ku kwezi</small>
+                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                    href="{{ url_for('auth.register') }}">tangira</a>
+                            </th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Ibiciriritse</span>
+                                <div class="d-flex">
+                                    <span class="h6 mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">50,000</span>
+                                </div>
+                                <small class="d-block text-muted">ku kwezi</small>
+                                <a class="btn btn-sm btn-pill btn-primary mt-4"
+                                    href="{{ url_for('auth.register') }}">tangira</a>
+                            </th>
+                            <th scope="col">
+                                <span class="d-block h4 mb-1">Ibyuzuye</span>
+                                <div class="d-flex">
+                                    <span class="h6 font-weight-normal mt-1">Frw</span><span
+                                        class="display-4 font-weight-normal">100,000</span>
+                                </div>
+                                <small class="d-block text-muted">ku kwezi</small>
+                                <a class="btn btn-sm btn-pill btn-outline-primary mt-4"
+                                    href="{{ url_for('auth.register') }}">tangira</a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Ubutumwa ku kwezi.</th>
+                            <td>10</td>
+                            <td>30</td>
+                            <td>100</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Gucunga abanyamuryango.</th>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Ububiko bwa mushyinguranyi.</th>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Ubwishingizi bw’amakuru.</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Gusaba no gutanga inguzanyo.</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Gukurikirana inguzanyo.</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Ikoreshwa ry’imari.</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Raporo ku Nyungu/Igihombo.</th>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Raporo k’ihererekanya ry’amafaranga.</th>
+                            <td>-</td>
+                            <td>-</td>
+
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Ishusho y’umutungo.</th>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>
+                                <i class="far fa-check-circle fa-lg text-success" aria-hidden="true"></i>
+                                <span class="sr-only">Yes</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+        <!-- Testimonials -->
+        <section class="container">
+            <h2 class="h3 mt-5 mb-4 text-center">Ibyo abantu bavuga…</h2>
+            <div class="row py-5">
+                <div class="col-md">
+                    <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                        <span class="icon icon-lg icon-success">
+                            <i class="icon-inner fas fa-user"></i>
+                        </span>
+                        <p class="text-secondary">COPA yadufashije cyane kwihutisha akazi
+                            Ndetse no gufasha abakozi gukora inshingano
+                            Zabo za buri munsi neza. Ubu dushobora gukusanya
+                            Amakuru neza ndetse tukanayabika mu buryo
+                            Bwizewe.
+                            </p>
+                        <cite class="small text-uppercase">Olive Nirere.</cite>
+                    </blockquote>
+                </div>
+                <div class="col-md">
+                    <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                        <span class="icon icon-lg icon-success">
+                            <i class="icon-inner fas fa-user"></i>
+                        </span>
+                        <p class="text-secondary">Ubu ntago tugikoresha igihe kerekira ndetse n’amafaranga
+                            Mu ngendo za buri munsi dutwaye ama raporo mu ntoki
+                            No ku mpapuro ku bafatanya bikorwa bacu nka mbere.
+                            Ubu COPA niyo ibikora mu buryo bwihuse.
+                            </p>
+                        <cite class="small text-uppercase">NKURIKIYINKA Vincent</cite>
+                    </blockquote>
+                </div>
+                <div class="col-md">
+                    <blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">
+                        <span class="icon icon-lg icon-success">
+                            <i class="icon-inner fas fa-user"></i>
+                        </span>
+                        <p class="text-secondary">Nashishikariza n’izindi Koperative guhindura imikorera
+                            Zigatangira gukoresha ikoranabuhanga, niryo rigezweho
+                            Kandi twagize amahirwe yo kuba COPA yakorewe 
+                            Amakoperative mu buryo bw’umwihariko.
+                            </p>
+                        <cite class="small text-uppercase">Mukantore Marie Louise</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <br><br><br>
+        <hr class="sep border-primary" role="presentation">
+        <!-- Call to action -->
+        <section class="container py-5" id="contact">
+            <div class="text-center">
+                <h2 class="mb-4">Ufite ikibazo cg Igitekerezo? Twandikire.
+                </h2>
+                <div class="mb-4">
+                    <a class="btn btn-pill btn-primary" href="{{ url_for('home.contact') }}" role="button">Twandikire</a>
+                </div>
+            </div>
+
+
+
+        </section><br><br><br>
+    </main>
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Icyerekezo cyacu ni ugufata iyambere mu
+                        Gufasha Isi mu kwinjira mu bukungu
+                        Bushingiye kw’ikoranabuhanga.
+                        </p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="{{ url_for('home.rw_our_commitment') }}">
+                        <h3 class="h5 mb-3">Ibyo&nbsp;twiyemeje.</h3>
+                    </a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b>&nbsp;Kubaka&nbsp;ibiramba.</li>
+                        <li class="mb-1"><b>2:</b>&nbsp;Gushakira&nbsp;ibibazo&nbsp;ibibazo.</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Kudaheza.</li>
+                        <li class="mb-1"><b>4:</b>&nbsp;Koroshya&nbsp;ikoreshwa&nbsp;rya&nbsp;serivisi.</li>
+                        <li class="mb-1"><b>5:</b>&nbsp;Umucyo&nbsp;muri byose.</li>
+                    </ol>
+                </div>
+                <div class="col-2 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Ubufasha.</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ibibazo n’ibisubizo.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_contact') }}">Twandikire.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.copa_faq') }}">Ubufasha.</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+
+
+
+
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

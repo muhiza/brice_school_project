@@ -1,60 +1,7 @@
    {% extends "req_base.html" %}
-    {% block body %}
-        <div class="container">
-        <h3> Accounting Book </h3>
-            <div class="row mt-4">
-                    <div class="col-md-4">
-                    <a href="{{ url_for('aicos_req.rukomatanyi') }}">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-success" style="color: #fff;">
-                                <strong class="card-title">
-                                <span class="ti-folder"></span> Rukomatanyo</strong>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Rukomatanyo</p>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-
-
-
-
-                    <div class="col-md-4">
-                    <a href="{{ url_for('aicos_req.UbwisazureList') }}">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-primary" style="color: #fff;">
-                                <strong class="card-title">
-                                <span class="ti-folder"></span> Ubwisazure</strong>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Ubwisazure</p>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-
-
-
-
-
-
-
-                    <div class="col-md-4">
-                    <a href="{{ url_for('aicos_req.Imyishyurire') }}">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-info" style="color: #fff;">
-                                <strong class="card-title">
-                                <span class="ti-folder"></span> Imyishyurire</strong>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Imyishyurire</p>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-                </div>
+    {% block content %}
+        <div class="container"><br><br><br>
+        <h3> Accounting Book </h3><br>
 
 
 
@@ -78,59 +25,75 @@
 
 
 
-            <div class="row mt-4">
-                    <div class="col-md-4">
-                    <a href="{{ url_for('aicos_stock_managment.dashboard') }}">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-secondary" style="color: #fff;">
-                                <strong class="card-title">
-                                <span class="ti-folder"></span> Stock </strong>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text"> Stock </p>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
 
 
 
-                    <div class="col-md-4">
-                        <a href="{{ url_for('aicos_req.rukomatanyi') }}">
-                            <div class="card border border-primary">
-                                <div class="card-header bg-danger" style="color: #fff;">
-                                    <strong class="card-title">
-                                    <span class="ti-folder"></span> Members </strong>
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text">Members</p>
+
+
+
+
+                    <div class="row">
+                            <a href="{{ url_for('aicos_req.rukomatanyi') }}">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="panel panel-white stats-widget">
+                                    <div class="panel-body">
+                                        <div class="pull-left">
+                                            <span class="stats-number">Rukomatanyo</span>
+                                            <p class="stats-info">Total Income</p>
+                                        </div>
+                                        <div class="pull-right">
+                                            <i class="icon-arrow_upward stats-icon"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-md-4">
-                        <a href="{{ url_for('aicos_req.general_accounting') }}">
-                            <div class="card border border-primary">
-                                <div class="card-header bg-info" style="color: #fff;">
-                                    <strong class="card-title">
-                                    <span class="ti-folder"></span> General Accounting </strong>
+                            </a>
+                            <div class="col-lg-3 col-md-6">
+                                <a href="{{ url_for('aicos_stock_managment.dashboard') }}">
+                                <div class="panel panel-white stats-widget">
+                                    <div class="panel-body">
+                                        <div class="pull-left">
+                                            <span class="stats-number">Stock</span>
+                                            <p class="stats-info">Downloads</p>
+                                        </div>
+                                        <div class="pull-right">
+                                            <i class="icon-arrow_downward stats-icon"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p class="card-text">Accounting</p>
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-
-                    </div>
-
-
-
-
-
-
-
+                            <div class="col-lg-3 col-md-6">
+                                <a href="{{ url_for('aicos_req.UbwisazureList') }}">
+                                <div class="panel panel-white stats-widget">
+                                    <div class="panel-body">
+                                        <div class="pull-left">
+                                            <span class="stats-number">Ubwisazure</span>
+                                            <p class="stats-info">New Registrations</p>
+                                        </div>
+                                        <div class="pull-right">
+                                            <i class="icon-arrow_upward stats-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <a href="{{ url_for('aicos_req.Imyishyurire') }}">
+                                <div class="panel panel-white stats-widget">
+                                    <div class="panel-body">
+                                        <div class="pull-left">
+                                            <span class="stats-number">Imyishyurire</span>
+                                            <p class="stats-info">Finished Tasks</p>
+                                        </div>
+                                        <div class="pull-right">
+                                            <i class="icon-arrow_upward stats-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                        </div><!-- Row -->
 
 
 

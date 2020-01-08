@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<title>COPA</title>
+
+	<!-- Styles -->
+
+	<link href="{{ url_for('static', filename='landing_page_assets/css/page.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='landing_page_assets/css/style.css') }}" rel="stylesheet">
+
+
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+
+	<!-- Favicons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light navbar-stick-dark" data-navbar="smart">
+		<div class="container">
+
+			<div class="navbar-left mr-4">
+				<button class="navbar-toggler" type="button"><span class="navbar-toggler-icon"></span></button>
+				<a class="navbar-brand" href="#">
+					<img class="logo-light"
+						src="https://raw.githubusercontent.com/muhiza/extrat/master/static/logo-dark.png" alt="logo">
+				</a>
+			</div>
+
+			<section class="navbar-mobile">
+				<nav class="nav nav-navbar">
+					<a class="nav-link active" href="#home">Ahabanza</a>
+					<a class="nav-link" href="#section-features">Ibirimo</a>
+					<a class="nav-link" href="#section-pricing">Ibiciro</a>
+					<a class="nav-link" href="https://medium.com/aicos" target="_blank">Imfashanyigisho</a>
+					<a class="nav-link" href="https://twitter.com/AicosOfficial" target="_blank">Twandikire</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+					<a class="navbar-brand" href="{{ url_for('auth.rwanda') }}" style="width: 20px;">
+						<img class="logo-light"
+							src="{{ url_for('static', filename='landing_page_assets/img/flag-of-Rwanda.png') }}" alt="logo">
+					</a>
+
+
+					<a class="navbar-brand" href="{{ url_for('auth.english') }}" style="width: 20px;">
+						<img class="logo-light"
+							src="{{ url_for('static', filename='landing_page_assets/img/flag-of-United-Kingdom.png') }}" alt="logo">
+					</a>
+
+
+
+				</nav>
+
+				<div class="d-none d-stick-block">
+					<a class="btn btn-sm btn-light ml-lg-5 mr-2" href="{{ url_for('auth.login') }}">Login</a>
+					<a class="btn btn-sm btn-success" href="{{ url_for('auth.register') }}">Sign up</a>
+				</div>
+			</section>
+
+		</div>
+	</nav><!-- /.navbar -->
+
+
+	<!-- Header -->
+	<header id="home" class="header text-white h-fullscreen text-center text-lg-left" style="background-color: #24292e">
+		<canvas class="constellation" data-color="rgba(255,255,255,0.3)"></canvas>
+		<div class="container">
+			<div class="row align-items-center h-100">
+
+				<div class="col-lg-6">
+					<h2> <b>Ikoranabuhanga mu Makoperative. </b></h2>
+					<p class="lead mt-5 mb-8">                            
+                            COPA ni porogaramu ya mudasobwa igenewe ama Koperative mu rwego rwo kuyafasha koroshya imicungira yayo ya buri munsi, irimo;
+                            gucuma abanyamuryango, icunga mutungo, itumanaho, ububiko, gutegura ama raporo, igena migambi n'ibindi bitandukanye.
+					</p>
+					<p class="gap-xy">
+						<a class="btn btn-round btn-light mw-150" href="{{ url_for('auth.register') }}">Iyandikishe</a>
+					</p>
+				</div>
+
+				<div class="col-lg-5 ml-auto">
+					<img class="mt-5"
+						src="{{ url_for('static', filename='landing_page_assets/img/preview/laptop-1.png') }}"
+						alt="img">
+				</div>
+
+			</div>
+		</div>
+	</header><!-- /.header -->
+
+
+	<!-- Main Content -->
+	<main class="main-content">
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Welcome
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section class="section">
+			<div class="container">
+				<header class="section-header">
+					<small>Murakaza neza.</small>
+					<h2>Sobanukirwa birambuye.</h2>
+					<hr>
+					<p class="lead">Ikoranabuhanga rihuriza hamwe ibikenewe byose mu gucunga Koperative z'ubwoko butandukanye, 
+                                    aho gukemura ikibazo kimwe mu bindi.
+					</p>
+				</header>
+
+
+
+				<div class="row gap-y">
+
+					<div class="col-md-8 mx-auto">
+
+						<img src="{{ url_for('static', filename='landing_page_assets/img/preview/dribbble-9.gif') }}"
+							alt="..." data-aos="fade-up" data-aos-duration="2000">
+					</div>
+
+
+					<div class="w-100"></div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-dark mr-5"><i class="icon-mobile-phone"></i></div>
+							<div class="media-body">
+								<h5>Gusubiza.</h5>
+								<p>COPA ishobora gukora neza ku bikoresho bitandukanye, yaba telephone cg mudasobwa.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-primary mr-5"><i class="icon-gears"></i></div>
+							<div class="media-body">
+								<h5>Guhindura</h5>
+								<p>Ushobora guhindura porogaramu ya COPA mu buryo ushaka ndetse ukagenda uhitamo ibyo ushaka kubone igihe ushakiye.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-info mr-5"><i class="icon-dashboard"></i></div>
+							<div class="media-body">
+								<h5>Ibikoresho</h5>
+                                <p>Hari ibikoresha bitandukanye byagenewe gukemura ibibazo byihariye, mu micungire ya buri munsi ya Koperative.</p>
+                                
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-warning mr-5"><i class="icon-share"></i></div>
+							<div class="media-body">
+								<h5> Gusangira amakuru.</h5>
+								<p> Porogaramu ya COPA, ifasha gusanginza amakuru abafatanyabikorwa bose ba Koperative mu buryo bwihuse.</p>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-danger mr-5"><i class="icon-book"></i></div>
+							<div class="media-body">
+								<h5>Imfashanyigisho</h5>
+                                <p> Porogaramu ya COPA, izana n'imfasha nyigisho ziteguye neza zifasha abayikoresha gusobanukirwa buri kimwe n'icyo 
+                                    gikora. </p>
+                                
+
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-md-6 col-xl-4">
+						<div class="media">
+							<div class="lead-6 line-height-1 text-success mr-5"><i class="icon-thumbs-up"></i></div>
+							<div class="media-body">
+								<h5>Ubufasha</h5>
+                                <p>Mu gihe ukoresha COPA, ugezwaho ubufasha buhoraho (24/7) ndetse ugahabwa n'ibiba bigezweho.</p>
+                            </div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | CTA
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+
+		<section class="section py-7" style="background-color: #8ea6e6">
+			<div class="container">
+				<div class="row gap-y align-items-center">
+					<div class="col-md-9">
+						<h4 class="mb-0 text-white text-center text-md-left">Want a bite? You're in the right place!
+						</h4>
+					</div>
+
+					<div class="col-md-3 text-center text-md-right">
+						<a class="btn btn-lg btn-round btn-light" href="#">Take a test drive</a>
+					</div>
+				</div>
+			</div>
+		</section>
+      !-->
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Features
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section id="section-features" class="section bg-gray">
+			<div class="container">
+				<header class="section-header">
+					<small>Ibirimo</small>
+                    <h2>Bimwe mu bigize COPA.</h2>
+					<hr>
+                    <p class="lead">COPA ni porogaramu itangwa nka serivise, ifasha Koperative gucunga ibikorwa byayo byose bya buri munsi.</p>
+				</header>
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 ml-auto">
+                        <h4>Gucunga Abanyamuryango</h4>
+                        
+						<p> Uru ni uruhande rwo gucunga abanyamuryango ba Cooperative no kubika amakuru yabo hakoreshejwe system.
+                            Uburyo bwo gukora amatsinda / groups agizwe n’abanyamuryango muri cooperative. <b>Urugero:</b> Amatsinda yo kuzigama
+                            no kugurizanya. Uburyo bwo gushyira abanyamuryango mu ma zones / amahangari babarizwamo, no kugenzura uko umusaruro 
+                            ugemurwa hagendewe ku ma zones / amahangari. </p>
+
+
+					</div>
+
+					<div class="col-md-5 order-md-first">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/membership_management.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+				<hr class="my-8">
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 mr-auto">
+						<h4>Gucunga ububiko.</h4>
+						<p>
+                            Gucunga no kubika amakuru y'ububiko bwa Koperative mu buryo buhoraho no gutanga ama report yerekeye ibyakozwe mu gihe runaka.
+                            <b> Urugero:</b>Ububiko, Imisaruro, Inyongera musaruro, Imisanzu, Ibirarane, Ibihano n'Ibindi.
+                        </p>
+						
+					</div>
+					<div class="col-md-5">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/stock_management.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+				<hr class="my-8">
+
+
+				<div class="row gap-y align-items-center">
+					<div class="col-md-6 ml-auto">
+						<h4>Gutegura raporo</h4>
+						<p>
+                        Gutegura ubwoko bwa raporo zitandukanye no kuzisangiza abandi bafatanya bikorwa bose ba Koperative n’izindi nzego zikorana
+                        na Koperative. <b>Urugero:</b>Federation, Unions, Inganda, Banks / Sacco, abafatanyabikorwa ndetse n’abandi bagenwe na Koperative.        
+						</p>
+					</div>
+
+					<div class="col-md-5 order-md-first">
+
+						<img class="rounded shadow-2"
+							src="{{ url_for('static', filename='landing_page_assets/img/preview/reporting.png') }}"
+							alt="...">
+					</div>
+				</div>
+
+
+			</div>
+		</section>
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Pricing
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section id="section-pricing" class="section">
+			<div class="container">
+				<header class="section-header">
+					<small>Gahunda</small>
+					<h2>Ibiciro</h2>
+					<hr>
+
+                    <p class="lead">Hitamo bumwe mu buryo wakoresha muri ubu bukurikira. Ushobora guhitamo uburyo bw'ubuntu ukabanza ukareba
+                        uko porogaramu ikora. Ushobora guhindura uburyo wahise igihe icyo aricyo cyose.
+                    </p>
+                                
+
+
+				</header>
+
+
+				<div class="text-center my-7">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-round btn-outline-secondary w-150 active">
+							<input type="radio" name="pricing" value="monthly" autocomplete="off" checked> Ku kwezi.
+						</label>
+						<label class="btn btn-round btn-outline-secondary w-150">
+							<input type="radio" name="pricing" value="yearly" autocomplete="off"> Ku mwaka.
+						</label>
+					</div>
+				</div>
+
+
+				<div class="row gap-y text-center">
+
+					<div class="col-md-4">
+						<div class="pricing-1">
+							<p class="plan-name">Ubuntu</p>
+							<br>
+							<h2 class="price">0</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>Wemerewe abakozi bose.</small><br>
+								<small>Ushobora gutumanaho na Sacco.</small><br>
+								<small>Nta mahugurwa wemerewe.</small><br>
+							</div>
+							<br>
+							<p class="text-center py-3">
+								<a class="btn btn-primary" href="{{ url_for('auth.register') }}">Tangira.</a>
+							</p>
+						</div>
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="pricing-1 popular">
+							<p class="plan-name">Uburyo bw'ibanze</p>
+							<br>
+							<h2 class="price text-success">
+								<span class="price-unit">rwf</span>
+								<span data-bind-radio="pricing" data-monthly="50,000" data-yearly="520,000">50,000</span>
+								<span class="plan-period" data-bind-radio="pricing" data-monthly="/Ukwezi"
+									data-yearly="/Umwaka">/Ukwezi</span>
+							</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>Uburyo bw'ubuntu.</small><br>
+								<small>Gusangiza / Gusangira amakuru.</small><br>
+								<small>Icungamutungo ry'ibanze.</small><br>
+								<small>Guhabwa amahugurwa.</small><br>
+
+							</div>
+
+							<br>
+							<p class="text-center py-3">
+									<a class="btn btn-success" href="{{ url_for('auth.register') }}">Tangira.</a>
+							</p>
+						</div>
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="pricing-1">
+							<p class="plan-name">Uburyo bw'isumbuye.</p>
+							<br>
+							<h2 class="price">
+								<span class="price-unit">rwf</span>
+								<span data-bind-radio="pricing" data-monthly="100,000" data-yearly="1,050,000">39</span>
+								<span class="plan-period" data-bind-radio="pricing" data-monthly="/mo"
+									data-yearly="/yr">/mo</span>
+							</h2>
+							<p class="small">&nbsp;</p>
+
+							<div class="text-muted">
+								<small>Uburyo bwose bw'ibanze.</small><br>
+								<small>Raporo zimbitse.</small><br>
+								<small>Icungamutungo ryisumbuye.</small><br>
+							</div>
+
+							<br>
+							<p class="text-center py-3">
+								<a class="btn btn-primary" href="{{ url_for('auth.register') }}">Tangira.</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</section>
+
+
+
+
+
+		
+
+
+
+		<!--
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      | Signup
+      |‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+      !-->
+		<section class="section bg-gray text-center">
+			<div class="container">
+
+				<header class="section-header">
+					<small>Bigerageze nonaha.</small>
+					<h2 class="lead-8"><strong>Tangira nta kiguzi</strong></h2>
+					<hr>
+                    <p class="lead">Tangira gukoresha ikoranabuhanga muri Koperative ushoboze abanyarwa bari hejuru ya miriyoni eshanu kugerwaho na serivisi nziza,
+                        wifashishije COPA.</p>
+				</header>
+
+
+				<div class="row">
+					<form class="col-md-4 col-xl-4 mx-auto input-border">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-lg" placeholder="Izina">
+						</div>
+
+						<div class="form-group">
+							<input type="text" class="form-control form-control-lg" placeholder="Imeli">
+						</div>
+
+						<div class="form-group">
+							<input type="password" class="form-control form-control-lg" placeholder="Ijambo ry'ibanga">
+						</div>
+
+						<button class="btn btn-block btn-xl btn-success"><a href="{{ url_for('auth.register') }}">Tangira.</a></button>
+					</form>
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row gap-y align-items-center">
+
+				<div class="col-md-3 text-center text-md-left">
+
+					<a href="#">
+						<img src="https://raw.githubusercontent.com/muhiza/extrat/master/static/logo-light.png" alt="logo"></a>
+				</div>
+
+				<div class="col-md-6">
+					<div class="nav nav-center">
+                        <a class="nav-link" href="#">Abo turibo</a>
+						<a class="nav-link" href="#">Amakuru</a>
+						<a class="nav-link" href="#">Amabwiriza</a>
+						<a class="nav-link" href="#">Twandikire</a>
+					</div>
+				</div>
+
+				<div class="col-md-3 text-center text-md-right">
+					<small>© 2019 Extra. </b> .</small>
+				</div>
+
+			</div>
+		</div>
+	</footer><!-- /.footer -->
+
+	<!-- Scripts -->
+	<script src="{{ url_for('static', filename='landing_page_assets/js/page.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='landing_page_assets/js/script.js') }}"></script>
+</body>
+
+</html>

@@ -80,7 +80,7 @@ class ubugenzuziForm(FlaskForm):
 
 
 
-
+"""
 class isandukuForm(FlaskForm):
     
     no =  StringField("Nimero y'igikorwa", validators=[DataRequired()])
@@ -94,7 +94,7 @@ class isandukuForm(FlaskForm):
     #department_id  =  StringField("Department Id", validators=[DataRequired()])
     submit      =  SubmitField('Emeza')
 
-
+"""
 
 
 
@@ -158,19 +158,19 @@ class ibitaboBankForm(FlaskForm):
 
 
 class amatsindaForm(FlaskForm):
-    name = StringField("Provide the name of the group", validators=[DataRequired()])
-    description = StringField("Proving the reason for group", validators=[DataRequired()])
-    purpose = StringField("Describe the group", validators=[DataRequired()])
-    submit = SubmitField('Create group')
+    name = StringField("Injiza izina ry'itsinda", validators=[DataRequired()])
+    description = StringField("Tanga ubusobanuro bw'itsinda", validators=[DataRequired()])
+    purpose = StringField("Impamvu")
+    submit = SubmitField('Kora itsinda')
 
 
 class IsandukuForm(FlaskForm):
     itariki = DateField("Tariki byakoreweho",format='%Y-%m-%d', validators=[DataRequired()])
     impamvu = StringField("Impamvu", validators=[DataRequired()], render_kw={"placeholder": "Ubusobanuro"})
-    piyesi = StringField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
+    piyesi = IntegerField("Piyesi", validators=[DataRequired()], render_kw={"placeholder":"Injiza Piyesi"})
     ayinjiye = IntegerField("Ayinjiye", validators=[DataRequired()], render_kw={"placeholder": "ayinjiye"})
     ayasohotse = IntegerField("Ayasohotse", validators=[DataRequired()], render_kw={"placeholder": "ayasohotse"})
-    asigaye = StringField("Ayasigaye", validators=[Optional()], render_kw={"placeholder": "asigaye"})
+    asigaye = IntegerField("Ayasigaye", validators=[Optional()], render_kw={"placeholder": "asigaye"})
     submit = SubmitField('Bika')
 
 class BankForm(FlaskForm):
@@ -285,14 +285,35 @@ class ExpenseCategoryForm(FlaskForm):
     AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
     submit = SubmitField('Submit')
 
+def query():
+    return ExpenseCategory.query.all()
+
 class ExpenseForm(FlaskForm):
     Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Category = QuerySelectField('Category',
+        query_factory=query, allow_blank=True, get_label= 'AccountName')
     Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
     Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
     Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Submit')
+
+def choice_query():
+    return IncomeCategory.query.all()
+
+class IncomeForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    Category = QuerySelectField('Category',
+        query_factory=choice_query, allow_blank=True, get_label= 'Category')
+    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Submit')
+
+
 
 class BudgetForm(FlaskForm):
     Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
@@ -312,11 +333,6 @@ class AccountForm(FlaskForm):
     AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
     Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Bika')
-
-
-
-
-
 
 
     

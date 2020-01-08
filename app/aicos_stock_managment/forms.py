@@ -83,10 +83,10 @@ class KonteZaBankForm(FlaskForm):
 # These are forms for new Models. from muhiza
 class UmusarurobForm(FlaskForm):
     RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
-    UmusaruroGrade =  SelectField("Hitamo icyiciro cy'umusaruro", choices=[('good','good'),('normal','normal'), ('bad', 'bad')])
+    UmusaruroGrade =  StringField("Hitamo icyiciro cyumusaruro, ('<i><small>Urugero: Good, Normal, Bad</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza icyiciro"})
     Quantity =  IntegerField("Ingano y\'umusaruro mu biro (<i><small>kg</small></i>)", validators=[DataRequired()], render_kw={"placeholder": "Injiza ingano y'umusaruro mu biro (kg)"})
     RiceAmount = IntegerField('Igiciro Cy\'umusaruro ku kiro kimwe', validators=[DataRequired()], render_kw={"placeholder": "Injiza igiciro cy\'umusaruro ku kiro kimwe"})
-    UwoAsigaranye =  FloatField("Injiza ibyo asigaranye (<i><small>Byo kurya cg kunywa</small></i>)", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umusaruro asigaranye"})
+    UwoAsigaranye =  IntegerField("Injiza ibyo asigaranye (<i><small>Byo kurya cg kunywa</small></i>)", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umusaruro asigaranye"})
     Gutonoza  = IntegerField('Igiciro cyo gutunganya ibyo asigaranye ku kiro', validators=[Optional()], render_kw={"placeholder": "Injiza igiciro cyo gutunganya ibyo asigaranye ku kiro"})
     submit      =  SubmitField('Emeza')
 
