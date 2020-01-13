@@ -1399,6 +1399,8 @@ def general_accounting():
 
 
 
+
+
 @aicos_req.route('/accountingBooks/general/budget', methods=["GET", "POST"])
 def budget():
     budgets = Budget.query.all()
@@ -1407,107 +1409,421 @@ def budget():
 @aicos_req.route('/accountingBooks/general/new_budget', methods=["GET", "POST"])
 def new_budget():
     form = BudgetForm()
-    if form.validate_on_submit():
-        budget = Budget(
-            Category = form.Category.data,
-            Date = form.Date.data,
-            Amount = form.Amount.data,
-            cooperative_id = current_user.department
-        )
+    category_form = BudgetCategoryForm()
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+
+    if current_user == is_accountant:
+        
+        if form.validate_on_submit():
+            budget = Budget(
+                Category = form.Category.data,
+                Date = form.Date.data,
+                Amount = form.Amount.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(budget)
+                db.session.commit()
+                flash("Umaze kwinjize Budget neza!")
+                return redirect(url_for('aicos_req.budget'))
+            except:
+                flash("Ntabwo Budget yabashije kwinjira neza!")
+
+        if category_form.validate_on_submit():
+            category = BudgetCategory(
+                Category = category_form.Category.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(category)
+                db.session.commit()
+                flash("Umaze kwinjize Budget_Category neza!")
+                return redirect(url_for('aicos_req.budget'))
+            except:
+                flash("Ntabwo Budget_Category yabashije kwinjira neza!")
+        # return render_template('/accountingBooks/general/new_budget.html',form=form,category_form=category_form)
+    return render_template('/accountingBooks/general/new_budget.html',form=form,category_form=category_form)
+
+@aicos_req.route('/accountingBooks/general/edit_budget<id>',methods=["GET","POST"])
+def edit_budget(id):
+    budget = Budget.query.filter_by(id=id).first()
+    form = BudgetForm(obj=budget)
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+
+    if current_user == is_accountant:
+
+        form.Category.data = budget.AccountName
+        form.Amount.data = budget.Amount
+        form.Date.data = budget.Description
+
+        if form.validate_on_submit():
+            budget.Category = form.Category.data
+            budget.Amount = form.Amount.data
+            budget.Date = form.Date.data
+            budget.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Budget neza!")
+                return redirect(url_for('aicos_req.budget'))
+            except:
+                flash("Ntabwo Budget yabashije Guhindurwa neza!")
+    return render_template('/accountingBooks/general/new_budget.html',form=form)
+
+@aicos_req.route('/assets/delete_budget<id>',methods=["GET","POST"])
+def delete_budget(id):
+    budget = Budget.query.filter_by(id=id).first()
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
         try:
-            db.session.add(budget)
+            db.session.delete(budget)
             db.session.commit()
-            flash("Umaze kwinjize Budget neza!")
+            flash("Umaze Gusiba Budget neza!")
             return redirect(url_for('aicos_req.budget'))
         except:
-            flash("Ntabwo Budget yabashije kwinjira neza!")
-    return render_template('/accountingBooks/general/new_budget.html',form=form)
+            flash("Ntabwo Budget yabashije Gusibwa neza!")
+
+    budgets = Budget.query.all()
+    return render_template('/accountingBooks/general/budget.html',budgets=budgets)
+
+
+
+
 
 @aicos_req.route('/accountingBooks/general/income', methods=["GET", "POST"])
 def income():
     incomes = Income.query.all()
     return render_template('/accountingBooks/general/income.html',incomes=incomes)
 
-@aicos_req.route('/accountingBooks/general/income_category', methods=["GET", "POST"])
-def income_category():
-    form = IncomeCategoryForm()
-    if form.validate_on_submit():
-        category = IncomeCategory(
-            Category = form.Category.data,
-            cooperative_id = current_user.department
-        )
-        try:
-            db.session.add(category)
-            db.session.commit()
-            flash("Umaze kwinjize Income_Category neza!")
-            return redirect(url_for('aicos_req.income'))
-        except:
-            flash("Ntabwo Income_Category yabashije kwinjira neza!")
-    return render_template('/accountingBooks/general/income_category.html',form=form)
-
 @aicos_req.route('/accountingBooks/general/new_income', methods=["GET", "POST"])
 def new_income():
-    form = IncomeForm()
-    if form.validate_on_submit():
-        income = Income(
-            Title = form.Title.data,
-            Date = form.Date.data,
-            Category = form.Category.data,
-            Account = form.Account.data,
-            Amount = form.Amount.data,
-            Desciption = form.Desciption.data,
-            cooperative_id = current_user.department
-        )
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        form = IncomeForm()
+        if form.validate_on_submit():
+            income = Income(
+                Title = form.Title.data,
+                Date = form.Date.data,
+                Category = form.Category.data,
+                Account = form.Account.data,
+                Amount = form.Amount.data,
+                Description = form.Description.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(income)
+                db.session.commit()
+                flash("Umaze kwinjize Income neza!")
+                return redirect(url_for('aicos_req.income'))
+            except:
+                flash("Ntabwo Income yabashije kwinjira neza!")
+
+        category_form = IncomeCategoryForm()
+        if category_form.validate_on_submit():
+            category = IncomeCategory(
+                Category = category_form.Category.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(category)
+                db.session.commit()
+                flash("Umaze kwinjize Income_Category neza!")
+                return redirect(url_for('aicos_req.new_income'))
+            except:
+                flash("Ntabwo Income_Category yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/new_income.html',form=form,category_form=category_form)
+
+@aicos_req.route('/accountingBooks/general/edit_income<id>',methods=["GET","POST"])
+def edit_income(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        income = Income.query.filter_by(id=id).first()
+        form = IncomeForm(obj=income)
+
+        form.Title.data = income.Title
+        form.Date.data = income.Date
+        form.Category.data = income.Category
+        form.Account.data = income.Account
+        form.Amount.data = income.Amount
+        form.Description.data = income.Description
+
+        if form.validate_on_submit():
+            income.Title = form.Title.data
+            income.Date = form.Date.data
+            income.Category = form.Category.data
+            income.Account = form.Account.data
+            income.Amount = form.Amount.data
+            income.Description = form.Description.data
+            income.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Income neza!")
+                return redirect(url_for('aicos_req.income'))
+            except:
+                flash("Ntabwo Income yabashije Guhindurwa neza!")
+    return render_template('/accountingBooks/general/new_income.html',form=form)
+
+@aicos_req.route('/accountingBooks/general/delete_income<id>',methods=["GET","POST"])
+def delete_income(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        income = Income.query.filter_by(id=id).first()
         try:
-            db.session.add(income)
+            db.session.delete(income)
             db.session.commit()
-            flash("Umaze kwinjize Income neza!")
+            flash("Umaze Gusiba Income neza!")
             return redirect(url_for('aicos_req.income'))
         except:
-            flash("Ntabwo Income yabashije kwinjira neza!")
-    return render_template('/accountingBooks/general/new_income.html',form=form)
+            flash("Ntabwo Income yabashije Gusibwa neza!")
+
+    incomes = Income.query.all()
+    return render_template('/accountingBooks/general/income.html',incomes=incomes)
+
+
+
 
 @aicos_req.route('/accountingBooks/general/expense', methods=["GET", "POST"])
 def expense():
     expenses = Expense.query.all()
     return render_template('/accountingBooks/general/expense.html',expenses=expenses)
 
-@aicos_req.route('/accountingBooks/general/expense_category', methods=["GET", "POST"])
-def expense_category():
-    form = ExpenseCategoryForm()
-    if form.validate_on_submit():
-        category = ExpenseCategory(
-            AccountName = form.AccountName.data,
-            cooperative_id = current_user.department
-        )
-        try:
-            db.session.add(category)
-            db.session.commit()
-            flash("Umaze kwinjiza Expense_Category neza!")
-            return redirect(url_for('aicos_req.expense'))
-        except:
-            flash("Ntabwo Expense_Category yabashije kwinjira neza!")
-    return render_template('/accountingBooks/general/expense_category.html',form=form)
-
 @aicos_req.route('/accountingBooks/general/new_expense', methods=["GET", "POST"])
 def new_expense():
-    form = ExpenseForm()
-    if form.validate_on_submit():
-        expense = Expense(
-            Title = form.Title.data,
-            Date = form.Date.data,
-            Category = form.Category.data,
-            Account = form.Account.data,
-            Amount = form.Amount.data,
-            Desciption = form.Desciption.data,
-            cooperative_id = current_user.department
-        )
-        try:
-            db.session.add(expense)
-            db.session.commit()
-            flash("Umaze kwinjiza Expense neza!")
-            return redirect(url_for('aicos_req.expense'))
-        except:
-            flash("Ntabwo Expense yabashije kwinjira neza!")
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        form = ExpenseForm()
+        category_form=ExpenseCategoryForm()
+        if form.validate_on_submit():
+            expense = Expense(
+                Title = form.Title.data,
+                Date = form.Date.data,
+                Category = form.Category.data,
+                Account = form.Account.data,
+                Amount = form.Amount.data,
+                Description = form.Description.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(expense)
+                db.session.commit()
+                flash("Umaze kwinjiza Expense neza!")
+                return redirect(url_for('aicos_req.expense'))
+            except:
+                flash("Ntabwo Expense yabashije kwinjira neza!")
+
+        if category_form.validate_on_submit():
+            category = ExpenseCategory(
+                AccountName = category_form.AccountName.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(category)
+                db.session.commit()
+                flash("Umaze kwinjiza Expense_Category neza!")
+                return redirect(url_for('aicos_req.new_expense'))
+            except:
+                flash("Ntabwo Expense_Category yabashije kwinjira neza!")
+    return render_template('/accountingBooks/general/new_expense.html',form=form,category_form=category_form)
+
+@aicos_req.route('/accountingBooks/general/edit_expense<id>',methods=["GET","POST"])
+def edit_expense(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        expense = Expense.query.filter_by(id=id).first()
+        form = ExpenseForm(obj=asset)
+
+        form.Title.data = expense.Title
+        form.Date.data = expense.Date
+        form.Category.data = expense.Category
+        form.Account.data = expense.Account
+        form.Amount.data = expense.Amount
+        form.Description.data = expense.Description
+
+        if form.validate_on_submit():
+            expense.Title = form.Title.data
+            expense.Date = form.Date.data
+            expense.Category = form.Category.data
+            expense.Account = form.Account.data
+            expense.Amount = form.Amount.data
+            expense.Description = form.Description.data
+            expense.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Expense neza!")
+                return redirect(url_for('aicos_req.expense'))
+            except:
+                flash("Ntabwo Expense yabashije Guhindurwa neza!")
     return render_template('/accountingBooks/general/new_expense.html',form=form)
 
+@aicos_req.route('/accountingBooks/general/delete_expense<id>',methods=["GET","POST"])
+def delete_expense(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        expense = Expense.query.filter_by(id=id).first()
+        try:
+            db.session.delete(expense)
+            db.session.commit()
+            flash("Umaze Gusiba Expense neza!")
+            return redirect(url_for('aicos_req.expense'))
+        except:
+            flash("Ntabwo Expense yabashije Gusibwa neza!")
+
+    expenses = Expense.query.all()
+    return render_template('/accountingBooks/general/expense.html',expenses=expenses)
+
+
+
+
+
+@aicos_req.route('/assets', methods=["GET", "POST"])
+def asset():
+    assets = Asset.query.all()
+    assetsAccountings = assetsAccounting.query.all()
+    return render_template('/assets/asset.html',assets=assets,assetsAccountings=assetsAccountings)
+
+@aicos_req.route('/assets/new_asset', methods=["GET", "POST"])
+def new_asset():
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        form = AssetsForm()
+        if form.validate_on_submit():
+            asset = assetsAccounting(
+                # Title = form.Title.data,
+                Date = form.Date.data,
+                Category = form.Category.data,
+                Account = form.Account.data,
+                Amount = form.Amount.data,
+                Description = form.Description.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(asset)
+                db.session.commit()
+                flash("Umaze kwinjiza Asset neza!")
+                return redirect(url_for('aicos_req.asset'))
+            except:
+                flash("Ntabwo Asset yabashije kwinjira neza!")
+
+        category_form=AssetCategoryForm()
+        if category_form.validate_on_submit():
+            category = AssetCategory(
+                Category = category_form.Category.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(category)
+                db.session.commit()
+                flash("Umaze kwinjiza Asset_Category neza!")
+                return redirect(url_for('aicos_req.new_asset'))
+            except:
+                flash("Ntabwo Asset_Category yabashije kwinjira neza!")
+    return render_template('/assets/new_asset.html',form=form,category_form=category_form)
+
+@aicos_req.route('/assets/edit_asset<id>',methods=["GET","POST"])
+def edit_asset(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        asset = assetsAccounting.query.filter_by(id=id).first()
+        form = AssetsForm(obj=asset)
+
+        form.Date.data = asset.Date
+        form.Category.data = asset.Category
+        form.Account.data = asset.Account
+        form.Amount.data = asset.Amount
+        form.Description.data = asset.Description
+
+        if form.validate_on_submit():
+            # Title = form.Title.data,
+            asset.Date = form.Date.data
+            asset.Category = form.Category.data
+            asset.Account = form.Account.data
+            asset.Amount = form.Amount.data
+            asset.Description = form.Description.data
+            asset.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Asset neza!")
+                return redirect(url_for('aicos_req.asset'))
+            except:
+                flash("Ntabwo Asset yabashije Guhindurwa neza!")
+    return render_template('/assets/new_asset.html',form=form)
+
+@aicos_req.route('/assets/delete_asset<id>',methods=["GET","POST"])
+def delete_asset(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        asset = assetsAccounting.query.filter_by(id=id).first()
+        try:
+            db.session.delete(asset)
+            db.session.commit()
+            flash("Umaze Gusiba Asset neza!")
+            return redirect(url_for('aicos_req.asset'))
+        except:
+            flash("Ntabwo Asset yabashije Gusibwa neza!")
+
+    assetsAccountings = assetsAccounting.query.all()
+    return render_template('/assets/asset.html',assets=assets,assetsAccountings=assetsAccountings)
+
+
+
+
+@aicos_req.route('/accountingBooks/general/account', methods=["GET", "POST"])
+def account():
+    accounts = Account.query.all()
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        form = AccountForm()
+        if form.validate_on_submit():
+            account = Account(
+                AccountName = form.AccountName.data,
+                Description = form.Description.data,
+                cooperative_id = current_user.department
+            )
+            try:
+                db.session.add(account)
+                db.session.commit()
+                flash("Umaze kwinjiza Account neza!")
+                return redirect(url_for('aicos_req.account'))
+            except:
+                flash("Ntabwo Account yabashije kwinjira neza!")
+        return render_template('/accountingBooks/general/account.html',accounts=accounts,form=form)
+    return render_template('/accountingBooks/general/account.html',accounts=accounts)
+
+@aicos_req.route('/accountingBooks/general/edit_account<id>',methods=["GET","POST"])
+def edit_account(id):
+    account = Account.query.filter_by(id=id).first()
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        form = AccountForm(obj=account)
+
+        form.AccountName.data = account.AccountName
+        # form.Amount.data = account.Amount
+        form.Description.data = account.Description
+
+        if form.validate_on_submit():
+            account.AccountName = form.AccountName.data
+            # account.Amount = form.Amount.data
+            account.Description = form.Description.data
+            account.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Account neza!")
+                return redirect(url_for('aicos_req.account'))
+            except:
+                flash("Ntabwo Account yabashije Guhindurwa neza!")
+    return render_template('/accountingBooks/general/account.html',form=form)
+
+@aicos_req.route('/assets/delete_account<id>',methods=["GET","POST"])
+def delete_account(id):
+    account = Account.query.filter_by(id=id).first()
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        try:
+            db.session.delete(account)
+            db.session.commit()
+            flash("Umaze Gusiba Account neza!")
+            return redirect(url_for('aicos_req.account'))
+        except:
+            flash("Ntabwo Account yabashije Gusibwa neza!")
+
+    accounts = Account.query.all()
+    return render_template(url_for('aicos_req.account',accounts=accounts))

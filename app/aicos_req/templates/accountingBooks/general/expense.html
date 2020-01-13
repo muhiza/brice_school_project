@@ -3,9 +3,7 @@
 
 {% block body%} 
 <h2><br>&nbsp;&nbsp;Expense Reports
-      <a href="{{ url_for('aicos_req.expense_category') }}" type="button" class="btn btn-warning" style="float: right;margin-right:15px;"><i class="fa fa-minus"></i>&nbsp; 
-        <strong>New Expense Category</strong>
-      </a>
+      
       {{ utils.flashed_messages() }}
     <br>
 </h2>
@@ -33,15 +31,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Umusaruro</td>
-                                            <td>Mar 01 2019</td>
-                                            <td>Alowance</td>
-                                            <td>Cash</td>
-                                            <td>Aya ni Amafaranga avuye mu musaruro w'abanyamuryango.</td>
-                                            <td>RWF 4,000</td>
-                                            <td><i class="fa fa-pencil"></i> <i class="fa fa-close"></i></td>
-                                        </tr>
                                         {%for expense in expenses%}
                                         <tr>
                                             <td>{{expense.Title}}</td>
@@ -50,7 +39,7 @@
                                             <td>{{expense.Account}}</td>
                                             <td>{{expense.Description}}</td>
                                             <td>{{expense.Amount}}</td>
-                                            <td><i class="fa fa-pencil"></i> <i class="fa fa-close"></i></td>
+                                            <td><a href="{{ url_for('aicos_req.edit_expense',id=expense.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_expense',id=expense.id) }}"><i class="fa fa-close"></i></a></td>
                                         </tr>
                                         {%endfor%}
                                     </tbody>
@@ -58,8 +47,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
