@@ -3,7 +3,7 @@
 
 {% block body%} 
         <h2>
-            <br>&nbsp;&nbsp;Income Reports
+            <br>&nbsp;&nbsp;asset Reports
                 {{ utils.flashed_messages() }}
             </br>
         </h2>
@@ -14,14 +14,14 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ url_for('aicos_req.new_income') }}" type="button" class="btn btn-warning"><i class="fa fa-minus"></i>&nbsp; 
-                                    <strong>New Transaction</strong></a>
+                                <a href="{{ url_for('aicos_req.new_asset') }}" type="button" class="btn btn-warning"><i class="fa fa-minus"></i>&nbsp; 
+                                    <strong>New Asset</strong></a>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Title</th>
+                                            <!-- <th>Title</th> -->
                                             <th>Date</th>
                                             <th>Category</th>
                                             <th>Account</th>
@@ -31,15 +31,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {%for income in incomes%}
+                                        {%for asset in assetsAccountings%}
                                         <tr>
-                                            <td>{{income.Title}}</td>
-                                            <td>{{income.Date}}</td>
-                                            <td>{{income.Category}}</td>
-                                            <td>{{income.Account}}</td>
-                                            <td>{{income.Description}}</td>
-                                            <td>{{income.Amount}}</td>
-                                            <td><a href="{{ url_for('aicos_req.edit_income',id=income.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_income',id=income.id) }}"><i class="fa fa-close"></i></a></td>
+                                            <!-- <td>{{asset.Title}}</td> -->
+                                            <td>{{asset.Date}}</td>
+                                            <td>{{asset.Category}}</td>
+                                            <td>{{asset.Account}}</td>
+                                            <td>{{asset.Description}}</td>
+                                            <td>{{asset.Amount}}</td>
+                                            <td><a href="{{ url_for('aicos_req.edit_asset',id=asset.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_asset',id=asset.id) }}"><i class="fa fa-close"></i></a></td>
                                         </tr>
                                         {%endfor%}
                                     </tbody>
@@ -50,4 +50,8 @@
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
+
+
+
+
 {% endblock %}

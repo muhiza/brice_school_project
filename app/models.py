@@ -2019,6 +2019,35 @@ class ExpenseCategory(db.Model):
     def __repr__(self):
         return '<ExpenseCategory: {}>'.format(self.id)
 
+class BudgetCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their budget.
+    """
+    __tablename__ = "budgetcategory"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<BudgetCategory: {}>'.format(self.id)
+
+class AssetCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their budget.
+    """
+    __tablename__ = "assetcategory"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<AssetCategory: {}>'.format(self.id)
 
 class Expense(db.Model):
     """
@@ -2035,7 +2064,7 @@ class Expense(db.Model):
     Category = db.Column(db.String(200))
     Account = db.Column(db.String(200))
     Amount = db.Column(db.String(200))
-    Desciption = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
@@ -2058,7 +2087,7 @@ class Income(db.Model):
     Category = db.Column(db.String(200))
     Account = db.Column(db.String(200))
     Amount = db.Column(db.String(200))
-    Desciption = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 

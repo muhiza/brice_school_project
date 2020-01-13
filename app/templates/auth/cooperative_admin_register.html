@@ -41,21 +41,11 @@
         <![endif]-->
 
 
-<<<<<<< HEAD
         <style>
             .page-container{width:100%;height:100%;background:url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;background-size:cover;padding:0}
             .login-box-register{height: fit-content;margin: 50px;}
     
         </style>
-=======
-    <style>
-        .page-container {
-            background: url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;
-            background-size: cover;
-            padding: 0
-        }
-    </style>
->>>>>>> 30292414a9ab9ea644646d308b6dc77626f23d1f
 
 
 
@@ -81,7 +71,6 @@
                             {{ wtf.form_field(form.phone_number) }}
                         </div>
 
-<<<<<<< HEAD
                                     <div class="checkbox">
                                         {{ wtf.form_field(form.is_union) }}
                                     </div>
@@ -114,23 +103,6 @@
                                 {{ form.csrf_token }}
                     </form>
                             </div>
-=======
-                        <div class="form-group">
-                            {{ wtf.form_field(form.email) }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ wtf.form_field(form.password) }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ wtf.form_field(form.confirm_password) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form.submit(class="btn btn-primary") }}
-                            <a href="{{ url_for('auth.login') }}" class="btn btn-default">Login</a><br>
-                            <a href="#" class="forgot-link">Forgot password?</a>
->>>>>>> 30292414a9ab9ea644646d308b6dc77626f23d1f
                         </div>
                         {{ form.csrf_token }}
                     </form>
