@@ -16,7 +16,6 @@ class Cooperative(UserMixin, db.Model):
     """
     Creating the cooperative database here.
     """
-
     __tablename__ = "cooperatives"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -1965,6 +1964,27 @@ class UbwisazureEnter(db.Model):
 
     def __repr__(self):
         return '<Ubwisazure: {}>'.format(self.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 """

@@ -72,10 +72,10 @@
                                         <div class="browser-stats">
                                             <ul class="list-unstyled">
                                                 <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div></li>
-                                                <li>Ibiro: <div class="text-success pull-right">{{ umusaruro_all - amafaranga_asigaye }}</div></li>
+                                                <li>Ibiro: <div class="text-success pull-right">{{ umu.UwoKugurisha }}</div></li>
                                                 <li>Igiciro ku kiro: <div class="text-success pull-right">{{ price }} Frw</div></li>
                                                 
-                                                <li>Igiciro cyose: <div class="text-success pull-right">{{ (umusaruro_all - amafaranga_asigaye) * price }} Frw</div></li>
+                                                <li>Igiciro cyose: <div class="text-success pull-right">{{ umu.RiceAmount }} Frw</div></li>
                                                 <li>Zone: <div class="text-success pull-right">{% if memberId %} {{ memberId.zone }} {% endif %}</div></li>
                                                 <li>Itsinda: <div class="text-success pull-right">{% if memberId %} {{ memberId.itsinda }} {% endif %}</div></li>
                                                 <li>Yarishyuwe: <div class="text-success pull-right">Oya</div></li>
