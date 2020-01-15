@@ -98,24 +98,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {%for income in incomes%}
                                         <tr>
-                                            <td>Umusaruro</td>
-                                            <td>12/02/2019</td>
-                                            <td>Cash</td>
-                                            <td>20,000</td>
+                                            <td>{{income.Title}}</td>
+                                            <td>{{income.Date}}</td>
+                                            <td>{{income.Account}}</td>
+                                            <td>{{income.Amount}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Impano</td>
-                                            <td>18/02/2019</td>
-                                            <td>Bank</td>
-                                            <td>100,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Imodoka</td>
-                                            <td>25/02/2019</td>
-                                            <td>Card</td>
-                                            <td>50,000</td>
-                                        </tr>
+                                        {%endfor%}
                                     </tbody>
                                 </table>
                                 <div class="more-info pt-2" style="margin-bottom:-10px;">
@@ -143,24 +133,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {%for expense in expenses%}
                                         <tr>
-                                            <td>Umusaruro</td>
-                                            <td>12/02/2019</td>
-                                            <td>Cash</td>
-                                            <td>20,000</td>
+                                            <td>{{expense.Title}}</td>
+                                            <td>{{expense.Date}}</td>
+                                            <td>{{expense.Account}}</td>
+                                            <td>{{expense.Amount}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Impano</td>
-                                            <td>18/02/2019</td>
-                                            <td>Bank</td>
-                                            <td>100,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Imodoka</td>
-                                            <td>25/02/2019</td>
-                                            <td>Card</td>
-                                            <td>50,000</td>
-                                        </tr>
+                                        {%endfor%}
                                     </tbody>
                                 </table>
                                 <div class="more-info pt-2" style="margin-bottom:-10px;">
