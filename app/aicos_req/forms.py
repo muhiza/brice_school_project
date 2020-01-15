@@ -300,7 +300,6 @@ def query():
 class ExpenseForm(FlaskForm):
     Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
     Category = QuerySelectField('Category',
         query_factory=query, allow_blank=True, get_label= 'AccountName')
     Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
@@ -313,7 +312,6 @@ def choice_query():
 class IncomeForm(FlaskForm):
     Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
     Category = QuerySelectField('Category',
         query_factory=choice_query, allow_blank=True, get_label= 'Category')
     Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})

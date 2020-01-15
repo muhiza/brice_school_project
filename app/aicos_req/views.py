@@ -5,6 +5,8 @@ from sqlalchemy import func
 from ..models import * 
 from .forms import *
 
+from datetime import datetime
+
 import flask_excel
 import flask_excel as excel
 
@@ -1394,7 +1396,28 @@ def Imyishyurire():
 
 @aicos_req.route('/accountingBooks/general')
 def general_accounting():
-    return render_template('accountingBooks/general/general_accounting.html')
+    Expenses = Expense.query.all()
+    Incomes = Income.query.all()
+
+    if len(Expenses)>10:
+        expenses = []
+        leastE = Expenses[len(Expenses)-10].id
+        for expense in Expenses:
+            if Expenses.index(expense)>=len(Expenses)-10:
+                expenses.append(expense)
+    else:
+        expenses = Expenses
+
+    if len(Incomes)>10:
+        incomes = []
+        leastI = Incomes[len(Incomes)-10].id
+        for income in incomes:
+            if Incomes.index(income)>=len(Incomes)-10:
+                incomes.append(income)
+    else:
+        incomes = Incomes
+
+    return render_template('accountingBooks/general/general_accounting.html',expense=expense,incomes=incomes,expenses=expenses)
 
 
 
@@ -1496,71 +1519,77 @@ def income():
 
 @aicos_req.route('/accountingBooks/general/new_income', methods=["GET", "POST"])
 def new_income():
+    new_income = True
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        form = IncomeForm()
-        if form.validate_on_submit():
-            income = Income(
-                Title = form.Title.data,
-                Date = form.Date.data,
-                Category = form.Category.data,
-                Account = form.Account.data,
-                Amount = form.Amount.data,
-                Description = form.Description.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(income)
-                db.session.commit()
-                flash("Umaze kwinjize Income neza!")
-                return redirect(url_for('aicos_req.income'))
-            except:
-                flash("Ntabwo Income yabashije kwinjira neza!")
+    form = IncomeForm()
+    category_form = IncomeCategoryForm()
 
-        category_form = IncomeCategoryForm()
-        if category_form.validate_on_submit():
-            category = IncomeCategory(
-                Category = category_form.Category.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(category)
-                db.session.commit()
-                flash("Umaze kwinjize Income_Category neza!")
-                return redirect(url_for('aicos_req.new_income'))
-            except:
-                flash("Ntabwo Income_Category yabashije kwinjira neza!")
+    # if current_user == is_accountant:
+    if form.validate_on_submit():
+        income = Income(
+            Title = form.Title.data,
+            Date = form.Date.data,
+            Category = form.Category.data,
+            Account = form.Account.data,
+            Amount = form.Amount.data,
+            Description = form.Description.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(income)
+            db.session.commit()
+            flash("Umaze kwinjize Income neza!")
+            return redirect(url_for('aicos_req.income'))
+        except:
+            flash("Ntabwo Income yabashije kwinjira neza!")
+
+    if category_form.validate_on_submit():
+        category = IncomeCategory(
+            Category = category_form.Category.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjize Income_Category neza!")
+            return redirect(url_for('aicos_req.new_income'))
+        except:
+            flash("Ntabwo Income_Category yabashije kwinjira neza!")
     return render_template('/accountingBooks/general/new_income.html',form=form,category_form=category_form)
 
 @aicos_req.route('/accountingBooks/general/edit_income<id>',methods=["GET","POST"])
 def edit_income(id):
+    new_income = False
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        income = Income.query.filter_by(id=id).first()
-        form = IncomeForm(obj=income)
+    income = Income.query.filter_by(id=id).first()
+    income.Date = datetime.strptime(income.Date,'%Y-%m-%d')
+    category_form = IncomeCategoryForm()
+    form = IncomeForm(obj=income)
 
-        form.Title.data = income.Title
-        form.Date.data = income.Date
-        form.Category.data = income.Category
-        form.Account.data = income.Account
-        form.Amount.data = income.Amount
-        form.Description.data = income.Description
+    # if current_user == is_accountant:
 
-        if form.validate_on_submit():
-            income.Title = form.Title.data
-            income.Date = form.Date.data
-            income.Category = form.Category.data
-            income.Account = form.Account.data
-            income.Amount = form.Amount.data
-            income.Description = form.Description.data
-            income.cooperative_id = current_user.department
-            try:
-                db.session.commit()
-                flash("Umaze Guhindura Income neza!")
-                return redirect(url_for('aicos_req.income'))
-            except:
-                flash("Ntabwo Income yabashije Guhindurwa neza!")
-    return render_template('/accountingBooks/general/new_income.html',form=form)
+    form.Title.data = income.Title
+    form.Date.data = income.Date
+    form.Category.data = income.Category
+    form.Account.data = income.Account
+    form.Amount.data = income.Amount
+    form.Description.data = income.Description
+
+    if form.validate_on_submit():
+        income.Title = form.Title.data
+        income.Date = form.Date.data
+        income.Category = form.Category.data
+        income.Account = form.Account.data
+        income.Amount = form.Amount.data
+        income.Description = form.Description.data
+        income.cooperative_id = current_user.department
+        try:
+            db.session.commit()
+            flash("Umaze Guhindura Income neza!")
+            return redirect(url_for('aicos_req.income'))
+        except:
+            flash("Ntabwo Income yabashije Guhindurwa neza!")
+    return render_template('/accountingBooks/general/new_income.html',form=form,category_form=category_form)
 
 @aicos_req.route('/accountingBooks/general/delete_income<id>',methods=["GET","POST"])
 def delete_income(id):
@@ -1589,47 +1618,54 @@ def expense():
 @aicos_req.route('/accountingBooks/general/new_expense', methods=["GET", "POST"])
 def new_expense():
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        form = ExpenseForm()
-        category_form=ExpenseCategoryForm()
-        if form.validate_on_submit():
-            expense = Expense(
-                Title = form.Title.data,
-                Date = form.Date.data,
-                Category = form.Category.data,
-                Account = form.Account.data,
-                Amount = form.Amount.data,
-                Description = form.Description.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(expense)
-                db.session.commit()
-                flash("Umaze kwinjiza Expense neza!")
-                return redirect(url_for('aicos_req.expense'))
-            except:
-                flash("Ntabwo Expense yabashije kwinjira neza!")
+    is_admin = Employee.query.filter_by(is_admin=True).first()
+    is_coop_admin = Employee.query.filter_by(is_coop_admin=True).first()
 
-        if category_form.validate_on_submit():
-            category = ExpenseCategory(
-                AccountName = category_form.AccountName.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(category)
-                db.session.commit()
-                flash("Umaze kwinjiza Expense_Category neza!")
-                return redirect(url_for('aicos_req.new_expense'))
-            except:
-                flash("Ntabwo Expense_Category yabashije kwinjira neza!")
+    form = ExpenseForm()
+    category_form=ExpenseCategoryForm()
+
+    # if current_user == is_accountant:
+    if form.validate_on_submit():
+        expense = Expense(
+            Title = form.Title.data,
+            Date = form.Date.data,
+            Category = form.Category.data,
+            Account = form.Account.data,
+            Amount = form.Amount.data,
+            Description = form.Description.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(expense)
+            db.session.commit()
+            flash("Umaze kwinjiza Expense neza!")
+            return redirect(url_for('aicos_req.expense'))
+        except:
+            flash("Ntabwo Expense yabashije kwinjira neza!")
+
+    if category_form.validate_on_submit():
+        category = ExpenseCategory(
+            AccountName = category_form.AccountName.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjiza Expense_Category neza!")
+            return redirect(url_for('aicos_req.new_expense'))
+        except:
+            flash("Ntabwo Expense_Category yabashije kwinjira neza!")
     return render_template('/accountingBooks/general/new_expense.html',form=form,category_form=category_form)
 
 @aicos_req.route('/accountingBooks/general/edit_expense<id>',methods=["GET","POST"])
 def edit_expense(id):
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    expense = Expense.query.filter_by(id=id).first()
+    expense.Date = datetime.strptime(expense.Date,'%Y-%m-%d')
+    category_form = ExpenseCategoryForm()
+    form = ExpenseForm(obj=expense)
+
     if current_user == is_accountant:
-        expense = Expense.query.filter_by(id=id).first()
-        form = ExpenseForm(obj=asset)
 
         form.Title.data = expense.Title
         form.Date.data = expense.Date
@@ -1652,7 +1688,8 @@ def edit_expense(id):
                 return redirect(url_for('aicos_req.expense'))
             except:
                 flash("Ntabwo Expense yabashije Guhindurwa neza!")
-    return render_template('/accountingBooks/general/new_expense.html',form=form)
+    return render_template('/accountingBooks/general/new_expense.html',form=form,category_form=category_form)
+
 
 @aicos_req.route('/accountingBooks/general/delete_expense<id>',methods=["GET","POST"])
 def delete_expense(id):
@@ -1718,18 +1755,23 @@ def new_asset():
                 flash("Ntabwo Asset_Category yabashije kwinjira neza!")
     return render_template('/assets/new_asset.html',form=form,category_form=category_form)
 
+
 @aicos_req.route('/assets/edit_asset<id>',methods=["GET","POST"])
 def edit_asset(id):
-    is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        asset = assetsAccounting.query.filter_by(id=id).first()
-        form = AssetsForm(obj=asset)
 
-        form.Date.data = asset.Date
-        form.Category.data = asset.Category
-        form.Account.data = asset.Account
-        form.Amount.data = asset.Amount
-        form.Description.data = asset.Description
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    asset = assetsAccounting.query.filter_by(id=id).first()
+    asset.Date = datetime.strptime(asset.Date,'%Y-%m-%d')
+    category_form = AssetCategoryForm()
+    form = AssetsForm(obj=asset)
+
+    form.Date.data = asset.Date
+    form.Category.data = asset.Category
+    form.Account.data = asset.Account
+    form.Amount.data = asset.Amount
+    form.Description.data = asset.Description
+
+    if current_user == is_accountant:
 
         if form.validate_on_submit():
             # Title = form.Title.data,
@@ -1745,7 +1787,7 @@ def edit_asset(id):
                 return redirect(url_for('aicos_req.asset'))
             except:
                 flash("Ntabwo Asset yabashije Guhindurwa neza!")
-    return render_template('/assets/new_asset.html',form=form)
+    return render_template('/assets/new_asset.html',form=form,category_form=category_form)
 
 @aicos_req.route('/assets/delete_asset<id>',methods=["GET","POST"])
 def delete_asset(id):
@@ -1770,8 +1812,9 @@ def delete_asset(id):
 def account():
     accounts = Account.query.all()
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    form = AccountForm()
+
     if current_user == is_accountant:
-        form = AccountForm()
         if form.validate_on_submit():
             account = Account(
                 AccountName = form.AccountName.data,
@@ -1785,19 +1828,20 @@ def account():
                 return redirect(url_for('aicos_req.account'))
             except:
                 flash("Ntabwo Account yabashije kwinjira neza!")
-        return render_template('/accountingBooks/general/account.html',accounts=accounts,form=form)
-    return render_template('/accountingBooks/general/account.html',accounts=accounts)
+    return render_template('/accountingBooks/general/account.html',accounts=accounts,form=form)
+
 
 @aicos_req.route('/accountingBooks/general/edit_account<id>',methods=["GET","POST"])
-def edit_account(id):
+def edit_account(id): 
     account = Account.query.filter_by(id=id).first()
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        form = AccountForm(obj=account)
+    form = AccountForm(obj=account)
 
-        form.AccountName.data = account.AccountName
-        # form.Amount.data = account.Amount
-        form.Description.data = account.Description
+    form.AccountName.data = account.AccountName
+    # form.Amount.data = account.Amount
+    form.Description.data = account.Description
+
+    if current_user == is_accountant:
 
         if form.validate_on_submit():
             account.AccountName = form.AccountName.data
