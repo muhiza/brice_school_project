@@ -318,11 +318,13 @@ def injizaUmusaruro(id):
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
                                                                                                     int(form.UwoAsigaranye.data))) + 10 * form.RiceAmount.data * form.Quantity.data / 100,
                 Asigaye=10 * form.Quantity.data / 100,
+                Gukata = 0
                 member_id=memberid.id,
                 department_id=current_user.email
             )
 
-        elif form.UmusaruroGrade.data == 'normal':
+        else:
+            form.UmusaruroGrade.data == 'bad':
             umusaruro = Umusarurob(
                 RiceType=form.RiceType.data,
                 RicePrice=form.RiceAmount.data,
@@ -336,29 +338,10 @@ def injizaUmusaruro(id):
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
                                                                                                     int(form.UwoAsigaranye.data))) + 0,
                 Asigaye=10 * form.Quantity.data / 100,
+                Gukata = 10 * Asigaye / 100
                 member_id=memberid.id,
                 department_id=current_user.email
             )
-
-        else:
-            umusaruro = Umusarurob(
-                RiceType=form.RiceType.data,
-                RicePrice=form.RiceAmount.data,
-                RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
-                UmusaruroGrade=form.UmusaruroGrade.data,
-                UwoAsigaranye=form.UwoAsigaranye.data,
-                UwoKugurisha=(form.Quantity.data) - (form.UwoAsigaranye.data),
-                GutonozaAmount=int(form.Gutonoza.data) *
-                int(form.UwoAsigaranye.data),
-                AmafarangaUmusaruro1=(int(form.RiceAmount.data) * (int(form.Quantity.data) -
-                                                                   int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
-                                                                                                    int(form.UwoAsigaranye.data))) - 10 * form.RiceAmount.data * form.Quantity.data / 100,
-                Asigaye=10 * form.Quantity.data / 100,
-                member_id=memberid.id,
-                department_id=current_user.email
-            )
-
-    
 
 
 
