@@ -318,13 +318,12 @@ def injizaUmusaruro(id):
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
                                                                                                     int(form.UwoAsigaranye.data))) + 10 * form.RiceAmount.data * form.Quantity.data / 100,
                 Asigaye=10 * form.Quantity.data / 100,
-                Gukata = 0
                 member_id=memberid.id,
                 department_id=current_user.email
             )
 
+
         else:
-            form.UmusaruroGrade.data == 'bad':
             umusaruro = Umusarurob(
                 RiceType=form.RiceType.data,
                 RicePrice=form.RiceAmount.data,
@@ -336,31 +335,30 @@ def injizaUmusaruro(id):
                 int(form.UwoAsigaranye.data),
                 AmafarangaUmusaruro1=(int(form.RiceAmount.data) * (int(form.Quantity.data) -
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
-                                                                                                    int(form.UwoAsigaranye.data))) + 0,
-                Asigaye=10 * form.Quantity.data / 100,
-                Gukata = 10 * Asigaye / 100
+                                                                                                    int(form.UwoAsigaranye.data))) - 10 * form.RiceAmount.data * form.Quantity.data / 100,
+                Asigaye=20 * form.Quantity.data / 100,
                 member_id=memberid.id,
                 department_id=current_user.email
             )
+
+    
 
 
 
         try:
             db.session.add(umusaruro)
             db.session.commit()
-
-
             url = "https://mistasms.com/sms/api"
             files = [
             ]
             headers = {
-                'x-api-key': 'dkFidU1DcEdJdUloZnJERj1kaUo='
+                'x-api-key': 'TXZBT0tidG5DYnRIQkZqTWs9Y2Y='
             }
 
             payload = {
-                'to': '+250786012383',
-                'from': 'COPA',
-                'unicode': '0',
+                'to': '+250783661570',
+                'from': 'Coopthevig',
+                'unicode': '0', 
                 'sms': 'Muraho,' + str(member_name.izina_ribanza) + ". Umusaruro mwagemuye ni ibiro " + str(form.Quantity.data) + ". Igiciro ku kiro ni " + str(form.RiceAmount.data) + ". Byose ni, " + str(form.RiceAmount.data * form.Quantity.data) + " Igihe: " + str(get_time),
                 'action': 'send-sms'
             }
