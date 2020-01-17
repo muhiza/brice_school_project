@@ -76,14 +76,22 @@
                                             <ul class="list-unstyled">
                                                 <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div></li>
                                                 <li>Ibiro: <div class="text-success pull-right">{{ umu.UwoKugurisha }}</div></li>
+
+                                                {% if umu.UmusaruroGrade == 'good' %}
+                                                <li class="bg-success">Ibiro bikase: <b><div class="text-success pull-right">{{ umu.UwoKugurisha - umu.Asigaye  }} Kg</div></b></li>
+                                                {% else %}
+                                                <li class="bg-danger">Ibiro bikase: <b><div class="text-success pull-right">{{ umu.UwoKugurisha - umu.Asigaye  }} Kg</div></b></li>
+
+                                                {% endif %}
+
                                                 <li>Igiciro ku kiro: <div class="text-success pull-right">{{ price }} Frw</div></li>
                                                 
                                                 <li>Igiciro cyose: <div class="text-success pull-right">{{ umu.RiceAmount }} Frw</div></li>
-                                                                                               
-                                                <li>Ibyabuze amanota (Frw) <div class="text-success pull-right">{{ umu.RiceAmount }} Frw</div></li>
-                                               
-                                                
 
+                                                <li>Igiciro gikase: <div class="text-success pull-right">{{ 130 * (umu.UwoKugurisha - umu.Asigaye)  }} Frw</div></li>
+
+
+                                                
                                                 <li>Zone: <div class="text-success pull-right">{% if memberId %} {{ memberId.zone }} {% endif %}</div></li>
                                                 <li>Itsinda: <div class="text-success pull-right">{% if memberId %} {{ memberId.itsinda }} {% endif %}</div></li>
                                                 <li>Yarishyuwe: <div class="text-success pull-right">Oya</div></li>
