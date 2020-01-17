@@ -371,14 +371,14 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-                'x-api-key': 'dkFidU1DcEdJdUloZnJERj1kaUo='
+                'x-api-key': 'c051dHpJR3lCSnhscnRHckx0b20='
             }
 
             payload = {
-                'to': '+250786012383',
-                'from': 'COPA',
+                'to': '+250783661570',
+                'from': 'Coopthevig',
                 'unicode': '0',
-                'sms': 'Muraho,' + str(member_name.izina_ribanza) + ". Umusaruro mwagemuye ni ibiro " + str(form.Quantity.data) + ". Igiciro ku kiro ni " + str(form.RiceAmount.data) + ". Byose ni, " + str(form.RiceAmount.data * form.Quantity.data) + " Igihe: " + str(get_time),
+                'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. code ni:,' + str(member_name.id) + ". umusaruro ukase ni ibiro " + str(form.Quantity.data) +  ". Igiciro ku kiro ni " + str(form.RiceAmount.data) + ". Ibyabuze amanota ni 25. Ibisigaye ni, " + str(form.RiceAmount.data * form.Quantity.data) + " Igihe:  " + str(get_time),
                 'action': 'send-sms'
             }
             response = requests.request(
@@ -409,9 +409,6 @@ def injizaInyongeramusaruro(id):
         flash("Umunyamuryango usabye ntawuhari")
         return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
     if member_name.izina_ribanza is None:
-        flash("Habaye ikibazo kwizina ry\'umunyamuryango")
-        return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
-    if member_name.izina_rikurikira is None:
         flash("Habaye ikibazo kwizina ry\'umunyamuryango")
         return redirect(url_for('aicos_stock_managment.inyongeramusaruro'))
 

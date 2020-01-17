@@ -648,6 +648,7 @@ class Member(db.Model):
     ubuso_ahingaho_ibindi = db.Column(db.String(200))
     ubwoko_igihingwa_kindi = db.Column(db.String(200))
     ubuso_budakoreshwa = db.Column(db.String(200))
+    sector = db.Column(db.String(200))
     bank = db.Column(db.String(200))
     
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
@@ -1964,27 +1965,6 @@ class UbwisazureEnter(db.Model):
 
     def __repr__(self):
         return '<Ubwisazure: {}>'.format(self.id)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 """

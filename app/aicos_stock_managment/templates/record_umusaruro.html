@@ -11,7 +11,7 @@
             <div class="col-lg-8">
 	       <div class="card">
 	                <div class="card-header">
-	                   <h3>Andika Umusaruro wa <strong> {% if member_name %} {{   member_name.izina_ribanza  }} {% endif %}  </strong> </h3><br>
+	                   <h3>Andika Umusaruro wa <strong> {{member_name.izina_ribanza}}&nbsp;{{member_name.izina_rikurikira}} </strong> </h3><br>
 	                </div>
 	                <div class="card-body card-block">
 	                <form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
