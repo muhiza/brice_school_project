@@ -34,6 +34,8 @@
                                     <thead>
                                         <tr>
                                             <th>Amazina</th>
+                                            <th>Code</th>
+                                            <th>Sector</th>
                                             <th>Ubwoko&nbsp;bw'igihingwa</th>
                                             <th>Ibyo&nbsp;asigaranye</th>
                                             <th>Ibyo&nbsp;kugurisha</th>
@@ -52,6 +54,8 @@
                                             {% for member in employees %}
                                               <tr>
                                                 <td>{{member.izina_ribanza}}&nbsp;{{member.izina_rikurikira}}</td>
+                                                <td>{{member.sno}}</td>
+                                                <td>{{member.sector}}</td>
                                                 <td>
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}

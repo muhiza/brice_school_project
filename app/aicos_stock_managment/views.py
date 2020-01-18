@@ -371,14 +371,14 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-                'x-api-key': 'c051dHpJR3lCSnhscnRHckx0b20='
+                'x-api-key': 'dkNxQWdtRk1yUHVuRmRMTm9jSXc='
             }
 
             payload = {
                 'to': '+250783661570',
                 'from': 'Coopthevig',
                 'unicode': '0',
-                'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. code ni:,' + str(member_name.id) + ". umusaruro ukase ni ibiro " + str(form.Quantity.data) +  ". Igiciro ku kiro ni " + str(form.RiceAmount.data) + ". Ibyabuze amanota ni 25. Ibisigaye ni, " + str(form.RiceAmount.data * form.Quantity.data) + " Igihe:  " + str(get_time),
+                'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. code ni:,' + str(member_name.id) + '. umusaruro ukase ni ibiro ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) +  '. Igiciro ku kiro ni ' + str(form.RiceAmount.data) + '. Ayo guhembwa, ' + str(form.RiceAmount.data * (form.Quantity.data - (10 * form.Quantity.data / 100))) + ' Igihe:  ' + str(get_time),
                 'action': 'send-sms'
             }
             response = requests.request(
