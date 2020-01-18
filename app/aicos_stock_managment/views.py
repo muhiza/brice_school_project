@@ -147,6 +147,17 @@ def ibindiUmusaruro(id):
     memberId = Member.query.get_or_404(id)
     umusaruro = Umusarurob.query.filter_by(member_id=memberId.id).all()
 
+    musa = 10000
+    avance = 5000
+
+    carnet = 500
+    rpf = 100
+    ejo_heza = 1500
+    inguzanyo = 0
+    ejo_heza_2 = 1250
+
+    retenue = musa+carnet+avance+inguzanyo+ejo_heza+rpf
+
     umusaruro_all = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(
         member_id=memberId.id).scalar()
     amafaranga_all = db.session.query(func.sum(Umusarurob.RiceAmount)).filter_by(
@@ -158,8 +169,17 @@ def ibindiUmusaruro(id):
 
     amafaranga_asigaye = Decimal(db.session.query(
         func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
+    
+    ibyabuze_amanota = Umusarurob.query.filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='normal').count()
+    
+    ibiro_ibyabuze_amanota = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='normal').scalar()
+    
 
-    return render_template('ibindiUmusaruro.html', memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
+    igiciro_uruganda = 10 * 191 / 100
+    amafaranga_ibyabuze_amanota = Decimal(igiciro_uruganda) * (ibiro_ibyabuze_amanota - (10 * ibiro_ibyabuze_amanota / 100)) 
+
+
+    return render_template('ibindiUmusaruro.html', retenue = retenue, inguzanyo=inguzanyo, ejo_heza=ejo_heza, rpf=rpf, carnet=carnet, avance=avance, musa=musa, ibiro_ibyabuze_amanota=ibiro_ibyabuze_amanota, amafaranga_ibyabuze_amanota=amafaranga_ibyabuze_amanota, ibyabuze_amanota=ibyabuze_amanota, memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
 
 
 @aicos_stock_managment.route('/umusaruro/member/ishyura/<int:id>')
@@ -311,6 +331,11 @@ def injizaUmusaruro(id):
                 RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
                 UmusaruroGrade=form.UmusaruroGrade.data,
                 UwoAsigaranye=form.UwoAsigaranye.data,
+
+                Musa=form.Musa.data,
+                Carnet=form.Carnet.data,
+                Avance=form.Avance.data,
+
                 UwoKugurisha=(form.Quantity.data) - (form.UwoAsigaranye.data),
                 GutonozaAmount=int(form.Gutonoza.data) *
                 int(form.UwoAsigaranye.data),
@@ -324,19 +349,33 @@ def injizaUmusaruro(id):
 
 
         else:
+            uruganda_igiciro = 10 * 191 / 100
+
+            Ibikase = uruganda_igiciro * (10 * form.Quantity.data / 100),
             umusaruro = Umusarurob(
                 RiceType=form.RiceType.data,
                 RicePrice=form.RiceAmount.data,
                 RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
                 UmusaruroGrade=form.UmusaruroGrade.data,
                 UwoAsigaranye=form.UwoAsigaranye.data,
+
+
+                Musa=form.Musa.data,
+                Carnet=form.Carnet.data,
+                Avance=form.Avance.data,
+
                 UwoKugurisha=(form.Quantity.data) - (form.UwoAsigaranye.data),
                 GutonozaAmount=int(form.Gutonoza.data) *
                 int(form.UwoAsigaranye.data),
                 AmafarangaUmusaruro1=(int(form.RiceAmount.data) * (int(form.Quantity.data) -
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
                                                                                                     int(form.UwoAsigaranye.data))) - 10 * form.RiceAmount.data * form.Quantity.data / 100,
-                Asigaye=20 * form.Quantity.data / 100,
+                
+                Asigaye=(10 * form.Quantity.data / 100),
+                
+                
+                Ibisigaye = int(10 * form.Quantity.data / 100) * int(form.RiceAmount.data) - uruganda_igiciro * (10 * form.Quantity.data / 100),
+
                 member_id=memberid.id,
                 department_id=current_user.email
             )
@@ -352,22 +391,36 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-
-                'x-api-key': 'Qk5KeEhGYm91Tk1zZXhDTmR1YW4='
-
+                'x-api-key': 'dkNxQWdtRk1yUHVuRmRMTm9jSXc='
             }
 
-            payload = {
-                'to': '+250783661570',
-                'from': 'Coopthevig',
-                'unicode': '0',
-                'sms': 'Muraho',
 
-            }
-            response = requests.request(
-                "POST", url, headers=headers, data=payload, files=files)
+            if form.UmusaruroGrade.data == 'good':
+                payload = {
+                    'to': '+250783661570',
+                    'from': 'Coopthevig',
+                    'unicode': '0',
+                    'sms': 'Muraho neza,' + str(member_name.izina_ribanza) + '. code ni:,' + str(member_name.sno) + '. umusaruro wose ' + str(form.Quantity.data) + '. umusaruro ukase ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) +  '. Igiciro ku kiro ni ' + str(form.RiceAmount.data) + '. Ayo guhembwa, ' + str(form.RiceAmount.data * (form.Quantity.data - (10 * form.Quantity.data / 100))) + ' Igihe:  ' + str(get_time),
+                    'action': 'send-sms'
+                }
+                response = requests.request(
+                    "POST", url, headers=headers, data=payload, files=files)
+
+            else:
+                payload = {
+                    'to': '+250783661570',
+                    'from': 'Coopthevig',
+                    'unicode': '0',
+                    'sms': 'Muraho,'+ str(member_name.izina_ribanza) + '. code:,' + str(member_name.sno) + '. umusaruro wose ' + str(form.Quantity.data) + '. ukase ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) + '. ayakaswe ' + str((form.Quantity.data - (10 * form.Quantity.data / 100)) * 19.1) + ' (Frw) ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) + ' (Kg).' + '. Ayo guhembwa ' + str((form.RiceAmount.data * (form.Quantity.data - (10 * form.Quantity.data / 100))) - ((form.Quantity.data - (10 * form.Quantity.data / 100)) * 19.1)) + ' Frw ' + str(get_time),
+                    'action': 'send-sms'
+                }
+                response = requests.request(
+                    "POST", url, headers=headers, data=payload, files=files)
+
+
 
         
+
             flash(Markup("Umaze kwandika umusaruro wa " + "<b>" +
                          member_name.izina_ribanza + " " + member_name.izina_rikurikira + "</b>"))
 

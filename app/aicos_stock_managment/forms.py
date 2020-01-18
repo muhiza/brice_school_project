@@ -88,7 +88,15 @@ class UmusarurobForm(FlaskForm):
     RiceAmount = IntegerField('Igiciro Cy\'umusaruro ku kiro kimwe', validators=[DataRequired()], render_kw={"placeholder": "Injiza igiciro cy\'umusaruro ku kiro kimwe"})
     UwoAsigaranye =  IntegerField("Injiza ibyo asigaranye (<i><small>Byo kurya cg kunywa</small></i>)", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umusaruro asigaranye"})
     Gutonoza  = IntegerField('Igiciro cyo gutunganya ibyo asigaranye ku kiro', validators=[Optional()], render_kw={"placeholder": "Injiza igiciro cyo gutunganya ibyo asigaranye ku kiro"})
+    
+    Musa  = IntegerField('Mituelle', validators=[Optional()], render_kw={"placeholder": "Mituelle"})
+    Carnet  = IntegerField('Carnet', validators=[Optional()], render_kw={"placeholder": "Carnet"})
+    Avance  = IntegerField('Avance', validators=[Optional()], render_kw={"placeholder": "Avance"})
+
+
+
     submit      =  SubmitField('Emeza')
+
 
 
 

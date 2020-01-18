@@ -1454,6 +1454,15 @@ class Umusarurob(db.Model):
     # (RiceAmount * Quantity) - Uwogutonoza
     AmafarangaUmusaruro1 = db.Column(db.Integer)
     Asigaye = db.Column(db.Float)
+    Ibikase = db.Column(db.Integer)
+    Ibisigaye = db.Column(db.Integer)
+
+    Musa = db.Column(db.Integer)
+    Carnet = db.Column(db.Integer)
+    Avance = db.Column(db.Integer)
+    
+
+
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
