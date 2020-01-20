@@ -176,7 +176,12 @@ def ibindiUmusaruro(id):
     
 
     igiciro_uruganda = 10 * 191 / 100
-    amafaranga_ibyabuze_amanota = Decimal(igiciro_uruganda) * (ibiro_ibyabuze_amanota - (10 * ibiro_ibyabuze_amanota / 100)) 
+
+    if ibiro_ibyabuze_amanota is None:
+        amafaranga_ibyabuze_amanota = 0
+    else:
+        amafaranga_ibyabuze_amanota = Decimal(igiciro_uruganda) * Decimal(ibiro_ibyabuze_amanota - (10 * ibiro_ibyabuze_amanota / 100))
+
 
 
     return render_template('ibindiUmusaruro.html', retenue = retenue, inguzanyo=inguzanyo, ejo_heza=ejo_heza, rpf=rpf, carnet=carnet, avance=avance, musa=musa, ibiro_ibyabuze_amanota=ibiro_ibyabuze_amanota, amafaranga_ibyabuze_amanota=amafaranga_ibyabuze_amanota, ibyabuze_amanota=ibyabuze_amanota, memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
