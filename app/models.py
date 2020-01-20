@@ -1596,11 +1596,19 @@ class Ibindi(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ImifukaQuantity = db.Column(db.Integer)
     ImifukaAmount = db.Column(db.Integer)
-    MituelleAmount = db.Column(db.Integer)
+
+    rpf = db.Column(db.Integer)
+    ejo_heza = db.Column(db.Integer)
+    mituelle_amount = db.Column(db.Integer)
+    carnet = db.Column(db.Integer)
+    avance = db.Column(db.Integer)
+    loan = db.Column(db.Integer)
+
+
+
     UmuceriGrade = db.Column(db.String(200))
     UmuceriQuantity = db.Column(db.Integer)
     UmuceriAmountGrade = db.Column(db.Integer)
-    Avence = db.Column(db.Integer)
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
     done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     department_id = db.Column(

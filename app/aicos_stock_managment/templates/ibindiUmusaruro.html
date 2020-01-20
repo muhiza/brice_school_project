@@ -55,16 +55,28 @@
                                 <h2> <b>Retenue </b></h2><hr>
                                 <h4>
                                 Quality = {{ amafaranga_ibyabuze_amanota }} Frw <br><hr>
-                                RPF = {{ rpf }} Frw <br>
-                                Ejo heza = {{ ejo_heza }} Frw <br>
 
-                                MUSA = {{ musa }} Frw <br>
-                                Carnet = {{ carnet }} Frw <br>
-                                Avance = {{ avance }} Frw <br>
-                                Inguzanyo = {{ inguzanyo }} Frw <br> <hr>    
-                                Byose: {{ retenue }} <br> <hr> 
+                                {% for ibi in memberId.ibindi %}
+                                {% if loop.last %}
 
-                                Umushahara  = {{ (((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota) - retenue  }} Frw <br>
+                                Ukwezi = ({{ ibi.done_date }}) <br>
+                                RPF = {{ ibi.rpf }} Frw <br>
+                                Ejo heza = {{ ibi.ejo_heza }} Frw <br>
+
+                                MUSA = {{ ibi.mituelle_amount}} Frw <br>
+                                Carnet = {{ ibi.carnet }} Frw <br>
+                                Avance = {{ ibi.avance }} Frw <br>
+                                Inguzanyo = {{ ibi.loan }} Frw <br> <hr>    
+                                Byose: {{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }} <br> <hr> 
+
+
+
+                                <br><hr>
+                                    Umushahara  = {{ (((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota) - (ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan)  }} Frw <br>
+                                
+                                    {% endif %}
+                                {% endfor %}
+
 
 
 
@@ -121,7 +133,7 @@
                                                         {{ umu.UwoKugurisha - umu.Asigaye  }} Kg &nbsp;</div></b></li>
                                                 {% else %}
                                                 <li class="bg-danger"><b>&nbsp; Ibyabuze amanota: <div class="text-success pull-right" style="color: #fff;">
-                                                    {{ (umu.UwoKugurisha - umu.Asigaye) * 19.1 }} Frw &nbsp;</div></b></li>
+                                                    {{ umu.UwoKugurisha - umu.Asigaye  }} Kg &nbsp;</div></b></li>
 
                                                 {% endif %}
 

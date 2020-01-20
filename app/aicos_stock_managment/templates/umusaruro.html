@@ -42,8 +42,9 @@
                                             <th>Grade</th>
                                             <th>Amafaranga</th>
                                             <th>Deduct&nbsp;10%</th>
-
                                             <th>Asigaye</th>
+
+                                            <th class="bg-info" style="color: #fff;">Retenue</th>
 
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
@@ -124,6 +125,7 @@
                                                 </td>
 
 
+
                                                 <td>
                                                     {% if member.umusarurob %}
                                                         {% for umu in member.umusarurob %}
@@ -135,6 +137,22 @@
                                                   </td>
 
 
+                                                  <td class="bg-success" style="color: #fff;">{% if member.ibindi %}
+                                                    {% for ibi in member.ibindi %}
+                                                    {% if loop.last %}
+                                                    {{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    
+                                                    &nbsp;&nbsp;
+                                                    <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=member.id) }}"> 
+                                                        <button
+                                                        type="button"
+                                                        class="btn btn-primary btn-addon btn-xs btn-center">
+                                                      <span><li class="fa fa-plus"></li> Injiza</span> </button>
+                                                    </a>
+                                                  </td>
 
 
 

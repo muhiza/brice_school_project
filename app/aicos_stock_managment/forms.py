@@ -162,11 +162,10 @@ class IbihanoForm(FlaskForm):
 
 
 class IbindiForm(FlaskForm):
-    ImifukaQuantity =  IntegerField("Imifuka, (<i><small>Ingano y'imifuka yakoreshejwe mu isarura</small></i>)", validators=[Optional()], render_kw={"placeholder": "Injiza umubare w'imifuka"})
-    ImifukaAmount =  IntegerField("igiciro ku mufuka, (<i><small>Amafaranga</small></i>)", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y'umufuka umwe"})
-    MituelleAmount =  IntegerField("Mituelle cg Ubundi bwishingizi", validators=[Optional()], render_kw={"placeholder": "Injiza amafaranga ya mituelle cg ubundi bwishingizi"})
-    UmuceriGrade =  SelectField("Hitamo icyiciro cy'umusaruro", choices=[('Byiza (75% kuzamura)','Byiza (75% kuzamura)'),('Bisanzwe (Hagati ya 65% - 75%)','Bisanzwe (Hagati ya 65% - 75%)'), ('Bibi (65% Kumanura)', 'Bibi (65% Kumanura)')])
-    UmuceriQuantity =  IntegerField("Ibiro by'umusaruro", validators=[Optional()], render_kw={"placeholder": "Injiza ibiro by'umusaruro"})
-    UmuceriAmountGrade =  IntegerField("Injiza Amafaranga ku kiro", validators=[Optional()], render_kw={"placeholder": "Injiza amafaranga ku kiro"})
-    Avence =  IntegerField("Avance", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga y avance"})
-    submit      =  SubmitField('Emeza')
+    rpf =  IntegerField("Umusanzu wa RPF (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza umusanzu wa RPF (Frw)"})
+    ejo_heza =  IntegerField("Ejo heza (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza ubwizigame bwa Ejo heza. (Frw)"})
+    mituelle_amount =  IntegerField("Mituelle cg Ubundi bwishingizi (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza amafaranga ya mituelle cg ubundi bwishingizi (Frw)"})
+    carnet =  IntegerField("Injiza ya carnet (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza amafaranga ya Carnet (Frw)"})
+    avance =  IntegerField("Avance (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza Amafaranga ya avance (Frw)"})
+    loan =  IntegerField("Inguzanyo (Frw)", validators=[Optional()], render_kw={"placeholder": "Injiza Inguzanyo yafashwe (Frw)"})
+    submit      =  SubmitField('Injiza')

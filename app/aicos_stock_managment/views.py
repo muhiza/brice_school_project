@@ -768,31 +768,29 @@ def injizaIbindi(id):
 
     if form.validate_on_submit():
 
-        if form.ImifukaQuantity.data is None:
-            form.ImifukaQuantity.data = 0
-        if form.ImifukaAmount.data is None:
-            form.ImifukaAmount.data = 0
-        if form.MituelleAmount.data is None:
-            form.MituelleAmount.data = 0
-        if form.UmuceriGrade.data is None:
-            form.UmuceriGrade.data = 0
-        if form.UmuceriQuantity.data is None:
-            form.UmuceriQuantity.data = 0
-        if form.UmuceriAmountGrade.data is None:
-            form.UmuceriAmountGrade.data = 0
-        if form.Avence.data is None:
-            form.Avence.data = 0
+        if form.rpf.data is None:
+            form.rpf.data = 0
+        if form.ejo_heza.data is None:
+            form.ejo_heza.data = 0
+        if form.mituelle_amount.data is None:
+            form.mituelle_amount.data = 0
+        if form.carnet.data is None:
+            form.carnet.data = 0
+        if form.avance.data is None:
+            form.avance.data = 0
+        if form.loan.data is None:
+            form.loan.data = 0
+
 
         ibindi = Ibindi(
-            ImifukaQuantity=form.ImifukaQuantity.data,
-            ImifukaAmount=int(form.ImifukaAmount.data) *
-            int(form.ImifukaQuantity.data),
-            MituelleAmount=form.MituelleAmount.data,
-            UmuceriGrade=form.UmuceriGrade.data,
-            UmuceriQuantity=form.UmuceriQuantity.data,
-            UmuceriAmountGrade=(form.UmuceriAmountGrade.data) *
-            (form.UmuceriQuantity.data),
-            Avence=form.Avence.data,
+            rpf=form.rpf.data,
+            ejo_heza=form.ejo_heza.data,
+            mituelle_amount=form.mituelle_amount.data,
+            carnet=form.carnet.data,
+            avance=form.avance.data,
+            loan=form.loan.data,
+
+
             member_id=memberid.id,
             department_id=current_user.email
         )
@@ -808,6 +806,18 @@ def injizaIbindi(id):
             session.rollback()
 
     return render_template("/record_ibindi.html", form=form, memberid=memberid, member_name=member_name)
+
+
+
+
+@aicos_stock_managment.route('/umusaruro/member/retenue<int:id>')
+@login_required
+def retenue_details(id):
+    memberId = Member.query.get_or_404(id)
+    umusaruro = Ibindi.query.filter_by(member_id=memberId.id).all()
+
+    return render_template("/retenue_details.html", memberId=memberId, umusaruro=umusaruro)
+
 
 
 @aicos_stock_managment.route('/imyishyurire', methods=['GET', 'POST'])

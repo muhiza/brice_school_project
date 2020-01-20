@@ -1,0 +1,54 @@
+{% extends "stock_base.html" %}
+{% block content %}
+<div class="container-fluid"><br><br>
+    <strong><h3>&nbsp;&nbsp; Retenue za: <b> {{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b></h3></strong>
+
+    {% if umusaruro %}
+    {% for umu in umusaruro %}
+    <div class="col-md-3">
+        <div class="panel panel-white">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title">{% if memberId %}
+                    Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
+                    {% endif %}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="browser-stats">
+                    <ul class="list-unstyled">
+                        <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div>
+                        </li>
+                        <li>RPF: <div class="text-success pull-right">{{ umu.rpf }}</div>
+                        </li>
+                        <li>Ejo Heza: <div class="text-success pull-right">{{ umu.ejo_heza }} Frw</div>
+                        </li>
+                        <li>Mutuelle (MUSA): <div class="text-success pull-right">{{ umu.mutuelle_amount }} Frw</div>
+                        </li>
+                        <li>Carnet: <div class="text-success pull-right">{{ umu.carnet }} Frw</div>
+                        </li>
+                        <li>Avance: <div class="text-success pull-right">{{ umu.avance }} Frw</div>
+                        </li>
+                        <li>Inguzanyo: <div class="text-success pull-right">{{ umu.loan }} Frw</div>
+                        </li>
+
+                </div>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}
