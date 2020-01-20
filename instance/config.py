@@ -12,7 +12,7 @@ TOP_LEVEL_DIR = os.path.abspath(os.curdir)
 
 # These are the environment variables that are used for securing the application.
 SECRET_KEY = "thisisthesecretkeyhere"
-SQLALCHEMY_DATABASE_URI  = "mysql://muhiza:annemuhiza@localhost/coop"
+SQLALCHEMY_DATABASE_URI  = "mysql://root:annemuhiza@localhost/coop"
 RECAPTCHA_PUBLIC_KEY = '6LdYIDcUAAAAAEE3N3tNqcYu50MJSTlGA5lwu5Pl'
 RECAPTCHA_PRIVATE_KEY = '6LdYIDcUAAAAAD8ayN_2Mkhauh_-MdK12XxdTLEo'
 
