@@ -3,30 +3,13 @@
 
 {% block body%} 
 
-<div class="col-6 col-lg-3">
-        <div class="card">
-            <div class="card-body">
-                <div class="clearfix">
-                    <i class="fa fa-calendar bg-flat-color-5 p-3 font-2xl mr-3 float-left text-light"></i>
-                    <div class="h5 text-secondary mb-0 mt-1">4.999,50</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Current Expense This Month</div>
-                </div>
-                <div class="b-b-1 pt-3"></div>
-                <hr>
-                <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/.col-->
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-lg-4">
         <div class="card">
             <div class="card-body">
                 <div class="clearfix">
                     <i class="fa fa-calendar bg-info p-3 font-2xl mr-3 float-left text-light"></i>
-                    <div class="h5 text-secondary mb-0 mt-1">4.999,50</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Current Income This Month</div>
+                    <div class="h5 text-info mb-0 mt-1">{{monthly_income}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Current Income<br>This Month</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -37,13 +20,13 @@
         </div>
     </div>
     <!--/.col-->
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-lg-4">
         <div class="card">
             <div class="card-body">
                 <div class="clearfix">
-                    <i class="fa fa-upload bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
-                    <div class="h5 text-secondary mb-0 mt-1">40</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Your Total <br>Expense</div>
+                    <i class="fa fa-calendar bg-secondary p-3 font-2xl mr-3 float-left text-light"></i>
+                    <div class="h5 text-secondary mb-0 mt-1">{{monthly_expense}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Current Expense<br>This Month</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -54,13 +37,65 @@
         </div>
     </div>
     <!--/.col-->
-    <div class="col-6 col-lg-3">
+    <div class="col-6 col-lg-4">
         <div class="card">
             <div class="card-body">
                 <div class="clearfix">
-                    <i class="fa fa-exchange bg-danger p-3 font-2xl mr-3 float-left text-light"></i>
-                    <div class="h5 text-secondary mb-0 mt-1">4.999,50</div>
-                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Your Current Total Balance</div>
+                    <i class="fa fa-calendar bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
+                    <div class="h5 text-warning mb-0 mt-1">{{monthly_balance}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Current Balance<br>This Month</div>
+                </div>
+                <div class="b-b-1 pt-3"></div>
+                <hr>
+                <div class="more-info pt-2" style="margin-bottom:-10px;">
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+
+    <div class="col-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="clearfix">
+                    <i class="fa fa-download bg-info p-3 font-2xl mr-3 float-left text-light"></i>
+                    <div class="h5 text-info mb-0 mt-1">{{yearly_income}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Your Current Total Income<br>This Year</div>
+                </div>
+                <div class="b-b-1 pt-3"></div>
+                <hr>
+                <div class="more-info pt-2" style="margin-bottom:-10px;">
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="clearfix">
+                    <i class="fa fa-upload bg-secondary p-3 font-2xl mr-3 float-left text-light"></i>
+                    <div class="h5 text-secondary mb-0 mt-1">{{yearly_expense}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Your Current Total Expense<br>This Year</div>
+                </div>
+                <div class="b-b-1 pt-3"></div>
+                <hr>
+                <div class="more-info pt-2" style="margin-bottom:-10px;">
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+    <div class="col-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="clearfix">
+                    <i class="fa fa-exchange bg-warning p-3 font-2xl mr-3 float-left text-light"></i>
+                    <div class="h5 text-warning mb-0 mt-1">{{yearly_balance}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs small">Your Current Total Balance<br>This Year</div>
                 </div>
                 <div class="b-b-1 pt-3"></div>
                 <hr>
@@ -82,8 +117,8 @@
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-primary" style="color: #fff;">
+                        <div class="card border border-info">
+                            <div class="card-header bg-info" style="color: #fff;">
                                 <strong class="card-title">
                                     <i class="fa fa-bar-chart-o"></i> Latest 10 Income </strong>
                             </div>
@@ -118,7 +153,7 @@
 
                     <div class="col-md-6">
                         <div class="card border border-secondary">
-                            <div class="card-header bg-success" style="color: #fff;">
+                            <div class="card-header bg-secondary" style="color: #fff;">
                                 <strong class="card-title">
                                     <i class="fa fa-bar-chart-o"></i> Latest 10 Expense  </strong> 
                             </div>
@@ -152,17 +187,9 @@
 
 
 
-
-
-
-
-
-
-
-
                     <div class="col-md-6">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-info" style="color: #fff;">
+                        <div class="card border border-warning">
+                            <div class="card-header bg-warning" style="color: #fff;">
                                 <strong class="card-title">
                                     <i class="fa fa-bar-chart-o"></i> Account Balances  </strong>
                             </div>
@@ -175,18 +202,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {%for acc in accounts%}
                                         <tr>
-                                            <td>Umusaruro</td>
-                                            <td>FRW, 100,000</td>
+                                            <td>{{acc.AccountName}}</td>
+                                            <td>{{acc.Amount}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Impano</td>
-                                            <td>FRW, 200,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Imodoka</td>
-                                            <td>FRW, 60,000</td>
-                                        </tr>
+                                        {%endfor%}
                                     </tbody>
                                 </table>
                                 <div class="more-info pt-2" style="margin-bottom:-10px;">
@@ -198,8 +219,8 @@
 
 
                     <div class="col-md-6">
-                        <div class="card border border-primary">
-                            <div class="card-header bg-secondary" style="color: #fff;">
+                        <div class="card border border-success">
+                            <div class="card-header bg-success" style="color: #fff;">
                                 <strong class="card-title">
                                     <i class="fa fa-bar-chart-o"></i>  Budget Progress On March 2019  </strong>
                             </div>
@@ -207,30 +228,30 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Account</th>
-                                            <th scope="col">Amount</th>
+                                            <th scope="col">Period</th>
+                                            <th scope="col">Initial</th>
+                                            <th scope="col">Used%</th>
+                                            <th scope="col">Time%</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Umusaruro</td>
-                                            <td>12/02/2019</td>
-                                            <td>Cash</td>
-                                            <td>20,000</td>
+                                            <td>Monthly</td>
+                                            <td>{{monthly_budget}}</td>
+                                            <td>{{m_budget_used}}%</td>
+                                            <td>{{m_time_passed}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Impano</td>
-                                            <td>18/02/2019</td>
-                                            <td>Bank</td>
-                                            <td>100,000</td>
+                                            <td>Quarterly</td>
+                                            <td>{{quarterly_budget}}</td>
+                                            <td>{{q_budget_used}}%</td>
+                                            <td>{{q_time_passed}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Imodoka</td>
-                                            <td>25/02/2019</td>
-                                            <td>Card</td>
-                                            <td>50,000</td>
+                                            <td>Yearly</td>
+                                            <td>{{yearly_budget}}</td>
+                                            <td>{{y_budget_used}}</td>
+                                            <td>{{y_time_passed}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

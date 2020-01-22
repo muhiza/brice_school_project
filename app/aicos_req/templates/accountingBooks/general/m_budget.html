@@ -11,18 +11,14 @@
                           <i class="fa fa-plus"></i>&nbsp;<strong>Add New Budget</strong>
                         </a><br><br>
 
-                        {%if m_budgets%}
-                        <a style="float: left;" href="{{ url_for('aicos_req.m_budget') }}" type="button" class="col-md-4 btn btn-success">
-                            <i class="fa fa-list"></i>&nbsp;<strong>Monthly Budgets</strong>
+                        <a style="float: left;" href="{{ url_for('aicos_req.budget') }}" type="button" class="col-md-4 btn btn-success">
+                            <i class="fa fa-list"></i>&nbsp;<strong> All Budgets</strong>
                         </a>
-                        
-                        {%endif%}
                         
                         {%if q_budgets%}
                         <a href="{{ url_for('aicos_req.q_budget') }}" type="button" class="col-md-4 btn btn-success">
                             <i class="fa fa-list"></i>&nbsp;<strong>Quarterly Budgets</strong>
                         </a>
-                        
                         {%endif%}
                         
                         {%if y_budgets%}
@@ -31,7 +27,7 @@
                         </a>
                         {%endif%}
                         <br><br> 
-
+                        
                         {{ utils.flashed_messages() }}
                         <div class="card">
                             <div class="card-header">
@@ -50,7 +46,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {%for budget in budgets%}
+                                        {%for budget in m_budgets%}
                                         <tr>
                                             <td>{{budget.Title}}</td>
                                             <td>{{budget.Category}}</td>
@@ -64,59 +60,9 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
         </div>
-
-
-
-        <!-- <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="mediumModalLabel">Budget for March 2019</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="hf-amount" class=" form-control-label">
-                            <b>Budget for Category</b></label></div>
-
-                        <div class="col-12 col-md-9">
-                        <select>
-                            <option>Food</option>
-                            <option>Social Life</option>
-                            <option>Self Development</option>
-                            <option>Transportation</option>
-                            <option>Culture</option>
-                            <option>Household</option>
-                            <option>Apparel</option>
-                            <option>Beauty</option>
-                            <option>Health</option>
-                            <option>Gift</option>
-                        </select>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="hf-amount" class=" form-control-label"><b>Amount (FRW)</b></label></div>
-                        <div class="col-12 col-sm-9"><input type="text" id="hf-amount" name="hf-amount" placeholder="Enter Amount (FRW)..." class="form-control"><span class="help-block">Please enter amount (FRW)</span></div>
-                    </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url_for('aicos_req.budget') }}" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                        <a href="{{ url_for('aicos_req.new_budget') }}" type="button" class="btn btn-primary">Confirm</a>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
 
 {% endblock %}
