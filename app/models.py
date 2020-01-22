@@ -2012,7 +2012,7 @@ class ExpenseCategory(db.Model):
     __tablename__ = "expensecategory"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    AccountName = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
@@ -2060,10 +2060,10 @@ class Expense(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     Title = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Budget = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
-    Account = db.Column(db.String(200))
-    Amount = db.Column(db.String(200))
     Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
@@ -2083,10 +2083,10 @@ class Income(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     Title = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
-    Account = db.Column(db.String(200))
-    Amount = db.Column(db.String(200))
     Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
@@ -2105,11 +2105,13 @@ class Budget(db.Model):
     __tablename__ = "budget"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    Category = db.Column(db.String(200))
-    Date = db.Column(db.String(200))
+    Title = db.Column(db.String(200))
     Amount = db.Column(db.String(200))
-    cooperative_id = db.Column(
-        db.String(200), db.ForeignKey('departments.email'))
+    Account = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Period = db.Column(db.String(200))
+    cooperative_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<Budget: {}>'.format(self.id)

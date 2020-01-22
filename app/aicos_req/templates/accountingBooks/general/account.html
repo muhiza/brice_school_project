@@ -11,7 +11,7 @@
                         <a data-toggle="modal" data-target="#mediumModal" type="button" class="btn btn-info">
                           <i class="fa fa-plus"></i>&nbsp;<strong> Add New Account</strong>
                         </a>
-                        
+                        {{ utils.flashed_messages() }}
                         <br><br> 
                         <div class="card">
                             <div class="card-header">
@@ -23,17 +23,17 @@
                                     <thead>
                                         <tr>
                                             <th>AccountName</th>
+                                            <th>Amount</th>
                                             <th>Description</th>
-                                            <!-- <th>Amount</th>
-                                            <th>Action</th> -->
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {%for account in accounts%}
                                         <tr>
                                             <td>{{account.AccountName}}</td>
+                                            <td>{{account.Amount}}</td>
                                             <td>{{account.Description}}</td>
-                                            <!-- <td>{{account.Amount}}</td> -->
                                             <td><a data-toggle="modal" data-target="#mediumModal" href="{{ url_for('aicos_req.edit_account',id=account.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_account',id=account.id) }}"><i class="fa fa-close"></i></a></td>
                                         </tr>
                                         {%endfor%}
