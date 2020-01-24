@@ -6,6 +6,7 @@ from ..models import *
 from .forms import *
 
 from datetime import datetime,date
+import calendar
 
 import flask_excel
 import flask_excel as excel
@@ -1400,7 +1401,18 @@ def Imyishyurire():
 
 @aicos_req.route('/accountingBooks/general')
 def general_accounting():
+
+    Ivalues = []
+    Evalues = []
+
+    DIvalues = []
+    DEvalues = []
     
+    Dlabels = []
+
+    today_income = 0
+    today_expense = 0
+
     monthly_income = 0
     quarterly_income = 0
     quarterly1_income = 0
@@ -1484,7 +1496,7 @@ def general_accounting():
 
             if (str((expense.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                 monthly_expense+=int(expense.Amount)
-
+                
                 if (str((expense.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_expense+=int(expense.Amount)
 
@@ -1496,7 +1508,7 @@ def general_accounting():
 
     for income in Incomes:
         if (str((income.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
-            yearly_income+=int(income.Amount)    
+            yearly_income+=int(income.Amount)
 
             if (str((income.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                 monthly_income+=int(income.Amount)
@@ -1541,7 +1553,7 @@ def general_accounting():
                 if (str((budget.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_budget+=int(budget.Amount)
                 
-    print(monthly_budget)
+    # print(monthly_budget)
 
     m_budget_used = round(((monthly_expense*100)/monthly_budget),2)
     q_budget_used = round(((quarterly_expense*100)/quarterly_budget),2)
@@ -1550,6 +1562,74 @@ def general_accounting():
     monthly_balance = monthly_income-monthly_expense
     yearly_balance = yearly_income-yearly_expense
 
+    
+    
+    labels = [
+        'Jan', 'Feb', 'Mar', 'Apr',
+        'May', 'Jun', 'Jul', 'Aug',
+        'Sep', 'Oct', 'Nov', 'Dec'
+    ]
+    mylabels = [
+        '01', '02', '03', '04',
+        '05', '06', '07', '08',
+        '09', '10', '11', '12'
+    ]
+
+
+    for label in mylabels:
+
+        monthly_income = 0
+        monthly_expense = 0
+
+        for income in Incomes:
+            if (str((income.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((income.Date)).split('-'))[1] == label:
+                    monthly_income+=int(income.Amount)
+        Ivalues.append(monthly_income) 
+
+        for expense in Expenses:
+            if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((expense.Date)).split('-'))[1] == label:
+                    monthly_expense+=int(expense.Amount)
+        Evalues.append(monthly_expense)
+
+    
+    # DEvalues.append(today_expense)
+
+    # DIvalues.append(today_income)
+    Dlabels = [calendar.monthcalendar(date.today().year, date.today().month)]
+
+    myDlabels = ['01', '02', '03', '04','05', '06', '07', '08','09']
+    for sub in myDlabels:
+        for l in sub:
+            myDlabels += l
+
+    for label in myDlabels:
+
+        today_income = 0
+        today_expense = 0
+
+        for income in Incomes:
+            if (str((income.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((income.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
+                    if (str((income.Date)).split('-'))[2] == str(label):
+                        today_income+=int(income.Amount)
+        DIvalues.append(today_income) 
+
+        for expense in Expenses:
+            if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((expense.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
+                    if (str((expense.Date)).split('-'))[2] == str(label):
+                        today_expense+=int(expense.Amount)
+        DEvalues.append(today_expense)
+    
+    values = Ivalues and Evalues
+
+    Dvalues = DIvalues and DEvalues  
+
+    print(Dvalues)           
+    
+
     return render_template('accountingBooks/general/general_accounting.html',
         monthly_budget=monthly_budget,quarterly_budget=quarterly_budget,yearly_budget=yearly_budget,
         m_budget_used=m_budget_used,q_budget_used=q_budget_used,y_budget_used=y_budget_used,
@@ -1557,7 +1637,9 @@ def general_accounting():
         yearly_income=yearly_income,yearly_expense=yearly_expense,yearly_balance=yearly_balance,
         monthly_income=monthly_income,monthly_expense=monthly_expense,monthly_balance=monthly_balance,
         budgets=budgets,accounts=accounts,expense=expense,
-        incomes=incomes,expenses=expenses)
+        incomes=incomes,expenses=expenses, 
+        max=max(values), labels=labels, Ivalues=Ivalues, Evalues=Evalues,
+        Dmax=max(Dvalues), Dlabels=Dlabels, DIvalues=DIvalues, DEvalues=DEvalues)
 
 
 
@@ -1605,7 +1687,7 @@ def delete_category(id):
 
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
 
-    category = ExpenseCategory.query.filter_by(id=id).first() or BudgetCategory.query.filter_by(id=id).first() or IncomeCategory.query.filter_by(id=id).first()
+    category = ExpenseCategory.query.filter_by(id=id).first() 
     
     if category == ExpenseCategory.query.filter_by(id=id).first():
         form = ExpenseForm()
@@ -1623,6 +1705,8 @@ def delete_category(id):
         # budgets = Budget.query.all()
         return render_template('/accountingBooks/general/new_expense.html',form=form,category_form=category_form)
 
+    category = BudgetCategory.query.filter_by(id=id).first()
+    
     if category == BudgetCategory.query.filter_by(id=id).first():
         form = BudgetForm()
         category_form = BudgetCategoryForm()
@@ -1639,6 +1723,8 @@ def delete_category(id):
         # budgets = Budget.query.all()
         return render_template('/accountingBooks/general/new_budget.html',form=form,category_form=category_form)
 
+    category = IncomeCategory.query.filter_by(id=id).first()
+    
     if category == IncomeCategory.query.filter_by(id=id).first():
         form = IncomeForm() 
         category_form = IncomeCategoryForm() 
