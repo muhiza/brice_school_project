@@ -109,200 +109,321 @@
 
 
 
-
-
-
-
-        <div class="content mt-3">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card border border-info">
-                            <div class="card-header bg-info" style="color: #fff;">
-                                <strong class="card-title">
-                                    <i class="fa fa-bar-chart-o"></i> Latest 10 Income </strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Account</th>
-                                            <th scope="col">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {%for income in incomes%}
-                                        <tr>
-                                            <td>{{income.Title}}</td>
-                                            <td>{{income.Date}}</td>
-                                            <td>{{income.Account}}</td>
-                                            <td>{{income.Amount}}</td>
-                                        </tr>
-                                        {%endfor%}
-                                    </tbody>
-                                </table>
-                                <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                    <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
-                                </div>
+    <div class="content mt-3">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card border border-info">
+                        <div class="card-header bg-info" style="color: #fff;">
+                            <strong class="card-title">
+                                <i class="fa fa-bar-chart-o"></i> Latest 10 Income </strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Account</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for income in incomes%}
+                                    <tr>
+                                        <td>{{income.Title}}</td>
+                                        <td>{{income.Date}}</td>
+                                        <td>{{income.Account}}</td>
+                                        <td>{{income.Amount}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                            <div class="more-info pt-2" style="margin-bottom:-10px;">
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
-                    <div class="col-md-6">
-                        <div class="card border border-secondary">
-                            <div class="card-header bg-secondary" style="color: #fff;">
-                                <strong class="card-title">
-                                    <i class="fa fa-bar-chart-o"></i> Latest 10 Expense  </strong> 
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Account</th>
-                                            <th scope="col">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {%for expense in expenses%}
-                                        <tr>
-                                            <td>{{expense.Title}}</td>
-                                            <td>{{expense.Date}}</td>
-                                            <td>{{expense.Account}}</td>
-                                            <td>{{expense.Amount}}</td>
-                                        </tr>
-                                        {%endfor%}
-                                    </tbody>
-                                </table>
-                                <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                    <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
-                                </div>
-                            </div>
+                <div class="col-md-6">
+                    <div class="card border border-secondary">
+                        <div class="card-header bg-secondary" style="color: #fff;">
+                            <strong class="card-title">
+                                <i class="fa fa-bar-chart-o"></i> Latest 10 Expense  </strong> 
                         </div>
-                    </div> <br><br><br>
-
-
-
-                    <div class="col-md-6">
-                        <div class="card border border-warning">
-                            <div class="card-header bg-warning" style="color: #fff;">
-                                <strong class="card-title">
-                                    <i class="fa fa-bar-chart-o"></i> Account Balances  </strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {%for acc in accounts%}
-                                        <tr>
-                                            <td>{{acc.AccountName}}</td>
-                                            <td>{{acc.Amount}}</td>
-                                        </tr>
-                                        {%endfor%}
-                                    </tbody>
-                                </table>
-                                <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                    <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
-                                </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Account</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for expense in expenses%}
+                                    <tr>
+                                        <td>{{expense.Title}}</td>
+                                        <td>{{expense.Date}}</td>
+                                        <td>{{expense.Account}}</td>
+                                        <td>{{expense.Amount}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                            <div class="more-info pt-2" style="margin-bottom:-10px;">
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
+                </div> <br><br><br>
 
 
-                    <div class="col-md-6">
-                        <div class="card border border-success">
-                            <div class="card-header bg-success" style="color: #fff;">
-                                <strong class="card-title">
-                                    <i class="fa fa-bar-chart-o"></i>  Budget Progress On March 2019  </strong>
-                            </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Period</th>
-                                            <th scope="col">Initial</th>
-                                            <th scope="col">Used%</th>
-                                            <th scope="col">Time%</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Monthly</td>
-                                            <td>{{monthly_budget}}</td>
-                                            <td>{{m_budget_used}}%</td>
-                                            <td>{{m_time_passed}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Quarterly</td>
-                                            <td>{{quarterly_budget}}</td>
-                                            <td>{{q_budget_used}}%</td>
-                                            <td>{{q_time_passed}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Yearly</td>
-                                            <td>{{yearly_budget}}</td>
-                                            <td>{{y_budget_used}}</td>
-                                            <td>{{y_time_passed}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                    <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
-                                </div>
+
+                <div class="col-md-6">
+                    <div class="card border border-warning">
+                        <div class="card-header bg-warning" style="color: #fff;">
+                            <strong class="card-title">
+                                <i class="fa fa-bar-chart-o"></i> Account Balances  </strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for acc in accounts%}
+                                    <tr>
+                                        <td>{{acc.AccountName}}</td>
+                                        <td>{{acc.Amount}}</td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                            <div class="more-info pt-2" style="margin-bottom:-10px;">
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3"> Reports Expense/Income  </h4>
-                                <canvas id="sales-chart"></canvas>
+                <div class="col-md-6">
+                    <div class="card border border-success">
+                        <div class="card-header bg-success" style="color: #fff;">
+                            <strong class="card-title">
+                                <i class="fa fa-bar-chart-o"></i>  Budget Progress On March 2019  </strong>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Period</th>
+                                        <th scope="col">Initial</th>
+                                        <th scope="col">Used%</th>
+                                        <th scope="col">Time%</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Monthly</td>
+                                        <td>{{monthly_budget}}</td>
+                                        <td>{{m_budget_used}}%</td>
+                                        <td>{{m_time_passed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quarterly</td>
+                                        <td>{{quarterly_budget}}</td>
+                                        <td>{{q_budget_used}}%</td>
+                                        <td>{{q_time_passed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Yearly</td>
+                                        <td>{{yearly_budget}}</td>
+                                        <td>{{y_budget_used}}</td>
+                                        <td>{{y_time_passed}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="more-info pt-2" style="margin-bottom:-10px;">
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
-                    </div><!-- /# column -->
+                    </div>
+                </div>
 
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3">  Report Expense/Income This Month  </h4>
-                                <canvas id="team-chart"></canvas>
-                            </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3"> Reports Expense/Income  </h4>
+                            <!-- <canvas id="sales-chart"></canvas> -->
+                            <canvas id="chart" width="400" height="400"></canvas>
+                            <script>
+
+                                // bar chart data
+                                var barData = {
+                                  labels : [
+                                    {% for item in labels %}
+                                      "{{ item }}",
+                                    {% endfor %}
+                                  ],
+                          
+                                  datasets : [{
+                                    fillColor: "rgba(91,192,222,0.2)",
+                                    strokeColor: "rgba(91,192,222,1)",
+                                    pointColor: "rgba(91,192,222,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(91,192,222,1)",
+                                    bezierCurve : false,
+                                    data : [
+                                      {% for item in Ivalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    },
+                                    {
+                                    fillColor: "rgba(41,43,44,0.2)",
+                                    strokeColor: "rgba(41,43,44,1)",
+                                    pointColor: "rgba(41,43,44,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(41,43,44,1)",
+                                    bezierCurve : false,
+                                    data : [
+                                      {% for item in Evalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    }
+                                  ]
+                                }
+                          
+                                Chart.defaults.global.animationSteps = 50;
+                                Chart.defaults.global.tooltipYPadding = 16;
+                                Chart.defaults.global.tooltipCornerRadius = 0;
+                                Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                                Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                                Chart.defaults.global.animationEasing = "easeOutBounce";
+                                Chart.defaults.global.responsive = false;
+                                Chart.defaults.global.scaleLineColor = "black";
+                                Chart.defaults.global.scaleFontSize = 16;
+                          
+                                // get bar chart canvas
+                                var mychart = document.getElementById("chart").getContext("2d");
+                          
+                                steps = 10
+                                max = {{ max }}
+                                // draw bar chart
+                                var LineChartDemo = new Chart(mychart).Line(barData, {
+                                  scaleOverride: true,
+                                  scaleSteps: steps,
+                                  scaleStepWidth: Math.ceil(max / steps),
+                                  scaleStartValue: 0,
+                                  scaleShowVerticalLines: true,
+                                  scaleShowGridLines : true,
+                                  barShowStroke : true,
+                                  scaleShowLabels: true,
+                                  bezierCurve: false,
+                                });
+                          
+                              </script>
                         </div>
-                    </div><!-- /# column -->
-
-
-
-
-
-
+                        <div style="margin: 0 0 30px 30px;">
+                            <i class="bg-info p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Income</h4></i>
+                            <i class="bg-secondary p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Expense</h4></i>
+                        </div>
                     </div>
+                </div><!-- /# column -->
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-3">  Report Expense/Income This Month  </h4>
+                            <!-- <canvas id="team-chart"></canvas> -->
+                            <canvas id="chart2" width="400" height="400"></canvas>
+                            <script>
+
+                                // bar chart data
+                                var barData = {
+                                  labels : [
+                                    {% for item in Dlabels %}
+                                      "{{ item }}",
+                                    {% endfor %}
+                                  ],
+                          
+                                  datasets : [{
+                                    fillColor: "rgba(91, 192, 222,0.2)",
+                                    strokeColor: "rgba(91, 192, 222,1)",
+                                    pointColor: "rgba(91, 192, 222,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(91, 192, 222,1)",
+                                    bezierCurve : false,
+                                    data : [
+                                      {% for item in DIvalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    },
+                                    {
+                                    fillColor: "rgba(0,0,0,0.2)",
+                                    strokeColor: "rgba(0,0,0,1)",
+                                    pointColor: "rgba(0,0,0,1)",
+                                    pointStrokeColor: "#fff",
+                                    pointHighlightFill: "#fff",
+                                    pointHighlightStroke: "rgba(0,0,0,0,1)",
+                                    bezierCurve : false,
+                                    data : [
+                                      {% for item in DEvalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    }
+                                  ]
+                                }
+                          
+                                Chart.defaults.global.animationSteps = 50;
+                                Chart.defaults.global.tooltipYPadding = 16;
+                                Chart.defaults.global.tooltipCornerRadius = 0;
+                                Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                                Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                                Chart.defaults.global.animationEasing = "easeOutBounce";
+                                Chart.defaults.global.responsive = false;
+                                Chart.defaults.global.scaleLineColor = "black";
+                                Chart.defaults.global.scaleFontSize = 16;
+                          
+                                // get bar chart canvas
+                                var mychart = document.getElementById("chart2").getContext("2d");
+                          
+                                steps = 10
+                                max = {{ Dmax }}
+                                // draw bar chart
+                                var LineChartDemo = new Chart(mychart).Line(barData, {
+                                  scaleOverride: true,
+                                  scaleSteps: steps,
+                                  scaleStepWidth: Math.ceil(Dmax / steps),
+                                  scaleStartValue: 0,
+                                  scaleShowVerticalLines: true,
+                                  scaleShowGridLines : true,
+                                  barShowStroke : true,
+                                  scaleShowLabels: true,
+                                  bezierCurve: false,
+                                });
+                          
+                              </script>
+                        </div>
+                        <div style="margin: 0 0 30px 30px;">
+                            <i class="bg-info p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Income</h4></i>
+                            <i class="bg-secondary p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Expense</h4></i>
+                        </div>
                     </div>
+                </div><!-- /# column -->
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
