@@ -1399,7 +1399,7 @@ def Imyishyurire():
 
 
 
-@aicos_req.route('/accountingBooks/general')
+@aicos_req.route('/accountingBooks/general', methods=['GET', 'POST'])
 def general_accounting():
 
     Ivalues = []
@@ -1524,27 +1524,92 @@ def general_accounting():
 
     for budget in Budgets:
         if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
-            yearly_budget+=int(budget.Amount)  
+            yearly_budget+=int(budget.Amount) 
+
+            y_days = 0
+            months = [1,2,3,4,5,6,7,8,9,10,11,12]
+            for m in months:
+                y_days += (calendar.monthrange(date.today().year,m)[1])
+            
+            p_days = 0
+            for mon in months:
+                if mon == date.today().month:
+                    if mon == 1:
+                        c_days = date.today().day
+                    else:
+                        p_days += (calendar.monthrange(date.today().year,mon-1)[1])
+                        c_days = p_days + date.today().day
+                    y_time_passed = round(((c_days*100)/y_days),2)
+            
 
             if (str((budget.Date)).split('-'))[1] == '01'or '02'or '03':
                 quarterly1_budget+=int(budget.Amount)
+
                 if (str((date.today())).split('-'))[1] == '01'or '02'or '03':
                     quarterly_budget = quarterly1_budget
 
+                    q_days = (calendar.monthrange(date.today().year,1)[1])+(calendar.monthrange(date.today().year,2)[1])+(calendar.monthrange(date.today().year,3)[1])
+
+                    if (str((date.today())).split('-'))[1] == '01':
+                        q_time_passed = round((date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '02':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,1)[1]) + date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '03':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,2)[1]) + (calendar.monthrange(date.today().year,1)[1]) + date.today().day)*100/q_days,2)
+
             if (str((budget.Date)).split('-'))[1] == '04'or '05'or '06':
                 quarterly2_budget+=int(budget.Amount)
+
                 if (str((date.today())).split('-'))[1] == '04'or '05'or '06':    
                     quarterly_budget = quarterly2_budget
 
+                    q_days = (calendar.monthrange(date.today().year,4)[1])+(calendar.monthrange(date.today().year,5)[1])+(calendar.monthrange(date.today().year,6)[1])
+
+                    if (str((date.today())).split('-'))[1] == '04':
+                        q_time_passed = round((date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '05':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,4)[1]) + date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '06':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,5)[1]) + (calendar.monthrange(date.today().year,4)[1]) + date.today().day)*100/q_days,2)
+
             if (str((budget.Date)).split('-'))[1] == '07'or '08'or '09':
                 quarterly3_budget+=int(budget.Amount)
+
                 if (str((date.today())).split('-'))[1] == '07'or '08'or '09':    
                     quarterly_budget = quarterly3_budget
 
+                    q_days = (calendar.monthrange(date.today().year,7)[1])+(calendar.monthrange(date.today().year,8)[1])+(calendar.monthrange(date.today().year,9)[1])
+
+                    if (str((date.today())).split('-'))[1] == '07':
+                        q_time_passed = round((date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '08':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,7)[1]) + date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '09':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,9)[1]) + (calendar.monthrange(date.today().year,8)[1]) + date.today().day)*100/q_days,2)
+
             if (str((budget.Date)).split('-'))[1] == '10'or '11'or '12':
                 quarterly4_budget+=int(budget.Amount)
+
                 if (str((date.today())).split('-'))[1] == '10'or '11'or '12':    
-                    quarterly_budget = quarterly4_budget 
+                    quarterly_budget = quarterly4_budget
+
+                    q_days = (calendar.monthrange(date.today().year,10)[1])+(calendar.monthrange(date.today().year,11)[1])+(calendar.monthrange(date.today().year,12)[1])
+
+                    if (str((date.today())).split('-'))[1] == '10':
+                        q_time_passed = round((date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '11':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,10)[1]) + date.today().day)*100/q_days,2)
+
+                    if (str((date.today())).split('-'))[1] == '12':
+                        q_time_passed = round(((calendar.monthrange(date.today().year,12)[1]) + (calendar.monthrange(date.today().year,10)[1]) + date.today().day)*100/q_days,2)
+
             
 
             if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
@@ -1553,9 +1618,10 @@ def general_accounting():
                 if (str((budget.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_budget+=int(budget.Amount)
                 
-    # print(monthly_budget)
 
     m_budget_used = round(((monthly_expense*100)/monthly_budget),2)
+    m_time_passed = round((date.today().day)*100/(calendar.monthrange(date.today().year,date.today().month)[1]),2)
+
     q_budget_used = round(((quarterly_expense*100)/quarterly_budget),2)
     y_budget_used = round(((yearly_expense*100)/yearly_budget),2)
 
@@ -1593,16 +1659,24 @@ def general_accounting():
                     monthly_expense+=int(expense.Amount)
         Evalues.append(monthly_expense)
 
-    
     # DEvalues.append(today_expense)
 
     # DIvalues.append(today_income)
+
     Dlabels = [calendar.monthcalendar(date.today().year, date.today().month)]
 
     myDlabels = ['01', '02', '03', '04','05', '06', '07', '08','09']
-    for sub in myDlabels:
+    myDlabels2 = []
+
+    for sub in Dlabels:
         for l in sub:
+            myDlabels2 += l
             myDlabels += l
+
+    for i in myDlabels2:
+        if i==0:        
+            del myDlabels2[myDlabels2.index(i)]
+            # print(myDlabels2)
 
     for label in myDlabels:
 
@@ -1614,6 +1688,8 @@ def general_accounting():
                 if (str((income.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                     if (str((income.Date)).split('-'))[2] == str(label):
                         today_income+=int(income.Amount)
+                        # print(str(label))
+                        # print((str((income.Date)).split('-'))[2])
         DIvalues.append(today_income) 
 
         for expense in Expenses:
@@ -1621,13 +1697,14 @@ def general_accounting():
                 if (str((expense.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                     if (str((expense.Date)).split('-'))[2] == str(label):
                         today_expense+=int(expense.Amount)
+                        # print(str(label))
         DEvalues.append(today_expense)
     
     values = Ivalues and Evalues
 
     Dvalues = DIvalues and DEvalues  
 
-    print(Dvalues)           
+    # print(Dvalues)           
     
 
     return render_template('accountingBooks/general/general_accounting.html',
@@ -1639,7 +1716,8 @@ def general_accounting():
         budgets=budgets,accounts=accounts,expense=expense,
         incomes=incomes,expenses=expenses, 
         max=max(values), labels=labels, Ivalues=Ivalues, Evalues=Evalues,
-        Dmax=max(Dvalues), Dlabels=Dlabels, DIvalues=DIvalues, DEvalues=DEvalues)
+        Dmax=max(Dvalues), Dlabels=myDlabels2, DIvalues=DIvalues, DEvalues=DEvalues,
+        m_time_passed=m_time_passed, q_time_passed=q_time_passed, y_time_passed=y_time_passed)
 
 
 
@@ -1679,6 +1757,47 @@ def y_budget():
     return render_template('/accountingBooks/general/y_budget.html',
         m_budgets=m_budgets,q_budgets=q_budgets,y_budgets=y_budgets)
 
+
+@aicos_req.route('/accountingBooks/general/monthly_incomes', methods=["GET", "POST"])
+def m_income():
+    m_incomes = []
+    Incomes = Income.query.all()
+    for income in Incomes:
+        if (str(income.Date).split('-'))[0] == (str((date.today())).split('-'))[0] and (str(income.Date).split('-'))[1] == (str((date.today())).split('-'))[1]:
+            m_incomes.append(income)
+    return render_template('/accountingBooks/general/income.html',
+        incomes=m_incomes)
+
+@aicos_req.route('/accountingBooks/general/yearly_incomes', methods=["GET", "POST"])
+def y_income():
+    y_incomes = []
+    Incomes = Income.query.all()
+    for income in Incomes:
+        if (str(income.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            y_incomes.append(income)
+    return render_template('/accountingBooks/general/income.html',
+        incomes=y_incomes)
+
+
+@aicos_req.route('/accountingBooks/general/monthly_expenses', methods=["GET", "POST"])
+def m_expense():
+    m_expenses = []
+    Expenses = Expense.query.all()
+    for expense in Expenses:
+        if (str(expense.Date).split('-'))[0] == (str((date.today())).split('-'))[0] and (str(expense.Date).split('-'))[1] == (str((date.today())).split('-'))[1]:
+            m_expenses.append(expense)
+    return render_template('/accountingBooks/general/expense.html',
+        expenses=m_expenses)
+
+@aicos_req.route('/accountingBooks/general/yearly_expenses', methods=["GET", "POST"])
+def y_expense():
+    y_expenses = []
+    Expenses = Expense.query.all()
+    for expense in Expenses:
+        if (str(expense.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            y_expenses.append(expense)
+    return render_template('/accountingBooks/general/expense.html',
+        expenses=y_expenses)
 
 
 @aicos_req.route('/accountingBooks/general/delete_category<id>', methods=["GET", "POST"])
