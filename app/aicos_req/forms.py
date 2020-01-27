@@ -351,6 +351,7 @@ class BudgetForm(FlaskForm):
 def asset_choices():
     return AssetCategory.query.all()
 class AssetsForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
     Category = QuerySelectField('Category',
         query_factory=asset_choices, allow_blank=True, get_label= 'Category')    

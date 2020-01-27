@@ -1403,6 +1403,7 @@ def Imyishyurire():
 def general_accounting():
 
     Ivalues = []
+    Bvalues = []
     Evalues = []
 
     DIvalues = []
@@ -1522,6 +1523,8 @@ def general_accounting():
         else:
             incomes = Incomes
 
+    
+    
     for budget in Budgets:
         if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
             yearly_budget+=int(budget.Amount) 
@@ -1628,7 +1631,9 @@ def general_accounting():
     monthly_balance = monthly_income-monthly_expense
     yearly_balance = yearly_income-yearly_expense
 
-    
+
+
+
     
     labels = [
         'Jan', 'Feb', 'Mar', 'Apr',
@@ -1645,6 +1650,7 @@ def general_accounting():
     for label in mylabels:
 
         m_income = 0
+        m_budget = 0
         m_expense = 0
 
         for income in Incomes:
@@ -1652,6 +1658,12 @@ def general_accounting():
                 if (str((income.Date)).split('-'))[1] == label:
                     m_income+=int(income.Amount)
         Ivalues.append(m_income) 
+
+        for budget in Budgets:
+            if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((budget.Date)).split('-'))[1] == label:
+                    m_budget+=int(budget.Amount)
+        Bvalues.append(m_budget) 
 
         for expense in Expenses:
             if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
@@ -1669,16 +1681,18 @@ def general_accounting():
 
     for sub in Dlabels:
         for l in sub:
-            myDlabels2 += l
             myDlabels += l
+            myDlabels2 += l
+            
 
     for i in myDlabels2:
-        if i==0:        
+        if i<1:        
             del myDlabels2[myDlabels2.index(i)]
 
     for label in myDlabels:
 
         today_inc = 0
+        # today_bud = 0
         today_exp = 0
 
         for income in Incomes:
@@ -1688,6 +1702,13 @@ def general_accounting():
                         today_inc+=int(income.Amount)
         DIvalues.append(today_inc) 
 
+        # for budget in Budgets:
+        #     if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+        #         if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
+        #             if (str((budget.Date)).split('-'))[2] == str(label):
+        #                 today_bud+=int(budget.Amount)
+        # DBvalues.append(today_bud) 
+
         for expense in Expenses:
             if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
                 if (str((expense.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
@@ -1695,11 +1716,12 @@ def general_accounting():
                         today_exp+=int(expense.Amount)
         DEvalues.append(today_exp)
     
-    values = Ivalues and Evalues
+    values = Ivalues and Evalues and Bvalues
 
-    Dvalues = DIvalues and DEvalues  
+    Dvalues = DIvalues and DEvalues 
 
-    # print(Dvalues)           
+
+
     
 
     return render_template('accountingBooks/general/general_accounting.html',
@@ -1710,7 +1732,7 @@ def general_accounting():
         monthly_income=monthly_income,monthly_expense=monthly_expense,monthly_balance=monthly_balance,
         budgets=budgets,accounts=accounts,expense=expense,
         incomes=incomes,expenses=expenses, 
-        max=max(values), labels=labels, Ivalues=Ivalues, Evalues=Evalues,
+        max=max(values), labels=labels, Ivalues=Ivalues, Evalues=Evalues, Bvalues=Bvalues,
         Dmax=max(Dvalues), Dlabels=myDlabels2, DIvalues=DIvalues, DEvalues=DEvalues,
         m_time_passed=m_time_passed, q_time_passed=q_time_passed, y_time_passed=y_time_passed)
 
@@ -1797,7 +1819,6 @@ def y_expense():
 
 @aicos_req.route('/accountingBooks/general/delete_category<id>', methods=["GET", "POST"])
 def delete_category(id):
-    # alert.text('Are you sure you want to delete this category?')
 
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
 
@@ -1811,12 +1832,10 @@ def delete_category(id):
                 db.session.delete(category)
                 db.session.commit()
                 flash("Umaze Gusiba Category neza!")
-                # return redirect(url_for('aicos_req.newbudget'))
             except:
                 flash("Ntabwo Category yabashije Gusibwa neza!")
         else:
             flash("You have no right to delete a category.")
-        # budgets = Budget.query.all()
         return render_template('/accountingBooks/general/new_expense.html',form=form,category_form=category_form)
 
     category = BudgetCategory.query.filter_by(id=id).first()
@@ -1829,12 +1848,10 @@ def delete_category(id):
                 db.session.delete(category)
                 db.session.commit()
                 flash("Umaze Gusiba Category neza!")
-                # return redirect(url_for('aicos_req.newbudget'))
             except:
                 flash("Ntabwo Category yabashije Gusibwa neza!")
         else:
             flash("You have no right to delete a category.")
-        # budgets = Budget.query.all()
         return render_template('/accountingBooks/general/new_budget.html',form=form,category_form=category_form)
 
     category = IncomeCategory.query.filter_by(id=id).first()
@@ -1847,12 +1864,10 @@ def delete_category(id):
                 db.session.delete(category)
                 db.session.commit()
                 flash("Umaze Gusiba Category neza!")
-                # return redirect(url_for('aicos_req.newbudget'))
             except:
                 flash("Ntabwo Category yabashije Gusibwa neza!")
         else:
             flash("You have no right to delete a category.")
-        # budgets = Budget.query.all()
         return render_template('/accountingBooks/general/new_income.html',form=form,category_form=category_form)
 
 

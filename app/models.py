@@ -2126,6 +2126,7 @@ class assetsAccounting(db.Model):
     __tablename__ = "assetsaccounting"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
     Account = db.Column(db.String(200))
