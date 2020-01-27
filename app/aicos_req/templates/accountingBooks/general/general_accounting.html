@@ -14,7 +14,7 @@
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_req.m_income') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_req.m_expense') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_req.y_income') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                 <div class="b-b-1 pt-3"></div>
                 <hr>
                 <div class="more-info pt-2" style="margin-bottom:-10px;">
-                    <a class="font-weight-bold font-xs btn-block text-muted small" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                    <a class="font-weight-bold font-xs btn-block text-muted small" href="{{ url_for('aicos_req.y_expense') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                 </div>
             </div>
         </div>
@@ -140,7 +140,7 @@
                                 </tbody>
                             </table>
                             <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="{{ url_for('aicos_req.income') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                                 </tbody>
                             </table>
                             <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="{{ url_for('aicos_req.expense') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -207,7 +207,7 @@
                                 </tbody>
                             </table>
                             <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="{{ url_for('aicos_req.account') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -226,8 +226,8 @@
                                     <tr>
                                         <th scope="col">Period</th>
                                         <th scope="col">Initial</th>
-                                        <th scope="col">Used%</th>
-                                        <th scope="col">Time%</th>
+                                        <th scope="col">Used(%)</th>
+                                        <th scope="col">Time(%)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -235,28 +235,29 @@
                                         <td>Monthly</td>
                                         <td>{{monthly_budget}}</td>
                                         <td>{{m_budget_used}}%</td>
-                                        <td>{{m_time_passed}}</td>
+                                        <td>{{m_time_passed}}%</td>
                                     </tr>
                                     <tr>
                                         <td>Quarterly</td>
                                         <td>{{quarterly_budget}}</td>
                                         <td>{{q_budget_used}}%</td>
-                                        <td>{{q_time_passed}}</td>
+                                        <td>{{q_time_passed}}%</td>
                                     </tr>
                                     <tr>
                                         <td>Yearly</td>
                                         <td>{{yearly_budget}}</td>
-                                        <td>{{y_budget_used}}</td>
-                                        <td>{{y_time_passed}}</td>
+                                        <td>{{y_budget_used}}%</td>
+                                        <td>{{y_time_passed}}%</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="more-info pt-2" style="margin-bottom:-10px;">
-                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="#">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
+                                <a class="font-weight-bold font-xs btn-block text-muted small text-center" href="{{ url_for('aicos_req.budget') }}">View More <i class="fa fa-angle-right float-right font-lg"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
 
                 <div class="col-lg-6">
@@ -341,12 +342,13 @@
                     </div>
                 </div><!-- /# column -->
 
-                <div class="col-lg-6">
+
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mb-3">  Report Expense/Income This Month  </h4>
                             <!-- <canvas id="team-chart"></canvas> -->
-                            <canvas id="chart2" width="400" height="400"></canvas>
+                            <canvas id="chart2" width="800" height="400"></canvas>
                             <script>
 
                                 // bar chart data
@@ -371,12 +373,12 @@
                                       {% endfor %}]
                                     },
                                     {
-                                    fillColor: "rgba(0,0,0,0.2)",
-                                    strokeColor: "rgba(0,0,0,1)",
-                                    pointColor: "rgba(0,0,0,1)",
+                                    fillColor: "rgba(41,43,44,0.2)",
+                                    strokeColor: "rgba(41,43,44,1)",
+                                    pointColor: "rgba(41,43,44,1)",
                                     pointStrokeColor: "#fff",
                                     pointHighlightFill: "#fff",
-                                    pointHighlightStroke: "rgba(0,0,0,0,1)",
+                                    pointHighlightStroke: "rgba(41,43,44,1)",
                                     bezierCurve : false,
                                     data : [
                                       {% for item in DEvalues %}
@@ -405,7 +407,7 @@
                                 var LineChartDemo = new Chart(mychart).Line(barData, {
                                   scaleOverride: true,
                                   scaleSteps: steps,
-                                  scaleStepWidth: Math.ceil(Dmax / steps),
+                                  scaleStepWidth: Math.ceil(max / steps),
                                   scaleStartValue: 0,
                                   scaleShowVerticalLines: true,
                                   scaleShowGridLines : true,
