@@ -1644,24 +1644,23 @@ def general_accounting():
 
     for label in mylabels:
 
-        monthly_income = 0
-        monthly_expense = 0
+        m_income = 0
+        m_expense = 0
 
         for income in Incomes:
             if (str((income.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
                 if (str((income.Date)).split('-'))[1] == label:
-                    monthly_income+=int(income.Amount)
-        Ivalues.append(monthly_income) 
+                    m_income+=int(income.Amount)
+        Ivalues.append(m_income) 
 
         for expense in Expenses:
             if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
                 if (str((expense.Date)).split('-'))[1] == label:
-                    monthly_expense+=int(expense.Amount)
-        Evalues.append(monthly_expense)
+                    m_expense+=int(expense.Amount)
+        Evalues.append(m_expense)
 
-    # DEvalues.append(today_expense)
+    
 
-    # DIvalues.append(today_income)
 
     Dlabels = [calendar.monthcalendar(date.today().year, date.today().month)]
 
@@ -1676,29 +1675,25 @@ def general_accounting():
     for i in myDlabels2:
         if i==0:        
             del myDlabels2[myDlabels2.index(i)]
-            # print(myDlabels2)
 
     for label in myDlabels:
 
-        today_income = 0
-        today_expense = 0
+        today_inc = 0
+        today_exp = 0
 
         for income in Incomes:
             if (str((income.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
                 if (str((income.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                     if (str((income.Date)).split('-'))[2] == str(label):
-                        today_income+=int(income.Amount)
-                        # print(str(label))
-                        # print((str((income.Date)).split('-'))[2])
-        DIvalues.append(today_income) 
+                        today_inc+=int(income.Amount)
+        DIvalues.append(today_inc) 
 
         for expense in Expenses:
             if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
                 if (str((expense.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
                     if (str((expense.Date)).split('-'))[2] == str(label):
-                        today_expense+=int(expense.Amount)
-                        # print(str(label))
-        DEvalues.append(today_expense)
+                        today_exp+=int(expense.Amount)
+        DEvalues.append(today_exp)
     
     values = Ivalues and Evalues
 
