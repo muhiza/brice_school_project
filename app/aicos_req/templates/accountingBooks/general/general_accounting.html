@@ -290,6 +290,19 @@
                                       {% endfor %}]
                                     },
                                     {
+                                    fillColor: "rgba(92, 184, 92,0.9)",
+                                    strokeColor: "rgba(92, 184, 92,1)",
+                                    pointColor: "rgba(92, 184, 92,1)",
+                                    // pointStrokeColor: "#fff",
+                                    // pointHighlightFill: "#fff",
+                                    // pointHighlightStroke: "rgba(41,43,44,1)",
+                                    // bezierCurve : false,
+                                    data : [
+                                      {% for item in Bvalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    },
+                                    {
                                     fillColor: "rgba(111,113,114,0.9)",
                                     strokeColor: "rgba(41,43,44,1)",
                                     pointColor: "rgba(41,43,44,1)",
@@ -337,6 +350,7 @@
                         </div>
                         <div style="margin: 0 0 30px 30px;">
                             <i class="bg-info p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Income</h4></i>
+                            <i class="bg-success p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Budget</h4></i>
                             <i class="bg-secondary p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Expense</h4></i>
                         </div>
                     </div>
