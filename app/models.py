@@ -1610,7 +1610,7 @@ class Ibindi(db.Model):
     UmuceriQuantity = db.Column(db.Integer)
     UmuceriAmountGrade = db.Column(db.Integer)
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
-    done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    done_date = db.Column(db.DateTime)
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 

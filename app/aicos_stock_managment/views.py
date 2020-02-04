@@ -170,9 +170,9 @@ def ibindiUmusaruro(id):
     amafaranga_asigaye = Decimal(db.session.query(
         func.sum(Umusarurob.Asigaye)).filter_by(member_id=memberId.id).scalar())
     
-    ibyabuze_amanota = Umusarurob.query.filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='normal').count()
+    ibyabuze_amanota = Umusarurob.query.filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='bad').count()
     
-    ibiro_ibyabuze_amanota = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='normal').scalar()
+    ibiro_ibyabuze_amanota = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='bad').scalar()
     
 
     igiciro_uruganda = 10 * 191 / 100
@@ -348,6 +348,7 @@ def injizaUmusaruro(id):
                                                                    int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
                                                                                                     int(form.UwoAsigaranye.data))) + 10 * form.RiceAmount.data * form.Quantity.data / 100,
                 Asigaye=10 * form.Quantity.data / 100,
+                done_date=form.done_date.data,
                 member_id=memberid.id,
                 department_id=current_user.email
             )
@@ -380,7 +381,7 @@ def injizaUmusaruro(id):
                 
                 
                 Ibisigaye = int(10 * form.Quantity.data / 100) * int(form.RiceAmount.data) - uruganda_igiciro * (10 * form.Quantity.data / 100),
-
+                done_date=form.done_date.data,
                 member_id=memberid.id,
                 department_id=current_user.email
             )

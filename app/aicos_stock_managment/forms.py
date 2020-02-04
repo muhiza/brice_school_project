@@ -93,6 +93,8 @@ class UmusarurobForm(FlaskForm):
     Carnet  = IntegerField('Carnet', validators=[Optional()], render_kw={"placeholder": "Carnet"})
     Avance  = IntegerField('Avance', validators=[Optional()], render_kw={"placeholder": "Avance"})
 
+    done_date = DateField('Igihe', validators=[Optional()])
+
 
 
     submit      =  SubmitField('Emeza')

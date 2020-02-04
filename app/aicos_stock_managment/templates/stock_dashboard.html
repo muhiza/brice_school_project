@@ -170,7 +170,7 @@
                                                     {% if member.ibindi %}
                                                     {% for ibi in member.ibindi %}
                                                     {% if loop.last %}
-                                                    {{ ibi.ImifukaAmount + ibi.MituelleAmount + ibi.UmuceriAmountGrade + ibi.Avence }}
+                                                        {{ ibi.ImifukaAmount + ibi.mituelle_amount + ibi.UmuceriAmountGrade + ibi.Avence }}
                                                     {% endif %}
                                                     {% endfor %}
                                                     {% endif %}

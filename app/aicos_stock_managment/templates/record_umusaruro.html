@@ -27,11 +27,17 @@
 						<div class="input-form">
 							{{ wtf.form_field(form.RiceAmount) }}
 						</div>
+						<!--
 						<div class="input-form">
 							{{ wtf.form_field(form.UwoAsigaranye) }}
 						</div>
 						<div class="input-form">
 							{{ wtf.form_field(form.Gutonoza) }}
+						</div>
+						-->
+
+						<div class="input-form" input type="date">
+							{{ wtf.form_field(form.done_date) }}
 						</div>
 						<div class="input-form">
 							{{ form.submit(class="btn btn-primary") }}
@@ -50,19 +56,47 @@
 					<h3><b>Retenue z'ukwezi,</b> January.</h3>
 				</div>
 				<div class="panel-body">
-					<ul class="list-unstyled">
-							<ol>
-								<li><b>RPF</b> = 100</li>
-								<li><b>Ejo heza</b> = 1500 Frw</li>
+					{% if memberid.ibindi %}
+					{% for ibi in memberid.ibindi %}
+					{% if loop.last %}
+							Ukwezi = ({{ ibi.done_date }}) <br>
+							RPF = {{ ibi.rpf }} Frw <br>
+							Ejo heza = {{ ibi.ejo_heza }} Frw <br>
+							MUSA = {{ ibi.mituelle_amount}} Frw <br>
+							Carnet = {{ ibi.carnet }} Frw <br>
+							Avance = {{ ibi.avance }} Frw <br>
+							Inguzanyo = {{ ibi.loan }} Frw <br><hr>
+							Byose:
+							{{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+							
+					{% endif %}
+					{% endfor %}
 
-								<li><b>MUSA</b> = 10000 Frw</li>
-								<li><b>Carnet</b> = 500 Frw</li>
 
-								<li><b>Avance</b> = 5000 Frw</li>
-								<li><b>Inguzanyo</b> = 0 Frw</li><br>
-								<button type="button" class="btn btn-success">Hindura</button>							
-							</ol><br>
-					</ul>
+					{% else %}
+
+					{% for ibi in memberid.ibindi %}
+					{% if loop.last %}
+							Ukwezi = 0 <br>
+							RPF = 0 Frw <br>
+							Ejo heza = 0 Frw <br>
+							MUSA = 0 Frw <br>
+							Carnet = 0 Frw <br>
+							Avance = 0 Frw <br>
+							Inguzanyo = 0 Frw <br><hr>
+							Byose:
+							{{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+							<br><hr>
+							Umushahara =
+							{{ (((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota) - (ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan)  }}
+							Frw <br>
+					{% endif %}
+					{% endfor %}
+
+					{% endif %}
+
+
+
 				</div>
 			</div>
 		</div>
