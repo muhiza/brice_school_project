@@ -1,14 +1,17 @@
 {% extends "stock_base.html" %}
 {% block content %}
 <div class="container-fluid">
-		{% if umusaruro %}
+    {% if umusaruro %}
 
-		<div class="row">
+    <div class="row">
         <div class="breadcrumbs">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title"><br>
-                        <strong><h3>Umusaruro wa: <b> {{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b></h3></strong>
+                        <strong>
+                            <h3>Umusaruro wa: <b> {{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
+                            </h3>
+                        </strong>
                     </div>
                 </div>
             </div>
@@ -17,30 +20,86 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <div class="alert alert-success" role="alert">
-                                <h4>Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg = {{ amafaranga_all }} Frw</a><br>
-                                Havuyemo 10% =  <a href="#" class="alert-link"> {{ amafaranga_asigaye }} </a><br>
-                                Ibiro bisigaye =  <a href="#" class="alert-link"> {{ umusaruro_all - amafaranga_asigaye }} </a><br>
-                                Igiciro ku kiro =  <a href="#" class="alert-link"> {{ price }} Frw </a><br>
-                                Amafaranga =  <a href="#" class="alert-link"> {{ (umusaruro_all - amafaranga_asigaye) * price }} Frw </a><br>
+                                <h4>Igiteranyo cya byose: <a href="#" class="alert-link">{{ umusaruro_all }} kg =
+                                        {{ amafaranga_all }} Frw</a><br>
+                                    Havuyemo 10% = <a href="#" class="alert-link"> {{ amafaranga_asigaye }} </a><br>
+                                    <hr>
+
+
+                                    Ibiro bikase = <a href="#" class="alert-link">
+                                        {{ umusaruro_all - amafaranga_asigaye }} </a><br>
+                                    Igiciro ku kiro = <a href="#" class="alert-link"> {{ price }} Frw </a><br>
+                                    Ibyabuze amanota (Frw) = <a href="#" class="alert-link"> {{ price }} Frw </a><br>
+                                    Amafaranga mbumbe = <a href="#" class="alert-link">
+                                        {{ (umusaruro_all - amafaranga_asigaye) * price }} Frw </a><br>
+                                    <hr>
+
+                                    Ibyabuze amanota ku kwezi = {{ ibiro_ibyabuze_amanota }} Kg <br>
+                                    Ibyabuze amanota ku kwezi = {{ amafaranga_ibyabuze_amanota }} Frw <br>
+                                    <hr>
+
+                                    Umushahara =
+                                    {{ ((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota }}
+                                    Frw <br>
+
+
                                 </h4>
                             </div>
                         </ol>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2"><br>
+            <div class="col-sm-4">
+                <!--
                 <button type="button" class="btn btn-primary"><b>
                    	<span class="ti-wallet"></span>&nbsp;
                 		<a href="{{ url_for('aicos_stock_managment.umunyamuryangoIshyura', id=memberId.id) }}">
                     <span style="color: #fff;">Ishyura byose</span></a></b>
-                    
-
-
-
                 </button>
+                -->
+
+
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <div class="alert alert-success" role="alert">
+                                <h2> <b>Retenue </b></h2>
+                                <hr>
+                                <h4>
+                                    Quality = {{ amafaranga_ibyabuze_amanota }} Frw <br>
+                                    <hr>
+
+                                    {% for ibi in memberId.ibindi %}
+                                    {% if loop.last %}
+                                            Ukwezi = ({{ ibi.done_date }}) <br>
+                                            RPF = {{ ibi.rpf }} Frw <br>
+                                            Ejo heza = {{ ibi.ejo_heza }} Frw <br>
+                                            MUSA = {{ ibi.mituelle_amount}} Frw <br>
+                                            Carnet = {{ ibi.carnet }} Frw <br>
+                                            Avance = {{ ibi.avance }} Frw <br>
+                                            Inguzanyo = {{ ibi.loan }} Frw <br><hr>
+                                            Byose:
+                                            {{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+                                            <br><hr>
+                                            Umushahara =
+                                            {{ (((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota) - (ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan)  }}
+                                            Frw <br>
+                                    {% endif %}
+                                    {% endfor %}
+
+
+
+
+                                </h4>
+                            </div>
+                        </ol>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-        </div><br><br><br><br><br><br>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
@@ -50,104 +109,254 @@
 
 
 
-        <div class="panel-body">
-            <div role="tabpanel">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Card view</a></li>
-                        <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Table view</a></li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="tab1">
-                            {% for umu in umusaruro %}
-                            <div class="col-md-3">
-                                <div class="panel panel-white">
-                                    <div class="panel-heading clearfix">
-                                        <h3 class="panel-title">{% if memberId %}
-                                            Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
-                                        {% endif %}</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="browser-stats">
-                                            <ul class="list-unstyled">
-                                                <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div></li>
-                                                <li>Ibiro: <div class="text-success pull-right">{{ umusaruro_all - amafaranga_asigaye }}</div></li>
-                                                <li>Igiciro ku kiro: <div class="text-success pull-right">{{ price }} Frw</div></li>
-                                                
-                                                <li>Igiciro cyose: <div class="text-success pull-right">{{ (umusaruro_all - amafaranga_asigaye) * price }} Frw</div></li>
-                                                <li>Zone: <div class="text-success pull-right">{% if memberId %} {{ memberId.zone }} {% endif %}</div></li>
-                                                <li>Itsinda: <div class="text-success pull-right">{% if memberId %} {{ memberId.itsinda }} {% endif %}</div></li>
-                                                <li>Yarishyuwe: <div class="text-success pull-right">Oya</div></li>
-                                                <button type="button" class="btn btn-primary"><b>
-                                                        <span class="ti-wallet"></span>&nbsp;
-                                                        <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button><!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
-                                                        </div>
-                                                    </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+    <div class="panel-body">
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Card view</a></li>
+                <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Table view</a></li>
+
+                <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Ibyabuze amanota</a></li>
+                <li role="presentation"><a href="#tab4" role="tab11" data-toggle="tab">Ibindi</a></li>
+
+
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    {% for umu in umusaruro %}
+                    <div class="col-md-3">
+                        <div class="panel panel-white">
+                            <div class="panel-heading clearfix">
+                                <h3 class="panel-title">{% if memberId %}
+                                    Amazina: <b>{{ memberId.izina_ribanza + " " + memberId.izina_rikurikira }}</b>
+                                    {% endif %}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="browser-stats">
+                                    <ul class="list-unstyled">
+                                        <li>Taliki: <div class="text-success pull-right">{{ umu.done_date }}</div>
+                                        </li>
+                                        <li>Ibiro: <div class="text-success pull-right">{{ umu.UwoKugurisha }}</div>
+                                        </li>
+
+                                        {% if umu.UmusaruroGrade == 'good' %}
+                                        <li class="bg-success"><b>&nbsp; Ibiro bikase: <div
+                                                    class="text-success pull-right" style="color: #fff;">
+                                                    {{ umu.UwoKugurisha - umu.Asigaye  }} Kg &nbsp;</div></b></li>
+                                        {% else %}
+                                        <li class="bg-danger"><b>&nbsp; Ibyabuze amanota: <div
+                                                    class="text-success pull-right" style="color: #fff;">
+                                                    {{ umu.UwoKugurisha - umu.Asigaye  }} Kg &nbsp;</div></b></li>
+
+                                        {% endif %}
+
+                                        <li>Igiciro ku kiro: <div class="text-success pull-right">{{ price }} Frw</div>
+                                        </li>
+
+                                        <li>Igiciro cyose: <div class="text-success pull-right">{{ umu.RiceAmount }} Frw
+                                            </div>
+                                        </li>
+
+                                        <li>Umushahara mbumbe: <div class="text-success pull-right">
+                                                {{ 130 * (umu.UwoKugurisha - umu.Asigaye)  }} Frw</div>
+                                        </li>
+
+
+                                        <li>Umushahara ukase: <div class="text-success pull-right">
+                                                {{ 130 * (umu.UwoKugurisha - umu.Asigaye) - (umu.UwoKugurisha - umu.Asigaye) * 19.1  }}
+                                                Frw</div>
+                                        </li>
+
+                                        <li>Zone: <div class="text-success pull-right">{% if memberId %}
+                                                {{ memberId.zone }} {% endif %}</div>
+                                        </li>
+                                        <li>Itsinda: <div class="text-success pull-right">{% if memberId %}
+                                                {{ memberId.itsinda }} {% endif %}</div>
+                                        </li>
+                                        <li>Yarishyuwe: <div class="text-success pull-right">Oya</div>
+                                        </li>
+                                        <button type="button" class="btn btn-primary"><b>
+                                                <span class="ti-wallet"></span>&nbsp;
+                                                <a href="#"><span style="color: #fff;">Ishyura</span></a></b></button>
+                                        <!--{{ url_for('aicos_stock_managment.umusaruroIshyura', id=memberId.id) }} -->
                                 </div>
-        
-                        {% endfor %}
-
+                                </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="tab2"><br><br>
-                            <div class="container-fluid">
-                            <div class="table-responsive">
-                                <table id="kwishyura_umusaruro" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Taliki</th>
-                                            <th>Ibiro</th>
-                                            <th>Igiciro</th>
-                                            <th>Zone</th>
+                    </div>
 
-                                            <th>Itsinda</th>
-                                            <th>Yarishyuwe</th>
-                                            <th>Bank</th>
-                                            <th>Ishyura</th>
+                    {% endfor %}
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            {% for umu in umusaruro %}
-                                              <tr>
-                                                <td>{{ umu.done_date }}</td>
-                                                <td> {{ umu.UwoKugurisha }} </td>
-                                                <td>  {{ umu.RiceAmount }}  </td>
-                                                <td> {% if memberId %} {{ memberId.zone }} {% endif %} </td>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="tab2"><br><br>
+                    <div class="container-fluid">
+                        <div class="table-responsive">
+                            <table id="kwishyura_umusaruro" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Taliki</th>
+                                        <th>Ibiro</th>
+                                        <th>Igiciro</th>
+                                        <th>Zone</th>
 
+                                        <th>Itsinda</th>
+                                        <th>Yarishyuwe</th>
+                                        <th>Bank</th>
+                                        <th>Ishyura</th>
 
-                                                <td>  {% if memberId %} {{ memberId.itsinda }} {% endif %}  </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for umu in umusaruro %}
+                                    <tr>
+                                        <td>{{ umu.done_date }}</td>
+                                        <td> {{ umu.UwoKugurisha }} </td>
+                                        <td> {{ umu.RiceAmount }} </td>
+                                        <td> {% if memberId %} {{ memberId.zone }} {% endif %} </td>
+                                        <td> {% if memberId %} {{ memberId.itsinda }} {% endif %} </td>
 
+                                        <td> Oya </td>
+                                        <td> Bank </td>
 
-                                                <td>  Oya </td>
-                                                <td>  Bank </td>
+                                        <td> Ishyura </td>
 
-                                                <td>  Ishyura  </td>
-
-                                              </tr>
-                                           {% endfor %}
-                                    </tbody>
-                                </table>
-                                </div>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
+                </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div role="tabpanel" class="tab-pane" id="tab3"><br><br>
+                    <div class="container-fluid">
+                        <div class="table-responsive">
+                            <table id="umusaruro_wabuze_amanota" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Taliki</th>
+                                        <th>Ibiro</th>
+                                        <th>Igiciro</th>
+                                        <th>Zone</th>
+
+                                        <th>Itsinda</th>
+                                        <th>Yarishyuwe</th>
+                                        <th>Bank</th>
+                                        <th>Ishyura</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for umu in umusaruro %}
+                                    {% if umu.UmusaruroGrade != 'good' %}
+                                    <tr>
+                                        <td>{{ umu.done_date }}</td>
+                                        <td> {{ umu.UwoKugurisha }} </td>
+                                        <td> {{ umu.RiceAmount }} </td>
+                                        <td> {% if memberId %} {{ memberId.zone }} {% endif %} </td>
+
+
+                                        <td> {% if memberId %} {{ memberId.itsinda }} {% endif %} </td>
+
+
+                                        <td> Oya </td>
+                                        <td> Bank </td>
+
+                                        <td> Ishyura </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <div role="tabpanel" class="tab-pane" id="tab4"><br><br>
+                    <div class="container-fluid">
+                        <div class="table-responsive">
+                            <table id="umusaruro_ufite_amanota" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Taliki</th>
+                                        <th>Ibiro</th>
+                                        <th>Igiciro</th>
+                                        <th>Zone</th>
+
+                                        <th>Itsinda</th>
+                                        <th>Yarishyuwe</th>
+                                        <th>Bank</th>
+                                        <th>Ishyura</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for umu in umusaruro %}
+                                    {% if umu.UmusaruroGrade == 'good' %}
+                                    <tr>
+                                        <td>{{ umu.done_date }}</td>
+                                        <td> {{ umu.UwoKugurisha }} </td>
+                                        <td> {{ umu.RiceAmount }} </td>
+                                        <td> {% if memberId %} {{ memberId.zone }} {% endif %} </td>
+
+
+                                        <td> {% if memberId %} {{ memberId.itsinda }} {% endif %} </td>
+
+
+                                        <td> Oya </td>
+                                        <td> Bank </td>
+
+                                        <td> Ishyura </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                </div>
+
+
+
             </div>
         </div>
+    </div>
 
 
+    {% else %}
 
-
-
-
-		{% else %}
-
-		{% endif %}       
-	</div>
+    {% endif %}
+</div>
 </div>
 {% endblock %}
 
@@ -168,10 +377,3 @@ Call corimak manager to arange the training and the meeting.
 Call coopthevigi manager.
 finish documenting the app and share it to get feedback.
 Start research to manipulate the app for TEA people
-
-
-
-
-
-
-

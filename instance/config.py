@@ -23,3 +23,4 @@ UPLOADS_DEFAULT_URL = 'http://localhost:5000/static/img/'
 UPLOADED_IMAGES_DEST = TOP_LEVEL_DIR + '/project/static/img/'
 UPLOADED_IMAGES_URL = 'http://localhost:5000/static/img/'
 
+

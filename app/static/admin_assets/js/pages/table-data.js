@@ -40,9 +40,11 @@ $(document).ready(function() {
     // Bank data tables
     $('#bank_kwishyura').dataTable();
     $('#kwishyura_umusaruro').dataTable();
+    $('#umusaruro_wabuze_amanota').dataTable();
+    $('#umusaruro_ufite_amanota').dataTable();
     
 
-    
+  
     
     
     

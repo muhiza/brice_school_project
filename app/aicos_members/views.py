@@ -1058,6 +1058,7 @@ def doimportmbs():
             m.ubuso_ahingaho_ibindi = row['ubuso_ahingaho_ibindi']
             m.ubwoko_igihingwa_kindi = row['ubwoko_igihingwa_kindi']
             m.ubuso_budakoreshwa = row['ubuso_budakoreshwa']
+            m.sector = row['sector']
             m.bank = row['bank']
             m.department_id = current_user.email
 

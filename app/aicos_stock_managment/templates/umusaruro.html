@@ -2,7 +2,7 @@
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
 {% block content %}
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       {{ utils.flashed_messages(dismissible=True) }}
     </div>
@@ -34,14 +34,17 @@
                                     <thead>
                                         <tr>
                                             <th>Amazina</th>
+                                            <th>Code</th>
+                                            <th>Sector</th>
                                             <th>Ubwoko&nbsp;bw'igihingwa</th>
                                             <th>Ibyo&nbsp;asigaranye</th>
                                             <th>Ibyo&nbsp;kugurisha</th>
                                             <th>Grade</th>
                                             <th>Amafaranga</th>
                                             <th>Deduct&nbsp;10%</th>
-
                                             <th>Asigaye</th>
+
+                                            <th class="bg-info" style="color: #fff;">Retenue</th>
 
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
@@ -52,6 +55,8 @@
                                             {% for member in employees %}
                                               <tr>
                                                 <td>{{member.izina_ribanza}}&nbsp;{{member.izina_rikurikira}}</td>
+                                                <td>{{member.sno}}</td>
+                                                <td>{{member.sector}}</td>
                                                 <td>
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}
@@ -120,6 +125,7 @@
                                                 </td>
 
 
+
                                                 <td>
                                                     {% if member.umusarurob %}
                                                         {% for umu in member.umusarurob %}
@@ -131,6 +137,22 @@
                                                   </td>
 
 
+                                                  <td class="bg-success" style="color: #fff;">{% if member.ibindi %}
+                                                    {% for ibi in member.ibindi %}
+                                                    {% if loop.last %}
+                                                    {{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    
+                                                    &nbsp;&nbsp;
+                                                    <a href="{{ url_for('aicos_stock_managment.injizaIbindi', id=member.id) }}"> 
+                                                        <button
+                                                        type="button"
+                                                        class="btn btn-primary btn-addon btn-xs btn-center">
+                                                      <span><li class="fa fa-plus"></li> Injiza retenue</span> </button>
+                                                    </a>
+                                                  </td>
 
 
 
@@ -139,7 +161,7 @@
                                                       <button
                                                       type="button"
                                                       class="btn btn-success btn-addon btn-xs btn-center">
-                                                    <span><li class="fa fa-plus"></li> Injiza</span> </button>
+                                                    <span><li class="fa fa-plus"></li> Injiza umusaruro</span> </button>
                                                   </a>
                                                 </td>
                                                 <td>

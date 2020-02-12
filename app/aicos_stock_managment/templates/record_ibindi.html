@@ -3,6 +3,7 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
+
 {% block content %}
  	<div class="container-fluid">
     {{ utils.flashed_messages(dismissible=True) }}
@@ -16,25 +17,22 @@
 	                <div class="card-body card-block">
 	                <form action="" method="post">
 	                    <div class="">
-	                    	{{ wtf.form_field(form.ImifukaQuantity) }}
+	                    	{{ wtf.form_field(form.rpf) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.ImifukaAmount) }}
+	                    	{{ wtf.form_field(form.ejo_heza) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.MituelleAmount) }}
+	                    	{{ wtf.form_field(form.mituelle_amount) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.UmuceriGrade) }}
+	                    	{{ wtf.form_field(form.carnet) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.UmuceriQuantity) }}
+	                    	{{ wtf.form_field(form.avance) }}
 	                    </div>
 	                    <div class="">
-	                    	{{ wtf.form_field(form.UmuceriAmountGrade) }}
-	                    </div>
-	                    <div class="">
-	                    	{{ wtf.form_field(form.Avence) }}
+	                    	{{ wtf.form_field(form.loan) }}
 	                    </div>
 	                    <div class="">
 	                    	{{ form.submit(class="btn btn-primary") }}

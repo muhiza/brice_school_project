@@ -4,43 +4,101 @@
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
 {% block content %}
- 	<div class="container-fluid">
-    {{ utils.flashed_messages(dismissible=True) }}
+<div class="container">
+	{{ utils.flashed_messages(dismissible=True) }}
+	<div class="row"><br><br>
+		<div class="col-lg-6">
+			<div class="card">
+				<div class="card-header">
+					<h3>Andika Umusaruro wa: <strong>
+							{{member_name.izina_ribanza}}&nbsp;{{member_name.izina_rikurikira}} </strong> </h3><br>
+				</div>
+				<div class="card-body card-block">
+					<form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
+						<div class="input-form">
+							{{ wtf.form_field(form.RiceType) }}
+						</div>
+						<div class="input-form">
+							{{ wtf.form_field(form.UmusaruroGrade) }}
+						</div>
+						<div class="input-form">
+							{{ wtf.form_field(form.Quantity) }}
+						</div>
+						<div class="input-form">
+							{{ wtf.form_field(form.RiceAmount) }}
+						</div>
+						<!--
+						<div class="input-form">
+							{{ wtf.form_field(form.UwoAsigaranye) }}
+						</div>
+						<div class="input-form">
+							{{ wtf.form_field(form.Gutonoza) }}
+						</div>
+						-->
 
-    		<div class="row">
-            <div class="col-lg-8">
-	       <div class="card">
-	                <div class="card-header">
-	                   <h3>Andika Umusaruro wa <strong> {% if member_name %} {{   member_name.izina_ribanza  }} {% endif %}  </strong> </h3><br>
-	                </div>
-	                <div class="card-body card-block">
-	                <form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
-	                	<div class="input-form">
-	                    	{{ wtf.form_field(form.RiceType) }}
-	                    </div>
-	                   	<div class="input-form">
-	                    	{{ wtf.form_field(form.UmusaruroGrade) }}
-	                    </div>
-	                    <div class="input-form">
-	                    	{{ wtf.form_field(form.Quantity) }}
-	                    </div>
-	                    <div class="input-form">
-	                    	{{ wtf.form_field(form.RiceAmount) }}
-	                    </div>
-	                    <div class="input-form">
-	                    	{{ wtf.form_field(form.UwoAsigaranye) }}
-	                    </div>
-	                    <div class="input-form">
-	                    	{{ wtf.form_field(form.Gutonoza) }}
-	                    </div>
-	                    <div class="input-form">
-	                    	{{ form.submit(class="btn btn-primary") }}
-	                    </div>
-	                    {{ form.csrf_token }}
-	                </form>
-				    <br><br><br>
-			        </div>
-			        </div>
-			        </div>
-			    </div>
-{% endblock %}
+						<div class="input-form" input type="date">
+							{{ wtf.form_field(form.done_date) }}
+						</div>
+						<div class="input-form">
+							{{ form.submit(class="btn btn-primary") }}
+						</div>
+						{{ form.csrf_token }}
+					</form>
+					<br><br><br>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-6">
+			<div class="panel panel-white">
+				<div class="panel-heading clearfix">
+					<h3><b>Retenue z'ukwezi,</b> January.</h3>
+				</div>
+				<div class="panel-body">
+					{% if memberid.ibindi %}
+					{% for ibi in memberid.ibindi %}
+					{% if loop.last %}
+							Ukwezi = ({{ ibi.done_date }}) <br>
+							RPF = {{ ibi.rpf }} Frw <br>
+							Ejo heza = {{ ibi.ejo_heza }} Frw <br>
+							MUSA = {{ ibi.mituelle_amount}} Frw <br>
+							Carnet = {{ ibi.carnet }} Frw <br>
+							Avance = {{ ibi.avance }} Frw <br>
+							Inguzanyo = {{ ibi.loan }} Frw <br><hr>
+							Byose:
+							{{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+							
+					{% endif %}
+					{% endfor %}
+
+
+					{% else %}
+
+					{% for ibi in memberid.ibindi %}
+					{% if loop.last %}
+							Ukwezi = 0 <br>
+							RPF = 0 Frw <br>
+							Ejo heza = 0 Frw <br>
+							MUSA = 0 Frw <br>
+							Carnet = 0 Frw <br>
+							Avance = 0 Frw <br>
+							Inguzanyo = 0 Frw <br><hr>
+							Byose:
+							{{ ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan }}
+							<br><hr>
+							Umushahara =
+							{{ (((umusaruro_all - amafaranga_asigaye) * price) - amafaranga_ibyabuze_amanota) - (ibi.rpf + ibi.ejo_heza + ibi.mituelle_amount + ibi.carnet + ibi.avance + ibi.loan)  }}
+							Frw <br>
+					{% endif %}
+					{% endfor %}
+
+					{% endif %}
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}

@@ -16,7 +16,6 @@ class Cooperative(UserMixin, db.Model):
     """
     Creating the cooperative database here.
     """
-
     __tablename__ = "cooperatives"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -661,6 +660,7 @@ class Member(db.Model):
     ubuso_ahingaho_ibindi = db.Column(db.String(200))
     ubwoko_igihingwa_kindi = db.Column(db.String(200))
     ubuso_budakoreshwa = db.Column(db.String(200))
+    sector = db.Column(db.String(200))
     bank = db.Column(db.String(200))
     
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
@@ -1466,6 +1466,15 @@ class Umusarurob(db.Model):
     # (RiceAmount * Quantity) - Uwogutonoza
     AmafarangaUmusaruro1 = db.Column(db.Integer)
     Asigaye = db.Column(db.Float)
+    Ibikase = db.Column(db.Integer)
+    Ibisigaye = db.Column(db.Integer)
+
+    Musa = db.Column(db.Integer)
+    Carnet = db.Column(db.Integer)
+    Avance = db.Column(db.Integer)
+    
+
+
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
@@ -1599,13 +1608,21 @@ class Ibindi(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     ImifukaQuantity = db.Column(db.Integer)
     ImifukaAmount = db.Column(db.Integer)
-    MituelleAmount = db.Column(db.Integer)
+
+    rpf = db.Column(db.Integer)
+    ejo_heza = db.Column(db.Integer)
+    mituelle_amount = db.Column(db.Integer)
+    carnet = db.Column(db.Integer)
+    avance = db.Column(db.Integer)
+    loan = db.Column(db.Integer)
+
+
+
     UmuceriGrade = db.Column(db.String(200))
     UmuceriQuantity = db.Column(db.Integer)
     UmuceriAmountGrade = db.Column(db.Integer)
-    Avence = db.Column(db.Integer)
     member_id = db.Column(db.Integer, db.ForeignKey('members.id'))
-    done_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    done_date = db.Column(db.DateTime)
     department_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
