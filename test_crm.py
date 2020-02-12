@@ -26,9 +26,9 @@ class TestBase(TestCase):
         
         config_name = 'testing'
         app = create_app(config_name)
-        app.config.update(
-            SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
-        )
+        # app.config.update(
+            # SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
+        # )
         app.config['LOGIN_DISABLED'] = True
         app.login_manager.init_app(app)
         return app

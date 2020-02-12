@@ -1,3 +1,5 @@
+
+# External imports
 from flask import abort, render_template, request, redirect, flash, url_for
 from flask_login import current_user, login_required
 import stripe
@@ -6,25 +8,22 @@ from . import home
 from .forms import *
 from .forms import newDepartmentForm
 
-
+# Internal imports
 from .. import auth
 from .. auth .forms import LoginForm, RegistrationForm
 #from .. import db
 from ..models import Employee
 
 from markupsafe import Markup
-
 import nexmo
 
+# Initiating nexmo
 client = nexmo.Client(key='e88f8d53', secret='w7j2m7zksG7RPPVc')
 
-
+# Initiating stripe
 pub_key = "pk_test_l8INkseWioNZqSRgs78wq7AG"
 secret_key = "sk_test_OXZNLFLMjrg0Lc2mSnp5htQw"
 stripe.api_key = secret_key
-
-
-
 
 def check_admin():
     #form = LoginForm()
@@ -35,30 +34,88 @@ def check_admin():
         abort(403)
 
 def check_overall():
+    # prevent non-overalls from accessing the page
     if not current_user.is_overall:
         abort(403)
 
-
 def check_coop_admin():
+    # prevent non-coop-admins from accessing the page
     if not current_user.is_coop_admin:
         abort(403)
 
-
-
 @home.route('/')
 def homepage():
-
     """
     Render the homepage template on the / route
     """
     #return redirect(url_for('auth.login'))
-    return render_template('auth/landing_page.html', title="Welcome", pub_key=pub_key)
-
-
-
+    return render_template('auth/copa_landing_page.html', title="Welcome", pub_key=pub_key)
+    
 """
 Processing the payment logics
 """
+
+
+# The route for Kinyarwanda Landing page
+@home.route('/rw/')
+def rwanda():
+    return render_template('auth/rw_copa_landing_page.html')
+
+
+# The route for English Landing page
+@home.route('/en/')
+def english():
+    return render_template('auth/copa_landing_page.html')
+
+
+
+
+
+
+@home.route('/contact')
+def contact():
+    return render_template('auth/contact.html')
+    
+
+@home.route('/rw/contact')
+def rw_contact():
+    return render_template('auth/rw_contact.html')
+
+@home.route('/contact/sent')
+def contact_sent():
+    flash("Thanks, we will get back to you as soon as possible.")
+    return render_template('auth/contact_sent.html')
+    
+
+
+@home.route('/faq')
+def copa_faq():
+    return render_template('auth/copa_faq.html')
+
+@home.route('/rw/faq')
+def rw_copa_faq():
+    return render_template('auth/rw_copa_faq.html')
+
+
+@home.route('/our_commitment')
+def our_commitment():
+    return render_template('auth/our_commitments.html')
+    
+
+@home.route('/rw/our_commitment')
+def rw_our_commitment():
+    return render_template('auth/rw_our_commitments.html')
+
+
+
+@home.route('/more')
+def more():
+    return render_template('auth/more.html')
+
+@home.route('/rw/more')
+def rw_more():
+    return render_template('auth/rw_more.html')
+
 
 
 @home.route('/allSolutions')
@@ -66,18 +123,31 @@ def allSolutions():
     return render_template('home/allSolutions.html')
 
     
-@home.route('/pay', methods=['POST'])
-def pay():
-    customer = stripe.Customer.create(email=request.form['stripeEmail'], source=request.form['stripeToken'])
-    charge = stripe.Charge.create(
-        customer = customer.id,
-        amount   = 19900,
-        currency = 'usd',
-        description = 'The product'
-        )
-    
-    flash("You have ordered a product from our store")
-    return redirect(url_for('home.homepage'))
+@home.route('/copa_pricing/copa_plan')
+def copa_plan():
+    amount = 50,000
+    return render_template('home/copa_plan.html', amount=amount)
+
+
+@home.route('/copa_pricing/copa_plan_one')
+def copa_plan_one():
+    amount = 50,000
+    return render_template('home/copa_plan_one.html', amount=amount)
+
+
+@home.route('/copa_pricing/copa_plan_two')
+def copa_plan_two():
+    amount = 50,000
+    return render_template('home/copa_plan_two.html', amount=amount)
+
+
+
+
+
+@home.route('/copa_pricing')
+def copa_pricing():
+    amount = 50,000
+    return render_template('home/copa_pricing.html', amount=amount)
 
 
 

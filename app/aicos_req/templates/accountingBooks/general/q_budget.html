@@ -1,0 +1,70 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "general_base.html" %}
+
+{% block body%} 
+<div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <a href="{{ url_for('aicos_req.new_budget') }}" type="button" class="col-md-12 btn btn-info">
+                          <i class="fa fa-plus"></i>&nbsp;<strong>Add New Budget</strong>
+                        </a><br><br>
+
+                        <a style="float: left;" href="{{ url_for('aicos_req.budget') }}" type="button" class="col-md-4 btn btn-success">
+                            <i class="fa fa-list"></i>&nbsp;<strong> All Budgets</strong>
+                        </a>
+
+                        {%if m_budgets%}
+                        <a href="{{ url_for('aicos_req.m_budget') }}" type="button" class="col-md-4 btn btn-success">
+                            <i class="fa fa-list"></i>&nbsp;<strong>Monthly Budgets</strong>
+                        </a>
+                        {%endif%}
+                        
+                        {%if y_budgets%}
+                        <a style="float: right;" href="{{ url_for('aicos_req.y_budget') }}" type="button" class="col-md-4 btn btn-success">
+                            <i class="fa fa-list"></i>&nbsp;<strong>Yearly Budgets</strong>
+                        </a>
+                        {%endif%}
+                        <br><br> 
+                        
+                        {{ utils.flashed_messages() }}
+                        <div class="card">
+                            <div class="card-header">
+                                    <strong class="card-title"><i class="fa fa-calender bg-dark"></i>&nbsp;
+                                        History of Budget </strong>
+                            </div>
+                            <div class="card-body">
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%for budget in q_budgets%}
+                                        <tr>
+                                            <td>{{budget.Title}}</td>
+                                            <td>{{budget.Category}}</td>
+                                            <td>{{budget.Date}}</td>
+                                            <td>{{budget.Amount}}</td>
+                                            <td><a href="{{ url_for('aicos_req.edit_budget',id=budget.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_budget',id=budget.id) }}"><i class="fa fa-close"></i></a></td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div><!-- .animated -->
+        </div><!-- .content -->
+        </div>
+
+{% endblock %}

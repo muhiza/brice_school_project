@@ -3,13 +3,13 @@
 {% import "bootstrap/utils.html" as utils %}
 {% extends "stock_base.html" %}
 {% block title %}Stock{% endblock %}
-{% block body %}
+{% block content %}
  	<div class="container-fluid">
     {{ utils.flashed_messages(dismissible=True) }}
 
     		<div class="row">
             <div class="col-lg-8">
-	       <div class="card">
+	       <div class="card"><br><br>
 	                <div class="card-header">
 	                   <h3>Andika Inyongeramusaruro ya <strong> {% if member_name %} {{   member_name.izina_ribanza  }} {% endif %}  </strong> </h3><br>
 	                </div>

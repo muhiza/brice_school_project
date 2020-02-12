@@ -1,0 +1,59 @@
+{% extends "cooperative_admin_members_base.html" %}
+{% block content %}
+                <div class="page-inner">
+                    <div class="page-title"><br><br>
+                        <h3 class="breadcrumb-header">Ubwoko bwa fayiro zemewe: <b>xls, xlsx & ods.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>                 
+                            <a href="{{ url_for('aicos_members.templateDownload') }}">
+                                <button input class="btn btn-success"> <b> Bona urugero rwa fayiro </b></button>
+                            </a>
+                        </h3>
+                    </div>
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                <form action="{{ url_for('aicos_members.doimportmbs') }}" method="post" enctype=multipart/form-data><p>
+                                        <div class="btn btn-lg">
+                                            <input type=file name=file>
+                                        </div>
+                                        <button input class="btn btn-primary" type=submit value=Upload>
+                                                <b> Injiza fayiro </b>
+                                        </button>
+                                </form>
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <h3>Icyitonderwa.</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>
+                                        Banza urebe neza niba inyandiko irimo abanyamuryango yujuje ibisabwa neza, 
+                                        ndetse ko n'amakuru yuzuye neza. Niba inyandiko itameze neza, ntago iribwakirwe na sisiteme. 
+                                        Kanda ahanditse Bona urugero ubone ibisabwa. <br><br>
+
+                                        Ubu ni uburyo bworoshya kwinjiza abanyamuryango ba Koperative muri sisiteme, tunganya inyandiko 
+                                        y'abanyamuryango ku ruhande ubundi ubashyirire icyarimwe muri sisiteme.
+                                    
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+                <div class="page-footer">
+                    <p>Extra technologies ltd.</p>
+                </div>
+                </div><!-- /Page Inner -->
+
+
+{% endblock %}

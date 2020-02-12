@@ -1,0 +1,93 @@
+{% extends "cooperative_admin_members_base.html" %}
+{% block content %}
+                <!-- Page Inner -->
+                <div class="page-inner no-page-title">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <h4 class="panel-title">Cooperative Member Profile</h4>
+                                </div>
+                                <div class="panel-body user-profile-panel">
+                                    <img src="http://via.placeholder.com/100x100" class="user-profile-image img-circle" alt="">
+                                    <h4 class="text-center m-t-lg">{{ employee.izina_ribanza }} {{ employee.izina_rikurikira }}</h4>
+                                    <p class="text-center">Cooperative Member</p>
+                                    <hr>
+                                    <ul class="list-unstyled text-center">
+                                        <li><p><i class="fa fa-map-marker m-r-xs"></i>{{ employee.Intara }}, {{ employee.Akarere }}</p></li>
+                                        <li><p><i class="fa fa-phone m-r-xs"></i><a href="#">{{ employee.nomero_telephone }}</a></p></li>
+                                    </ul>
+                                    <hr>
+                                    <button class="btn btn-info btn-block">Activated</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <h4 class="panel-title">Member personal information</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="browser-stats">
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-tablet"></i>First name<div class="text-success pull-right">{{ employee.izina_ribanza }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Second name<div class="text-success pull-right">{{ employee.izina_rikurikira }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Other names<div class="text-success pull-right">{{ employee.Ayandi }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Date of birth<div class="text-danger pull-right">{{ employee.tariki_yavukiye }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Gender<div class="text-danger pull-right">{{ employee.Igitsina }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>ID number<div class="text-success pull-right">{{ employee.Indangamuntu }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Province<div class="text-success pull-right">{{ employee.Intara }}<i class="fa fa-level-up"></i></div></li>
+
+                                            <li><i class="fa fa-tablet"></i>District<div class="text-success pull-right">{{ employee.Akarere }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Sector<div class="text-success pull-right">{{ employee.Umurenge }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Cell<div class="text-success pull-right">{{ employee.Akagari }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Village<div class="text-danger pull-right">{{ employee.Umudugudu }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Date of joining<div class="text-danger pull-right">{{ employee.tariki_yinjiriye }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Share<div class="text-success pull-right">{{ employee.umugabane_ukwezi }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Signature<div class="text-success pull-right">-------------<i class="fa fa-level-up"></i></div></li>
+
+                                            <li><i class="fa fa-tablet"></i>Telephone number<div class="text-success pull-right">{{ employee.nomero_telephone }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Education level<div class="text-success pull-right">{{ employee.Amashuri }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Health status<div class="text-success pull-right">{{ employee.Ubumuga }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Marital status<div class="text-danger pull-right">{{ employee.Arubatse }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Social class<div class="text-danger pull-right">{{ employee.icyiciro_ubudehe }}<i class="fa fa-level-down"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Insurance type<div class="text-success pull-right">{{ employee.Ubwishingizi }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Employment in cooperative<div class="text-success pull-right">{{ employee.akazi_akora_muri_koperative }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Other employment<div class="text-success pull-right">{{ employee.akazi_akora_ahandi }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Plot size<div class="text-success pull-right">{{ employee.ubuso_ahingaho }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Type of crop<div class="text-success pull-right">{{ employee.ubwoko_igihingwa }}<i class="fa fa-level-up"></i></div></li>
+                                            <li><i class="fa fa-tablet"></i>Successor<div class="text-success pull-right">{{ employee.umugabane_ukwezi }}<i class="fa fa-level-up"></i></div></li>
+                                        </ul>                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-left">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <h3>Other related Information</h3>
+                                </div>
+                                <div class="panel-body">
+                                        <div class="btn-group-vertical m-t-sm" role="group" aria-label="Vertical button group">
+                                            <button type="button" class="btn btn-default">Stock performance</button>
+                                            <button type="button" class="btn btn-default text-left">Dues</button>
+                                            <button type="button" class="btn btn-default">Payments</button>
+                                            <button type="button" class="btn btn-default">Loans</button>
+                                            <button type="button" class="btn btn-default">Production</button>
+                                            <button type="button" class="btn btn-default">Groups</button>
+                                            <button type="button" class="btn btn-default">Requests</button>
+
+
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+                <div class="page-footer">
+                    <p>Extra technologies ltd.</p>
+                </div>
+                </div><!-- /Page Inner -->
+
+{% endblock %}

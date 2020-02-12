@@ -1,7 +1,7 @@
 from flask import render_template, abort, flash, redirect, url_for, request
 from . import aicos_members
 from flask_login import current_user, login_required
-from ..models import * 
+from ..models import *
 from .forms import *
 import flask_excel
 import flask_excel as excel
@@ -14,11 +14,7 @@ hostname = socket.gethostname()
 IP = socket.gethostbyname(hostname)
 
 
-
-
-
 client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
-
 
 
 def check_admin():
@@ -26,7 +22,7 @@ def check_admin():
     # departments = Employee.query.filter_by(email=form.email.data).first()
     # prevent non-admins from accessing the page
     if not current_user.is_admin:
-        #if not current_user.
+        # if not current_user.
         abort(403)
 
 
@@ -34,10 +30,10 @@ def check_overall():
     if not current_user.is_overall:
         abort(403)
 
+
 def check_accountant():
     if not current_user.is_accountant:
         abort(403)
-
 
 
 def check_coop_admin():
@@ -53,75 +49,72 @@ def aicos_members_home():
     """
     List all employees
     """
-    #check_admin()
-    #check_accountant()
-    #check_coop_admin()
+    # check_admin()
+    # check_accountant()
+    # check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
-        # check whether employee exists in the database and whether
-        # the password entered matches the password in the database
+    # check whether employee exists in the database and whether
+    # the password entered matches the password in the database
     #apps = Department.query.filter_by(email=current_user.email).first()
     #applications = apps.applications
     employee = Department.query.filter_by(email=current_user.email).first()
 
-
     employees = employee.members
 
-
-
-
-
-    
     employees_male = employee.members.filter_by(Igitsina='male')
     employees_male_count = employee.members.filter_by(Igitsina='male').count()
     employees_female = employee.members.filter_by(Igitsina='female')
-    employees_female_count = employee.members.filter_by(Igitsina='female').count()
-
-
-
+    employees_female_count = employee.members.filter_by(
+        Igitsina='female').count()
 
     employees_abatarize = employee.members.filter_by(Amashuri='no')
-    employees_abatarize_count = employee.members.filter_by(Amashuri='no').count()
+    employees_abatarize_count = employee.members.filter_by(
+        Amashuri='no').count()
     employees_abanza = employee.members.filter_by(Amashuri='low')
     employees_abanza_count = employee.members.filter_by(Amashuri='low').count()
     employees_ayisumbuye = employee.members.filter_by(Amashuri='medium')
-    employees_ayisumbuye_count = employee.members.filter_by(Amashuri='medium').count()
+    employees_ayisumbuye_count = employee.members.filter_by(
+        Amashuri='medium').count()
     employees_kaminuza = employee.members.filter_by(Amashuri='high')
-    employees_kaminuza_count = employee.members.filter_by(Amashuri='high').count()
+    employees_kaminuza_count = employee.members.filter_by(
+        Amashuri='high').count()
     employees_imyuga = employee.members.filter_by(Amashuri='Imyuga')
-    employees_imyuga_count = employee.members.filter_by(Amashuri='Imyuga').count()
-
+    employees_imyuga_count = employee.members.filter_by(
+        Amashuri='Imyuga').count()
 
     employees_amaguru = employee.members.filter_by(Ubumuga='Amaguru')
-    employees_amaguru_count = employee.members.filter_by(Ubumuga='Amaguru').count()
+    employees_amaguru_count = employee.members.filter_by(
+        Ubumuga='Amaguru').count()
 
     employees_amaboko = employee.members.filter_by(Ubumuga='Amaboko')
-    employees_amaboko_count = employee.members.filter_by(Ubumuga='Amaboko').count()
-
+    employees_amaboko_count = employee.members.filter_by(
+        Ubumuga='Amaboko').count()
 
     employees_kutabona = employee.members.filter_by(Ubumuga='Kutabona')
-    employees_kutabona_count = employee.members.filter_by(Ubumuga='Kutabona').count()
+    employees_kutabona_count = employee.members.filter_by(
+        Ubumuga='Kutabona').count()
 
     employees_kutumva = employee.members.filter_by(Ubumuga='Kutumva')
-    employees_kutumva_count = employee.members.filter_by(Ubumuga='Kutumva').count()
-
+    employees_kutumva_count = employee.members.filter_by(
+        Ubumuga='Kutumva').count()
 
     employees_mumutwe = employee.members.filter_by(Ubumuga='Mu mutwe')
-    employees_mumutwe_count = employee.members.filter_by(Ubumuga='Mu mutwe').count()
-
+    employees_mumutwe_count = employee.members.filter_by(
+        Ubumuga='Mu mutwe').count()
 
     male_members = employee.members.filter_by(Igitsina='Gole').first()
     #male_members_all = male_members.query.all()
     employees_count = employee.members.count()
-    #if employees is not None:
+    # if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
 
     #apps = Department.query.filter_by(email=current_user.department_id).first()
     #applications = apps.applications
 
-    return render_template('indexz.html',
+    return render_template('cooperative_admin_members.html',
                            employees=employees,
-                           employee=employee, 
+                           employee=employee,
                            employees_count=employees_count,
                            male_members=male_members,
                            employees_male=employees_male,
@@ -138,7 +131,7 @@ def aicos_members_home():
                            employees_kaminuza_count=employees_kaminuza_count,
                            employees_imyuga=employees_imyuga,
                            employees_imyuga_count=employees_imyuga_count,
-                           
+
                            employees_amaguru=employees_amaguru,
                            employees_amaguru_count=employees_amaguru_count,
                            employees_amaboko=employees_amaboko,
@@ -149,10 +142,9 @@ def aicos_members_home():
                            employees_kutumva_count=employees_kutumva_count,
                            employees_mumutwe=employees_mumutwe,
                            employees_mumutwe_count=employees_mumutwe_count,
-                           #male_members_count=male_members_count,
-                           #applications=applications,
+                           # male_members_count=male_members_count,
+                           # applications=applications,
                            title='Employees')
-
 
 
 @aicos_members.route('/dashboard', methods=['GET', 'POST'])
@@ -163,12 +155,12 @@ def dashboard():
     """
     List all employees
     """
-    #check_admin()
-    #check_coop_admin()
+    # check_admin()
+    # check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
-        # check whether employee exists in the database and whether
-        # the password entered matches the password in the database
+    # check whether employee exists in the database and whether
+    # the password entered matches the password in the database
     #apps = Department.query.filter_by(email=current_user.email).first()
     #applications = apps.applications
     employee  = Department.query.filter_by(email=current_user.email).first()
@@ -177,65 +169,80 @@ def dashboard():
 
     notes = Notification.query.filter_by(department_id=current_user.email)
 
+    employees_male = employee.members.filter_by(Igitsina='male')
+    employees_male_count = employee.members.filter_by(Igitsina='male').count()
+    employees_female = employee.members.filter_by(Igitsina='female')
+    employees_female_count = employee.members.filter_by(
+        Igitsina='female').count()
+    employees_abatarize = employee.members.filter_by(Amashuri='Abatarize')
+    employees_abatarize_count = employee.members.filter_by(
+        Amashuri='Abatarize').count()
+    employees_abanza = employee.members.filter_by(Amashuri='Abanza')
+    employees_abanza_count = employee.members.filter_by(
+        Amashuri='Abanza').count()
+    employees_ayisumbuye = employee.members.filter_by(Amashuri='Ayisumbuye')
+    employees_ayisumbuye_count = employee.members.filter_by(
+        Amashuri='Ayisumbuye').count()
+    employees_kaminuza = employee.members.filter_by(Amashuri='Kaminuza')
+    employees_kaminuza_count = employee.members.filter_by(
+        Amashuri='Kaminuza').count()
+    employees_imyuga = employee.members.filter_by(Amashuri='Imyuga')
+    employees_imyuga_count = employee.members.filter_by(
+        Amashuri='Imyuga').count()
 
+    employees_amaguru = employee.members.filter_by(Ubumuga='Amaguru')
+    employees_amaguru_count = employee.members.filter_by(
+        Ubumuga='Amaguru').count()
 
-    employees_male             = employee.members.filter_by(Igitsina='male')
-    employees_male_count       = employee.members.filter_by(Igitsina='male').count()
-    employees_female           = employee.members.filter_by(Igitsina='female')
-    employees_female_count     = employee.members.filter_by(Igitsina='female').count()
-    employees_abatarize        = employee.members.filter_by(Amashuri='Abatarize')
-    employees_abatarize_count  = employee.members.filter_by(Amashuri='Abatarize').count()
-    employees_abanza           = employee.members.filter_by(Amashuri='Abanza')
-    employees_abanza_count     = employee.members.filter_by(Amashuri='Abanza').count()
-    employees_ayisumbuye       = employee.members.filter_by(Amashuri='Ayisumbuye')
-    employees_ayisumbuye_count = employee.members.filter_by(Amashuri='Ayisumbuye').count()
-    employees_kaminuza         = employee.members.filter_by(Amashuri='Kaminuza')
-    employees_kaminuza_count   = employee.members.filter_by(Amashuri='Kaminuza').count()
-    employees_imyuga           = employee.members.filter_by(Amashuri='Imyuga')
-    employees_imyuga_count     = employee.members.filter_by(Amashuri='Imyuga').count()
+    employees_amaboko = employee.members.filter_by(Ubumuga='Amaboko')
+    employees_amaboko_count = employee.members.filter_by(
+        Ubumuga='Amaboko').count()
 
+    employees_kutabona = employee.members.filter_by(Ubumuga='Kutabona')
+    employees_kutabona_count = employee.members.filter_by(
+        Ubumuga='Kutabona').count()
 
-    employees_amaguru          = employee.members.filter_by(Ubumuga='Amaguru')
-    employees_amaguru_count    = employee.members.filter_by(Ubumuga='Amaguru').count()
+    employees_kutumva = employee.members.filter_by(Ubumuga='Kutumva')
+    employees_kutumva_count = employee.members.filter_by(
+        Ubumuga='Kutumva').count()
 
-    employees_amaboko          = employee.members.filter_by(Ubumuga='Amaboko')
-    employees_amaboko_count    = employee.members.filter_by(Ubumuga='Amaboko').count()
+    employees_mumutwe = employee.members.filter_by(Ubumuga='Mu mutwe')
+    employees_mumutwe_count = employee.members.filter_by(
+        Ubumuga='Mu mutwe').count()
 
-
-    employees_kutabona         = employee.members.filter_by(Ubumuga='Kutabona')
-    employees_kutabona_count   = employee.members.filter_by(Ubumuga='Kutabona').count()
-
-    employees_kutumva          = employee.members.filter_by(Ubumuga='Kutumva')
-    employees_kutumva_count    = employee.members.filter_by(Ubumuga='Kutumva').count()
-
-
-    employees_mumutwe          = employee.members.filter_by(Ubumuga='Mu mutwe')
-    employees_mumutwe_count    = employee.members.filter_by(Ubumuga='Mu mutwe').count()
-
-
-    male_members               = employee.members.filter_by(Igitsina='Gole').first()
-    #if employees is not None:
+    male_members = employee.members.filter_by(Igitsina='Gole').first()
+    # if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
 
     apps = Department.query.filter_by(email=current_user.email).first()
     applications = apps.applications
-    umusaruro_kg = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(department_id=current_user.email).scalar()
-    npk_kg       = db.session.query(func.sum(InyongeraMusaruro.NPKkg)).filter_by(department_id=current_user.email).scalar()
-    urea_kg      = db.session.query(func.sum(InyongeraMusaruro.UREA)).filter_by(department_id=current_user.email).scalar()
-    dap_kg       = db.session.query(func.sum(InyongeraMusaruro.DAP)).filter_by(department_id=current_user.email).scalar()
-    kcl_kg       = db.session.query(func.sum(InyongeraMusaruro.KCL)).filter_by(department_id=current_user.email).scalar()
-    imbuto_kg    = db.session.query(func.sum(InyongeraMusaruro.ImbutoQuantity)).filter_by(department_id=current_user.email).scalar()
-    briquette_kg = db.session.query(func.sum(InyongeraMusaruro.Briquette)).filter_by(department_id=current_user.email).scalar()
-    inguzanyo    = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(department_id=current_user.email).scalar()
-    amandec      = db.session.query(func.sum(Ibihano.AmandeC)).filter_by(department_id=current_user.email).scalar()
-    amandeApi    = db.session.query(func.sum(Ibihano.AmandeApII)).filter_by(department_id=current_user.email).scalar()
+    umusaruro_kg = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(
+        department_id=current_user.email).scalar()
+    npk_kg = db.session.query(func.sum(InyongeraMusaruro.NPKkg)).filter_by(
+        department_id=current_user.email).scalar()
+    urea_kg = db.session.query(func.sum(InyongeraMusaruro.UREA)).filter_by(
+        department_id=current_user.email).scalar()
+    dap_kg = db.session.query(func.sum(InyongeraMusaruro.DAP)).filter_by(
+        department_id=current_user.email).scalar()
+    kcl_kg = db.session.query(func.sum(InyongeraMusaruro.KCL)).filter_by(
+        department_id=current_user.email).scalar()
+    imbuto_kg = db.session.query(func.sum(InyongeraMusaruro.ImbutoQuantity)).filter_by(
+        department_id=current_user.email).scalar()
+    briquette_kg = db.session.query(func.sum(InyongeraMusaruro.Briquette)).filter_by(
+        department_id=current_user.email).scalar()
+    inguzanyo = db.session.query(func.sum(InguzanyoZabandi.ayasohotse)).filter_by(
+        department_id=current_user.email).scalar()
+    amandec = db.session.query(func.sum(Ibihano.AmandeC)).filter_by(
+        department_id=current_user.email).scalar()
+    amandeApi = db.session.query(func.sum(Ibihano.AmandeApII)).filter_by(
+        department_id=current_user.email).scalar()
     # check if inyongeramusaruro kg is not empty
     if npk_kg is None:
         npk_kg = 0
     if urea_kg is None:
         urea_kg = 0
     if dap_kg is None:
-      dap_kg = 0
+        dap_kg = 0
     if kcl_kg is None:
         kcl_kg = 0
     if imbuto_kg is None:
@@ -248,21 +255,21 @@ def dashboard():
         amandec = 0
     if amandeApi is None:
         amandeApi = 0
-    return render_template('home.html',
+    return render_template('cooperative_admin.html',
                            employees=employees,
                            employee=employee,
                            employees_count=employees_count,
-                           notes = notes,
-                           umusaruro_kg = umusaruro_kg,
-                           npk_kg = npk_kg,
-                           urea_kg = urea_kg,
-                           dap_kg = dap_kg,
-                           kcl_kg = kcl_kg,
-                           imbuto_kg = imbuto_kg,
-                           briquette_kg = briquette_kg,
-                           inguzanyo = inguzanyo,
-                           amandec = amandec,
-                           amandeApi = amandeApi,
+                           notes=notes,
+                           umusaruro_kg=umusaruro_kg,
+                           npk_kg=npk_kg,
+                           urea_kg=urea_kg,
+                           dap_kg=dap_kg,
+                           kcl_kg=kcl_kg,
+                           imbuto_kg=imbuto_kg,
+                           briquette_kg=briquette_kg,
+                           inguzanyo=inguzanyo,
+                           amandec=amandec,
+                           amandeApi=amandeApi,
                            employees_male=employees_male,
                            employees_female=employees_female,
                            employees_male_count=employees_male_count,
@@ -277,7 +284,7 @@ def dashboard():
                            employees_kaminuza_count=employees_kaminuza_count,
                            employees_imyuga=employees_imyuga,
                            employees_imyuga_count=employees_imyuga_count,
-                           
+
                            employees_amaguru=employees_amaguru,
                            employees_amaguru_count=employees_amaguru_count,
                            employees_amaboko=employees_amaboko,
@@ -292,11 +299,7 @@ def dashboard():
                            title='Employees')
 
 
-
-
-
-
-# @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
+@aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
 @login_required
 def memberDetails(id):
     check_admin()
@@ -304,32 +307,32 @@ def memberDetails(id):
 
     #motos = employee.motos
     if employee is not None:
-        return render_template("member_details.html", employee=employee)
+        return render_template("cooperative_member_profile.html", employee=employee)
     return redirect(url_for('aicos_members.aicos_members_home'))
 # @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
 aicos_members.add_url_rule('/memberDetails/<int:id>', 'memberDetails', memberDetails, methods=['GET', 'POST'])
-
-
-
 
 # Views for the full details of a specific employee
 @aicos_members.route('/cooperative_details/heree')
 @login_required
 def cooper_det():
-    #check_admin()
-    #check_overall()
-    #check_coop_admin()
+    # check_admin()
+    # check_overall()
+    # check_coop_admin()
     #departments = Department.query.get_or_404(ema0il)
-    departmentszx = Department.query.filter_by(email=current_user.email).first()
-        
-    employees_male_count = departmentszx.members.filter_by(Igitsina='Gabo').count()
-    employees_female_count = departmentszx.members.filter_by(Igitsina='Gole').count()
+    departmentszx = Department.query.filter_by(
+        email=current_user.email).first()
+
+    employees_male_count = departmentszx.members.filter_by(
+        Igitsina='Gabo').count()
+    employees_female_count = departmentszx.members.filter_by(
+        Igitsina='Gole').count()
 
     if departmentszx is not None:
-      return render_template("deta/coop_det.html", departmentszx=departmentszx, employees_male_count=employees_male_count,
+        return render_template("deta/coop_det.html", departmentszx=departmentszx, employees_male_count=employees_male_count,
                                employees_female_count=employees_female_count,
-            title="Cooperative's details")
-    #return redirect(url_for('admin.list_employees'))
+                               title="Cooperative's details")
+    # return redirect(url_for('admin.list_employees'))
 
 
 @aicos_members.route('/memberPayments')
@@ -338,29 +341,25 @@ def memberPayments():
     return render_template("payments/payment_list.html", goals=goals)
 
 
-
 @aicos_members.route('/memberPayments/Goals', methods=['GET', 'POST'])
 def goalPayments():
     form = GoalForm()
     if form.validate_on_submit():
-        newGoal = Goal (
-                        name = form.name.data,
-                        Description = form.description.data,
-                        Amount = form.amount.data,
-                        startingDate = form.startingDate.data,
-                        endingDate = form.endingDate.data
-                        )
+        newGoal = Goal(
+            name=form.name.data,
+            Description=form.description.data,
+            Amount=form.amount.data,
+            startingDate=form.startingDate.data,
+            endingDate=form.endingDate.data
+        )
         try:
-             db.session.add(newGoal)
-             db.session.commit()
-             flash("Umuaze kwandika ikindi gikorwa neza!")
-             return redirect(url_for('aicos_members.memberPayments'))
+            db.session.add(newGoal)
+            db.session.commit()
+            flash("Umuaze kwandika ikindi gikorwa neza!")
+            return redirect(url_for('aicos_members.memberPayments'))
         except Exception:
             flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
     return render_template("payments/goals/newGoal.html", form=form)
-
-
-
 
 
 @aicos_members.route('/memberPayments/Goals/Delete/<int:id>')
@@ -372,10 +371,6 @@ def goalDelete(id):
     return redirect(url_for('aicos_members.memberPayments'))
 
 
-
-
-
-
 @aicos_members.route('/joiningCharts')
 def joiningChart():
     employee = Department.query.filter_by(email=current_user.email).first()
@@ -383,33 +378,26 @@ def joiningChart():
     employees_male = employee.members.filter_by(Igitsina='Gabo')
     employees_male_count = employee.members.filter_by(Igitsina='Gabo').count()
     employees_female = employee.members.filter_by(Igitsina='Gole')
-    employees_female_count = employee.members.filter_by(Igitsina='Gole').count()
+    employees_female_count = employee.members.filter_by(
+        Igitsina='Gole').count()
     male_members = employee.members.filter_by(Igitsina='Gole').first()
     male_members_all = male_members.query.all()
     employees_count = employee.members.count()
     return render_template("employees/joining_chart.html",
-                            employees=employees,
-                            employee=employee, 
-                            employees_count=employees_count,
-                            male_members=male_members,
-                            male_members_all=male_members_all,
-                            employees_male=employees_male,
-                            employees_female=employees_female,
-                            employees_male_count=employees_male_count,
-                            employees_female_count=employees_female_count)
+                           employees=employees,
+                           employee=employee,
+                           employees_count=employees_count,
+                           male_members=male_members,
+                           male_members_all=male_members_all,
+                           employees_male=employees_male,
+                           employees_female=employees_female,
+                           employees_male_count=employees_male_count,
+                           employees_female_count=employees_female_count)
 
-
-
-
-
+                           
 @aicos_members.route('/create')
 def memberCreate():
     return render_template("create/create.html")
-
-
-
-
-
 
 
 # The view to list all role Views
@@ -425,10 +413,6 @@ def list_roles():
                            roles=roles, title='Roles')
 
 
-
-
-
-
 # Function for adding new role
 @aicos_members.route('/roles/add', methods=['GET', 'POST'])
 @login_required
@@ -442,7 +426,7 @@ def add_role(*args, **kwargs):
     if form.validate_on_submit():
         role = Role(name=form.name.data,
                     description=form.description.data,
-                    department_id = current_user.email)
+                    department_id=current_user.email)
         try:
             # add role to the database
             db.session.add(role)
@@ -456,9 +440,6 @@ def add_role(*args, **kwargs):
     # load role template
     return render_template('roles/role.html', add_role=add_role,
                            form=form, title='Add Role')
-
-
-
 
 
 # The view to list all staff Views
@@ -487,20 +468,20 @@ def add_staff(*args, **kwargs):
     if form.validate_on_submit():
         staff = Staff(
 
-                      first_name=form.firstName.data,
-                      last_name=form.lastName.data,
-                      nid=form.Nid.data,
-                      district=form.District.data,
-                      sector=form.Sector.data,
-                      sex=form.Sex.data,
-                      yob=form.Yob.data,
-                      position=form.Position.data,
-                      education=form.Education.data,
-                      telephone=form.Telephone.data,
-                      email=form.Email.data,
-                      monthly_net_salary=form.monthlyNetSalary.data,
-                      department_id = current_user.email
-                      )
+            first_name=form.firstName.data,
+            last_name=form.lastName.data,
+            nid=form.Nid.data,
+            district=form.District.data,
+            sector=form.Sector.data,
+            sex=form.Sex.data,
+            yob=form.Yob.data,
+            position=form.Position.data,
+            education=form.Education.data,
+            telephone=form.Telephone.data,
+            email=form.Email.data,
+            monthly_net_salary=form.monthlyNetSalary.data,
+            department_id=current_user.email
+        )
         try:
             # add role to the database
             db.session.add(staff)
@@ -514,25 +495,6 @@ def add_staff(*args, **kwargs):
     # load role template
     return render_template('roles/staff.html', add_staff=add_staff,
                            form=form, title='Add Role')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # The view to list all staff Views
@@ -561,21 +523,21 @@ def add_committee(*args, **kwargs):
     if form.validate_on_submit():
         committee = Committee(
 
-                      first_name=form.firstName.data,
-                      last_name=form.lastName.data,
-                      nid=form.Nid.data,
-                      district=form.District.data,
-                      sector=form.Sector.data,
-                      sex=form.Sex.data,
-                      yob=form.Yob.data,
-                      committee=form.Committee.data,
-                      position=form.Position.data,
-                      education=form.Education.data,
-                      telephone=form.Telephone.data,
-                      email=form.Email.data,
-                      monthly_net_salary=form.monthlyNetSalary.data,
-                      department_id = current_user.email
-                      )
+            first_name=form.firstName.data,
+            last_name=form.lastName.data,
+            nid=form.Nid.data,
+            district=form.District.data,
+            sector=form.Sector.data,
+            sex=form.Sex.data,
+            yob=form.Yob.data,
+            committee=form.Committee.data,
+            position=form.Position.data,
+            education=form.Education.data,
+            telephone=form.Telephone.data,
+            email=form.Email.data,
+            monthly_net_salary=form.monthlyNetSalary.data,
+            department_id=current_user.email
+        )
         try:
             # add role to the database
             db.session.add(committee)
@@ -591,9 +553,6 @@ def add_committee(*args, **kwargs):
                            form=form, title='Add Role')
 
 
-    
-
-
 # The view to list all role Views
 @aicos_members.route('/activities')
 @login_required
@@ -605,7 +564,6 @@ def list_activities():
     activities = Activity.query.filter_by(department_id=current_user.email)
     return render_template('roles/activities.html',
                            activities=activities, title='Activities')
-
 
 
 # Function for adding new role
@@ -620,9 +578,9 @@ def add_activity(*args, **kwargs):
     form = ActivityForm()
     if form.validate_on_submit():
         activity = Activity(
-                            name=form.name.data,
-                            description=form.description.data,
-                            department_id = current_user.email)
+            name=form.name.data,
+            description=form.description.data,
+            department_id=current_user.email)
         try:
             # add role to the database
             db.session.add(activity)
@@ -638,11 +596,6 @@ def add_activity(*args, **kwargs):
                            form=form, title='Add Role')
 
 
-
-
-
-
-
 # The view to list all role Views
 @aicos_members.route('/assets')
 @login_required
@@ -654,7 +607,6 @@ def list_assets():
     assets = Asset.query.filter_by(department_id=current_user.email)
     return render_template('roles/assets.html',
                            assets=assets, title='Activities')
-
 
 
 # Function for adding new role
@@ -669,11 +621,11 @@ def add_asset(*args, **kwargs):
     form = AssetForm()
     if form.validate_on_submit():
         asset = Asset(
-                            asset_type=form.assetType.data,
-                            asset_location=form.assetLocation.data,
-                            asset_value=form.assetValue.data,
-                            description=form.description.data,
-                            department_id = current_user.email)
+            asset_type=form.assetType.data,
+            asset_location=form.assetLocation.data,
+            asset_value=form.assetValue.data,
+            description=form.description.data,
+            department_id=current_user.email)
         try:
             # add role to the database
             db.session.add(asset)
@@ -687,16 +639,6 @@ def add_asset(*args, **kwargs):
     # load role template
     return render_template('roles/asset.html', add_asset=add_asset,
                            form=form, title='Add Role')
-
-
-
-
-
-
-
-
-
-
 
 
 @aicos_members.route('/roles/edit/<int:id>', methods=['GET', 'POST'])
@@ -723,15 +665,6 @@ def edit_role(id):
                            form=form, title="Edit Role")
 
 
-
-
-
-
-
-
-
-
-
 @aicos_members.route('/roles/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_role(id):
@@ -748,10 +681,6 @@ def delete_role(id):
     return render_template(title="Delete Role")
 
 
-
-
-
-
 # The view to list all role Views
 @aicos_members.route('/reports')
 @login_required
@@ -763,10 +692,6 @@ def list_reports():
     reports = Report.query.all()
     return render_template('tools/reports/reports.html',
                            reports=reports, title='Reports')
-
-
-
-
 
 
 # Function for adding new role
@@ -799,6 +724,7 @@ def add_report(*args, **kwargs):
     return render_template('tools/reports/report.html', add_report=add_report,
                            form=form, title='Add Report')
 
+
 @aicos_members.route('/report/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_report(id):
@@ -828,6 +754,7 @@ def edit_report(id):
     return render_template('tools/reports/report.html', add_report=add_report,
                            form=form, title="Edit Report")
 
+
 @aicos_members.route('/report/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_report(id):
@@ -844,24 +771,11 @@ def delete_report(id):
     return render_template(title="Delete Report")
 
 
-
-
-
-
-
-
-
 # This is the views for listing all the decisions
 @aicos_members.route('/cooperative/decisions')
 def decisions_list():
     decisions = Decision.query.all()
     return render_template("tools/decisions_list.html", decisions=decisions, title="List of decisions")
-
-
-
-
-
-
 
 
 # Function for adding new role
@@ -876,9 +790,9 @@ def add_payment(*args, **kwargs):
     form = PaymentForm()
     if form.validate_on_submit():
         payment = Payment(reason=form.name.data,
-                        amount = form.amount.data,
-                        date    = form.date.data,
-                        d=form.description.data)
+                          amount=form.amount.data,
+                          date=form.date.data,
+                          d=form.description.data)
         try:
             # add role to the database
             db.session.add(payment)
@@ -894,11 +808,6 @@ def add_payment(*args, **kwargs):
                            form=form, title='Add Payment')
 
 
-
-
-
-
-
 # This is the views for adding new decision
 @aicos_members.route('/cooperative/create/decision', methods=['GET', 'POST'])
 @login_required
@@ -907,20 +816,20 @@ def create_decision():
     form = DecForm()
     if form.validate_on_submit():
         dec = Decision(status=form.status.data,
-                        decision=form.decision.data,
-                        owner   = form.owner.data,
-                        stakeholders=form.stakeholders.data,
-                        due_date=form.due_date.data,
-                        background = form.background.data,
-                        department_id = current_user.email)
+                       decision=form.decision.data,
+                       owner=form.owner.data,
+                       stakeholders=form.stakeholders.data,
+                       due_date=form.due_date.data,
+                       background=form.background.data,
+                       department_id=current_user.email)
 
         notif = Notification(action="Made decision",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             db.session.add(dec)
             db.session.add(notif)
@@ -932,15 +841,11 @@ def create_decision():
     return render_template("tools/create_decision.html", form=form, title="Create")
 
 
-
-
-
 # This is the view for the how-to-article for the members of the cooperatives (Just for the guiding them)
 @aicos_members.route('/cooperative/how_to_articles_list', methods=['GET', 'POST'])
 def how_to_list():
     howtos = Howto.query.all()
     return render_template("tools/how_to/how_to_list.html", howtos=howtos, title="How to lists")
-    
 
 
 @aicos_members.route('/cooperative/create/how_to_article', methods=['GET', 'POST'])
@@ -948,32 +853,29 @@ def create_how_to():
     check_admin()
     form = HowtoForm()
     if form.validate_on_submit():
-        howto = Howto    (name=form.name.data,
-                        labels=form.labels.data,
-                        description = form.description.data,
-                        steps=form.steps.data,
-                        file=form.file.data)
-
+        howto = Howto(name=form.name.data,
+                      labels=form.labels.data,
+                      description=form.description.data,
+                      steps=form.steps.data,
+                      file=form.file.data)
 
         notif = Notification(action="Wrote a how to article",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             db.session.add(howto)
             db.session.add(notif)
             db.session.commit()
 
-
             to_number = '+250786012383'
             message = current_user.email + 'Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
-
-
 
             flash("You have successfully created an article")
         except:
@@ -982,15 +884,11 @@ def create_how_to():
     return render_template("tools/how_to/create_how_to.html", form=form, title="Create How to list")
 
 
-
-
-
 # This is the view for the links which are shared with members and all other stuff related to it anyway.
 @aicos_members.route('/cooperative/shared_links', methods=['GET', 'POST'])
 def links_list():
     links = Link.query.all()
     return render_template("tools/links/links_list.html", links=links, title="Shared links list")
-    
 
 
 @aicos_members.route('/cooperative/create/share_a_link', methods=['GET', 'POST'])
@@ -998,19 +896,19 @@ def create_link():
     check_admin()
     form = LinkForm()
     if form.validate_on_submit():
-        link = Link    (link=form.link.data,
-                        title=form.title.data,
-                        labels = form.labels.data,
-                        sharewith=form.sharewith.data,
-                        comment=form.comment.data)
+        link = Link(link=form.link.data,
+                    title=form.title.data,
+                    labels=form.labels.data,
+                    sharewith=form.sharewith.data,
+                    comment=form.comment.data)
 
         notif = Notification(action="Shared a link",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             db.session.add(link)
             db.session.add(notif)
@@ -1018,7 +916,8 @@ def create_link():
 
             to_number = '+250786012383'
             message = current_user.email + 'Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
 
             flash("You have successfully shared a link")
@@ -1028,11 +927,6 @@ def create_link():
     return render_template("tools/links/create_link.html", form=form, title="Create How to list")
 
 
-
-
-
-
-
 @aicos_members.route('/cooperative/create/share_a_file', methods=['GET', 'POST'])
 def create_file():
     check_admin()
@@ -1040,18 +934,18 @@ def create_file():
     if form.validate_on_submit():
         filename = images.save(request.files['recipe_image'])
         url = images.url(filename)
-        file = File    (form.name.data,
-                        form.description.data,
-                        True,
-                        filename,
-                        url)
+        file = File(form.name.data,
+                    form.description.data,
+                    True,
+                    filename,
+                    url)
         notif = Notification(action="Shared a file",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             db.session.add(file)
             db.session.add(notif)
@@ -1059,7 +953,8 @@ def create_file():
 
             to_number = '+250786012383'
             message = current_user.email + 'Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
             flash("You have successfully shared a file")
         except:
@@ -1068,14 +963,10 @@ def create_file():
     return render_template("tools/file/shareFile.html", form=form, title="Share Files")
 
 
-
 @aicos_members.route('/cooperative/shared_files', methods=['GET', 'POST'])
 def files_list():
     files = File.query.all()
     return render_template("tools/file/filesList.html", files=files, title="Shared files list")
-
-
-
 
 
 # This is the view to list all the members.
@@ -1089,13 +980,13 @@ def list_employees():
     check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
-        # check whether employee exists in the database and whether
-        # the password entered matches the password in the database
+    # check whether employee exists in the database and whether
+    # the password entered matches the password in the database
     #apps = Department.query.filter_by(email=current_user.email).first()
     #applications = apps.applications
     employee = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
-    #if employees is not None:
+    # if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
     return render_template('employees/employees.html',
                            employees=employees, apps=apps,
@@ -1106,9 +997,9 @@ def list_employees():
     #departments = Employee.query.filter_by(email=form.email.data).first()
     #employees = Employee.query.all()
     # employees = Employee.query.all()
-    #return render_template('auth/login.html', form=form, title='Login')
-    #return render_template('admin/employees/employees.html',
-                          # employees=employees, title='Employees')
+    # return render_template('auth/login.html', form=form, title='Login')
+    # return render_template('admin/employees/employees.html',
+    # employees=employees, title='Employees')
 
 
 # Views for the full details of a specific employee
@@ -1122,13 +1013,9 @@ def member_details(id):
     return redirect(url_for('aicos_members.list_employees'))
 
 
-
-
-
-
 # This is the view which is used to import all the members from excel sheets
 # This is the view used to import all the cooperatives from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @aicos_members.route("/importmbs", methods=['GET', 'POST'])
 def doimportmbs():
     add_member = False
@@ -1146,7 +1033,6 @@ def doimportmbs():
             m.zone = row['zone']
             m.itsinda = row['itsinda']
 
-
             m.Igitsina = row['Igitsina']
             m.Indangamuntu = row['Indangamuntu']
             m.tariki_yavukiye = row['tariki_yavukiye']
@@ -1156,7 +1042,7 @@ def doimportmbs():
             m.Akagari = row['Akagari']
             m.Umudugudu = row['Umudugudu']
             m.tariki_yinjiriye = row['tariki_yinjiriye']
-            m.umugabane_ukwezi = row['umugabane_ukwezi']
+            m.umugabane = row['umugabane']
             m.Umukono = row['Umukono']
             m.nomero_telephone = row['nomero_telephone']
             m.Amashuri = row['Amashuri']
@@ -1172,9 +1058,8 @@ def doimportmbs():
             m.ubuso_ahingaho_ibindi = row['ubuso_ahingaho_ibindi']
             m.ubwoko_igihingwa_kindi = row['ubwoko_igihingwa_kindi']
             m.ubuso_budakoreshwa = row['ubuso_budakoreshwa']
+            m.bank = row['bank']
             m.department_id = current_user.email
-
-
 
             #m.name = row['names']
             #m.plate = row['plate']
@@ -1183,45 +1068,34 @@ def doimportmbs():
             #c.id = row['id']
             return m
         try:
-          request.save_book_to_database(
-              field_name='file', session=db.session,
-              tables=[Member],
-              initializers=[mbs_init_func])
-          return redirect(url_for('aicos_members.aicos_members_home'), code=302)
-          flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
+            request.save_book_to_database(
+                field_name='file', session=db.session,
+                tables=[Member],
+                initializers=[mbs_init_func])
+                
+            flash(Markup('Lisiti y\'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!!.'), 'success')
+            return redirect(url_for('aicos_members.aicos_members_home'), code=302)
+            #flash("Lisiti y'abanyamuryango ba Cooperative yinjiye neza muri sisiteme!")
         except:
-          flash("The list you are uploading is not well formated, please reformat it and try again or Download the sample sheet")
-          return redirect(url_for('aicos_members.aicos_members_home'), code=302)
-    return render_template("employees/upload.html", 
-                            add_member=add_member,
-                            upload_file=upload_file,
-                            title="Upload a file")
-
-
-
-
-
-
-
+            flash("The list you are uploading is not well formated, please reformat it and try again or Download the sample sheet")
+            return redirect(url_for('aicos_members.aicos_members_home'), code=302)
+    return render_template("employees/cooperative_upload_members.html",
+                           add_member=add_member,
+                           upload_file=upload_file,
+                           title="Upload a file")
 
 
 @aicos_members.route("/members_template", methods=['GET'])
 def templateDownload():
     query_sets = Member.query.filter_by(id=20).all()
     column_names = ['id', 'izina_ribanza', 'izina_rikurikira', 'Ayandi',
-                    'Igitsina','Indangamuntu','Intara',
-                    'Akarere', 'Umurenge', 'Akagari', 'Umudugudu', 'tariki_yinjiriye', 'umugabane_ukwezi',
+                    'Igitsina', 'Indangamuntu', 'Intara',
+                    'Akarere', 'Umurenge', 'Akagari', 'Umudugudu', 'tariki_yinjiriye', 'umugabane',
                     'Umukono', 'nomero_telephone', 'Amashuri', 'Ubumuga', 'Arubatse', 'umubare_abana',
                     'icyiciro_ubudehe', 'Ubwishingizi', 'akazi_akora_muri_koperative', 'akazi_akora_ahandi',
                     'ubuso_ahingaho', 'ubwoko_igihingwa', 'ubuso_ahingaho_ibindi', 'ubwoko_igihingwa_kindi',
-                    'ubuso_budakoreshwa']
+                    'ubuso_budakoreshwa', 'bank']
     return excel.make_response_from_query_sets(query_sets, column_names, "xls")
-
-
-
-
-
-
 
 
 # This is the function for adding the new members in the cooperative.
@@ -1234,36 +1108,36 @@ def AddNewMember():
     form = MemberForm()
     if form.validate_on_submit():
         NewMember = Member(
-                          izina_ribanza = form.izina_ribanzax.data,
-                          izina_rikurikira = form.izina_rikurikirax.data,
-                          Ayandi     = form.ayandix.data,
-                          Igitsina  = form.igitsinax.data,
-                          Indangamuntu  = form.indangamuntux.data,
-                          tariki_yavukiye = form.tariki_yavukiyex.data,
-                          Intara = form.intarax.data,
-                          Akarere = form.akarerex.data,
-                          Umurenge     = form.umurengex.data,
-                          Akagari     = form.akagarix.data,
-                          Umudugudu     = form.umudugudux.data,
-                          tariki_yinjiriye = form.tariki_yinjiriyex.data,
-                          umugabane_ukwezi = form.umugabanex.data,
-                          Umukono    = form.umukonox.data,
-                          nomero_telephone  = form.nomero_ya_telephonex.data,
-                          Amashuri  = form.amashurix.data,
-                          Ubumuga  = form.ubumugax.data,
-                          Arubatse     = form.arubatsex.data,
-                          umubare_abana     = form.umubare_wabanax.data,
-                          icyiciro_ubudehe = form.icyiciro_cyubudehex.data,
-                          Ubwishingizi    = form.ubwishingizix.data,
-                          akazi_akora_muri_koperative  = form.akazi_akora_muri_koperativex.data,
-                          akazi_akora_ahandi  = form.akandi_kazi_akorax.data,
-                          ubuso_ahingaho  = form.ubuso_ahingahox.data,
-                          ubwoko_igihingwa  = form.ubwoko_bwigihingwax.data,
-                          ubuso_ahingaho_ibindi = form.ubuso_ahingaho_ibindix.data,
-                          ubwoko_igihingwa_kindi = form.ubwoko_bwigihingwa_kindix.data,
-                          ubuso_budakoreshwa = form.ubuso_budakoreshwax.data,
-                          department_id = current_user.email
-                          )
+            izina_ribanza=form.izina_ribanzax.data,
+            izina_rikurikira=form.izina_rikurikirax.data,
+            Ayandi=form.ayandix.data,
+            Igitsina=form.igitsinax.data,
+            Indangamuntu=form.indangamuntux.data,
+            tariki_yavukiye=form.tariki_yavukiyex.data,
+            Intara=form.intarax.data,
+            Akarere=form.akarerex.data,
+            Umurenge=form.umurengex.data,
+            Akagari=form.akagarix.data,
+            Umudugudu=form.umudugudux.data,
+            tariki_yinjiriye=form.tariki_yinjiriyex.data,
+            umugabane=form.umugabanex.data,
+            Umukono=form.umukonox.data,
+            nomero_telephone=form.nomero_ya_telephonex.data,
+            Amashuri=form.amashurix.data,
+            Ubumuga=form.ubumugax.data,
+            Arubatse=form.arubatsex.data,
+            umubare_abana=form.umubare_wabanax.data,
+            icyiciro_ubudehe=form.icyiciro_cyubudehex.data,
+            Ubwishingizi=form.ubwishingizix.data,
+            akazi_akora_muri_koperative=form.akazi_akora_muri_koperativex.data,
+            akazi_akora_ahandi=form.akandi_kazi_akorax.data,
+            ubuso_ahingaho=form.ubuso_ahingahox.data,
+            ubwoko_igihingwa=form.ubwoko_bwigihingwax.data,
+            ubuso_ahingaho_ibindi=form.ubuso_ahingaho_ibindix.data,
+            ubwoko_igihingwa_kindi=form.ubwoko_bwigihingwa_kindix.data,
+            ubuso_budakoreshwa=form.ubuso_budakoreshwax.data,
+            department_id=current_user.email
+        )
         """
         notif = Notification(action="Made decision",
                             done_by=current_user.username,
@@ -1274,29 +1148,25 @@ def AddNewMember():
                             department_id = current_user.email)
         """
         try:
-          """
-          to_number = '+250786012383'
-          message = 'You have been added in the cooperative'
-          response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-          response_text = response['messages'][0]
-          """
-          db.session.add(NewMember)
-          #db.session.add(notif)
-          db.session.commit()
-          flash("Umaze kwindika umunyamuryango neza muri sisiteme")
-          return redirect(url_for('aicos_members.aicos_members_home'))
+            """
+            to_number = '+250786012383'
+            message = 'You have been added in the cooperative'
+            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response_text = response['messages'][0]
+            """
+            db.session.add(NewMember)
+            # db.session.add(notif)
+            db.session.commit()
+            flash("Umaze kwindika umunyamuryango neza muri sisiteme")
+            return redirect(url_for('aicos_members.aicos_members_home'))
         except:
-          flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
-          return redirect(url_for('aicos_members.AddNewMember', add_member=add_member, upload_file=upload_file, title="Add New Member"))
-            
-    return render_template("employees/membership_form.html", form=form,
-                            add_member=add_member,
-                            upload_file=upload_file,
-                            title="Add New Member")
+            flash("Amakuru watanze ntago yashoboye kwinjira muri sisiteme!")
+            return redirect(url_for('aicos_members.AddNewMember', add_member=add_member, upload_file=upload_file, title="Add New Member"))
 
-
-
-
+    return render_template("employees/cooperative_membership_form.html", form=form,
+                           add_member=add_member,
+                           upload_file=upload_file,
+                           title="Add New Member")
 
 
 # This is the view for list all reports
@@ -1305,6 +1175,7 @@ def reports_list():
     reports = Report.query.all()
     return render_template("tools/reports_list.html", reports=reports, title="List of reports")
 
+
 @aicos_members.route('create/report', methods=['GET', 'POST'])
 @login_required
 def create_report():
@@ -1312,27 +1183,27 @@ def create_report():
     form = RepForm()
     if form.validate_on_submit():
         rep = Report(status=form.status.data,
-                        report_name=form.report_name.data,
-                        owner   = form.owner.data,
-                        stakeholders=form.stakeholders.data,
-                        created_date=form.created_date.data,
-                        description = form.description.data,
-                        department_id = current_user.email)
-
+                     report_name=form.report_name.data,
+                     owner=form.owner.data,
+                     stakeholders=form.stakeholders.data,
+                     created_date=form.created_date.data,
+                     description=form.description.data,
+                     department_id=current_user.email)
 
         notif = Notification(action="Created a report",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             to_number = '+250786012383'
-            message = current_user.email + ' added 300 frw to your contribution account, new balance is 6000 frw.'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            message = current_user.email + \
+                ' added 300 frw to your contribution account, new balance is 6000 frw.'
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
-
 
             db.session.add(rep)
             db.session.add(notif)
@@ -1354,33 +1225,30 @@ def create_meeting_notes():
     form = MeetingNotesForm()
     if form.validate_on_submit():
         dec = Decision(status=form.status.data,
-                        decision=form.decision.data,
-                        owner   = form.owner.data,
-                        stakeholders=form.stakeholders.data,
-                        due_date=form.due_date.data,
-                        background = form.background.data,
-                        department_id = current_user.email)
-
+                       decision=form.decision.data,
+                       owner=form.owner.data,
+                       stakeholders=form.stakeholders.data,
+                       due_date=form.due_date.data,
+                       background=form.background.data,
+                       department_id=current_user.email)
 
         notif = Notification(action="Made decision",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             db.session.add(dec)
             db.session.add(notif)
             db.session.commit()
 
-
             to_number = '+250786012383'
             message = current_user.email + 'Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
-
-
 
             flash("You have successfully approved a member")
         except:
@@ -1392,8 +1260,9 @@ def create_meeting_notes():
 @aicos_members.route('/admin/cooperative/contributions')
 def contributions_list():
     contributions = Contribution.query.all()
-    return render_template("tools/contributions_list.html", 
-        contributions=contributions, title="List of Contributions")
+    return render_template("tools/contributions_list.html",
+                           contributions=contributions, title="List of Contributions")
+
 
 @aicos_members.route('/cooperative/add/contribution', methods=['GET', 'POST'])
 @login_required
@@ -1402,22 +1271,23 @@ def add_contribution():
     form = contributionForm()
     if form.validate_on_submit():
         cont = Contribution(
-                        owner=form.contributor.data,
-                        contributionFor=form.contributionFor.data,
-                        amount   = form.amount.data,
-                        comment=form.comment.data,
-                        department_id = current_user.email)
+            owner=form.contributor.data,
+            contributionFor=form.contributionFor.data,
+            amount=form.amount.data,
+            comment=form.comment.data,
+            department_id=current_user.email)
         notif = Notification(action="Made decision",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             to_number = '+250786012383'
             message = current_user.email + ' Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
 
             db.session.add(cont)
@@ -1430,14 +1300,12 @@ def add_contribution():
     return render_template("tools/add_contribution.html", form=form, title="Add contribution")
 
 
-
-
 @aicos_members.route('/cooperative/contributions/report')
 def pdf_template():
     contributions = Contribution.query.all()
     date = datetime.datetime.now()
     rendered = render_template('tools/pdf_template.html',
-        contributions=contributions, date=date)
+                               contributions=contributions, date=date)
     pdf = pdfkit.from_string(rendered, False)
 
     response = make_response(pdf)
@@ -1447,14 +1315,12 @@ def pdf_template():
     return response
 
 
-
-
-
 @aicos_members.route('/admin/cooperative/communications')
 def communications_list():
     communications = Communication.query.all()
-    return render_template("tools/communications_list.html", 
-        communications=communications, title="List of recent Communication")
+    return render_template("tools/communications_list.html",
+                           communications=communications, title="List of recent Communication")
+
 
 @aicos_members.route('/cooperative/add/communication', methods=['GET', 'POST'])
 @login_required
@@ -1464,23 +1330,24 @@ def add_communication():
     if form.validate_on_submit():
         com = Communication(
 
-                        ms_from=form.ms_from.data,
-                        to=form.to.data,
-                        message=form.message.data,
-                        comment   = form.comment.data,
-                        department_id = current_user.email)
+            ms_from=form.ms_from.data,
+            to=form.to.data,
+            message=form.message.data,
+            comment=form.comment.data,
+            department_id=current_user.email)
 
         notif = Notification(action="Communication",
-                            done_by=current_user.username,
-                            done_from=IP,
-                            done_time = "frank",
-                            done_to="tapayi",
-                            effect = "system upgraded",
-                            department_id = current_user.email)
+                             done_by=current_user.username,
+                             done_from=IP,
+                             done_time="frank",
+                             done_to="tapayi",
+                             effect="system upgraded",
+                             department_id=current_user.email)
         try:
             to_number = '+250786012383'
             message = current_user.email + ' Decision has made and you are concerned'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+            response = client.send_message(
+                {'from': '+250786012383', 'to': to_number, 'text': message})
             response_text = response['messages'][0]
 
             db.session.add(com)
@@ -1493,7 +1360,6 @@ def add_communication():
     return render_template("tools/add_communication.html", form=form, title="Add Communication")
 
 
-
 # Deal with the members who want to join the cooperative here
 @aicos_members.route('/members/applied')
 @login_required
@@ -1502,7 +1368,7 @@ def list_applications():
     apps = Department.query.filter_by(email=current_user.email).first()
     applications = apps.applications
     return render_template("employees/applied_members.html", apps=apps, applications=applications,
-                            title="List of applied members")
+                           title="List of applied members")
 
 # View for details of applicant members
 @aicos_members.route('members/applicant/<int:id>/details', methods=['GET', 'POST'])
@@ -1512,6 +1378,8 @@ def applicant_details(id):
     applicant = Application.query.get_or_404(id)
     if applicant is not None:
         return render_template("employees/applicant_details.html", applicant=applicant, title="Applicant Details")
+
+
 """
 # Adding new member in the department
 @admin.route('/employee/add', methods=['GET', 'POST'])
@@ -1535,6 +1403,7 @@ def add_employee():
     return render_template("admin/employees/add_employee.html", form=form, title="Add New employee")
 """
 
+
 @aicos_members.route('/employees/assign/<int:id>', methods=['GET', 'POST'])
 @login_required
 def assign_employee(id, *args):
@@ -1544,8 +1413,8 @@ def assign_employee(id, *args):
     check_admin()
     employee = Member.query.get_or_404(id)
     # prevent admin from being assigned a department or role
-    #if employee.is_admin:
-        #abort(403)
+    # if employee.is_admin:
+    # abort(403)
     form = EmployeeAssignForm(obj=employee)
     if form.validate_on_submit():
         employee.department = form.cooperative.data
@@ -1559,7 +1428,7 @@ def assign_employee(id, *args):
     return render_template('employees/employee.html', employee=employee, form=form, *args)
 
 # Views for deleting the member from the cooperative
-@aicos_members.route('/member/delete/<int:id>', methods=['GET','POST'])
+@aicos_members.route('/member/delete/<int:id>', methods=['GET', 'POST'])
 @login_required
 def delete_member(id):
     check_admin()
@@ -1577,14 +1446,14 @@ def confirm_member(id):
     check_admin()
     app = Application.query.get_or_404(id)
     memb = Employee(email=app.email,
-                      username=app.others,
-                      first_name=app.first_name,
-                      last_name=app.last_name,
-                      department_id=current_user.email)
-    
+                    username=app.others,
+                    first_name=app.first_name,
+                    last_name=app.last_name,
+                    department_id=current_user.email)
+
     try:
-        #db.session.add(memb)
-        #db.session.commit()
+        # db.session.add(memb)
+        # db.session.commit()
         app = Application.query.get_or_404(id)
         emp = Employee.query.filter_by(email=app.email).first()
         #admin = User.query.filter_by(username='admin').first()
@@ -1596,7 +1465,8 @@ def confirm_member(id):
         #to_number = request.form['to_number']
         to_number = '+250786012383'
         message = current_user.email + ' Has approved your Application,Your RegNo is RW00247'
-        response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
+        response = client.send_message(
+            {'from': '+250786012383', 'to': to_number, 'text': message})
         response_text = response['messages'][0]
         flash("You have successfully approved a member")
     except:
@@ -1610,8 +1480,9 @@ def invite_members():
     members = Employee.query.filter_by(department_id=None)
     inveted_by = Employee.query.filter_by(invited_by=current_user.email)
     #all_member = members.department_id
-    #return redirect(url_for('aicos_members.list_employees'))
+    # return redirect(url_for('aicos_members.list_employees'))
     return render_template("home/invite_members.html", members=members, title="Invite members to join the cooperative")
+
 
 @aicos_members.route('/member/add/<int:id>', methods=['GET', 'POST'])
 def add_member(id):
@@ -1620,7 +1491,8 @@ def add_member(id):
     db.session.commit()
     flash("Member has been added successifully, Add more")
     return redirect(url_for('aicos_members.invite_members'))
-    #return render_template("home/invite_members.html", members=members, title="Invite members to join the cooperative")
+    # return render_template("home/invite_members.html", members=members, title="Invite members to join the cooperative")
+
 
 @aicos_members.route('/member/invite/<int:id>', methods=['GET', 'POST'])
 def invite(id):
@@ -1628,8 +1500,10 @@ def invite(id):
     member.is_invited = True
     member.invited_by = current_user.email
     db.session.commit()
-    flash("Member, " + str(member.username) + " Has been invited successifully, Invite more")
+    flash("Member, " + str(member.username) +
+          " Has been invited successifully, Invite more")
     return redirect(url_for('aicos_members.invite_members'))
+
 
 """
 # The view to set one member of the cooperative as the cooperative member from other members and them manage them all.
@@ -1638,23 +1512,16 @@ def set_admin(id):
 """
 
 
-
-
-
-
 # Rendering the page which contains the forms to be filled with information here.
 @aicos_members.route('admin/cooperative/members/sendsms')
 def sendsms():
     return render_template("employees/sendsms.html", title="Send SMS")
 
 
-
 # Rendering the page which contains the forms to be filled with information here.
 @aicos_members.route('/sendemail')
 def sendemail():
     return render_template("employees/sendemail.html", title="Send SMS")
-
-
 
 
 # Views for cooperatives subscription plans
@@ -1668,7 +1535,7 @@ def subscriptions():
                             description=form.description.data,
                             subscription_plan=form.subscription_plan.data,
                             subscription_date=form.subscription_date.data,
-                            credit_card_no   =form.credit_card_no.data)
+                            credit_card_no=form.credit_card_no.data)
         try:
             db.session.add(subs)
             db.session.commit()
@@ -1677,9 +1544,6 @@ def subscriptions():
             flash("Your subscription has failed, please provide correct information")
         return redirect(url_for("aicos_members.list_departments"))
     return render_template("departments/subscriptions.html", form=form, title="Subscription")
-
-
-
 
 
 @aicos_members.route('/cooperative/members/sendRemainder', methods=['GET', 'POST'])
@@ -1692,9 +1556,9 @@ def sendRemainder():
     check_coop_admin()
     #form = LoginForm()
     # if form.validate_on_submit():
-        # check whether employee exists in the database and whether
-        # the password entered matches the password in the database
-    #if employees is not None:
+    # check whether employee exists in the database and whether
+    # the password entered matches the password in the database
+    # if employees is not None:
     #employees = Employee.query.filter_by(email=form.email.data)
     return render_template('employees/sendRemainder.html', title='Send Remainder')
 
@@ -1703,9 +1567,9 @@ def sendRemainder():
     #departments = Employee.query.filter_by(email=form.email.data).first()
     #employees = Employee.query.all()
     # employees = Employee.query.all()
-    #return render_template('auth/login.html', form=form, title='Login')
-    #return render_template('admin/employees/employees.html',
-                          # employees=employees, title='Employees')
+    # return render_template('auth/login.html', form=form, title='Login')
+    # return render_template('admin/employees/employees.html',
+    # employees=employees, title='Employees')
 
 
 @aicos_members.route('/settings', methods=['GET', 'POST'])
@@ -1713,128 +1577,128 @@ def settings():
     return render_template('settings.html', title="Settings")
 
 
-
 @aicos_members.route('/blank_page', methods=['GET', 'POST'])
 def blank():
     return render_template('tools/blank.html', title="Blank Page")
-
-
-
-
-
-
-
 
 
 # Views for the full details of a specific employee
 @aicos_members.route('/cooperative_details', methods=['GET', 'POST'])
 @login_required
 def coop_details(email):
-    #check_admin()
+    # check_admin()
 
-    #check_overall()
-    #check_coop_admin()
+    # check_overall()
+    # check_coop_admin()
     departments = Department.query.filter_by(email=current_user.email)
-
-
-
 
     employees = departments.members
     employees_count = departments.members.count()
     employees_male = departments.members.filter_by(gender='Gabo')
     employees_male_count = departments.members.filter_by(gender='Gabo').count()
     employees_female = departments.members.filter_by(gender='Gole')
-    employees_female_count = departments.members.filter_by(gender='Gole').count()
+    employees_female_count = departments.members.filter_by(
+        gender='Gole').count()
     employees_abatarize = departments.members.filter_by(Amashuri='Abatarize')
-    employees_abatarize_count = departments.members.filter_by(Amashuri='Abatarize').count()
+    employees_abatarize_count = departments.members.filter_by(
+        Amashuri='Abatarize').count()
     employees_abanza = departments.members.filter_by(Amashuri='Abanza')
-    employees_abanza_count = departments.members.filter_by(Amashuri='Abanza').count()
+    employees_abanza_count = departments.members.filter_by(
+        Amashuri='Abanza').count()
     employees_ayisumbuye = departments.members.filter_by(Amashuri='Ayisumbuye')
-    employees_ayisumbuye_count = departments.members.filter_by(Amashuri='Ayisumbuye').count()
+    employees_ayisumbuye_count = departments.members.filter_by(
+        Amashuri='Ayisumbuye').count()
     employees_kaminuza = departments.members.filter_by(Amashuri='Kaminuza')
-    employees_kaminuza_count = departments.members.filter_by(Amashuri='Kaminuza').count()
+    employees_kaminuza_count = departments.members.filter_by(
+        Amashuri='Kaminuza').count()
     employees_imyuga = departments.members.filter_by(Amashuri='Imyuga')
-    employees_imyuga_count = departments.members.filter_by(Amashuri='Imyuga').count()
-
+    employees_imyuga_count = departments.members.filter_by(
+        Amashuri='Imyuga').count()
 
     employees_amaguru = departments.members.filter_by(Ubumuga='Amaguru')
-    employees_amaguru_count = departments.members.filter_by(Ubumuga='Amaguru').count()
+    employees_amaguru_count = departments.members.filter_by(
+        Ubumuga='Amaguru').count()
 
     employees_amaboko = departments.members.filter_by(Ubumuga='Amaboko')
-    employees_amaboko_count = departments.members.filter_by(Ubumuga='Amaboko').count()
-
+    employees_amaboko_count = departments.members.filter_by(
+        Ubumuga='Amaboko').count()
 
     employees_kutabona = departments.members.filter_by(Ubumuga='Kutabona')
-    employees_kutabona_count = departments.members.filter_by(Ubumuga='Kutabona').count()
+    employees_kutabona_count = departments.members.filter_by(
+        Ubumuga='Kutabona').count()
 
     employees_kutumva = departments.members.filter_by(Ubumuga='Kutumva')
-    employees_kutumva_count = departments.members.filter_by(Ubumuga='Kutumva').count()
-
+    employees_kutumva_count = departments.members.filter_by(
+        Ubumuga='Kutumva').count()
 
     employees_mumutwe = departments.members.filter_by(Ubumuga='Mu mutwe')
-    employees_mumutwe_count = departments.members.filter_by(Ubumuga='Mu mutwe').count()
-
+    employees_mumutwe_count = departments.members.filter_by(
+        Ubumuga='Mu mutwe').count()
 
     male_members = departments.members.filter_by(gender='Gole').first()
     if departments is not None:
-        return render_template("cooperative_detail.html", departments=departments, 
-                    employees=employees,
-                    employees_count=employees_count,
-                    male_members=male_members,
-                    employees_male=employees_male,
-                    employees_female=employees_female,
-                    employees_male_count=employees_male_count,
-                    employees_female_count=employees_female_count,
-                    employees_abatarize=employees_abatarize,
-                    employees_abatarize_count=employees_abatarize_count,
-                    employees_abanza=employees_abanza,
-                    employees_abanza_count=employees_abanza_count,
-                    employees_ayisumbuye=employees_ayisumbuye,
-                    employees_ayisumbuye_count=employees_ayisumbuye_count,
-                    employees_kaminuza=employees_kaminuza,
-                    employees_kaminuza_count=employees_kaminuza_count,
-                    employees_imyuga=employees_imyuga,
-                    employees_imyuga_count=employees_imyuga_count,
-                    
-                    employees_amaguru=employees_amaguru,
-                    employees_amaguru_count=employees_amaguru_count,
-                    employees_amaboko=employees_amaboko,
-                    employees_amaboko_count=employees_amaboko_count,
-                    employees_kutabona=employees_kutabona,
-                    employees_kutabona_count=employees_kutabona_count,
-                    employees_kutumva=employees_kutumva,
-                    employees_kutumva_count=employees_kutumva_count,
-                    employees_mumutwe=employees_mumutwe,
-                    employees_mumutwe_count=employees_mumutwe_count,
-                    title="Cooperative's details")
+        return render_template("cooperative_detail.html", departments=departments,
+                               employees=employees,
+                               employees_count=employees_count,
+                               male_members=male_members,
+                               employees_male=employees_male,
+                               employees_female=employees_female,
+                               employees_male_count=employees_male_count,
+                               employees_female_count=employees_female_count,
+                               employees_abatarize=employees_abatarize,
+                               employees_abatarize_count=employees_abatarize_count,
+                               employees_abanza=employees_abanza,
+                               employees_abanza_count=employees_abanza_count,
+                               employees_ayisumbuye=employees_ayisumbuye,
+                               employees_ayisumbuye_count=employees_ayisumbuye_count,
+                               employees_kaminuza=employees_kaminuza,
+                               employees_kaminuza_count=employees_kaminuza_count,
+                               employees_imyuga=employees_imyuga,
+                               employees_imyuga_count=employees_imyuga_count,
+
+                               employees_amaguru=employees_amaguru,
+                               employees_amaguru_count=employees_amaguru_count,
+                               employees_amaboko=employees_amaboko,
+                               employees_amaboko_count=employees_amaboko_count,
+                               employees_kutabona=employees_kutabona,
+                               employees_kutabona_count=employees_kutabona_count,
+                               employees_kutumva=employees_kutumva,
+                               employees_kutumva_count=employees_kutumva_count,
+                               employees_mumutwe=employees_mumutwe,
+                               employees_mumutwe_count=employees_mumutwe_count,
+                               title="Cooperative's details")
     return redirect(url_for('admin.list_employees'))
+
 
 @aicos_members.route('/imyishyurire')
 def imyishyurire():
-  return render_template('/imyishyurire/index.html')
+    return render_template('/imyishyurire/index.html')
+
 
 @aicos_members.route('/zone')
 def zone():
-  zones = Zone.query.filter_by(department_id=current_user.email).all()
-  return render_template('/zones/zones.html', zones=zones)
+    zones = Zone.query.filter_by(department_id=current_user.email).all()
+    return render_template('/zones/zones.html', zones=zones)
+
 
 @aicos_members.route('/zone/add/new', methods=['GET', 'POST'])
 def addZone():
-  form = ZoneForm()
-  if form.validate_on_submit():
-    zone = Zone(
-              izina = form.izina.data,
-              ubusobanuro = form.description.data,
-              impamvu = form.impamvu.data,
-              department_id = current_user.email
-              )
-    try:
-      db.session.add(zone)
-      db.session.commit()
-      return redirect(url_for('aicos_members.zone'))
-    except:
-      return redirect(url_for('aicos_members.addZone'))
-  return render_template('/zones/add_zone.html', form=form)
+    form = ZoneForm()
+    if form.validate_on_submit():
+        zone = Zone(
+            izina=form.izina.data,
+            ubusobanuro=form.description.data,
+            impamvu=form.impamvu.data,
+            department_id=current_user.email
+        )
+        try:
+            db.session.add(zone)
+            db.session.commit()
+            return redirect(url_for('aicos_members.zone'))
+        except:
+            return redirect(url_for('aicos_members.addZone'))
+    return render_template('/zones/add_zone.html', form=form)
+
 
 """
 @aicos_members.route('/zone/add/member/<int:a>/<int:b>', methods=['GET', 'POST'])

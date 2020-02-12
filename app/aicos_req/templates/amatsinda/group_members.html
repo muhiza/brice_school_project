@@ -1,0 +1,73 @@
+
+
+
+{% extends "req_base.html" %}
+{% block content %}
+                <!-- Page Inner -->
+                <div class="page-inner">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="breadcrumb-header"> {% if itsindaName %} <b>{{ itsindaName.itsinda_name }}</b>{% endif %}, Group members</h3>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                    <a href="{{ url_for('aicos_req.add_members', id=itsindaName.id) }}">
+                                        <button type="button" class="btn btn-success btn-lg"> Add new members </button>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-white">
+                                <div class="panel-body">
+                                   <div class="table-responsive">
+                                    <table id="group_members" class="display table" style="width: 100%; cellspacing: 0;">
+                                        <thead>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Second Name</th>
+                                                <th>Group</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>First Name</th>
+                                                <th>Second Name</th>
+                                                <th>Group</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            {% if itsindamember %}
+                                        	{% for member in itsindamember %}
+                                        		<tr>
+                                        			<td>{{ member.member_firstname }}</td>
+                                        			<td>{{ member.member_secondname }}</td>
+                                        			<td>
+                                        				{% if itsindaName %}
+                                        					{{ itsindaName.itsinda_name }}
+                                        				{% endif %}
+                                        			</td>
+                                        			<td>
+                                        				<a href="#" class="badge badge-danger">Remove</a>
+                                        			</td>
+                                        		</tr>
+                                        	{% endfor %}
+                                            {% endif %}
+                                        </tbody>
+                                       </table>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+                <div class="page-footer">
+                    <p>Extra technologies </p>
+                </div>
+                </div><!-- /Page Inner -->
+
+{% endblock %}

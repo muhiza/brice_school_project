@@ -49,7 +49,7 @@ def test_dashboard_coop(test_client,init_database):
     assert resp1.status_code == 200 
 
 def test_rca_coop_details(test_client,init_database):
-    target_url = url_for('aicos_rca.rca_coop_details')
+    target_url = url_for('aicos_rca.rca_coop_details',email='depa0201@gmail.com')
     # redirect_url = url_for('admin.list_employees',email='depa0201@gmail.com')
     resp1 = test_client.get(target_url) 
 
@@ -57,23 +57,23 @@ def test_rca_coop_details(test_client,init_database):
     # assert resp1 and redirect_url == redirects
 
 def test_memberDetails(test_client,init_database):
-    target_url = url_for('aicos_rca.memberDetails')
+    target_url = url_for('aicos_rca.memberDetails',id=1)
     # redirect_url = url_for('aicos_members.aicos_members_home',id=1)
     resp1 = test_client.get(target_url) 
 
     assert resp1.status_code == 200 
 
 def test_appliedTraining(test_client,init_database):
-    target_url = url_for('aicos_rca.appliedTraining')
+    target_url = url_for('aicos_rca.appliedTrainig')
     resp1 = test_client.get(target_url,follow_redirects=True) 
 
     assert resp1.status_code == 200 
 
-def test_preparedTrainig(test_client,init_database):
-    target_url = url_for('aicos_rca.preparedTraining')
-    resp1 = test_client.get(target_url) 
+# def test_preparedTrainig(test_client,init_database):
+#     target_url = url_for('aicos_rca.preparedTraining')
+#     resp1 = test_client.get(target_url) 
 
-    assert resp1.status_code == 200 
+#     assert resp1.status_code == 200 
 
 # def test_models(test_client,init_database):
 #     """
@@ -96,10 +96,12 @@ def test_preparedTrainig(test_client,init_database):
 #     assert Training.query.count() == 1 
 
 def test_prepareTraining(test_client, init_database):
-    redirect_url = url_for('aicos_rca.appliedTrainig')
-    target_url = url_for('aicos_rca.prepareTraining')
+    with test_client:
+        test_client.post(url_for('auth.login'),data=dict(email="rca@gmail.com",password="rca10"))
+        redirect_url = url_for('aicos_rca.appliedTrainig')
+        target_url = url_for('aicos_rca.prepareTraining')
 
-    resp1 = test_client.get(target_url, follow_redirects=True) 
+        resp1 = test_client.get(target_url, follow_redirects=True) 
 
-    assert resp1.status_code == 200 
+        assert resp1.status_code == 200 
  

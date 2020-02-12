@@ -22,9 +22,11 @@ class TestBase(TestCase):
         # pass in test configuration
         config_name = 'testing'
         app = create_app(config_name)
-        app.config.update(
-            SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
-        )
+        # app.config.update(
+            # SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/testing'
+        # )
+        app.config['LOGIN_DISABLED'] = True
+        app.login_manager.init_app(app)
         return app
 
     def setUp(self):
@@ -45,7 +47,7 @@ class TestBase(TestCase):
 
         inyongeramusaruro = InyongeraMusaruro(NPKkg = 15)
         #ibyakoze = Ibyakoreshejwe.query.filter_by(department_id=current_user.email).all()
-        member= Member(sno='2300')
+        member= Member(sno='23300')
         ibirarane = Ibirarane(NPKkg=14560)
         imisanzu = Umusanzu(UmusoroWakarere=40000)
         umusaruro = Umusarurob(RiceAmount = 1000)

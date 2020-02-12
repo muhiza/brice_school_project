@@ -1,0 +1,184 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Goole fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/fontawesome-all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://boost.11bits.es/css/theme.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>Extra</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <a href="#main" class="sr-only sr-only-focusable">Skip to main content</a>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+                <a class="navbar-brand text-dark" href="{{ url_for('home.rwanda') }}">
+                    <h2>COPA</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+                        <li class="nav-item"><br>
+                            <a class="btn btn-pill btn-sm btn-outline-primary mb-3" href="{{ url_for('auth.rw_login') }}">INJIRA</a>
+                    </li>&nbsp;&nbsp;
+
+                    <li class="nav-item"><br>
+                            <a class="btn btn-pill btn-sm btn-success mb-3" href="{{ url_for('auth.rw_register') }}">FUNGURA</a>
+                    </li>
+
+                        <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="style.html">Our stories</a>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="bg-cover d-flex align-items-center position-relative min-vh-80" style="background-image: url(https://raw.githubusercontent.com/muhiza/extrat/master/static/rural_image.jpg)">
+            <div class="bg-overlay bg-default alpha-7"></div>
+            <div class="container text-white">
+                <div class="row">
+                    <div class="col-md-12  text-center"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <h1 class="display-4 text-white py-4 px-4">Twiyemeje guhindura imibereho <br> y’abantu benshi bashoboka. Umurava twatangiranye 
+                                niwo tugifite n’ubu.</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro -->
+        <div class="bg-skew bg-skew-info text-white">
+        <section class="container py-5">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h1 class="display-4 text-white py-4 px-4">Icyo bisobanuye.</h1>
+                </div>
+                <div class="col-lg-7">
+                        <p class="lead">Tugendera ku mahame ane akurikira: Gushyira imbere abakiriya bacu kurusha abo duhanganye, 
+                            Gushyira umurava no guhanga ibishya mubyo dukora, twiyemeje kuba indakemwa no gutwara abandi uduhigo, 
+                            gutekereza mu gihe kirekira cy’ahazaza.</p><br><br>
+                        <h2 class="h3 mb-4">Imihigo twihaye / Twiyemeje:</h2>
+                        <ol>
+                            <li><b>Kurinda amakuru y’abakoresha serivisi zacu.</b></li>
+                            <li><b>Kugeza amahirwa kuri bose.</b></li>
+                            <li><b>Kudaheza umuntu uwo ariwe wese.</b></li>
+                            <li><b>Gushakira ibibazo ibisubizo.</b></li>
+                            <li><b>Gukora ibintu biramba mu gihe kire kire.</b></li>
+                        </ol>
+                </div>
+            </div>
+        </section><br><br><br><br><br>
+        </div>
+        <br><br><br><br>
+            <hr class="sep border-primary" role="presentation">
+        </div><!-- end bg-skew -->
+    </main>
+
+
+
+
+
+
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row justify-content-md-between">
+                <div class="col-sm-12 col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Extra</h3>
+                    <p>Icyerekezo cyacu ni ugufata iyambere mu
+                        Gufasha Isi mu kwinjira mu bukungu
+                        Bushingiye kw’ikoranabuhanga.
+                        </p>
+                </div>
+                <!--
+                <div class="col-4 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">About</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="#">About</a></li>
+                        <li class="mb-1"><a href="#">Careers</a></li>
+                        <li class="mb-1"><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                -->
+                <div class="col-6 col-md-2 mb-4">
+                    <a href="{{ url_for('home.rw_our_commitment') }}">
+                        <h3 class="h5 mb-3">Ibyo&nbsp;twiyemeje.</h3>
+                    </a>
+                    <ol class="nav flex-column">
+                        <li class="mb-1"><b>1:</b>&nbsp;Kubaka&nbsp;ibiramba.</li>
+                        <li class="mb-1"><b>2:</b>&nbsp;Gushakira&nbsp;ibibazo&nbsp;ibibazo.</li>
+                        <li class="mb-1"><b>3:</b>&nbsp;Kudaheza.</li>
+                        <li class="mb-1"><b>4:</b>&nbsp;Koroshya&nbsp;ikoreshwa&nbsp;rya&nbsp;serivisi.</li>
+                        <li class="mb-1"><b>5:</b>&nbsp;Umucyo&nbsp;muri byose.</li>
+                    </ol>
+                </div>
+                <div class="col-2 col-md-2 mb-4">
+                    <h3 class="h5 mb-3">Ubufasha.</h3>
+                    <ul class="nav flex-column">
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ibibazo n’ibisubizo.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_contact') }}">Twandikire.</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rw_copa_faq') }}">Ubufasha.</a></li>
+                        <br>
+
+                        <li class="mb-1"><a href="{{ url_for('home.english') }}">English</a></li>
+                        <li class="mb-1"><a href="{{ url_for('home.rwanda') }}">Kinyarwanda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="m-0" role="presentation">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
+                <p class="small text-muted">&copy; Extra 2020</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://twitter.com/AicosOfficial" target="_blank"><i class="icon-inner fab fa-twitter"
+                                aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="https://www.facebook.com/Iwacutech/" target="_blank"><i class="icon-inner fab fa-facebook-f"
+                                aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://boost.11bits.es/js/jquery.slim.min.js"></script>
+    <script src="https://boost.11bits.es/js/popper.min.js"></script>
+    <script src="https://boost.11bits.es/js/bootstrap.min.js"></script>
+</body>
+</html>
