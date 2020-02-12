@@ -5,7 +5,7 @@ from sqlalchemy import func
 from ..models import * 
 from .forms import *
 
-from datetime import datetime,date
+from datetime import datetime,date,time
 import calendar
 
 import flask_excel
@@ -1407,13 +1407,12 @@ def general_accounting():
     Evalues = []
 
     DIvalues = []
+    DBvalues = []
     DEvalues = []
     
     Dlabels = []
 
     today_income = 0
-    today_expense = 0
-
     monthly_income = 0
     quarterly_income = 0
     quarterly1_income = 0
@@ -1422,6 +1421,7 @@ def general_accounting():
     quarterly4_income = 0
     yearly_income = 0
 
+    today_expense = 0
     monthly_expense = 0
     quarterly_expense = 0
     quarterly1_expense = 0
@@ -1430,6 +1430,7 @@ def general_accounting():
     quarterly4_expense = 0
     yearly_expense = 0
 
+    today_budget = 0
     monthly_budget = 0
     quarterly_budget = 0
     quarterly1_budget = 0
@@ -1501,8 +1502,8 @@ def general_accounting():
                 if (str((expense.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_expense+=int(expense.Amount)
 
-        if len(Expenses)>10:
-            if Expenses.index(expense)>=len(Expenses)-10:
+        if len(Expenses)>5:
+            if Expenses.index(expense)>=len(Expenses)-5:
                 expenses.append(expense)
         else:
             expenses = Expenses
@@ -1517,8 +1518,8 @@ def general_accounting():
                 if (str((income.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_income+=int(income.Amount)
 
-        if len(Incomes)>10:
-            if Incomes.index(income)>=len(Incomes)-10:
+        if len(Incomes)>5:
+            if Incomes.index(income)>=len(Incomes)-5:
                 incomes.append(income)
         else:
             incomes = Incomes
@@ -1615,22 +1616,60 @@ def general_accounting():
 
             
 
-            if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
+            if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1] and budget.Period == 'Monthly':
                 monthly_budget+=int(budget.Amount)
                 
                 if (str((budget.Date)).split('-'))[2] == (str((date.today())).split('-'))[2]:
                     today_budget+=int(budget.Amount)
                 
+    if today_budget!=0:
+        d_budget_used = round(((today_expense*100)/today_budget),2)
+    else:
+        d_budget_used = 0
 
-    m_budget_used = round(((monthly_expense*100)/monthly_budget),2)
+    if monthly_budget!=0:
+        m_budget_used = round(((monthly_expense*100)/monthly_budget),2)
+    else:
+        m_budget_used = 0
+
+    if quarterly_budget!=0:
+        q_budget_used = round(((quarterly_expense*100)/quarterly_budget),2)
+    else:
+        q_budget_used = 0
+    if yearly_budget!=0:
+        y_budget_used = round(((yearly_expense*100)/yearly_budget),2)
+    else:
+        y_budget_used = 0
+        
+    t = datetime.time(datetime.now()).strftime('%X').split(':')
+    
+    t1 = []
+    for i in t:
+        t1.append(int(i))
+
+    t2 = (t1[0]*60*60)+(t1[1]*60)+t1[2]
+    ti = (6*60*60)
+    tf = (18*60*60)
+    tn = (8*60*60)+(55*60)
+    # print(t2)
+
+    if (6<t1[0] and t1[1]>0 and t1[0]<18): 
+        d_time_passed = round((t2-ti)*100/(tf-ti),2)
+    else:
+        d_time_passed = 0
     m_time_passed = round((date.today().day)*100/(calendar.monthrange(date.today().year,date.today().month)[1]),2)
-
-    q_budget_used = round(((quarterly_expense*100)/quarterly_budget),2)
-    y_budget_used = round(((yearly_expense*100)/yearly_budget),2)
 
     monthly_balance = monthly_income-monthly_expense
     yearly_balance = yearly_income-yearly_expense
 
+    # # print(tn)
+    # print(d_budget_used)
+    # if t2 == tn:
+    #     archives = Archive(
+    #         d_budget_used = d_budget_used
+    #     )
+    #     db.session.add(archives)
+    #     db.session.commit()
 
 
 
@@ -1661,7 +1700,7 @@ def general_accounting():
 
         for budget in Budgets:
             if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
-                if (str((budget.Date)).split('-'))[1] == label:
+                if (str((budget.Date)).split('-'))[1] == label and budget.Period == 'Monthly':
                     m_budget+=int(budget.Amount)
         Bvalues.append(m_budget) 
 
@@ -1692,7 +1731,7 @@ def general_accounting():
     for label in myDlabels:
 
         today_inc = 0
-        # today_bud = 0
+        today_bud = 0
         today_exp = 0
 
         for income in Incomes:
@@ -1702,12 +1741,12 @@ def general_accounting():
                         today_inc+=int(income.Amount)
         DIvalues.append(today_inc) 
 
-        # for budget in Budgets:
-        #     if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
-        #         if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
-        #             if (str((budget.Date)).split('-'))[2] == str(label):
-        #                 today_bud+=int(budget.Amount)
-        # DBvalues.append(today_bud) 
+        for budget in Budgets:
+            if (str((budget.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
+                if (str((budget.Date)).split('-'))[1] == (str((date.today())).split('-'))[1]:
+                    if (str((budget.Date)).split('-'))[2] == str(label) and (budget.Period == 'Daily'):
+                        today_bud+=int(budget.Amount)
+        DBvalues.append(today_bud) 
 
         for expense in Expenses:
             if (str((expense.Date)).split('-'))[0] == (str((date.today())).split('-'))[0]:
@@ -1717,24 +1756,60 @@ def general_accounting():
         DEvalues.append(today_exp)
     
     values = Ivalues and Evalues and Bvalues
-
-    Dvalues = DIvalues and DEvalues 
-
-
+    Dvalues = DIvalues and DEvalues and DBvalues
 
     
 
-    return render_template('accountingBooks/general/general_accounting.html',
-        monthly_budget=monthly_budget,quarterly_budget=quarterly_budget,yearly_budget=yearly_budget,
-        m_budget_used=m_budget_used,q_budget_used=q_budget_used,y_budget_used=y_budget_used,
+
+
+    form = ArchivesForm()
+    if form.validate_on_submit():
+        archive = Archive(
+                    date = str(date.today()),
+
+                    m_income = str(monthly_income),
+                    m_expense = str(monthly_expense),
+
+                    y_income = str(yearly_income),
+                    y_expense = str(yearly_expense),
+
+                    d_intl_budget = str(today_budget),
+                    m_intl_budget = str(monthly_budget),
+                    q_intl_budget = str(quarterly_budget),
+                    y_intl_budget = str(yearly_budget),
+
+                    d_budget_used = str(d_budget_used),
+                    m_budget_used = str(m_budget_used),
+                    q_budget_used = str(q_budget_used),
+                    y_budget_used = str(y_budget_used),
+
+                    d_time_passed = str(d_time_passed),
+                    m_time_passed = str(m_time_passed),
+                    q_time_passed = str(q_time_passed),
+                    y_time_passed = str(y_time_passed)
+                        )
+
+        try:
+            db.session.add(archive)
+            db.session.commit()
+            flash("Umaze kwinjize data neza!")
+            # return redirect(url_for('aicos_req.UbwisanzureList'))
+        except:
+            flash("Ntabwo data zabashije kwinjira neza!")
+
+    today = date.today()
+
+    return render_template('accountingBooks/general/general_accounting.html', form=form, today=today,
+        today_budget=today_budget,monthly_budget=monthly_budget,quarterly_budget=quarterly_budget,yearly_budget=yearly_budget,
+        d_budget_used=d_budget_used,m_budget_used=m_budget_used,q_budget_used=q_budget_used,y_budget_used=y_budget_used,
         quarterly_expense=quarterly_expense,quarterly_income=quarterly_income,
         yearly_income=yearly_income,yearly_expense=yearly_expense,yearly_balance=yearly_balance,
         monthly_income=monthly_income,monthly_expense=monthly_expense,monthly_balance=monthly_balance,
         budgets=budgets,accounts=accounts,expense=expense,
         incomes=incomes,expenses=expenses, 
         max=max(values), labels=labels, Ivalues=Ivalues, Evalues=Evalues, Bvalues=Bvalues,
-        Dmax=max(Dvalues), Dlabels=myDlabels2, DIvalues=DIvalues, DEvalues=DEvalues,
-        m_time_passed=m_time_passed, q_time_passed=q_time_passed, y_time_passed=y_time_passed)
+        Dmax=max(Dvalues), Dlabels=myDlabels2, DIvalues=DIvalues, DEvalues=DEvalues, DBvalues=DBvalues,
+        d_time_passed=d_time_passed, m_time_passed=m_time_passed, q_time_passed=q_time_passed, y_time_passed=y_time_passed)
 
 
 
@@ -1877,37 +1952,37 @@ def new_budget():
     category_form = BudgetCategoryForm()
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
 
-    if current_user == is_accountant:
+    # if current_user == is_accountant:
     
-        if form.validate_on_submit():
-            budget = Budget(
-                Title = form.Title.data,
-                Category = form.Category.data,
-                Date = form.Date.data,
-                Amount = form.Amount.data,
-                Period = form.Period.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(budget)
-                db.session.commit()
-                flash("Umaze kwinjiza Budget neza!")
-                return redirect(url_for('aicos_req.budget'))
-            except:
-                flash("Ntabwo Budget yabashije kwinjira neza!")
+    if form.validate_on_submit():
+        budget = Budget(
+            Title = form.Title.data,
+            Category = form.Category.data,
+            Date = form.Date.data,
+            Amount = form.Amount.data,
+            Period = form.Period.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(budget)
+            db.session.commit()
+            flash("Umaze kwinjiza Budget neza!")
+            return redirect(url_for('aicos_req.budget'))
+        except:
+            flash("Ntabwo Budget yabashije kwinjira neza!")
 
-        if category_form.validate_on_submit():
-            category = BudgetCategory(
-                Category = category_form.Category.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(category)
-                db.session.commit()
-                flash("Umaze kwinjize Budget_Category neza!")
-                return redirect(url_for('aicos_req.budget'))
-            except:
-                flash("Ntabwo Budget_Category yabashije kwinjira neza!")
+    if category_form.validate_on_submit():
+        category = BudgetCategory(
+            Category = category_form.Category.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjize Budget_Category neza!")
+            return redirect(url_for('aicos_req.budget'))
+        except:
+            flash("Ntabwo Budget_Category yabashije kwinjira neza!")
 
     return render_template('/accountingBooks/general/new_budget.html',form=form,category_form=category_form)
 
@@ -2178,37 +2253,39 @@ def new_asset():
     category_form = AssetCategoryForm()
 
     is_accountant = Employee.query.filter_by(is_accountant=True).first()
-    if current_user == is_accountant:
-        if form.validate_on_submit():
-            asset = assetsAccounting(
-                # Title = form.Title.data,
-                Date = form.Date.data,
-                Category = form.Category.data,
-                Account = form.Account.data,
-                Amount = form.Amount.data,
-                Description = form.Description.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(asset)
-                db.session.commit()
-                flash("Umaze kwinjiza Asset neza!")
-                return redirect(url_for('aicos_req.asset'))
-            except:
-                flash("Ntabwo Asset yabashije kwinjira neza!")
+    # if current_user == is_accountant:
+    if form.validate_on_submit():
+        asset = assetsAccounting(
+            Title = form.Title.data,
+            Date = form.Date.data,
+            Category = form.Category.data,
+            # Account = form.Account.data,
+            Amount = form.Amount.data,
+            Description = form.Description.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(asset)
+            db.session.commit()
+            flash("Umaze kwinjiza Asset neza!")
+            return redirect(url_for('aicos_req.asset'))
+        except:
+            flash("Ntabwo Asset yabashije kwinjira neza!")
 
-        if category_form.validate_on_submit():
-            category = AssetCategory(
-                Category = category_form.Category.data,
-                cooperative_id = current_user.department
-            )
-            try:
-                db.session.add(category)
-                db.session.commit()
-                flash("Umaze kwinjiza Asset_Category neza!")
-                return redirect(url_for('aicos_req.new_asset'))
-            except:
-                flash("Ntabwo Asset_Category yabashije kwinjira neza!")
+    if category_form.validate_on_submit():
+        category = AssetCategory(
+            Category = category_form.Category.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjiza Asset_Category neza!")
+            return redirect(url_for('aicos_req.new_asset'))
+        except:
+            flash("Ntabwo Asset_Category yabashije kwinjira neza!")
+    # else:
+    #     flash('You are not allowed to add/change/delete anything')
     return render_template('/assets/new_asset.html',form=form,category_form=category_form)
 
 
@@ -2223,17 +2300,17 @@ def edit_asset(id):
 
     form.Date.data = asset.Date
     form.Category.data = asset.Category
-    form.Account.data = asset.Account
+    # form.Account.data = asset.Account
     form.Amount.data = asset.Amount
     form.Description.data = asset.Description
 
     if current_user == is_accountant:
 
         if form.validate_on_submit():
-            # Title = form.Title.data,
+            Title = form.Title.data,
             asset.Date = form.Date.data
             asset.Category = form.Category.data
-            asset.Account = form.Account.data
+            # asset.Account = form.Account.data
             asset.Amount = form.Amount.data
             asset.Description = form.Description.data
             asset.cooperative_id = current_user.department
@@ -2330,3 +2407,233 @@ def delete_account(id):
         flash("You have no right to delete an account.")
     accounts = Account.query.all()
     return render_template('/accountingBooks/general/account.html',accounts=accounts,form=form)
+
+
+
+
+
+@aicos_req.route('/balance_sheet',methods=["GET","POST"])
+def balance_sheet():
+    today = date.today()
+
+    # Assets = []
+
+    # for asset in assetsAccounting.query.filter_by().all():
+    #     if asset.Category!='Current'or'Investiments'or'Property, Plant and Equipment'or'Intangible'or'Others':
+    #         Assets.append(asset)
+
+    Liabilities = assetsAccounting.query.all()
+
+    Current_assets = assetsAccounting.query.filter_by(Category='Current').all()
+    Investiments_assets = assetsAccounting.query.filter_by(Category='Investiments').all() 
+    Property_Plant_and_Equipment = assetsAccounting.query.filter_by(Category='Property').all()
+    Intangible_assets = assetsAccounting.query.filter_by(Category='Intangible').all()
+    Other_assets = assetsAccounting.query.filter_by(Category='Other').all()
+    acc_depreciations = assetsAccounting.query.filter_by(Category='acc_depr').all()
+
+    Current_liabilities = Liability.query.filter_by(Category='Current').all()
+    Long_term_liabilities = Liability.query.filter_by(Category='Long_term').all() 
+    Stockholders_equities = Stockholders_equity.query.all()
+
+    assets = []
+    liabilities = []
+    stockholders_equities = []
+
+    total_acc_dep = 0
+    total_assets1 = 0
+    total_assets = 0
+    total_Assets = 0
+
+    total_Current_assets = 0
+    total_Investiments_assets = 0
+    total_Property_Plant_and_Equipment = 0
+    total_Intangible_assets = 0
+    total_Other_assets = 0
+
+    total_Current_liabilities = 0
+    total_Long_term_liabilities = 0
+    total_liabilities = 0
+    total_stockholders_equity = 0
+
+    
+
+    for asset in Current_assets:
+        if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            assets.append(asset)
+            total_Current_assets += int(asset.Amount) 
+
+    for asset in Investiments_assets:
+        if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            assets.append(asset)
+            total_Investiments_assets += int(asset.Amount) 
+
+    for asset in Property_Plant_and_Equipment:
+        if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            assets.append(asset)
+            total_Property_Plant_and_Equipment += int(asset.Amount) 
+
+    for asset in Intangible_assets:
+        if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            assets.append(asset)
+            total_Intangible_assets += int(asset.Amount) 
+
+    for asset in Other_assets:
+        if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            assets.append(asset)
+            total_Other_assets += int(asset.Amount) 
+
+    # for asset in Assets:
+    #     if (str(asset.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+    #         assets.append(asset)
+    #         total_Assets += int(asset.Amount) 
+
+    for asset in assets:
+        total_assets1 += int(asset.Amount) 
+
+    for acc_dep in acc_depreciations:
+        total_acc_dep += int(acc_dep.Amount)
+
+    
+    total_assets = total_assets1 - total_acc_dep
+
+
+
+
+    for liability in Current_liabilities:
+        if (str(liability.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            liabilities.append(liability) 
+            total_Current_liabilities += int(liability.Amount)
+
+    for liability in Long_term_liabilities:
+        if (str(liability.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            liabilities.append(liability) 
+            total_Long_term_liabilities += int(liability.Amount)
+
+    for stock in Stockholders_equities:
+        if (str(stock.Date).split('-'))[0] == (str((date.today())).split('-'))[0]:
+            stockholders_equities.append(stock)
+            total_stockholders_equity += int(stock.Amount)
+
+    total_liabilities = total_Current_liabilities + total_Long_term_liabilities
+    total_liabilities_and_stockholders_equity = total_liabilities + total_stockholders_equity
+
+    
+
+    return render_template('/accountingBooks/general/balance_sheet.html',today=today,
+        Current_assets=Current_assets,Investiments_assets=Investiments_assets,
+        Property_Plant_and_Equipment=Property_Plant_and_Equipment,
+        Intangible_assets=Intangible_assets,Other_assets=Other_assets,acc_depreciations=acc_depreciations,
+        total_Current_assets=total_Current_assets,total_Investiments_assets=total_Investiments_assets,
+        total_Property_Plant_and_Equipment=total_Property_Plant_and_Equipment,total_acc_dep=total_acc_dep,
+        total_Intangible_assets=total_Intangible_assets,total_Other_assets=total_Other_assets,
+        assets=assets,liabilities=liabilities,stockholders_equities=stockholders_equities,
+        total_assets=total_assets,total_liabilities=total_liabilities,
+        Current_liabilities=Current_liabilities,Long_term_liabilities=Long_term_liabilities,
+        total_stockholders_equity=total_stockholders_equity,
+        total_Current_liabilities=total_Current_liabilities,total_Long_term_liabilities=total_Long_term_liabilities,
+        total_liabilities_and_stockholders_equity=total_liabilities_and_stockholders_equity)
+
+
+
+
+
+@aicos_req.route('/liabilities', methods=["GET", "POST"])
+def liability():
+    liabilities = Liability.query.all()
+    return render_template('/liabilities/liabilities.html',liabilities=liabilities)
+
+@aicos_req.route('/liabilities/new_liability', methods=["GET", "POST"])
+def new_liability():
+    form = LiabilityForm()
+    category_form = LiabilityCategoryForm()
+
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    # if current_user == is_accountant:
+    if form.validate_on_submit():
+        liability = Liability(
+            Date = form.Date.data,
+            Category = form.Category.data,
+            # Account = form.Account.data,
+            Title = form.Title.data,
+            Amount = form.Amount.data,
+            Description = form.Description.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(liability)
+            db.session.commit()
+            flash("Umaze kwinjiza Liability neza!")
+            return redirect(url_for('aicos_req.liability'))
+        except:
+            flash("Ntabwo Liability yabashije kwinjira neza!")
+
+    if category_form.validate_on_submit():
+        category = LiabilityCategory(
+            Category = category_form.Category.data,
+            cooperative_id = current_user.department
+        )
+        try:
+            db.session.add(category)
+            db.session.commit()
+            flash("Umaze kwinjiza Liability_Category neza!")
+            return redirect(url_for('aicos_req.new_liability'))
+        except:
+            flash("Ntabwo Liability_Category yabashije kwinjira neza!")
+
+    # else:
+    #     flash("You're not allowed to change anything.")
+    return render_template('/liabilities/new_liability.html',form=form,category_form=category_form)
+
+
+@aicos_req.route('/liabilities/edit_liability<id>',methods=["GET","POST"])
+def edit_liability(id):
+
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    liability = Liability.query.filter_by(id=id).first()
+    liability.Date = datetime.strptime(liability.Date,'%Y-%m-%d')
+    category_form = LiabilityCategoryForm()
+    form = LiabilityForm(obj=liability)
+
+    form.Title.data = liability.Title
+    form.Date.data = liability.Date
+    form.Category.data = liability.Category
+    # form.Account.data = liability.Account
+    form.Amount.data = liability.Amount
+    form.Description.data = liability.Description
+
+    if current_user == is_accountant:
+
+        if form.validate_on_submit():
+            Title = form.Title.data,
+            liability.Date = form.Date.data
+            liability.Category = form.Category.data
+            # liability.Account = form.Account.data
+            liability.Amount = form.Amount.data
+            liability.Description = form.Description.data
+            liability.cooperative_id = current_user.department
+            try:
+                db.session.commit()
+                flash("Umaze Guhindura Liability neza!")
+                return redirect(url_for('aicos_req.liability'))
+            except:
+                flash("Ntabwo Liability yabashije Guhindurwa neza!")
+    return render_template('/liabilities/new_liability.html',form=form,category_form=category_form)
+
+@aicos_req.route('/liabilites/delete_liability<id>',methods=["GET","POST"])
+def delete_liability(id):
+    is_accountant = Employee.query.filter_by(is_accountant=True).first()
+    if current_user == is_accountant:
+        liability = Liability.query.filter_by(id=id).first()
+        try:
+            db.session.delete(liability)
+            db.session.commit()
+            flash("Umaze Gusiba Liability neza!")
+            return redirect(url_for('aicos_req.liability'))
+        except:
+            flash("Ntabwo Asset yabashije Gusibwa neza!")
+    else:
+        flash("You have no right to delete an asset.")
+    liabilities = Liability.query.all()
+    return render_template('/liabilities/liabilities.html',liabilities=liabilities)
+
+

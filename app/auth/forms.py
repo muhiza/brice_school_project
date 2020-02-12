@@ -20,13 +20,6 @@ class RegistrationForm(FlaskForm):
     #first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
     phone_number = StringField('Phone number', validators=[DataRequired()])
-    is_union         = BooleanField('is_union')
-    is_ferwacotamo   = BooleanField('is_ferwacotamo')
-    is_confederation = BooleanField('is_confederation')
-    is_rca           = BooleanField('is_rca')
-    is_manager       = BooleanField('is_manager')
-    is_coop_admin    = BooleanField('is_coop_admin')
-    is_accountant    = BooleanField('is_accountant')
     password = PasswordField('Password', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')

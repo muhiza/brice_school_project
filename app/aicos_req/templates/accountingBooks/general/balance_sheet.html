@@ -1,0 +1,137 @@
+{% import "bootstrap/utils.html" as utils %}
+{% extends "general_base.html" %}
+
+{% block body%} 
+<h2>
+    <br>&nbsp;&nbsp;Balance Sheet
+        {{ utils.flashed_messages(dismissible=true) }}
+    </br>
+</h2>
+<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <a href="{{ url_for('aicos_req.new_income') }}" type="button" class="btn btn-warning">
+                            <i class="fa fa-minus"></i>&nbsp; 
+                            <strong>New Income</strong>
+                        </a> -->
+                        {{today}}
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table-export" class="table table-striped table-bordered" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th><h3 style="text-decoration: underline;">ASSETS</h3></th>
+                                    <th><h3 style="text-decoration: underline;">LIABILITIES</h3></th>
+                                    <!-- <th>Action</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {%if Current_assets%}
+                                        <h5>Current</h5>
+                                        {%for asset in Current_assets%}
+                                        <p>{{asset.Title}}: <span style="float: right;">{{asset.Amount}}</span></p>
+                                        {%endfor%}
+                                        <h6 style="float: inline-end;">Total Current assets: 
+                                            <span style="text-decoration: underline;float: right;">{{total_Current_assets}}</span>
+                                        </h6>
+                                        {%endif%}
+
+                                        {%if Investiments_assets%}
+                                        <h5>Investiments</h5>
+                                        {%for asset in Investiments_assets%}
+                                        <p>{{asset.Title}}: <span style="float: right;">{{asset.Amount}}</span></p>
+                                        {%endfor%}
+                                        <h6 style="float: inline-end;">Total Investiments: 
+                                            <span style="text-decoration: underline;float: right;">{{total_Investiments_assets}}</span>
+                                        </h6>
+                                        {%endif%}
+
+                                        {%if Property_Plant_and_Equipment%}
+                                        <h5>Property, plant and Equipment</h5>
+                                        {%for asset in Property_Plant_and_Equipment%}
+                                        <p>{{asset.Title}}: <span style="float: right;">{{asset.Amount}}</span></p>
+                                        {%endfor%}
+                                        <h6 style="float: inline-end;">Total Property, Plant and Equipment: 
+                                            <span style="text-decoration: underline;float: right;">{{total_Property_Plant_and_Equipment}}</span>
+                                        </h6>
+                                        {%endif%}
+
+                                        {%if Intangible_assets%}
+                                        <h5>Intangible</h5>
+                                        {%for asset in Intangible_assets%}
+                                        <p>{{asset.Title}}: <span style="float: right;">{{asset.Amount}}</span></p>
+                                        {%endfor%}
+                                        <h6 style="float: inline-end;">Total Intangible assets: 
+                                            <span style="text-decoration: underline;float: right;">{{total_Intangible_assets}}</span>
+                                        </h6>
+                                        {%endif%}
+
+                                        {%if Other_assets%}
+                                        <h5>Other</h5>
+                                        {%for asset in Other_assets%}
+                                        <p>{{asset.Title}}: <span style="float: right;">{{asset.Amount}}</span></p>
+                                        {%endfor%}
+                                        <h5 style="float: inline-end;">Total Other assets: 
+                                            <span style="text-decoration: underline;float: right;">{{total_Other_assets}}</span>
+                                        </h5>
+                                        {%endif%}
+
+                                        {%if Other_assets%}
+                                        <h5>Less Accumulation Depreciations</h5>
+                                        <p>Accumulated Depreciations: <span style="float: right;">({{total_acc_dep}})</span></p>
+                                        {%endif%}
+                                        
+                                        <h5 style="">Total assets: <span style="text-decoration: underline;float: right;">{{total_assets}}</span></h5>
+                                    </td>
+
+
+                                    <td>
+                                        {%if Current_liabilities%}
+                                        <h5>Current</h5>
+                                        {%for liability in Current_liabilities%}
+                                        <p>{{liability.Title}}: <span style="float: right;">{{liability.Amount}}</span></p>
+                                        {%endfor%}
+                                        {%endif%}
+
+                                        {%if Long_term_liabilities%}
+                                        <h5>Long-term</h5>
+                                        {%for liability in Long_term_liabilities%}
+                                        <p>{{liability.Title}}: <span style="float: right;">{{liability.Amount}}</span></p>
+                                        {%endfor%}
+                                        {%endif%}
+
+                                        <h6>Total liabilities: 
+                                            <span style="text-decoration: underline;float: right;">{{total_liabilities}}</span>
+                                        </h6>
+
+                                        <h3 style="text-decoration: underline;background:white;padding: 12px;margin-left: -12px;border: solid rgb(209, 209, 214) 2px;">STOCKHOLDERS' EQUITY</h3>
+                                        
+                                        {%if stockholders_equities%}
+                                        {%for stock in stockholders_equities%}
+                                        <p>{{stock.Title}}: <span style="float: right;">{{stock.Amount}}</span></p>
+                                        {%endfor%}
+                                        {%endif%}
+
+                                        <h6>Total stockholders' equity: 
+                                            <span style="text-decoration: underline;float: right;">{{total_stockholders_equity}}</span>
+                                        </h6>
+
+                                        <h5 style="">Total liabilities & stockholders' equity: 
+                                            <span style="text-decoration: underline;float: right;">{{total_liabilities_and_stockholders_equity}}</span>
+                                        </h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->
+{% endblock %}

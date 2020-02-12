@@ -3,7 +3,7 @@
 
 {% block body%} 
         <h2>
-            <br>&nbsp;&nbsp;asset Reports
+            <br>&nbsp;&nbsp;liability Reports
                 {{ utils.flashed_messages() }}
             </br>
         </h2>
@@ -14,8 +14,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ url_for('aicos_req.new_asset') }}" type="button" class="btn btn-warning">
-                                    <i class="fa fa-plus"></i>&nbsp;<strong>New Asset</strong>
+                                <a href="{{ url_for('aicos_req.new_liability') }}" type="button" class="btn btn-warning">
+                                    <i class="fa fa-plus"></i>&nbsp;<strong>New Liability</strong>
                                 </a>
                             </div>
                             <div class="card-body">
@@ -32,15 +32,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {%for asset in assetsAccountings%}
+                                        {%for liability in liabilities%}
                                         <tr>
-                                            <td>{{asset.Title}}</td>
-                                            <td>{{asset.Date}}</td>
-                                            <td>{{asset.Category}}</td>
-                                            <!-- <td>{{asset.Account}}</td> -->
-                                            <td>{{asset.Description}}</td>
-                                            <td>{{asset.Amount}}</td>
-                                            <td><a href="{{ url_for('aicos_req.edit_asset',id=asset.id)}}"><i class="fa fa-pencil"></i></a> <a href="{{ url_for('aicos_req.delete_asset',id=asset.id) }}"><i class="fa fa-close"></i></a></td>
+                                            <td>{{liability.Title}}</td>
+                                            <td>{{liability.Date}}</td>
+                                            <td>{{liability.Category}}</td>
+                                            <!-- <td>{{liability.Account}}</td> -->
+                                            <td>{{liability.Description}}</td>
+                                            <td>{{liability.Amount}}</td>
+                                            <td><a href="{{ url_for('aicos_req.edit_liability',id=liability.id)}}">
+                                                <i class="fa fa-pencil"></i></a> 
+                                                <a href="{{ url_for('aicos_req.delete_liability',id=liability.id) }}">
+                                                <i class="fa fa-close"></i></a>
+                                            </td>
                                         </tr>
                                         {%endfor%}
                                     </tbody>

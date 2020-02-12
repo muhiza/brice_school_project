@@ -276,7 +276,17 @@ These models are for improving the
 Accounting activities in cooperatives
 In Rwanda.
 """
+
+class ArchivesForm(FlaskForm):
+    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Save the Current Changes for the future use') 
+
+
 class AssetCategoryForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Submit') 
+
+class LiabilityCategoryForm(FlaskForm):
     Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
     submit = SubmitField('Submit') 
 
@@ -345,7 +355,7 @@ class BudgetForm(FlaskForm):
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
     Category = QuerySelectField('Category',
         query_factory=choices, allow_blank=True, get_label= 'Category')
-    Period = RadioField('Label', choices=[('value','Monthly'),('value_two','Quarterly'),('value_three','Yearly')])
+    Period = RadioField('Label', choices=[('Daily','Daily'),('Monthly','Monthly'),('Quarterly','Quarterly'),('Annually','Annually')])
     submit = SubmitField('Submit')
 
 def asset_choices():
@@ -353,9 +363,28 @@ def asset_choices():
 class AssetsForm(FlaskForm):
     Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
     Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    Category = QuerySelectField('Category',
-        query_factory=asset_choices, allow_blank=True, get_label= 'Category')    
-    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Category = SelectField('Category',
+        choices = [(' ',' '),('Current','Current assets'),
+            ('Long_term','Long-term assets'),('Investiments','Investiments'),
+            ('Property','Property, Plant and Equipment'),('Intangible','Intangible'),
+            ('acc_depr','accumulated depreciations'),('Other','Others')]) 
+        #     and 
+        #     QuerySelectField("Category",
+        # query_factory=asset_choices, allow_blank=True, get_label= 'Category')   
+    # Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Bika')
+
+
+def liability_choices():
+    return LiabilityCategory.query.all()
+class LiabilityForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = SelectField('Category',
+        choices = [(' ',' '),('Current liabilities','Current liabilities'),('Long_term','Long-term liabilities'),('Other','Others')])    
+    # Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
     Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
     Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Bika')
