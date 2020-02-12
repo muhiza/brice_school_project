@@ -34,12 +34,6 @@ def register():
                             #first_name=form.first_name.data,
                             #last_name=form.last_name.data,
                             phone_number = form.phone_number.data,
-                            is_union         = form.is_union.data,
-                            is_ferwacotamo   = form.is_ferwacotamo.data,
-                            is_confederation = form.is_confederation.data,
-                            is_rca           = form.is_rca.data,
-                            is_manager       = form.is_manager.data,
-                            is_coop_admin    = form.is_coop_admin.data,
                             password=form.password.data)
         #member   = Member(firstName=form.first_name.data,
                          # secondName=form.last_name.data)
@@ -52,7 +46,7 @@ def register():
         try:
             # add employee to the database
             db.session.add(employee)
-            db.session.add(notif)
+            # db.session.add(notif)
             #db.session.add(member)
             db.session.commit()
 

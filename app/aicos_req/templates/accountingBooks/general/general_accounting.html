@@ -2,6 +2,20 @@
 {% extends "general_base.html" %}
 
 {% block body%} 
+    <div class="col-md-12">
+        {{ utils.flashed_messages(dismissible=true) }}
+        <div>
+          <form action="{{ url_for('aicos_req.general_accounting') }}" method="POST">
+
+            <div class="col-md-12 btn btn-flat m-b-30 m-t-30">
+                {{ form.submit(class="col-md-12 btn btn-secondary font-weight-bold",style="border-radius:4px;") }}
+            </div>
+
+            {{ form.csrf_token }}
+          </form>
+        </div>
+    </div>
+    <!-- <a class="col-lg-12 btn btn-secondary font-weight-bold" style="margin: 5px;border-radius:4px;" href="{{ url_for('aicos_req.general_accounting') }}">Save the Current Changes for the future use</a> -->
 
     <div class="col-6 col-lg-4">
         <div class="card">
@@ -116,7 +130,7 @@
                     <div class="card border border-info">
                         <div class="card-header bg-info" style="color: #fff;">
                             <strong class="card-title">
-                                <i class="fa fa-bar-chart-o"></i> Latest 10 Income </strong>
+                                <i class="fa fa-bar-chart-o"></i>Latest 5 Incomes</strong>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -151,7 +165,7 @@
                     <div class="card border border-secondary">
                         <div class="card-header bg-secondary" style="color: #fff;">
                             <strong class="card-title">
-                                <i class="fa fa-bar-chart-o"></i> Latest 10 Expense  </strong> 
+                                <i class="fa fa-bar-chart-o"></i>Latest 5 Expenses</strong> 
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -187,7 +201,7 @@
                     <div class="card border border-warning">
                         <div class="card-header bg-warning" style="color: #fff;">
                             <strong class="card-title">
-                                <i class="fa fa-bar-chart-o"></i> Account Balances  </strong>
+                                <i class="fa fa-bar-chart-o"></i>Account Balances</strong>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -217,8 +231,16 @@
                 <div class="col-md-6">
                     <div class="card border border-success">
                         <div class="card-header bg-success" style="color: #fff;">
-                            <strong class="card-title">
-                                <i class="fa fa-bar-chart-o"></i>  Budget Progress On March 2019  </strong>
+                            <div class="row">
+                                <a href="" class="col-lg-3 btn btn-secondary">Previous Month</a>
+                                <h4 class="mb-3 col-lg-6 text-center">
+                                    <strong class="card-title">
+                                        <i class="fa fa-bar-chart-o"></i>Budget Progress {{today}}
+                                    </strong>
+                                </h4>
+                                <a href="" class="col-lg-3 btn btn-secondary">Next Month</a>
+                            </div>
+                            
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -232,6 +254,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>Daily</td>
+                                        <td>{{today_budget}}</td>
+                                        <td>{{d_budget_used}}%</td>
+                                        <td>{{d_time_passed}}%</td>
+                                    </tr>
+                                    <tr>
                                         <td>Monthly</td>
                                         <td>{{monthly_budget}}</td>
                                         <td>{{m_budget_used}}%</td>
@@ -244,7 +272,7 @@
                                         <td>{{q_time_passed}}%</td>
                                     </tr>
                                     <tr>
-                                        <td>Yearly</td>
+                                        <td>Annually</td>
                                         <td>{{yearly_budget}}</td>
                                         <td>{{y_budget_used}}%</td>
                                         <td>{{y_time_passed}}%</td>
@@ -263,7 +291,11 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-3"> Reports Expense/Income  </h4>
+                            <div class="row" style="margin: 30px;">
+                                <a href="" class="col-lg-4 btn btn-secondary">Previous Year</a>
+                                <h4 class="col-lg-4 mb-3 text-center">Reports Expense/Income</h4>
+                                <a href="" class="col-lg-4 btn btn-secondary">Next Year</a>
+                            </div>
                             <!-- <canvas id="sales-chart"></canvas> -->
                             <canvas id="chart" class="col-lg-12"></canvas>
                             <script>
@@ -360,7 +392,11 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mb-3">  Report Expense/Income This Month  </h4>
+                            <div class="row" style="margin: 30px;">
+                                <a href="" class="col-lg-4 btn btn-secondary">Previous Month</a>
+                                <h4 class="mb-3 col-lg-4 text-center">Report Expense/Income This Month</h4>
+                                <a href="" class="col-lg-4 btn btn-secondary">Next Month</a>
+                            </div>
                             <!-- <canvas id="team-chart"></canvas> -->
                             <canvas id="chart2" class="col-lg-12"></canvas>
                             <script>
@@ -383,6 +419,19 @@
                                     // bezierCurve : false,
                                     data : [
                                       {% for item in DIvalues %}
+                                        {{ item }},
+                                      {% endfor %}]
+                                    },
+                                    {
+                                    fillColor: "rgba(92, 184, 92,0.9)",
+                                    strokeColor: "rgba(92, 184, 92,1)",
+                                    pointColor: "rgba(92, 184, 92,1)",
+                                    // pointStrokeColor: "#fff",
+                                    // pointHighlightFill: "#fff",
+                                    // pointHighlightStroke: "rgba(41,43,44,1)",
+                                    // bezierCurve : false,
+                                    data : [
+                                      {% for item in DBvalues %}
                                         {{ item }},
                                       {% endfor %}]
                                     },
@@ -434,6 +483,7 @@
                         </div>
                         <div style="margin: 0 0 30px 30px;">
                             <i class="bg-info p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Income</h4></i>
+                            <i class="bg-success p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Budget</h4></i>
                             <i class="bg-secondary p-3 font-2xl mr-3 float-left text-light col-md-3"><h4>Expense</h4></i>
                         </div>
                     </div>

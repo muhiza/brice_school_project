@@ -71,40 +71,17 @@
                             {{ wtf.form_field(form.phone_number) }}
                         </div>
 
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_union) }}
-                                    </div>
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_ferwacotamo) }}
-                                    </div>
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_confederation) }}
-                                    </div>
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_rca) }}
-                                    </div>
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_manager) }}
-                                    </div>
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_coop_admin) }}
-                                    </div>
+                        <div class="checkbox">
+                            {{ wtf.form_field(form.password) }}
+                        </div>
 
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.is_accountant) }}
-                                    </div>
-
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.password) }}
-                                    </div>
-
-                                    <div class="checkbox">
-                                        {{ wtf.form_field(form.confirm_password) }}
-                                    </div>
-                                    {{ form.submit(class="btn btn-primary") }}
-                                    <a href="{{ url_for('auth.login') }}" class="btn btn-default">Login</a><br>
-                                    <!-- <a href="#" class="forgot-link">Forgot password?</a> -->
-                                {{ form.csrf_token }}
+                        <div class="checkbox">
+                            {{ wtf.form_field(form.confirm_password) }}
+                        </div>
+                        {{ form.submit(class="btn btn-primary") }}
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-default">Login</a><br>
+                        <!-- <a href="#" class="forgot-link">Forgot password?</a> -->
+                        {{ form.csrf_token }}
                     </form>
                             </div>
                         </div>

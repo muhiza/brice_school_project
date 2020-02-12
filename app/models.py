@@ -2037,7 +2037,7 @@ class BudgetCategory(db.Model):
 class AssetCategory(db.Model):
     """
     Creating the table which allow the cooperative
-    to create different categories of their budget.
+    to create different categories of their asset.
     """
     __tablename__ = "assetcategory"
 
@@ -2048,6 +2048,40 @@ class AssetCategory(db.Model):
 
     def __repr__(self):
         return '<AssetCategory: {}>'.format(self.id)
+
+
+class LiabilityCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their liability.
+    """
+    __tablename__ = "liabilitycategories"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<LiabilityCategory: {}>'.format(self.id)
+
+
+class EquityCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their liability.
+    """
+    __tablename__ = "equitycategories"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<EquityCategory: {}>'.format(self.id)
+
+
 
 class Expense(db.Model):
     """
@@ -2139,6 +2173,54 @@ class assetsAccounting(db.Model):
         return '<assetsAccounting: {}>'.format(self.id)
 
 
+
+class Liability(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage it's assets.
+    """
+
+    __tablename__ = "liabilities"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<Liability: {}>'.format(self.id)
+
+
+class Stockholders_equity(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage it's assets.
+    """
+
+    __tablename__ = "equities"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<equity: {}>'.format(self.id)
+
+
+
+
+
 class Account(db.Model):
     """
     Creating the table which allow the cooperative
@@ -2155,6 +2237,37 @@ class Account(db.Model):
 
     def __repr__(self):
         return '<Account: {}>'.format(self.id)
+
+
+class Archive(db.Model):
+    __tablename__ = "archive"
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    date = db.Column(db.String(200))
+
+    m_income = db.Column(db.String(200))
+    m_expense = db.Column(db.String(200))
+
+    y_income = db.Column(db.String(200))
+    y_expense = db.Column(db.String(200))
+
+    d_intl_budget = db.Column(db.String(200))
+    m_intl_budget = db.Column(db.String(200))
+    q_intl_budget = db.Column(db.String(200))
+    y_intl_budget = db.Column(db.String(200))
+
+    d_budget_used = db.Column(db.String(200))
+    m_budget_used = db.Column(db.String(200))
+    q_budget_used = db.Column(db.String(200))
+    y_budget_used = db.Column(db.String(200))
+
+    d_time_passed = db.Column(db.String(200))
+    m_time_passed = db.Column(db.String(200))
+    q_time_passed = db.Column(db.String(200))
+    y_time_passed = db.Column(db.String(200))
+
+    def __repr__(self):
+        return '<Archive: {}>'.format(self.id)
+
 
 
 class Abishyuwe(db.Model):
