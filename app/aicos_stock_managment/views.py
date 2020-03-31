@@ -403,7 +403,7 @@ def injizaUmusaruro(id):
 
             if form.UmusaruroGrade.data == 'good':
                 payload = {
-                    'to': '+250783661570',
+                    'to': '+250786012383',
                     'from': 'Coopthevig',
                     'unicode': '0',
                     'sms': 'Muraho neza,' + str(member_name.izina_ribanza) + '. code ni:,' + str(member_name.sno) + '. umusaruro wose ' + str(form.Quantity.data) + '. umusaruro ukase ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) +  '. Igiciro ku kiro ni ' + str(form.RiceAmount.data) + '. Ayo guhembwa, ' + str(form.RiceAmount.data * (form.Quantity.data - (10 * form.Quantity.data / 100))) + ' Igihe:  ' + str(get_time),
@@ -414,7 +414,7 @@ def injizaUmusaruro(id):
 
             else:
                 payload = {
-                    'to': '+250783661570',
+                    'to': '+250786012383',
                     'from': 'Coopthevig',
                     'unicode': '0',
                     'sms': 'Muraho,'+ str(member_name.izina_ribanza) + '. code:,' + str(member_name.sno) + '. umusaruro wose ' + str(form.Quantity.data) + '. ukase ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) + '. ayakaswe ' + str((form.Quantity.data - (10 * form.Quantity.data / 100)) * 19.1) + ' (Frw) ' + str(form.Quantity.data - (10 * form.Quantity.data / 100)) + ' (Kg).' + '. Ayo guhembwa ' + str((form.RiceAmount.data * (form.Quantity.data - (10 * form.Quantity.data / 100))) - ((form.Quantity.data - (10 * form.Quantity.data / 100)) * 19.1)) + ' Frw ' + str(get_time),
