@@ -31,6 +31,8 @@ from flask_admin import BaseView, expose
 #from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
 flask_excel.init_excel(app)
 
 #Configuring the database path
@@ -61,7 +63,7 @@ login_manager = LoginManager()
 
 # Creating the application factory to help in initiating and
 # Manage all other different functions and instances.
-def create_app(config_name):
+def create_app(config_name, *args):
     if os.getenv('FLASK_CONFIG') == "production":
         app = Flask(__name__)
         app.config.update(
