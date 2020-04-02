@@ -176,6 +176,10 @@ def ibindiUmusaruro(id):
     
     ibiro_ibyabuze_amanota = db.session.query(func.sum(Umusarurob.UwoKugurisha)).filter_by(member_id=memberId.id).filter_by(UmusaruroGrade='bad').scalar()
     
+    coop_activity = Department.query.filter_by(email=current_user.email).first()
+    act = coop_activity.Activity
+
+
 
     igiciro_uruganda = 10 * 191 / 100
 
@@ -186,7 +190,7 @@ def ibindiUmusaruro(id):
 
 
 
-    return render_template('ibindiUmusaruro.html', retenue = retenue, inguzanyo=inguzanyo, ejo_heza=ejo_heza, rpf=rpf, carnet=carnet, avance=avance, musa=musa, ibiro_ibyabuze_amanota=ibiro_ibyabuze_amanota, amafaranga_ibyabuze_amanota=amafaranga_ibyabuze_amanota, ibyabuze_amanota=ibyabuze_amanota, memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
+    return render_template('ibindiUmusaruro.html', act=act, retenue = retenue, inguzanyo=inguzanyo, ejo_heza=ejo_heza, rpf=rpf, carnet=carnet, avance=avance, musa=musa, ibiro_ibyabuze_amanota=ibiro_ibyabuze_amanota, amafaranga_ibyabuze_amanota=amafaranga_ibyabuze_amanota, ibyabuze_amanota=ibyabuze_amanota, memberId=memberId, price=price, umusaruro=umusaruro, umusaruro_all=umusaruro_all, amafaranga_asigaye=amafaranga_asigaye, amafaranga_all=amafaranga_all)
 
 
 @aicos_stock_managment.route('/umusaruro/member/ishyura/<int:id>')
