@@ -33,6 +33,10 @@ from flask_admin import BaseView, expose
 app=Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
+
+
 flask_excel.init_excel(app)
 
 #Configuring the database path
@@ -68,6 +72,7 @@ def create_app(config_name, *args):
         app = Flask(__name__)
         app.config.update(
             SECRET_KEY=os.getenv('SECRET_KEY'),
+            WTF_CSRF_SECRET_KEY="acsrfsecretkey",
             SQLALCHEMY_DATABASE_URI=os.getenv('SQLALCHEMY_DATABASE_URI')
         )
         
@@ -324,7 +329,6 @@ def create_app(config_name, *args):
         return render_template('errors/500.html', title='Server Error'), 500
 
     return app
-
 
 
 
