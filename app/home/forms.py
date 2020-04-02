@@ -190,7 +190,7 @@ class newDepartmentForm(FlaskForm):
     Activity = SelectField(
         Markup('<b>Icyo Koperative Ikora</b>'),
         choices=[('Tea', 'Tea'),('Coffee', 'Coffee'), 
-        ('Rice', 'Rice')])
+        ('Rice', 'Rice'), ('Potato', 'Potato')])
 
     
     submit = SubmitField('Injiza muri sisiteme')

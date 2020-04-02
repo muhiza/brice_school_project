@@ -11,14 +11,12 @@
               <div class="card">
                   <div class="card-body">
                       <h3 class="mb-3">Umusaruro wabonetse mu myaka itandukanye </h3>
-                             <canvas id="team-chart"></canvas>    
+                          <canvas id="team-chart"></canvas>    
                   </div>
               </div>
           </div>
           -->
-
           <!-- /# column -->
-
             <div class="content mt-3">
             <div class="animated fadeIn">
                 <div class="row">
@@ -41,11 +39,13 @@
                                             <th>Ibyo&nbsp;kugurisha</th>
                                             <th>Grade</th>
                                             <th>Amafaranga</th>
-                                            <th>Deduct&nbsp;10%</th>
+                                            {% if act == 'Potato' %}
+                                                <th>5frw/kg</th>
+                                            {% else %}
+                                                <th>Deduct&nbsp;10%</th>
+                                            {% endif %}
                                             <th>Asigaye</th>
-
                                             <th class="bg-info" style="color: #fff;">Retenue</th>
-
                                             <th>Injiza</th>
                                             <th>Ibindi</th>
                                         </tr>
@@ -108,7 +108,11 @@
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}
                                                             {% if loop.last %}
-                                                                {{ umu.AmafarangaUmusaruro1 }}
+                                                                  {% if act == 'Potato' %}
+                                                                      {{ umu.RiceAmount }}
+                                                                  {% else %}
+                                                                      {{ umu.AmafarangaUmusaruro1 }}
+                                                                  {% endif %}
                                                             {% endif %}
                                                       {% endfor %}
                                                   {% endif %}
@@ -118,7 +122,11 @@
                                                   {% if member.umusarurob %}
                                                       {% for umu in member.umusarurob %}
                                                             {% if loop.last %}
+                                                            {% if act == 'Potato' %}
+                                                                {{ 5 * umu.UwoKugurisha }} 
+                                                            {% else %}
                                                                 {{ umu.Asigaye }}
+                                                              {% endif %}                                                                
                                                             {% endif %}
                                                       {% endfor %}
                                                   {% endif %}
@@ -130,7 +138,11 @@
                                                     {% if member.umusarurob %}
                                                         {% for umu in member.umusarurob %}
                                                               {% if loop.last %}
-                                                                  {{ umu.UwoKugurisha - umu.Asigaye }}            
+                                                              {% if act == 'Potato' %}
+                                                                  {{ umu.RiceAmount - (5 * umu.UwoKugurisha) }} 
+                                                              {% else %}
+                                                                  {{ umu.UwoKugurisha - umu.Asigaye }} 
+                                                              {% endif %}
                                                               {% endif %}
                                                         {% endfor %}
                                                     {% endif %}
@@ -153,8 +165,6 @@
                                                       <span><li class="fa fa-plus"></li> Injiza retenue</span> </button>
                                                     </a>
                                                   </td>
-
-
 
                                                 <td>
                                                   <a href="{{ url_for('aicos_stock_managment.injizaUmusaruro', id = member.id) }}"> 
@@ -195,7 +205,6 @@
                             </div>
                         </div>
                     </div>
-
 
 
                 </div>

@@ -6,6 +6,8 @@
 """
 import os
 
+SQLALCHEMY_DATABASE_URI  = "mysql://root:Copa123!#@localhost/aicos"
+
 # Accessing the current directory that we are working with
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 TOP_LEVEL_DIR = os.path.abspath(os.curdir)

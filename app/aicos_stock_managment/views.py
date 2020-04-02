@@ -137,8 +137,10 @@ def umusaruro():
     umusaruro_resi = Umusarurob.query.all()
     member_all = Employee.query.filter_by(
         department_id=current_user.email).all()
-
-    return render_template('umusaruro.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+    
+    coop_activity = Department.query.filter_by(email=current_user.email).first()
+    act = coop_activity.Activity
+    return render_template('umusaruro.html', act=act, umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
 
 
 @aicos_stock_managment.route('/umusaruro/member/<int:id>')
@@ -301,6 +303,9 @@ def injizaUmusaruro(id):
     check_admin()
     memberid = Member.query.get_or_404(id)
     member_name = Member.query.filter_by(id=memberid.id).first()
+    activity = Department.query.filter_by(email=current_user.email).first()
+    coop_activity = Department.query.filter_by(email=current_user.email).first()
+    act = coop_activity.Activity
 
     if member_name is None:
         flash("Umunyamuryango usabye ntawuhari")
@@ -352,6 +357,60 @@ def injizaUmusaruro(id):
                 member_id=memberid.id,
                 department_id=current_user.email
             )
+
+
+
+
+        elif form.UmusaruroGrade.data == 'normal':
+            umusaruro = Umusarurob(
+            RiceType=form.RiceType.data,
+            RicePrice=form.RiceAmount.data,
+            RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
+            UmusaruroGrade=form.UmusaruroGrade.data,
+            UwoAsigaranye=form.UwoAsigaranye.data,
+
+            Musa=form.Musa.data,
+            Carnet=form.Carnet.data,
+            Avance=form.Avance.data,
+
+            UwoKugurisha=(form.Quantity.data) - (form.UwoAsigaranye.data),
+            GutonozaAmount=int(form.Gutonoza.data) *
+            int(form.UwoAsigaranye.data),
+            AmafarangaUmusaruro1=(int(form.RiceAmount.data) * (int(form.Quantity.data) -
+                                                                int(form.UwoAsigaranye.data)) - (int(form.Gutonoza.data) *
+                                                                                            int(form.UwoAsigaranye.data))) + 10 * form.RiceAmount.data * form.Quantity.data / 100,
+            
+            Asigaye=10 * form.Quantity.data / 100,
+            done_date=form.done_date.data,
+            member_id=memberid.id,
+            department_id=current_user.email
+        )
+
+
+
+        elif form.UmusaruroGrade.data == 'normal' and act == 'Potato':
+            umusaruro = Umusarurob(
+            RiceType=form.RiceType.data,
+            RicePrice=form.RiceAmount.data,
+            RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
+            UmusaruroGrade=form.UmusaruroGrade.data,
+            UwoAsigaranye=form.UwoAsigaranye.data,
+
+            Musa=form.Musa.data,
+            Carnet=form.Carnet.data,
+            Avance=form.Avance.data,
+
+            UwoKugurisha=(form.Quantity.data) - (form.UwoAsigaranye.data),
+            GutonozaAmount=int(form.Gutonoza.data) *
+            int(form.UwoAsigaranye.data),
+
+            AmafarangaUmusaruro1=((form.RiceAmount.data) * (form.Quantity.data)),            
+            
+            Asigaye= (5 * form.Quantity.data),
+            done_date=form.done_date.data,
+            member_id=memberid.id,
+            department_id=current_user.email
+        )
 
 
         else:
@@ -433,9 +492,9 @@ def injizaUmusaruro(id):
             return redirect(url_for('aicos_stock_managment.injizaUmusaruro'))
         except Exception:
             #flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
-            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', form=form, memberid=memberid, member_name=member_name, id=memberid.id))
+            return redirect(url_for('aicos_stock_managment.injizaUmusaruro', activity=activity, form=form, memberid=memberid, member_name=member_name, id=memberid.id))
 
-    return render_template('record_umusaruro.html', form=form, memberid=memberid, member_name=member_name)
+    return render_template('record_umusaruro.html', form=form, activity=activity, memberid=memberid, member_name=member_name)
 
 
 @aicos_stock_managment.route('/injiza/inyongeramusaruro/<int:id>', methods=['GET', 'POST'])
