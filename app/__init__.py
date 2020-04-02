@@ -34,7 +34,7 @@ app=Flask(__name__)
 flask_excel.init_excel(app)
 
 #Configuring the database path
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 # Configuring the recaptha variables for user login checkings.
