@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+#activate_this = '/var/www/venv/bin/activate_this.py'
+#execfile(activate_this, dict(__file__=activate_this))
+
 import sys
 import os
 import logging
