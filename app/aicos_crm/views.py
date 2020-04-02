@@ -10,16 +10,41 @@ from .forms import *
 import nexmo
 
 import socket
-hostname = socket.gethostname()
-IP = socket.gethostbyname(hostname)
-client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
+# hostname = socket.gethostname()
+# IP = socket.gethostbyname(hostname)
+# client = nexmo.Client(key='e7096025', secret='ab848459dae27b51')
+
+from flask import Flask, jsonify
+from twilio.rest import Client
+import os
+
+
+def send_sms(to_number,body):
+    account_sid = 'AC748e888b9c42a401f6f9a04021e16be2'
+    auth_token  = '489a7fe543032bdb42e4975d480a8784'
+    number = '+12055764624'
+    client = Client(account_sid, auth_token)  
+    message = client.messages \
+            .create(
+                    body=body,
+                    from_=number,
+                    to=to_number
+                )
+
+    return message
 
 @aicos_crm.route('/items_table', methods=['GET', 'POST'])
+@login_required
 def table():
-    # assignments = CRM.query.filter_by(id=current_user.id).all()
-    return render_template("table.html")
+    assignments = CRM.query.filter_by(department=current_user.department).all()
+    
+    # for assignment in assignments:
+    #     department = assignment.department.name
+    #     return render_template("table.html", assignments=assignments, department=department)
+    return render_template("table.html", assignments=assignments)
 
 @aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
+@login_required
 def add_item():
     add_item = True
     form = ItemForm()
@@ -34,57 +59,59 @@ def add_item():
                         phone_number = form.phone_number.data,
                         city = form.city.data,
                         country = form.country.data,
-                        # employee_id = form.employee_id.data,
                         description = form.description.data,
                         status = form.status.data
                         )
 
-        # newCRM.cooperative_id = current_user.id
-        employee = Employee.query.filter_by(username=form.employee_id.data.username).first()
-        newCRM.employee_id = employee.id
-        try:
-            
-            db.session.add(newCRM)
-            db.session.commit()
+        newCRM.department = current_user.department
+        employee = Employee.query.filter_by(username=str(form.employee_id.data)).first()
+        newCRM.employee = employee
+        
+        newCRM.add_new_item()
+        flash("Umaze kwandika ikindi gikorwa neza!")
 
-            console.log(newCRM.employee_id)
-            
-            to_number = newCRM.phone_number
-            message = current_user.email + 'New assignment has been given to '+newCRM.assignee+'of the cooperative '+newCRM.cooperative.name+'to work with you.'
-            response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-            response_text = response['messages'][0]
+        try: 
+            send_sms(to_number=newCRM.phone_number,body='New assignment.')
 
-            flash("Umaze kwandika ikindi gikorwa neza!")
-            return redirect(url_for('aicos_crm.table'))
+            flash("Ubutumwa bwagiye neza!")
         except Exception:
-            # db.session.close()
-            flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
+            flash("Ntabwo ubutumwa bwabashije kugenda neza!")
+
+        return redirect(url_for('aicos_crm.table', employee=employee))
     return render_template("new_item.html",form=form)
 
-@aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
+@aicos_crm.route('/items_table/delete/<id>', methods=['GET', 'POST'])
+@login_required
 def remove_item(id):
-    crm = CRM.query.get_or_404(id)
-    db.session.delete(crm)
-    db.session.commit()
+    # print(id)
+    asgmt = CRM.query.filter_by(id=id).first()
     
-    to_number = newCRM.phone_number
-    message = current_user.email + 'The assignment which has been given to '+newCRM.assignee+'of the cooperative '+newCRM.cooperative.name+'to work with you, has been deleted.'
-    response = client.send_message({'from' : '+250786012383', 'to' : to_number, 'text' : message })
-    response_text = response['messages'][0]
-
+    asgmt.delete_item()
     flash('You have successfully deleted the assignment.')
-    # redirect to the departments page
-    return redirect(url_for('aicos_crm.table'))
-    return render_template(title="Delete Assignment")
 
-@aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
-def edit_item(id):
+    try: 
+        send_sms(to_number=asgmt.phone_number,body='Deleted assignment.')
+
+        flash("Ubutumwa bwagiye neza!")
+    except Exception:
+        flash("Ntabwo ubutumwa bwabashije kugenda neza!")
+
+    return redirect(url_for('aicos_crm.table'))
+
+@aicos_crm.route('/items_table/edit/<id>/<employee_id>', methods=['GET', 'POST'])
+@login_required
+def edit_item(id, employee_id):
     add_item = False
-    crm = CRM.query.get_or_404(id)
+    crm = CRM.query.filter_by(id=id).first()
+    # crm.department = current_user
+    employee = Employee.query.filter_by(id=employee_id).first()
+    username = employee.username
+    # print(crm.employee_id)
+    # crm.employee_id = employee.id
     form = ItemForm(obj=crm)
     if form.validate_on_submit():
 
-        crm.cooperative_id = current_user.id
+        crm.department     = current_user.department
         crm.tag            = form.tag.data
         crm.company_name   = form.company_name.data
         crm.email          = form.email.data
@@ -94,14 +121,21 @@ def edit_item(id):
         crm.phone_number   = form.phone_number.data
         crm.city           = form.city.data
         crm.country        = form.country.data
-        crm.assignee       = form.assignee.data
+        crm.employee_id    = Employee.query.filter_by(username=str(form.employee_id.data)).first().id
         crm.description    = form.description.data
         crm.status         = form.status.data
 
-        db.session.commit()
+        crm.edit_item()
+        
         flash('You have successfully edited the assignment.')
+
+        send_sms(to_number=crm.phone_number,body='Edited assignment.')
+
+        flash("Ubutumwa bwagiye neza!")
+
         return redirect(url_for('aicos_crm.table'))
 
+    # form.department_id.data = current_user.email
     form.tag.data          = crm.tag
     form.company_name.data = crm.company_name
     form.email.data        = crm.email
@@ -111,7 +145,7 @@ def edit_item(id):
     form.phone_number.data = crm.phone_number
     form.city.data         = crm.city
     form.country.data      = crm.country
-    form.assignee.data     = crm.assignee
+    form.employee_id.data  = Employee.query.filter_by(id=crm.employee_id).first().username
     form.description.data  = crm.description
     form.status.data       = crm.status
 
@@ -121,27 +155,7 @@ def edit_item(id):
 
 @aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
 def assign():
-    form = ItemForm()
-    # if form.validate_on_submit():
-    #     newGoal = Goal (
-    #                     name = form.name.data,
-    #                     Description = form.description.data,
-    #                     Amount = form.amount.data,
-    #                     startingDate = form.startingDate.data,
-    #                     endingDate = form.endingDate.data
-    #                     )
-    #     try:
-    #          db.session.add(newGoal)
-    #          db.session.commit()
-    #          flash("Umuaze kwandika ikindi gikorwa neza!")
-    #          return redirect(url_for('aicos_members.memberPayments'))
-    #     except Exception:
-    #         flash("Ntago amakuru watanze yashoboye kwakirwa neza!")
-    return render_template("new_item.html",form=form)
-
-@aicos_crm.route('/add_new_item', methods=['GET', 'POST'])
-def send_sms():
-    form = ItemForm()
+    # form = ItemForm()
     # if form.validate_on_submit():
     #     newGoal = Goal (
     #                     name = form.name.data,

@@ -5,7 +5,7 @@ for users registration, login and forgot password
 
 # Third-party imports
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError, IntegerField
+from wtforms import PasswordField, StringField, SubmitField, SelectField,  ValidationError, BooleanField, IntegerField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 # Internal imports

@@ -1,4 +1,5 @@
 
+
 """
 	This is python's standard utility module, 
 	it allow us to interact with operating system
@@ -14,7 +15,11 @@ TOP_LEVEL_DIR = os.path.abspath(os.curdir)
 
 # These are the environment variables that are used for securing the application.
 SECRET_KEY = "thisisthesecretkeyhere"
+<<<<<<< HEAD
 SQLALCHEMY_DATABASE_URI  = "mysql://muhiza:Copa123!#@localhost/aicos"
+=======
+SQLALCHEMY_DATABASE_URI  = "mysql://root:Copa123!#@localhost/aicos"
+>>>>>>> backup
 RECAPTCHA_PUBLIC_KEY = '6LdYIDcUAAAAAEE3N3tNqcYu50MJSTlGA5lwu5Pl'
 RECAPTCHA_PRIVATE_KEY = '6LdYIDcUAAAAAD8ayN_2Mkhauh_-MdK12XxdTLEo'
 

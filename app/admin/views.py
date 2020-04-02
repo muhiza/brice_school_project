@@ -311,7 +311,7 @@ def overall_members():
 """
 # View to deal with excel file upload handling.
 #@amdin.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/smartest'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @admin.route("/import", methods=['GET', 'POST'])
 def doimport():
     if request.method == 'POST':
@@ -331,7 +331,7 @@ def doimport():
 """
 
 # This is the view used to import all the cooperatives from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @admin.route("/importcoops", methods=['GET', 'POST'])
 def doimportcoops():
     if request.method == 'POST':
@@ -368,7 +368,7 @@ def doimportcoops():
     return render_template("admin/upload.html", title="Upload a file")
 
 # This is the view used to import all the unions from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @admin.route("/importunions", methods=['GET', 'POST'])
 def doimportunions():
     if request.method == 'POST':
@@ -397,7 +397,7 @@ def doimportunions():
     return render_template("admin/uploadunions.html", title="Upload a file")
 
 # This is the view used to import all the unions from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @admin.route("/importfed", methods=['GET', 'POST'])
 def doimportfed():
     if request.method == 'POST':

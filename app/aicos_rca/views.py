@@ -394,7 +394,7 @@ def memberDetails(id):
 
 
 
-@aicos_rca.route('/AppliedTrainingList')
+@aicos_rca.route('/AppliedTrainingList', methods=['GET', 'POST'])
 def appliedTrainig():
     applied = applyTraining.query.all()
     return render_template('training/appliedTrainigList.html', applied=applied)
@@ -403,7 +403,7 @@ def appliedTrainig():
 
 
 
-@aicos_rca.route('/PreparedTrainingList')
+@aicos_rca.route('/PreparedTrainingList', methods=['GET', 'POST'])
 def preparedTrainig():
     prepared = Training.query.all()
     return render_template('training/preparedTraining.html', prepared=prepared)

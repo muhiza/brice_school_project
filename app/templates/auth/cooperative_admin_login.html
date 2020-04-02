@@ -41,38 +41,44 @@
         <![endif]-->
 
 
-    <style>
-        .page-container {
-            background: url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;
-            background-size: cover;
-            padding: 0
-        }
-    </style>
+        <style>
+            .page-container{width:100%;height:100%;background:url(https://raw.githubusercontent.com/muhiza/extrat/master/static/aicos_banner.png) center center no-repeat fixed;background-size:cover;padding:0}
+            .login-box{height: fit-content;}
+        </style>
 
 
 
-</head>
+    </head>
+    <body>
 
-<body>
 
-
-    <!-- Page Container -->
-    <div class="page-container">
-        <!-- Page Inner -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 login-box">
-                    <h4 class="login-title">Sign in to your account</h4>
-                    <form action="/login" method="POST">
-                        <div class="form-group">
-                            {{ wtf.form_field(form.email) }}
+        <!-- Page Container -->
+        <div class="page-container">
+                <!-- Page Inner -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 login-box">
+                                <h4 class="login-title">Sign in to your account</h4>
+                                <form action="/login" method="POST">
+                                    <div class="form-group">
+                                        {{ wtf.form_field(form.email) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ wtf.form_field(form.password) }}
+                                    </div>
+                                    {{ form.submit(class="btn btn-primary") }}
+                                    <a href="{{ url_for('auth.register') }}" class="btn btn-default">Register</a><br>
+                                    <a href="#" class="forgot-link">Forgot password?</a>
+                                    {{ form.csrf_token }}
+                                </form>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             {{ wtf.form_field(form.password) }}
                         </div>
                         {{ form.submit(class="btn btn-primary") }}
                         <a href="{{ url_for('auth.register') }}" class="btn btn-default">Register</a><br>
-                        <a href="#" class="forgot-link">Forgot password?</a><br><br>
+                        <a href="#" class="forgot-link">Forgot password?</a><br><br> -->
                         <!--
                                     <a href="{{ url_for('auth.member_login') }}" class="forgot-link">Member</a>
                                     -->

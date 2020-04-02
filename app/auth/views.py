@@ -46,7 +46,7 @@ def register():
         try:
             # add employee to the database
             db.session.add(employee)
-            db.session.add(notif)
+            # db.session.add(notif)
             #db.session.add(member)
             db.session.commit()
 

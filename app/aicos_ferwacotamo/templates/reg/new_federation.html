@@ -1,0 +1,84 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "home_base.html" %}
+{% block title %}
+    {% if add_department %}
+        Add Role
+    {% else %}
+        Edit Role
+    {% endif %}
+{% endblock %}
+{% block body %}
+<div class="container"><br>
+  <div class="row">
+    {{ utils.flashed_messages(dismissible=True) }}
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-info">
+          <h2 style="color: #fff;"><b> New Federation application. </b></h2>
+          <p style="color: #fff;"> Put required information and save it </p>
+        </div><br>
+        <div class="card-body">
+          {{ wtf.quick_form(form, form_type='basic', horizontal_columns=('lg', 2, 10), button_map={'submit': 'info'}) }}
+        </div>
+        <script>
+          let province_select = document.getElementById('Province');
+          let district_select = document.getElementById('District');
+          let activity_select = document.getElementById('Activity');
+          let confederation_select = document.getElementById('confederation');
+        
+          province_select.onchange = function(){
+            province = province_select.value;
+            fetch("/federation/district/"+province).then(function(resp){
+              resp.json().then(function(data){
+                let optionHTML = ' ';
+                for(let dist of data.districts){
+                  optionHTML += '<option value="' + dist + '">' + dist + '</option>';
+                }
+                district_select.innerHTML = optionHTML;
+              });
+            });
+          }
+        
+          activity_select.onchange = function(){
+            activity = activity_select.value;
+            if(activity){
+                let confederation = confederation_select.value;
+                federation = []
+            }
+          }
+        </script>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-success">
+          <h3 style="color: #fff;"> New Federation application</h3>
+        </div>
+        <div class="card-body">
+          <p>Kugirengo Federation yawe yemerwe kwinjira muri Sisiteme hari ibyo igomba kuba yujuje neza.
+          </p><br>
+          <h3> Ibisabwa </h3>
+          <ol>
+            <li>Reba niba umwirondoro wuzuye.</li>
+            <li>Shyiramo <b>Code</b> ya Federation</li>
+            <li>Shyiramo <b>Umugabane</b> shingiro wa Federation</li>
+            <li>Kanda ahanditse <b>Injiza muri sisiteme</b></li>
+          </ol>
+
+          <h3>Amakuru</h3>
+          <p>Amakuru yose yerekeye <b>Federation</b> agaragara hano ni amakuru yatanzwe na Federation mu kigo cy'igihugu gishinzwe amaFederation, <b>RCA</b> </p>
+            
+            <!--
+            <button class="btn btn-primary"><b>
+                <i class="fa fa-search"><a href="{{ url_for('home.sendCode') }}" style="color: #fff;"> Saba Code </a></i></b></button>
+            </div>
+            -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

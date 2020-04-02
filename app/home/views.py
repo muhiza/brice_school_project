@@ -326,8 +326,8 @@ def coopInfo(email):
     coop = Department.query.get_or_404(email)
     form = DepartmentForm(obj=coop)
     if form.validate_on_submit():
-        #coop.Code = form.Code.data
-        coop.Name = form.Name.data
+        coop.code = form.Code.data
+        coop.name = form.Name.data
         coop.regdate = form.RegDate.data
         coop.Certificate = form.Certificate.data
         coop.Province   = form.Province.data
@@ -353,7 +353,7 @@ def coopInfo(email):
             #flash(Markup('Flashed message with <b>bold</b> statements'), 'success')
             flash(Markup('Code urimo kwinjiza ntago ihuye na Cooperative, <b>Wemerewe kwinjiza Code inshuro imwe!.</b>'), 'danger')
             to_number = '250780400612'
-            message = 'Code ya cooperative ' + coop.Name + ' ku rubuga AICOS ni ' + coop.code
+            message = 'Code ya cooperative ' + coop.name + ' ku rubuga AICOS ni ' + coop.code
             response = client.send_message({'from' : '+250782061714', 'to' : to_number, 'text' : message })
             response_text = response['messages'][0]
 
@@ -361,7 +361,7 @@ def coopInfo(email):
         return redirect(url_for('home.coopInfo', email=email))
 
 
-    #form.Code.data = coop.code
+    form.Code.data = coop.code
     form.Name.data = coop.name
     form.RegDate.data = coop.regdate
     form.Certificate.data = coop.certificate
@@ -374,14 +374,6 @@ def coopInfo(email):
     form.Description.data = coop.description
     return render_template('home/coop_info.html',
                            form=form, title="Edit Role")
-
-
-
-
-
-
-
-
 
 
 @home.route('/cooperativeInfo/newApplication', methods=['GET', 'POST'])
@@ -432,19 +424,8 @@ def newApplication():
         # redirect to the roles page
         return redirect(url_for('home.done'))
 
-
-
-
     return render_template('home/new_coop.html',
                            form=form, title="Edit Role")
-
-
-
-
-
-
-
-
 
 
 
@@ -452,62 +433,6 @@ def newApplication():
 def sendCode():
     flash("Code ya Cooperative yoherejwe kuri telephone yawe!")
     return redirect(url_for('home.done'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @home.route('/application/sent')
@@ -654,14 +579,3 @@ def user_profile_about(id):
             flash("The is an error in your form, please correct it and submit again")
         return redirect(url_for('home.user_profile', id=current_user.id, username=current_user.username))
     return render_template("home/user_profile_about.html", title="Tell us about you", form=form)
-
-
-
-
-
-
-
-
-
-
-

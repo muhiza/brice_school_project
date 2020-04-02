@@ -174,7 +174,7 @@ class Federation(db.Model):
     """
 
     def __init__(self, code):
-        self.id = id
+        # self.id = id
         self.code = code
 
 
@@ -220,7 +220,7 @@ class Department(db.Model):
     id = db.Column(db.Integer, autoincrement=True, nullable=True)
     # General information
     no = db.Column(db.Integer)
-    code = db.Column(db.String(200))
+    code  = db.Column(db.String(200))
     email = db.Column(db.String(200), primary_key=True, unique=True)
     name = db.Column(db.String(200))
     regdate = db.Column(db.String(200))
@@ -240,8 +240,8 @@ class Department(db.Model):
     started_data = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     starting_share = db.Column(db.Integer)
     share_per_person = db.Column(db.String(200))
-    male_members = db.Column(db.String(200))
-    female_members = db.Column(db.String(200))
+    male_members     = db.Column(db.String(200))
+    female_members   = db.Column(db.String(200))
     #email       = db.Column(db.String(200))
     applications = db.relationship(
         'Application', backref='department', lazy='dynamic')
@@ -295,9 +295,18 @@ class Department(db.Model):
     assetsAccounting = db.relationship(
         'assetsAccounting', backref='assetsaccounting', lazy='dynamic')
     account = db.relationship('Account', backref='account', lazy='dynamic')
-    abishyuwe = db.relationship(
-        'Abishyuwe', backref='abishyuwe', lazy='dynamic')
-    is_active = db.Column(db.Boolean, default=False)
+    abishyuwe = db.relationship('Abishyuwe', backref='abishyuwe', lazy='dynamic')
+
+
+    is_active      = db.Column(db.Boolean, default=False)
+
+
+
+
+    CRMs = db.relationship('CRM', backref='department', lazy='dynamic')
+
+
+    #Dealing with excel staff here.
 
     # Dealing with excel staff here.
     """ We will always use this __init__ function to upload excel file
@@ -566,10 +575,12 @@ class Profile(db.Model):
     secondary_school = db.Column(db.String(200))
     university_school = db.Column(db.String(200))
     vocational_school = db.Column(db.String(200))
-    # Eperiances.
-    exp1 = db.Column(db.String(200))
-    exp2 = db.Column(db.String(200))
-    exp3 = db.Column(db.String(200))
+
+    # Experiances.
+    exp1  = db.Column(db.String(200))
+    exp2  = db.Column(db.String(200))
+    exp3  = db.Column(db.String(200))
+
     # Strengths.
     strn1 = db.Column(db.String(200))
     strn2 = db.Column(db.String(200))
@@ -639,7 +650,8 @@ class Member(db.Model):
     Ubumuga = db.Column(db.String(200))
     Arubatse = db.Column(db.String(200))
     umubare_abana = db.Column(db.String(200))
-    icyiciro_ubudehe = db.Column(db.String(200))
+    icyiciro_ubudehe = db.Column(db.String(
+        200))
     Ubwishingizi = db.Column(db.String(200))
     akazi_akora_muri_koperative = db.Column(db.String(200))
     akazi_akora_ahandi = db.Column(db.String(200))
@@ -669,7 +681,7 @@ class Member(db.Model):
     """ We will always use this __init__ function to upload excel file  """
 
     def __init__(self, sno):
-        self.id = id
+        # self.id = id
         self.sno = sno
 
 
@@ -2017,12 +2029,75 @@ class ExpenseCategory(db.Model):
     __tablename__ = "expensecategory"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    AccountName = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<ExpenseCategory: {}>'.format(self.id)
+
+class BudgetCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their budget.
+    """
+    __tablename__ = "budgetcategory"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<BudgetCategory: {}>'.format(self.id)
+
+class AssetCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their asset.
+    """
+    __tablename__ = "assetcategory"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<AssetCategory: {}>'.format(self.id)
+
+
+class LiabilityCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their liability.
+    """
+    __tablename__ = "liabilitycategories"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<LiabilityCategory: {}>'.format(self.id)
+
+
+class EquityCategory(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to create different categories of their liability.
+    """
+    __tablename__ = "equitycategories"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Category = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<EquityCategory: {}>'.format(self.id)
+
 
 
 class Expense(db.Model):
@@ -2036,11 +2111,11 @@ class Expense(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     Title = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Budget = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
-    Account = db.Column(db.String(200))
-    Amount = db.Column(db.String(200))
-    Desciption = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
@@ -2059,11 +2134,11 @@ class Income(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
     Title = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
-    Account = db.Column(db.String(200))
-    Amount = db.Column(db.String(200))
-    Desciption = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
     cooperative_id = db.Column(
         db.String(200), db.ForeignKey('departments.email'))
 
@@ -2081,11 +2156,13 @@ class Budget(db.Model):
     __tablename__ = "budget"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
-    Category = db.Column(db.String(200))
-    Date = db.Column(db.String(200))
+    Title = db.Column(db.String(200))
     Amount = db.Column(db.String(200))
-    cooperative_id = db.Column(
-        db.String(200), db.ForeignKey('departments.email'))
+    Account = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Period = db.Column(db.String(200))
+    cooperative_id = db.Column(db.String(200), db.ForeignKey('departments.email'))
 
     def __repr__(self):
         return '<Budget: {}>'.format(self.id)
@@ -2100,6 +2177,7 @@ class assetsAccounting(db.Model):
     __tablename__ = "assetsaccounting"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
     Date = db.Column(db.String(200))
     Category = db.Column(db.String(200))
     Account = db.Column(db.String(200))
@@ -2110,6 +2188,54 @@ class assetsAccounting(db.Model):
 
     def __repr__(self):
         return '<assetsAccounting: {}>'.format(self.id)
+
+
+
+class Liability(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage it's assets.
+    """
+
+    __tablename__ = "liabilities"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<Liability: {}>'.format(self.id)
+
+
+class Stockholders_equity(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage it's assets.
+    """
+
+    __tablename__ = "equities"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Title = db.Column(db.String(200))
+    Date = db.Column(db.String(200))
+    Category = db.Column(db.String(200))
+    Account = db.Column(db.String(200))
+    Amount = db.Column(db.String(200))
+    Description = db.Column(db.String(200))
+    cooperative_id = db.Column(
+        db.String(200), db.ForeignKey('departments.email'))
+
+    def __repr__(self):
+        return '<equity: {}>'.format(self.id)
+
+
+
 
 
 class Account(db.Model):
@@ -2128,6 +2254,37 @@ class Account(db.Model):
 
     def __repr__(self):
         return '<Account: {}>'.format(self.id)
+
+
+class Archive(db.Model):
+    __tablename__ = "archive"
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    date = db.Column(db.String(200))
+
+    m_income = db.Column(db.String(200))
+    m_expense = db.Column(db.String(200))
+
+    y_income = db.Column(db.String(200))
+    y_expense = db.Column(db.String(200))
+
+    d_intl_budget = db.Column(db.String(200))
+    m_intl_budget = db.Column(db.String(200))
+    q_intl_budget = db.Column(db.String(200))
+    y_intl_budget = db.Column(db.String(200))
+
+    d_budget_used = db.Column(db.String(200))
+    m_budget_used = db.Column(db.String(200))
+    q_budget_used = db.Column(db.String(200))
+    y_budget_used = db.Column(db.String(200))
+
+    d_time_passed = db.Column(db.String(200))
+    m_time_passed = db.Column(db.String(200))
+    q_time_passed = db.Column(db.String(200))
+    y_time_passed = db.Column(db.String(200))
+
+    def __repr__(self):
+        return '<Archive: {}>'.format(self.id)
+
 
 
 class Abishyuwe(db.Model):
@@ -2149,26 +2306,48 @@ class Abishyuwe(db.Model):
         db.String(200), db.ForeignKey('departments.email'))
 
 
+
+
+
+
+
+
+
+
+# New model related to Customer Relatonship Management.
+
 class CRM(db.Model):
     """
     Creating the table which allow the cooperative
     to record and manage all of it's customers, 
     => Customer Relationship Management.
     """
+    __tablename__ = 'CRMs'
+    id             = db.Column(db.Integer, primary_key = True, unique = True)
+    department_id  = db.Column(db.String(200), db.ForeignKey('departments.email'))
+    tag            = db.Column(db.String(100))
+    company_name   = db.Column(db.String(100))
+    email     = db.Column(db.String(100))
+    website   = db.Column(db.String(100))
+    address   = db.Column(db.String(200))
+    contact_type   = db.Column(db.String(200))
+    phone_number   = db.Column(db.String(100))
+    city           = db.Column(db.String(100))
+    country        = db.Column(db.String(100))
+    employee_id    = db.Column(db.Integer, db.ForeignKey('employees.id'))
+    description    = db.Column(db.String(255))
+    status         = db.Column(db.String(100))
 
-    __tablename__ = "CRMs"
+    def __repr__(self):
+        return '<CRM: {}>'.format(self.company_name)
 
-    id = db.Column(db.Integer, primary_key=True, unique=True)
-    # cooperative_id = db.Column(db.Integer, db.ForeignKey('cooperatives.id'))
-    tag = db.Column(db.String(100))
-    company_name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    website = db.Column(db.String(100))
-    address = db.Column(db.String(200))
-    contact_type = db.Column(db.String(200))
-    phone_number = db.Column(db.String(100))
-    city = db.Column(db.String(100))
-    country = db.Column(db.String(100))
-    employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
-    description = db.Column(db.String(255))
-    status = db.Column(db.String(100))
+    def add_new_item(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def edit_item(self):
+        db.session.commit()
+
+    def delete_item(self):
+        db.session.delete(self)
+        db.session.commit()

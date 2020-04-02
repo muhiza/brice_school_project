@@ -163,7 +163,7 @@ def dashboard():
     # the password entered matches the password in the database
     #apps = Department.query.filter_by(email=current_user.email).first()
     #applications = apps.applications
-    employee = Department.query.filter_by(email=current_user.email).first()
+    employee  = Department.query.filter_by(email=current_user.email).first()
     employees = employee.members
     employees_count = employee.members.count()
 
@@ -309,7 +309,8 @@ def memberDetails(id):
     if employee is not None:
         return render_template("cooperative_member_profile.html", employee=employee)
     return redirect(url_for('aicos_members.aicos_members_home'))
-
+# @aicos_members.route('/memberDetails/<int:id>', methods=['GET', 'POST'])
+aicos_members.add_url_rule('/memberDetails/<int:id>', 'memberDetails', memberDetails, methods=['GET', 'POST'])
 
 # Views for the full details of a specific employee
 @aicos_members.route('/cooperative_details/heree')
@@ -879,7 +880,7 @@ def create_how_to():
             flash("You have successfully created an article")
         except:
             flash("Error! Invalid information")
-        return redirect(url_for('aicos_admin.how_to_list'))
+        return redirect(url_for('aicos_members.how_to_list'))
     return render_template("tools/how_to/create_how_to.html", form=form, title="Create How to list")
 
 
@@ -1014,7 +1015,7 @@ def member_details(id):
 
 # This is the view which is used to import all the members from excel sheets
 # This is the view used to import all the cooperatives from excel sheet.
-SQLALCHEMY_DATABASE_URI = 'mysql://root:annemuhiza@localhost/coop'
+SQLALCHEMY_DATABASE_URI = 'mysql://juru:Password@123@localhost/aicos'
 @aicos_members.route("/importmbs", methods=['GET', 'POST'])
 def doimportmbs():
     add_member = False

@@ -893,3 +893,4 @@ def Imyishyurire():
         department_id=current_user.email).all()
 
     return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+

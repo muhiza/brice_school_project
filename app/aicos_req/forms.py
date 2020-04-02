@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_login import login_required, current_user
-from wtforms import StringField, IntegerField, TextAreaField, FileField, DateTimeField, SelectField, SubmitField, FloatField, ValidationError
+from wtforms import StringField, IntegerField, TextAreaField, FileField, DateTimeField, SelectField, SubmitField, FloatField, ValidationError, RadioField
 from wtforms.fields.html5 import DateField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Email, Length, NumberRange, Optional
@@ -277,53 +277,115 @@ Accounting activities in cooperatives
 In Rwanda.
 """
 
+class ArchivesForm(FlaskForm):
+    # Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Save the Current Changes for the future use') 
+
+
+class AssetCategoryForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Submit') 
+
+class LiabilityCategoryForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Submit') 
+
 class IncomeCategoryForm(FlaskForm):
     Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
     submit = SubmitField('Submit')
 
+class BudgetCategoryForm(FlaskForm):
+    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
+    submit = SubmitField('Submit')
+
 class ExpenseCategoryForm(FlaskForm):
-    AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
-    submit = SubmitField('Submit')
-
-class ExpenseForm(FlaskForm):
-    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
-    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
     Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
-    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
-    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
-    Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
-    submit = SubmitField('Submit')
-
-
-class IncomeForm(FlaskForm):
-    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
-    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
-    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
-    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
-    Desciption = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Submit')
 
 
 
-class BudgetForm(FlaskForm):
-    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
-    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter amount"})
-    submit = SubmitField('Submit')
-
-class AssetsForm(FlaskForm):
-    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
-    Category = StringField("Category", validators=[DataRequired()], render_kw={"placeholder": "Enter Category"})
-    Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
-    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
-    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
-    submit = SubmitField('Bika')
 
 class AccountForm(FlaskForm):
     AccountName = StringField("Account Name", validators=[DataRequired()], render_kw={"placeholder": "Enter Account Name"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Bika')  
+
+
+def budgets_query():
+    return Budget.query.all()
+def query():
+    return ExpenseCategory.query.all()
+class ExpenseForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Budget = QuerySelectField("Budget",
+        query_factory=budgets_query, allow_blank=True, get_label= 'Title')
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = QuerySelectField('Category',
+        query_factory=query, allow_blank=True, get_label= 'Category')
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Submit')
+
+
+def accounts_query():
+    return Account.query.all()
+
+    
+def choice_query():
+    return IncomeCategory.query.all()
+class IncomeForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Account = QuerySelectField("Account",
+        query_factory=accounts_query, allow_blank=True, get_label= 'AccountName')
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = QuerySelectField('Category',
+        query_factory=choice_query, allow_blank=True, get_label= 'Category')
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Submit')
+
+def choices():
+    return BudgetCategory.query.all()
+class BudgetForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter amount"})
+    Account = QuerySelectField("Account",
+        query_factory=accounts_query, allow_blank=True, get_label= 'AccountName')
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = QuerySelectField('Category',
+        query_factory=choices, allow_blank=True, get_label= 'Category')
+    Period = RadioField('Label', choices=[('Daily','Daily'),('Monthly','Monthly'),('Quarterly','Quarterly'),('Annually','Annually')])
+    submit = SubmitField('Submit')
+
+def asset_choices():
+    return AssetCategory.query.all()
+class AssetsForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = SelectField('Category',
+        choices = [(' ',' '),('Current','Current assets'),
+            ('Long_term','Long-term assets'),('Investiments','Investiments'),
+            ('Property','Property, Plant and Equipment'),('Intangible','Intangible'),
+            ('acc_depr','accumulated depreciations'),('Other','Others')]) 
+        #     and 
+        #     QuerySelectField("Category",
+        # query_factory=asset_choices, allow_blank=True, get_label= 'Category')   
+    # Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
     Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
     submit = SubmitField('Bika')
 
 
-    
+def liability_choices():
+    return LiabilityCategory.query.all()
+class LiabilityForm(FlaskForm):
+    Title = StringField("Title", validators=[DataRequired()], render_kw={"placeholder": "Enter Title"})
+    Date = DateField("Date",format='%Y-%m-%d', validators=[DataRequired()])
+    Category = SelectField('Category',
+        choices = [(' ',' '),('Current liabilities','Current liabilities'),('Long_term','Long-term liabilities'),('Other','Others')])    
+    # Account = StringField("Account", validators=[DataRequired()], render_kw={"placeholder": "Enter Account"})
+    Amount = IntegerField("Amount", validators=[DataRequired()], render_kw={"placeholder": "Enter Amount"})
+    Description = StringField("Description", validators=[DataRequired()], render_kw={"placeholder": "Enter Description"})
+    submit = SubmitField('Bika')
+
