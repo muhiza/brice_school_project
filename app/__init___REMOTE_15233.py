@@ -31,21 +31,10 @@ from flask_admin import BaseView, expose
 #from flask_debugtoolbar import DebugToolbarExtension
 
 app=Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
-SECRET_KEY = os.urandom(32)
-app.config['SECRET_KEY'] = SECRET_KEY
-
-
 flask_excel.init_excel(app)
 
 #Configuring the database path
-<<<<<<< HEAD
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
-# app.config['SQLALCHEMY_BINDS'] = {'test':'mysql://juru:Password@123@localhost/test'}
-=======
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
->>>>>>> tempwork
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 # Configuring the recaptha variables for user login checkings.
@@ -71,12 +60,11 @@ login_manager = LoginManager()
 
 # Creating the application factory to help in initiating and
 # Manage all other different functions and instances.
-def create_app(config_name, *args):
+def create_app(config_name):
     if os.getenv('FLASK_CONFIG') == "production":
         app = Flask(__name__)
         app.config.update(
             SECRET_KEY=os.getenv('SECRET_KEY'),
-            WTF_CSRF_SECRET_KEY="acsrfsecretkey",
             SQLALCHEMY_DATABASE_URI=os.getenv('SQLALCHEMY_DATABASE_URI')
         )
         
@@ -88,7 +76,6 @@ def create_app(config_name, *args):
     # Import all models
     from .models import Member, Department, Umusarurob, InyongeraMusaruro, Employee, Role, Notification, Umusanzu, Ibirarane, Ibihano, Ibindi, Itsinda, ItsindaMember, IsandukuNshya, BankModel, InguzanyoZatanzwe, Ibiramba, Ububiko, UmugabaneShingiro, Inkunga, InguzanyoZabandi, Ibicuruzwa, IkoreshwaRyimari, IbindiRukomatanyi, Zone, Rukomatanyo, UbwisazureEnter
 
-    from .models import CRM
 
     # A class to help in access the employees view flask admin extension.
     class EmployeeView(ModelView):
@@ -140,7 +127,6 @@ def create_app(config_name, *args):
     admin.add_view(MyModelView(Ububiko, db.session))
     admin.add_view(MyModelView(Role, db.session))
     admin.add_view(MyModelView(Notification, db.session))
-    admin.add_view(MyModelView(CRM, db.session))
 
     #toolbar = DebugToolbarExtension(app)
 
@@ -160,8 +146,8 @@ def create_app(config_name, *args):
     #from .overall import overall as overall_blueprint
     #app.register_blueprint(admin_blueprint, url_prefix="overall")
 
-    # from .admin import admin as admin_blueprint
-    # app.register_blueprint(admin_blueprint, url_prefix='/admin')
+    #from .admin import admin as admin_blueprint
+    #app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
     # Importing different Blueprints that are defined within the platform.
     from .auth import auth as auth_blueprint
@@ -249,7 +235,7 @@ def create_app(config_name, *args):
     app.register_blueprint(aicos_stock_managment_blueprint, url_prefix='/aicos_stock_managment')
 
     from .aicos_crm import aicos_crm as aicos_crm_blueprint
-    app.register_blueprint(aicos_crm_blueprint, url_prefix='/aicos_crm')
+    app.register_blueprint(aicos_crm_blueprint)
 
 
     from .aicos_bank import aicos_bank as aicos_bank_blueprint
@@ -333,6 +319,7 @@ def create_app(config_name, *args):
         return render_template('errors/500.html', title='Server Error'), 500
 
     return app
+
 
 
 

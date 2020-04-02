@@ -40,12 +40,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 flask_excel.init_excel(app)
 
 #Configuring the database path
-<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
 # app.config['SQLALCHEMY_BINDS'] = {'test':'mysql://juru:Password@123@localhost/test'}
-=======
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://juru:Password@123@localhost/aicos'
->>>>>>> tempwork
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 # Configuring the recaptha variables for user login checkings.
