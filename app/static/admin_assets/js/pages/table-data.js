@@ -35,6 +35,10 @@ $(document).ready(function() {
     $('#stock_ibindi').dataTable();
     $('#stock_imyishyurire').dataTable();
     $('#rukomatanyi').dataTable();
+    $('#stock_season_1').dataTable();
+    $('#stock_season_2').dataTable();
+    $('#stock_season_3').dataTable();
+    $('#stock_season_4').dataTable();
 
     
     // Bank data tables

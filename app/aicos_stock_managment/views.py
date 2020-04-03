@@ -140,7 +140,22 @@ def umusaruro():
     
     coop_activity = Department.query.filter_by(email=current_user.email).first()
     act = coop_activity.Activity
-    return render_template('umusaruro.html', act=act, umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+
+
+    stock_season1 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2018_19_season_a')
+    stock_season2 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_season_b')
+    stock_season3 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_season_c')
+    stock_season4 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_2020_season_a')
+
+
+    
+
+    #stock_season = stock_season_all.season.filter_by(season='2019_2020_season_a')
+    #season_1 = stock_season.season
+
+    return render_template('umusaruro.html', act=act, umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees, 
+                                             stock_season1=stock_season1, stock_season2=stock_season2, stock_season3=stock_season3,
+                                             stock_season4=stock_season4)
 
 
 @aicos_stock_managment.route('/umusaruro/member/<int:id>')

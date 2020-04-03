@@ -2155,7 +2155,6 @@ class CRM(db.Model):
     to record and manage all of it's customers, 
     => Customer Relationship Management.
     """
-
     __tablename__ = "CRMs"
 
     id = db.Column(db.Integer, primary_key=True, unique=True)
@@ -2172,3 +2171,35 @@ class CRM(db.Model):
     employee_id = db.Column(db.Integer, db.ForeignKey('employees.id'))
     description = db.Column(db.String(255))
     status = db.Column(db.String(100))
+
+
+
+
+class Arc_stock(db.Model):
+    """
+    Creating the table which allow the cooperative
+    to record and manage the previous stock data they collected
+    using different tools like excel, before joining the AICOS platform.
+    """
+    __tablename__ = "arc_stock"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    nimero	= db.Column(db.Integer)
+    date	= db.Column(db.String(255))
+    izina_ribanza = db.Column(db.String(255))
+    izina_rikurikira = db.Column(db.String(255))
+    ubwoko	         = db.Column(db.String(255))
+    ingano_kg	     = db.Column(db.String(255))
+    igiciro_kg	     = db.Column(db.String(255))
+    igiciro_cya_byose	= db.Column(db.String(255))
+    umusanzu_koperative	= db.Column(db.String(255))
+    ayishyurwa_umuhinzi	= db.Column(db.String(255))
+    telefoni            = db.Column(db.String(255))
+    season              = db.Column(db.String(255))
+    department_id = db.Column(
+            db.String(200), db.ForeignKey('departments.email'))
+				 	
+
+
+
+
