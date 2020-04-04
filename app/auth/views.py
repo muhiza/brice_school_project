@@ -150,6 +150,9 @@ def login():
                 return redirect(url_for('aicos_confederation.confederation_dashboard'))
             elif employee.is_rca:
                 return redirect(url_for('aicos_rca.rca_dashboard'))
+            elif employee.is_super_user:
+                return redirect(url_for('aicos_super_user.dashboard_overalls'))
+
             elif employee.is_admin:
                 return redirect(url_for('home.copa_pricing'))
             else:

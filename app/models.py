@@ -2175,7 +2175,6 @@ class CRM(db.Model):
 
 
 
-
 class Arc_stock(db.Model):
     """
     Creating the table which allow the cooperative
@@ -2204,3 +2203,38 @@ class Arc_stock(db.Model):
 
 
 
+
+
+
+
+
+
+
+
+
+
+class Arc_cooperative(db.Model):
+    """
+    Creating the table which allow the cooperatives 
+    which registered before the AICOS platform 
+    to stored in the platform too
+    """
+    __tablename__ = "arc_cooperatives"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    sno	= db.Column(db.Integer)
+    cooperative_name	= db.Column(db.String(255))
+    code	= db.Column(db.String(255))
+    certificate = db.Column(db.String(255))
+    activity = db.Column(db.String(255))
+    reg_date	         = db.Column(db.String(255))
+    province	     = db.Column(db.String(255))
+    district	     = db.Column(db.String(255))
+    sector         	 = db.Column(db.String(255))
+    male_members   	 = db.Column(db.String(255))
+    female_members	 = db.Column(db.String(255))
+    total_members    = db.Column(db.String(255))
+    capital          = db.Column(db.String(255))
+    share_person     = db.Column(db.String(255))
+    president_and_contact = db.Column(db.String(255))
+    status_rca       = db.Column(db.String(255))

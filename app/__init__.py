@@ -218,6 +218,9 @@ def create_app(config_name):
     
     from .aicos_ferwacotamo import aicos_ferwacotamo as aicos_ferwacotamo_blueprint
     app.register_blueprint(aicos_ferwacotamo_blueprint, url_prefix='/federation')
+    
+    from .aicos_super_user import aicos_super_user as aicos_super_user_blueprint
+    app.register_blueprint(aicos_super_user_blueprint, url_prefix='/superuser')
 
     from .aicos_confederation import aicos_confederation as aicos_confederation_blueprint
     app.register_blueprint(aicos_confederation_blueprint, url_prefix='/confederation')
