@@ -75,6 +75,7 @@ class Employee(UserMixin, db.Model):
     is_manager = db.Column(db.Boolean, default=False)
     is_accountant = db.Column(db.Boolean, default=False)
     is_production_manager = db.Column(db.Boolean, default=False)
+    is_super_user = db.Column(db.Boolean, default=False)
     invited_by = db.Column(db.String(200))
     district = db.Column(db.String(200))
 
