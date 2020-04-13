@@ -47,7 +47,7 @@ def ferwacotamo_dashboard():
 	return redirect(url_for('aicos_ferwacotamo.dashboard_overalls'))
 
 # Views for serving the overall administrator blocks.
-@aicos_super_user.route('/admin/cooperatives/superuser')
+@aicos_super_user.route('/admin/active_cooperatives/superuser')
 @login_required
 def cooperatives_overall():
     #check_admin()
@@ -62,7 +62,7 @@ def cooperatives_overall():
     all_depts_north = Department.query.filter_by(province='North').count()
     all_depts_south = Department.query.filter_by(province='South').count()
     all_depts_east = Department.query.filter_by(province='East').count()
-    return render_template("admin/cooperatives.html", employees=employees, 
+    return render_template("super_user/cooperatives.html", employees=employees, 
     						departments=departments, all_mbs=all_mbs, all_depts=all_depts, 
     						all_depts_kigali=all_depts_kigali,
     						all_depts_south = all_depts_south,
@@ -81,8 +81,26 @@ def members_overall():
     departments = Department.query.all()
     all_depts = Department.query.count()
     all_mbs = Employee.query.count()
-    return render_template("members_overall.html", employees=employees, departments=departments, all_mbs=all_mbs, 
+    return render_template("super_user/members_overall.html", employees=employees, departments=departments, all_mbs=all_mbs, 
                             all_depts=all_depts, title="Dashboard Overall")
+
+
+
+
+@aicos_super_user.route('/admin/cooperatives/superuser')
+@login_required
+def cooperatives_super_user():
+    #check_admin()
+    #check_overall()
+    #check_coop_admin()
+    employees = Member.query.all()
+    arc_coops = Arc_cooperative.query.all()
+    all_depts = Department.query.count()
+    all_mbs = Employee.query.count()
+    return render_template("super_user/cooperatives_super_user.html", employees=employees, arc_coops=arc_coops, all_mbs=all_mbs, 
+                            all_depts=all_depts, title="Dashboard Overall")
+
+
 
 @aicos_super_user.route('/admin/dashboard/superuser')
 @login_required

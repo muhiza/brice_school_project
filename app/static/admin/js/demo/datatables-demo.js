@@ -312,9 +312,12 @@ $(document).ready(function() {
 
 
 
-
-
-
+$(document).ready(function() {
+    var table = $('#exampleSuperUser').DataTable( {
+        lengthChange: false,
+        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
+    } );
+} );
 
 
 

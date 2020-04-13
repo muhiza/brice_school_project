@@ -8,7 +8,7 @@
 <html lang="en">
   <body id="page-top">
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="{{ url_for('aicos_ferwacotamo.dashboard_overalls')}}"> SuperUser Access </a>
+    <a class="navbar-brand mr-1" href="{{ url_for('aicos_ferwacotamo.dashboard_overalls')}}"> SuperUser </a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -33,7 +33,7 @@
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="{{ url_for('aicos_ferwacotamo.dashboard_overalls')}}">Activity Logdsdsdsdsd</a>
+          <a class="dropdown-item" href="{{ url_for('aicos_ferwacotamo.dashboard_overalls')}}">Activity Logs</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a>
         </div>
@@ -68,16 +68,30 @@
         </div>
       </li>
       -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('aicos_ferwacotamo.cooperatives_overall') }}">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-table"></i>
-          <span>Cooperatives</span></a>
+          <span>Cooperatives</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="{{ url_for('aicos_super_user.cooperatives_overall') }}">Active cooperatives</a>
+          <a class="dropdown-item" href="{{ url_for('aicos_super_user.cooperatives_super_user') }}">All cooperatives</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('aicos_ferwacotamo.cooperatives_overall') }}">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-users"></i>
-          <span>Members</span></a>
+          <span>Members</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="{{ url_for('aicos_super_user.members_overall') }}">Active members</a>
+          <a class="dropdown-item" href="forgot-password.html">All members</a>
+        </div>
       </li>
+
+
+
     </ul>
 
 
@@ -102,7 +116,7 @@
                 </div>
                 <div class="mr-5">{{ all_depts }} Active Cooperatives</div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="{{ url_for('aicos_ferwacotamo.cooperatives_overall') }}">
+              <a class="card-footer text-white clearfix small z-1" href="{{ url_for('aicos_super_user.cooperatives_overall') }}">
                 <span class="float-left">View Details</span>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
