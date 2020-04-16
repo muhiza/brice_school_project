@@ -1,659 +1,388 @@
-
 {% import "bootstrap/utils.html" as utils %}
-{% extends "members_base.html" %}
+{% extends "cooperative_admin_members_base.html" %}
 {% block title %}Cooperative Details{% endblock %}
 
 
-    {% block body %}
+{% block content %}
+
+<div class="panel panel-white">
+  <div class="panel-heading clearfix">
+      <h2 class="panel-heading">Amakuru yerekeye Koperative</h2><br>
+  </div>
+  <div class="panel-body">
+      <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-primary">
+                  <div class="panel-heading" role="tab" id="headingOne1">
+                      <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion2" href="#1" aria-expanded="true" aria-controls="collapseOne">
+                              <b>Imiyoborere ya Koperative</b>
+                          </a>
+                      </h4>
+                  </div>
+                  <div id="1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne1">
+                      <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Inama y‘ubuyobozi</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>First Name</th>
+                                                                <th>Last Name</th>
+                                                                <th>Username</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>Jacob</td>
+                                                                <td>Thornton</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td>Larry</td>
+                                                                <td>the Bird</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Inama y‘ubugenzuzi</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>First Name</th>
+                                                                <th>Last Name</th>
+                                                                <th>Username</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>Jacob</td>
+                                                                <td>Thornton</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td>Larry</td>
+                                                                <td>the Bird</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6"><br><br>
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Inama rusange</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>First Name</th>
+                                                                <th>Last Name</th>
+                                                                <th>Username</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>Jacob</td>
+                                                                <td>Thornton</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td>Larry</td>
+                                                                <td>the Bird</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6"><br><br>
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Komisiyo y’amasoko.</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>First Name</th>
+                                                                <th>Last Name</th>
+                                                                <th>Username</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>Jacob</td>
+                                                                <td>Thornton</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td>Larry</td>
+                                                                <td>the Bird</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                      </div>
+                  </div>
+              </div>
 
 
 
-      <div class="container-fluid">
-            <div class="card">
-                <div class="card-header bg-light">
-                      <h3></h3>
-                      <h1><strong>Cooperative application </strong></h1>
-                      <p>Check information that you put and select “accept” if you can approve the cooperative at sector level.</p>
+              <div class="panel panel-primary">
+                  <div class="panel-heading" role="tab" id="headingTwo2">
+                      <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#2" aria-expanded="false" aria-controls="collapseTwo">
+                              <b>Abanyamuryango ba Koperative</b>
+                          </a>
+                      </h4>
+                  </div>
+                  <div id="2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+                      <div class="panel-body">
+
+
+                        <div class="row">
+
+
+
+                                        <div class="col-md-6"><br><br>
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Cooperative</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Izina rya Koperative</th>
+                                                                <th>&nbsp;&nbsp;</th>
+                                                                <th>&nbsp;&nbsp;</th>
+                                                                <th>Umugabane wa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Icyicaro cyayo</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>@mdo</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Imari shingiro</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Umugabane wa buri<br> munyamuryango</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6"><br><br>
+                                            <div class="panel panel-white">
+                                                <div class="panel-heading clearfix">
+                                                    <h4 class="panel-title">Abanyamuryango</h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Abanyamuryango b'abagabo</th>
+                                                                <th>&nbsp;&nbsp;</th>
+                                                                <th>&nbsp;&nbsp;</th>
+                                                                <th>345</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">Abanyamuryango b'abagore</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>321</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Urubyiruko</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>12</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">Abanyamuryango bose</th>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>&nbsp;&nbsp;</td>
+                                                                <td>678</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        </div>
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+
+              <div class="panel panel-primary">
+                  <div class="panel-heading" role="tab" id="headingThree3">
+                      <h4 class="panel-title">
+                          <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#3" aria-expanded="false" aria-controls="collapseThree">
+                              <b>Imari shingiro, Imitungo & Icyiciro cy'ubukungu (Capitals, assets & financial class) </b>
+                          </a>
+                      </h4>
+                  </div>
+                  <div id="3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree3">
+                      <div class="panel-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                  </div>
+              </div>
+
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#4" aria-expanded="false" aria-controls="collapseFour">
+                            <b>Ibikorwa bya Koperative</b>
+                        </a>
+                    </h4>
                 </div>
-            <div class="card-body">
-            <br/>
-        {{ utils.flashed_messages() }}
-
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #337AB7;">
-                            <span style="color: #fff;"><b>Application</b></span>
-                        </div>
-                        
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th width="35%"> Application Code </th>
-                                <th width="35%"> Application Date </th>
-                                <th width="30%"> Application Status </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td> RCA/0592/2018/AP<br> Tracking code: 06171 </td>
-                                <td> {{ departmentszx.started_data }}  </td>
-                                <td> Pending </td>
-                              </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #337AB7;">
-                            <span style="color: #fff;"><b>Comment / Recommendation made by Umurenge</b></span>
-                        </div>
-                        
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th width="100%"> - </th>
-                              </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #337AB7;">
-                            <span style="color: #fff;"><b>Comment / Recommendation made by District</b></span>
-                        </div>
-                        
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th width="100%"> - </th>
-                              </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #337AB7;">
-                            <span style="color: #fff;"><b>Comment / Recommendation made by RCA</b></span>
-                        </div>
-                        
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                              <tr>
-                                <th width="100%"> - </th>
-                              </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #DFF0D8;">
-                            <span style="color: #3C763D;"><b>Cooperative</b></span>
-                        </div>
-                        
-                        <p><b>&nbsp;&nbsp;&nbsp; General Information </b></p>
-                        <table class="table">
-                            <thead>
-                            </thead>
-                              <tbody>
-                                <tr>
-                                  <td><b>Name</b></td>
-                                  <td>{{ departmentszx.name }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>Location</b></td>
-                                  <td>{{ departmentszx.province }} / {{ departmentszx.district }} / {{ departmentszx.sector }}</td>
-                                </tr>
-                                <tr> 
-                                  <td><b>Share/Personal</b></td>
-                                  <td>{{ departmentszx.share_per_person }}</td>
-                                </tr>
-                              <tr>
-                                  <td><b>Share/Capital</b></td>
-                                  <td>{{ departmentszx.starting_share }}</td>
-                                </tr>
-                                <tr>
-                                  <td><b>Activity</b></td>
-                                  <td>Ubworozi</td>
-                                </tr>
-                              </tbody>
-                          </table>
-
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #DFF0D8;">
-                            <span style="color: #3C763D;"><b>Membership</b></span>
-                        </div>
-                        <table class="table">
-                            <thead>
-                            </thead>
-                              <tbody>
-                                <tr>
-                                  <td><b>Number of members (Male)</b></td>
-                                  <td>{{ employees_male_count }}</td>
-                                </tr> 
-                                <tr>
-                                  <td><b>Number of members (Female)</b></td>
-                                  <td>{{ employees_female_count }}</td>
-                                </tr>
-                                <tr> 
-                                  <td><b>Total (Male + Female)</b></td>
-                                  <td>{{ employees_male_count + employees_female_count }}</td>
-                                </tr>
-                              </tbody>
-                          </table>
-
-
-                        <div class="card-header border border-top-0 border-right-0 border-left-0" style="background-color: #DFF0D8;">
-                            <span style="color: #3C763D;"><b>Committees</b></span>
-                        </div>
-                        <table class="table">
-                            <thead>
-                            </thead>
-                              <tbody>
-
-                                  <tr>
-                                    <th rowspan="3">Administrative committee:</th>
-                                    <td>Male</td>
-                                    <td>0</td>
-                                  </tr>
-
-                                  <tr>
-                                    <td>Female</td>
-                                    <td>1</td>
-                                  </tr>
-
-
-                                  <tr>
-                                    <td>Total</td>
-                                    <td>1</td>
-                                  </tr>
-
-
-
-                                  <tr>
-                                    <th rowspan="3">Supervisory committee:</th>
-                                    <td>Male</td>
-                                    <td>0</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Female</td>
-                                    <td>1</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Total</td>
-                                    <td>1</td>
-                                  </tr>
-
-                              </tbody>
-                          </table>
-
-
-                    </div>
-                </div>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card p-4">
-                    <a href="{{ url_for('aicos_members.coop_details') }}">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2">00</span>
-                                <span class="font-weight-light">Total Staff Members</span>
-                            </div>
-                            <div class="h2 text-muted">
-                                <i class="icon icon-user"></i>
-                            </div>
-                        </div>
-                      </a>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2">00</span>
-                                <span class="font-weight-light">Total Members</span>
-                            </div>
-                            <div class="h2 text-muted">
-                                <i class="icon icon-people"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2">00</span>
-                                <span class="font-weight-light">Male Members</span>
-                            </div>
-                            <div class="h2 text-muted">
-                                <i class="icon icon-cloud-download"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card p-4">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <span class="h4 d-block font-weight-normal mb-2">00</span>
-                                <span class="font-weight-light">Youth</span>
-                            </div>
-                            <div class="h2 text-muted">
-                                <i class="icon icon-clock"></i>
-                            </div>
-                        </div>
+                <div id="4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour4">
+                    <div class="panel-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
                 </div>
             </div>
 
 
-<script type="text/javascript">
-  $('.alive').easyPieChart({
-    easing: 'easeOutCirc',
-    barColor: '#1abc9c  ',
-    trackColor: '#f9f9f9  ',
-    scaleColor:false,
-    scaleLength: 5,
-    percent:67,
-    lineCap: 'round',
-    lineWidth: 15, 
-    size: 110, 
-    animate: {duration: 2000,enabled: true},
-    onStep: function(from, to, percent) {$(this.el).find('.percent').text(Math.round(percent));}
-  });
-
-function redraw(){
-   $('.alive').empty().easyPieChart({
-    easing: 'easeOutCirc',
-    barColor: '#1abc9c  ',
-    trackColor: '#f9f9f9  ',
-    scaleColor:false,
-    scaleLength: 5,
-    percent:67,
-    lineCap: 'round',
-    lineWidth: 15, 
-    size: 50, 
-    animate: {duration: 2000,enabled: true},
-    onStep: function(from, to, percent) {$(this.el).find('.percent').text(Math.round(percent));}
-  });   
-}
-</script>
-<div class="col-md-10">
-<ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Umwirondoro wa Cooperative</a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Address</a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Professional</a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#subs" role="tab" aria-controls="messages">Subscriptions</a>
-    </li>
-</ul>
-
-<div class="tab-content">
-    <div class="tab-pane active" id="home" role="tabpanel">
-            <h3> Amakuru ya Cooperative </h3>
-      <table class="table">
-            <thead>
-            </thead>
-            <tbody>
-            {% if departments %}
-              <tr>
-                <td><b>Izina rya Cooperative</b></td>
-                <td>Abahuza Coop</td>
-              </tr>
-              <tr>
-                <td><b>Abanyamuryango ba Cooperative</b></td>
-                <td>00 Members</td>
-              </tr>
-              <tr>
-                <td><b>Email ya Cooperative</b></td>
-                <td> abahuzacoop@gmail.com</td>
-              </tr>
-            <tr>
-                <td><b>Taliki yandikiweho</b></td>
-                <td>12/12/2012</td>
-              </tr>
-              <tr>
-                <td><b>Certificate ya Cooperative</b></td>
-                <td>RCARW-00147</td>
-              </tr>
-              <tr>
-                <td><b>Icyo Cooperative Ikora</b></td>
-                <td>Abatwara moto</td>
-              </tr>
-
-            <tr>
-                <td><b>Cooperative Descriptions</b></td>
-                <td>Cooperative y'abatwara moto</td>
-              </tr>
-              <tr>
-                <td><b>Role</b></td>
-                <td>Member</td>
-              </tr>
-              {% endif %}
-            </tbody>
-        </table>
 
 
-
-     </div>
-        <div class="tab-pane" id="profile" role="tabpanel">
-          <h3> Address Info </h3>
-          <table class="table">
-              <thead>
-              </thead>
-                <tbody>
-                  <tr>
-                    <td><b>Cooperative Province</b></td>
-                    <td>{{ departmentszx.province }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative District</b></td>
-                    <td>{{ departmentszx.district }} Members</td>
-                  </tr>
-                  <tr> 
-                    <td><b>Cooperative Sector</b></td>
-                    <td>{{ departmentszx.sector }}</td>
-                  </tr>
-                <tr>
-                    <td><b>Registration Date</b></td>
-                    <td>{{ departmentszx.regdate }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative Certificate</b></td>
-                    <td>{{ departmentszx.certificate }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative Activity</b></td>
-                    <td>{{ departmentszx.activity }}</td>
-                  </tr>
-
-
-
-                <tr>
-                    <td><b>Cooperative Descriptions</b></td>
-                    <td>{{ departmentszx.description }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Role</b></td>
-                    <td>Member</td>
-                  </tr>
-                </tbody>
-            </table>
-          </div>
-
-          
-          <div class="tab-pane" id="messages" role="tabpanel">
-          <h3> Professional Info </h3>
-          <table class="table">
-              <thead>
-              </thead>
-                <tbody>
-                  <tr>
-                    <td><b>Cooperative activities</b></td>
-                    <td>{{ departmentszx.province }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative Email</b></td>
-                    <td>{{ departmentszx.district }} Members</td>
-                  </tr>
-                  <tr> 
-                    <td><b>Cooperative Descriptions</b></td>
-                    <td>{{ departmentszx.sector }}</td>
-                  </tr>
-                <tr>
-                    <td><b>Registration Date</b></td>
-                    <td>{{ departmentszx.regdate }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative Certificate</b></td>
-                    <td>{{ departmentszx.certificate }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Cooperative Activity</b></td>
-                    <td>{{ departmentszx.activity }}</td>
-                  </tr>
-                <tr>
-                    <td><b>Cooperative Descriptions</b></td>
-                    <td>{{ departmentszx.description }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Role</b></td>
-                    <td>Member</td>
-                  </tr>
-                </tbody>
-            </table>
-           </div>
-
-
-
-
-
-        <div class="tab-pane" id="subs" role="tabpanel">
-        <h3> Subscription Info </h3>
-            <table class="table">
-              <thead>
-              </thead>
-                <tbody>
-                  <tr>
-                    <td><b>Subscribed </b></td>
-                    <td>{{ departmentszx.province }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Subscription plan </b></td>
-                    <td>{{ departmentszx.district }} Members</td>
-                  </tr>
-                  <tr> 
-                    <td><b>Remaining days </b></td>
-                    <td>{{ departmentszx.sector }}</td>
-                  </tr>
-                <tr>
-                    <td><b>Credit card no </b></td>
-                    <td>{{ departmentszx.regdate }}</td>
-                  </tr>
-                  
-                  <tr>
-                    <td><b>Paid amount </b></td>
-                    <td>{{ departmentszx.activity }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Certificate </b></td>
-                    <td>{{ departmentszx.certificate }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Paid date </b></td>
-                    <td>{{ departmentszx.description }}</td>
-                  </tr>
-                  <tr>
-                    <td><b>Descriptions </b></td>
-                    <td>{{ departmentszx.description }}</td>
-                  </tr>
-                </tbody>
-            </table>
-
+            <div class="panel panel-primary">
+              <div class="panel-heading" role="tab" id="headingFive5">
+                  <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#5" aria-expanded="false" aria-controls="collapseFive">
+                          <b>Gucunga inguzanyo</b>
+                      </a>
+                  </h4>
+              </div>
+              <div id="5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive5">
+                  <div class="panel-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
               </div>
           </div>
-      </div>
-
-      <br><br>
-      <h1><span><i class="fa fa-users"></i></span> Members</h1><br>
-        <table id="example" class="display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th> Name </th>
-                <th>Job</th>
-                <th>Plate</th>
-                <th>Owner</th>
-                <th>Phone</th>
-                <th>Owner Phone</th>
-                <th>More</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>ID</th>
-                <th> Name </th>
-                <th>Job</th>
-                <th>Plate</th>
-                <th>Owner</th>
-                <th>Phone</th>
-                <th>Owner Phone</th>
-                <th>More</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            {% for dept in departmentszx.members %}
-          <tr>
-            <td> {{ dept.id }} </td>
-            <td> {{ dept.firstName }} </td>
-            <td><span class="label label-default"> {{ dept.secondName }} </span></td>
-            <td><span class="label label-primary"> {{ dept.plateNo }} </span></td>
-            <td> {{ dept.owner }} </td>
-            <td><span class="label label-info"> {{ dept.phone }} </span></td>
-            <td><span class="label label-warning"> {{ dept.ownerTel }} </span></td>
-            <td> 
-              <a href="#">
-              <i class="fa fa-eye"></i>View
-              </a>
-            </td>
-          </tr>
-              {% endfor %}
-        </tbody>
-    </table>
-
-    </head>
 
 
-            <table class="table table-striped table-bordered">
-              <thead>
-                <tr>
-                  <th width="5%"> # </th>
-                  <th width="15%"> Official Name </th>
-                  <th width="15%"> Pin number </th>
-                  <th width="40%"> Description </th>
-                  <th width="15%"> Members' Count </th>
-                  <th width="15%"> Edit </th>
-                  <th width="15%"> Delete </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                {% if current_user.department %}
-                  <td><b>{{ 1 }} </b></td>
-                  <td><b> {{ current_user.department.name }} </b></td>
-                  <td> {{ current_user.department.description }} </td>
-                  {% endif %} 
-                  <td>
-                    {% if current_user.departments %}
-                      {{ current_user.departments.count() }}
-                    {% else %}
-                      0
-                    {% endif %}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
--->
+          <div class="panel panel-primary">
+              <div class="panel-heading" role="tab" id="headingSix6">
+                  <h4 class="panel-title">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#6" aria-expanded="false" aria-controls="collapseSix">
+                          <b>Inyungu cg Igihombo</b>
+                      </a>
+                  </h4>
+              </div>
+              <div id="6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix6">
+                  <div class="panel-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+              </div>
           </div>
-    {% endblock %}
-    </div>
+
+
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading" role="tab" id="headingSeven7">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion2x" href="#7" aria-expanded="false" aria-controls="headingSeven">
+                        <b>Icyiciro cya Koperative (Categorization of the cooperative)</b>
+                    </a>
+                </h4>
+            </div>
+            <div id="7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven7">
+                <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+      </div>
   </div>
 </div>
-</div>
 
 
 
@@ -662,18 +391,4 @@ function redraw(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{% endblock %}
