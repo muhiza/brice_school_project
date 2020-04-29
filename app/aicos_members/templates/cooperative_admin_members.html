@@ -334,25 +334,29 @@
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane active fade in" id="tab21">
                                                         <div class="table-responsive">
-                                                            <table id="all_members" class="display table"
+                                                            <table id="all_membersx" class="display table"
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
+                                                                        <th>Code</th>
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
                                                                         <th>Itsinda</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
+                                                                        <th>Code</th>
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
                                                                         <th>Itsinda</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
@@ -360,11 +364,13 @@
                                                                     {% if employees %}
                                                                     {% for emp in employees %}
                                                                     <tr>
+                                                                        <td>{{ emp.sno }} </td>
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
                                                                         <td>{{ emp.zone }}</td>
                                                                         <td>{{ emp.itsinda }}</td>
-                                                                        <td>{{ emp.zone }} </td>
+                                                                        <td>{{ emp.sector }} </td>
+                                                                        <td>{{ emp.nomero_telephone }} </td>
                                                                         <td><a
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
@@ -1440,16 +1446,11 @@
     <script src="{{ url_for('static', filename='admin_assets/js/space.min.js') }}"></script>
     <script src="{{ url_for('static', filename='admin_assets/js/pages/table-data.js') }}"></script>
 
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>
+
+
+
+
+
