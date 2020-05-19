@@ -14,6 +14,9 @@
 
 					<h3>Andika Umusaruro wa: <strong>
 							{{member_name.izina_ribanza}}&nbsp;{{member_name.izina_rikurikira}} </strong> </h3><br>
+					
+					<h3>Telephone: <strong>
+								{{member_name.nomero_telephone}} </strong> </h3><br>
 				</div>
 				<div class="card-body card-block">
 					<form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
@@ -37,10 +40,6 @@
 							{{ wtf.form_field(form.Gutonoza) }}
 						</div>
 						-->
-
-						<div class="input-form" input type="date">
-							{{ wtf.form_field(form.done_date) }}
-						</div>
 						<div class="input-form">
 							{{ form.submit(class="btn btn-primary") }}
 						</div>
