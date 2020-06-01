@@ -475,7 +475,7 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-                'x-api-key': 'eEJBRGR4RERGR3JzdG1raXNGR3g='
+                'x-api-key': 'RXZFSGFyRXZjdWhPd2p3QURFZWE='
             }
 
 
@@ -483,9 +483,9 @@ def injizaUmusaruro(id):
                 payload = {
                     'to': member_name.nomero_telephone,
                     'from': 'COOPTHEVIG',
+
                     'unicode': '0',
-                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mumaze kugemura ni ' + str(form.Quantity.data) + '-kg, igiciro ku kiro ni 174-Frw, Igiciro cya byose ni ' +  str(form.RiceAmount.data) + '-Frw. Muzabona ubundi butumwa bw\'amafaranga yo guhembwa havuyemo ibyo mugomba kwishyura uku kwezi. Murakoze.',
-                    
+                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mumaze kugemura ni ' + str(form.Quantity.data) + '-kg (havuyemo 10%), kugeza taliki 15-05-2020. igiciro ku kiro ni 174-Frw, Igiciro cya byose ni ' +  str(form.RiceAmount.data) + '-Frw (havuyemo 10%). Muzabona ubundi butumwa bw\'amafaranga yo guhembwa havuyemo ibyo mugomba kwishyura (retenue) uku kwezi. Murakoze, Mugire umunsi mwiza',
                     'action': 'send-sms'
                 }
                 response = requests.request(
