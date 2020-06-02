@@ -20,9 +20,7 @@
 				</div>
 				<div class="card-body card-block">
 					<form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
-						<div class="input-form">
-							{{ wtf.form_field(form.RiceType) }}
-						</div>
+
 						<div class="input-form">
 							{{ wtf.form_field(form.UmusaruroGrade) }}
 						</div>

@@ -355,7 +355,7 @@ def injizaUmusaruro(id):
 
         if form.UmusaruroGrade.data == 'good':
             umusaruro = Umusarurob(
-                RiceType=form.RiceType.data,
+                #RiceType=form.RiceType.data,
                 RicePrice=form.RiceAmount.data,
                 RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
                 UmusaruroGrade=form.UmusaruroGrade.data,
@@ -382,7 +382,7 @@ def injizaUmusaruro(id):
 
         elif form.UmusaruroGrade.data == 'normal':
             umusaruro = Umusarurob(
-            RiceType=form.RiceType.data,
+            #RiceType=form.RiceType.data,
             RicePrice=form.RiceAmount.data,
             RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
             UmusaruroGrade=form.UmusaruroGrade.data,
@@ -409,7 +409,7 @@ def injizaUmusaruro(id):
 
         elif form.UmusaruroGrade.data == 'normal' and act == 'Potato':
             umusaruro = Umusarurob(
-            RiceType=form.RiceType.data,
+            #RiceType=form.RiceType.data,
             RicePrice=form.RiceAmount.data,
             RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
             UmusaruroGrade=form.UmusaruroGrade.data,
@@ -437,7 +437,7 @@ def injizaUmusaruro(id):
 
             Ibikase = uruganda_igiciro * (10 * form.Quantity.data / 100),
             umusaruro = Umusarurob(
-                RiceType=form.RiceType.data,
+                #RiceType=form.RiceType.data,
                 RicePrice=form.RiceAmount.data,
                 RiceAmount=int(form.RiceAmount.data) * form.Quantity.data,
                 UmusaruroGrade=form.UmusaruroGrade.data,

@@ -82,7 +82,7 @@ class KonteZaBankForm(FlaskForm):
 
 # These are forms for new Models. from muhiza
 class UmusarurobForm(FlaskForm):
-    RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
+    #RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
     UmusaruroGrade =  StringField("Hitamo icyiciro cyumusaruro, ('<i><small>Urugero: Good, Normal, Bad</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza icyiciro"})
     Quantity =  FloatField("Ingano y\'umusaruro mu biro (<i><small>kg</small></i>)", validators=[DataRequired()], render_kw={"placeholder": "Injiza ingano y'umusaruro mu biro (kg)"})
     RiceAmount = FloatField('Igiciro Cy\'umusaruro ku biro byose', validators=[DataRequired()], render_kw={"placeholder": "Injiza igiciro cy\'umusaruro ku biro byose"})
