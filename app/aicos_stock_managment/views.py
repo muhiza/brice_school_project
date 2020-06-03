@@ -475,17 +475,16 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-                'x-api-key': 'RXZFSGFyRXZjdWhPd2p3QURFZWE='
+                'x-api-key': 'YnN1TURyZ0RLbkJEalBqZ2NOY0c='
             }
 
-            form.UmusaruroGrade.data = 'good'
             if form.UmusaruroGrade.data == 'good':
                 payload = {
                     'to': member_name.nomero_telephone,
-                    'from': 'COOPTHEVIG',
+                    'from': 'Coopthevig',
 
                     'unicode': '0',
-                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mumaze kugemura ni ' + str(form.Quantity.data) + '-kg (havuyemo 10%), kugeza taliki 31-05-2020. igiciro/kg ni 174-Frw, Igiciro cya byose ni ' +  str(form.RiceAmount.data) + '-Frw (havuyemo 10%). Retenue z\'ukwezi ni: Carnet: ' +  str(form.Carnet.data) + ', Quality: ' +  str(form.Quality.data) + ', Inguzanyo: ' +  str(form.Inguzanyo.data) + ', Avance: ' +  str(form.Avance.data) +  ', Ejo heza: ' +  str(form.Ejoheza.data) + ' Murakoze, Mugire umunsi mwiza',
+                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mwagemuye ni: ' + str(form.Quantity.data) + '-kg (havuyemo 10%), kugeza taliki 31-05-2020. igiciro/kg ni 174-Frw. Retenue z\'ukwezi zakuwemo ni: Carnet: ' +  str(form.Carnet.data) + ' Frw, Quality: ' +  str(form.Quality.data) + ' Frw, Inguzanyo: ' +  str(form.Inguzanyo.data) + ' Frw, Avance: ' +  str(form.Avance.data) +  ' Frw, Ejo heza: ' +  str(form.Ejoheza.data) + ' Frw, Ayo guhembwa ni: ' +  str(form.RiceAmount.data) + '-Frw (havuyemo 10%). Murakoze, Mugire umunsi mwiza.',
                     'action': 'send-sms'
                 }
                 response = requests.request(
