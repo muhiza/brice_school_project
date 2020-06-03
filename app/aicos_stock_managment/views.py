@@ -478,14 +478,14 @@ def injizaUmusaruro(id):
                 'x-api-key': 'RXZFSGFyRXZjdWhPd2p3QURFZWE='
             }
 
-
+            form.UmusaruroGrade.data = 'good'
             if form.UmusaruroGrade.data == 'good':
                 payload = {
                     'to': member_name.nomero_telephone,
                     'from': 'COOPTHEVIG',
 
                     'unicode': '0',
-                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mumaze kugemura ni ' + str(form.Quantity.data) + '-kg (havuyemo 10%), kugeza taliki 15-05-2020. igiciro ku kiro ni 174-Frw, Igiciro cya byose ni ' +  str(form.RiceAmount.data) + '-Frw (havuyemo 10%). Muzabona ubundi butumwa bw\'amafaranga yo guhembwa havuyemo ibyo mugomba kwishyura (retenue) uku kwezi. Murakoze, Mugire umunsi mwiza',
+                    'sms': 'Muraho,' + str(member_name.izina_ribanza) + '. Umusaruro wose mumaze kugemura ni ' + str(form.Quantity.data) + '-kg (havuyemo 10%), kugeza taliki 31-05-2020. igiciro/kg ni 174-Frw, Igiciro cya byose ni ' +  str(form.RiceAmount.data) + '-Frw (havuyemo 10%). Retenue z\'ukwezi ni: Carnet: ' +  str(form.Carnet.data) + ', Quality: ' +  str(form.Quality.data) + ', Inguzanyo: ' +  str(form.Inguzanyo.data) + ', Avance: ' +  str(form.Avance.data) +  ', Ejo heza: ' +  str(form.Ejoheza.data) + ' Murakoze, Mugire umunsi mwiza',
                     'action': 'send-sms'
                 }
                 response = requests.request(

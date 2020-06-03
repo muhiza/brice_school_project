@@ -22,6 +22,32 @@
 					<form action="{{ url_for('aicos_stock_managment.injizaUmusaruro', id=memberid.id)}}" method="post">
 
 						<div class="input-form">
+							{{ wtf.form_field(form.Carnet) }}
+						</div>
+
+						<div class="input-form">
+							{{ wtf.form_field(form.Quality) }}
+						</div>
+
+						<div class="input-form">
+							{{ wtf.form_field(form.Inguzanyo) }}
+						</div>
+
+						<div class="input-form">
+							{{ wtf.form_field(form.Avance) }}
+						</div>
+
+						<div class="input-form">
+							{{ wtf.form_field(form.Amajyani) }}
+						</div>
+
+						<div class="input-form">
+							{{ wtf.form_field(form.Ejoheza) }}
+						</div>
+
+
+
+						<div class="input-form">
 							{{ wtf.form_field(form.UmusaruroGrade) }}
 						</div>
 						<div class="input-form">
@@ -30,6 +56,10 @@
 						<div class="input-form">
 							{{ wtf.form_field(form.RiceAmount) }}
 						</div>
+
+
+
+
 						<!--
 						<div class="input-form">
 							{{ wtf.form_field(form.UwoAsigaranye) }}

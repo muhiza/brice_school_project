@@ -83,15 +83,29 @@ class KonteZaBankForm(FlaskForm):
 # These are forms for new Models. from muhiza
 class UmusarurobForm(FlaskForm):
     #RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
+    
+    #RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
+    #RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
+    #RiceType = StringField("Ubwoko bw\'umusaruro. ('<i><small>Urugero: Long, Short, Green, Black</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza ubwoko bw'umusaruro"})
+    
+    
     UmusaruroGrade =  StringField("Hitamo icyiciro cyumusaruro, ('<i><small>Urugero: Good, Normal, Bad</small></i>')", validators=[DataRequired()], render_kw={"placeholder": "Injiza icyiciro"})
     Quantity =  FloatField("Ingano y\'umusaruro mu biro (<i><small>kg</small></i>)", validators=[DataRequired()], render_kw={"placeholder": "Injiza ingano y'umusaruro mu biro (kg)"})
     RiceAmount = FloatField('Igiciro Cy\'umusaruro ku biro byose', validators=[DataRequired()], render_kw={"placeholder": "Injiza igiciro cy\'umusaruro ku biro byose"})
     UwoAsigaranye =  IntegerField("Injiza ibyo asigaranye (<i><small>Byo kurya cg kunywa</small></i>)", validators=[Optional()], render_kw={"placeholder": "Ibiro by'umusaruro asigaranye"})
     Gutonoza  = IntegerField('Igiciro cyo gutunganya ibyo asigaranye ku kiro', validators=[Optional()], render_kw={"placeholder": "Injiza igiciro cyo gutunganya ibyo asigaranye ku kiro"})
     
-    Musa  = IntegerField('Mituelle', validators=[Optional()], render_kw={"placeholder": "Mituelle"})
-    Carnet  = IntegerField('Carnet', validators=[Optional()], render_kw={"placeholder": "Carnet"})
-    Avance  = IntegerField('Avance', validators=[Optional()], render_kw={"placeholder": "Avance"})
+
+
+    Carnet  = FloatField('Carnet', validators=[Optional()], render_kw={"placeholder": "Carnet"})
+    Quality  = FloatField('Quality', validators=[Optional()], render_kw={"placeholder": "Quality"})
+    Inguzanyo  = FloatField('Inguzanyo', validators=[Optional()], render_kw={"placeholder": "Inguzanyo"})
+    Avance  = FloatField('Avance', validators=[Optional()], render_kw={"placeholder": "Avance"})
+    Amajyani  = FloatField('Amajyani', validators=[Optional()], render_kw={"placeholder": "Amajyani"})
+    Ejoheza  = FloatField('Ejoheza', validators=[Optional()], render_kw={"placeholder": "Ejoheza"})
+    
+
+    Musa  = FloatField('Musa', validators=[Optional()], render_kw={"placeholder": "Musa"})
 
     done_date = DateField('Igihe', validators=[Optional()])
 
