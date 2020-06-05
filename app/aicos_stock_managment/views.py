@@ -475,7 +475,7 @@ def injizaUmusaruro(id):
             files = [
             ]
             headers = {
-                'x-api-key': 'SE1tSUp2SUVFRkFtSHJMekdtc3M='
+                'x-api-key': 'S3FkZXM9SE95aEpmSnJFZGR4ZHc='
             }
 
             if form.UmusaruroGrade.data == 'good':
