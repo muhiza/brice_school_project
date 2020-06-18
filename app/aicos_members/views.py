@@ -62,11 +62,11 @@ def aicos_members_home():
 
     employees = employee.members
 
-    employees_male = employee.members.filter_by(Igitsina='male')
-    employees_male_count = employee.members.filter_by(Igitsina='male').count()
-    employees_female = employee.members.filter_by(Igitsina='female')
+    employees_male = employee.members.filter_by(Igitsina='M')
+    employees_male_count = employee.members.filter_by(Igitsina='M').count()
+    employees_female = employee.members.filter_by(Igitsina='F')
     employees_female_count = employee.members.filter_by(
-        Igitsina='female').count()
+        Igitsina='F').count()
 
     employees_abatarize = employee.members.filter_by(Amashuri='no')
     employees_abatarize_count = employee.members.filter_by(

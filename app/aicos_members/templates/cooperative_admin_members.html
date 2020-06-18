@@ -334,15 +334,14 @@
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane active fade in" id="tab21">
                                                         <div class="table-responsive">
-                                                            <table id="all_membersx" class="display table"
+                                                            <table id="all_members" class="display table"
                                                                 style="width: 100%; cellspacing: 0;">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Code</th>
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
                                                                         <th>Telephone</th>
                                                                         <th>Ibindi</th>
@@ -350,11 +349,10 @@
                                                                 </thead>
                                                                 <tfoot>
                                                                     <tr>
-                                                                        <th>Code</th>
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
                                                                         <th>Telephone</th>
                                                                         <th>Ibindi</th>
@@ -364,12 +362,11 @@
                                                                     {% if employees %}
                                                                     {% for emp in employees %}
                                                                     <tr>
-                                                                        <td>{{ emp.sno }} </td>
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
                                                                         <td>{{ emp.zone }}</td>
-                                                                        <td>{{ emp.itsinda }}</td>
-                                                                        <td>{{ emp.sector }} </td>
+                                                                        <td>{{ emp.Akagari }}</td>
+                                                                        <td>{{ emp.Umurenge }} </td>
                                                                         <td>{{ emp.nomero_telephone }} </td>
                                                                         <td><a
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
@@ -399,8 +396,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
@@ -409,8 +407,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
@@ -421,8 +420,9 @@
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
                                                                         <td>{{ emp.zone }}</td>
-                                                                        <td>{{ emp.itsinda }}</td>
-                                                                        <td>{{ emp.zone }} </td>
+                                                                        <td>{{ emp.Akagari }}</td>
+                                                                        <td>{{ emp.Umurenge }} </td>
+                                                                        <td>{{ emp.nomero_telephone }} </td>
                                                                         <td><a
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
@@ -447,8 +447,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
@@ -457,8 +458,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
@@ -469,8 +471,9 @@
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
                                                                         <td>{{ emp.zone }}</td>
-                                                                        <td>{{ emp.itsinda }}</td>
-                                                                        <td>{{ emp.zone }} </td>
+                                                                        <td>{{ emp.Akagari }}</td>
+                                                                        <td>{{ emp.Umurenge }} </td>
+                                                                        <td>{{ emp.nomero_telephone }} </td>
                                                                         <td><a
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
@@ -497,8 +500,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </thead>
@@ -507,8 +511,9 @@
                                                                         <th>Izina ribanza</th>
                                                                         <th>Izina rikurikira</th>
                                                                         <th>Zone</th>
-                                                                        <th>Itsinda</th>
+                                                                        <th>Akagari</th>
                                                                         <th>Umurenge</th>
+                                                                        <th>Telephone</th>
                                                                         <th>Ibindi</th>
                                                                     </tr>
                                                                 </tfoot>
@@ -519,8 +524,9 @@
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
                                                                         <td>{{ emp.zone }}</td>
-                                                                        <td>{{ emp.itsinda }}</td>
-                                                                        <td>{{ emp.zone }} </td>
+                                                                        <td>{{ emp.Akagari }}</td>
+                                                                        <td>{{ emp.Umurenge }} </td>
+                                                                        <td>{{ emp.nomero_telephone }} </td>
                                                                         <td><a
                                                                                 href="{{ url_for('aicos_members.memberDetails', id=emp.id) }}"><button
                                                                                     type="button"
@@ -562,7 +568,7 @@
                                                                 </tfoot>
                                                                 <tbody>
                                                                     {% if employees %}
-                                                                    {% for emp in employees %}
+                                                                    {% for emp in employeesx %}
                                                                     <tr>
                                                                         <td>{{ emp.izina_ribanza }} </td>
                                                                         <td>{{ emp.izina_rikurikira }}</td>
@@ -773,7 +779,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}
@@ -825,7 +831,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}
@@ -879,7 +885,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}
@@ -984,7 +990,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}
@@ -1036,7 +1042,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}
@@ -1140,7 +1146,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_female %}
+                                                                                        {% if employees_femalex %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}

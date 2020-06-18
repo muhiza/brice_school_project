@@ -48,9 +48,6 @@ $(document).ready(function() {
     $('#umusaruro_ufite_amanota').dataTable();
     
 
-  
-    
-    
     
     var table = $('#example2').DataTable({
         "columnDefs": [
