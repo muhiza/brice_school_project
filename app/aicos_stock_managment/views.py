@@ -912,3 +912,40 @@ def Imyishyurire():
         department_id=current_user.email).all()
 
     return render_template('imyishyurire.html', umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees)
+
+
+
+
+
+
+
+@aicos_stock_managment.route('/send_sms/<int:id>', methods=['GET', 'POST'])
+@login_required
+def send_sms(id):
+    memberId = Temp_coopthevigi.query.get_or_404(id)
+
+    data	=	{
+            'recipients':memberId.Telephone,
+            'message'	: 'Muraho, ' + str(memberId.Amazina) +  ' Umusaruro mumaze kugemura wose ni ' + str(memberId.Ibiro) + ', havuyemo 10%, \
+            kugeza talika 15-07-2020. Muzabona ubundi ubundi butumwa  \
+            bw\'amafaranga yo guhembwa havuyemo ibyo mugomba kwishyura uku kwezi. Ku bundi bufasha mwahamagara 0786012383. Murakoze.',
+            'sender':'COOPTHEVIG'
+    }
+
+                                        
+    r = requests.post(
+                        'https://www.intouchsms.co.rw/api/sendsms/.json',
+                        data,
+                        auth=('frank.muhiza', 'frank.muhiza')
+                    )
+    print	 (r.json(), r.status_code)
+    memberId.Status = 1 
+    db.session.commit()
+    flash(Markup("Umaze kwandika umusaruro wa " + "<b>" +
+                         memberId.Amazina + "</b>"))
+    return redirect(url_for('aicos_members.umusaruro_messages'))
+
+
+
+
+

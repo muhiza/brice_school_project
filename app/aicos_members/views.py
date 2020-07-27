@@ -62,11 +62,11 @@ def aicos_members_home():
 
     employees = employee.members
 
-    employees_male = employee.members.filter_by(Igitsina='M')
-    employees_male_count = employee.members.filter_by(Igitsina='M').count()
-    employees_female = employee.members.filter_by(Igitsina='F')
+    employees_male = employee.members.filter_by(Igitsina='GABO')
+    employees_male_count = employee.members.filter_by(Igitsina='GABO').count()
+    employees_female = employee.members.filter_by(Igitsina='GORE')
     employees_female_count = employee.members.filter_by(
-        Igitsina='F').count()
+        Igitsina='GORE').count()
 
     employees_abatarize = employee.members.filter_by(Amashuri='no')
     employees_abatarize_count = employee.members.filter_by(
@@ -1720,3 +1720,39 @@ def addZoneMember(a, b):
   return render_template('/zones/add_members.html', members = members, )
 
 """
+
+
+
+
+
+
+@aicos_members.route('/umusaruro_messages')
+def umusaruro_messages():
+    check_admin()
+    check_coop_admin()
+    employee = Department.query.filter_by(email=current_user.email).first()
+    employees = Temp_coopthevigi.query.all()
+    all_member_idd = Umusarurob.member_id
+    umusaruro_resi = Umusarurob.query.all()
+    member_all = Employee.query.filter_by(
+        department_id=current_user.email).all()
+    
+    coop_activity = Department.query.filter_by(email=current_user.email).first()
+    act = coop_activity.Activity
+
+
+    stock_season1 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2018_19_season_a')
+    stock_season2 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_season_b')
+    stock_season3 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_season_c')
+    stock_season4 = Arc_stock.query.filter_by(department_id=current_user.email).filter_by(season='2019_2020_season_a')
+
+
+    
+
+    #stock_season = stock_season_all.season.filter_by(season='2019_2020_season_a')
+    #season_1 = stock_season.season
+
+    return render_template('umusaruro_messages.html', act=act, umusaruro_resi=umusaruro_resi, member_all=member_all, employees=employees, 
+                                             stock_season1=stock_season1, stock_season2=stock_season2, stock_season3=stock_season3,
+                                             stock_season4=stock_season4)
+

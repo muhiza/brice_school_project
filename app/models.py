@@ -2238,3 +2238,27 @@ class Arc_cooperative(db.Model):
     share_person     = db.Column(db.String(255))
     president_and_contact = db.Column(db.String(255))
     status_rca       = db.Column(db.String(255))
+
+
+
+
+
+
+
+
+
+class Temp_coopthevigi(db.Model):
+    """
+    Creating the table which allow the cooperatives 
+    which registered before the AICOS platform 
+    to stored in the platform too
+    """
+    __tablename__ = "temp_coopthevigi"
+
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    Code = db.Column(db.Integer)
+    Amazina	= db.Column(db.String(255))
+    Ibiro = db.Column(db.Integer)
+    Igiciro = db.Column(db.Integer)
+    Telephone	= db.Column(db.String(255))
+    Status = db.Column(db.Boolean, default=False)

@@ -23,7 +23,9 @@ $(document).ready(function() {
     $('#all_members_paid').dataTable();
     $('#all_members_half').dataTable();
     $('#all_members_zero').dataTable();
+    $('#umusaruro_messages').dataTable();
 
+    
     // Stock tables.
     $('#stock_home').dataTable();
     $('#stock_umusaruro').dataTable();
@@ -46,8 +48,10 @@ $(document).ready(function() {
     $('#kwishyura_umusaruro').dataTable();
     $('#umusaruro_wabuze_amanota').dataTable();
     $('#umusaruro_ufite_amanota').dataTable();
-    
+   
 
+
+    
     
     var table = $('#example2').DataTable({
         "columnDefs": [

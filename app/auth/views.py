@@ -212,6 +212,7 @@ def rw_login():
         # when login details are incorrect
         else:
             flash('Invalid email or password.')
+            return redirect(url_for('auth.rw_login'))
     # load login template
     return render_template('auth/rw_cooperative_admin_login.html', form=form, title='Login')
 
@@ -268,7 +269,7 @@ def logout():
         #flash('Umaze gusohoka muri konti yawe neza!.')
         flash(Markup('Umaze gusohoka muri konti yawe neza!.'), 'success')
         # redirect to the login page
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth.rw_login'))
 
 
 

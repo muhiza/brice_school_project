@@ -292,14 +292,22 @@
                                 </div>
                                 <div class="panel-body">
                                     <a href="{{ url_for('aicos_members.AddNewMember') }}">
-                                        <button type="button" class="btn btn-success m-b-sm">Andika umunyamuryango mushya</button></a>
+                                        <button type="button" class="btn btn-success">
+                                            <i class="fa fa-plus"> </i>
+                                            Andika umunyamuryango mushya</button>
+                                            </a>
+                                    
+                                    
                                     <a href="{{ url_for('aicos_members.doimportmbs') }}">
-                                    <button type="button" class="btn btn-primary m-b-sm">Injiza lisiti</button></a>
+                                        <button type="button" class="btn btn-primary">
+                                            <i class="fa fa-upload"> </i>
+                                            Injiza lisiti</button></a>
 
-
-
-
-
+                                    <a href="{{ url_for('aicos_members.invite_members') }}" class="btn btn-info">
+                                        <i class="fa fa-envelope"> </i>
+                                        Invite/Add
+                                        </a>
+                                        <br><br>
                                     <div class="panel panel-white">
                                         <div class="panel-body">
                                             <div role="tabpanel">
@@ -1146,7 +1154,7 @@
                                                                                         </tr>
                                                                                     </tfoot>
                                                                                     <tbody>
-                                                                                        {% if employees_femalex %}
+                                                                                        {% if employees_femalexk %}
                                                                                         {% for emp in employees_female %}
                                                                                         <tr>
                                                                                             <td>{{ emp.izina_ribanza }}

@@ -75,12 +75,12 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="{{ url_for('auth.login') }}">
-        <img src="{{ url_for('static', filename='images/aicos_logo.png') }}" style="width: 120px;">
+        <h1> COPA </h1>
       </a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdwon-nav dropdown"><a class="dropdwon-nav dropdown-toggle" data-toggle="dropdown" href="#"><small
-            class="glyphicon glyphicon-user"></small> {{ current_user.first_name }} <small class="caret"></small></a>
+            class="glyphicon glyphicon-user"></small> {{ current_user.username }} <small class="caret"></small></a>
         <ul class="dropdown-menu">
           <li class="li-title"><a
               href="{{ url_for('home.user_profile', id=current_user.id, username=current_user.username) }}"><small
@@ -102,7 +102,7 @@
             <h1 style="font-style: bold; font-size: 50px;">Ikaze, <strong>{{ current_user.username }}!</strong></h1>
           </div>
           <div class="">
-            <h3 style="font-style: italic;">Konti yanyu ntago iremezwa.</h3>
+            <h2>Konti yanyu ntago iremezwa.</h2>
           </div>
         </div>
       </div>
@@ -118,16 +118,16 @@
             </div>
 -->
 
-      <div class="col-sm-6 col-md-3 col-lg-4">
-        <a href="{{ url_for('home.newApplication') }}" class="btn btn-lg btn-join"
-          style="padding-right: 45%; padding-left: 30%;"><b>NEW COOPERATIVE</b></a>
-      </div>
 
-      <div class="col-sm-6 col-md-3 col-lg-6 pull-right">
-        <a href="{{ url_for('home.search_coop', page_num=1) }}" class="btn btn-lg btn-search"
-          style="padding-right: 5%; padding-left: 5%;""><b>INJIZA KOPERATIVE MURI SISITEME</b></a>
-            </div>
-            
+
+      
+      <a href="{{ url_for('home.newApplication') }}" class="btn btn-primary btn-lg btn-block" role="button">ANDIKA KOPERATIVE NSHYA</a>
+      <a href="{{ url_for('home.search_coop', page_num=1) }}" class="btn btn-info btn-lg btn-block" role="button">INJIZA KOPERATIVE ISANZWE IHARI</a>
+      <a href="{{ url_for('home.join_cooperative') }}" class="btn btn-default btn-lg btn-block" role="button">INJIRA MURI KOPERATIVE IHARI</a>
+
+      
+
+
         </div> 
   </div>
 <div class=" navbar navbar-default navbar-fixed-bottom">
