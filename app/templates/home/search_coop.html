@@ -36,18 +36,19 @@
       <div class="card">
         <div class="card-header" style="background-color: #394249; border-top-right-radius: 3px; border-top-left-radius: 3px;">
             <h4 style="color: #fff;">Koperative: <b><strong>
-            <a href="{{ url_for('home.cooperative_details', email=cooperative.email) }}" style="color: #fff;"> {{ cooperative.name|truncate(14) }} </a></strong></b></h4>
+            <a href="{{ url_for('home.cooperative_details', email=cooperative.email) }}" style="color: #fff;"> {{ cooperative.cooperative_name|truncate(14) }} </a></strong></b></h4>
         </div>
         <div class="card-body" style="font-size: 15px;">
            <b> Intara : </b> {{ cooperative.province }} </b><br>
            <b> Akarere : </b> {{ cooperative.district }} </b><br>
            <b> Umurenge : </b> {{ cooperative.sector }} </b><br>
           
+          
+          <b>Abanyamuryango :</b> {{ cooperative.total_members }} <br>
+          <b>Umugabane Shingiro : </b>{{ cooperative.total_members }}150 Rwf <br>
+          <b>Icyiciro : </b>{{ cooperative.activity }}<br><br>
           {% if cooperative.members %}
-          <b>Abanyamuryango :</b> {{ cooperative.members.count() }} <br>
-          <b>Umugabane Shingiro : </b>{{ cooperative.members.count() }}150 Rwf 
-        <br>
-        <b>Icyiciro : </b>{{ cooperative.field }}<br><br>
+          <br>
         </div>
       <div class="card-footer bg-light">
           <button class="btn btn-md" style="border-radius: 3px; background-color: #1F656D;">
@@ -59,8 +60,11 @@
       {% endif %}
     </div>
   </div>
+</div>
 {% endfor %}
-               
+
+
+
 
 
 <style>
@@ -99,9 +103,9 @@
   <a href="#">&raquo;</a>
   </div>
 
-  </div>
 </div>
 </div>
+
 
 <br><br>
 <br><br>

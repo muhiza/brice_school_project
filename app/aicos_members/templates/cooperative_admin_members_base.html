@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Responsive Admin Dashboard Template">
     <meta name="keywords" content="admin,dashboard">
     <meta name="author" content="stacks">
@@ -63,25 +63,25 @@
                             </a>
                         </li>
 
-
+                        <!--
                         <li>
                             <a href="javascript:void(0)">
                                 <i class="menu-icon icon-user"></i><span>Koperative</span><i
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
+                                
                                 <li><a href="{{ url_for('aicos_members.list_committees') }}">Komite.</a></li>
                                 <li><a href="{{ url_for('aicos_members.list_staffs') }}">Abakozi</a></li>
                                 <li><a href="{{ url_for('aicos_members.list_activities') }}">Ibikorwa</a></li>
-                                <li><a href="{{ url_for('aicos_members.list_assets') }}">Umutungo</a></li>
-
-                                <!--
+                                <li><a href="{{ url_for('aicos_members.list_assets') }}">Umutungo</a></li>                                
                                 <li><a href="#">Role management</a></li>
                                 <li><a href="#">Fundraising</a></li>
                                 <li><a href="#">Payment processing</a></li>
-                                -->
+                                
                             </ul>
                         </li>
+                        -->
 
 
                         <li>
@@ -140,13 +140,14 @@
 
                                 </ul>
                         </li>
-
+                        
+                        <!--
                         <li class="active-page">
                             <a href="{{ url_for('aicos_members.umusaruro_messages') }}">
                                 <i class="menu-icon icon-home4"></i><span>Messages</span>
                             </a>
                         </li>
-
+                        -->
 
 
 
@@ -283,21 +284,9 @@
 
 
 
+                {% block content %}
 
-
-
-            {% block content %}
-
-
-
-
-            {% endblock %}
-
-
-
-
-
-
+                {% endblock %}
 
 
 

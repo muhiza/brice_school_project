@@ -15,18 +15,18 @@ class RegistrationForm(FlaskForm):
     """
     Form for users to create new account
     """
-    email = StringField('Email Address', validators=[DataRequired()])
-    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired()])
+    username = StringField('Amazina', validators=[DataRequired()])
     #first_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "AMAZINA YOSE"})
     #last_name = StringField('', validators=[DataRequired()], render_kw={"placeholder": "Izina rikurikira"})
-    phone_number = StringField('Phone number', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[
+    phone_number = StringField('Nimero ya telephone', validators=[DataRequired()])
+    password = PasswordField('Ijambo ry\'Ibanga', validators=[
                                         DataRequired(),
                                         EqualTo('confirm_password')
                                         ])
-    confirm_password = PasswordField('Confirm password')
+    confirm_password = PasswordField('Emeza Ijambo ry\'Ibanga')
     #recaptcha = RecaptchaField()
-    submit = SubmitField('Register')
+    submit = SubmitField('Iyandikishe')
     """
     def validate_email(self, field):
         if Employee.query.filter_by(email=field.data).first():
@@ -41,10 +41,10 @@ class LoginForm(FlaskForm):
     """
     Form for users to login
     """
-    email = StringField('Email address', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    password = PasswordField('Ijambo ry\'Ibanga', validators=[DataRequired()])
     #recaptcha = RecaptchaField()
-    submit = SubmitField('Login', render_kw={"onclick": "loading()"})
+    submit = SubmitField('Injira', render_kw={"onclick": "loading()"})
 
 
 class ForgetPasswordForm(FlaskForm):

@@ -269,7 +269,7 @@ page_num = 1
 @home.route('/member/cooperatieve/search/<int:page_num>', methods=['GET', 'POST'])
 @login_required
 def search_coop(page_num):
-    all_cooperatives = Department.query.paginate(per_page=6, page=page_num, error_out=True)
+    all_cooperatives = Arc_cooperative.query.paginate(per_page=9, page=page_num, error_out=True)
     return render_template("home/search_coop.html", title="Join Cooperative",
                            all_cooperatives=all_cooperatives)
 
