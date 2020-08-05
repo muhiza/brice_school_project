@@ -153,6 +153,8 @@ class newDepartmentForm(FlaskForm):
     Form for admin to add or edit a department
     """
     Name = StringField(Markup('<b>Izina rya Koperative</b>'), validators=[DataRequired()], render_kw={"placeholder": "Injiza izina rya Koperative"})
+    
+    """
     Province = SelectField(
         Markup('<b>Intara Koperative ibarizwamo</b>'),
         choices=[('Intara', 'Intara'),('Kigali City', 'Kigali City'), 
@@ -186,7 +188,7 @@ class newDepartmentForm(FlaskForm):
     sharePerPerson = StringField(Markup('<b>Umugabane Kuri buri munyamuryango</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
     maleMembers = StringField(Markup('<b>Abanyamuryango b\'abagabo</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
     femaleMembers = StringField(Markup('<b>Abanyamuryango b\'abagore</b>'), validators=[DataRequired()], render_kw={"placeholder": "Umugabane Shingiro wo Kwinjira muri Cooperative"})
-
+    """
     Activity = SelectField(
         Markup('<b>Icyo Koperative Ikora</b>'),
         choices=[('Tea', 'Tea'),('Coffee', 'Coffee'), 

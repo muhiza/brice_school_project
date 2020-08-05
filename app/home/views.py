@@ -398,14 +398,16 @@ def newApplication():
         #coop.Code = form.Code.data
         newCoop = Department(
                         name = form.Name.data,
-                        province   = form.Province.data,
-                        district   = form.District.data,
-                        sector     = form.Sector.data,
-                        cell       = form.Cell.data,
-                        starting_share = form.startingSharex.data,
-                        share_per_person = form.sharePerPerson.data,
-                        male_members         = form.maleMembers.data,
-                        female_members         = form.femaleMembers.data,
+                        
+                        #province   = form.Province.data,
+                        #district   = form.District.data,
+                        #sector     = form.Sector.data,
+                        #cell       = form.Cell.data,
+                        #starting_share = form.startingSharex.data,
+                        #share_per_person = form.sharePerPerson.data,
+                        #male_members         = form.maleMembers.data,
+                        #female_members         = form.femaleMembers.data,
+                        
                         is_active         = 1,
                         Activity          = form.Activity.data,
                         #current_user.is_coop_admin     = 1,

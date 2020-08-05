@@ -154,7 +154,7 @@ def login():
                 return redirect(url_for('aicos_super_user.dashboard_overalls'))
 
             elif employee.is_admin:
-                return redirect(url_for('home.copa_pricing'))
+                return redirect(url_for('home.dashboard'))
             else:
                 return redirect(url_for('aicos_members.aicos_members_home'))
         # when login details are incorrect
@@ -206,7 +206,7 @@ def rw_login():
             elif employee.is_rca:
                 return redirect(url_for('aicos_rca.rca_dashboard'))
             elif employee.is_admin:
-                return redirect(url_for('home.copa_pricing'))
+                return redirect(url_for('home.dashboard'))
             else:
                 return redirect(url_for('aicos_members.aicos_members_home'))
         # when login details are incorrect
