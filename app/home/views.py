@@ -49,7 +49,7 @@ def homepage():
     Render the homepage template on the / route
     """
     #return redirect(url_for('auth.rw_login'))
-    return render_template('auth/awe_landing_page.html', title="Welcome")
+    return render_template('auth/new_landing_page.html', title="Welcome")
     
 """
 Processing the payment logics

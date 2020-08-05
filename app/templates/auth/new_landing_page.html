@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Avid is a SaaS app landing page template built with Bootstrap and HTML to help you create a beautiful and efficient online presentation for your web app and convince visitors to sign up">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Webpage Title -->
+    <title>COPA</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new_assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new_assets/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new_assets/css/swiper.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new_assets/css/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='new_assets/css/styles.css') }}" rel="stylesheet">
+
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="images/favicon.png">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+            
+            <!-- Text Logo - Use this if you don't have a graphic logo -->
+            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">AVID</a> -->
+            <!-- Image Logo -->
+            <a class="navbar-brand logo-image" href="index.html">
+                <img src="{{ url_for('static', filename='new_assets/images/logo.png') }}" alt="Logo"></a> 
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav ml-auto">
+                	<!--
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.html">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="article.html">Article</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drop</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item page-scroll" href="article.html">Article Details</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="terms.html">Terms Conditions</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item page-scroll" href="privacy.html">Privacy Policy</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                	-->
+                </ul>
+                <span class="nav-item">
+                    <a class="btn-outline-sm" href="{{ url_for('auth.rw_login') }}">Log In</a>
+                </span>
+            </div> <!-- end of navbar-collapse -->
+        </div> <!-- end of container -->
+    </nav> <!-- end of navbar -->
+    <!-- end of navigation -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12"><br><br><br><br>
+                    <h1>COPA, Is for Cooperatives.</h1>
+                    <h3> <span style="font-weight:normal"> An all-in-one solution for digitizing all operations of business cooperatives to help better planning, evaluation of day-to-day activities and efficiently monitoring their financial situation. COPA can also be used by Unions, Federations as well as the Rwanda Cooperative Agency to access different data for planning and budgeting purposes. </span></h3><br>
+                                            
+                    <!-- Sign Up Form -->
+                    <form id="signUpForm" data-toggle="validator" data-focus="false">
+
+						<a class="btn-solid-lg page-scroll" href="{{ url_for('auth.rw_register') }}"><b>Get Started</b></a>
+
+                        <div class="form-message">
+                            <div id="smsgSubmit" class="h3 text-center hidden"></div>
+                        </div>
+                    </form>
+                    <!-- end of sign up form -->
+
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+
+
+
+
+
+
+
+    <!-- Features -->
+    <div class="basic-2">
+        <div class="container">
+        	    <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="text-box mb-6"><hr>
+                        <h1>Features</h1>
+                    </div> <!-- end of text-box -->
+
+                    <ul class="list-unstyled list-icon-lg mb-6">
+                        <li class="media">
+                            <div class="list-icon bg-1">
+                                <i class="fas fa-dot-circle"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="list-item-title">Supply chain management</h3>
+                                <p class="list-item-text">With COPA, cooperatives tracks the management of the flow of goods and services, involves the movement and storage of raw materials, of work-in-process inventory, and of finished goods as well as end to end order fulfillment from point of origin to point of consumption. </p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="list-icon bg-2">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="list-item-title">Membersip management</h3>
+                                <p class="list-item-text">COPA is everything you'll ever need to manage and grow a cooperative. A user-friendly alternative to the spreadsheet-like software you'll find elsewhere. Membership management, recurring billing, Email and text messaging, session booking, attendance tracking and much more.</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="list-icon bg-3">
+                                <i class="fas fa-money-bill"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="list-item-title">Payments</h3>
+                                <p class="list-item-text">
+                                With COPA, by utilizing blockchain technology, we have created an advanced financial platform built into a user-friendly mobile Banking app, in which members can manage their savings, payments and investments in an honest, transparent and secure way. Through COPA, cash societies can be eliminated through the adoption of our Mobile Banking App, which is operating with full reserve in a bank account. COPA offers a variety of services cost free, simple and instant.
+
+
+                            </p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="list-icon bg-4">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="list-item-title">Credit scoring.</h3>
+                                <p class="list-item-text">
+                                COPA provide a statistical analysis performed for lenders and financial institutions to access a cooperative's members creditworthiness based on their stock movements. The data can be used by lenders to help decide on whether to extend or deny credit.</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="list-icon bg-5">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="list-item-title">Reporting Tools</h3>
+                                <p class="list-item-text">Powered by powerful, secure and efficient <b>BlockChain</b> technology, COPA provide different reports from diverse data that's collected from different cooperatives' economic activities accross the country. Different institutions can access different data for planning, budgeting purposes and other activities.</p>
+                            </div>
+                        </li>
+                    </ul> <!-- end of list-unstyled -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of features -->
+
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-col first">
+                        <h6>About COPA</h6>
+                        <p class="p-sm">Our vision is to empower cooperatives and members to do and achieve more and accelerate Africa's (World's) transition to a digital economy.</p>
+                    </div> <!-- end of footer-col -->
+                    <div class="footer-col second">
+
+                    </div> <!-- end of footer-col -->
+                    <div class="footer-col third">
+
+                    </div> <!-- end of footer-col -->
+                    <div class="footer-col fourth">
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-pinterest-p fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <span class="fa-stack">
+                            <a href="#your-link">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-instagram fa-stack-1x"></i>
+                            </a>
+                        </span>
+                        <p class="p-sm">We would love to hear from you <a href="mailto:email@address.com"><strong>info@extra.rw</strong></a></p>
+                    </div> <!-- end of footer-col -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of footer -->  
+    <!-- end of footer -->
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-sm">Copyright © <a href="#">Extra</a></p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{ url_for('static', filename='new_assets/js/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap framework -->
+    <script src="{{ url_for('static', filename='new_assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="{{ url_for('static', filename='new_assets/js/jquery.easing.min.js') }}"></script>
+
+    <!-- Swiper for image and text sliders -->
+    <script src="{{ url_for('static', filename='new_assets/js/swiper.min.js') }}"></script>
+
+    <!-- Magnific Popup for lightboxes -->
+    <script src="{{ url_for('static', filename='new_assets/js/jquery.magnific-popup.js') }}"></script>
+
+    <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="{{ url_for('static', filename='new_assets/js/validator.min.js') }}"></script>
+
+    <!-- Custom scripts -->
+    <script src="{{ url_for('static', filename='new_assets/js/scripts.js') }}"></script>
+</body>
+</html>
