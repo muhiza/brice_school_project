@@ -119,49 +119,9 @@
                                     class="accordion-icon fa fa-angle-left"></i>
                             </a>
                             <ul class="sub-menu">
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ububiko</a></li>
                                 <li><a href="{{ url_for('aicos_stock_managment.umusaruro') }}">Umusaruro</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.inyongeramusaruro') }}">Inyongeramusaruro</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.imisanzu') }}">Imisanzu</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.ibirarane') }}">Ibirarane</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibihano</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Imyishyurire</a></li>
-                                <li><a href="{{ url_for('aicos_stock_managment.dashboard') }}">Ibindi</a></li>
                             </ul>
                         </li>
-
-
-                        <li> 
-                                <a href="javascript:void(0)">
-                                    <i class="menu-icon icon-show_chart"></i><span>Icunga mutungo</span><i
-                                        class="accordion-icon fa fa-angle-left"></i>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li><a href="{{ url_for('aicos_req.accountingBooks') }}">Ibitabo by'imari</a></li>
-                                    <li><a href="{{ url_for('aicos_req.rukomatanyi') }}">Rukomatanyi</a></li>
-                                    <li><a href="{{ url_for('aicos_req.isanduku') }}">Isanduku</a></li>
-                                    <li><a href="{{ url_for('aicos_req.bank') }}">Bank</a></li>
-                                    <li><a href="{{ url_for('aicos_req.inguzanyo_zatanzwe') }}">Inguzanyo z'atanzwe</a></li>
-                                    <li><a href="{{ url_for('aicos_req.ibiramba') }}">Ibiramba</a></li>
-                                    <li><a href="{{ url_for('aicos_req.ububiko') }}">Ububiko</a></li>
-                                    <li><a href="{{ url_for('aicos_req.umugabane_shingiro') }}">Umagabane Shingiro</a></li>
-                                    <li><a href="{{ url_for('aicos_req.inkunga') }}">Inkunga</a></li>
-                                    <li><a href="{{ url_for('aicos_req.inguzanyo_abandi') }}">Inguzanyo z'abandi</a></li>
-                                    <li><a href="{{ url_for('aicos_req.ibicuruzwa') }}">Ibicuruzwa</a></li>
-                                    <li><a href="{{ url_for('aicos_req.ikoreshwa_ryimari') }}">Ikoreshwa ry'imari</a></li>
-                                    <li><a href="{{ url_for('aicos_req.ibindi_rukomatanyi') }}">Ibindi</a></li>
-
-                                </ul>
-                        </li>
-
-
-
-                        <li class="active-page">
-                            <a href="{{ url_for('aicos_members.umusaruro_messages') }}">
-                                <i class="menu-icon icon-home4"></i><span>Messages</span>
-                            </a>
-                        </li>
-
 
 
                         
@@ -278,8 +238,6 @@
                                             src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">Konti yange</a></li>
-                                        <li><a href="{{ url_for('aicos_members.cooper_det') }}">Konti ya Koperative</a>
-                                        </li>
                                         <li><a href="{{ url_for('auth.logout') }}">Sohoka</a></li>
                                     </ul>
                                 </li>
@@ -548,7 +506,8 @@
 
 
 
-
+    <script src="{{ url_for('static', filename='admin_assets/plugins/chartjs/chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin_assets/js/pages/chart.js') }}"></script>
 
 </body>
 

@@ -436,6 +436,13 @@
                                             <th>Amazina</th>
                                             <th>Ibiro</th>
                                             <th>Igiciro</th>
+
+                                            <th>Quality</th>
+                                            <th>Avance</th>
+                                            <th>Musa</th>
+
+                                            <th>Asigaye</th>
+
                                             <th>Telephone</th>
 
                                             <th>Injiza</th>
@@ -449,9 +456,23 @@
                                                 <td>{{member.Code}}</td>
                                                 <td>{{member.Amazina}}</td>
                                                 <td>{{member.Ibiro}}</td>
-
                                                 <td>{{member.Igiciro}}</td>
-                                                <td>{{member.Telephone}}</td>
+
+                                                <td>{{member.Avance}}</td>
+                                                <td>{{member.Musa}}</td>
+
+                                                <td>{{member.Quality}}</td>
+                                                <td>{{member.Asigaye}}</td>
+
+
+
+                                                <td>
+                                                    {% if member.Telephone |length  == 10 %}
+                                                        {{ member.Telephone }} <li class="fa fa-check"></li>
+                                                    {% else %}
+                                                        {{ member.Telephone }} <li class="fa fa-times"></li>
+                                                    {% endif %}
+                                                </td>
 
 
                                                 <td>

@@ -2258,7 +2258,13 @@ class Temp_coopthevigi(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True)
     Code = db.Column(db.Integer)
     Amazina	= db.Column(db.String(255))
-    Ibiro = db.Column(db.Integer)
-    Igiciro = db.Column(db.Integer)
+    Ibiro = db.Column(db.Float)
+    Igiciro = db.Column(db.Float)
+
+    Quality = db.Column(db.Float)
+    Avance  = db.Column(db.Float)
+    Musa = db.Column(db.Integer)
+    Asigaye  = db.Column(db.Float)
+
     Telephone	= db.Column(db.String(255))
     Status = db.Column(db.Boolean, default=False)
